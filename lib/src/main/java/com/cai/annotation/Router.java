@@ -1,4 +1,4 @@
-package work.cai.com.lib;
+package com.cai.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -3,7 +3,7 @@ package work.cai.com.cwork;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import work.cai.com.lib.Router;
+import com.cai.annotation.Router;
 
 @Router("woderouter")
 public class MainActivity extends AppCompatActivity {
@@ -12,5 +12,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Animal animal = new Animal();
+        animal.fly();
     }
 }
