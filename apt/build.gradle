@@ -6,8 +6,8 @@ dependencies {
     compile 'com.squareup:javapoet:1.4.0'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
 
 //  解决build警告：编码GBK的不可映射字符
 tasks.withType(JavaCompile) {

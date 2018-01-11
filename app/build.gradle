@@ -1,15 +1,13 @@
 apply plugin: 'com.android.application'
-import org.aspectj.bridge.IMessage
-import org.aspectj.bridge.MessageHandler
-import org.aspectj.tools.ajc.Main
-
+apply plugin: com.cai.plugin2.SecondPlugin2
 android {
 
-    compileSdkVersion 26
+    compileSdkVersion 25
+    buildToolsVersion '23.0.2'
     defaultConfig {
         applicationId "com.cai.cwork"
-        minSdkVersion 15
-        targetSdkVersion 26
+        minSdkVersion 16
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         renderscriptTargetApi 20
@@ -29,62 +27,35 @@ android {
         preDexLibraries = false
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile 'com.android.support:appcompat-v7:25.4.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
     compile project(':lib')
     annotationProcessor project(':apt')
-
+//    classpath 'com.cai.myplugin:1.0.0'
     compile 'org.aspectj:aspectjrt:1.8.1'
 }
+//apply plugin: 'com.cai.myplugin'
+//./gradlew -p plugin clean build uploadArchives --info
 
-final def log = project.logger
-final def variants = project.android.applicationVariants
-
-variants.all { variant ->
-    if (!variant.buildType.isDebuggable()) {
-        log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
-        return
+repositories {
+    maven {
+        url 'https://maven.google.com'
     }
-    JavaCompile javaCompile = variant.javaCompile
-    javaCompile.doLast {
-        String[] args = ["-showWeaveInfo",
-                         "-1.5",
-                         "-inpath", javaCompile.destinationDir.toString(),
-                         "-aspectpath", javaCompile.classpath.asPath,
-                         "-d", javaCompile.destinationDir.toString(),
-                         "-classpath", javaCompile.classpath.asPath,
-                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
-        log.debug "ajc args: " + Arrays.toString(args)
+    maven { url 'https://maven.fabric.io/public' }
+}
 
-        MessageHandler handler = new MessageHandler(true);
-        new Main().run(args, handler);
-        for (IMessage message : handler.getMessages(null, true)) {
-            switch (message.getKind()) {
-                case IMessage.ABORT:
-                case IMessage.ERROR:
-                case IMessage.FAIL:
-                    log.error message.message, message.thrown
-                    break;
-                case IMessage.WARNING:
-                    log.warn message.message, message.thrown
-                    break;
-                case IMessage.INFO:
-                    log.info message.message, message.thrown
-                    break;
-                case IMessage.DEBUG:
-                    log.debug message.message, message.thrown
-                    break;
-            }
+buildscript {
+    repositories {
+        maven {
+            url 'https://maven.google.com'
         }
+        maven { url 'https://maven.fabric.io/public' }
     }
 }
