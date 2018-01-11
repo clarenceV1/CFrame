@@ -1,6 +1,5 @@
 package com.cai.work.ui;
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.cai.annotation.apt.Router;
@@ -16,10 +15,13 @@ import com.cai.work.utils.InstanceUtil;
 public class MainActivity extends BaseActivity {
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
     @CostTime
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void initView() {
         Animal animal = InstanceUtil.getInstance(Animal.class);
         animal.fly();
     }

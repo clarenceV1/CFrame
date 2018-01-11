@@ -3,9 +3,9 @@ apply plugin: com.cai.plugin2.SecondPlugin2
 apply plugin: 'com.cai.plugin.aspect'
 android {
     compileSdkVersion 25
-    buildToolsVersion '23.0.2'
+    buildToolsVersion '25.0.2'
     defaultConfig {
-        applicationId "com.cai.work"
+        applicationId "com.cai.work2"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
