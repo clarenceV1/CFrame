@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: com.cai.plugin2.SecondPlugin2
+apply plugin: 'com.cai.myplugin'
 android {
-
     compileSdkVersion 25
     buildToolsVersion '23.0.2'
     defaultConfig {
@@ -20,42 +20,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility 1.7
+        targetCompatibility 1.7
+    }
+
     lintOptions {
         abortOnError false
     }
+
     dexOptions {
         preDexLibraries = false
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
+
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.4.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+
+    compile 'org.aspectj:aspectjrt:1.8.1'
 
     compile project(':lib')
     annotationProcessor project(':apt')
-//    classpath 'com.cai.myplugin:1.0.0'
-    compile 'org.aspectj:aspectjrt:1.8.1'
+//    classpath 'com.cai.myplugin:gradleplugin:1.0.0'
+
 }
 //apply plugin: 'com.cai.myplugin'
 //./gradlew -p plugin clean build uploadArchives --info
-
-repositories {
-    maven {
-        url 'https://maven.google.com'
-    }
-    maven { url 'https://maven.fabric.io/public' }
-}
-
-buildscript {
-    repositories {
-        maven {
-            url 'https://maven.google.com'
-        }
-        maven { url 'https://maven.fabric.io/public' }
-    }
-}
