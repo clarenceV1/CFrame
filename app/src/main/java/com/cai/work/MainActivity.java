@@ -7,7 +7,7 @@ import com.cai.annotation.apt.Router;
 import com.cai.annotation.aspect.CostTime;
 import com.cai.work.utils.InstanceUtil;
 
-@Router("woderouter")
+@Router("MainActivity")
 public class MainActivity extends AppCompatActivity {
 
     @Override
