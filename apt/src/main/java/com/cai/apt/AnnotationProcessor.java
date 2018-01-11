@@ -18,7 +18,7 @@ import javax.lang.model.util.Elements;
 @AutoService(Processor.class)//自动生成 javax.annotation.processing.IProcessor 文件
 @SupportedSourceVersion(SourceVersion.RELEASE_8)//java版本支持
 @SupportedAnnotationTypes({//标注注解处理器支持的注解类型
-        "work.cai.com.lib.Router"
+        "com.cai.annotation.apt.Router"
 })
 public class AnnotationProcessor extends AbstractProcessor {
     public Filer mFiler; //文件相关的辅助类
