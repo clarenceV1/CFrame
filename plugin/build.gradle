@@ -20,5 +20,4 @@ uploadArchives {
 repositories {
     jcenter()
 }
-
-//注意⚠️:   插件修改后运行前需要重新发布: ./gradlew -p plugin clean build uploadArchives --info
+//注意⚠️:   插件修改后运行前需要重新发布: ./gradle -p plugin clean build uploadArchives --info

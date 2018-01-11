@@ -43,8 +43,4 @@ dependencies {
 
     compile project(':lib')
     annotationProcessor project(':apt')
-//    classpath 'com.cai.myplugin:gradleplugin:1.0.0'
-
 }
-//apply plugin: 'com.cai.myplugin'
-//./gradlew -p plugin clean build uploadArchives --info
