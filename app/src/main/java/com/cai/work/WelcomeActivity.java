@@ -9,19 +9,16 @@ import com.cai.apt.TRouter;
 import com.cai.framework.BaseActivity;
 import com.cai.work.utils.InstanceUtil;
 
-@Router(Jumpter.HOME)
-public class MainActivity extends BaseActivity {
+@Router(Jumpter.WELCOME)
+public class WelcomeActivity extends BaseActivity {
 
     @Override
-    @CostTime
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Animal animal = InstanceUtil.getInstance(Animal.class);
-        animal.fly();
+        setContentView(R.layout.welcome);
     }
 
-    public void goToWelcome(View view) {
-        TRouter.go(Jumpter.WELCOME);
+    public void goToMain(View view) {
+        TRouter.go(Jumpter.HOME);
     }
 }

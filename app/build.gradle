@@ -37,10 +37,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.3.1'
-
-    compile 'org.aspectj:aspectjrt:1.8.1'
-
-    compile project(':lib')
     annotationProcessor project(':apt')
+    compile project(':framework')
 }

@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/../apt" />
             <option value="$PROJECT_DIR$/../buildsrc" />
+            <option value="$PROJECT_DIR$/../framework" />
             <option value="$PROJECT_DIR$/../lib" />
             <option value="$PROJECT_DIR$/../plugin" />
           </set>
