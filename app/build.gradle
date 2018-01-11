@@ -5,7 +5,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion '23.0.2'
     defaultConfig {
-        applicationId "com.cai.cwork"
+        applicationId "com.cai.work"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1

@@ -1,4 +1,4 @@
-package work.cai.com.cwork.aop;
+package com.cai.work.aop;
 
 import android.util.Log;
 
@@ -14,7 +14,7 @@ import org.aspectj.lang.annotation.Pointcut;
 public class LogAspect {
     private static final String TAG = "ConstructorAspect";
 
-    @Pointcut("call(* work.cai.com.cwork.Animal.fly(..))")
+    @Pointcut("call(* com.cai.work.Animal.fly(..))")
     public void callMethod() {
     }
 
