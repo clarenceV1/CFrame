@@ -2,6 +2,8 @@ package com.cai.work;
 
 import android.util.Log;
 
+import com.cai.annotation.aspect.CostTime;
+
 /**
  * Created by clarence on 2018/1/10.
  */
@@ -11,5 +13,8 @@ public class Animal {
 
     public void fly() {
         Log.e(TAG, this.toString() + "#fly");
+    }
+
+    public Animal() {
     }
 }

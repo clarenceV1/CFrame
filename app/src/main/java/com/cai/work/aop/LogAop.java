@@ -11,7 +11,7 @@ import org.aspectj.lang.annotation.Pointcut;
  * Created by clarence on 2018/1/10.
  */
 @Aspect
-public class LogAspect {
+public class LogAop {
     private static final String TAG = "ConstructorAspect";
 
     @Pointcut("call(* com.cai.work.Animal.fly(..))")
