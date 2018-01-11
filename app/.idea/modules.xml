@@ -7,7 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/../apt/apt.iml" filepath="$PROJECT_DIR$/../apt/apt.iml" />
       <module fileurl="file://$PROJECT_DIR$/../buildsrc/buildsrc.iml" filepath="$PROJECT_DIR$/../buildsrc/buildsrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/../lib/lib.iml" filepath="$PROJECT_DIR$/../lib/lib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../myplugin/myplugin.iml" filepath="$PROJECT_DIR$/../myplugin/myplugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../plugin/plugin.iml" filepath="$PROJECT_DIR$/../plugin/plugin.iml" />
     </modules>
   </component>
 </project>
