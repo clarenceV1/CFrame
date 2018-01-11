@@ -1,6 +1,6 @@
 package com.cai.work.aop;
 
-import com.cai.work.utils.LogUtils;
+import com.cai.framework.LogUtils;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

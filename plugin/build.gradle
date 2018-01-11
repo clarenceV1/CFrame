@@ -13,7 +13,7 @@ uploadArchives {
         repository(url: uri('../repo'))
         pom.groupId = 'com.cai.plugin'
         pom.artifactId = 'aspectPlugin'
-        pom.version = '1.0.0'
+        pom.version = '1.0.2'
     }
 }
 
