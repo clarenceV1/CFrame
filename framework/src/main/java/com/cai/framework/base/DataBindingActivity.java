@@ -1,4 +1,4 @@
-package com.cai.framework;
+package com.cai.framework.base;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
+
+import com.cai.framework.utils.PermissionUtils;
 
 public abstract class DataBindingActivity<B extends ViewDataBinding> extends FragmentActivity {
     public Context mContext;

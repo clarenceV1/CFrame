@@ -3,7 +3,7 @@
     package="com.cai.work">
     <uses-permission android:name="android.permission.CAMERA" />
     <application
-        android:name="com.cai.framework.BaseApplication"
+        android:name="com.cai.framework.base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 
 import com.cai.annotation.aspect.Permission;
-import com.cai.framework.BaseApplication;
-import com.cai.framework.PermissionUtils;
+import com.cai.framework.base.BaseApplication;
+import com.cai.framework.utils.PermissionUtils;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

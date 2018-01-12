@@ -1,4 +1,4 @@
-package com.cai.framework;
+package com.cai.framework.utils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

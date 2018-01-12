@@ -5,7 +5,7 @@ import android.view.View;
 import com.cai.annotation.apt.Router;
 import com.cai.annotation.aspect.CostTime;
 import com.cai.apt.TRouter;
-import com.cai.framework.BaseActivity;
+import com.cai.framework.base.BaseActivity;
 import com.cai.work.Animal;
 import com.cai.work.R;
 import com.cai.work.base.Jumpter;

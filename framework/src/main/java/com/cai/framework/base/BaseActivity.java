@@ -1,11 +1,8 @@
-package com.cai.framework;
+package com.cai.framework.base;
 
 
 import android.databinding.ViewDataBinding;
 
-import com.cai.framework.BasePresenter;
-import com.cai.framework.BaseView;
-import com.cai.framework.DataBindingActivity;
 import java.lang.reflect.ParameterizedType;
 
 /**

@@ -1,4 +1,4 @@
-package com.cai.framework;
+package com.cai.framework.base;
 
 /**
  * Created by baixiaokang on 16/4/22.
