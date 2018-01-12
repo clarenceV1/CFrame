@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.cai.annotation.apt.Router;
 import com.cai.annotation.aspect.CostTime;
+import com.cai.annotation.aspect.SingleClick;
 import com.cai.apt.TRouter;
 import com.cai.framework.base.BaseActivity;
 import com.cai.work.bean.Animal;
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainBinding> imple
         animal.fly();
     }
 
+    @SingleClick
     public void goToWelcome(View view) {
         TRouter.go(Jumpter.WELCOME);
     }

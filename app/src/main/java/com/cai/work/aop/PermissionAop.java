@@ -14,7 +14,6 @@ import org.aspectj.lang.annotation.Aspect;
 import java.util.List;
 
 /**
- * Created by baixiaokang on 17/1/31.
  * 申请系统权限切片，根据注解值申请所需运行权限
  */
 @Aspect

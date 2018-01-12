@@ -14,12 +14,11 @@ import org.aspectj.lang.reflect.MethodSignature;
 import java.util.List;
 
 /**
- * Created by baixiaokang on 16/10/24.
  * 根据MemoryCache注解自动添加缓存代理代码，通过aop切片的方式在编译期间织入源代码中
  * 功能：缓存某方法的返回值，下次执行该方法时，直接从缓存里获取。
  */
 @Aspect
-public class MemoryCacheAspect {
+public class MemoryCacheAop {
 
     @Pointcut("execution(@com.cai.annotation.aspect.MemoryCache * *(..))")//方法切入点
     public void methodAnnotated() {

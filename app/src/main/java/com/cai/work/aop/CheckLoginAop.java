@@ -14,7 +14,7 @@ import org.aspectj.lang.annotation.Pointcut;
  * 功能：检查用户是否登陆，未登录则提示登录，不会执行下面的逻辑
  */
 @Aspect
-public class CheckLoginAspect {
+public class CheckLoginAop {
 
     @Pointcut("execution(@com.cai.annotation.aspect.CheckLogin * *(..))")//方法切入点
     public void methodAnnotated() {
