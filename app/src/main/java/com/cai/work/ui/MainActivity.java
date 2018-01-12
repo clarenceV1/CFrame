@@ -33,6 +33,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainBinding> imple
     @SingleClick
     public void goToWelcome(View view) {
         TRouter.go(Jumpter.WELCOME);
+        finish();
     }
 
     @Override

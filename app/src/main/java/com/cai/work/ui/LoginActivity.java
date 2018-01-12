@@ -1,9 +1,9 @@
 package com.cai.work.ui;
 
 import android.view.View;
+import android.widget.Toast;
 
 import com.cai.annotation.apt.Router;
-import com.cai.apt.TRouter;
 import com.cai.work.R;
 import com.cai.work.base.BaseActivity;
 import com.cai.work.base.Jumpter;
@@ -24,8 +24,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginBinding> im
 
     }
 
-    public void goToWelcome(View view) {
-        TRouter.go(Jumpter.HOME);
+    public void goToLogin(View view) {
+        mPresenter.login();
+        Toast.makeText(this, "去登录", Toast.LENGTH_SHORT).show();
     }
 
     @Override
