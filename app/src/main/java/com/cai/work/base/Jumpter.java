@@ -10,4 +10,5 @@ public class Jumpter {
     //带优化为自动生成
     public static final String HOME = "home";
     public static final String WELCOME = "welcome";
+    public static final String LOGIN = "login";
 }

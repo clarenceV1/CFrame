@@ -1,4 +1,4 @@
-package com.cai.work;
+package com.cai.work.bean;
 
 import android.util.Log;
 

@@ -6,6 +6,6 @@ import com.cai.framework.base.BaseView;
  * Created by clarence on 2018/1/12.
  */
 
-public interface MainView extends BaseView {
-    void setMainContent(String content);
+public interface LoginView extends BaseView {
+    void setLoginContent(String content);
 }

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.view.View;
 
 import com.cai.annotation.apt.Router;
+import com.cai.annotation.aspect.CheckLogin;
 import com.cai.annotation.aspect.Permission;
 import com.cai.apt.TRouter;
 import com.cai.framework.base.BaseActivity;
@@ -27,6 +28,7 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter, WelcomeBindi
     }
 
     @Permission(Manifest.permission.CAMERA)
+    @CheckLogin
     public void goToMain(View view) {
         TRouter.go(Jumpter.HOME);
         finish();
