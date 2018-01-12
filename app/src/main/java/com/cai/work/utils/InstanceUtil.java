@@ -1,7 +1,6 @@
 package com.cai.work.utils;
 
 import com.cai.annotation.aspect.CostTime;
-import com.cai.work.base.InstanceFactory;
 
 /**
  * Created by baixiaokang on 16/4/30.
@@ -16,11 +15,11 @@ public class InstanceUtil {
      */
     @CostTime
     public static <T> T getInstance(Class clazz) {
-        try {
-            return (T) InstanceFactory.create(clazz);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            return (T) InstanceFactory.create(clazz);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return null;
     }
 }

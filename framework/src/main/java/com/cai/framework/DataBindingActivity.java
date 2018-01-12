@@ -1,6 +1,7 @@
 package com.cai.framework;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,7 +21,7 @@ public abstract class DataBindingActivity<B extends ViewDataBinding> extends Fra
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View rootView = getLayoutInflater().inflate(this.getLayoutId(), null, false);
-//        mViewBinding = DataBindingUtil.bind(rootView);
+        mViewBinding = DataBindingUtil.bind(rootView);
         setContentView(rootView);
         mContext = this;
         initPresenter();
@@ -32,9 +33,7 @@ public abstract class DataBindingActivity<B extends ViewDataBinding> extends Fra
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    protected void initPresenter() {
-    }
-
+    public abstract void initPresenter();
 
     public abstract int getLayoutId();
 
