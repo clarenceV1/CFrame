@@ -12,6 +12,7 @@ import com.cai.work.base.Jumpter;
 import com.cai.work.databinding.MainBinding;
 import com.cai.work.ui.presenter.MainPresenter;
 import com.cai.work.ui.presenter.MainView;
+import com.cai.work.utils.InstanceUtil;
 
 @Router(Jumpter.HOME)
 public class MainActivity extends BaseActivity<MainPresenter, MainBinding> implements MainView {
@@ -24,7 +25,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainBinding> imple
     @Override
     @CostTime
     public void initView() {
-        Animal animal = new Animal();
+        Animal animal = InstanceUtil.getInstance(Animal.class);
         animal.fly();
     }
 

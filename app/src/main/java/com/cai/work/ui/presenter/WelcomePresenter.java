@@ -1,5 +1,6 @@
 package com.cai.work.ui.presenter;
 
+import com.cai.annotation.apt.InstanceFactory;
 import com.cai.framework.BasePresenter;
 
 /**
