@@ -6,7 +6,7 @@ import io.reactivex.disposables.CompositeDisposable;
 /**
  * Created by baixiaokang on 16/4/22.
  */
-public abstract class BasePresenter<V> {
+public abstract class CBasePresenter<V> {
     protected V mView;
     protected CompositeDisposable mCompositeSubscription = new CompositeDisposable();
 

@@ -9,9 +9,9 @@ import java.util.Stack;
  * Created by clarence on 2018/1/11.
  */
 
-public class BaseApplication extends Application {
+public class CBaseApplication extends Application {
     private Stack<Activity> store;
-    private static BaseApplication baseApplication;
+    private static CBaseApplication baseApplication;
 
     public void onCreate() {
         super.onCreate();
@@ -20,7 +20,7 @@ public class BaseApplication extends Application {
         registerActivityLifecycleCallbacks(new SwitchBackgroundCallbacks(store));
     }
 
-    public static BaseApplication getAppContext() {
+    public static CBaseApplication getAppContext() {
         return baseApplication;
     }
 

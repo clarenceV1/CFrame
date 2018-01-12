@@ -6,7 +6,7 @@ import com.cai.annotation.apt.Router;
 import com.cai.annotation.aspect.CostTime;
 import com.cai.annotation.aspect.SingleClick;
 import com.cai.apt.TRouter;
-import com.cai.framework.base.BaseActivity;
+import com.cai.work.base.BaseActivity;
 import com.cai.work.bean.Animal;
 import com.cai.work.R;
 import com.cai.work.base.Jumpter;

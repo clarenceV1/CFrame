@@ -3,9 +3,6 @@ package com.cai.work.utils;
 import com.cai.annotation.aspect.CostTime;
 import com.cai.apt.InstanceFactory;
 
-/**
- * Created by baixiaokang on 16/4/30.
- */
 public class InstanceUtil {
 
     /**
