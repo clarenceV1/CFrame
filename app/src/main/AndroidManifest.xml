@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cai.work">
+
     <uses-permission android:name="android.permission.CAMERA" />
     <application
         android:name="com.cai.framework.base.CBaseApplication"
@@ -10,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.WelcomeActivity">
+        <activity android:name=".ui.ScrollActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,6 +20,7 @@
         </activity>
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.WelcomeActivity" />
     </application>
 
 </manifest>
