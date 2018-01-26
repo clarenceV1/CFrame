@@ -1,12 +1,15 @@
 package com.cai.work.ui;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 
 import com.cai.work.R;
 import com.cai.work.bean.ScrollData;
 import com.cai.work.ui.adapter.ScrollAdapter;
-import com.cai.work.widget.ListViewScroll;
+import com.cai.work.widget.OnRefreshListener;
+import com.cai.work.widget.RefreshListView;
 
 import java.util.ArrayList;
 
@@ -16,7 +19,7 @@ import java.util.ArrayList;
 
 public class ScrollActivity extends Activity {
 
-    private ListViewScroll mListView;
+    private RefreshListView mListView;
     private ScrollAdapter adapter;
     private ArrayList<ScrollData> data;
 
@@ -29,7 +32,7 @@ public class ScrollActivity extends Activity {
     }
 
     private void init() {
-        mListView = (ListViewScroll) findViewById(R.id.listview);
+        mListView = (RefreshListView) findViewById(R.id.listview);
         data = new ArrayList<>();
         for (int i = 1; i < 20; i++) {
             ScrollData scrollData = new ScrollData();
@@ -39,5 +42,25 @@ public class ScrollActivity extends Activity {
         //初始化adapter
         adapter = new ScrollAdapter(this, data);
         mListView.setAdapter(adapter);
+        mListView.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void downPullRefresh() {
+                new AsyncTask<Void,Void,Void>(){
+
+                    @Override
+                    protected Void doInBackground(Void... params) {
+                        SystemClock.sleep(2800);
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Void result) {
+                        super.onPostExecute(result);
+                        adapter.notifyDataSetChanged();
+                        mListView.hideHeaderView();
+                    }
+                }.execute(new Void[]{});
+            }
+        });
     }
 }
