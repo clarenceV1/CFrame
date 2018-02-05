@@ -11,6 +11,17 @@ import java.io.UnsupportedEncodingException;
  */
 public final class StringUtils {
 
+    public static boolean equals(String str1, String str2) {
+        if(str1 == null) {
+            str1 = "";
+        }
+
+        if(str2 == null) {
+            str2 = "";
+        }
+
+        return str1.equals(str2);
+    }
     public static String buildString(Object... str) {
         int size = str.length;
         StringBuilder builder = new StringBuilder();

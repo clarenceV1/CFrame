@@ -6,3 +6,5 @@ rxjava
 fastjson
 oop
 aop
+eventbus
+okio

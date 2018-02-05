@@ -5,13 +5,12 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
 import com.cai.framework.utils.PermissionUtils;
 
-public abstract class DataBindingActivity<B extends ViewDataBinding> extends FragmentActivity {
+public abstract class DataBindingActivity<B extends ViewDataBinding> extends WatcherActivity {
     public Context mContext;
     public B mViewBinding;
 
