@@ -59,11 +59,11 @@ public class Api {
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         File cacheFile = new File(CBaseApplication.getAppContext().getCacheDir(), "cache");
-        Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
+        Cache cache = new Cache(cacheFile, 1024 * 1024 * 10); //100Mb
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-//                .readTimeout(7676, TimeUnit.MILLISECONDS)
-//                .connectTimeout(7676, TimeUnit.MILLISECONDS)
+                .readTimeout(30000, TimeUnit.MILLISECONDS)
+                .connectTimeout(30000, TimeUnit.MILLISECONDS)
                 .addInterceptor(headInterceptor)
                 .addInterceptor(logInterceptor)
                 .addNetworkInterceptor(new HttpCacheInterceptor())
