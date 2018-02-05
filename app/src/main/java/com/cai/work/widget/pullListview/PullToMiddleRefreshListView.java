@@ -146,9 +146,9 @@ public class PullToMiddleRefreshListView extends ListView {
     }
 
     public void setRefreshComplete(String updateTips){
-        if(!isRefreshing()){
-            return;
-        }
+//        if(!isRefreshing()){
+//            return;
+//        }
         mRefreshView.setRefreshComplete(updateTips);
     }
 

@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -26,7 +27,7 @@ public class BallLoadingView extends View {
 
     private Paint mPaint;
 
-    enum Status{
+    enum Status {
         LEAVE_TRANSLATE, //分离
         ROTATE  //旋转
     }
@@ -69,12 +70,13 @@ public class BallLoadingView extends View {
 
         float radius = mBigRadius;
         float margin = 0;
-        if(mStatus == Status.LEAVE_TRANSLATE){
+        if (mStatus == Status.LEAVE_TRANSLATE) {
             radius = mBigRadius * (1 - mProgress * 0.35f);
             margin = (height - radius * 4) / 2 * mProgress;
-        }else if(mStatus == Status.ROTATE){
+        } else if (mStatus == Status.ROTATE) {
             radius = mBigRadius * 0.65f;
             margin = (height - radius * 4) / 2;
+//            Log.d("handleLoadingView", "degress>>>>>" + 360 * mProgress);
             canvas.rotate(360 * mProgress, centerX, centerY);
         }
         canvas.drawCircle(centerX, centerY - margin, radius, mPaint);
@@ -85,10 +87,11 @@ public class BallLoadingView extends View {
 
     /**
      * 设置progress
-     * @param status 当前状态
+     *
+     * @param status   当前状态
      * @param progress 对应状态的进度
      */
-    public void setProgress(Status status, float progress){
+    public void setProgress(Status status, float progress) {
         this.mStatus = status;
         this.mProgress = progress;
         invalidate();
@@ -104,11 +107,12 @@ public class BallLoadingView extends View {
 
     /**
      * 开始旋转动画
+     *
      * @param duration 时长
      */
     public void startRotateAnimation(int duration) {
         stopRotateAnimation();
-        if(mStatus != Status.ROTATE){
+        if (mStatus != Status.ROTATE) {
             mStatus = Status.ROTATE;
             mProgress = 0;
         }
@@ -126,8 +130,8 @@ public class BallLoadingView extends View {
         mRotateValueAnimator.start();
     }
 
-    public void stopRotateAnimation(){
-        if(mRotateValueAnimator != null && mRotateValueAnimator.isRunning()){
+    public void stopRotateAnimation() {
+        if (mRotateValueAnimator != null && mRotateValueAnimator.isRunning()) {
             mRotateValueAnimator.cancel();
         }
     }
