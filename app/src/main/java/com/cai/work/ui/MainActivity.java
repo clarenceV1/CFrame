@@ -9,12 +9,10 @@ import com.cai.apt.TRouter;
 import com.cai.work.R;
 import com.cai.work.base.BaseActivity;
 import com.cai.work.base.Jumpter;
-import com.cai.work.bean.Animal;
 import com.cai.work.bean.Weather;
 import com.cai.work.databinding.MainBinding;
 import com.cai.work.ui.presenter.MainPresenter;
 import com.cai.work.ui.presenter.MainView;
-import com.cai.work.utils.InstanceUtil;
 
 @Router(Jumpter.HOME)
 public class MainActivity extends BaseActivity<MainPresenter, MainBinding> implements MainView {

@@ -1,6 +1,5 @@
 package com.cai.work.ui.presenter;
 
-import android.util.Log;
 import android.widget.Toast;
 
 import com.cai.annotation.apt.InstanceFactory;
@@ -10,9 +9,7 @@ import com.cai.framework.store.StoreFactory;
 import com.cai.framework.store.base.StoreType;
 import com.cai.work.ApiService;
 import com.cai.work.base.App;
-import com.cai.work.bean.Animal;
 import com.cai.work.bean.Weather;
-import com.cai.work.utils.InstanceUtil;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -47,14 +44,11 @@ public class MainPresenter extends CBasePresenter<MainView> {
                         mView.setMainContent(title);
                     }
                 });
-
-        Animal animal = InstanceUtil.getInstance(Animal.class);
-        animal.fly();
-        getContent();
+        getWeather();
 
     }
 
-    public void getContent() {
+    public void getWeather() {
         try {
             String city = URLEncoder.encode("北京", "utf-8");
             Disposable disposable = Api.getInstance().request().create(ApiService.class).getWeather(city)
