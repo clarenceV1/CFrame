@@ -1,6 +1,8 @@
 package com.cai.framework.http;
 
 
+import android.util.Log;
+
 import com.cai.framework.Constant;
 import com.cai.framework.base.CBaseApplication;
 import com.google.gson.Gson;
@@ -41,8 +43,6 @@ public class Api {
         @Override
         public Response intercept(Chain chain) throws IOException {
             return chain.proceed(chain.request().newBuilder()
-                    .addHeader("X-LC-Id", Constant.X_LC_Id)
-                    .addHeader("X-LC-Key", Constant.X_LC_Key)
                     .addHeader("Content-Type", "application/json")
                     .build());
         }
@@ -50,26 +50,29 @@ public class Api {
 
     //构造方法私有
     private Api() {
-        HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
+        HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+                Log.d("logInterceptor",message);
+            }
+        });
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         File cacheFile = new File(CBaseApplication.getAppContext().getCacheDir(), "cache");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .readTimeout(7676, TimeUnit.MILLISECONDS)
-                .connectTimeout(7676, TimeUnit.MILLISECONDS)
+//                .readTimeout(7676, TimeUnit.MILLISECONDS)
+//                .connectTimeout(7676, TimeUnit.MILLISECONDS)
                 .addInterceptor(headInterceptor)
                 .addInterceptor(logInterceptor)
                 .addNetworkInterceptor(new HttpCacheInterceptor())
                 .cache(cache)
                 .build();
 
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").serializeNulls().create();
-
         retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(Constant.BASE_URL)
                 .build();

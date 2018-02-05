@@ -2,14 +2,26 @@ package com.cai.framework.store;
 
 import android.content.Context;
 
+import com.cai.framework.store.base.IStore;
+import com.cai.framework.store.base.StoreType;
+import com.cai.framework.store.type.StoreFile;
+import com.cai.framework.store.type.StoreHttp;
+import com.cai.framework.store.type.StoreProvider;
+import com.cai.framework.store.type.StoreSQLite;
+import com.cai.framework.store.type.StoreSdCard;
+import com.cai.framework.store.type.StoreSharedPreferences;
+
+import java.util.HashMap;
+
 /**
  * Created by clarence on 2018/1/23.
  */
 
 public class StoreFactory {
 
-    Context context;
-    boolean initFinish = false;
+    public static Context context;
+    private static boolean initFinish = false;
+    private static HashMap<StoreType, IStore> storeMap = new HashMap<>();
 
     private static final class Holder {
         private static final StoreFactory instance = new StoreFactory();
@@ -25,7 +37,7 @@ public class StoreFactory {
         Holder.instance.initFinish = true;
     }
 
-    public IStore getInstance(StoreType type) {
+    public static IStore getInstance(StoreType type) {
         if (!initFinish) {
             try {
                 throw new Exception("请先调用StoreFactory.init()初始化！！！");
@@ -38,11 +50,14 @@ public class StoreFactory {
         }
     }
 
-    private IStore generateStore(StoreType type) {
-        IStore store = null;
+    private static IStore generateStore(StoreType type) {
+        IStore store = storeMap.get(type);
+        if (store != null) {
+            return store;
+        }
         switch (type) {
             case SHARED_PREFERENCE:
-                store = new StoreSharedPreferences();
+                store = new StoreSharedPreferences(context);
                 break;
             case File:
                 store = new StoreFile();

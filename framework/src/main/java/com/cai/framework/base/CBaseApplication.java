@@ -3,6 +3,9 @@ package com.cai.framework.base;
 import android.app.Activity;
 import android.app.Application;
 
+import com.cai.framework.store.StoreFactory;
+import com.cai.framework.store.cache.MeetyouCacheLoader;
+
 import java.util.Stack;
 
 /**
@@ -17,6 +20,8 @@ public class CBaseApplication extends Application {
         super.onCreate();
         baseApplication = this;
         store = new Stack<>();
+        StoreFactory.init(getAppContext());
+        MeetyouCacheLoader.init(getAppContext());
         registerActivityLifecycleCallbacks(new SwitchBackgroundCallbacks(store));
     }
 

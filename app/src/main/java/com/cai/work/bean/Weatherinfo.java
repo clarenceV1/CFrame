@@ -1,56 +1,96 @@
 package com.cai.work.bean;
 
+import java.util.List;
+
 /**
  * Created by clarence on 2018/1/16.
  */
 
 public class Weatherinfo {
-    /**
-     * 温度
-     */
-    private String temperature;
-    /**
-     * 湿度
-     */
-    private String Humidity;
-    /**
-     * 雾
-     */
-    private String info;
-    /**
-     * img
-     */
-    private String img;
+    private String shidu;
+    private String pm25;
+    private String pm10;
+    private String quality;
+    private String wendu;
+    private String ganmao;
+    private WeatherYesterday yesterday;
+    private List<WeatherYesterday> forecast;
 
-    public String getTemperature() {
-        return temperature;
+    public String getShidu() {
+        return shidu;
     }
 
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
+    public void setShidu(String shidu) {
+        this.shidu = shidu;
     }
 
-    public String getHumidity() {
-        return Humidity;
+    public String getPm25() {
+        return pm25;
     }
 
-    public void setHumidity(String humidity) {
-        Humidity = humidity;
+    public void setPm25(String pm25) {
+        this.pm25 = pm25;
     }
 
-    public String getInfo() {
-        return info;
+    public String getPm10() {
+        return pm10;
     }
 
-    public void setInfo(String info) {
-        this.info = info;
+    public void setPm10(String pm10) {
+        this.pm10 = pm10;
     }
 
-    public String getImg() {
-        return img;
+    public String getQuality() {
+        return quality;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setQuality(String quality) {
+        this.quality = quality;
+    }
+
+    public String getWendu() {
+        return wendu;
+    }
+
+    public void setWendu(String wendu) {
+        this.wendu = wendu;
+    }
+
+    public String getGanmao() {
+        return ganmao;
+    }
+
+    public void setGanmao(String ganmao) {
+        this.ganmao = ganmao;
+    }
+
+    public WeatherYesterday getYesterday() {
+        return yesterday;
+    }
+
+    public void setYesterday(WeatherYesterday yesterday) {
+        this.yesterday = yesterday;
+    }
+
+    public List<WeatherYesterday> getForecast() {
+        return forecast;
+    }
+
+    public void setForecast(List<WeatherYesterday> forecast) {
+        this.forecast = forecast;
+    }
+
+    @Override
+    public String toString() {
+        return "Weatherinfo{" +
+                "shidu='" + shidu + '\'' +
+                ", pm25='" + pm25 + '\'' +
+                ", pm10='" + pm10 + '\'' +
+                ", quality='" + quality + '\'' +
+                ", wendu='" + wendu + '\'' +
+                ", ganmao='" + ganmao + '\'' +
+                ", yesterday=" + yesterday +
+                ", forecast=" + forecast +
+                '}';
     }
 }

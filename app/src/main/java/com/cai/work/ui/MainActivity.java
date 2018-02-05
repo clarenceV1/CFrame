@@ -6,10 +6,11 @@ import com.cai.annotation.apt.Router;
 import com.cai.annotation.aspect.CostTime;
 import com.cai.annotation.aspect.SingleClick;
 import com.cai.apt.TRouter;
-import com.cai.work.base.BaseActivity;
-import com.cai.work.bean.Animal;
 import com.cai.work.R;
+import com.cai.work.base.BaseActivity;
 import com.cai.work.base.Jumpter;
+import com.cai.work.bean.Animal;
+import com.cai.work.bean.Weather;
 import com.cai.work.databinding.MainBinding;
 import com.cai.work.ui.presenter.MainPresenter;
 import com.cai.work.ui.presenter.MainView;
@@ -26,8 +27,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainBinding> imple
     @Override
     @CostTime
     public void initView() {
-        Animal animal = InstanceUtil.getInstance(Animal.class);
-        animal.fly();
+
     }
 
     @SingleClick
@@ -39,5 +39,10 @@ public class MainActivity extends BaseActivity<MainPresenter, MainBinding> imple
     @Override
     public void setMainContent(String content) {
         mViewBinding.btn.setText(content);
+    }
+
+    @Override
+    public void showWeather(Weather weather) {
+        mViewBinding.tvWeather.setText(weather.toString());
     }
 }
