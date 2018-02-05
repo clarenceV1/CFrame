@@ -5,8 +5,6 @@ import android.util.Log;
 
 import com.cai.framework.Constant;
 import com.cai.framework.base.CBaseApplication;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.IOException;
