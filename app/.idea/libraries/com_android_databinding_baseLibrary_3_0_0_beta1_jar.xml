@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="com.android.databinding:baseLibrary:3.0.0-beta1@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.databinding/baseLibrary/3.0.0-beta1/4b434bb7f85f555cf161201f1ff5d2f7adaa377a/baseLibrary-3.0.0-beta1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.databinding/baseLibrary/3.0.0-beta1/1e0dd170fcad12a4e4b8686b23dd13cbb1b20a57/baseLibrary-3.0.0-beta1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.databinding/baseLibrary/3.0.0-beta1/e937e9a3947c7f41b99506fecc0889591438cde4/baseLibrary-3.0.0-beta1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
