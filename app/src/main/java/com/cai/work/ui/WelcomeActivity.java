@@ -7,7 +7,6 @@ import com.cai.annotation.apt.Router;
 import com.cai.annotation.aspect.CheckLogin;
 import com.cai.annotation.aspect.Permission;
 import com.cai.apt.TRouter;
-import com.cai.framework.base.CBaseActivity;
 import com.cai.work.R;
 import com.cai.work.base.BaseActivity;
 import com.cai.work.base.Jumpter;

@@ -29,6 +29,11 @@ import io.reactivex.schedulers.Schedulers;
 public class MainPresenter extends CBasePresenter<MainView> {
     @Override
     public void onAttached() {
+        TestSaveData();
+        requestWeather();
+    }
+
+    private void TestSaveData() {
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> e) throws Exception {
@@ -44,11 +49,9 @@ public class MainPresenter extends CBasePresenter<MainView> {
                         mView.setMainContent(title);
                     }
                 });
-        getWeather();
-
     }
 
-    public void getWeather() {
+    public void requestWeather() {
         try {
             String city = URLEncoder.encode("北京", "utf-8");
             Disposable disposable = Api.getInstance().request().create(ApiService.class).getWeather(city)
