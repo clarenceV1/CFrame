@@ -31,6 +31,11 @@ public class MainPresenter extends CBasePresenter<MainView> {
     public void onAttached() {
         TestSaveData();
         requestWeather();
+        testSQL();
+    }
+
+    private void testSQL() {
+
     }
 
     private void TestSaveData() {

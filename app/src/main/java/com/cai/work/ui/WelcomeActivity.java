@@ -1,6 +1,11 @@
 package com.cai.work.ui;
 
 import android.Manifest;
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
+import android.transition.TransitionInflater;
 import android.view.View;
 
 import com.cai.annotation.apt.Router;
@@ -24,14 +29,20 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter, WelcomeBindi
 
     @Override
     public void initView() {
+//        getWindow().setExitTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide));
+    }
 
+    public void goToWelcome(View view) {
+        View searchView = WelcomeActivity.this.findViewById(R.id.searchView);
+        Intent intent = new Intent(this, MainActivity.class);
+        ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(this, searchView, "shared_image_");
+        startActivity(intent, transitionActivityOptions.toBundle());
     }
 
     @Permission(Manifest.permission.CAMERA)
     @CheckLogin
     public void goToMain(View view) {
         TRouter.go(Jumpter.HOME);
-        finish();
     }
 
     @Override

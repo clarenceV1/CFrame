@@ -10,6 +10,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/.." />
+            <option value="$PROJECT_DIR$/../Amodule" />
+            <option value="$PROJECT_DIR$/../Bmodule" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/../apt" />
             <option value="$PROJECT_DIR$/../buildsrc" />

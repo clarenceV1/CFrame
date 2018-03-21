@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Amodule/Amodule.iml" filepath="$PROJECT_DIR$/../Amodule/Amodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Bmodule/Bmodule.iml" filepath="$PROJECT_DIR$/../Bmodule/Bmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/../CFrame.iml" filepath="$PROJECT_DIR$/../CFrame.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../apt/apt.iml" filepath="$PROJECT_DIR$/../apt/apt.iml" />

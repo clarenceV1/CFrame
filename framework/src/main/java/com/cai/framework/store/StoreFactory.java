@@ -38,6 +38,10 @@ public class StoreFactory {
     }
 
     public static IStore getInstance(StoreType type) {
+        return getInstance(type, null);
+    }
+
+    public static IStore getInstance(StoreType type, String path) {
         if (!initFinish) {
             try {
                 throw new Exception("请先调用StoreFactory.init()初始化！！！");
@@ -46,11 +50,11 @@ public class StoreFactory {
             }
             return null;
         } else {
-            return generateStore(type);
+            return generateStore(type,path);
         }
     }
 
-    private static IStore generateStore(StoreType type) {
+    private static IStore generateStore(StoreType type,String path) {
         IStore store = storeMap.get(type);
         if (store != null) {
             return store;

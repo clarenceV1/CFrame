@@ -1,5 +1,10 @@
 package com.cai.work.ui;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.transition.Explode;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.View;
 
 import com.cai.annotation.apt.Router;
@@ -25,13 +30,20 @@ public class MainActivity extends BaseActivity<MainPresenter, MainBinding> imple
     @Override
     @CostTime
     public void initView() {
-
+//        Slide slide=new Slide();
+//        slide.setDuration(3000);
+//        getWindow().setEnterTransition(slide);
+//        getWindow().setReenterTransition(new Explode().setDuration(600));
     }
 
     @SingleClick
     public void goToWelcome(View view) {
-        TRouter.go(Jumpter.WELCOME);
-        finish();
+//        TRouter.go(Jumpter.WELCOME);
+//        finish();
+        View searchView = MainActivity.this.findViewById(R.id.searchView);
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(this, searchView, "shared_image_");
+        startActivity(intent, transitionActivityOptions.toBundle());
     }
 
     @Override
