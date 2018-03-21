@@ -12,6 +12,7 @@ import com.cai.annotation.apt.Router;
 import com.cai.annotation.aspect.CheckLogin;
 import com.cai.annotation.aspect.Permission;
 import com.cai.apt.TRouter;
+import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.work.R;
 import com.cai.work.base.BaseActivity;
 import com.cai.work.base.Jumpter;
@@ -29,7 +30,7 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter, WelcomeBindi
 
     @Override
     public void initView() {
-//        getWindow().setExitTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide));
+        setData(BaseLifecycleObserver.CLASS_NAME, "WelcomeActivity");
     }
 
     public void goToWelcome(View view) {

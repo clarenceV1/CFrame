@@ -36,21 +36,21 @@ public class MainActivity extends BaseActivity<MainPresenter, MainBinding> imple
 //        slide.setDuration(3000);
 //        getWindow().setEnterTransition(slide);
 //        getWindow().setReenterTransition(new Explode().setDuration(600));
-        setData(BaseLifecycleObserver.CLASS_NAME, "MainActivity");
+          setData(BaseLifecycleObserver.CLASS_NAME, "MainActivity");
     }
 
 
     @SingleClick
     public void goToWelcome(View view) {
-//        TRouter.go(Jumpter.WELCOME);
-//        finish();
+        TRouter.go(Jumpter.WELCOME);
+        finish();
         //测试过渡动画
 //        View searchView = MainActivity.this.findViewById(R.id.searchView);
 //        Intent intent = new Intent(this, WelcomeActivity.class);
 //        ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(this, searchView, "shared_image_");
 //        startActivity(intent, transitionActivityOptions.toBundle());
-        Intent intent = new Intent(this, AmoduleActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, AmoduleActivity.class);
+//        startActivity(intent);
     }
 
     @Override

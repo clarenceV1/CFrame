@@ -5,6 +5,8 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Context;
 
+import com.cai.framework.utils.log.LogUtils;
+
 import java.util.Map;
 
 /**
@@ -34,21 +36,21 @@ public class BaseLifecycleObserver implements LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void ON_CREATE() {
         if (isDebug) {
-            System.out.println(getClassName() + ":ON_CREATE");
+            LogUtils.getInsatance().debug("LifecycleObserver",getClassName() , ":ON_CREATE");
         }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void ON_START() {
         if (isDebug) {
-            System.out.println(getClassName() + ":ON_START");
+            LogUtils.getInsatance().debug("LifecycleObserver",getClassName() , ":ON_START");
         }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void ON_RESUME() {
         if (isDebug) {
-            System.out.println(getClassName() + ":ON_RESUME");
+            LogUtils.getInsatance().debug("LifecycleObserver",getClassName() , ":ON_RESUME");
         }
 
     }
@@ -56,14 +58,14 @@ public class BaseLifecycleObserver implements LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void ON_PAUSE() {
         if (isDebug) {
-            System.out.println(getClassName() + ":ON_PAUSE");
+            LogUtils.getInsatance().debug("LifecycleObserver",getClassName() , ":ON_PAUSE");
         }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void ON_STOP() {
         if (isDebug) {
-            System.out.println(getClassName() + ":ON_STOP");
+            LogUtils.getInsatance().debug("LifecycleObserver",getClassName() , ":ON_STOP");
         }
 
     }
@@ -71,7 +73,7 @@ public class BaseLifecycleObserver implements LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void ON_DESTROY() {
         if (isDebug) {
-            System.out.println(getClassName() + ":ON_DESTROY");
+            LogUtils.getInsatance().debug("LifecycleObserver",getClassName() , ":ON_DESTROY");
         }
     }
 }
