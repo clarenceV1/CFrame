@@ -8,3 +8,5 @@ oop
 aop
 eventbus
 okio
+lifecycle
+objectbox

@@ -1,6 +1,6 @@
 package com.cai.work.aop;
 
-import com.cai.framework.utils.LogUtils;
+import com.cai.framework.utils.log.LogUtils;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -27,7 +27,7 @@ public class CostTimeAop {
     @Around("methodAnnotated() || constructorAnnotated()")//在连接点进行方法替换
     public Object aroundJoinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        LogUtils.showLog("CostTime getDeclaringClass", methodSignature.getMethod().getDeclaringClass().getCanonicalName(), false);
+        LogUtils.getInsatance().showLogPosition("CostTime getDeclaringClass", methodSignature.getMethod().getDeclaringClass().getCanonicalName());
         long startTime = System.nanoTime();
         Object result = joinPoint.proceed();//执行原方法
         String className = methodSignature.getDeclaringType().getSimpleName();
@@ -45,7 +45,7 @@ public class CostTimeAop {
         keyBuilder.append(TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime));
         keyBuilder.append("ms]");
         String key = keyBuilder.toString();
-        LogUtils.showLog("CostTime", key, true);// 打印时间差
+        LogUtils.getInsatance().showLogPosition("CostTime", key);// 打印时间差
         return result;
     }
 }

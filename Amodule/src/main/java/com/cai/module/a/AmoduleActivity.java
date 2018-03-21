@@ -1,9 +1,9 @@
 package com.cai.module.a;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
-public class AMainActivity extends AppCompatActivity {
+public class AmoduleActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,7 +2,7 @@ package com.cai.framework.watcher;
 
 import android.app.Activity;
 
-import com.cai.framework.utils.LogUtils;
+import com.cai.framework.utils.log.LogUtils;
 import com.cai.framework.utils.StringUtils;
 
 import java.lang.ref.WeakReference;
@@ -34,7 +34,7 @@ public class ActivityStackWatcher extends ActivityWatcherImp {
         super.onCreate(watchParam);
         String nowName = getActivitySimpleName(watchParam);
         this.activityNameList.add(nowName);
-        LogUtils.d("watcher add :" + nowName);
+        LogUtils.getInsatance().debug("watcher add :" , nowName);
     }
 
     public void onDestroy(WatchParam watchParam) {

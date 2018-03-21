@@ -3,7 +3,7 @@
     package="com.cai.module.a">
 
     <application android:allowBackup="true">
-        <activity android:name=".AMainActivity">
+        <activity android:name=".AmoduleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

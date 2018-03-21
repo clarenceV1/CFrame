@@ -42,4 +42,6 @@ dependencies {
     annotationProcessor project(':apt')
     compile project(':framework')
 
+    compile project(":Amodule")
+    compile project(":Bmodule")
 }

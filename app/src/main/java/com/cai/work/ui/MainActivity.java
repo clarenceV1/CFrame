@@ -11,6 +11,8 @@ import com.cai.annotation.apt.Router;
 import com.cai.annotation.aspect.CostTime;
 import com.cai.annotation.aspect.SingleClick;
 import com.cai.apt.TRouter;
+import com.cai.framework.base.BaseLifecycleObserver;
+import com.cai.module.a.AmoduleActivity;
 import com.cai.work.R;
 import com.cai.work.base.BaseActivity;
 import com.cai.work.base.Jumpter;
@@ -34,16 +36,21 @@ public class MainActivity extends BaseActivity<MainPresenter, MainBinding> imple
 //        slide.setDuration(3000);
 //        getWindow().setEnterTransition(slide);
 //        getWindow().setReenterTransition(new Explode().setDuration(600));
+        setData(BaseLifecycleObserver.CLASS_NAME, "MainActivity");
     }
+
 
     @SingleClick
     public void goToWelcome(View view) {
 //        TRouter.go(Jumpter.WELCOME);
 //        finish();
-        View searchView = MainActivity.this.findViewById(R.id.searchView);
-        Intent intent = new Intent(this, WelcomeActivity.class);
-        ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(this, searchView, "shared_image_");
-        startActivity(intent, transitionActivityOptions.toBundle());
+        //测试过渡动画
+//        View searchView = MainActivity.this.findViewById(R.id.searchView);
+//        Intent intent = new Intent(this, WelcomeActivity.class);
+//        ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(this, searchView, "shared_image_");
+//        startActivity(intent, transitionActivityOptions.toBundle());
+        Intent intent = new Intent(this, AmoduleActivity.class);
+        startActivity(intent);
     }
 
     @Override

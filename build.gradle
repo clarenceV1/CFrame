@@ -6,6 +6,7 @@ buildscript {
         maven{
             url uri('repo')
         }
+        maven { url "https://maven.google.com" }
         jcenter()
     }
     dependencies {

@@ -2,7 +2,7 @@ package com.cai.framework.watcher;
 
 import android.app.Activity;
 
-import com.cai.framework.utils.LogUtils;
+import com.cai.framework.utils.log.LogUtils;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
@@ -34,27 +34,27 @@ class ActivityWatcherImp extends ActivityWatcher {
     }
 
     public void onCreate(WatchParam watchParam) {
-        LogUtils.d(TAG, getActivity(watchParam).getClass().getSimpleName() + " :onCreate" + new Object[0]);
+        LogUtils.getInsatance().debug(TAG, getActivity(watchParam).getClass().getSimpleName(), " :onCreate");
     }
 
     public void onStart(WatchParam watchParam) {
-        LogUtils.d(TAG, getActivity(watchParam).getClass().getSimpleName() + " :onStart" + new Object[0]);
+        LogUtils.getInsatance().debug(TAG, getActivity(watchParam).getClass().getSimpleName(), " :onStart");
     }
 
     public void onResume(WatchParam watchParam) {
-        LogUtils.d(TAG, getActivity(watchParam).getClass().getSimpleName() + " :onResume" + new Object[0]);
+        LogUtils.getInsatance().debug(TAG, getActivity(watchParam).getClass().getSimpleName(), " :onResume");
     }
 
     public void onPause(WatchParam watchParam) {
-        LogUtils.d(TAG, getActivity(watchParam).getClass().getSimpleName() + " :onPause" + new Object[0]);
+        LogUtils.getInsatance().debug(TAG, getActivity(watchParam).getClass().getSimpleName(), " :onPause");
     }
 
     public void onStop(WatchParam watchParam) {
-        LogUtils.d(TAG, getActivity(watchParam).getClass().getSimpleName() + " :onStop" + new Object[0]);
+        LogUtils.getInsatance().debug(TAG, getActivity(watchParam).getClass().getSimpleName(), " :onStop");
     }
 
     public void onDestroy(WatchParam watchParam) {
-        LogUtils.d(TAG, getActivity(watchParam).getClass().getSimpleName() + " :onDestroy" + new Object[0]);
+        LogUtils.getInsatance().debug(TAG, getActivity(watchParam).getClass().getSimpleName(), " :onDestroy");
     }
 
     public void onRestart(WatchParam param) {
@@ -64,7 +64,7 @@ class ActivityWatcherImp extends ActivityWatcher {
     }
 
     public boolean onActivityResult(WatchParam watchParam) {
-        LogUtils.d(TAG, getActivity(watchParam).getClass().getSimpleName() + " :onActivityResult" + new Object[0]);
+        LogUtils.getInsatance().debug(TAG, getActivity(watchParam).getClass().getSimpleName() , " :onActivityResult" );
         return true;
     }
 

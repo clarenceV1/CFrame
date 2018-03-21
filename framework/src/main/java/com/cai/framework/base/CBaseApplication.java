@@ -26,6 +26,7 @@ public class CBaseApplication extends Application {
         MeetyouCacheLoader.init(getAppContext());
         store = new Stack<>();
         registerActivityLifecycleCallbacks(new SwitchBackgroundCallbacks(store));
+        BaseConfig.getInsatance().setSwitchMap(BaseConfig.IS_DEBUG, true);
     }
 
     public static CBaseApplication getAppContext() {

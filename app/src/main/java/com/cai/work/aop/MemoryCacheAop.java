@@ -3,7 +3,7 @@ package com.cai.work.aop;
 import android.text.TextUtils;
 
 import com.cai.framework.MemoryCacheManager;
-import com.cai.framework.utils.LogUtils;
+import com.cai.framework.utils.log.LogUtils;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -38,16 +38,16 @@ public class MemoryCacheAop {
         String key = keyBuilder.toString();
         Object result = mMemoryCacheManager.get(key);//key规则 ： 方法名＋参数1+参数2+...
         if (result != null) {
-            LogUtils.showLog("MemoryCache", "key：" + key.substring(6) + "对象----->已存在用缓存", false);
+            LogUtils.getInsatance().showLogPosition("MemoryCache", "key：" , key.substring(6) , "对象----->已存在用缓存");
             return result;//缓存已有，直接返回
         }
         result = joinPoint.proceed();//执行原方法
-        LogUtils.showLog("MemoryCache", "key：" + key.substring(6) + "对象----->不存在开始创建...", false);
+        LogUtils.getInsatance().showLogPosition("MemoryCache", "key：" + key.substring(6) + "对象----->不存在开始创建...");
         if (result instanceof List && result != null && ((List) result).size() > 0 //列表不为空
                 || result instanceof String && !TextUtils.isEmpty((String) result)//字符不为空
                 || result instanceof Object && result != null)//对象不为空
             mMemoryCacheManager.add(key, result);//存入缓存
-        LogUtils.showLog("MemoryCache", "key：" + key.substring(6) + "对象----->缓存成功", false);
+        LogUtils.getInsatance().showLogPosition("MemoryCache", "key：" , key.substring(6) , "对象----->缓存成功");
 
         return result;
     }

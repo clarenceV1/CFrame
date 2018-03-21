@@ -11,4 +11,5 @@ public class Jumpter {
     public static final String HOME = "home";
     public static final String WELCOME = "welcome";
     public static final String LOGIN = "login";
+    public static final String A_MODULE = "AModule";
 }

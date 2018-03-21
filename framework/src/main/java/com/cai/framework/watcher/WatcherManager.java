@@ -4,7 +4,7 @@ package com.cai.framework.watcher;
  * Created by clarence on 2018/2/5.
  */
 
-import com.cai.framework.utils.LogUtils;
+import com.cai.framework.utils.log.LogUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -28,12 +28,12 @@ public class WatcherManager {
      */
     @Deprecated
     public WatcherManager addWatcher(String key, ActivityWatcher watcher) {
-        LogUtils.d("add watcher key " + key);
+        LogUtils.getInsatance().debug("add watcher key " + key);
         if (watcher == null) {
             return this;
         } else {
             if (this.contextWatcherMap.containsKey(key)) {
-                LogUtils.e("WatcherManager", "出现重复值了!!!!!!!!!!!!!会出Bug,请检查代码" + new Object[0]);
+                LogUtils.getInsatance().error("WatcherManager", "出现重复值了!!!!!!!!!!!!!会出Bug,请检查代码" + new Object[0]);
             }
 
             this.contextWatcherMap.put(key, watcher);
@@ -48,9 +48,9 @@ public class WatcherManager {
     public WatcherManager addWatcher(String key, String classname) {
         try {
             if (this.contextWatcherMap.containsKey(key)) {
-                LogUtils.e("WatcherManager", "出现重复值了!!!!!!!!!!!!!会出Bug,请检查代码" + new Object[0]);
+                LogUtils.getInsatance().error("WatcherManager", "出现重复值了!!!!!!!!!!!!!会出Bug,请检查代码" + new Object[0]);
             }
-            LogUtils.d("add watcher classname " + key);
+            LogUtils.getInsatance().debug("add watcher classname " + key);
             Class<?> clas = Class.forName(classname);
             Object assetMag = clas.newInstance();
             ActivityWatcher watcher = (ActivityWatcher) assetMag;
@@ -95,7 +95,7 @@ public class WatcherManager {
                 }
             }
         } catch (IllegalAccessException var7) {
-            LogUtils.e(var7.getLocalizedMessage());
+            LogUtils.getInsatance().error(var7.getLocalizedMessage());
         } catch (InvocationTargetException var8) {
             ;
         }
