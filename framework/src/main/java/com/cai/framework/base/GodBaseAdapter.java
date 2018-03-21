@@ -14,12 +14,12 @@ import java.util.List;
  * Created by clarence on 2018/1/15.
  */
 
-public abstract class CBaseAdapter<T extends CBaseData> extends BaseAdapter {
+public abstract class GodBaseAdapter<T extends CBaseData> extends BaseAdapter {
     Context context;
     protected List<T> dataList;
     LayoutInflater inflater;
 
-    public CBaseAdapter(Context context, List<T> data) {
+    public GodBaseAdapter(Context context, List<T> data) {
         this.context = context;
         this.dataList = data;
         inflater = LayoutInflater.from(context);

@@ -12,9 +12,9 @@ import java.util.Stack;
  * Created by clarence on 2018/1/11.
  */
 
-public class CBaseApplication extends Application {
+public class GodBaseApplication extends Application {
     private Stack<Activity> store;
-    private static CBaseApplication baseApplication;
+    private static GodBaseApplication baseApplication;
 
     public void onCreate() {
         super.onCreate();
@@ -22,11 +22,11 @@ public class CBaseApplication extends Application {
         StoreFactory.init(getAppContext());
         MeetyouCacheLoader.init(getAppContext());
         store = new Stack<>();
-        registerActivityLifecycleCallbacks(new SwitchBackgroundCallbacks(store));
-        BaseConfig.getInsatance().setSwitchMap(BaseConfig.IS_DEBUG, true);
+        registerActivityLifecycleCallbacks(new GodActivityLifecycleCallbacks(store));
+        GodBaseConfig.getInsatance().setDebug(true);
     }
 
-    public static CBaseApplication getAppContext() {
+    public static GodBaseApplication getAppContext() {
         return baseApplication;
     }
 

@@ -10,9 +10,9 @@ import android.view.View;
 
 import com.cai.framework.utils.PermissionUtils;
 
-public abstract class DataBindingActivity<B extends ViewDataBinding> extends WatcherActivity {
+public abstract class DataBindingActivity<M extends ViewDataBinding, L extends BaseLifecycleObserver> extends WatcherActivity<L> {
     public Context mContext;
-    public B mViewBinding;
+    public M mViewBinding;
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);

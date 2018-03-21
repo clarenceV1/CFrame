@@ -1,4 +1,4 @@
-package com.cai.framework.utils.log;
+package com.cai.framework.log;
 
 /**
  * Created by clarence on 2018/3/21.

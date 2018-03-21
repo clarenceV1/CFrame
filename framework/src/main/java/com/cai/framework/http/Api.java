@@ -1,19 +1,17 @@
 package com.cai.framework.http;
 
 
-import android.util.Log;
+import android.content.Context;
 
-import com.cai.framework.Constant;
-import com.cai.framework.base.CBaseApplication;
+import com.cai.framework.GodConstant;
+import com.cai.framework.base.GodBaseApplication;
+import com.cai.framework.log.LogUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -33,38 +31,26 @@ public class Api {
         return SingletonHolder.INSTANCE;
     }
 
-    public Retrofit request() {
-        return retrofit;
-    }
-
-    Interceptor headInterceptor = new Interceptor() {
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            return chain.proceed(chain.request().newBuilder()
-                    .addHeader("Content-Type", "application/json")
-                    .build());
-        }
-    };
-
     //构造方法私有
     private Api() {
+        Context context = GodBaseApplication.getAppContext();
         HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-                Log.d("logInterceptor",message);
+                LogUtils.getInsatance().debug("logInterceptor", message);
             }
         });
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-        File cacheFile = new File(CBaseApplication.getAppContext().getCacheDir(), "cache");
+        File cacheFile = new File(GodBaseApplication.getAppContext().getCacheDir(), "cache");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 10); //100Mb
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .readTimeout(30000, TimeUnit.MILLISECONDS)
                 .connectTimeout(30000, TimeUnit.MILLISECONDS)
-                .addInterceptor(headInterceptor)
+                .addInterceptor(new GodHeadInterceptor(context))
                 .addInterceptor(logInterceptor)
-                .addNetworkInterceptor(new HttpCacheInterceptor())
+                .addNetworkInterceptor(new GodNetworkInterceptor(context))
                 .cache(cache)
                 .build();
 
@@ -72,7 +58,11 @@ public class Api {
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(Constant.BASE_URL)
+                .baseUrl(GodConstant.BASE_URL)
                 .build();
+    }
+
+    public Retrofit request() {
+        return retrofit;
     }
 }

@@ -1,8 +1,8 @@
-package com.cai.framework.utils.log;
+package com.cai.framework.log;
 
 import android.text.TextUtils;
 
-import com.cai.framework.base.BaseConfig;
+import com.cai.framework.base.GodBaseConfig;
 
 
 public class LogUtils implements ILog {
@@ -15,7 +15,7 @@ public class LogUtils implements ILog {
     }
 
     private LogUtils() {
-        isDebug = BaseConfig.getInsatance().isDebug();
+        isDebug = GodBaseConfig.getInsatance().isDebug();
         iLog = getLog(1);
     }
 

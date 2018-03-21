@@ -4,23 +4,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 底层配置文件
  * Created by clarence on 2018/3/21.
  */
 
-public class BaseConfig {
-    private Map<String, Object> switchMap = new HashMap<>();
+public class GodBaseConfig {
+    private Map<String, Object> switchMap = null;
 
-    public static final String IS_DEBUG = "debug";
+    private static final String IS_DEBUG = "debug";
 
     private static class SingletonHolder {
-        private static final BaseConfig instance = new BaseConfig();
+        private static final GodBaseConfig instance = new GodBaseConfig();
     }
 
-    private BaseConfig() {
-
+    private GodBaseConfig() {
+        switchMap = new HashMap<>();
     }
 
-    public static final BaseConfig getInsatance() {
+    public static final GodBaseConfig getInsatance() {
         return SingletonHolder.instance;
     }
 
@@ -33,5 +34,9 @@ public class BaseConfig {
             return (boolean) switchMap.get(IS_DEBUG);
         }
         return false;
+    }
+
+    public void setDebug(boolean isDebug) {
+        this.switchMap.put(IS_DEBUG, isDebug);
     }
 }

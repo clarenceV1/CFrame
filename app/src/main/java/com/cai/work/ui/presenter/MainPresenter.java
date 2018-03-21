@@ -3,7 +3,7 @@ package com.cai.work.ui.presenter;
 import android.widget.Toast;
 
 import com.cai.annotation.apt.InstanceFactory;
-import com.cai.framework.base.CBasePresenter;
+import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.http.Api;
 import com.cai.framework.store.StoreFactory;
 import com.cai.framework.store.base.StoreType;
@@ -26,7 +26,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by clarence on 2018/1/12.
  */
 @InstanceFactory
-public class MainPresenter extends CBasePresenter<MainView> {
+public class MainPresenter extends GodBasePresenter<MainView> {
     @Override
     public void onAttached() {
         TestSaveData();

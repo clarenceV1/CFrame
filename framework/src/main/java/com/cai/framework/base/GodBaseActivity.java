@@ -10,7 +10,7 @@ import java.lang.reflect.ParameterizedType;
  * Created by clarence on 2018/1/11.
  */
 
-public abstract class CBaseActivity<P extends CBasePresenter, B extends ViewDataBinding> extends DataBindingActivity<B> {
+public abstract class GodBaseActivity<P extends GodBasePresenter, M extends ViewDataBinding, L extends BaseLifecycleObserver> extends DataBindingActivity<M,L> {
     public P mPresenter;
 
     @Override
@@ -20,7 +20,7 @@ public abstract class CBaseActivity<P extends CBasePresenter, B extends ViewData
 
     @Override
     public void initPresenter() {
-        if (this instanceof BaseView && this.getClass().getGenericSuperclass() instanceof ParameterizedType &&
+        if (this instanceof GodBaseView && this.getClass().getGenericSuperclass() instanceof ParameterizedType &&
                 ((ParameterizedType) (this.getClass().getGenericSuperclass())).getActualTypeArguments().length > 0) {
             Class presenterClass = (Class) ((ParameterizedType) (this.getClass().getGenericSuperclass())).getActualTypeArguments()[0];
             try {
@@ -33,7 +33,6 @@ public abstract class CBaseActivity<P extends CBasePresenter, B extends ViewData
             }
         }
     }
-
 
     public abstract P getPresenter(Class mPresenterClass);
 

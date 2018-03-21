@@ -5,7 +5,7 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Context;
 
-import com.cai.framework.utils.log.LogUtils;
+import com.cai.framework.log.LogUtils;
 
 import java.util.Map;
 
@@ -23,7 +23,7 @@ public class BaseLifecycleObserver implements LifecycleObserver {
         this.lifecycle = lifecycle;
         this.context = context;
         this.data = data;
-        isDebug = BaseConfig.getInsatance().isDebug();
+        isDebug = GodBaseConfig.getInsatance().isDebug();
     }
 
     private String getClassName() {

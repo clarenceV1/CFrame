@@ -10,10 +10,10 @@ import java.util.Stack;
  * Created by clarence on 2018/1/11.
  */
 
-public class SwitchBackgroundCallbacks implements Application.ActivityLifecycleCallbacks{
+public class GodActivityLifecycleCallbacks implements Application.ActivityLifecycleCallbacks{
     public Stack<Activity> store;
 
-    public SwitchBackgroundCallbacks(Stack<Activity> store) {
+    public GodActivityLifecycleCallbacks(Stack<Activity> store) {
         this.store = store;
     }
 

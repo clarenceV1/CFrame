@@ -1,4 +1,4 @@
-package com.cai.framework.utils.log;
+package com.cai.framework.log;
 
 import android.text.TextUtils;
 import android.util.Log;

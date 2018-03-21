@@ -2,6 +2,7 @@ package com.cai.work.ui;
 
 import android.Manifest;
 import android.app.ActivityOptions;
+import android.arch.lifecycle.LifecycleRegistry;
 import android.content.Intent;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
@@ -17,11 +18,14 @@ import com.cai.work.R;
 import com.cai.work.base.BaseActivity;
 import com.cai.work.base.Jumpter;
 import com.cai.work.databinding.WelcomeBinding;
+import com.cai.work.ui.lifecycleobserver.WelcomeObserver;
 import com.cai.work.ui.presenter.WelcomePresenter;
 import com.cai.work.ui.presenter.WelcomeView;
 
+import java.util.Map;
+
 @Router(Jumpter.WELCOME)
-public class WelcomeActivity extends BaseActivity<WelcomePresenter, WelcomeBinding> implements WelcomeView {
+public class WelcomeActivity extends BaseActivity<WelcomePresenter, WelcomeBinding,WelcomeObserver> implements WelcomeView {
 
     @Override
     public int getLayoutId() {
@@ -49,5 +53,10 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter, WelcomeBindi
     @Override
     public void setContent(String content) {
         mViewBinding.btn.setText(content);
+    }
+
+    @Override
+    public WelcomeObserver getLifecycleObserver(LifecycleRegistry mRegistry, Map data) {
+        return new WelcomeObserver(this,mRegistry,data);
     }
 }

@@ -3,7 +3,7 @@ package com.cai.work.aop;
 import android.text.TextUtils;
 
 import com.cai.framework.MemoryCacheManager;
-import com.cai.framework.utils.log.LogUtils;
+import com.cai.framework.log.LogUtils;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
