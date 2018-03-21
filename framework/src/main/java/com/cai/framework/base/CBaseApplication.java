@@ -2,9 +2,7 @@ package com.cai.framework.base;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Intent;
 
-import com.cai.framework.router.MeetyouDilutions;
 import com.cai.framework.store.StoreFactory;
 import com.cai.framework.store.cache.MeetyouCacheLoader;
 
@@ -21,7 +19,6 @@ public class CBaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         baseApplication = this;
-        MeetyouDilutions.init(getAppContext());
         StoreFactory.init(getAppContext());
         MeetyouCacheLoader.init(getAppContext());
         store = new Stack<>();

@@ -13,7 +13,6 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class WatcherManager {
-    private static final String TAG = "WatcherManager";
     Map<String, ActivityWatcher> contextWatcherMap = new HashMap();
 
     public WatcherManager() {
@@ -28,12 +27,12 @@ public class WatcherManager {
      */
     @Deprecated
     public WatcherManager addWatcher(String key, ActivityWatcher watcher) {
-        LogUtils.getInsatance().debug("add watcher key " + key);
+        LogUtils.getInsatance().debug("add watcher key " + key,"");
         if (watcher == null) {
             return this;
         } else {
             if (this.contextWatcherMap.containsKey(key)) {
-                LogUtils.getInsatance().error("WatcherManager", "出现重复值了!!!!!!!!!!!!!会出Bug,请检查代码" + new Object[0]);
+                LogUtils.getInsatance().error("WatcherManager", "出现重复值了!!!!!!!!!!!!!会出Bug,请检查代码");
             }
 
             this.contextWatcherMap.put(key, watcher);

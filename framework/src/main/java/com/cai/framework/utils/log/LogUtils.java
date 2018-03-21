@@ -51,7 +51,7 @@ public class LogUtils implements ILog {
             }
             return stringBuilder.toString();
         }
-        return null;
+        return "msg is null";
     }
 
     @Override

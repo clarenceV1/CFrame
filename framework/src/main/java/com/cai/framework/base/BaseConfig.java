@@ -30,7 +30,7 @@ public class BaseConfig {
 
     public boolean isDebug() {
         if (switchMap.get(IS_DEBUG) != null) {
-            return (boolean) switchMap.get(isDebug());
+            return (boolean) switchMap.get(IS_DEBUG);
         }
         return false;
     }
