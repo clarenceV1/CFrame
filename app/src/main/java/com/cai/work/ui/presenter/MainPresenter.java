@@ -31,11 +31,6 @@ public class MainPresenter extends GodBasePresenter<MainView> {
     public void onAttached() {
         TestSaveData();
         requestWeather();
-        testSQL();
-    }
-
-    private void testSQL() {
-
     }
 
     private void TestSaveData() {

@@ -3,9 +3,6 @@ package com.cai.framework.base;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-/**
- * Created by baixiaokang on 16/4/22.
- */
 public abstract class GodBasePresenter<V> {
     protected V mView;
     protected CompositeDisposable mCompositeSubscription = new CompositeDisposable();

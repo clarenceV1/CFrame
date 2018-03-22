@@ -5,12 +5,13 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
 import com.cai.framework.utils.PermissionUtils;
 
-public abstract class DataBindingActivity<M extends ViewDataBinding, L extends BaseLifecycleObserver> extends WatcherActivity<L> {
+public abstract class DataBindingActivity<M extends ViewDataBinding> extends FragmentActivity {
     public Context mContext;
     public M mViewBinding;
 
@@ -21,11 +22,10 @@ public abstract class DataBindingActivity<M extends ViewDataBinding, L extends B
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         View rootView = getLayoutInflater().inflate(this.getLayoutId(), null, false);
         mViewBinding = DataBindingUtil.bind(rootView);
         setContentView(rootView);
-        mContext = this;
-        initPresenter();
         initView();
     }
 
@@ -34,8 +34,6 @@ public abstract class DataBindingActivity<M extends ViewDataBinding, L extends B
         PermissionUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
-
-    public abstract void initPresenter();
 
     public abstract int getLayoutId();
 
