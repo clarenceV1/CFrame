@@ -5,13 +5,12 @@ import android.widget.Toast;
 import com.cai.annotation.apt.InstanceFactory;
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
-import com.cai.framework.http.Api;
-import com.cai.framework.log.LogUtils;
-import com.cai.framework.store.StoreFactory;
-import com.cai.framework.store.base.StoreType;
 import com.cai.work.ApiService;
 import com.cai.work.base.App;
 import com.cai.work.bean.Weather;
+import com.example.clarence.datastorelibrary.store.StoreFactory;
+import com.example.clarence.datastorelibrary.store.base.StoreType;
+import com.example.clarence.netlibrary.NetFactory;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -67,7 +66,7 @@ public class MainPresenter extends GodBasePresenter<MainView> {
     public void requestWeather() {
         try {
             String city = URLEncoder.encode("北京", "utf-8");
-            Disposable disposable = Api.getInstance().request().create(ApiService.class).getWeather(city)
+            Disposable disposable = NetFactory.getInsatance().request().create(ApiService.class).getWeather(city)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Consumer<Weather>() {

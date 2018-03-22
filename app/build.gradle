@@ -40,7 +40,7 @@ android {
 
 dependencies {
     annotationProcessor project(':apt')
-    compile project(':framework')
+    compile project(':LibFrameWork')
 
     compile project(":Amodule")
     compile project(":Bmodule")

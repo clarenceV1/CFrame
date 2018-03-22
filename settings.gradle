@@ -1,1 +1,13 @@
 include ':app', ':apt', ':lib','buildsrc','plugin','framework','Amodule',"Bmodule"
+include(':LibFrameWork')
+project(':LibFrameWork').projectDir = new File('../LibFrameWork')
+include(':LibDataStore')
+project(':LibDataStore').projectDir = new File('../LibDataStore')
+include(':LibUtils')
+project(':LibUtils').projectDir = new File('../LibUtils')
+include(':LibDownload')
+project(':LibDownload').projectDir = new File('../LibDownload')
+include(':LibImageLoader')
+project(':LibImageLoader').projectDir = new File('../LibImageLoader')
+include(':LibNet')
+project(':LibNet').projectDir = new File('../LibNet')

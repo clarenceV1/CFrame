@@ -17,9 +17,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.cai.framework.utils.DeviceUtils;
 import com.cai.work.R;
 import com.cai.work.utils.CircleAnimation;
+import com.example.clarence.utillibrary.DeviceUtils;
 
 
 /**
