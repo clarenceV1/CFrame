@@ -1,6 +1,9 @@
 package com.cai.framework.base;
 
 
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.LifecycleRegistry;
+import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 
@@ -10,7 +13,8 @@ import java.lang.reflect.ParameterizedType;
  * Created by clarence on 2018/1/11.
  */
 
-public abstract class GodBasePresenterActivity<P extends GodBasePresenter, M extends ViewDataBinding> extends DataBindingActivity<M> {
+public abstract class GodBasePresenterActivity<P extends GodBasePresenter, M extends ViewDataBinding> extends DataBindingActivity<M> implements LifecycleRegistryOwner {
+    private final LifecycleRegistry mRegistry = new LifecycleRegistry(this);
     public P mPresenter;
 
     @Override
@@ -20,21 +24,28 @@ public abstract class GodBasePresenterActivity<P extends GodBasePresenter, M ext
     }
 
     public void initPresenter() {
-        if (this instanceof GodBaseView && this.getClass().getGenericSuperclass() instanceof ParameterizedType &&
-                ((ParameterizedType) (this.getClass().getGenericSuperclass())).getActualTypeArguments().length > 0) {
-            Class presenterClass = (Class) ((ParameterizedType) (this.getClass().getGenericSuperclass())).getActualTypeArguments()[1];
-            try {
+        try {
+            if (this instanceof GodBaseView && this.getClass().getGenericSuperclass() instanceof ParameterizedType &&
+                    ((ParameterizedType) (this.getClass().getGenericSuperclass())).getActualTypeArguments().length > 0) {
+                Class presenterClass = (Class) ((ParameterizedType) (this.getClass().getGenericSuperclass())).getActualTypeArguments()[0];
                 mPresenter = getPresenter(presenterClass);
-            } catch (Exception e) {
-                e.printStackTrace();
+                if (mPresenter != null) {
+                    mPresenter.init(mRegistry,this);
+                    getLifecycle().addObserver(mPresenter);
+                }
+
             }
-            if (mPresenter != null) {
-                mPresenter.setView(this);
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public abstract P getPresenter(Class mPresenterClass);
+
+    @Override
+    public LifecycleRegistry getLifecycle() {
+        return mRegistry;
+    }
 
     @Override
     protected void onDestroy() {

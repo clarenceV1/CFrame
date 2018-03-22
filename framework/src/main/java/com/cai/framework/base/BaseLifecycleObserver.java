@@ -3,7 +3,6 @@ package com.cai.framework.base;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
-import android.content.Context;
 
 import com.cai.framework.log.LogUtils;
 
@@ -13,29 +12,11 @@ import java.util.Map;
 /**
  * Created by clarence on 2018/3/21.
  */
-public class BaseLifecycleObserver<P extends GodBasePresenter> implements LifecycleObserver {
+public class BaseLifecycleObserver implements LifecycleObserver {
     public Lifecycle lifecycle;
-    public Context context;
     public Map<String, Object> data = new HashMap<>();
     public static final String CLASS_NAME = "className";
     public boolean isDebug;
-    public P presenter;
-
-    /**
-     * 初始化必须调用
-     *
-     * @param context
-     * @param lifecycle
-     */
-    public void init(Context context, Lifecycle lifecycle) {
-        this.context = context;
-        this.lifecycle = lifecycle;
-        this.isDebug = GodBaseConfig.getInsatance().isDebug();
-    }
-
-    public void setPresenter(P presenter) {
-        this.presenter = presenter;
-    }
 
     private String getClassName() {
         if (data != null && data.get(CLASS_NAME) != null) {

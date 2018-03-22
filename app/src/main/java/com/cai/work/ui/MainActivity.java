@@ -11,12 +11,11 @@ import com.cai.work.base.AppBaseActivity;
 import com.cai.work.base.Jumpter;
 import com.cai.work.bean.Weather;
 import com.cai.work.databinding.MainBinding;
-import com.cai.work.ui.lifecycleobserver.MainObserver;
 import com.cai.work.ui.presenter.MainPresenter;
 import com.cai.work.ui.presenter.MainView;
 
 @Router(Jumpter.HOME)
-public class MainActivity extends AppBaseActivity<MainObserver,MainPresenter, MainBinding> implements MainView {
+public class MainActivity extends AppBaseActivity<MainPresenter, MainBinding> implements MainView {
 
     @Override
     public int getLayoutId() {

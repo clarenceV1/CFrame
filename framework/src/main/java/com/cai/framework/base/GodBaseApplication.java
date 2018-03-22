@@ -19,7 +19,7 @@ public class GodBaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         baseApplication = this;
-        StoreFactory.init(getAppContext());
+        StoreFactory.init(this);
         MeetyouCacheLoader.init(getAppContext());
         store = new Stack<>();
         registerActivityLifecycleCallbacks(new GodActivityLifecycleCallbacks(store));

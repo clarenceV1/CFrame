@@ -3,8 +3,10 @@ package com.cai.work.ui.presenter;
 import android.widget.Toast;
 
 import com.cai.annotation.apt.InstanceFactory;
+import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.http.Api;
+import com.cai.framework.log.LogUtils;
 import com.cai.framework.store.StoreFactory;
 import com.cai.framework.store.base.StoreType;
 import com.cai.work.ApiService;
@@ -31,6 +33,17 @@ public class MainPresenter extends GodBasePresenter<MainView> {
     public void onAttached() {
         TestSaveData();
         requestWeather();
+    }
+
+    @Override
+    public void ON_CREATE() {
+        data.put(BaseLifecycleObserver.CLASS_NAME, "MainActivity");
+        super.ON_CREATE();
+    }
+
+    @Override
+    public void ON_PAUSE() {
+        super.ON_PAUSE();
     }
 
     private void TestSaveData() {
