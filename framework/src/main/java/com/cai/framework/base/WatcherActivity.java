@@ -13,7 +13,7 @@ import java.lang.reflect.ParameterizedType;
  * Created by clarence on 2018/2/5.
  */
 
-public abstract class WatcherActivity<L extends BaseLifecycleObserver,P extends GodBasePresenter, M extends ViewDataBinding> extends GodBasePresenterActivity<P, M> implements LifecycleRegistryOwner {
+public abstract class WatcherActivity<L extends BaseLifecycleObserver, P extends GodBasePresenter, M extends ViewDataBinding> extends GodBasePresenterActivity<P, M> implements LifecycleRegistryOwner {
     private final LifecycleRegistry mRegistry = new LifecycleRegistry(this);
     L lifecycleObserver;
 
@@ -30,6 +30,7 @@ public abstract class WatcherActivity<L extends BaseLifecycleObserver,P extends 
             try {
                 lifecycleObserver = getLifecycleObserver(lifecycleObserverClass);
                 lifecycleObserver.init(this, mRegistry);
+                lifecycleObserver.setPresenter(mPresenter);
                 addLifeCycleObserver(lifecycleObserver);
             } catch (Exception e) {
                 e.printStackTrace();

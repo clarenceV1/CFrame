@@ -13,15 +13,17 @@ import java.util.Map;
 /**
  * Created by clarence on 2018/3/21.
  */
-public class BaseLifecycleObserver implements LifecycleObserver {
+public class BaseLifecycleObserver<P extends GodBasePresenter> implements LifecycleObserver {
     public Lifecycle lifecycle;
     public Context context;
     public Map<String, Object> data = new HashMap<>();
     public static final String CLASS_NAME = "className";
     public boolean isDebug;
+    public P presenter;
 
     /**
      * 初始化必须调用
+     *
      * @param context
      * @param lifecycle
      */
@@ -29,6 +31,10 @@ public class BaseLifecycleObserver implements LifecycleObserver {
         this.context = context;
         this.lifecycle = lifecycle;
         this.isDebug = GodBaseConfig.getInsatance().isDebug();
+    }
+
+    public void setPresenter(P presenter) {
+        this.presenter = presenter;
     }
 
     private String getClassName() {
