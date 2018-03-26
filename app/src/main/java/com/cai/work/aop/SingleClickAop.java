@@ -2,6 +2,7 @@ package com.cai.work.aop;
 
 import android.view.View;
 
+import com.cai.framework.manager.LogDock;
 import com.example.clarence.utillibrary.log.LogFactory;
 import com.cai.work.R;
 
@@ -34,11 +35,11 @@ public class SingleClickAop {
         if (view != null) {
             Object tag = view.getTag(TIME_TAG);
             long lastClickTime = ((tag != null) ? (long) tag : 0);
-            LogFactory.getInsatance().showLogPosition("SingleClickAspect", "lastClickTime:" + lastClickTime);
+            LogDock.getLog().showLogPosition("SingleClickAspect", "lastClickTime:" + lastClickTime);
             long currentTime = Calendar.getInstance().getTimeInMillis();
             if (currentTime - lastClickTime > MIN_CLICK_DELAY_TIME) {//过滤掉600毫秒内的连续点击
                 view.setTag(TIME_TAG, currentTime);
-                LogFactory.getInsatance().showLogPosition("SingleClickAspect", "currentTime:" + currentTime);
+                LogDock.getLog().showLogPosition("SingleClickAspect", "currentTime:" + currentTime);
                 joinPoint.proceed();//执行原方法
             }
         }
