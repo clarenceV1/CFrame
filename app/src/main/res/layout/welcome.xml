@@ -10,13 +10,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/searchView"
-            android:layout_width="300dp"
-            android:layout_height="32dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/search_input_bg" />
-
         <Button
             android:id="@+id/btn"
             android:layout_width="match_parent"

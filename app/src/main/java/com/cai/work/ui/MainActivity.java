@@ -43,4 +43,10 @@ public class MainActivity extends AppBaseActivity<MainPresenter, MainBinding> im
     public void showWeather(Weather weather) {
         mViewBinding.tvWeather.setText(weather.toString());
     }
+
+    @Override
+    public void showWeatherError(String error) {
+        mViewBinding.tvWeather.setText(error);
+    }
+
 }

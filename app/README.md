@@ -10,3 +10,4 @@ eventbus
 okio
 lifecycle
 objectbox
+dagger2

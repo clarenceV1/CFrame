@@ -11,4 +11,6 @@ public interface MainView extends GodBaseView {
     void setMainContent(String content);
 
     void showWeather(Weather weather);
+
+    void showWeatherError(String error);
 }

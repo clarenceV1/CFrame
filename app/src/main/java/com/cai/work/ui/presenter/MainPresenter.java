@@ -5,15 +5,14 @@ import android.widget.Toast;
 import com.cai.annotation.apt.InstanceFactory;
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
-import com.cai.work.ApiService;
 import com.cai.work.base.App;
 import com.cai.work.bean.Weather;
-import com.example.clarence.datastorelibrary.store.StoreFactory;
-import com.example.clarence.datastorelibrary.store.base.StoreType;
-import com.example.clarence.netlibrary.NetFactory;
+import com.cai.work.common.DataStore;
+import com.cai.work.common.ImageStore;
+import com.cai.work.common.RequestStore;
+import com.cai.work.dagger.component.DaggerAppComponent;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -28,8 +27,16 @@ import io.reactivex.schedulers.Schedulers;
  */
 @InstanceFactory
 public class MainPresenter extends GodBasePresenter<MainView> {
+    @Inject
+    DataStore dataStore;
+    @Inject
+    RequestStore requestStore;
+    @Inject
+    ImageStore imageStore;
+
     @Override
     public void onAttached() {
+        DaggerAppComponent.create().inject(this);
         TestSaveData();
         requestWeather();
     }
@@ -40,17 +47,12 @@ public class MainPresenter extends GodBasePresenter<MainView> {
         super.ON_CREATE();
     }
 
-    @Override
-    public void ON_PAUSE() {
-        super.ON_PAUSE();
-    }
-
     private void TestSaveData() {
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> e) throws Exception {
-                StoreFactory.getInstance(StoreType.SHARED_PREFERENCE).write("MainPresenter", "我是首页");
-                String title = StoreFactory.getInstance(StoreType.SHARED_PREFERENCE).read("MainPresenter", "kong");
+                dataStore.setTitle("MainPresenter", "我是首页2");
+                String title = dataStore.getTitle("MainPresenter", "kong");
                 e.onNext(title);
             }
         }).subscribeOn(Schedulers.io())
@@ -65,23 +67,19 @@ public class MainPresenter extends GodBasePresenter<MainView> {
 
     public void requestWeather() {
         try {
-            String city = URLEncoder.encode("北京", "utf-8");
-            Disposable disposable = NetFactory.getInsatance().request().create(ApiService.class).getWeather(city)
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Consumer<Weather>() {
-                        @Override
-                        public void accept(Weather user) throws Exception {
-                            mView.showWeather(user);
-                        }
-                    }, new Consumer<Throwable>() {
-                        @Override
-                        public void accept(Throwable throwable) throws Exception {
-                            Toast.makeText(App.getAppContext(), "请求失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+            Disposable disposable = requestStore.requestWeather("北京", new Consumer<Weather>() {
+                @Override
+                public void accept(Weather user) throws Exception {
+                    mView.showWeather(user);
+                }
+            }, new Consumer<Throwable>() {
+                @Override
+                public void accept(Throwable throwable) throws Exception {
+                    mView.showWeatherError("请求失败");
+                }
+            });
             mCompositeSubscription.add(disposable);
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
