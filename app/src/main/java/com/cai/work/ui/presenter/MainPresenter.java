@@ -6,11 +6,15 @@ import com.cai.annotation.apt.InstanceFactory;
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.base.App;
+import com.cai.work.bean.User;
 import com.cai.work.bean.Weather;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.ImageStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dagger.component.DaggerAppComponent;
+import com.cai.work.dao.UserDAO;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -33,12 +37,35 @@ public class MainPresenter extends GodBasePresenter<MainView> {
     RequestStore requestStore;
     @Inject
     ImageStore imageStore;
+    @Inject
+    UserDAO userDAO;
 
     @Override
     public void onAttached() {
         DaggerAppComponent.create().inject(this);
         TestSaveData();
         requestWeather();
+        addUser();
+    }
+
+    private void addUser() {
+        Observable.create(new ObservableOnSubscribe<List<User>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<User>> e) throws Exception {
+                User user = new User();
+                user.setName("name_" + 1);
+                userDAO.addUser(user);
+                List<User> users = userDAO.getUsers();
+                e.onNext(users);
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<User>>() {
+                    @Override
+                    public void accept(List<User> users) throws Exception {
+                        mView.showWeatherError(users.toString());
+                    }
+                });
     }
 
     @Override

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: com.cai.plugin2.SecondPlugin2
 apply plugin: 'com.cai.plugin.aspect'
+apply plugin: 'io.objectbox'
 android {
     compileSdkVersion 25
     buildToolsVersion '26.0.2'
@@ -37,7 +38,13 @@ android {
         enabled true
     }
 }
+repositories {
 
+    jcenter()
+
+    maven { url "http://objectbox.net/beta-repo/" }
+
+}
 dependencies {
     annotationProcessor project(':apt')
     compile project(':LibFrameWork')
@@ -47,4 +54,6 @@ dependencies {
 
     compile 'com.google.dagger:dagger:2.10'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
+
+    compile 'io.objectbox:objectbox-android:0.9.12'
 }

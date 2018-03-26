@@ -1,4 +1,4 @@
-include ':app', ':apt', ':lib','buildsrc','plugin','framework','Amodule',"Bmodule"
+include ':app', ':apt', ':lib','buildsrc','plugin','Amodule',"Bmodule"
 include(':LibFrameWork')
 project(':LibFrameWork').projectDir = new File('../LibFrameWork')
 include(':LibDataStore')

@@ -1,13 +1,13 @@
 Mvp 
-dataBinding
+dataBinding 控件绑定
 okhttp
 Retrofit
-rxjava
+rxjava 
 fastjson
 oop
 aop
-eventbus
-okio
-lifecycle
-objectbox
-dagger2
+eventbus 通知
+okio 存储
+lifecycle 生命周期
+objectbox 数据库
+dagger2 对象依赖
