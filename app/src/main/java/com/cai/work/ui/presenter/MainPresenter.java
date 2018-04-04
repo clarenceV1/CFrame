@@ -1,11 +1,8 @@
 package com.cai.work.ui.presenter;
 
-import android.widget.Toast;
-
 import com.cai.annotation.apt.InstanceFactory;
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
-import com.cai.work.base.App;
 import com.cai.work.bean.User;
 import com.cai.work.bean.Weather;
 import com.cai.work.common.DataStore;
@@ -72,6 +69,12 @@ public class MainPresenter extends GodBasePresenter<MainView> {
     public void ON_CREATE() {
         data.put(BaseLifecycleObserver.CLASS_NAME, "MainActivity");
         super.ON_CREATE();
+    }
+
+    @Override
+    public void ON_PAUSE() {
+        super.ON_PAUSE();
+
     }
 
     private void TestSaveData() {

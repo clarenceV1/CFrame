@@ -1,0 +1,14 @@
+ext {
+    android = [compileSdkVersion: 25,
+               buildToolsVersion: "26.0.2",
+               minSdkVersion    : 21,
+               targetSdkVersion : 25,
+               versionCode      : 1,
+               versionName      : "1.0"]
+    applicationId = "com.cai.work2"
+    dependencies = [
+            "objectbox-android": "io.objectbox:objectbox-android:0.9.12",
+            "dagger"           : "com.google.dagger:dagger:2.10",
+            "dagger-compiler"  : "com.google.dagger:dagger-compiler:2.10"
+    ]
+}

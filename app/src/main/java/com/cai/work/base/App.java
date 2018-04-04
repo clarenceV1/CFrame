@@ -11,13 +11,18 @@ import io.objectbox.BoxStore;
 
 public class App extends GodBaseApplication {
     private static BoxStore boxStore;
+    private static App application;
 
     public void onCreate() {
         super.onCreate();
-        boxStore = MyObjectBox.builder().androidContext(App.this).build();
+        application = this;
+        boxStore = MyObjectBox.builder().androidContext(application).build();
     }
 
     public static BoxStore getBoxStore() {
         return boxStore;
+    }
+    public static App getAppContext() {
+        return application;
     }
 }
