@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="我是App模块"/>
 
         <ImageView
             android:id="@+id/imgTest"
@@ -14,16 +20,20 @@
         <TextView
             android:id="@+id/tvWeather"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/btn" />
+            android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/btn"
+            android:id="@+id/btnGoAModule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:onClick="goToWelcome"
-            android:text="MainActivity" />
+            android:onClick="goToAModule"
+            android:text="跳到A模块" />
+        <Button
+            android:id="@+id/btnGoBModule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="goToBModule"
+            android:text="跳到B模块" />
 
-    </RelativeLayout>
+    </LinearLayout>
 </layout>

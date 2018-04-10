@@ -1,5 +1,7 @@
 package com.cai.work.ui.presenter;
 
+import android.widget.Toast;
+
 import com.cai.annotation.apt.InstanceFactory;
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
@@ -97,7 +99,7 @@ public class MainPresenter extends GodBasePresenter<MainView> {
                 .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String title) throws Exception {
-                        mView.setMainContent(title);
+                        mView.showWeatherError(title);
                     }
                 });
     }

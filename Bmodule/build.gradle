@@ -10,9 +10,18 @@ android {
         renderscriptTargetApi 20
         renderscriptSupportModeEnabled true
         vectorDrawables.useSupportLibrary = true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
 }
 
 dependencies {
     compile project(':LibFrameWork')
+
+    compile rootProject.ext.dependencies["arouter-api"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 }

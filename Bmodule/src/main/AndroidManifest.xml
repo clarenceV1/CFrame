@@ -3,7 +3,7 @@
     package="com.cai.module.b">
 
     <application android:allowBackup="true">
-        <activity android:name=".BActivity"/>
+        <activity android:name=".BModuleActivity"/>
     </application>
 
 </manifest>

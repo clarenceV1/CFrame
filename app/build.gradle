@@ -14,6 +14,12 @@ android {
         renderscriptTargetApi 20
         renderscriptSupportModeEnabled true
         vectorDrawables.useSupportLibrary = true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -56,4 +62,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
 
     compile rootProject.ext.dependencies["objectbox-android"]
+
+    compile rootProject.ext.dependencies["arouter-api"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 }

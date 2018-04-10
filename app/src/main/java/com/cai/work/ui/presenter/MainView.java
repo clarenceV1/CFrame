@@ -9,7 +9,6 @@ import com.example.clarence.imageloaderlibrary.ILoadImageParams;
  */
 
 public interface MainView extends GodBaseView {
-    void setMainContent(String content);
 
     void showWeather(Weather weather);
 
