@@ -1,6 +1,8 @@
 package com.cai.work.dagger.module;
 
-import com.cai.work.base.App;
+import android.content.Context;
+
+import com.cai.work.bean.MyObjectBox;
 
 import dagger.Module;
 import dagger.Provides;
@@ -13,7 +15,7 @@ import io.objectbox.BoxStore;
 public class AppModule {
 
     @Provides
-    public BoxStore provideUser() {
-        return App.getBoxStore();
+    public BoxStore provideStore(Context context) {
+        return MyObjectBox.builder().androidContext(context).build();
     }
 }

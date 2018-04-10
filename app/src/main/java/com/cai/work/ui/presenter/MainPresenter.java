@@ -6,10 +6,11 @@ import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.bean.User;
 import com.cai.work.bean.Weather;
 import com.cai.work.common.DataStore;
-import com.cai.work.common.ImageStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.dao.UserDAO;
+import com.example.clarence.imageloaderlibrary.ILoadImageParams;
+import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 
 import java.util.List;
 
@@ -33,8 +34,6 @@ public class MainPresenter extends GodBasePresenter<MainView> {
     @Inject
     RequestStore requestStore;
     @Inject
-    ImageStore imageStore;
-    @Inject
     UserDAO userDAO;
 
     @Override
@@ -43,6 +42,14 @@ public class MainPresenter extends GodBasePresenter<MainView> {
         TestSaveData();
         requestWeather();
         addUser();
+        showImage();
+    }
+
+    private void showImage() {
+        ILoadImageParams imageParams = new ImageForGlideParams.Builder()
+                .url("http://img5.imgtn.bdimg.com/it/u=269889177,603310778&fm=27&gp=0.jpg")
+                .build();
+        mView.showImage(imageParams);
     }
 
     private void addUser() {

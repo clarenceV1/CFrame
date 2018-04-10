@@ -1,7 +1,6 @@
 package com.cai.work.common;
 
-import com.example.clarence.datastorelibrary.store.StoreFactory;
-import com.example.clarence.datastorelibrary.store.base.StoreType;
+import com.example.clarence.datastorelibrary.store.share_preference.ISharePreference;
 
 import javax.inject.Inject;
 
@@ -11,14 +10,17 @@ import javax.inject.Inject;
 
 public class DataStore {
     @Inject
+    ISharePreference sharePreference;
+
+    @Inject
     public DataStore() {
     }
 
     public void setTitle(String key, String value) {
-        StoreFactory.getInstance(StoreType.SHARED_PREFERENCE).write(key, value);
+        sharePreference.write(key, value);
     }
 
     public String getTitle(String key, String defaultValue) {
-        return StoreFactory.getInstance(StoreType.SHARED_PREFERENCE).read(key, defaultValue);
+        return sharePreference.read(key, defaultValue);
     }
 }

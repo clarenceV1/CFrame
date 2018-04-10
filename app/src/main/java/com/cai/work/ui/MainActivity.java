@@ -1,5 +1,6 @@
 package com.cai.work.ui;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.cai.annotation.apt.Router;
@@ -10,12 +11,26 @@ import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.base.Jumpter;
 import com.cai.work.bean.Weather;
+import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainBinding;
 import com.cai.work.ui.presenter.MainPresenter;
 import com.cai.work.ui.presenter.MainView;
+import com.example.clarence.imageloaderlibrary.ILoadImage;
+import com.example.clarence.imageloaderlibrary.ILoadImageParams;
+
+import javax.inject.Inject;
 
 @Router(Jumpter.HOME)
 public class MainActivity extends AppBaseActivity<MainPresenter, MainBinding> implements MainView {
+
+    @Inject
+    ILoadImage imageLoader;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        DaggerAppComponent.create().inject(this);
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public int getLayoutId() {
@@ -49,4 +64,9 @@ public class MainActivity extends AppBaseActivity<MainPresenter, MainBinding> im
         mViewBinding.tvWeather.setText(error);
     }
 
+    @Override
+    public void showImage(ILoadImageParams imageParams) {
+        imageParams.setImageView(mViewBinding.imgTest);
+        imageLoader.loadImage(this, imageParams);
+    }
 }

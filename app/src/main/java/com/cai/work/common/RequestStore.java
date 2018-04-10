@@ -1,7 +1,7 @@
 package com.cai.work.common;
 
-import com.cai.framework.manager.NetDock;
 import com.cai.work.ApiService;
+import com.example.clarence.netlibrary.INet;
 
 import java.net.URLEncoder;
 
@@ -18,12 +18,15 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RequestStore {
     @Inject
+    INet iNet;
+
+    @Inject
     public RequestStore() {
     }
 
     public Disposable requestWeather(String city, Consumer onNext, Consumer onError) throws Exception {
         String cityUtf = URLEncoder.encode(city, "utf-8");
-        Disposable disposable = NetDock.request().create(ApiService.class).getWeather(cityUtf)
+        Disposable disposable = iNet.request().create(ApiService.class).getWeather(cityUtf)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
