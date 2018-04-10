@@ -1,7 +1,4 @@
 package com.cai.work.aop;
-import com.cai.apt.TRouter;
-import com.cai.work.base.Jumpter;
-import com.cai.work.manager.AccountManager;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -22,11 +19,7 @@ public class CheckLoginAop {
 
     @Around("methodAnnotated()")//在连接点进行方法替换
     public void aroundJoinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
-        if (AccountManager.isLogin()) {
-            joinPoint.proceed();//执行原方法
-        } else {
-            TRouter.go(Jumpter.LOGIN);
-        }
+        joinPoint.proceed();//执行原方法
     }
 }
 

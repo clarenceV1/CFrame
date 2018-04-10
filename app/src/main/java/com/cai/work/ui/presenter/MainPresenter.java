@@ -29,7 +29,6 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by clarence on 2018/1/12.
  */
-@InstanceFactory
 public class MainPresenter extends GodBasePresenter<MainView> {
     @Inject
     DataStore dataStore;
@@ -37,6 +36,10 @@ public class MainPresenter extends GodBasePresenter<MainView> {
     RequestStore requestStore;
     @Inject
     UserDAO userDAO;
+
+    @Inject
+    public MainPresenter() {
+    }
 
     @Override
     public void onAttached() {

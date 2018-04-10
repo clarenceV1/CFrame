@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.PullListViewActivity" />
-        <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.ScrollActivity" />
     </application>
 

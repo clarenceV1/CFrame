@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.annotation.aspect.CostTime;
 import com.cai.annotation.aspect.SingleClick;
+import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.manager.LogDock;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
@@ -22,15 +23,20 @@ import com.cai.work.ui.presenter.MainView;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
-@Route(path = "/AppModule/MainActivity",name = "首页")
-public class MainActivity extends AppBaseActivity<MainPresenter, MainBinding> implements MainView {
+@Route(path = "/AppModule/MainActivity", name = "首页")
+public class MainActivity extends AppBaseActivity<MainBinding> implements MainView {
 
     @Inject
     ILoadImage imageLoader;
     @Autowired
     String name = "Default";
+    @Inject
+    MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,13 @@ public class MainActivity extends AppBaseActivity<MainPresenter, MainBinding> im
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public List<GodBasePresenter> getPresenters() {
+        List<GodBasePresenter> presenters = new ArrayList<>();
+        presenters.add(mainPresenter);
+        return presenters;
     }
 
     @Override
