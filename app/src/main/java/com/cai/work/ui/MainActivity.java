@@ -43,6 +43,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+        Help.install().setContext(this);
     }
 
     @Override
