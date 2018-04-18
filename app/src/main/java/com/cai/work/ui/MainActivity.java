@@ -30,7 +30,6 @@ import javax.inject.Inject;
 
 @Route(path = "/AppModule/MainActivity", name = "首页")
 public class MainActivity extends AppBaseActivity<MainBinding> implements MainView {
-
     @Inject
     ILoadImage imageLoader;
     @Autowired
@@ -44,6 +43,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+        Help.install().setContext(this);
     }
 
     @Override
@@ -87,11 +87,13 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
                 LogDock.getLog().debug("Postcard", "onInterrupt");
             }
         });
+        finish();
     }
 
     @SingleClick
     public void goToAModule(View view) {
         ARouter.getInstance().build("/AModule/AModuleActivity").navigation();
+        finish();
     }
 
     @Override

@@ -18,8 +18,10 @@ public class AModuleActivity extends Activity {
 
     public void goToAppModule(View view){
         ARouter.getInstance().build("/AppModule/MainActivity").navigation();
+        finish();
     }
     public void goToBModule(View view){
         ARouter.getInstance().build("/BModule/BModuleActivity").navigation();
+        finish();
     }
 }

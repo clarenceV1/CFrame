@@ -13,3 +13,15 @@ objectbox 数据库
 dagger2 对象依赖
 glide
 flatbuffer
+
+
+代码检查
+1. android lint
+2. fireline
+3. Godeyes
+4. Infer
+
+内存分析
+1.stetho
+2.LeakCanary
+3.mat

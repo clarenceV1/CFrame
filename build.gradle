@@ -12,6 +12,7 @@ buildscript {
             url 'http://maven.aliyun.com/nexus/content/groups/public/'
         }
         maven { url "http://objectbox.net/beta-repo/" }
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'

@@ -18,9 +18,11 @@ public class BModuleActivity extends AppCompatActivity {
 
     public void goToAppModule(View view) {
         ARouter.getInstance().build("/AppModule/MainActivity").withString("name", "老王").navigation();
+        finish();
     }
 
     public void goToAModule(View view) {
         ARouter.getInstance().build("/AModule/AModuleActivity").navigation();
+        finish();
     }
 }

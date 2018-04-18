@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 
 import com.cai.annotation.aspect.Permission;
-import com.cai.framework.base.GodBaseApplication;
 import com.cai.framework.utils.PermissionUtils;
 import com.cai.work.base.App;
 
@@ -29,23 +28,25 @@ public class PermissionAop {
             return;
         }
         String[] deniedPermissions = deniedPermissionList.toArray(new String[deniedPermissionList.size()]);
-        final FragmentActivity ac = (FragmentActivity) App.getAppContext().getCurActivity();
-        PermissionUtils.requestPermissionsResult(ac, 1, deniedPermissions
-                , new PermissionUtils.OnPermissionListener() {
-                    @Override
-                    public void onPermissionGranted() {
-                        try {
-                            joinPoint.proceed();//获得权限，执行原方法
-                        } catch (Throwable e) {
-                            e.printStackTrace();
+        final FragmentActivity ac = (FragmentActivity) App.getAppContext().getCurrentActivity();
+        if (ac != null) {
+            PermissionUtils.requestPermissionsResult(ac, 1, deniedPermissions
+                    , new PermissionUtils.OnPermissionListener() {
+                        @Override
+                        public void onPermissionGranted() {
+                            try {
+                                joinPoint.proceed();//获得权限，执行原方法
+                            } catch (Throwable e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onPermissionDenied() {
-                        PermissionUtils.showTipsDialog(ac);
-                    }
-                });
+                        @Override
+                        public void onPermissionDenied() {
+                            PermissionUtils.showTipsDialog(ac);
+                        }
+                    });
+        }
     }
 }
 

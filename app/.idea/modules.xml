@@ -5,6 +5,12 @@
       <module fileurl="file://$PROJECT_DIR$/../Amodule/Amodule.iml" filepath="$PROJECT_DIR$/../Amodule/Amodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Bmodule/Bmodule.iml" filepath="$PROJECT_DIR$/../Bmodule/Bmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/../CFrame.iml" filepath="$PROJECT_DIR$/../CFrame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../LibDataStore/LibDataStore.iml" filepath="$PROJECT_DIR$/../../LibDataStore/LibDataStore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../LibDownload/LibDownload.iml" filepath="$PROJECT_DIR$/../../LibDownload/LibDownload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../LibFrameWork/LibFrameWork.iml" filepath="$PROJECT_DIR$/../../LibFrameWork/LibFrameWork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../LibImageLoader/LibImageLoader.iml" filepath="$PROJECT_DIR$/../../LibImageLoader/LibImageLoader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../LibNet/LibNet.iml" filepath="$PROJECT_DIR$/../../LibNet/LibNet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../LibUtils/LibUtils.iml" filepath="$PROJECT_DIR$/../../LibUtils/LibUtils.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../apt/apt.iml" filepath="$PROJECT_DIR$/../apt/apt.iml" />
       <module fileurl="file://$PROJECT_DIR$/../buildsrc/buildsrc.iml" filepath="$PROJECT_DIR$/../buildsrc/buildsrc.iml" />
