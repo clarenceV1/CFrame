@@ -23,6 +23,18 @@
         </activity>
         <activity android:name=".ui.PullListViewActivity" />
         <activity android:name=".ui.ScrollActivity" />
+        <activity android:name=".ui.UnitTest.TestActivityForA" />
+        <activity android:name=".ui.UnitTest.TestActivityForB" />
+
+        <receiver
+            android:name=".ui.UnitTest.TestReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.cai.work.Receiver" />
+            </intent-filter>
+        </receiver>
+        <service android:name=".ui.UnitTest.TestService"/>
     </application>
 
 </manifest>

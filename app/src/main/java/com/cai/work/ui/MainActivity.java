@@ -1,5 +1,6 @@
 package com.cai.work.ui;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -10,6 +11,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.annotation.aspect.CostTime;
+import com.cai.annotation.aspect.Permission;
 import com.cai.annotation.aspect.SingleClick;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.manager.LogDock;
@@ -36,6 +38,8 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     String name = "Default";
     @Inject
     MainPresenter mainPresenter;
+
+    public String title = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     }
 
     @SingleClick
+    @Permission({Manifest.permission.CAMERA})
     public void goToBModule(View view) {
         ARouter.getInstance().build("/BModule/BModuleActivity").navigation(this, new NavigationCallback() {
             @Override

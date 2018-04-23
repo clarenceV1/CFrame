@@ -21,14 +21,14 @@ public class PermissionAop {
 
     @Around("execution(@com.cai.annotation.aspect.Permission * *(..)) && @annotation(permission)")
     public void aroundJoinPoint(final ProceedingJoinPoint joinPoint, final Permission permission) throws Throwable {
-        Context context = App.getAppContext();
+        final Context context = App.getAppContext();
         List<String> deniedPermissionList = PermissionUtils.getDeniedPermissions(context, permission.value());
         if (deniedPermissionList.isEmpty()) {
             joinPoint.proceed();//获得权限，执行原方法
             return;
         }
         String[] deniedPermissions = deniedPermissionList.toArray(new String[deniedPermissionList.size()]);
-        final FragmentActivity ac = (FragmentActivity) App.getAppContext().getCurrentActivity();
+        FragmentActivity ac = (FragmentActivity) App.getAppContext().getCurrentActivity();
         if (ac != null) {
             PermissionUtils.requestPermissionsResult(ac, 1, deniedPermissions
                     , new PermissionUtils.OnPermissionListener() {
@@ -43,7 +43,7 @@ public class PermissionAop {
 
                         @Override
                         public void onPermissionDenied() {
-                            PermissionUtils.showTipsDialog(ac);
+                            PermissionUtils.showTipsDialog(context);
                         }
                     });
         }

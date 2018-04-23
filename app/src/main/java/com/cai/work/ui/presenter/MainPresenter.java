@@ -1,8 +1,5 @@
 package com.cai.work.ui.presenter;
 
-import android.widget.Toast;
-
-import com.cai.annotation.apt.InstanceFactory;
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.bean.User;
@@ -60,12 +57,8 @@ public class MainPresenter extends GodBasePresenter<MainView> {
     private void addUser() {
         Observable.create(new ObservableOnSubscribe<List<User>>() {
             @Override
-            public void subscribe(ObservableEmitter<List<User>> e) throws Exception {
-                User user = new User();
-                user.setName("name_" + 1);
-                userDAO.addUser(user);
-                List<User> users = userDAO.getUsers();
-                e.onNext(users);
+            public void subscribe(ObservableEmitter<List<User>> e){
+                e.onNext(getUserData());
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -75,6 +68,14 @@ public class MainPresenter extends GodBasePresenter<MainView> {
                         mView.showWeatherError(users.toString());
                     }
                 });
+    }
+
+    public List<User> getUserData() {
+        User user = new User();
+        user.setName("name_" + 1);
+        userDAO.addUser(user);
+        List<User> users = userDAO.getUsers();
+        return users;
     }
 
     @Override
