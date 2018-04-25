@@ -1,9 +1,9 @@
-package com.cai.work.ui;
+package com.cai.work.ui.main;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
@@ -20,24 +20,28 @@ import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Weather;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainBinding;
-import com.cai.work.ui.presenter.MainPresenter;
-import com.cai.work.ui.presenter.MainView;
+import com.cai.work.ui.Help;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
+import com.example.clarence.utillibrary.ToastUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 @Route(path = "/AppModule/MainActivity", name = "首页")
-public class MainActivity extends AppBaseActivity<MainBinding> implements MainView {
+public class MainActivity extends AppBaseActivity<MainBinding> implements MainViewForRTB, MainViewForAD, MainViewForSA {
     @Inject
     ILoadImage imageLoader;
     @Autowired
     String name = "Default";
+
     @Inject
-    MainPresenter mainPresenter;
+    MainPresenterForRTB mainPresenterForRTB;
+    @Inject
+    MainPresenterForAD mainPresenterForAD;
+    @Inject
+    MainPresenterForSA mainPresenterForSA;
 
     public String title = "MainActivity";
 
@@ -46,15 +50,21 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         DaggerAppComponent.create().inject(this);
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
-        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+        showToast();
         Help.install().setContext(this);
     }
 
+    private void showToast() {
+        if (!TextUtils.isEmpty(name)) {
+            ToastUtils.showShort(name);
+        }
+    }
+
     @Override
-    public List<GodBasePresenter> getPresenters() {
-        List<GodBasePresenter> presenters = new ArrayList<>();
-        presenters.add(mainPresenter);
-        return presenters;
+    public void addPresenters(List<GodBasePresenter> observerList) {
+        observerList.add(mainPresenterForRTB);
+        observerList.add(mainPresenterForAD);
+        observerList.add(mainPresenterForSA);
     }
 
     @Override
@@ -115,5 +125,15 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     public void showImage(ILoadImageParams imageParams) {
         imageParams.setImageView(mViewBinding.imgTest);
         imageLoader.loadImage(this, imageParams);
+    }
+
+    @Override
+    public void showAD(String data) {
+
+    }
+
+    @Override
+    public void showSA(String data) {
+
     }
 }

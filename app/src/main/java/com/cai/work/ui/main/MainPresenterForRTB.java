@@ -1,4 +1,4 @@
-package com.cai.work.ui.presenter;
+package com.cai.work.ui.main;
 
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
@@ -26,7 +26,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by clarence on 2018/1/12.
  */
-public class MainPresenter extends GodBasePresenter<MainView> {
+public class MainPresenterForRTB extends GodBasePresenter<MainViewForRTB> {
     @Inject
     DataStore dataStore;
     @Inject
@@ -35,7 +35,7 @@ public class MainPresenter extends GodBasePresenter<MainView> {
     UserDAO userDAO;
 
     @Inject
-    public MainPresenter() {
+    public MainPresenterForRTB() {
     }
 
     @Override
