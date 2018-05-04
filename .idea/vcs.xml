@@ -6,6 +6,7 @@
     <mapping directory="$PROJECT_DIR$/../LibDownload" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../LibFrameWork" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../LibImageLoader" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../LibLog" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../LibNet" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../LibUtils" vcs="Git" />
   </component>

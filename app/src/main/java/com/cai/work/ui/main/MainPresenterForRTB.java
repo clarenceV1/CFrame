@@ -2,6 +2,7 @@ package com.cai.work.ui.main;
 
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.lib.logger.Logger;
 import com.cai.work.bean.User;
 import com.cai.work.bean.Weather;
 import com.cai.work.common.DataStore;
@@ -45,6 +46,11 @@ public class MainPresenterForRTB extends GodBasePresenter<MainViewForRTB> {
         requestWeather();
         addUser();
         showImage();
+        testLog();
+    }
+
+    private void testLog() {
+        Logger.d("我是的的xxxxggggg");
     }
 
     private void showImage() {

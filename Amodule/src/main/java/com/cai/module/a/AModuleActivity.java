@@ -7,20 +7,38 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 
+/**
+ * a页面.
+ */
 @Route(path = "/AModule/AModuleActivity")
 public class AModuleActivity extends Activity {
-
+    /**
+     * 创建.
+     *
+     * @param savedInstanceState
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.module_a);
     }
 
-    public void goToAppModule(View view){
+    /**
+     * 调转.
+     *
+     * @param view 视图
+     */
+    public void goToAppModule(final View view) {
         ARouter.getInstance().build("/AppModule/MainActivity").navigation();
         finish();
     }
-    public void goToBModule(View view){
+
+    /**
+     * 调转.
+     *
+     * @param view 视图
+     */
+    public void goToBModule(final View view) {
         ARouter.getInstance().build("/BModule/BModuleActivity").navigation();
         finish();
     }

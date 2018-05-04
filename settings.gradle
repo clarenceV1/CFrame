@@ -1,4 +1,4 @@
-include ':app', ':apt', ':lib','buildsrc','plugin','Amodule',"Bmodule"
+include ':app', ':apt', ':lib', ':LibLogger','buildsrc','plugin','Amodule',"Bmodule"
 include(':LibFrameWork')
 project(':LibFrameWork').projectDir = new File('../LibFrameWork')
 include(':LibDataStore')
@@ -11,3 +11,5 @@ include(':LibImageLoader')
 project(':LibImageLoader').projectDir = new File('../LibImageLoader')
 include(':LibNet')
 project(':LibNet').projectDir = new File('../LibNet')
+include(':LibLog')
+project(':LibLog').projectDir = new File('../LibLog')

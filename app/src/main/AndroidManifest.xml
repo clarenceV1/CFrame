@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.PullListViewActivity" />
-        <activity android:name=".ui.ScrollActivity" />
         <activity android:name=".ui.UnitTest.TestActivityForA" />
         <activity android:name=".ui.UnitTest.TestActivityForB" />
 

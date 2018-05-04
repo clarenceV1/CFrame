@@ -55,6 +55,9 @@ ext {
             "powermock-module-junit4"       : "org.powermock:powermock-module-junit4:1.6.5",
             "powermock-module-junit4-rule"  : "org.powermock:powermock-module-junit4-rule:1.6.5",
             "powermock-api-mockito"         : "org.powermock:powermock-api-mockito:1.6.5",
-            "powermock-classloading-xstream": "org.powermock:powermock-classloading-xstream:1.6.5"
+            "powermock-classloading-xstream": "org.powermock:powermock-classloading-xstream:1.6.5",
+
+            "blockcanary-android"           : "com.github.markzhai:blockcanary-android:1.5.0",
+            "blockcanary-no-op"             : "com.github.markzhai:blockcanary-no-op:1.5.0"
     ]
 }

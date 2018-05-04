@@ -136,4 +136,5 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     public void showSA(String data) {
 
     }
+
 }

@@ -80,4 +80,13 @@ dependencies {
 
     compile rootProject.ext.dependencies["arouter-api"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+
+    compile rootProject.ext.dependencies["stetho"]
+    compile rootProject.ext.dependencies["stetho-js-rhino"]
+
+    debugCompile rootProject.ext.dependencies["leakcanary-android"]
+    releaseCompile rootProject.ext.dependencies["leakcanary-android-no-op"]
+
+    debugCompile rootProject.ext.dependencies["blockcanary-android"]
+    releaseCompile rootProject.ext.dependencies["blockcanary-no-op"]
 }
