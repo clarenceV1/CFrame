@@ -1,4 +1,4 @@
-package com.cai.work.base;
+package com.cai.module.a.base;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBaseApplication;
