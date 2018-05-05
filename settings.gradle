@@ -1,4 +1,4 @@
-include ':Amodule',":Bmodule",':app', ':apt', ':lib', ':LibLogger','buildsrc','plugin'
+include ':app', ':apt', ':lib', ':LibLogger',':plugin',':Amodule',":Bmodule",":RemotePlugin"
 include(':LibFrameWork')
 project(':LibFrameWork').projectDir = new File('../LibFrameWork')
 include(':LibDataStore')
@@ -17,3 +17,5 @@ include(':Bmodule')
 project(':Bmodule').projectDir = new File('../Bmodule')
 include(':Amodule')
 project(':Amodule').projectDir = new File('../Amodule')
+include(':RemotePlugin')
+project(':RemotePlugin').projectDir = new File('../RemotePlugin')
