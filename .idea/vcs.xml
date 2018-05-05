@@ -2,6 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../LibAnnotation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../LibAptCompiler" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../LibDataStore" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../LibDownload" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../LibFrameWork" vcs="Git" />

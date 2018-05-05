@@ -66,7 +66,7 @@ dependencies {
     testCompile rootProject.ext.dependencies["powermock-api-mockito"]
     testCompile rootProject.ext.dependencies["powermock-classloading-xstream"]
 
-    annotationProcessor project(':apt')
+    annotationProcessor project(':LibAptCompiler')
     compile project(':LibFrameWork')
 
     compile project(":Amodule")
