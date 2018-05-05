@@ -57,7 +57,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile rootProject.ext.dependencies["android-support"]
 
-    testCompile "junit:junit:4.12"
+    testCompile rootProject.ext.dependencies["junit"]
     testCompile rootProject.ext.dependencies["assertj-core"]
     testCompile rootProject.ext.dependencies["robolectric"]
     testCompile rootProject.ext.dependencies["robolectric-shadows-support-v4"]
