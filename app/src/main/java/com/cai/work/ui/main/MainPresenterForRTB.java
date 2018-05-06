@@ -2,6 +2,7 @@ package com.cai.work.ui.main;
 
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.protocol.ProtocolInterpreter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.bean.User;
 import com.cai.work.bean.Weather;
@@ -9,6 +10,7 @@ import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.dao.UserDAO;
+import com.cai.work.protocol.IAModule2App;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 
@@ -47,6 +49,24 @@ public class MainPresenterForRTB extends GodBasePresenter<MainViewForRTB> {
         addUser();
         showImage();
         testLog();
+        testProtocol();
+    }
+
+    private void testProtocol() {
+        Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> e) {
+                String result = ProtocolInterpreter.getDefault().create(IAModule2App.class).testProtocol(1);
+                e.onNext(result);
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String result) {
+                        mView.showWeatherError(result);
+                    }
+                });
     }
 
     private void testLog() {
@@ -61,16 +81,17 @@ public class MainPresenterForRTB extends GodBasePresenter<MainViewForRTB> {
     }
 
     private void addUser() {
-        Observable.create(new ObservableOnSubscribe<List<User>>() {
+        Observable observable = Observable.create(new ObservableOnSubscribe<List<User>>() {
             @Override
-            public void subscribe(ObservableEmitter<List<User>> e){
+            public void subscribe(ObservableEmitter<List<User>> e) {
                 e.onNext(getUserData());
             }
-        }).subscribeOn(Schedulers.io())
+        });
+        observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<User>>() {
                     @Override
-                    public void accept(List<User> users) throws Exception {
+                    public void accept(List<User> users){
                         mView.showWeatherError(users.toString());
                     }
                 });
