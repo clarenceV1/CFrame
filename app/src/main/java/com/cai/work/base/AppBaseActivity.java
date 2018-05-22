@@ -14,8 +14,4 @@ import com.cai.framework.base.GodBasePresenterActivity;
 
 public abstract class AppBaseActivity<M extends ViewDataBinding> extends GodBasePresenterActivity<M> {
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-    }
 }

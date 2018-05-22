@@ -4,16 +4,19 @@ import android.Manifest;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.cai.annotation.apt.Bind;
 import com.cai.annotation.aspect.CostTime;
 import com.cai.annotation.aspect.Permission;
 import com.cai.annotation.aspect.SingleClick;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.base.ViewInjector;
 import com.cai.framework.manager.LogDock;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
@@ -43,6 +46,9 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     @Inject
     MainPresenterForSA mainPresenterForSA;
 
+    @Bind(R.id.tvWeather)
+    public TextView tvWeather;
+
     public String title = "MainActivity";
 
     @Override
@@ -50,6 +56,8 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         DaggerAppComponent.create().inject(this);
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
+        ViewInjector.injectView(this);
+        tvWeather.setText("ddd");
         showToast();
         Help.install().setContext(this);
     }
@@ -76,6 +84,11 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     @CostTime
     public void initView() {
 
+    }
+
+    public void goToWeb(View view){
+        ARouter.getInstance().build("/AppModule/WebActivity").navigation();
+        finish();
     }
 
     @SingleClick

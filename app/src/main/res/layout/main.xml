@@ -6,16 +6,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="我是App模块"
-            android:textSize="17sp" />
-
-        <ImageView
-            android:id="@+id/imgTest"
-            android:layout_width="100dp"
-            android:layout_height="100dp" />
 
         <TextView
             android:id="@+id/tvWeather"
@@ -36,5 +26,22 @@
             android:onClick="goToBModule"
             android:text="跳到B模块" />
 
+        <Button
+            android:id="@+id/btnGoWeb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="goToWeb"
+            android:text="跳到Web页面" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="我是App模块"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/imgTest"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
     </LinearLayout>
 </layout>

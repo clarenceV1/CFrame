@@ -24,6 +24,7 @@
         <activity android:name=".ui.PullListViewActivity" />
         <activity android:name=".ui.UnitTest.TestActivityForA" />
         <activity android:name=".ui.UnitTest.TestActivityForB" />
+        <activity android:name=".ui.web.WebActivity" />
 
         <receiver
             android:name=".ui.UnitTest.TestReceiver"
@@ -33,7 +34,7 @@
                 <action android:name="com.cai.work.Receiver" />
             </intent-filter>
         </receiver>
-        <service android:name=".ui.UnitTest.TestService"/>
+        <service android:name=".ui.UnitTest.TestService" />
     </application>
 
 </manifest>

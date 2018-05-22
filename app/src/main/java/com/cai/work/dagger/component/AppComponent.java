@@ -4,6 +4,7 @@ import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.dagger.module.AppModule;
 import com.cai.work.ui.main.MainActivity;
 import com.cai.work.ui.main.MainPresenterForRTB;
+import com.cai.work.ui.web.WebActivity;
 
 import dagger.Component;
 
@@ -16,4 +17,6 @@ public interface AppComponent {
     void inject(MainPresenterForRTB mainPresenter);
 
     void inject(MainActivity mainActivity);
+
+    void inject(WebActivity webActivity);
 }
