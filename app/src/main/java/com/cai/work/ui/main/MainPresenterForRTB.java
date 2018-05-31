@@ -1,7 +1,11 @@
 package com.cai.work.ui.main;
 
+import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.facade.callback.NavigationCallback;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.manager.LogDock;
 import com.cai.framework.protocol.ProtocolInterpreter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.bean.User;
@@ -91,7 +95,7 @@ public class MainPresenterForRTB extends GodBasePresenter<MainViewForRTB> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<User>>() {
                     @Override
-                    public void accept(List<User> users){
+                    public void accept(List<User> users) {
                         mView.showWeatherError(users.toString());
                     }
                 });
@@ -152,5 +156,41 @@ public class MainPresenterForRTB extends GodBasePresenter<MainViewForRTB> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void goToBModule() {
+        ARouter.getInstance().build("/BModule/BModuleActivity").navigation(context, new NavigationCallback() {
+            @Override
+            public void onFound(Postcard postcard) {
+                LogDock.getLog().debug("Postcard", "onFound");
+            }
+
+            @Override
+            public void onLost(Postcard postcard) {
+                LogDock.getLog().debug("Postcard", "onLost");
+            }
+
+            @Override
+            public void onArrival(Postcard postcard) {
+                LogDock.getLog().debug("Postcard", "onArrival");
+            }
+
+            @Override
+            public void onInterrupt(Postcard postcard) {
+                LogDock.getLog().debug("Postcard", "onInterrupt");
+            }
+        });
+    }
+
+    public void goToAModule() {
+        ARouter.getInstance().build("/AModule/AModuleActivity").navigation();
+    }
+
+    public void goToWeb() {
+        ARouter.getInstance().build("/AppModule/WebActivity").navigation();
+    }
+
+    public void goToListViewActivity() {
+        ARouter.getInstance().build("/AppModule/ListViewActivity").navigation();
     }
 }

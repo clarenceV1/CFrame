@@ -1,15 +1,16 @@
 package com.cai.work.ui.main;
 
 import android.Manifest;
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.annotation.apt.Bind;
 import com.cai.annotation.aspect.CostTime;
@@ -17,7 +18,7 @@ import com.cai.annotation.aspect.Permission;
 import com.cai.annotation.aspect.SingleClick;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.base.ViewInjector;
-import com.cai.framework.manager.LogDock;
+import com.cai.lib.logger.Logger;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Weather;
@@ -50,6 +51,8 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     public TextView tvWeather;
 
     public String title = "MainActivity";
+    private float mTrancetAnimh = -3f;
+    private float mTrancetAnimw = -3f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,44 +86,65 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     @Override
     @CostTime
     public void initView() {
-
+        ValueAnimator valueAnimator = getTrancetAnimh(mViewBinding.imgTest);
+        valueAnimator.start();
     }
 
-    public void goToWeb(View view){
-        ARouter.getInstance().build("/AppModule/WebActivity").navigation();
+    public ValueAnimator getTrancetAnimh(final View view) {
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(5400);
+        valueAnimator.setInterpolator(new LinearInterpolator());
+        valueAnimator.setRepeatMode(ValueAnimator.RESTART);
+        valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int value = (int) animation.getAnimatedValue();
+
+                if (value <= 1800) {
+                    float fragment =  value * 6.0f / 1800;
+                    mTrancetAnimw = -3 + fragment;
+                    Log.d("ValueAnimator","右移 value ==>" + value +"  fragment ==> "+fragment);
+                } else if (value <= 3600) {
+                    float fragment = (value - 1800) * 6.0f / 1800;
+                    mTrancetAnimw = 3 - fragment;
+                    mTrancetAnimh = -3 + fragment;
+                    Log.d("ValueAnimator","下移 value ==>" + value +"  fragment ==> "+fragment);
+                } else {
+                    float fragment = (value - 3600) * 6.0f / 1800;
+                    mTrancetAnimh = 3 - fragment;
+                    Log.d("ValueAnimator","回去 value ==>" + value +"  fragment ==> "+fragment);
+                }
+                view.setTranslationY(mTrancetAnimh);
+                view.setTranslationX(mTrancetAnimw);
+                Log.d("ValueAnimator","vaule ==> " + value +" x ==> "+mTrancetAnimw+" y ==> "+mTrancetAnimh);
+            }
+        });
+
+        valueAnimator.setDuration(5400);
+        return valueAnimator;
+    }
+
+    public void goToWeb(View view) {
+        mainPresenterForRTB.goToWeb();
         finish();
     }
 
     @SingleClick
     @Permission({Manifest.permission.CAMERA})
     public void goToBModule(View view) {
-        ARouter.getInstance().build("/BModule/BModuleActivity").navigation(this, new NavigationCallback() {
-            @Override
-            public void onFound(Postcard postcard) {
-                LogDock.getLog().debug("Postcard", "onFound");
-            }
-
-            @Override
-            public void onLost(Postcard postcard) {
-                LogDock.getLog().debug("Postcard", "onLost");
-            }
-
-            @Override
-            public void onArrival(Postcard postcard) {
-                LogDock.getLog().debug("Postcard", "onArrival");
-            }
-
-            @Override
-            public void onInterrupt(Postcard postcard) {
-                LogDock.getLog().debug("Postcard", "onInterrupt");
-            }
-        });
+        mainPresenterForRTB.goToBModule();
         finish();
     }
 
     @SingleClick
     public void goToAModule(View view) {
-        ARouter.getInstance().build("/AModule/AModuleActivity").navigation();
+        mainPresenterForRTB.goToAModule();
+        finish();
+    }
+
+    @SingleClick
+    public void goToListViewActivity(View view) {
+        mainPresenterForRTB.goToListViewActivity();
         finish();
     }
 
