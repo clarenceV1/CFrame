@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.cai.plugin.aspect'
 apply plugin: 'io.objectbox'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -57,21 +56,19 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile rootProject.ext.dependencies["android-support"]
 
-    testCompile rootProject.ext.dependencies["junit"]
-    testCompile rootProject.ext.dependencies["assertj-core"]
-    testCompile rootProject.ext.dependencies["robolectric"]
-    testCompile rootProject.ext.dependencies["robolectric-shadows-support-v4"]
-    testCompile rootProject.ext.dependencies["powermock-module-junit4"]
-    testCompile rootProject.ext.dependencies["powermock-module-junit4-rule"]
-    testCompile rootProject.ext.dependencies["powermock-api-mockito"]
-    testCompile rootProject.ext.dependencies["powermock-classloading-xstream"]
+//    testCompile rootProject.ext.dependencies["junit"]
+//    testCompile rootProject.ext.dependencies["assertj-core"]
+//    testCompile rootProject.ext.dependencies["robolectric"]
+//    testCompile rootProject.ext.dependencies["robolectric-shadows-support-v4"]
+//    testCompile rootProject.ext.dependencies["powermock-module-junit4"]
+//    testCompile rootProject.ext.dependencies["powermock-module-junit4-rule"]
+//    testCompile rootProject.ext.dependencies["powermock-api-mockito"]
+//    testCompile rootProject.ext.dependencies["powermock-classloading-xstream"]
 
-    annotationProcessor project(':LibAptCompiler')
-    compile project(':LibAnnotation')
+//    annotationProcessor project(':LibAptCompiler')
+//    compile project(':LibAnnotation')
     compile project(':LibFrameWork')
 
-    compile project(":Amodule")
-    compile project(":Bmodule")
 
     compile rootProject.ext.dependencies["dagger"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
@@ -80,4 +77,6 @@ dependencies {
 
     compile rootProject.ext.dependencies["arouter-api"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+
+    compile rootProject.ext.dependencies["support-design"]
 }

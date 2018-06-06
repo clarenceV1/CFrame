@@ -4,15 +4,12 @@ import com.cai.framework.base.GodBaseView;
 import com.cai.work.bean.Weather;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 
+import java.util.List;
+
 /**
  * Created by clarence on 2018/1/12.
  */
 
-public interface MainViewForRTB extends GodBaseView {
+public interface MainView extends GodBaseView {
 
-    void showWeather(Weather weather);
-
-    void showWeatherError(String error);
-
-    void showImage(ILoadImageParams imageParams);
 }

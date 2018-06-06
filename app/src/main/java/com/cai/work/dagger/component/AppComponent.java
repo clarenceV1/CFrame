@@ -4,7 +4,7 @@ import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.dagger.module.AppModule;
 import com.cai.work.ui.listview.ListviewScollActivity;
 import com.cai.work.ui.main.MainActivity;
-import com.cai.work.ui.main.MainPresenterForRTB;
+import com.cai.work.ui.main.MainPresenter;
 import com.cai.work.ui.web.WebActivity;
 
 import dagger.Component;
@@ -15,7 +15,7 @@ import dagger.Component;
 @Component(modules = {AppModule.class, FrameWorkModule.class})
 public interface AppComponent {
 
-    void inject(MainPresenterForRTB mainPresenter);
+    void inject(MainPresenter mainPresenter);
 
     void inject(MainActivity mainActivity);
 

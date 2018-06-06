@@ -1,53 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/tvWeather"
+        <android.support.design.widget.TabLayout
+            android:id="@+id/mTabLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/btnGoListViewActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="goToListViewActivity"
-            android:text="跳到列表页" />
-        <Button
-            android:id="@+id/btnGoAModule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="goToAModule"
-            android:text="跳到A模块" />
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            android:background="#ffffff"
+            android:fillViewport="false"
+            app:layout_scrollFlags="scroll"
+            app:tabIndicatorColor="#057523"
+            app:tabIndicatorHeight="2.0dp"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="#057523"
+            app:tabTextColor="#ced0d3">
 
-        <Button
-            android:id="@+id/btnGoBModule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="goToBModule"
-            android:text="跳到B模块" />
+            <android.support.design.widget.TabItem
+                android:id="@+id/mTabItem1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="a" />
 
-        <Button
-            android:id="@+id/btnGoWeb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="goToWeb"
-            android:text="跳到Web页面" />
+            <android.support.design.widget.TabItem
+                android:id="@+id/mTabItem2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="b" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="我是App模块"
-            android:textSize="17sp" />
+            <android.support.design.widget.TabItem
+                android:id="@+id/mTabItem3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="c" />
 
-        <ImageView
-            android:id="@+id/imgTest"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="100dp"/>
+            <android.support.design.widget.TabItem
+                android:id="@+id/mTabItem4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="c" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/mTabItem5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="c" />
+
+        </android.support.design.widget.TabLayout>
+
     </LinearLayout>
 </layout>
