@@ -2,6 +2,7 @@ package com.cai.work.dagger.component;
 
 import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.dagger.module.AppModule;
+import com.cai.work.ui.listview.ListviewScollActivity;
 import com.cai.work.ui.main.MainActivity;
 import com.cai.work.ui.main.MainPresenterForRTB;
 import com.cai.work.ui.web.WebActivity;
@@ -19,4 +20,6 @@ public interface AppComponent {
     void inject(MainActivity mainActivity);
 
     void inject(WebActivity webActivity);
+
+    void inject(ListviewScollActivity listviewScollActivity);
 }
