@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -8,18 +9,39 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_height="50dp"
+            android:background="@color/black_a">
 
             <ImageView
+                android:id="@+id/ivIcon"
                 android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
+                tools:background="@color/white_a" />
+
+            <TextView
+                android:id="@+id/tvAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/ivIcon"
+                android:textColor="@color/white_a"
+                tools:text="1388999" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white_a"
+                android:text="@string/main_home_title" />
 
         </RelativeLayout>
 
-        <TextView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="home" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </layout>

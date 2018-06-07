@@ -6,7 +6,16 @@ package com.cai.work.bean;
 
 public class Account {
     private String name;
-    private String password;
+    private String money;
+    private String icon;
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 
     public String getName() {
         return name;
@@ -16,11 +25,11 @@ public class Account {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMoney() {
+        return money;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMoney(String money) {
+        this.money = money;
     }
 }

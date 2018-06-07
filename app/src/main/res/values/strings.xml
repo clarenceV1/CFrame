@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CWork</string>
+    <string name="app_name">金囤在线</string>
     <string name="pull_to_refresh_guide_tips">下拉即可刷新</string>
     <string name="pull_to_refreshing_tips">正在刷新列表</string>
     <string name="release_to_refresh_guide_tips">松开即可刷新</string>
@@ -9,4 +9,21 @@
     <string name="main_tab_title_3">交易</string>
     <string name="main_tab_title_4">持仓</string>
     <string name="main_tab_title_5">我的</string>
+
+    <string name="main_home_title">金囤在线</string>
+
+
+    <string name="mine_head_money">账户余额(元)</string>
+    <string name="mine_head_button_recharge">充值</string>
+    <string name="mine_head_button_withdrawal">提现</string>
+    <string name="mine_menu_title1">资金明细</string>
+    <string name="mine_menu_title2">银行卡设置</string>
+    <string name="mine_menu_title3">消息中心</string>
+    <string name="mine_menu_title4">我的红包</string>
+    <string name="mine_menu_title5">邀请赚佣金</string>
+    <string name="mine_menu_title6">活动专区</string>
+    <string name="mine_menu_title7">常见问题</string>
+    <string name="mine_menu_title8">关于我们</string>
+    <string name="mine_menu_title9">安全设置</string>
+    <string name="mine_save_quit">安全退出</string>
 </resources>

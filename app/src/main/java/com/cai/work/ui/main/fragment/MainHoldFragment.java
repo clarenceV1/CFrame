@@ -4,9 +4,8 @@ import android.view.View;
 
 import com.cai.framework.base.GodBaseFragment;
 import com.cai.work.R;
-import com.cai.work.databinding.MainHoldFragmentBinding;
 
-public class MainHoldFragment extends GodBaseFragment<MainHoldFragmentBinding> {
+public class MainHoldFragment extends GodBaseFragment {
 
     @Override
     public int getLayoutId() {
