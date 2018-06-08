@@ -7,5 +7,7 @@ import com.cai.framework.base.GodBaseView;
  */
 
 public interface WelcomeView extends GodBaseView {
-     void goMainActivity();
+    void goMainActivity();
+
+    void toastNotice(String txt);
 }

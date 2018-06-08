@@ -12,6 +12,7 @@ import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WebBinding;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
 
@@ -52,6 +53,7 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
     }
 
     public void goToMain(View view) {
+        ToastUtils.showShort("请求完成跳主页面");
         webPresenterForRTB.goToMain();
         finish();
     }

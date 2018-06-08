@@ -7,6 +7,7 @@ import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WelcomeBinding;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
 
@@ -42,5 +43,10 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
     public void goMainActivity() {
         ARouter.getInstance().build("/AppModule/MainActivity").navigation();
         finish();
+    }
+
+    @Override
+    public void toastNotice(String txt) {
+        ToastUtils.showShort(txt);
     }
 }
