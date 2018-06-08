@@ -43,6 +43,10 @@
 
     <string name="home_stock_title">股票操盘</string>
     <string name="home_rang_title">操盘排行榜</string>
+    <string name="home_forward_tab_title_1">国际期货</string>
+    <string name="home_forward_tab_title_2">国内期货</string>
+    <string name="home_trade_ing">交易中</string>
+    <string name="home_trade_end">休市中</string>
 
 
 </resources>

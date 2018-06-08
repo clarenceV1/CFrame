@@ -1,6 +1,10 @@
 package com.cai.work.bean.home;
 
-public class HomeNphyData {
+import com.cai.framework.bean.CBaseData;
+
+import java.io.Serializable;
+
+public class HomeNphyData implements Serializable,CBaseData{
 //    data.nphy.contractCode	代码	string
 //    data.nphy.contractName	名称	string
 //    data.nphy.bond	保证金	number

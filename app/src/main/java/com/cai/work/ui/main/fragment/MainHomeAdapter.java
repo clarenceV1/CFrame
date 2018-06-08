@@ -1,17 +1,21 @@
 package com.cai.work.ui.main.fragment;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cai.framework.widget.CircleView;
-import com.cai.framework.widget.VerticalScrollTextview;
+import com.cai.framework.widget.VerticalScrollTextView;
 import com.cai.work.R;
 import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.bean.home.HomeNoticeData;
@@ -23,8 +27,12 @@ import com.cai.work.widget.ListViewEx;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
 
+import java.io.Serializable;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int NOTICE = 0;
@@ -36,11 +44,15 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     HomeItemData data;
     Context context;
     ILoadImage imageLoader;
+    FragmentManager fragmentManager;
+    Map<String, WeakReference<Fragment>> fragmentMap = new HashMap<>();
+    int selectedTabType = 1;
 
-    public MainHomeAdapter(Context context, ILoadImage imageLoader, HomeItemData data) {
+    public MainHomeAdapter(Context context, ILoadImage imageLoader, HomeItemData data, FragmentManager fragmentManager) {
         this.data = data;
         this.context = context;
         this.imageLoader = imageLoader;
+        this.fragmentManager = fragmentManager;
     }
 
     @Override
@@ -128,7 +140,64 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         });
     }
 
-    private void onBindForwardView(ForwardViewHolder forwardViewHolder, List<HomeNphyData> nphyData, List<HomeWphyData> wphyData) {
+    private void onBindForwardView(final ForwardViewHolder forwardViewHolder, final List<HomeNphyData> nphyData, final List<HomeWphyData> wphyData) {
+        forwardViewHolder.rlTab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedTabType == 1) {
+                    return;
+                }
+                switchTab(forwardViewHolder, 1, nphyData, wphyData);
+            }
+        });
+        forwardViewHolder.rlTab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedTabType == 2) {
+                    return;
+                }
+                switchTab(forwardViewHolder, 2, nphyData, wphyData);
+            }
+        });
+        switchTab(forwardViewHolder, 1, nphyData, wphyData);
+    }
+
+    private void switchTab(ForwardViewHolder forwardViewHolder, int tabType, List<HomeNphyData> nphyData, List<HomeWphyData> wphyData) {
+        selectedTabType = tabType;
+        if (tabType == 1) {
+            forwardViewHolder.bottomLine1.setVisibility(View.VISIBLE);
+            forwardViewHolder.bottomLine2.setVisibility(View.GONE);
+            forwardViewHolder.tvHomeTabLeft.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color_selected));
+            forwardViewHolder.tvHomeTabRight.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color));
+        } else {
+            forwardViewHolder.bottomLine1.setVisibility(View.GONE);
+            forwardViewHolder.bottomLine2.setVisibility(View.VISIBLE);
+            forwardViewHolder.tvHomeTabLeft.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color));
+            forwardViewHolder.tvHomeTabRight.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color_selected));
+        }
+        Fragment fragment;
+        WeakReference<Fragment> weakReference = fragmentMap.get("Left");
+        if (weakReference != null) {
+            fragment = weakReference.get();
+        } else {
+            if (tabType == 1) { //LEFT
+                fragment = getForwardFragment("left", wphyData);
+                fragmentMap.put("left", new WeakReference<>(fragment));
+            } else {//RIGHT
+                fragment = getForwardFragment("right", nphyData);
+                fragmentMap.put("right", new WeakReference<>(fragment));
+            }
+        }
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.homeForwardContainer, fragment);
+        transaction.commit();
+    }
+
+    public <T> Fragment getForwardFragment(String type, List<T> data) {
+        Bundle bundle = new Bundle();
+        bundle.putString("type", type);
+        bundle.putSerializable("dataList", (Serializable) data);
+        return Fragment.instantiate(context, HomeForwardFragment.class.getName(), bundle);
     }
 
     private void onBindStockView(StockViewHolder stockViewHolder, HomeStockData stockData) {
@@ -146,16 +215,13 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     private void onBindNoticeView(NoticeViewHolder noticeViewHolder, List<HomeNoticeData> noticeDataList) {
-        VerticalScrollTextview scrollTextview = noticeViewHolder.scrollTextView;
-        scrollTextview.setAnimTime(600);
-        scrollTextview.setTextStillTime(2000);
-        scrollTextview.setText(15, 5, Color.BLACK);
-        scrollTextview.startAutoScroll();
+        VerticalScrollTextView scrollTextview = noticeViewHolder.scrollTextView;
+        scrollTextview.animationStart();
         ArrayList<String> textList = new ArrayList<>();
         for (HomeNoticeData homeNoticeData : noticeDataList) {
             textList.add(homeNoticeData.getTitle());
         }
-        scrollTextview.setTextList(textList);
+        scrollTextview.setStrList(textList);
         noticeViewHolder.tvMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,13 +284,13 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
     class NoticeViewHolder extends RecyclerView.ViewHolder {
-        VerticalScrollTextview scrollTextView;
+        VerticalScrollTextView scrollTextView;
         TextView tvMore;
         RelativeLayout rlTab1, rlTab2, rlTab3, rlTab4;
 
         public NoticeViewHolder(View itemView) {
             super(itemView);
-            scrollTextView = (VerticalScrollTextview) itemView.findViewById(R.id.scrollTextView);
+            scrollTextView = (VerticalScrollTextView) itemView.findViewById(R.id.scrollTextView);
             tvMore = (TextView) itemView.findViewById(R.id.tvMore);
             rlTab1 = (RelativeLayout) itemView.findViewById(R.id.rlTab1);
             rlTab2 = (RelativeLayout) itemView.findViewById(R.id.rlTab2);
@@ -234,7 +300,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     class StockViewHolder extends RecyclerView.ViewHolder {
-        TextView tvStockNmae, tvTradeState, tvRemark, tvBound, tvTradeTime,tvShortCode;
+        TextView tvStockNmae, tvTradeState, tvRemark, tvBound, tvTradeTime, tvShortCode;
         CircleView circleView;
 
         public StockViewHolder(View itemView) {
@@ -250,9 +316,19 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     class ForwardViewHolder extends RecyclerView.ViewHolder {
-
+        TextView tvHomeTabLeft, tvHomeTabRight;
+        FrameLayout homeForwardContainer;
+        View bottomLine1, bottomLine2;
+        RelativeLayout rlTab1,rlTab2;
         public ForwardViewHolder(View itemView) {
             super(itemView);
+            tvHomeTabLeft = (TextView) itemView.findViewById(R.id.tvHomeTabLeft);
+            tvHomeTabRight = (TextView) itemView.findViewById(R.id.tvHomeTabRight);
+            homeForwardContainer = (FrameLayout) itemView.findViewById(R.id.homeForwardContainer);
+            bottomLine1 = itemView.findViewById(R.id.bottomLine1);
+            bottomLine2 = itemView.findViewById(R.id.bottomLine2);
+            rlTab1 = (RelativeLayout) itemView.findViewById(R.id.rlTab1);
+            rlTab2 = (RelativeLayout) itemView.findViewById(R.id.rlTab2);
         }
     }
 
@@ -282,7 +358,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         super.onViewDetachedFromWindow(holder);
         if (holder instanceof NoticeViewHolder) {
             NoticeViewHolder noticeViewHolder = (NoticeViewHolder) holder;
-            noticeViewHolder.scrollTextView.stopAutoScroll();
+            noticeViewHolder.scrollTextView.animationStop();
         }
     }
 }

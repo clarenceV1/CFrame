@@ -7,4 +7,7 @@
     <color name="black_b">#888888</color>
     <color name="red_f">#ffddee</color>
     <color name="white_an">#ffffff</color>
+
+    <color name="home_forward_tab_color">#000000</color>
+    <color name="home_forward_tab_color_selected">#FF4081</color>
 </resources>

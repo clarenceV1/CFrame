@@ -113,10 +113,11 @@
             android:layout_height="wrap_content"
             android:text="公告" />
 
-        <com.cai.framework.widget.VerticalScrollTextview
+        <com.cai.framework.widget.VerticalScrollTextView
             android:id="@+id/scrollTextView"
             android:layout_width="0dp"
             android:layout_height="30dp"
+            android:textColor="@color/red_b"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             tools:text="sdfsdfsdf" />

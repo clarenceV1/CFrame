@@ -28,6 +28,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:gravity="center"
+            android:textColor="@color/white_a"
             tools:text="A股" />
 
         <TextView

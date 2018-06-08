@@ -1,6 +1,10 @@
 package com.cai.work.bean.home;
 
-public class HomeWphyData{
+import com.cai.framework.bean.CBaseData;
+
+import java.io.Serializable;
+
+public class HomeWphyData implements Serializable,CBaseData {
     //    data.wphy.contractCode	代码	string
 //    data.wphy.contractName	名称	string
 //    data.wphy.bond	保证金	number
