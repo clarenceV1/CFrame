@@ -1,10 +1,9 @@
 package com.cai.work;
 
-import com.cai.work.bean.Weather;
+import com.cai.work.bean.home.HomeData;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 
 /**
  * Created by clarence on 2018/1/12.
@@ -12,6 +11,6 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    @GET("/open/api/weather/json.shtml")
-    public Flowable<Weather> getWeather(@Query("city") String city);
+    @GET("/app/index")
+    Flowable<HomeData> getHomeData();
 }

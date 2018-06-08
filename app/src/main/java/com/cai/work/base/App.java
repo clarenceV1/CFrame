@@ -11,6 +11,7 @@ public class App extends GodBaseApplication {
 
     public void onCreate() {
         super.onCreate();
+        config.setBaseUrl("http://www.hellceshi.com");
         initRouter();
     }
 

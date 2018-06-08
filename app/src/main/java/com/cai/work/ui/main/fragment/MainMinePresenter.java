@@ -1,5 +1,6 @@
 package com.cai.work.ui.main.fragment;
 
+import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineBottomData;
@@ -10,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-
-public class MainMinePresenter {
+public class MainMinePresenter extends GodBasePresenter<MineView> {
 
     private int[] names = new int[]{
             R.string.mine_menu_title1, R.string.mine_menu_title2, R.string.mine_menu_title3,
@@ -26,6 +26,7 @@ public class MainMinePresenter {
 
     @Inject
     public MainMinePresenter() {
+
     }
 
     public List<IRecycleViewBaseData> getDatas() {
@@ -46,5 +47,10 @@ public class MainMinePresenter {
         MineBottomData bottomData = new MineBottomData();
         dataList.add(bottomData);
         return dataList;
+    }
+
+    @Override
+    public void onAttached() {
+
     }
 }

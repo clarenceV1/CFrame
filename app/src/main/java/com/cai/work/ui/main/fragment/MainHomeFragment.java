@@ -1,21 +1,25 @@
 package com.cai.work.ui.main.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
-import com.cai.framework.base.GodBaseFragment;
+import com.cai.framework.base.GodBasePresenter;
+import com.cai.lib.logger.Logger;
 import com.cai.work.R;
+import com.cai.work.base.AppBaseFragment;
 import com.cai.work.bean.Account;
+import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainHomeFragmentBinding;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
-public class MainHomeFragment extends GodBaseFragment<MainHomeFragmentBinding> {
+public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> implements HomeView {
 
     @Inject
     ILoadImage imageLoader;
@@ -24,8 +28,12 @@ public class MainHomeFragment extends GodBaseFragment<MainHomeFragmentBinding> {
     MainHomePresenter presenter;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void addPresenters(List<GodBasePresenter> observerList) {
+        observerList.add(presenter);
+    }
+
+    @Override
+    public void initDagger() {
         DaggerAppComponent.create().inject(this);
     }
 
@@ -38,13 +46,12 @@ public class MainHomeFragment extends GodBaseFragment<MainHomeFragmentBinding> {
     public void initView(View view) {
         initTopView();
         initRecycleView();
+        presenter.requestData();
     }
 
     private void initRecycleView() {
-//        LinearLayoutManager layoutmanager = new LinearLayoutManager(getContext());
-//        mViewBinding.mRecyclerView.setLayoutManager(layoutmanager);
-//        MainHomeAdapter adapter = new MainHomeAdapter(presenter.getDatas());
-//        mViewBinding.mRecyclerView.setAdapter(adapter);
+        LinearLayoutManager layoutmanager = new LinearLayoutManager(getContext());
+        mViewBinding.mRecyclerView.setLayoutManager(layoutmanager);
     }
 
     private void initTopView() {
@@ -55,5 +62,16 @@ public class MainHomeFragment extends GodBaseFragment<MainHomeFragmentBinding> {
 
         mViewBinding.tvAccount.setText(account.getName());
 
+    }
+
+    @Override
+    public void reFreshView(HomeItemData data) {
+        MainHomeAdapter adapter = new MainHomeAdapter(mContext,imageLoader,data);
+        mViewBinding.mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void requestError(String data) {
+        Logger.d(data);
     }
 }

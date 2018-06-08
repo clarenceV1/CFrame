@@ -1,12 +1,11 @@
 package com.cai.work.ui.main.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
-import com.cai.framework.base.GodBaseFragment;
+import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
+import com.cai.work.base.AppBaseFragment;
 import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineListData;
 import com.cai.work.dagger.component.DaggerAppComponent;
@@ -14,9 +13,11 @@ import com.cai.work.databinding.MainMineFragmentBinding;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
-public class MainMineFragment extends GodBaseFragment<MainMineFragmentBinding> {
+public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> implements MineView {
     @Inject
     MainMinePresenter presenter;
     @Inject
@@ -28,8 +29,12 @@ public class MainMineFragment extends GodBaseFragment<MainMineFragmentBinding> {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void addPresenters(List<GodBasePresenter> observerList) {
+        observerList.add(presenter);
+    }
+
+    @Override
+    public void initDagger() {
         DaggerAppComponent.create().inject(this);
     }
 
@@ -41,7 +46,7 @@ public class MainMineFragment extends GodBaseFragment<MainMineFragmentBinding> {
     private void initRecycleView() {
         LinearLayoutManager layoutmanager = new LinearLayoutManager(getContext());
         mViewBinding.mRecyclerView.setLayoutManager(layoutmanager);
-        MainMineAdapter mainMineAdapter = new MainMineAdapter(getContext(),imageLoader, presenter.getDatas());
+        MainMineAdapter mainMineAdapter = new MainMineAdapter(getContext(), imageLoader, presenter.getDatas());
         mainMineAdapter.setItemClickListener(new MainMineAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int postion, IRecycleViewBaseData data) {

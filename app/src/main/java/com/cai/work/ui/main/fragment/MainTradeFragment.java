@@ -2,11 +2,14 @@ package com.cai.work.ui.main.fragment;
 
 import android.view.View;
 
-import com.cai.framework.base.GodBaseFragment;
+import com.cai.framework.base.GodBasePresenter;
+import com.cai.work.base.AppBaseFragment;
 import com.cai.work.R;
 import com.cai.work.databinding.MainTradeFragmentBinding;
 
-public class MainTradeFragment extends GodBaseFragment<MainTradeFragmentBinding> {
+import java.util.List;
+
+public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding> {
 
     @Override
     public int getLayoutId() {
@@ -15,6 +18,16 @@ public class MainTradeFragment extends GodBaseFragment<MainTradeFragmentBinding>
 
     @Override
     public void initView(View view) {
+
+    }
+
+    @Override
+    public void addPresenters(List<GodBasePresenter> observerList) {
+
+    }
+
+    @Override
+    public void initDagger() {
 
     }
 }

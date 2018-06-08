@@ -2,10 +2,12 @@ package com.cai.work.ui.main.fragment;
 
 import android.view.View;
 
-import com.cai.framework.base.GodBaseFragment;
+import com.cai.work.base.AppBaseFragment;
 import com.cai.work.R;
 
-public class MainHoldFragment extends GodBaseFragment {
+import java.util.List;
+
+public class MainHoldFragment extends AppBaseFragment {
 
     @Override
     public int getLayoutId() {
@@ -14,6 +16,16 @@ public class MainHoldFragment extends GodBaseFragment {
 
     @Override
     public void initView(View view) {
+
+    }
+
+    @Override
+    public void addPresenters(List observerList) {
+
+    }
+
+    @Override
+    public void initDagger() {
 
     }
 }

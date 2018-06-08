@@ -24,9 +24,8 @@ public class RequestStore {
     public RequestStore() {
     }
 
-    public Disposable requestWeather(String city, Consumer onNext, Consumer onError) throws Exception {
-        String cityUtf = URLEncoder.encode(city, "utf-8");
-        Disposable disposable = iNet.request().create(ApiService.class).getWeather(cityUtf)
+    public Disposable requestHomeData(Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).getHomeData()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);

@@ -1,17 +1,18 @@
 <resources>
-    <string name="app_name">金囤在线</string>
+
     <string name="pull_to_refresh_guide_tips">下拉即可刷新</string>
     <string name="pull_to_refreshing_tips">正在刷新列表</string>
     <string name="release_to_refresh_guide_tips">松开即可刷新</string>
+
+
+    <string name="app_name">金囤在线</string>
+    <string name="main_home_title">金囤在线</string>
 
     <string name="main_tab_title_1">首页</string>
     <string name="main_tab_title_2">咨询</string>
     <string name="main_tab_title_3">交易</string>
     <string name="main_tab_title_4">持仓</string>
     <string name="main_tab_title_5">我的</string>
-
-    <string name="main_home_title">金囤在线</string>
-
 
     <string name="mine_head_money">账户余额(元)</string>
     <string name="mine_head_button_recharge">充值</string>
@@ -26,4 +27,22 @@
     <string name="mine_menu_title8">关于我们</string>
     <string name="mine_menu_title9">安全设置</string>
     <string name="mine_save_quit">安全退出</string>
+
+    <string name="home_help_about_us">关于我们</string>
+    <string name="home_help_center">帮助中心</string>
+    <string name="home_help_save">安全保障</string>
+    <string name="home_help_ask_online">在线咨询</string>
+    <string name="home_help_notice">股市有风险,投资需谨慎</string>
+
+    <string name="home_notice_title1">股票操盘</string>
+    <string name="home_notice_title2">期货操盘</string>
+    <string name="home_notice_title3">股票模拟</string>
+    <string name="home_notice_title4">期货模拟</string>
+    <string name="home_notice_more">更多</string>
+    <string name="home_notice_new">最新</string>
+
+    <string name="home_stock_title">股票操盘</string>
+    <string name="home_rang_title">操盘排行榜</string>
+
+
 </resources>
