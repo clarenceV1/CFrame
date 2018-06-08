@@ -32,9 +32,13 @@ public class ListviewScollActivity extends AppBaseActivity<ListViewScollBinding>
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        DaggerAppComponent.create().inject(this);
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
+    }
+
+    @Override
+    public void initDagger() {
+        DaggerAppComponent.create().inject(this);
     }
 
     @Override

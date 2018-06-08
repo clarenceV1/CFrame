@@ -24,9 +24,8 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
     WebPresenterForRTB webPresenterForRTB;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void initDagger() {
         DaggerAppComponent.create().inject(this);
-        super.onCreate(savedInstanceState);
     }
 
     @Override

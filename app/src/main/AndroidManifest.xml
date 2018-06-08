@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.welcome.WelcomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +23,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.web.WebActivity" />
-        <activity android:name=".ui.listview.ListviewScollActivity" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.web.WebActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.listview.ListviewScollActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
