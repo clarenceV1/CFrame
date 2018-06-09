@@ -1,17 +1,11 @@
-package com.cai.work.bean;
+package com.cai.work.bean.respond;
 
-public class LoginRequest {
+import com.cai.work.bean.Account;
+
+public class UserInfoRespond {
     private int code;
     private String responseText;
-    private String data;
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
+    private Account data;
 
     public int getCode() {
         return code;
@@ -27,5 +21,13 @@ public class LoginRequest {
 
     public void setResponseText(String responseText) {
         this.responseText = responseText;
+    }
+
+    public Account getData() {
+        return data;
+    }
+
+    public void setData(Account data) {
+        this.data = data;
     }
 }

@@ -32,9 +32,32 @@
           "name": "data"
         }
       ]
+    },
+    {
+      "id": "3:3477530338111746945",
+      "lastPropertyId": "4:5673342719805825692",
+      "name": "Account",
+      "properties": [
+        {
+          "id": "1:3985880296357063365",
+          "name": "id"
+        },
+        {
+          "id": "2:2177891342076927090",
+          "name": "name"
+        },
+        {
+          "id": "3:6544364310381572510",
+          "name": "money"
+        },
+        {
+          "id": "4:5673342719805825692",
+          "name": "icon"
+        }
+      ]
     }
   ],
-  "lastEntityId": "2:5528200195561792985",
+  "lastEntityId": "3:3477530338111746945",
   "lastIndexId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 2,

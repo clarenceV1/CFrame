@@ -1,9 +1,17 @@
-package com.cai.work.bean.home;
+package com.cai.work.bean.respond;
 
-public class HomeData {
+public class LoginRespond {
     private int code;
     private String responseText;
-    private HomeItemData data;
+    private String data;
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
 
     public int getCode() {
         return code;
@@ -19,13 +27,5 @@ public class HomeData {
 
     public void setResponseText(String responseText) {
         this.responseText = responseText;
-    }
-
-    public HomeItemData getData() {
-        return data;
-    }
-
-    public void setData(HomeItemData data) {
-        this.data = data;
     }
 }

@@ -8,9 +8,10 @@ import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.bean.Account;
 import com.cai.work.bean.HomeDataSql;
-import com.cai.work.bean.home.HomeData;
+import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.common.RequestStore;
+import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.HomeDataSqlDAO;
 
 import javax.inject.Inject;
@@ -28,17 +29,14 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
     RequestStore requestStore;
     @Inject
     HomeDataSqlDAO homeDataSqlDAO;
-
+    @Inject
+    AccountDAO accountDAO;
     @Inject
     public MainHomePresenter() {
     }
 
     public Account getAccountInfo() {
-        Account account = new Account();
-        account.setMoney("1000000.00");
-        account.setName("1377****6287");
-        account.setIcon("http://img5.imgtn.bdimg.com/it/u=269889177,603310778&fm=27&gp=0.jpg");
-        return account;
+        return accountDAO.getData();
     }
 
     @Override
@@ -80,9 +78,9 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
 
     private void requestHomeData() {
         try {
-            Disposable disposable = requestStore.requestHomeData(new Consumer<HomeData>() {
+            Disposable disposable = requestStore.requestHomeData(new Consumer<HomeRespond>() {
                 @Override
-                public void accept(HomeData data) {
+                public void accept(HomeRespond data) {
                     mView.reFreshView(data.getData());
                 }
             }, new Consumer<Throwable>() {

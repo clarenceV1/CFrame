@@ -40,4 +40,12 @@ public class RequestStore {
                 .subscribe(onNext, onError);
         return disposable;
     }
+
+    public Disposable requestUserInfo(String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).getUserInfo(token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
 }

@@ -4,23 +4,25 @@ import com.example.clarence.datastorelibrary.store.share_preference.ISharePrefer
 
 import javax.inject.Inject;
 
+import dagger.Lazy;
+
 /**
  * Created by clarence on 2018/3/26.
  */
 
 public class DataStore {
     @Inject
-    ISharePreference sharePreference;
+    Lazy<ISharePreference> sharePreference;
 
     @Inject
     public DataStore() {
     }
 
-    public void setTitle(String key, String value) {
-        sharePreference.write(key, value);
+    public void setToken(String value) {
+        sharePreference.get().write("LOGIN_TOKEN", value);
     }
 
-    public String getTitle(String key, String defaultValue) {
-        return sharePreference.read(key, defaultValue);
+    public String getToken() {
+        return sharePreference.get().read("LOGIN_TOKEN", "");
     }
 }

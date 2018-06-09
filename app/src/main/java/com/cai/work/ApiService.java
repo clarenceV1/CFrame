@@ -1,13 +1,16 @@
 package com.cai.work;
 
-import com.cai.work.bean.LoginRequest;
-import com.cai.work.bean.home.HomeData;
+import com.cai.work.bean.respond.LoginRespond;
+import com.cai.work.bean.respond.HomeRespond;
+import com.cai.work.bean.respond.UserInfoRespond;
 
 import io.reactivex.Flowable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by clarence on 2018/1/12.
@@ -16,9 +19,12 @@ import retrofit2.http.POST;
 public interface ApiService {
 
     @GET("/app/index")
-    Flowable<HomeData> getHomeData();
+    Flowable<HomeRespond> getHomeData();
 
     @POST("app/login/index")
     @FormUrlEncoded
-    Flowable<LoginRequest> requestLogin(@Field("username") String username, @Field("password") String password);
+    Flowable<LoginRespond> requestLogin(@Field("username") String username, @Field("password") String password);
+
+    @GET("/app/member/index")
+    Flowable<UserInfoRespond> getUserInfo(@Query("token") String token);
 }

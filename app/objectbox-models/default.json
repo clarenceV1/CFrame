@@ -35,7 +35,7 @@
     },
     {
       "id": "3:3477530338111746945",
-      "lastPropertyId": "4:5673342719805825692",
+      "lastPropertyId": "7:9103497678757916729",
       "name": "Account",
       "properties": [
         {
@@ -43,16 +43,16 @@
           "name": "id"
         },
         {
-          "id": "2:2177891342076927090",
-          "name": "name"
+          "id": "5:5127628710708481246",
+          "name": "balance"
         },
         {
-          "id": "3:6544364310381572510",
-          "name": "money"
+          "id": "6:7038617365244913929",
+          "name": "mobile"
         },
         {
-          "id": "4:5673342719805825692",
-          "name": "icon"
+          "id": "7:9103497678757916729",
+          "name": "avatarUrl"
         }
       ]
     }
@@ -63,6 +63,10 @@
   "modelVersion": 2,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    2177891342076927090,
+    6544364310381572510,
+    5673342719805825692
+  ],
   "version": 1
 }

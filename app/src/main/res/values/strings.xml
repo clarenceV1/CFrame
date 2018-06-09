@@ -7,6 +7,7 @@
 
     <string name="app_name">金囤在线</string>
     <string name="no_net">请检查网络</string>
+    <string name="login">登录</string>
 
     <string name="main_tab_title_1">首页</string>
     <string name="main_tab_title_2">咨询</string>

@@ -56,12 +56,15 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
 
     private void initTopView() {
         Account account = presenter.getAccountInfo();
-        ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(account.getIcon()).build();
-        imageParams.setImageView(mViewBinding.ivIcon);
-        imageLoader.loadImage(this, imageParams);
+        if (account != null) {
+            ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(account.getAvatarUrl()).build();
+            imageParams.setImageView(mViewBinding.ivIcon);
+            imageLoader.loadImage(this, imageParams);
 
-        mViewBinding.tvAccount.setText(account.getName());
-
+            mViewBinding.tvAccount.setText(account.getMobile());
+        }else {
+            mViewBinding.tvAccount.setText(getResources().getString(R.string.login));
+        }
     }
 
     @Override
