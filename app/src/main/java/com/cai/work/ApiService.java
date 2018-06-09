@@ -1,5 +1,6 @@
 package com.cai.work;
 
+import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
@@ -27,4 +28,8 @@ public interface ApiService {
 
     @GET("/app/member/index")
     Flowable<UserInfoRespond> getUserInfo(@Query("token") String token);
+
+    @GET("/app/journal/index")
+    Flowable<FundDetailRespond> requestFundDetail(@Query("page") int page, @Query("token") String token);
+
 }

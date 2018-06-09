@@ -34,10 +34,14 @@ public class MainMineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     ILoadImage imageLoader;
     Context context;
 
-    public MainMineAdapter(Context context, ILoadImage imageLoader, List<IRecycleViewBaseData> dataList) {
-        this.dataList = dataList;
+    public MainMineAdapter(Context context, ILoadImage imageLoader) {
         this.imageLoader = imageLoader;
         this.context = context;
+    }
+
+    public void updateData(List<IRecycleViewBaseData> dataList) {
+        this.dataList = dataList;
+        notifyDataSetChanged();
     }
 
     public void setItemClickListener(OnItemClickListener onItemClickListener) {

@@ -13,6 +13,7 @@ import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.HomeDataSqlDAO;
+import com.example.clarence.utillibrary.StringUtils;
 
 import javax.inject.Inject;
 
@@ -42,7 +43,9 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
         Observable.create(new ObservableOnSubscribe<Account>() {
             @Override
             public void subscribe(ObservableEmitter<Account> observableEmitter) {
-                observableEmitter.onNext(accountDAO.getData());
+                Account account = accountDAO.getData();
+                account.setMobile(StringUtils.encryptMobile(account.getMobile()));
+                observableEmitter.onNext(account);
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

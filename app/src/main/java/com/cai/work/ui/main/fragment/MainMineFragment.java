@@ -22,6 +22,7 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
     MainMinePresenter presenter;
     @Inject
     ILoadImage imageLoader;
+    MainMineAdapter mainMineAdapter;
 
     @Override
     public int getLayoutId() {
@@ -46,7 +47,7 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
     private void initRecycleView() {
         LinearLayoutManager layoutmanager = new LinearLayoutManager(getContext());
         mViewBinding.mRecyclerView.setLayoutManager(layoutmanager);
-        MainMineAdapter mainMineAdapter = new MainMineAdapter(getContext(), imageLoader, presenter.getDatas());
+        mainMineAdapter = new MainMineAdapter(getContext(), imageLoader);
         mainMineAdapter.setItemClickListener(new MainMineAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int postion, IRecycleViewBaseData data) {
@@ -57,6 +58,11 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
             }
         });
         mViewBinding.mRecyclerView.setAdapter(mainMineAdapter);
+        presenter.getMineData();
     }
 
+    @Override
+    public void refreshData(List<IRecycleViewBaseData> dataList) {
+        mainMineAdapter.updateData(dataList);
+    }
 }

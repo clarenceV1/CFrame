@@ -1,14 +1,12 @@
 package com.cai.work.ui.welcome;
 
-import android.text.TextUtils;
-
 import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.R;
 import com.cai.work.bean.HomeDataSql;
-import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.HomeRespond;
+import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
@@ -63,7 +61,7 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
      * 请求首页数据
      * @return
      */
-    private Disposable requestHomeData() {
+    private void requestHomeData() {
         Disposable disposable = requestStore.requestHomeData(new Consumer<HomeRespond>() {
             @Override
             public void accept(HomeRespond data) {
@@ -91,14 +89,13 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
             }
         });
         mCompositeSubscription.add(disposable);
-        return disposable;
     }
 
     /**
      * 请求登录
      * @return
      */
-    private Disposable requestLogin() {
+    private void requestLogin() {
         String userName = "13276967598";
         String password = "123456";
         Disposable disposable = requestStore.requestLogin(userName, Md5Utils.md5(password), new Consumer<LoginRespond>() {
@@ -124,14 +121,13 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
             }
         });
         mCompositeSubscription.add(disposable);
-        return disposable;
     }
     /**
      * 请求用户数据
      * @param token
      * @return
      */
-    private Disposable requestUserInfo(String token) {
+    private void requestUserInfo(String token) {
         Disposable disposable = requestStore.requestUserInfo(token, new Consumer<UserInfoRespond>() {
             @Override
             public void accept(UserInfoRespond data) {
@@ -150,8 +146,8 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
             }
         });
         mCompositeSubscription.add(disposable);
-        return disposable;
     }
+
     private void requestAllEnd() {
         requestNum++;
         if (requestNum == REQUEST_ALL_NUM) {

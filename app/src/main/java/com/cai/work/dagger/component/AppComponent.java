@@ -2,6 +2,8 @@ package com.cai.work.dagger.component;
 
 import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.dagger.module.AppModule;
+import com.cai.work.ui.fund.FundDetailActivity;
+import com.cai.work.ui.fund.FundDetailPresenter;
 import com.cai.work.ui.listview.ListviewScollActivity;
 import com.cai.work.ui.main.MainActivity;
 import com.cai.work.ui.main.MainPresenter;
@@ -18,6 +20,9 @@ import dagger.Component;
  */
 @Component(modules = {AppModule.class, FrameWorkModule.class})
 public interface AppComponent {
+    void inject(WebActivity webActivity);
+
+    void inject(ListviewScollActivity listviewScollActivity);
 
     void inject(MainActivity mainActivity);
 
@@ -27,11 +32,11 @@ public interface AppComponent {
 
     void inject(MainHomeFragment mainHomeFragment);
 
-    void inject(WebActivity webActivity);
-
-    void inject(ListviewScollActivity listviewScollActivity);
-
     void inject(WelcomeActivity welcomeActivity);
 
     void inject(WelcomePresenter welcomePresenter);
+
+    void inject(FundDetailActivity fundDetailActivity);
+
+    void inject(FundDetailPresenter fundDetailPresenter);
 }

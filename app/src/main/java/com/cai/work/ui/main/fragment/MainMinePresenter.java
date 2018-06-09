@@ -1,16 +1,29 @@
 package com.cai.work.ui.main.fragment;
 
+import android.annotation.SuppressLint;
+
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
+import com.cai.work.bean.Account;
 import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineBottomData;
 import com.cai.work.bean.MineListData;
 import com.cai.work.bean.MineTopData;
+import com.cai.work.dao.AccountDAO;
+import com.example.clarence.utillibrary.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+
 public class MainMinePresenter extends GodBasePresenter<MineView> {
 
     private int[] names = new int[]{
@@ -25,16 +38,39 @@ public class MainMinePresenter extends GodBasePresenter<MineView> {
     };
 
     @Inject
+    AccountDAO accountDAO;
+
+    @Inject
     public MainMinePresenter() {
 
     }
 
+    @SuppressLint("CheckResult")
+    public void getMineData() {
+        Observable.create(new ObservableOnSubscribe<List<IRecycleViewBaseData>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<IRecycleViewBaseData>> observableEmitter) {
+                List<IRecycleViewBaseData> dataList = getDatas();
+                observableEmitter.onNext(dataList);
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<IRecycleViewBaseData>>() {
+                    @Override
+                    public void accept(List<IRecycleViewBaseData> dataList) {
+                        mView.refreshData(dataList);
+                    }
+                });
+    }
+
     public List<IRecycleViewBaseData> getDatas() {
         List<IRecycleViewBaseData> dataList = new ArrayList<>();
+        Account account = accountDAO.getData();
+        account.setMobile(StringUtils.encryptMobile(account.getMobile()));
         MineTopData topData = new MineTopData();
-        topData.setHeadIcon("http://img5.imgtn.bdimg.com/it/u=269889177,603310778&fm=27&gp=0.jpg");
-        topData.setAccount("13779926287");
-        topData.setMoney("1000000.00");
+        topData.setHeadIcon(account.getAvatarUrl());
+        topData.setAccount(account.getMobile());
+        topData.setMoney(account.getBalance());
         dataList.add(topData);
 
         MineListData listData;
