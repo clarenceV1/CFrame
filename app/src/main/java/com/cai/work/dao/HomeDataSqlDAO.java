@@ -2,6 +2,8 @@ package com.cai.work.dao;
 
 import com.cai.work.bean.HomeDataSql;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import io.objectbox.Box;
@@ -24,5 +26,14 @@ public class HomeDataSqlDAO {
         Box<HomeDataSql> box = boxStore.boxFor(HomeDataSql.class);
         box.removeAll();
         box.put(homeDataSql);
+    }
+
+    public HomeDataSql getHomeData() {
+        Box<HomeDataSql> box = boxStore.boxFor(HomeDataSql.class);
+        List<HomeDataSql> homeDataSqls = box.query().build().find();
+        if (homeDataSqls != null && homeDataSqls.size() > 0) {
+            return homeDataSqls.get(0);
+        }
+        return null;
     }
 }

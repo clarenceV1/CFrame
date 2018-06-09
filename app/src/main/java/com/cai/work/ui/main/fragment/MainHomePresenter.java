@@ -1,24 +1,33 @@
 package com.cai.work.ui.main.fragment;
 
+import android.annotation.SuppressLint;
+
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.lib.logger.Logger;
 import com.cai.work.bean.Account;
+import com.cai.work.bean.HomeDataSql;
 import com.cai.work.bean.home.HomeData;
-import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.common.RequestStore;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.cai.work.dao.HomeDataSqlDAO;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainHomePresenter extends GodBasePresenter<HomeView> {
     @Inject
     RequestStore requestStore;
+    @Inject
+    HomeDataSqlDAO homeDataSqlDAO;
 
     @Inject
     public MainHomePresenter() {
@@ -37,7 +46,39 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
         data.put(BaseLifecycleObserver.CLASS_NAME, "mainHomeFragment=====>");
     }
 
+    @SuppressLint("CheckResult")
     public void requestData() {
+      Observable.create(new ObservableOnSubscribe<HomeItemData>() {
+            @Override
+            public void subscribe(ObservableEmitter<HomeItemData> homeData) {
+                HomeDataSql homeDataSql = homeDataSqlDAO.getHomeData();
+                if (homeDataSql != null) {
+                    homeData.onNext(JSON.parseObject(homeDataSql.getData(),HomeItemData.class));
+                    Logger.d("获取到首页缓存数据成功");
+                } else {
+                    Logger.d("获取到首页缓存数据失败");
+                    homeData.onNext(null);
+                }
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<HomeItemData>() {
+                    @Override
+                    public void accept(HomeItemData homeData) {
+                        if (homeData != null) {
+                            mView.reFreshView(homeData);
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable){
+                        requestHomeData();
+                    }
+                });
+
+    }
+
+    private void requestHomeData() {
         try {
             Disposable disposable = requestStore.requestHomeData(new Consumer<HomeData>() {
                 @Override

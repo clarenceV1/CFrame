@@ -17,24 +17,9 @@
           "name": "name"
         }
       ]
-    },
-    {
-      "id": "2:5528200195561792985",
-      "lastPropertyId": "2:555132204453709703",
-      "name": "HomeDataSql",
-      "properties": [
-        {
-          "id": "1:2022610398692487490",
-          "name": "id"
-        },
-        {
-          "id": "2:555132204453709703",
-          "name": "data"
-        }
-      ]
     }
   ],
-  "lastEntityId": "2:5528200195561792985",
+  "lastEntityId": "1:3414538336612671490",
   "lastIndexId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 2,

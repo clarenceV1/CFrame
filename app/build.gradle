@@ -23,6 +23,9 @@ android {
 //        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
+        debug{
+
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -79,4 +82,5 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 
     compile rootProject.ext.dependencies["support-design"]
+    compile rootProject.ext.dependencies["fastjson"]
 }
