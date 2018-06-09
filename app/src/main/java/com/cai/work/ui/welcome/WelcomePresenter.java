@@ -5,11 +5,13 @@ import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.R;
 import com.cai.work.bean.HomeDataSql;
+import com.cai.work.bean.LoginRequest;
 import com.cai.work.bean.home.HomeData;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.dao.HomeDataSqlDAO;
+import com.example.clarence.utillibrary.Md5Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
 
 import javax.inject.Inject;
@@ -28,6 +30,9 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
     @Inject
     HomeDataSqlDAO homeDataSqlDAO;
 
+    private int requestNum;//已经请求过到数据个数
+    private final int REQUEST_ALL_NUM = 2;//  所要请求到个数
+
     @Inject
     public WelcomePresenter() {
 
@@ -42,7 +47,39 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
         if (!NetWorkUtil.isNetConnected(context)) {
             mView.toastNotice(context.getResources().getString(R.string.no_net));
             mView.goMainActivity();
+            return;
         }
+        requestHomeData();
+        requestLogin();
+    }
+
+    private Disposable requestLogin() {
+        String userName = "13276967598";
+        String password = "123456";
+        Disposable disposable = requestStore.requestLogin(userName,Md5Utils.md5(password), new Consumer<LoginRequest>() {
+            @Override
+            public void accept(LoginRequest data) {
+                if (data != null) {
+                    Logger.d("====>" + data.toString());
+                }
+                requestAllEnd();
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                if (NetWorkUtil.isNetConnected(context)) {
+                    Logger.d("请求首页数据失败！！！---有网络");
+                } else {
+                    Logger.d("请求首页数据失败！！！---没网络");
+                }
+                requestAllEnd();
+            }
+        });
+        mCompositeSubscription.add(disposable);
+        return disposable;
+    }
+
+    private Disposable requestHomeData() {
         Disposable disposable = requestStore.requestHomeData(new Consumer<HomeData>() {
             @Override
             public void accept(HomeData data) {
@@ -56,7 +93,7 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
                         Logger.d("请求首页数据有问题！！！");
                     }
                 }
-                mView.goMainActivity();
+                requestAllEnd();
             }
         }, new Consumer<Throwable>() {
             @Override
@@ -66,9 +103,17 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
                 } else {
                     Logger.d("请求首页数据失败！！！---没网络");
                 }
-                mView.goMainActivity();
+                requestAllEnd();
             }
         });
         mCompositeSubscription.add(disposable);
+        return disposable;
+    }
+
+    private void requestAllEnd() {
+        requestNum++;
+        if (requestNum == REQUEST_ALL_NUM) {
+            mView.goMainActivity();
+        }
     }
 }
