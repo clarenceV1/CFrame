@@ -44,8 +44,8 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
 
     @Override
     public void initView(View view) {
-        initTopView();
         initRecycleView();
+        presenter.getAccountInfo();
         presenter.requestData();
     }
 
@@ -54,18 +54,6 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
         mViewBinding.mRecyclerView.setLayoutManager(layoutmanager);
     }
 
-    private void initTopView() {
-        Account account = presenter.getAccountInfo();
-        if (account != null) {
-            ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(account.getAvatarUrl()).build();
-            imageParams.setImageView(mViewBinding.ivIcon);
-            imageLoader.loadImage(this, imageParams);
-
-            mViewBinding.tvAccount.setText(account.getMobile());
-        }else {
-            mViewBinding.tvAccount.setText(getResources().getString(R.string.login));
-        }
-    }
 
     @Override
     public void reFreshView(HomeItemData data) {
@@ -76,5 +64,18 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
     @Override
     public void requestError(String data) {
         Logger.d(data);
+    }
+
+    @Override
+    public void reFreshTopView(Account account) {
+        if (account != null) {
+            ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(account.getAvatarUrl()).build();
+            imageParams.setImageView(mViewBinding.ivIcon);
+            imageLoader.loadImage(this, imageParams);
+
+            mViewBinding.tvAccount.setText(account.getMobile());
+        }else {
+            mViewBinding.tvAccount.setText(getResources().getString(R.string.login));
+        }
     }
 }

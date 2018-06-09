@@ -75,6 +75,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
                 return tabClick(position, fragmentName);
             }
         });
+        mViewBinding.mainTab0.performClick();
     }
 
     private boolean tabClick(int position, String fragmentName) {

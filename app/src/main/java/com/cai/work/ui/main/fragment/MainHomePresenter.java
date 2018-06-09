@@ -19,6 +19,7 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -31,12 +32,26 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
     HomeDataSqlDAO homeDataSqlDAO;
     @Inject
     AccountDAO accountDAO;
+
     @Inject
     public MainHomePresenter() {
     }
 
-    public Account getAccountInfo() {
-        return accountDAO.getData();
+    @SuppressLint("CheckResult")
+    public void getAccountInfo() {
+        Observable.create(new ObservableOnSubscribe<Account>() {
+            @Override
+            public void subscribe(ObservableEmitter<Account> observableEmitter) {
+                observableEmitter.onNext(accountDAO.getData());
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Account>() {
+                    @Override
+                    public void accept(Account account) {
+                        mView.reFreshTopView(account);
+                    }
+                });
     }
 
     @Override
@@ -46,12 +61,12 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
 
     @SuppressLint("CheckResult")
     public void requestData() {
-      Observable.create(new ObservableOnSubscribe<HomeItemData>() {
+        Observable.create(new ObservableOnSubscribe<HomeItemData>() {
             @Override
             public void subscribe(ObservableEmitter<HomeItemData> homeData) {
                 HomeDataSql homeDataSql = homeDataSqlDAO.getHomeData();
                 if (homeDataSql != null) {
-                    homeData.onNext(JSON.parseObject(homeDataSql.getData(),HomeItemData.class));
+                    homeData.onNext(JSON.parseObject(homeDataSql.getData(), HomeItemData.class));
                     Logger.d("获取到首页缓存数据成功");
                 } else {
                     Logger.d("获取到首页缓存数据失败");
@@ -69,7 +84,7 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
                     }
                 }, new Consumer<Throwable>() {
                     @Override
-                    public void accept(Throwable throwable){
+                    public void accept(Throwable throwable) {
                         requestHomeData();
                     }
                 });

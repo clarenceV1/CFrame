@@ -4,69 +4,65 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:3414538336612671490",
-      "lastPropertyId": "2:7261835669482404724",
+      "id": "1:860363883005073981",
+      "lastPropertyId": "2:4298642657539539488",
       "name": "User",
       "properties": [
         {
-          "id": "1:3233219791218187627",
+          "id": "1:693270286144123126",
           "name": "id"
         },
         {
-          "id": "2:7261835669482404724",
+          "id": "2:4298642657539539488",
           "name": "name"
         }
       ]
     },
     {
-      "id": "2:5528200195561792985",
-      "lastPropertyId": "2:555132204453709703",
-      "name": "HomeDataSql",
+      "id": "2:6905634692392613875",
+      "lastPropertyId": "4:9183463363231810212",
+      "name": "Account",
       "properties": [
         {
-          "id": "1:2022610398692487490",
+          "id": "1:7500845243903636408",
           "name": "id"
         },
         {
-          "id": "2:555132204453709703",
-          "name": "data"
+          "id": "2:3751355986429938285",
+          "name": "balance"
+        },
+        {
+          "id": "3:9063365721909991722",
+          "name": "mobile"
+        },
+        {
+          "id": "4:9183463363231810212",
+          "name": "avatarUrl"
         }
       ]
     },
     {
-      "id": "3:3477530338111746945",
-      "lastPropertyId": "7:9103497678757916729",
-      "name": "Account",
+      "id": "3:3058473060516162951",
+      "lastPropertyId": "2:8297752145147179361",
+      "name": "HomeDataSql",
       "properties": [
         {
-          "id": "1:3985880296357063365",
+          "id": "1:7878415734164021925",
           "name": "id"
         },
         {
-          "id": "5:5127628710708481246",
-          "name": "balance"
-        },
-        {
-          "id": "6:7038617365244913929",
-          "name": "mobile"
-        },
-        {
-          "id": "7:9103497678757916729",
-          "name": "avatarUrl"
+          "id": "2:8297752145147179361",
+          "name": "data"
         }
       ]
     }
   ],
-  "lastEntityId": "3:3477530338111746945",
+  "lastEntityId": "3:3058473060516162951",
   "lastIndexId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 2,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [
-    2177891342076927090,
-    6544364310381572510,
-    5673342719805825692
-  ],
+  "retiredPropertyUids": [],
   "version": 1
 }
