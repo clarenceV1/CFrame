@@ -32,7 +32,6 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     MainPresenter mainPresenter;
 
     List<MainTabView> tabViewList = new ArrayList<>();
-    FragmentManager fragmentManager;
     Map<String, WeakReference<Fragment>> fragmentMap = new HashMap<>();
 
     @Override
@@ -59,7 +58,6 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     @Override
     public void initView() {
         initTabView();
-        fragmentManager = getSupportFragmentManager();
     }
 
     private void initTabView() {
@@ -105,7 +103,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         if (fragment == null) {
             return false;
         }
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.flMainContainer, fragment);
         transaction.commit();
         return true;

@@ -10,7 +10,6 @@ import javax.inject.Singleton;
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
 
-@Singleton
 public class AccountDAO {
 
     @Inject
