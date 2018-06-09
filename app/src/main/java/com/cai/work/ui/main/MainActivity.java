@@ -1,8 +1,10 @@
 package com.cai.work.ui.main;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -14,7 +16,11 @@ import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainBinding;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -22,12 +28,12 @@ import javax.inject.Inject;
 public class MainActivity extends AppBaseActivity<MainBinding> implements MainView {
     @Inject
     ILoadImage imageLoader;
-
     @Inject
     MainPresenter mainPresenter;
 
-    @Inject
-    TabManager tabManager;
+    List<MainTabView> tabViewList = new ArrayList<>();
+    FragmentManager fragmentManager;
+    Map<String, WeakReference<Fragment>> fragmentMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,33 +59,54 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     @Override
     public void initView() {
         initTabView();
+        fragmentManager = getSupportFragmentManager();
     }
 
     private void initTabView() {
-        ViewPager viewPager = mViewBinding.mViewPager;
-        viewPager.setOffscreenPageLimit(5);
-        MainAdapter mPagerAdapter = new MainAdapter(this,getSupportFragmentManager());
-        viewPager.setAdapter(mPagerAdapter);
+        tabViewList.add(MainTabView.creatTabView(mViewBinding.mainTab0, 0));
+        tabViewList.add(MainTabView.creatTabView(mViewBinding.mainTab1, 1));
+        tabViewList.add(MainTabView.creatTabView(mViewBinding.mainTab2, 2));
+        tabViewList.add(MainTabView.creatTabView(mViewBinding.mainTab3, 3));
+        tabViewList.add(MainTabView.creatTabView(mViewBinding.mainTab4, 4));
 
-        mViewBinding.mTabLayout.setupWithViewPager(mViewBinding.mViewPager);
-        tabManager.addTab(this, mViewBinding.mTabLayout,viewPager);
-        mViewBinding.mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        MainTabView.setOnTabClickListener(new MainTabView.OnTabClickListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                tabManager.changeTabStatus(tab, true);
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                tabManager.changeTabStatus(tab, false);
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+            public boolean onClick(View view, int position, String fragmentName) {
+                return tabClick(position, fragmentName);
             }
         });
     }
 
+    private boolean tabClick(int position, String fragmentName) {
+        if (TextUtils.isEmpty(fragmentName)) {
+            return false;
+        }
+        Fragment fragment;
+        WeakReference<Fragment> fragmentWeakReference = fragmentMap.get(fragmentName);
+        if (fragmentWeakReference != null && fragmentWeakReference.get() != null) {
+            fragment = fragmentWeakReference.get();
+        } else {
+            fragment = creatFragment(fragmentName);
+            fragmentMap.put(fragmentName, new WeakReference<>(fragment));
+        }
+        return switchFragment(fragment);
+    }
 
+    public Fragment creatFragment(String fragmentName) {
+        if (TextUtils.isEmpty(fragmentName)) {
+            return null;
+        }
+        Bundle bundle = new Bundle();
+        return Fragment.instantiate(this, fragmentName, bundle);
+    }
+
+    private boolean switchFragment(Fragment fragment) {
+        if (fragment == null) {
+            return false;
+        }
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.flMainContainer, fragment);
+        transaction.commit();
+        return true;
+    }
 }

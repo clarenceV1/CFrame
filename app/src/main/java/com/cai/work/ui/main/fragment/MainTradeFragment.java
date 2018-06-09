@@ -9,6 +9,9 @@ import com.cai.work.databinding.MainTradeFragmentBinding;
 
 import java.util.List;
 
+/**
+ * 交易
+ */
 public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding> {
 
     @Override

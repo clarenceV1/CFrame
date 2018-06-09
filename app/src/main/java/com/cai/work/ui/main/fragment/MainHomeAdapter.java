@@ -189,7 +189,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             }
         }
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.homeForwardContainer, fragment);
+        transaction.replace(R.id.homeForwardContainer, fragment);
         transaction.commit();
     }
 
