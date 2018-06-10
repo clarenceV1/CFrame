@@ -37,7 +37,7 @@ public class BankCardListActivity extends AppBaseActivity<BankCardListBinding> i
 
     @Override
     public void initView() {
-        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.bank_title));
+        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.bank_card_title));
         mViewBinding.commonHeadView.ivGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

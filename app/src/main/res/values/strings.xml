@@ -8,6 +8,10 @@
     <string name="app_name">金囤在线</string>
     <string name="no_net">请检查网络</string>
     <string name="login">登录</string>
+    <string name="fund_detail_title">资金明细</string>
+    <string name="message_title">消息中心</string>
+    <string name="btn_add">立即添加</string>
+    <string name="btn_delete">删除</string>
 
     <string name="main_tab_title_1">首页</string>
     <string name="main_tab_title_2">咨询</string>
@@ -48,10 +52,10 @@
     <string name="home_forward_tab_title_2">国内期货</string>
     <string name="home_trade_ing">交易中</string>
     <string name="home_trade_end">休市中</string>
-    <string name="fund_detail_title">资金明细</string>
+
     <string name="bank_type">储蓄卡</string>
     <string name="bank_add_bank">+添加银行卡</string>
-    <string name="bank_title">银行卡管理</string>
+    <string name="bank_card_title">银行卡管理</string>
     <string name="bank_add_real_name">真实姓名</string>
     <string name="bank_add_real_name_hint">请输入您的真实姓名</string>
     <string name="bank_add_bank_num">银行卡号</string>
@@ -62,7 +66,7 @@
     <string name="bank_add_zone_hint">请选择地址</string>
     <string name="bank_add_bank_name">开户行</string>
     <string name="bank_add_bank_name_hint">请输入开户行</string>
-    <string name="btn_add">立即添加</string>
     <string name="bank_add_title">添加银行卡</string>
+    <string name="message_clean">清空</string>
 
 </resources>

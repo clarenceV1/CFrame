@@ -13,6 +13,8 @@ import com.cai.work.ui.main.MainActivity;
 import com.cai.work.ui.main.MainPresenter;
 import com.cai.work.ui.main.fragment.MainHomeFragment;
 import com.cai.work.ui.main.fragment.MainMineFragment;
+import com.cai.work.ui.message.MessageActivity;
+import com.cai.work.ui.message.MessagePresenter;
 import com.cai.work.ui.web.WebActivity;
 import com.cai.work.ui.welcome.WelcomeActivity;
 import com.cai.work.ui.welcome.WelcomePresenter;
@@ -51,5 +53,10 @@ public interface AppComponent {
     void inject(AddBankCardActivity bankAddActivity);
 
     void inject(AddBankCardPresenter bankAddPresenter);
+
+    void inject(MessageActivity messageActivity);
+
+    void inject(MessagePresenter messagePresenter);
+
 
 }

@@ -6,6 +6,7 @@ import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.HomeRespond;
+import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 
 import io.reactivex.Flowable;
@@ -43,4 +44,12 @@ public interface ApiService {
 
     @GET("/app/bankCard/getBanks")
     Flowable<BankListRespond> getBankList(@Query("token") String token);
+
+    @GET("/app/message/index")
+    Flowable<MessageRespond> getMessage(@Query("page") int page, @Query("token") String token);
+
+    @POST("/app/login/index")
+    @FormUrlEncoded
+    Flowable<MessageRespond> deleteMessage(@Field("ids") int ids, @Field("token") String token);
+
 }

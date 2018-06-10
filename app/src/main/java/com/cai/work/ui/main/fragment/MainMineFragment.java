@@ -62,6 +62,9 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
                         case 2:
                             ARouter.getInstance().build("/AppModule/BankCardListActivity").navigation();
                             break;
+                        case 3:
+                            ARouter.getInstance().build("/AppModule/MessageActivity").navigation();
+                            break;
                     }
                 }
             }

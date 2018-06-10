@@ -3,7 +3,9 @@
 
     <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <ImageView
             android:id="@+id/ivGoBack"
@@ -18,5 +20,16 @@
             android:layout_centerInParent="true"
             android:textSize="22sp"
             tools:text="标题" />
+
+        <TextView
+            android:id="@+id/tvRight"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:textSize="22sp"
+            tools:text="清空"
+            android:visibility="gone"
+            tools:visibility="visible"/>
     </RelativeLayout>
 </layout>

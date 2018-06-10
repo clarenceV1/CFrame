@@ -67,14 +67,32 @@ public class RequestStore {
 
 
     public Disposable requestAddBankCard(String realname, String cardNo, String bankId, String branchName, String token, Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request().create(ApiService.class).requestAddBankCard(realname,cardNo,bankId,branchName,token)
+        Disposable disposable = iNet.request().create(ApiService.class).requestAddBankCard(realname, cardNo, bankId, branchName, token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
         return disposable;
     }
+
     public Disposable getBankList(String token, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).getBankList(token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+
+    public Disposable getMessage(int page, String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).getMessage(page, token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable deleteMessage(int ids, String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).deleteMessage(ids, token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
