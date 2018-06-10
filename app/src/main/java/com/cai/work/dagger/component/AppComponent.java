@@ -2,6 +2,8 @@ package com.cai.work.dagger.component;
 
 import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.dagger.module.AppModule;
+import com.cai.work.ui.bank.BankListActivity;
+import com.cai.work.ui.bank.BankListPresenter;
 import com.cai.work.ui.fund.FundDetailActivity;
 import com.cai.work.ui.fund.FundDetailPresenter;
 import com.cai.work.ui.listview.ListviewScollActivity;
@@ -39,4 +41,9 @@ public interface AppComponent {
     void inject(FundDetailActivity fundDetailActivity);
 
     void inject(FundDetailPresenter fundDetailPresenter);
+
+    void inject(BankListActivity bankActivity);
+
+    void inject(BankListPresenter bankPresenter);
+
 }

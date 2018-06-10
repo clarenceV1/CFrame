@@ -3,6 +3,7 @@ package com.cai.work.ui.main.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseFragment;
@@ -54,6 +55,14 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
                 if (data instanceof MineListData) {
                     MineListData mineListData = (MineListData) data;
                     ToastUtils.showShort(getActivity().getResources().getString(mineListData.getItemName()));
+                    switch (postion){
+                        case 1:
+                            ARouter.getInstance().build("/AppModule/FundDetailActivity").navigation();
+                            break;
+                        case 2:
+                            ARouter.getInstance().build("/AppModule/BankListActivity").navigation();
+                            break;
+                    }
                 }
             }
         });

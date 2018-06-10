@@ -1,11 +1,13 @@
 package com.cai.work.bean.respond;
 
-import com.cai.work.bean.FundDetail;
+import com.cai.work.bean.Bank;
 
-public class FundDetailRespond {
+import java.util.List;
+
+public class BankListRespond {
     private int code;
     private String responseText;
-    private FundDetail data;
+    private List<Bank> data;
 
     public int getCode() {
         return code;
@@ -23,11 +25,11 @@ public class FundDetailRespond {
         this.responseText = responseText;
     }
 
-    public FundDetail getData() {
+    public List<Bank> getData() {
         return data;
     }
 
-    public void setData(FundDetail data) {
+    public void setData(List<Bank> data) {
         this.data = data;
     }
 }

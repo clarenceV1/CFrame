@@ -1,10 +1,12 @@
 package com.cai.work.bean;
 
-public class FundDetail {
+import java.util.List;
+
+public class FundDetail{
     private int total;
     private int total_page;
     private int current;
-    private FundDetailItem data;
+    private List<FundDetailItem> data;
 
     public int getTotal() {
         return total;
@@ -30,11 +32,11 @@ public class FundDetail {
         this.current = current;
     }
 
-    public FundDetailItem getData() {
+    public List<FundDetailItem> getData() {
         return data;
     }
 
-    public void setData(FundDetailItem data) {
+    public void setData(List<FundDetailItem> data) {
         this.data = data;
     }
 }

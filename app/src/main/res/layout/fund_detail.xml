@@ -6,6 +6,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <include
+            android:id="@+id/commonHeadView"
+            layout="@layout/common_head" />
+
         <com.cai.framework.pull.PullToRefreshListView
             android:id="@+id/pullListView"
             android:layout_width="match_parent"

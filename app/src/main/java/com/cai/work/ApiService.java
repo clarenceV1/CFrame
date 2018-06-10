@@ -1,5 +1,6 @@
 package com.cai.work;
 
+import com.cai.work.bean.respond.BankListRespond;
 import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.HomeRespond;
@@ -32,4 +33,6 @@ public interface ApiService {
     @GET("/app/journal/index")
     Flowable<FundDetailRespond> requestFundDetail(@Query("page") int page, @Query("token") String token);
 
+    @GET("/app/bankCard")
+    Flowable<BankListRespond> requestBankList(@Query("token") String token);
 }
