@@ -33,10 +33,12 @@ public class MainMineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     ILoadImage imageLoader;
     Context context;
+    MainMinePresenter presenter;
 
-    public MainMineAdapter(Context context, ILoadImage imageLoader) {
+    public MainMineAdapter(Context context, ILoadImage imageLoader, MainMinePresenter presenter) {
         this.imageLoader = imageLoader;
         this.context = context;
+        this.presenter = presenter;
     }
 
     public void updateData(List<IRecycleViewBaseData> dataList) {
@@ -118,7 +120,7 @@ public class MainMineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         bottomViewHolder.btnQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("安全退出");
+                presenter.loginOut();
             }
         });
     }

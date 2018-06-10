@@ -73,5 +73,9 @@
     <string name="red_packet_use">已使用</string>
     <string name="red_packet_overdue">已过期</string>
     <string name="red_packet_titile">我的红包</string>
+    <string name="login_titile">登录</string>
+    <string name="login_mobile_hint">请输入手机号码</string>
+    <string name="login_save_password">保存密码</string>
+    <string name="login_forget_password">忘记密码</string>
 
 </resources>

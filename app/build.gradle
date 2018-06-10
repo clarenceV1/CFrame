@@ -72,7 +72,6 @@ dependencies {
 //    compile project(':LibAnnotation')
     compile project(':LibFrameWork')
 
-
     compile rootProject.ext.dependencies["dagger"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
 

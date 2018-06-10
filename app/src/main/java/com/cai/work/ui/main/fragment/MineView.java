@@ -11,4 +11,6 @@ import java.util.List;
 
 public interface MineView extends GodBaseView {
      void refreshData(List<IRecycleViewBaseData> dataList);
+
+     void loginOut();
 }

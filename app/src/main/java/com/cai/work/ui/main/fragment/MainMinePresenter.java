@@ -9,6 +9,7 @@ import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineBottomData;
 import com.cai.work.bean.MineListData;
 import com.cai.work.bean.MineTopData;
+import com.cai.work.common.DataStore;
 import com.cai.work.dao.UserDAO;
 import com.example.clarence.utillibrary.StringUtils;
 
@@ -38,7 +39,9 @@ public class MainMinePresenter extends GodBasePresenter<MineView> {
     };
 
     @Inject
-    UserDAO accountDAO;
+    UserDAO userDAO;
+    @Inject
+    DataStore dataStore;
 
     @Inject
     public MainMinePresenter() {
@@ -53,7 +56,7 @@ public class MainMinePresenter extends GodBasePresenter<MineView> {
                 List<IRecycleViewBaseData> dataList = getDatas();
                 observableEmitter.onNext(dataList);
             }
-        }).subscribeOn(Schedulers.io())
+        }).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<IRecycleViewBaseData>>() {
                     @Override
@@ -65,7 +68,7 @@ public class MainMinePresenter extends GodBasePresenter<MineView> {
 
     public List<IRecycleViewBaseData> getDatas() {
         List<IRecycleViewBaseData> dataList = new ArrayList<>();
-        User account = accountDAO.getData();
+        User account = userDAO.getData();
         account.setMobile(StringUtils.encryptMobile(account.getMobile()));
         MineTopData topData = new MineTopData();
         topData.setHeadIcon(account.getAvatarUrl());
@@ -88,5 +91,24 @@ public class MainMinePresenter extends GodBasePresenter<MineView> {
     @Override
     public void onAttached() {
 
+    }
+
+    @SuppressLint("CheckResult")
+    public void loginOut() {
+        Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> result) {
+                userDAO.deleteAll();
+                dataStore.setToken("");
+                result.onNext("");
+            }
+        }).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String dataList) {
+                        mView.loginOut();
+                    }
+                });
     }
 }

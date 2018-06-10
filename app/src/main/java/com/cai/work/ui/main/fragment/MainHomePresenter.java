@@ -15,6 +15,9 @@ import com.cai.work.dao.UserDAO;
 import com.cai.work.dao.HomeDataSqlDAO;
 import com.example.clarence.utillibrary.StringUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
@@ -31,7 +34,7 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
     @Inject
     HomeDataSqlDAO homeDataSqlDAO;
     @Inject
-    UserDAO accountDAO;
+    UserDAO userDAO;
 
     @Inject
     public MainHomePresenter() {
@@ -39,19 +42,23 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
 
     @SuppressLint("CheckResult")
     public void getAccountInfo() {
-        Observable.create(new ObservableOnSubscribe<User>() {
+        Observable.create(new ObservableOnSubscribe<Map<String, User>>() {
             @Override
-            public void subscribe(ObservableEmitter<User> observableEmitter) {
-                User account = accountDAO.getData();
-                account.setMobile(StringUtils.encryptMobile(account.getMobile()));
-                observableEmitter.onNext(account);
+            public void subscribe(ObservableEmitter<Map<String, User>> observableEmitter) {
+                Map<String, User> map = new HashMap<>();
+                User user = userDAO.getData();
+                if (user != null) {
+                    user.setMobile(StringUtils.encryptMobile(user.getMobile()));
+                    map.put("user", user);
+                }
+                observableEmitter.onNext(map);
             }
-        }).subscribeOn(Schedulers.io())
+        }).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<User>() {
+                .subscribe(new Consumer<Map<String, User>>() {
                     @Override
-                    public void accept(User account) {
-                        mView.reFreshTopView(account);
+                    public void accept(Map<String, User> map) {
+                        mView.reFreshTopView(map.get("user"));
                     }
                 });
     }
@@ -75,7 +82,7 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
                     homeData.onNext(null);
                 }
             }
-        }).subscribeOn(Schedulers.io())
+        }).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<HomeItemData>() {
                     @Override

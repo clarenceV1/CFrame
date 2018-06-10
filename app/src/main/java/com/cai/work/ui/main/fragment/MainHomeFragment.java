@@ -75,17 +75,22 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
     }
 
     @Override
-    public void reFreshTopView(User account) {
-        if (account != null) {
-            ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(account.getAvatarUrl()).build();
+    public void reFreshTopView(User user) {
+        refreshTopView(user);
+    }
+
+    private void refreshTopView(User user) {
+        if (user != null) {
+            ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(user.getAvatarUrl()).build();
             imageParams.setImageView(mViewBinding.ivIcon);
             imageLoader.loadImage(this, imageParams);
 
             mViewBinding.llUserInfo.setClickable(false);
-            mViewBinding.tvAccount.setText(account.getMobile());
+            mViewBinding.tvAccount.setText(user.getMobile());
         } else {
             mViewBinding.tvAccount.setText(getResources().getString(R.string.login));
             mViewBinding.llUserInfo.setClickable(true);
+            mViewBinding.ivIcon.setImageResource(R.drawable.ic_launcher);
         }
     }
 }

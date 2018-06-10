@@ -57,6 +57,10 @@ public class MainTabView {
         setFragmentName();
     }
 
+    public String getFragmentName() {
+        return fragmentName;
+    }
+
     private void setFragmentName() {
         switch (position) {
             case 0:

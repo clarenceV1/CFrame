@@ -34,4 +34,9 @@ public class UserDAO {
         }
         return null;
     }
+
+    public void deleteAll(){
+        Box<User> box = boxStore.boxFor(User.class);
+        box.removeAll();
+    }
 }

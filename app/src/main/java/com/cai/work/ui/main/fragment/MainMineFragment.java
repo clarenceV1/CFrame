@@ -11,9 +11,11 @@ import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineListData;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainMineFragmentBinding;
-import com.cai.work.ui.redPacket.RedPacketActivity;
+import com.cai.work.event.LoginOutEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -49,7 +51,7 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
     private void initRecycleView() {
         LinearLayoutManager layoutmanager = new LinearLayoutManager(getContext());
         mViewBinding.mRecyclerView.setLayoutManager(layoutmanager);
-        mainMineAdapter = new MainMineAdapter(getContext(), imageLoader);
+        mainMineAdapter = new MainMineAdapter(getContext(), imageLoader,presenter);
         mainMineAdapter.setItemClickListener(new MainMineAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int postion, IRecycleViewBaseData data) {
@@ -80,5 +82,10 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
     @Override
     public void refreshData(List<IRecycleViewBaseData> dataList) {
         mainMineAdapter.updateData(dataList);
+    }
+
+    @Override
+    public void loginOut() {
+        EventBus.getDefault().post(new LoginOutEvent());
     }
 }

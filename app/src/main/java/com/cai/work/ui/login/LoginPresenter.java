@@ -38,7 +38,7 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
      *
      * @return
      */
-    private void requestLogin(String userName, String password) {
+    public void requestLogin(String userName, String password, boolean isSavePassword) {
         Disposable disposable = requestStore.requestLogin(userName, Md5Utils.md5(password), new Consumer<LoginRespond>() {
             @Override
             public void accept(LoginRespond data) {

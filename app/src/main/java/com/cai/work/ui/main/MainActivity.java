@@ -2,19 +2,23 @@ package com.cai.work.ui.main;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainBinding;
+import com.cai.work.event.LoginOutEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
+import com.example.clarence.utillibrary.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -37,7 +41,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        ARouter.getInstance().inject(this);
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -70,16 +74,21 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         MainTabView.setOnTabClickListener(new MainTabView.OnTabClickListener() {
             @Override
             public boolean onClick(View view, int position, String fragmentName) {
-                return tabClick(position, fragmentName);
+                if (!mainPresenter.isLogin()) {
+                    ToastUtils.showShort("你还没弹对话框呢");
+                    return false;
+                }
+                return tabClick(fragmentName);
             }
         });
         mViewBinding.mainTab0.performClick();
     }
 
-    private boolean tabClick(int position, String fragmentName) {
+    private boolean tabClick(String fragmentName) {
         if (TextUtils.isEmpty(fragmentName)) {
             return false;
         }
+
         Fragment fragment;
         WeakReference<Fragment> fragmentWeakReference = fragmentMap.get(fragmentName);
         if (fragmentWeakReference != null && fragmentWeakReference.get() != null) {
@@ -107,5 +116,16 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         transaction.replace(R.id.flMainContainer, fragment);
         transaction.commit();
         return true;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void loginOut(LoginOutEvent event) {
+        tabClick(tabViewList.get(0).getFragmentName());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
