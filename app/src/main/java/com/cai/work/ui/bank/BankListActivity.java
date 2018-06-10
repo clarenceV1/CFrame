@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
@@ -45,6 +46,12 @@ public class BankListActivity extends AppBaseActivity<BankListBinding> implement
         });
         adapter = new BankListAdapter(this, imageLoader);
         View footer = LayoutInflater.from(this).inflate(R.layout.bank_footer, null);
+        footer.findViewById(R.id.btnAddBank).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/BankAddActivity").navigation();
+            }
+        });
         mViewBinding.listView.addFooterView(footer);
         mViewBinding.listView.setAdapter(adapter);
         presenter.getData();

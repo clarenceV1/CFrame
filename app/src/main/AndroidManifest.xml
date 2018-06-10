@@ -24,6 +24,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.bank.AddBankCardActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.bank.BankListActivity"
             android:screenOrientation="portrait" />
         <activity

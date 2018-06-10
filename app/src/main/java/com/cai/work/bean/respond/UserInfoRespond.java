@@ -2,26 +2,8 @@ package com.cai.work.bean.respond;
 
 import com.cai.work.bean.Account;
 
-public class UserInfoRespond {
-    private int code;
-    private String responseText;
+public class UserInfoRespond extends BaseRespond {
     private Account data;
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getResponseText() {
-        return responseText;
-    }
-
-    public void setResponseText(String responseText) {
-        this.responseText = responseText;
-    }
 
     public Account getData() {
         return data;

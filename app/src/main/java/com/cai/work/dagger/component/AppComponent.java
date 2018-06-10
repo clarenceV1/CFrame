@@ -2,6 +2,8 @@ package com.cai.work.dagger.component;
 
 import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.dagger.module.AppModule;
+import com.cai.work.ui.bank.AddBankCardActivity;
+import com.cai.work.ui.bank.AddBankCardPresenter;
 import com.cai.work.ui.bank.BankListActivity;
 import com.cai.work.ui.bank.BankListPresenter;
 import com.cai.work.ui.fund.FundDetailActivity;
@@ -45,5 +47,9 @@ public interface AppComponent {
     void inject(BankListActivity bankActivity);
 
     void inject(BankListPresenter bankPresenter);
+
+    void inject(AddBankCardActivity bankAddActivity);
+
+    void inject(AddBankCardPresenter bankAddPresenter);
 
 }

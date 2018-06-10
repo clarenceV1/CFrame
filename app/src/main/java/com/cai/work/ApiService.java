@@ -1,6 +1,7 @@
 package com.cai.work;
 
 import com.cai.work.bean.respond.BankListRespond;
+import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.HomeRespond;
@@ -23,7 +24,7 @@ public interface ApiService {
     @GET("/app/index")
     Flowable<HomeRespond> getHomeData();
 
-    @POST("app/login/index")
+    @POST("/app/login/index")
     @FormUrlEncoded
     Flowable<LoginRespond> requestLogin(@Field("username") String username, @Field("password") String password);
 
@@ -35,4 +36,8 @@ public interface ApiService {
 
     @GET("/app/bankCard")
     Flowable<BankListRespond> requestBankList(@Query("token") String token);
+
+    @POST("/app/bankCard/addCard")
+    @FormUrlEncoded
+    Flowable<BaseRespond> requestAddBankCard(@Field("realname") String realname, @Field("cardNo") String cardNo, @Field("bankId") String bankId, @Field("branchName") String branchName, @Field("token") String token);
 }
