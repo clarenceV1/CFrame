@@ -68,5 +68,6 @@
     <string name="bank_add_bank_name_hint">请输入开户行</string>
     <string name="bank_add_title">添加银行卡</string>
     <string name="message_clean">清空</string>
+    <string name="no_data">暂无数据</string>
 
 </resources>

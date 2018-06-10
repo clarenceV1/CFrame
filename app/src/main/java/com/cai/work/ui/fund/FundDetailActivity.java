@@ -53,6 +53,8 @@ public class FundDetailActivity extends AppBaseActivity<FundDetailBinding> imple
         listView.setAdapter(adapter);
         PullToRefreshBase.Mode.isShowFooterLoadingView = false;
         mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+        View emptyView = LayoutInflater.from(this).inflate(R.layout.empty_view,null);
+        mViewBinding.pullListView.setEmptyView(emptyView);
         // Add an end-of-list listener
         mViewBinding.pullListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
             @Override

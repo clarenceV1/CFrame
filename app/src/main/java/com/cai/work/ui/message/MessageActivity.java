@@ -62,6 +62,8 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
         adapter = new MessageAdapter(this, presenter);
         listView.setAdapter(adapter);
         PullToRefreshBase.Mode.isShowFooterLoadingView = false;
+        View emptyView = LayoutInflater.from(this).inflate(R.layout.empty_view,null);
+        mViewBinding.pullListView.setEmptyView(emptyView);
         mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
         mViewBinding.pullListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
             @Override
