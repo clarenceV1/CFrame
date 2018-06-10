@@ -2,7 +2,7 @@ package com.cai.work.bean;
 
 import com.cai.framework.bean.CBaseData;
 
-public class Bank implements CBaseData {
+public class BankCard implements CBaseData {
     private int id;
     private String cardNo;
     private String bankName;

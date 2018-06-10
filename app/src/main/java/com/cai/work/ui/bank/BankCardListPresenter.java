@@ -2,7 +2,7 @@ package com.cai.work.ui.bank;
 
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
-import com.cai.work.bean.respond.BankListRespond;
+import com.cai.work.bean.respond.BankCardRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.example.clarence.utillibrary.NetWorkUtil;
@@ -12,7 +12,7 @@ import javax.inject.Inject;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-public class BankListPresenter extends GodBasePresenter<BankListView> {
+public class BankCardListPresenter extends GodBasePresenter<BankCardListView> {
 
     @Inject
     RequestStore requestStore;
@@ -20,7 +20,7 @@ public class BankListPresenter extends GodBasePresenter<BankListView> {
     DataStore dataStore;
 
     @Inject
-    public BankListPresenter() {
+    public BankCardListPresenter() {
     }
 
     @Override
@@ -30,9 +30,9 @@ public class BankListPresenter extends GodBasePresenter<BankListView> {
 
     public void getData() {
         String token = dataStore.getToken();
-        Disposable disposable = requestStore.requestBankList(token, new Consumer<BankListRespond>() {
+        Disposable disposable = requestStore.requestBankList(token, new Consumer<BankCardRespond>() {
             @Override
-            public void accept(BankListRespond data) {
+            public void accept(BankCardRespond data) {
                 if (data != null && data.getCode() == 200) {
                     mView.update(data.getData());
                 }

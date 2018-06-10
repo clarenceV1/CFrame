@@ -8,20 +8,20 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
-import com.cai.work.bean.Bank;
+import com.cai.work.bean.BankCard;
 import com.cai.work.dagger.component.DaggerAppComponent;
-import com.cai.work.databinding.BankListBinding;
+import com.cai.work.databinding.BankCardListBinding;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-@Route(path = "/AppModule/BankListActivity", name = "银行列表")
-public class BankListActivity extends AppBaseActivity<BankListBinding> implements BankListView {
+@Route(path = "/AppModule/BankCardListActivity", name = "银行列表")
+public class BankCardListActivity extends AppBaseActivity<BankCardListBinding> implements BankCardListView {
     @Inject
-    BankListPresenter presenter;
-    BankListAdapter adapter;
+    BankCardListPresenter presenter;
+    BankCardListAdapter adapter;
     @Inject
     ILoadImage imageLoader;
 
@@ -44,7 +44,7 @@ public class BankListActivity extends AppBaseActivity<BankListBinding> implement
                 finish();
             }
         });
-        adapter = new BankListAdapter(this, imageLoader);
+        adapter = new BankCardListAdapter(this, imageLoader);
         View footer = LayoutInflater.from(this).inflate(R.layout.bank_footer, null);
         footer.findViewById(R.id.btnAddBank).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,16 +54,23 @@ public class BankListActivity extends AppBaseActivity<BankListBinding> implement
         });
         mViewBinding.listView.addFooterView(footer);
         mViewBinding.listView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         presenter.getData();
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.bank_list;
+        return R.layout.bank_card_list;
     }
 
     @Override
-    public void update(List<Bank> dataList) {
-        adapter.update(dataList);
+    public void update(List<BankCard> dataList) {
+        if (adapter != null) {
+            adapter.update(dataList);
+        }
     }
 }

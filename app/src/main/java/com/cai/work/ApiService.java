@@ -1,6 +1,6 @@
 package com.cai.work;
 
-import com.cai.work.bean.respond.BankListRespond;
+import com.cai.work.bean.respond.BankCardRespond;
 import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.bean.respond.LoginRespond;
@@ -12,7 +12,6 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -35,9 +34,12 @@ public interface ApiService {
     Flowable<FundDetailRespond> requestFundDetail(@Query("page") int page, @Query("token") String token);
 
     @GET("/app/bankCard")
-    Flowable<BankListRespond> requestBankList(@Query("token") String token);
+    Flowable<BankCardRespond> requestBankList(@Query("token") String token);
 
     @POST("/app/bankCard/addCard")
     @FormUrlEncoded
     Flowable<BaseRespond> requestAddBankCard(@Field("realname") String realname, @Field("cardNo") String cardNo, @Field("bankId") String bankId, @Field("branchName") String branchName, @Field("token") String token);
+
+    @GET("/app/bankCard/getBanks")
+    Flowable<BankCardRespond> getBankList(@Query("token") String token);
 }

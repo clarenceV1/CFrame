@@ -59,7 +59,7 @@
     <string name="bank_add_which_bank">选中银行</string>
     <string name="bank_add_which_bank_hint">请选择银行</string>
     <string name="bank_add_zone">所在地区</string>
-    <string name="bank_add_zon_hint">请选择地址</string>
+    <string name="bank_add_zone_hint">请选择地址</string>
     <string name="bank_add_bank_name">开户行</string>
     <string name="bank_add_bank_name_hint">请输入开户行</string>
     <string name="btn_add">立即添加</string>

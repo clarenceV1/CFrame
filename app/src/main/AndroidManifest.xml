@@ -27,7 +27,7 @@
             android:name=".ui.bank.AddBankCardActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.bank.BankListActivity"
+            android:name=".ui.bank.BankCardListActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.fund.FundDetailActivity"

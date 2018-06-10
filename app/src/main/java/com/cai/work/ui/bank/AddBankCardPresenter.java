@@ -49,4 +49,26 @@ public class AddBankCardPresenter extends GodBasePresenter<AddBankCardView> {
         });
         mCompositeSubscription.add(disposable);
     }
+
+    public void getBankList() {
+        String token = dataStore.getToken();
+        Disposable disposable = requestStore.getBankList(token, new Consumer<BaseRespond>() {
+            @Override
+            public void accept(BaseRespond data) {
+                if (data != null) {
+                    mView.refreshView(data.getResponseText());
+                }
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                if (NetWorkUtil.isNetConnected(context)) {
+                    Logger.d("请求银行列表数据失败！！！---有网络");
+                } else {
+                    Logger.d("请求银行列表数据失败！！！---没网络");
+                }
+            }
+        });
+        mCompositeSubscription.add(disposable);
+    }
 }
