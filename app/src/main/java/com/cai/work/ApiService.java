@@ -7,6 +7,7 @@ import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.respond.MessageRespond;
+import com.cai.work.bean.respond.RedPacketRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 
 import io.reactivex.Flowable;
@@ -51,5 +52,9 @@ public interface ApiService {
     @POST("/app/login/index")
     @FormUrlEncoded
     Flowable<MessageRespond> deleteMessage(@Field("ids") int ids, @Field("token") String token);
+
+
+    @GET("/app/redBags/index")
+    Flowable<RedPacketRespond> getRedPacket(@Query("page") int page, @Query("token") String token);
 
 }

@@ -69,5 +69,9 @@
     <string name="bank_add_title">添加银行卡</string>
     <string name="message_clean">清空</string>
     <string name="no_data">暂无数据</string>
+    <string name="red_packet_no_use">未使用</string>
+    <string name="red_packet_use">已使用</string>
+    <string name="red_packet_overdue">已过期</string>
+    <string name="red_packet_titile">我的红包</string>
 
 </resources>

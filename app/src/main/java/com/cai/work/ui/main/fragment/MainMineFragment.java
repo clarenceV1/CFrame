@@ -11,6 +11,7 @@ import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineListData;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainMineFragmentBinding;
+import com.cai.work.ui.redPacket.RedPacketActivity;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
 
@@ -64,6 +65,9 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
                             break;
                         case 3:
                             ARouter.getInstance().build("/AppModule/MessageActivity").navigation();
+                            break;
+                        case 4:
+                            ARouter.getInstance().build("/AppModule/RedPacketActivity").navigation();
                             break;
                     }
                 }

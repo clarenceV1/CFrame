@@ -1,30 +1,28 @@
-package com.cai.work.ui.message;
+package com.cai.work.ui.redPacket;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextClock;
-import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
-import com.cai.work.bean.Message;
+import com.cai.work.bean.RedPacket;
 import com.cai.work.dagger.component.DaggerAppComponent;
-import com.cai.work.databinding.MessageBinding;
+import com.cai.work.databinding.RedPacketBinding;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-@Route(path = "/AppModule/MessageActivity", name = "消息中心")
-public class MessageActivity extends AppBaseActivity<MessageBinding> implements MessageView {
+@Route(path = "/AppModule/RedPacketActivity", name = "我的红包")
+public class RedPacketActivity extends AppBaseActivity<RedPacketBinding> implements RedPacketView {
     @Inject
-    MessagePresenter presenter;
+    RedPacketPresenter presenter;
 
-    MessageAdapter adapter;
+    RedPacketAdapter adapter;
     int page = 1;
     int total = 0;//总数量
     int total_page = 2;//总页数
@@ -48,21 +46,12 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
                 finish();
             }
         });
-        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.message_title));
-        TextView tvRight = mViewBinding.commonHeadView.tvRight;
-        tvRight.setText(getString(R.string.message_clean));
-        tvRight.setVisibility(View.VISIBLE);
-        tvRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cleanAllMessage();
-            }
-        });
+        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.red_packet_titile));
         listView = mViewBinding.pullListView.getRefreshableView();
-        adapter = new MessageAdapter(this, presenter);
+        adapter = new RedPacketAdapter(this);
         listView.setAdapter(adapter);
         PullToRefreshBase.Mode.isShowFooterLoadingView = false;
-        View emptyView = LayoutInflater.from(this).inflate(R.layout.empty_view,null);
+        View emptyView = LayoutInflater.from(this).inflate(R.layout.empty_view, null);
         mViewBinding.pullListView.setEmptyView(emptyView);
         mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
         mViewBinding.pullListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
@@ -70,24 +59,20 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
             public void onLastItemVisible() {
                 if (page < total_page) {
                     ++page;
-                    presenter.getMessage(page);
+                    presenter.getRedPacket(page);
                 }
             }
         });
-        presenter.getMessage(page);
-    }
-
-    private void cleanAllMessage() {
-//        presenter.deleteMessage();
+        presenter.getRedPacket(page);
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.message;
+        return R.layout.red_packet;
     }
 
     @Override
-    public void refreshMessageList(Message data) {
+    public void refreshData(RedPacket data) {
         mViewBinding.pullListView.onRefreshComplete();
         page = data.getCurrent();
         total = data.getTotal();
