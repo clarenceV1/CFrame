@@ -1,6 +1,6 @@
 package com.cai.work.bean;
 
-public class BankList {
+public class Bank {
     private int id;
     private String bankName;
 

@@ -1,6 +1,7 @@
 package com.cai.work;
 
 import com.cai.work.bean.respond.BankCardRespond;
+import com.cai.work.bean.respond.BankListRespond;
 import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.bean.respond.LoginRespond;
@@ -41,5 +42,5 @@ public interface ApiService {
     Flowable<BaseRespond> requestAddBankCard(@Field("realname") String realname, @Field("cardNo") String cardNo, @Field("bankId") String bankId, @Field("branchName") String branchName, @Field("token") String token);
 
     @GET("/app/bankCard/getBanks")
-    Flowable<BankCardRespond> getBankList(@Query("token") String token);
+    Flowable<BankListRespond> getBankList(@Query("token") String token);
 }

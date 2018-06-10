@@ -2,6 +2,7 @@ package com.cai.work.ui.bank;
 
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
+import com.cai.work.bean.respond.BankListRespond;
 import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
@@ -50,13 +51,13 @@ public class AddBankCardPresenter extends GodBasePresenter<AddBankCardView> {
         mCompositeSubscription.add(disposable);
     }
 
-    public void getBankList() {
+    public void getBankList(final boolean showDialog) {
         String token = dataStore.getToken();
-        Disposable disposable = requestStore.getBankList(token, new Consumer<BaseRespond>() {
+        Disposable disposable = requestStore.getBankList(token, new Consumer<BankListRespond>() {
             @Override
-            public void accept(BaseRespond data) {
-                if (data != null) {
-                    mView.refreshView(data.getResponseText());
+            public void accept(BankListRespond data) {
+                if (data != null && data.getCode() ==200) {
+                    mView.getBankList(data.getData(),showDialog);
                 }
             }
         }, new Consumer<Throwable>() {
