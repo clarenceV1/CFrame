@@ -6,12 +6,12 @@ import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.BaseLifecycleObserver;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
-import com.cai.work.bean.Account;
+import com.cai.work.bean.User;
 import com.cai.work.bean.HomeDataSql;
 import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.common.RequestStore;
-import com.cai.work.dao.AccountDAO;
+import com.cai.work.dao.UserDAO;
 import com.cai.work.dao.HomeDataSqlDAO;
 import com.example.clarence.utillibrary.StringUtils;
 
@@ -20,7 +20,6 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -32,7 +31,7 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
     @Inject
     HomeDataSqlDAO homeDataSqlDAO;
     @Inject
-    AccountDAO accountDAO;
+    UserDAO accountDAO;
 
     @Inject
     public MainHomePresenter() {
@@ -40,18 +39,18 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
 
     @SuppressLint("CheckResult")
     public void getAccountInfo() {
-        Observable.create(new ObservableOnSubscribe<Account>() {
+        Observable.create(new ObservableOnSubscribe<User>() {
             @Override
-            public void subscribe(ObservableEmitter<Account> observableEmitter) {
-                Account account = accountDAO.getData();
+            public void subscribe(ObservableEmitter<User> observableEmitter) {
+                User account = accountDAO.getData();
                 account.setMobile(StringUtils.encryptMobile(account.getMobile()));
                 observableEmitter.onNext(account);
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Account>() {
+                .subscribe(new Consumer<User>() {
                     @Override
-                    public void accept(Account account) {
+                    public void accept(User account) {
                         mView.reFreshTopView(account);
                     }
                 });

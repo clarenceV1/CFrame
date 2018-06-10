@@ -11,7 +11,7 @@ import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dagger.component.DaggerAppComponent;
-import com.cai.work.dao.AccountDAO;
+import com.cai.work.dao.UserDAO;
 import com.cai.work.dao.HomeDataSqlDAO;
 import com.example.clarence.utillibrary.Md5Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
@@ -32,7 +32,7 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
     @Inject
     HomeDataSqlDAO homeDataSqlDAO;
     @Inject
-    AccountDAO accountDAO;
+    UserDAO userDAO;
 
     private int requestNum;//已经请求过到数据个数
     private final int REQUEST_ALL_NUM = 2;//  所要请求到个数
@@ -131,7 +131,7 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
         Disposable disposable = requestStore.requestUserInfo(token, new Consumer<UserInfoRespond>() {
             @Override
             public void accept(UserInfoRespond data) {
-                accountDAO.save(data.getData());
+                userDAO.save(data.getData());
                 requestAllEnd();
             }
         }, new Consumer<Throwable>() {

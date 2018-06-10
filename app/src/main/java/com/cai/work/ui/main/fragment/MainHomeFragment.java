@@ -8,7 +8,7 @@ import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseFragment;
-import com.cai.work.bean.Account;
+import com.cai.work.bean.User;
 import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainHomeFragmentBinding;
@@ -75,7 +75,7 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
     }
 
     @Override
-    public void reFreshTopView(Account account) {
+    public void reFreshTopView(User account) {
         if (account != null) {
             ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(account.getAvatarUrl()).build();
             imageParams.setImageView(mViewBinding.ivIcon);

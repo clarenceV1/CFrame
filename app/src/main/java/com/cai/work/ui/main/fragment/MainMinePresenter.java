@@ -4,12 +4,12 @@ import android.annotation.SuppressLint;
 
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
-import com.cai.work.bean.Account;
+import com.cai.work.bean.User;
 import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineBottomData;
 import com.cai.work.bean.MineListData;
 import com.cai.work.bean.MineTopData;
-import com.cai.work.dao.AccountDAO;
+import com.cai.work.dao.UserDAO;
 import com.example.clarence.utillibrary.StringUtils;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class MainMinePresenter extends GodBasePresenter<MineView> {
     };
 
     @Inject
-    AccountDAO accountDAO;
+    UserDAO accountDAO;
 
     @Inject
     public MainMinePresenter() {
@@ -65,7 +65,7 @@ public class MainMinePresenter extends GodBasePresenter<MineView> {
 
     public List<IRecycleViewBaseData> getDatas() {
         List<IRecycleViewBaseData> dataList = new ArrayList<>();
-        Account account = accountDAO.getData();
+        User account = accountDAO.getData();
         account.setMobile(StringUtils.encryptMobile(account.getMobile()));
         MineTopData topData = new MineTopData();
         topData.setHeadIcon(account.getAvatarUrl());

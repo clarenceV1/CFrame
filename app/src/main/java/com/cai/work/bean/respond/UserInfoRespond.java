@@ -1,15 +1,15 @@
 package com.cai.work.bean.respond;
 
-import com.cai.work.bean.Account;
+import com.cai.work.bean.User;
 
 public class UserInfoRespond extends BaseRespond {
-    private Account data;
+    private User data;
 
-    public Account getData() {
+    public User getData() {
         return data;
     }
 
-    public void setData(Account data) {
+    public void setData(User data) {
         this.data = data;
     }
 }

@@ -2,14 +2,11 @@ package com.cai.work.ui.login;
 
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
-import com.cai.work.bean.respond.BankListRespond;
-import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
-import com.cai.work.dao.AccountDAO;
-import com.cai.work.ui.bank.AddBankCardView;
+import com.cai.work.dao.UserDAO;
 import com.example.clarence.utillibrary.Md5Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
 
@@ -25,7 +22,7 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
     @Inject
     DataStore dataStore;
     @Inject
-    AccountDAO accountDAO;
+    UserDAO userDAO;
 
     @Inject
     public LoginPresenter() {
@@ -71,7 +68,7 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
         Disposable disposable = requestStore.requestUserInfo(token, new Consumer<UserInfoRespond>() {
             @Override
             public void accept(UserInfoRespond data) {
-                accountDAO.save(data.getData());
+                userDAO.save(data.getData());
             }
         }, new Consumer<Throwable>() {
             @Override

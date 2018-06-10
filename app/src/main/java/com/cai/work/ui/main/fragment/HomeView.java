@@ -1,7 +1,7 @@
 package com.cai.work.ui.main.fragment;
 
 import com.cai.framework.base.GodBaseView;
-import com.cai.work.bean.Account;
+import com.cai.work.bean.User;
 import com.cai.work.bean.home.HomeItemData;
 
 /**
@@ -12,5 +12,5 @@ public interface HomeView extends GodBaseView {
 
     void reFreshView(HomeItemData data);
     void requestError(String data);
-    void reFreshTopView(Account account);
+    void reFreshTopView(User account);
 }
