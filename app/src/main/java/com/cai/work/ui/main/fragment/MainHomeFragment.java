@@ -3,6 +3,7 @@ package com.cai.work.ui.main.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.R;
@@ -47,6 +48,13 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
         initRecycleView();
         presenter.getAccountInfo();
         presenter.requestData();
+        mViewBinding.llUserInfo.setClickable(false);
+        mViewBinding.llUserInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/LoginActivity").navigation();
+            }
+        });
     }
 
     private void initRecycleView() {
@@ -57,7 +65,7 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
 
     @Override
     public void reFreshView(HomeItemData data) {
-        MainHomeAdapter adapter = new MainHomeAdapter(mContext,imageLoader,data,getChildFragmentManager());
+        MainHomeAdapter adapter = new MainHomeAdapter(mContext, imageLoader, data, getChildFragmentManager());
         mViewBinding.mRecyclerView.setAdapter(adapter);
     }
 
@@ -73,9 +81,11 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
             imageParams.setImageView(mViewBinding.ivIcon);
             imageLoader.loadImage(this, imageParams);
 
+            mViewBinding.llUserInfo.setClickable(false);
             mViewBinding.tvAccount.setText(account.getMobile());
-        }else {
+        } else {
             mViewBinding.tvAccount.setText(getResources().getString(R.string.login));
+            mViewBinding.llUserInfo.setClickable(true);
         }
     }
 }

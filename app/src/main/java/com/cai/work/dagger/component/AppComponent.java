@@ -9,6 +9,8 @@ import com.cai.work.ui.bank.BankCardListPresenter;
 import com.cai.work.ui.fund.FundDetailActivity;
 import com.cai.work.ui.fund.FundDetailPresenter;
 import com.cai.work.ui.listview.ListviewScollActivity;
+import com.cai.work.ui.login.LoginActivity;
+import com.cai.work.ui.login.LoginPresenter;
 import com.cai.work.ui.main.MainActivity;
 import com.cai.work.ui.main.MainPresenter;
 import com.cai.work.ui.main.fragment.MainHomeFragment;
@@ -64,4 +66,7 @@ public interface AppComponent {
 
     void inject(RedPacketPresenter redPacketPresenter);
 
+    void inject(LoginActivity loginActivity);
+
+    void inject(LoginPresenter loginPresenter);
 }

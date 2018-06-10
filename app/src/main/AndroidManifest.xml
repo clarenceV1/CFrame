@@ -24,6 +24,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.redPacket.RedPacketActivity"
             android:screenOrientation="portrait" />
         <activity
