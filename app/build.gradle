@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.objectbox'
+apply plugin: 'com.cai.plugin.aspect'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion

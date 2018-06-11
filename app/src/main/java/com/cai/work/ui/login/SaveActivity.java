@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.cai.annotation.aspect.Permission;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
@@ -104,7 +105,7 @@ public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveVi
             }
         });
     }
-
+    @Permission(value = Manifest.permission.WRITE_EXTERNAL_STORAGE)
     private void takePhoto() {
         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, IMAGE);
