@@ -6,6 +6,7 @@ import com.cai.work.bean.respond.BankListRespond;
 import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
+import com.cai.work.dao.AccountDAO;
 import com.example.clarence.utillibrary.NetWorkUtil;
 
 import javax.inject.Inject;
@@ -19,6 +20,8 @@ public class AddBankCardPresenter extends GodBasePresenter<AddBankCardView> {
     RequestStore requestStore;
     @Inject
     DataStore dataStore;
+    @Inject
+    AccountDAO accountDAO;
 
     @Inject
     public AddBankCardPresenter() {
@@ -30,7 +33,7 @@ public class AddBankCardPresenter extends GodBasePresenter<AddBankCardView> {
     }
 
     public void postBankInfo(String realname, String cardNo, String bankId, String branchName) {
-        String token = dataStore.getToken();
+        String token = accountDAO.getToken();
         Disposable disposable = requestStore.requestAddBankCard(realname, cardNo, bankId, branchName, token, new Consumer<BaseRespond>() {
             @Override
             public void accept(BaseRespond data) {
@@ -52,7 +55,7 @@ public class AddBankCardPresenter extends GodBasePresenter<AddBankCardView> {
     }
 
     public void getBankList(final boolean showDialog) {
-        String token = dataStore.getToken();
+        String token = accountDAO.getToken();
         Disposable disposable = requestStore.getBankList(token, new Consumer<BankListRespond>() {
             @Override
             public void accept(BankListRespond data) {

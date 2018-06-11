@@ -5,6 +5,7 @@ import com.cai.lib.logger.Logger;
 import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
+import com.cai.work.dao.AccountDAO;
 import com.example.clarence.utillibrary.NetWorkUtil;
 
 import javax.inject.Inject;
@@ -18,6 +19,8 @@ public class FundDetailPresenter extends GodBasePresenter<FundDetailView> {
     RequestStore requestStore;
     @Inject
     DataStore dataStore;
+    @Inject
+    AccountDAO accountDAO;
 
     @Inject
     public FundDetailPresenter() {
@@ -29,7 +32,7 @@ public class FundDetailPresenter extends GodBasePresenter<FundDetailView> {
     }
 
     public void getData(int page) {
-        String token = dataStore.getToken();
+        String token = accountDAO.getToken();
         Disposable disposable = requestStore.requestFundDetail(page, token, new Consumer<FundDetailRespond>() {
             @Override
             public void accept(FundDetailRespond data) {

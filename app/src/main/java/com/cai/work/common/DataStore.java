@@ -17,12 +17,12 @@ public class DataStore {
     @Inject
     public DataStore() {
     }
-
-    public void setToken(String value) {
-        sharePreference.get().write("LOGIN_TOKEN", value);
-    }
-
-    public String getToken() {
-        return sharePreference.get().read("LOGIN_TOKEN", "");
-    }
+//
+//    public void setToken(String value) {
+//        sharePreference.get().write("LOGIN_TOKEN", value);
+//    }
+//
+//    public String getToken() {
+//        return sharePreference.get().read("LOGIN_TOKEN", "");
+//    }
 }

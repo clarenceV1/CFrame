@@ -1,5 +1,6 @@
 package com.cai.work.ui.main;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -7,14 +8,15 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.widget.GodDialog;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainBinding;
 import com.cai.work.event.LoginOutEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
-import com.example.clarence.utillibrary.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -37,6 +39,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
 
     List<MainTabView> tabViewList = new ArrayList<>();
     Map<String, WeakReference<Fragment>> fragmentMap = new HashMap<>();
+    String currentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +77,11 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         MainTabView.setOnTabClickListener(new MainTabView.OnTabClickListener() {
             @Override
             public boolean onClick(View view, int position, String fragmentName) {
-                if (!mainPresenter.isLogin()) {
-                    ToastUtils.showShort("你还没弹对话框呢");
+                if (fragmentName.equals(currentFragment)) {
+                    return false;// 已经在当前页面不处理
+                }
+                if (position != 0 && !mainPresenter.isLogin()) {
+                    showDialog();
                     return false;
                 }
                 return tabClick(fragmentName);
@@ -84,11 +90,29 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         mViewBinding.mainTab0.performClick();
     }
 
+    private void showDialog() {
+        new GodDialog.Builder(this)
+                .setTitle(R.string.dialog_titile)
+                .setMessage(R.string.please_login)
+                .setPositiveButton(R.string.btn_cancle, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setNegativeButton(R.string.btn_commit, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ARouter.getInstance().build("/AppModule/LoginActivity").navigation();
+                    }
+                }).create().show();
+    }
+
     private boolean tabClick(String fragmentName) {
         if (TextUtils.isEmpty(fragmentName)) {
             return false;
         }
-
+        currentFragment = fragmentName;
         Fragment fragment;
         WeakReference<Fragment> fragmentWeakReference = fragmentMap.get(fragmentName);
         if (fragmentWeakReference != null && fragmentWeakReference.get() != null) {

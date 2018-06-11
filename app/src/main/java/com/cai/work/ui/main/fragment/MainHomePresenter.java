@@ -74,7 +74,7 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
             @Override
             public void subscribe(ObservableEmitter<HomeItemData> homeData) {
                 HomeDataSql homeDataSql = homeDataSqlDAO.getHomeData();
-                if (homeDataSql != null) {
+                if (homeDataSql == null) {
                     homeData.onNext(JSON.parseObject(homeDataSql.getData(), HomeItemData.class));
                     Logger.d("获取到首页缓存数据成功");
                 } else {

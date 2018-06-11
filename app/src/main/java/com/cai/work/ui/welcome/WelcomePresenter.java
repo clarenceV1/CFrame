@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.R;
+import com.cai.work.bean.Account;
 import com.cai.work.bean.HomeDataSql;
 import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.respond.LoginRespond;
@@ -11,6 +12,7 @@ import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dagger.component.DaggerAppComponent;
+import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.UserDAO;
 import com.cai.work.dao.HomeDataSqlDAO;
 import com.example.clarence.utillibrary.Md5Utils;
@@ -33,9 +35,11 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
     HomeDataSqlDAO homeDataSqlDAO;
     @Inject
     UserDAO userDAO;
+    @Inject
+    AccountDAO accountDAO;
 
-    private int requestNum;//已经请求过到数据个数
-    private final int REQUEST_ALL_NUM = 2;//  所要请求到个数
+    private int requestNum = 0;//已经请求过到数据个数
+    private int request_all_num = 1;//  所要请求到个数
 
     @Inject
     public WelcomePresenter() {
@@ -53,12 +57,17 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
             mView.goMainActivity();
             return;
         }
+        Account account = accountDAO.getAccount();
+        if (account != null) {
+            request_all_num++;
+            requestLogin(account);
+        }
         requestHomeData();
-        requestLogin();
     }
 
     /**
      * 请求首页数据
+     *
      * @return
      */
     private void requestHomeData() {
@@ -93,21 +102,19 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
 
     /**
      * 请求登录
+     *
      * @return
      */
-    private void requestLogin() {
-        String userName = "13276967598";
-        String password = "123456";
-        Disposable disposable = requestStore.requestLogin(userName, Md5Utils.md5(password), new Consumer<LoginRespond>() {
+    private void requestLogin(final Account account) {
+        Disposable disposable = requestStore.requestLogin(account.getMobile(), Md5Utils.md5(account.getPassword()), new Consumer<LoginRespond>() {
             @Override
             public void accept(LoginRespond data) {
                 if (data != null && data.getCode() == 200) {
-                    dataStore.setToken(data.getData());
+                    accountDAO.updateToken(account.getMobile(),data.getData());
                     requestUserInfo(data.getData());
-                }else{
+                } else {
                     requestAllEnd();
                 }
-
             }
         }, new Consumer<Throwable>() {
             @Override
@@ -122,8 +129,10 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
         });
         mCompositeSubscription.add(disposable);
     }
+
     /**
      * 请求用户数据
+     *
      * @param token
      * @return
      */
@@ -150,7 +159,7 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
 
     private void requestAllEnd() {
         requestNum++;
-        if (requestNum == REQUEST_ALL_NUM) {
+        if (requestNum == request_all_num) {
             mView.goMainActivity();
         }
     }

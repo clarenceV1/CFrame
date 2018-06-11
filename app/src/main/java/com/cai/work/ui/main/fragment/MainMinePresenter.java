@@ -10,6 +10,7 @@ import com.cai.work.bean.MineBottomData;
 import com.cai.work.bean.MineListData;
 import com.cai.work.bean.MineTopData;
 import com.cai.work.common.DataStore;
+import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.UserDAO;
 import com.example.clarence.utillibrary.StringUtils;
 
@@ -42,6 +43,8 @@ public class MainMinePresenter extends GodBasePresenter<MineView> {
     UserDAO userDAO;
     @Inject
     DataStore dataStore;
+    @Inject
+    AccountDAO accountDAO;
 
     @Inject
     public MainMinePresenter() {
@@ -99,7 +102,7 @@ public class MainMinePresenter extends GodBasePresenter<MineView> {
             @Override
             public void subscribe(ObservableEmitter<String> result) {
                 userDAO.deleteAll();
-                dataStore.setToken("");
+                accountDAO.deleteAll();
                 result.onNext("");
             }
         }).subscribeOn(Schedulers.newThread())

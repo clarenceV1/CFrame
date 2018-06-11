@@ -4,29 +4,6 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "2:6905634692392613875",
-      "lastPropertyId": "4:9183463363231810212",
-      "name": "Account",
-      "properties": [
-        {
-          "id": "1:7500845243903636408",
-          "name": "id"
-        },
-        {
-          "id": "2:3751355986429938285",
-          "name": "balance"
-        },
-        {
-          "id": "3:9063365721909991722",
-          "name": "mobile"
-        },
-        {
-          "id": "4:9183463363231810212",
-          "name": "avatarUrl"
-        }
-      ]
-    },
-    {
       "id": "3:3058473060516162951",
       "lastPropertyId": "2:8297752145147179361",
       "name": "HomeDataSql",
@@ -40,19 +17,47 @@
           "name": "data"
         }
       ]
+    },
+    {
+      "id": "4:2456853371102544556",
+      "lastPropertyId": "4:9096030313314192662",
+      "name": "User",
+      "properties": [
+        {
+          "id": "1:1966229928263393880",
+          "name": "id"
+        },
+        {
+          "id": "2:7059534075045359535",
+          "name": "balance"
+        },
+        {
+          "id": "3:2387029088671372243",
+          "name": "mobile"
+        },
+        {
+          "id": "4:9096030313314192662",
+          "name": "avatarUrl"
+        }
+      ]
     }
   ],
-  "lastEntityId": "3:3058473060516162951",
+  "lastEntityId": "4:2456853371102544556",
   "lastIndexId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 2,
   "retiredEntityUids": [
-    860363883005073981
+    860363883005073981,
+    6905634692392613875
   ],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
     693270286144123126,
-    4298642657539539488
+    4298642657539539488,
+    7500845243903636408,
+    3751355986429938285,
+    9063365721909991722,
+    9183463363231810212
   ],
   "version": 1
 }

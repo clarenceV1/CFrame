@@ -11,6 +11,7 @@ import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.RedPacketRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
+import com.cai.work.dao.AccountDAO;
 import com.cai.work.ui.message.MessageView;
 import com.example.clarence.utillibrary.NetWorkUtil;
 
@@ -28,6 +29,8 @@ public class RedPacketPresenter extends GodBasePresenter<RedPacketView> {
     RequestStore requestStore;
     @Inject
     DataStore dataStore;
+    @Inject
+    AccountDAO accountDAO;
 
     @Inject
     public RedPacketPresenter() {
@@ -39,7 +42,7 @@ public class RedPacketPresenter extends GodBasePresenter<RedPacketView> {
     }
 
     public void getRedPacket(int page) {
-        String token = dataStore.getToken();
+        String token = accountDAO.getToken();
         Disposable disposable = requestStore.getRedPacket(page, token, new Consumer<RedPacketRespond>() {
             @Override
             public void accept(RedPacketRespond data) {

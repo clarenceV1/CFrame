@@ -8,6 +8,7 @@ import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
+import com.cai.work.dao.AccountDAO;
 import com.example.clarence.utillibrary.NetWorkUtil;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class MessagePresenter extends GodBasePresenter<MessageView> {
     RequestStore requestStore;
     @Inject
     DataStore dataStore;
+    @Inject
+    AccountDAO accountDAO;
 
     @Inject
     public MessagePresenter() {
@@ -35,7 +38,7 @@ public class MessagePresenter extends GodBasePresenter<MessageView> {
     }
 
     public void getMessage(int page) {
-        String token = dataStore.getToken();
+        String token = accountDAO.getToken();
         Disposable disposable = requestStore.getMessage(page, token, new Consumer<MessageRespond>() {
             @Override
             public void accept(MessageRespond data) {
@@ -74,7 +77,7 @@ public class MessagePresenter extends GodBasePresenter<MessageView> {
     }
 
     public void deleteMessage(int ids) {
-        String token = dataStore.getToken();
+        String token = accountDAO.getToken();
         Disposable disposable = requestStore.deleteMessage(ids, token, new Consumer<BaseRespond>() {
             @Override
             public void accept(BaseRespond data) {

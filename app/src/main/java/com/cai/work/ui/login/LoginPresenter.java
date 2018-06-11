@@ -6,6 +6,7 @@ import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
+import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.UserDAO;
 import com.example.clarence.utillibrary.Md5Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
@@ -23,6 +24,8 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
     DataStore dataStore;
     @Inject
     UserDAO userDAO;
+    @Inject
+    AccountDAO accountDAO;
 
     @Inject
     public LoginPresenter() {
@@ -38,12 +41,12 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
      *
      * @return
      */
-    public void requestLogin(String userName, String password, boolean isSavePassword) {
+    public void requestLogin(final String userName, String password, boolean isSavePassword) {
         Disposable disposable = requestStore.requestLogin(userName, Md5Utils.md5(password), new Consumer<LoginRespond>() {
             @Override
             public void accept(LoginRespond data) {
                 if (data != null && data.getCode() == 200) {
-                    dataStore.setToken(data.getData());
+                    accountDAO.updateToken(userName,data.getData());
                     requestUserInfo(data.getData());
                 }
             }

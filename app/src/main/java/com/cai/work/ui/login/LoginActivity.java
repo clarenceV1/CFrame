@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.cai.framework.base.GodBaseConfig;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
@@ -57,7 +58,7 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
                 String account = mViewBinding.editMobile.getText().toString();
                 String password = mViewBinding.editPassword.getText().toString();
                 boolean isSavePassword = mViewBinding.cbSavePassword.isChecked();
-                presenter.requestLogin(account, password,isSavePassword);
+                presenter.requestLogin(account, password, isSavePassword);
             }
         });
         mViewBinding.tvForgetPassword.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +67,11 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
 
             }
         });
+
+        if (GodBaseConfig.getInstance().isDebug()) {
+            mViewBinding.editMobile.setText("13276967598");
+            mViewBinding.editPassword.setText("123456");
+        }
     }
 
     @Override
