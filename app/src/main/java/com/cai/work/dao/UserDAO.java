@@ -1,5 +1,6 @@
 package com.cai.work.dao;
 
+import com.cai.lib.logger.Logger;
 import com.cai.work.bean.User;
 
 import java.util.List;
@@ -7,12 +8,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.objectbox.Box;
-import io.objectbox.BoxStore;
 
-public class UserDAO {
-
-    @Inject
-    BoxStore boxStore;
+public class UserDAO extends BaseDAO{
 
     @Inject
     public UserDAO() {

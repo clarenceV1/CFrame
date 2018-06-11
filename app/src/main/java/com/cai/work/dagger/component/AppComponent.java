@@ -9,25 +9,36 @@ import com.cai.work.ui.bank.BankCardListPresenter;
 import com.cai.work.ui.fund.FundDetailActivity;
 import com.cai.work.ui.fund.FundDetailPresenter;
 import com.cai.work.ui.listview.ListviewScollActivity;
+import com.cai.work.ui.login.ForgetPasswordActivity;
+import com.cai.work.ui.login.ForgetPasswordPresenter;
 import com.cai.work.ui.login.LoginActivity;
 import com.cai.work.ui.login.LoginPresenter;
+import com.cai.work.ui.login.SaveActivity;
+import com.cai.work.ui.login.SavePresenter;
 import com.cai.work.ui.main.MainActivity;
 import com.cai.work.ui.main.MainPresenter;
 import com.cai.work.ui.main.fragment.MainHomeFragment;
 import com.cai.work.ui.main.fragment.MainMineFragment;
 import com.cai.work.ui.message.MessageActivity;
 import com.cai.work.ui.message.MessagePresenter;
+import com.cai.work.ui.rank.RankActivity;
+import com.cai.work.ui.rank.RankPresenter;
+import com.cai.work.ui.recharge.RechargeActivity;
+import com.cai.work.ui.recharge.RechargePresenter;
 import com.cai.work.ui.redPacket.RedPacketActivity;
 import com.cai.work.ui.redPacket.RedPacketPresenter;
 import com.cai.work.ui.web.WebActivity;
 import com.cai.work.ui.welcome.WelcomeActivity;
 import com.cai.work.ui.welcome.WelcomePresenter;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 
 /**
  * Created by clarence on 2018/3/26.
  */
+@Singleton
 @Component(modules = {AppModule.class, FrameWorkModule.class})
 public interface AppComponent {
     void inject(WebActivity webActivity);
@@ -69,4 +80,20 @@ public interface AppComponent {
     void inject(LoginActivity loginActivity);
 
     void inject(LoginPresenter loginPresenter);
+
+    void inject(ForgetPasswordActivity forgetPasswordActivity);
+
+    void inject(ForgetPasswordPresenter forgetPasswordPresenter);
+
+    void inject(RankActivity rankActivity);
+
+    void inject(RankPresenter rankPresenter);
+
+    void inject(SaveActivity saveActivity);
+
+    void inject(SavePresenter savePresenter);
+
+    void inject(RechargeActivity rechargeActivity);
+
+    void inject(RechargePresenter rechargePresenter);
 }

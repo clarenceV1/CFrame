@@ -2,6 +2,9 @@ package com.cai.work.base;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBaseApplication;
+import com.cai.work.bean.MyObjectBox;
+
+import io.objectbox.BoxStore;
 
 /**
  * Created by clarence on 2018/1/11.
@@ -12,9 +15,16 @@ public class App extends GodBaseApplication {
     public static boolean isDebug = true;
     public static String BASEURL = "http://www.hellceshi.com";
 
+    public static BoxStore boxStore;
+
     public void onCreate() {
         super.onCreate();
         initRouter();
+        boxStore = MyObjectBox.builder().androidContext(this).build();
+    }
+
+    public static BoxStore getBoxStore() {
+        return boxStore;
     }
 
     @Override

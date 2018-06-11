@@ -6,12 +6,8 @@ import com.cai.work.bean.Account_;
 import javax.inject.Inject;
 
 import io.objectbox.Box;
-import io.objectbox.BoxStore;
 
-public class AccountDAO {
-
-    @Inject
-    BoxStore boxStore;
+public class AccountDAO  extends  BaseDAO{
 
     @Inject
     public AccountDAO() {

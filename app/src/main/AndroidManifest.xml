@@ -24,6 +24,18 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.recharge.RechargeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.login.SaveActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.rank.RankActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.login.ForgetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.login.LoginActivity"
             android:screenOrientation="portrait" />
         <activity

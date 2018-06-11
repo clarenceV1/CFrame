@@ -7,11 +7,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.objectbox.Box;
-import io.objectbox.BoxStore;
 
-public class HomeDataSqlDAO {
-    @Inject
-    BoxStore boxStore;
+public class HomeDataSqlDAO extends BaseDAO{
 
     @Inject
     public HomeDataSqlDAO() {

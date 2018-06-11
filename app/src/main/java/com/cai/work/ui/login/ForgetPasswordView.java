@@ -6,6 +6,6 @@ import com.cai.framework.base.GodBaseView;
  * Created by clarence on 2018/1/12.
  */
 
-public interface LoginView extends GodBaseView {
-        void loginSuccess();
+public interface ForgetPasswordView extends GodBaseView {
+
 }

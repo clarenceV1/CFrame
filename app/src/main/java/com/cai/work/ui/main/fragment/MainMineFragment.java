@@ -11,7 +11,7 @@ import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineListData;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainMineFragmentBinding;
-import com.cai.work.event.LoginOutEvent;
+import com.cai.work.event.LoginStateEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
 
@@ -86,6 +86,6 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
 
     @Override
     public void loginOut() {
-        EventBus.getDefault().post(new LoginOutEvent());
+        EventBus.getDefault().post(new LoginStateEvent(2));
     }
 }

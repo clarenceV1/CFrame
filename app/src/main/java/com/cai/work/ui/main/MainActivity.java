@@ -15,7 +15,7 @@ import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainBinding;
-import com.cai.work.event.LoginOutEvent;
+import com.cai.work.event.LoginStateEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 
 import org.greenrobot.eventbus.EventBus;
@@ -43,8 +43,9 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
+        super.onCreate(savedInstanceState);
+        ARouter.getInstance().inject(this);
     }
 
     @Override
@@ -143,7 +144,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void loginOut(LoginOutEvent event) {
+    public void loginState(LoginStateEvent event) {
         tabClick(tabViewList.get(0).getFragmentName());
     }
 

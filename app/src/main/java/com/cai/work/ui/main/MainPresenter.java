@@ -29,7 +29,7 @@ public class MainPresenter extends GodBasePresenter<MainView> {
 
     @Override
     public void onAttached() {
-
+        data.put(CLASS_NAME,"MainActivity");
     }
 
     public boolean isLogin() {

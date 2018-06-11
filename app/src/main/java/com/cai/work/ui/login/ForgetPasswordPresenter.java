@@ -2,25 +2,21 @@ package com.cai.work.ui.login;
 
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
-import com.cai.work.bean.Account;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.UserDAO;
-import com.cai.work.event.LoginStateEvent;
 import com.example.clarence.utillibrary.Md5Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
-
-import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-public class LoginPresenter extends GodBasePresenter<LoginView> {
+public class ForgetPasswordPresenter extends GodBasePresenter<LoginView> {
 
     @Inject
     RequestStore requestStore;
@@ -32,7 +28,7 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
     AccountDAO accountDAO;
 
     @Inject
-    public LoginPresenter() {
+    public ForgetPasswordPresenter() {
     }
 
     @Override
@@ -45,18 +41,12 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
      *
      * @return
      */
-    public void requestLogin(final String userName, final String password, final boolean isSavePassword) {
+    public void requestLogin(final String userName, String password, boolean isSavePassword) {
         Disposable disposable = requestStore.requestLogin(userName, Md5Utils.md5(password), new Consumer<LoginRespond>() {
             @Override
             public void accept(LoginRespond data) {
                 if (data != null && data.getCode() == 200) {
-                    Account account = new Account();
-                    account.setMobile(userName);
-                    if (isSavePassword) {
-                        account.setPassword(password);
-                    }
-                    account.setToken(data.getData());
-                    accountDAO.save(account);
+                    accountDAO.updateToken(userName,data.getData());
                     requestUserInfo(data.getData());
                 }
             }
@@ -82,7 +72,6 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
             @Override
             public void accept(UserInfoRespond data) {
                 userDAO.save(data.getData());
-                mView.loginSuccess();
             }
         }, new Consumer<Throwable>() {
             @Override
