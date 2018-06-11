@@ -3,6 +3,8 @@ package com.cai.work.ui.main.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
@@ -51,14 +53,14 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
     private void initRecycleView() {
         LinearLayoutManager layoutmanager = new LinearLayoutManager(getContext());
         mViewBinding.mRecyclerView.setLayoutManager(layoutmanager);
-        mainMineAdapter = new MainMineAdapter(getContext(), imageLoader,presenter);
+        mainMineAdapter = new MainMineAdapter(getContext(), imageLoader, presenter);
         mainMineAdapter.setItemClickListener(new MainMineAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int postion, IRecycleViewBaseData data) {
                 if (data instanceof MineListData) {
                     MineListData mineListData = (MineListData) data;
                     ToastUtils.showShort(getActivity().getResources().getString(mineListData.getItemName()));
-                    switch (postion){
+                    switch (postion) {
                         case 1:
                             ARouter.getInstance().build("/AppModule/FundDetailActivity").navigation();
                             break;
@@ -70,6 +72,9 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
                             break;
                         case 4:
                             ARouter.getInstance().build("/AppModule/RedPacketActivity").navigation();
+                            break;
+                        case 9:
+                            ARouter.getInstance().build("/AppModule/SaveActivity").navigation();
                             break;
                     }
                 }
@@ -86,6 +91,6 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
 
     @Override
     public void loginOut() {
-        EventBus.getDefault().post(new LoginStateEvent(2));
+        ARouter.getInstance().build("/AppModule/MainActivity").withInt("position", 1).navigation();
     }
 }

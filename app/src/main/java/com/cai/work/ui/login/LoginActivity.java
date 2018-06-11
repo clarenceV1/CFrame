@@ -91,11 +91,12 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
 
     @Override
     public void loginSuccess() {
-        ARouter.getInstance().build("/AppModule/MainActivity").navigation(this, new NavCallback() {
+        ARouter.getInstance().build("/AppModule/MainActivity").withInt("position", 1).navigation(this, new NavCallback() {
             @Override
             public void onArrival(Postcard postcard) {
                 ToastUtils.showShort(getResources().getString(R.string.login_success));
-              finish();
+//                EventBus.getDefault().post(new LoginStateEvent(2));
+                finish();
             }
         });
     }

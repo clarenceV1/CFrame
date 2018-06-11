@@ -1,15 +1,12 @@
 package com.cai.work.dao;
 
-import com.cai.lib.logger.Logger;
 import com.cai.work.bean.User;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
 import io.objectbox.Box;
 
-public class UserDAO extends BaseDAO{
+public class UserDAO extends BaseDAO {
 
     @Inject
     public UserDAO() {
@@ -25,14 +22,10 @@ public class UserDAO extends BaseDAO{
 
     public User getData() {
         Box<User> box = boxStore.boxFor(User.class);
-        List<User> accounts = box.query().build().find();
-        if (accounts != null && accounts.size() > 0) {
-            return accounts.get(0);
-        }
-        return null;
+        return box.query().build().findFirst();
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
         Box<User> box = boxStore.boxFor(User.class);
         box.removeAll();
     }

@@ -1,12 +1,14 @@
 package com.cai.work.ui.main;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
@@ -15,12 +17,7 @@ import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainBinding;
-import com.cai.work.event.LoginStateEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -41,10 +38,13 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     Map<String, WeakReference<Fragment>> fragmentMap = new HashMap<>();
     String currentFragment;
 
+    @Autowired(name = "position")
+    int position = 1;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        EventBus.getDefault().register(this);
-        super.onCreate(savedInstanceState);
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        clickTab(position);
     }
 
     @Override
@@ -87,7 +87,28 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
                 return tabClick(fragmentName);
             }
         });
+
         mViewBinding.mainTab0.performClick();
+    }
+
+    private void clickTab(int position) {
+        switch (position) {
+            case 1:
+                mViewBinding.mainTab0.performClick();
+                break;
+            case 2:
+                mViewBinding.mainTab1.performClick();
+                break;
+            case 3:
+                mViewBinding.mainTab2.performClick();
+                break;
+            case 4:
+                mViewBinding.mainTab3.performClick();
+                break;
+            case 5:
+                mViewBinding.mainTab4.performClick();
+                break;
+        }
     }
 
     private void showDialog() {
@@ -136,20 +157,13 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         if (fragment == null) {
             return false;
         }
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.flMainContainer, fragment);
-        transaction.commit();
+        try {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.flMainContainer, fragment);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return true;
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void loginState(LoginStateEvent event) {
-        tabClick(tabViewList.get(0).getFragmentName());
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 }

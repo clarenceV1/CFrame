@@ -87,6 +87,7 @@
     <string name="login_save_password">保存密码</string>
     <string name="login_forget_password">忘记密码</string>
     <string name="login_success">登录成功</string>
+    <string name="login_out">退出成功</string>
 
     <string name="rank_name">排名</string>
     <string name="rank_user_name">用户名</string>
@@ -99,5 +100,7 @@
     <string name="save_fix">修改</string>
     <string name="save_password">登录密码</string>
     <string name="save_cash_password">提现密码</string>
+    <string name="save_binded">已绑定</string>
+
 
 </resources>

@@ -7,5 +7,5 @@ import com.cai.framework.base.GodBaseView;
  */
 
 public interface SaveView extends GodBaseView {
-
+    void loginOut();
 }
