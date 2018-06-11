@@ -101,6 +101,7 @@
     <string name="save_password">登录密码</string>
     <string name="save_cash_password">提现密码</string>
     <string name="save_binded">已绑定</string>
+    <string name="save_titile">安全设置</string>
 
 
 </resources>
