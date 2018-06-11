@@ -5,7 +5,6 @@ import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
-import com.cai.work.databinding.ForgetPasswordBinding;
 import com.cai.work.databinding.SaveBinding;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 @Route(path = "/AppModule/SaveActivity", name = "安全设置")
-public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveView {
+public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveView{
 
     @Inject
     SavePresenter savePresenter;

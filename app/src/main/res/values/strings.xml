@@ -17,6 +17,7 @@
     <string name="btn_delete">删除</string>
     <string name="btn_cancle">取消</string>
     <string name="btn_commit">确定</string>
+    <string name="btn_quit">安全退出</string>
 
     <string name="main_tab_title_1">首页</string>
     <string name="main_tab_title_2">咨询</string>
@@ -36,7 +37,6 @@
     <string name="mine_menu_title7">常见问题</string>
     <string name="mine_menu_title8">关于我们</string>
     <string name="mine_menu_title9">安全设置</string>
-    <string name="mine_save_quit">安全退出</string>
 
     <string name="home_help_about_us">关于我们</string>
     <string name="home_help_center">帮助中心</string>
@@ -57,6 +57,7 @@
     <string name="home_forward_tab_title_2">国内期货</string>
     <string name="home_trade_ing">交易中</string>
     <string name="home_trade_end">休市中</string>
+    <string name="home_rang_look">查看榜单</string>
 
     <string name="bank_type">储蓄卡</string>
     <string name="bank_add_bank">+添加银行卡</string>
@@ -85,5 +86,18 @@
     <string name="login_mobile_hint">请输入手机号码</string>
     <string name="login_save_password">保存密码</string>
     <string name="login_forget_password">忘记密码</string>
+    <string name="login_success">登录成功</string>
+
+    <string name="rank_name">排名</string>
+    <string name="rank_user_name">用户名</string>
+    <string name="rank_money">操盘金额</string>
+    <string name="rank_time">时间</string>
+    <string name="rank_title">操盘排行榜</string>
+
+    <string name="save_notice">点击头像修改</string>
+    <string name="save_bind_mobile">绑定手机</string>
+    <string name="save_fix">修改</string>
+    <string name="save_password">登录密码</string>
+    <string name="save_cash_password">提现密码</string>
 
 </resources>

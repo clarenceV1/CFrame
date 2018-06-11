@@ -2,7 +2,9 @@ package com.cai.work.bean.home;
 
 import com.cai.framework.bean.CBaseData;
 
-public class HomeRangeData implements CBaseData {
+import java.io.Serializable;
+
+public class HomeRangeData implements CBaseData,Serializable {
 //    data.range	排行旁	array
 //    data.range.principal	操盘资金	string
 //    data.range.buyWTDate	操盘时间	string

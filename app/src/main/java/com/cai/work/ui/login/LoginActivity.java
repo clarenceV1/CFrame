@@ -18,6 +18,7 @@ import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.LoginBinding;
 import com.cai.work.event.LoginStateEvent;
 import com.cai.work.ui.main.MainActivity;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Logger;
@@ -93,6 +94,7 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
         ARouter.getInstance().build("/AppModule/MainActivity").navigation(this, new NavCallback() {
             @Override
             public void onArrival(Postcard postcard) {
+                ToastUtils.showShort(getResources().getString(R.string.login_success));
               finish();
             }
         });

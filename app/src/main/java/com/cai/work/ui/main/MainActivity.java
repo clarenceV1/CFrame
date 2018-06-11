@@ -45,7 +45,6 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     protected void onCreate(Bundle savedInstanceState) {
         EventBus.getDefault().register(this);
         super.onCreate(savedInstanceState);
-        ARouter.getInstance().inject(this);
     }
 
     @Override

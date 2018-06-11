@@ -16,6 +16,8 @@ import java.util.List;
 public class HomeRangeAdapter extends GodBaseAdapter {
     int[] rangeImage = new int[]{R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher};
 
+    boolean isFromeRankActivity = false;//是否来自排行榜页面
+
     public HomeRangeAdapter(Context context, List data) {
         super(context, data);
     }
@@ -36,7 +38,11 @@ public class HomeRangeAdapter extends GodBaseAdapter {
                 tvRange.setText(position + "");
             }
             ViewHolder.getTextView(convertView, R.id.tvAccount).setText(rangeData.getUser());
-            ViewHolder.getTextView(convertView, R.id.tvContent).setText("操盘金额" + rangeData.getPrincipal());
+            if (isFromeRankActivity) {
+                ViewHolder.getTextView(convertView, R.id.tvContent).setText(rangeData.getPrincipal());
+            } else {
+                ViewHolder.getTextView(convertView, R.id.tvContent).setText("操盘金额" + rangeData.getPrincipal());
+            }
             ViewHolder.getTextView(convertView, R.id.tvDate).setText(rangeData.getBuyWTDate());
         }
     }
@@ -45,10 +51,10 @@ public class HomeRangeAdapter extends GodBaseAdapter {
     public int getCount() {
         if (dataList == null) {
             return 0;
-        } else if (dataList.size() > 5) {
+        } else if (dataList.size() > 5 && !isFromeRankActivity) {
             return 5;
         } else {
-           return dataList.size();
+            return dataList.size();
         }
     }
 

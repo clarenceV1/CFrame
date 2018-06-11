@@ -11,9 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.widget.CircleView;
 import com.cai.framework.widget.VerticalScrollTextView;
 import com.cai.work.R;
@@ -136,6 +139,14 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+            }
+        });
+        rangeViewHolder.llLookRank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/RankActivity")
+                        .withCharSequence("dataList", JSON.toJSONString(rangeData))
+                        .navigation();
             }
         });
     }
@@ -319,7 +330,8 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView tvHomeTabLeft, tvHomeTabRight;
         FrameLayout homeForwardContainer;
         View bottomLine1, bottomLine2;
-        RelativeLayout rlTab1,rlTab2;
+        RelativeLayout rlTab1, rlTab2;
+
         public ForwardViewHolder(View itemView) {
             super(itemView);
             tvHomeTabLeft = (TextView) itemView.findViewById(R.id.tvHomeTabLeft);
@@ -334,10 +346,12 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     class RangeViewHolder extends RecyclerView.ViewHolder {
         ListViewEx listViewEx;
+        LinearLayout llLookRank;
 
         public RangeViewHolder(View itemView) {
             super(itemView);
             listViewEx = (ListViewEx) itemView.findViewById(R.id.listViewEx);
+            llLookRank = (LinearLayout) itemView.findViewById(R.id.llLookRank);
         }
     }
 
