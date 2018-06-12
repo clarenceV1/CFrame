@@ -8,6 +8,7 @@ import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.RedPacketRespond;
+import com.cai.work.bean.respond.UploadRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 
 import io.reactivex.Flowable;
@@ -57,4 +58,7 @@ public interface ApiService {
     @GET("/app/redBags/index")
     Flowable<RedPacketRespond> getRedPacket(@Query("page") int page, @Query("token") String token);
 
+    @POST("/app/upload/index")
+    @FormUrlEncoded
+    Flowable<UploadRespond> uploadUserHeadImg(@Field("token") String token, @Field("t") String t, @Field("data") String data);
 }

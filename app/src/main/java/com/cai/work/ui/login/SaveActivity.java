@@ -1,7 +1,8 @@
 package com.cai.work.ui.login;
 
 import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -14,6 +15,8 @@ import com.cai.work.bean.User;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.SaveBinding;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
+import com.example.clarence.imageloaderlibrary.ILoadImageParams;
+import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
@@ -51,10 +54,7 @@ public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveVi
         User user = presenter.getUserInfo();
         mViewBinding.tvMobile.setText(user.getMobile());
 
-//        ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(user.getAvatarUrl()).build();
-//        imageParams.setImageView(mViewBinding.imgIcon);
-//        imageLoader.loadImage(this, imageParams);
-
+//        showHead(user.getAvatarUrl());
 
         mViewBinding.rlFixLoginPss.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +77,7 @@ public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveVi
         mViewBinding.imgIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                PhotoUtils.getInstance().setCrop(true);
                 PhotoUtils.getInstance().takePhoto(SaveActivity.this);
             }
         });
@@ -93,14 +94,30 @@ public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveVi
         ToastUtils.showShort(getResources().getString(R.string.login_out));
     }
 
+    @Override
+    public void showHeadImg(String image) {
+        showHead(image);
+    }
+
+    @Override
+    public void showHeadImg(Bitmap image) {
+        mViewBinding.imgIcon.setImageBitmap(image);
+    }
+
+    private void showHead(String image) {
+        ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(image).build();
+        imageParams.setImageView(mViewBinding.imgIcon);
+        imageLoader.loadImage(this, imageParams);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //获取图片路径
-        Uri uri = PhotoUtils.getInstance().onActivityResult(this, requestCode, resultCode, data);
-        if (uri != null) {
-            mViewBinding.imgIcon.setImageURI(uri);
+        String path = PhotoUtils.getInstance().onActivityResult(this, requestCode, resultCode, data);
+        if (!TextUtils.isEmpty(path)) {
+            presenter.uploadImage(this, path);
         }
     }
 }

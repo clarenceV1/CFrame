@@ -106,4 +106,12 @@ public class RequestStore {
                 .subscribe(onNext, onError);
         return disposable;
     }
+
+    public Disposable uploadUserHeadImg(String token, String type,String data, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).uploadUserHeadImg(token, type,data)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
 }
