@@ -1,7 +1,5 @@
 package com.cai.work.ui.login;
 
-import android.graphics.Bitmap;
-
 import com.cai.framework.base.GodBaseView;
 
 /**
@@ -12,5 +10,4 @@ public interface SaveView extends GodBaseView {
     void loginOut();
 
     void showHeadImg(String image);
-    void showHeadImg(Bitmap image);
 }

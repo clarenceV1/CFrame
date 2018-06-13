@@ -99,11 +99,6 @@ public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveVi
         showHead(image);
     }
 
-    @Override
-    public void showHeadImg(Bitmap image) {
-        mViewBinding.imgIcon.setImageBitmap(image);
-    }
-
     private void showHead(String image) {
         ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(image).build();
         imageParams.setImageView(mViewBinding.imgIcon);
@@ -117,7 +112,7 @@ public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveVi
         //获取图片路径
         String path = PhotoUtils.getInstance().onActivityResult(this, requestCode, resultCode, data);
         if (!TextUtils.isEmpty(path)) {
-            presenter.uploadImage(this, path);
+            presenter.uploadImage(path);
         }
     }
 }

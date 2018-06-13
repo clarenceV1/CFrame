@@ -1,10 +1,6 @@
 package com.cai.work.ui.login;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.text.TextUtils;
 
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
@@ -14,10 +10,10 @@ import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.UserDAO;
+import com.example.clarence.utillibrary.Base64Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.File;
 
 import javax.inject.Inject;
 
@@ -73,26 +69,19 @@ public class SavePresenter extends GodBasePresenter<SaveView> {
     }
 
     @SuppressLint("CheckResult")
-    public void uploadImage(final Context context, final String path) {
-        Observable.create(new ObservableOnSubscribe<Bitmap>() {
+    public void uploadImage(final String path) {
+        Observable.create(new ObservableOnSubscribe<String>() {
             @Override
-            public void subscribe(ObservableEmitter<Bitmap> result) {
-//                String path = UriUtils.getFilePathByUri(context, uri);
-//                String imageBase64 = getImageData(path);
-//                if (TextUtils.isEmpty(imageBase64)) {
-//                    imageBase64 = "";
-//                }
-//                result.onNext(imageBase64);
-                Bitmap bitmap = getImageData(path);
-                result.onNext(bitmap);
+            public void subscribe(ObservableEmitter<String> result) {
+                String imageBase64 = Base64Utils.encodeToFile(new File(path));
+                result.onNext(imageBase64);
             }
         }).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Bitmap>() {
+                .subscribe(new Consumer<String>() {
                     @Override
-                    public void accept(Bitmap imageData) {
-                        mView.showHeadImg(imageData);
-//                        uploadUserHeadImg(imageData);
+                    public void accept(String imageData) {
+                        uploadUserHeadImg(imageData);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -100,23 +89,6 @@ public class SavePresenter extends GodBasePresenter<SaveView> {
                         Logger.e(throwable.getMessage());
                     }
                 });
-    }
-
-    private Bitmap getImageData(String path) {
-        if (TextUtils.isEmpty(path)) {
-            return null;
-        }
-        try {
-            FileInputStream fis = new FileInputStream(path);
-            Bitmap bitmap = BitmapFactory.decodeStream(fis);
-            return bitmap;
-//            byte[] bytes = ImageUtils.bitmap2Bytes(bitmap);
-//            String data = Md5Utils.md5(bytes);
-//            return data;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     /**
@@ -130,6 +102,7 @@ public class SavePresenter extends GodBasePresenter<SaveView> {
             @Override
             public void accept(UploadRespond data) {
                 if (data != null && data.getCode() == 200) {
+                    Logger.d("uploadImage===>" + data.getData());
                     mView.showHeadImg(data.getData());
                 }
             }
