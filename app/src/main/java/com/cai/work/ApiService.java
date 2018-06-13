@@ -7,6 +7,7 @@ import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.respond.MessageRespond;
+import com.cai.work.bean.respond.RechargeBankResond;
 import com.cai.work.bean.respond.RedPacketRespond;
 import com.cai.work.bean.respond.UploadRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
@@ -61,4 +62,7 @@ public interface ApiService {
     @POST("/app/upload/index")
     @FormUrlEncoded
     Flowable<UploadRespond> uploadUserHeadImg(@Field("token") String token, @Field("t") String t, @Field("data") String data);
+
+    @GET("/app/recharge/getOffline")
+    Flowable<RechargeBankResond> requestRechargeBankList(@Query("token") String token);
 }
