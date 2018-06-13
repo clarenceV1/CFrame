@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.work.R;
 import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineListData;
@@ -92,7 +93,7 @@ public class MainMineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         topViewHolder.btnRecharge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("充值");
+                ARouter.getInstance().build("/AppModule/RechargeActivity").navigation();
             }
         });
         topViewHolder.btnWithdrawal.setOnClickListener(new View.OnClickListener() {

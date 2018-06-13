@@ -12,12 +12,14 @@
     <string name="dialog_titile">提示</string>
     <string name="no_data">暂无数据</string>
     <string name="please_login">您还未登录,请登录</string>
+    <string name="balance_money">账户余额</string>
 
     <string name="btn_add">立即添加</string>
     <string name="btn_delete">删除</string>
     <string name="btn_cancle">取消</string>
     <string name="btn_commit">确定</string>
     <string name="btn_quit">安全退出</string>
+    <string name="btn_commit_pay">确认支付</string>
 
     <string name="main_tab_title_1">首页</string>
     <string name="main_tab_title_2">咨询</string>
@@ -103,5 +105,9 @@
     <string name="save_binded">已绑定</string>
     <string name="save_titile">安全设置</string>
 
+    <string name="recharge_pay_ali">支付宝支付</string>
+    <string name="recharge_pay_wechat">微信支付</string>
+    <string name="recharge_underline">线下支付</string>
+    <string name="recharge_payway">请选择支付方式</string>
 
 </resources>

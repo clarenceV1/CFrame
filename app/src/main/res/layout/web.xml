@@ -6,12 +6,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnGoMain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="goToMain"
-            android:text="跳到首页" />
+        <include
+            android:id="@+id/commonHeadView"
+            layout="@layout/common_head" />
 
         <FrameLayout
             android:id="@+id/containLayout"

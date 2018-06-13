@@ -25,6 +25,8 @@ import com.cai.work.ui.rank.RankActivity;
 import com.cai.work.ui.rank.RankPresenter;
 import com.cai.work.ui.recharge.RechargeActivity;
 import com.cai.work.ui.recharge.RechargePresenter;
+import com.cai.work.ui.recharge.RechargeUnderLineActivity;
+import com.cai.work.ui.recharge.RechargeUnderLinePresenter;
 import com.cai.work.ui.redPacket.RedPacketActivity;
 import com.cai.work.ui.redPacket.RedPacketPresenter;
 import com.cai.work.ui.web.WebActivity;
@@ -96,4 +98,9 @@ public interface AppComponent {
     void inject(RechargeActivity rechargeActivity);
 
     void inject(RechargePresenter rechargePresenter);
+
+    void inject(RechargeUnderLineActivity rechargeUnderLineActivity);
+
+    void inject(RechargeUnderLinePresenter rechargeUnderLinePresenter);
+
 }

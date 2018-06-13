@@ -42,6 +42,12 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     int position = 1;
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ARouter.getInstance().inject(this);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         clickTab(position);
