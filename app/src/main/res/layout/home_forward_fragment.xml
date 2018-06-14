@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.cai.work.widget.ListViewEx
+        <com.cai.framework.widget.ListViewEx
             android:id="@+id/forwardListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

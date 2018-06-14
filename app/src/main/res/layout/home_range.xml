@@ -40,7 +40,7 @@
     </RelativeLayout>
 
 
-    <com.cai.work.widget.ListViewEx
+    <com.cai.framework.widget.ListViewEx
         android:id="@+id/listViewEx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
