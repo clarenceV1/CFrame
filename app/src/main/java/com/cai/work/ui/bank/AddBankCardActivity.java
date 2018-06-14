@@ -4,9 +4,9 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
-import com.cai.framework.widget.wheel.OneWheelDialog;
-import com.cai.framework.widget.wheel.OneWheelModel;
-import com.cai.framework.widget.wheel.WheelCallBackListener;
+import com.cai.framework.widget.dialog.wheel.OneWheelDialog;
+import com.cai.framework.widget.dialog.wheel.OneWheelModel;
+import com.cai.framework.widget.dialog.wheel.WheelCallBackListener;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Bank;
