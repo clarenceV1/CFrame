@@ -1,6 +1,5 @@
 package com.cai.work.ui.login;
 
-import android.content.Intent;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -16,12 +15,7 @@ import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.LoginBinding;
-import com.cai.work.event.LoginStateEvent;
-import com.cai.work.ui.main.MainActivity;
 import com.example.clarence.utillibrary.ToastUtils;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Logger;
 
 import java.util.List;
 

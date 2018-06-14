@@ -32,6 +32,8 @@ import com.cai.work.ui.redPacket.RedPacketPresenter;
 import com.cai.work.ui.web.WebActivity;
 import com.cai.work.ui.welcome.WelcomeActivity;
 import com.cai.work.ui.welcome.WelcomePresenter;
+import com.cai.work.ui.withdrawal.WithdrawalActivity;
+import com.cai.work.ui.withdrawal.WithdrawalPresenter;
 
 import javax.inject.Singleton;
 
@@ -102,5 +104,9 @@ public interface AppComponent {
     void inject(RechargeUnderLineActivity rechargeUnderLineActivity);
 
     void inject(RechargeUnderLinePresenter rechargeUnderLinePresenter);
+
+    void inject(WithdrawalActivity withdrawalActivity);
+
+    void inject(WithdrawalPresenter withdrawalPresenter);
 
 }

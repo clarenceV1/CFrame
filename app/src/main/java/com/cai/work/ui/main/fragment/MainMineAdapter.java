@@ -99,7 +99,7 @@ public class MainMineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         topViewHolder.btnWithdrawal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("提现");
+                ARouter.getInstance().build("/AppModule/WithdrawalActivity").navigation();
             }
         });
     }

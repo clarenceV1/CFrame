@@ -4,7 +4,6 @@
     <string name="pull_to_refreshing_tips">正在刷新列表</string>
     <string name="release_to_refresh_guide_tips">松开即可刷新</string>
 
-
     <string name="app_name">金囤在线</string>
     <string name="no_net">请检查网络</string>
     <string name="login">登录</string>
@@ -125,4 +124,13 @@
     <string name="recharge_title">充值中心</string>
     <string name="recharge_underline_title">线下充值</string>
     <string name="recharge_underline_dialog_title">选中图片</string>
+
+    <string name="withdrawal_money">提现金额</string>
+    <string name="withdrawal_money_back">到账时间</string>
+    <string name="withdrawal_poundage">手续费</string>
+    <string name="withdrawal_forget_password">忘记密码？</string>
+    <string name="withdrawal_dialog_title">到账时间</string>
+    <string name="withdrawal_amount_toast">请输入提现金额</string>
+    <string name="withdrawal_password_toast">请输入提现密码</string>
+    <string name="withdrawal_titile">提现</string>
 </resources>

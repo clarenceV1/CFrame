@@ -1,6 +1,7 @@
 package com.cai.work.common;
 
 import com.cai.work.ApiService;
+import com.cai.work.bean.respond.WithdrawalRespond;
 import com.example.clarence.netlibrary.INet;
 
 import java.net.URLEncoder;
@@ -122,8 +123,25 @@ public class RequestStore {
                 .subscribe(onNext, onError);
         return disposable;
     }
+
     public Disposable commitPay(String offlineName,String amount,int offlineId,String offlineAccount,String offlineImageUrl,String token, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).commitPay(offlineName,amount,offlineId,offlineAccount,offlineImageUrl,token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable requestWithdrawal(String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestWithdrawal(token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable commitWithdrawal(int cardId, String amount, String password, int withdrawKind, String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).commitWithdrawal(cardId,amount,password,withdrawKind,token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
