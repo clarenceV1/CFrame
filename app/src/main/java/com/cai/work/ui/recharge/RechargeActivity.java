@@ -36,7 +36,7 @@ public class RechargeActivity extends AppBaseActivity<RechargeBinding> implement
 
     @Override
     public void initView() {
-        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.save_titile));
+        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.recharge_title));
         mViewBinding.commonHeadView.ivGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

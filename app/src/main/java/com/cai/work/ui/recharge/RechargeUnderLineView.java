@@ -12,4 +12,5 @@ import java.util.List;
 public interface RechargeUnderLineView extends GodBaseView {
     void updateListView(List<RechargeBank> dataList);
     void payState(String msg);
+    void callBackImagePath(String path);
 }

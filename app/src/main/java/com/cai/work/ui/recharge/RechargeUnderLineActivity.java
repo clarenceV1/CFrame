@@ -1,20 +1,26 @@
 package com.cai.work.ui.recharge;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.utils.PhotoUtils;
+import com.cai.framework.widget.dialog.BottomMenuDialog;
+import com.cai.framework.widget.dialog.BottomMenuModel;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.RechargeBank;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.RechargeUnderlineBinding;
+import com.cai.work.ui.login.SaveActivity;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.KeyBoardUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,6 +32,7 @@ public class RechargeUnderLineActivity extends AppBaseActivity<RechargeUnderline
     @Inject
     RechargeUnderLinePresenter presenter;
     RechargeUnderLineAdapter adapter;
+    String imageUploadPath;
 
     @Override
     public void initDagger() {
@@ -39,7 +46,7 @@ public class RechargeUnderLineActivity extends AppBaseActivity<RechargeUnderline
 
     @Override
     public void initView() {
-        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.save_titile));
+        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.recharge_underline_title));
         mViewBinding.commonHeadView.ivGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +81,7 @@ public class RechargeUnderLineActivity extends AppBaseActivity<RechargeUnderline
                 String offlineAccount = mViewBinding.editPayAccount.getText().toString();
                 if (TextUtils.isEmpty(offlineAccount)) {
                     ToastUtils.showShort(getString(R.string.recharge_no_money_toast));
-                    mViewBinding.editRechargeMoney.requestFocus();
+                    mViewBinding.editPayAccount.requestFocus();
                     KeyBoardUtils.forceShow(mViewBinding.editPayAccount);
                     return;
                 }
@@ -83,11 +90,54 @@ public class RechargeUnderLineActivity extends AppBaseActivity<RechargeUnderline
                     ToastUtils.showShort(getString(R.string.recharge_payway));
                     return;
                 }
-                String offlineImageUrl = null;
-                presenter.commitPay(offlineName, amount, offlineId, offlineAccount, offlineImageUrl);
+                presenter.commitPay(offlineName, amount, offlineId, offlineAccount, imageUploadPath);
+            }
+        });
+        mViewBinding.imgUploadProof.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showMenuDialog();
             }
         });
         presenter.requestRechargeBankList();
+    }
+    private void showMenuDialog() {
+        BottomMenuModel menuModel = new BottomMenuModel();
+        menuModel.setTitle(getString(R.string.recharge_underline_dialog_title));
+        List<BottomMenuModel.BottomMenuItemModel> menuList = new ArrayList<>();
+
+        BottomMenuModel.BottomMenuItemModel menuItemModel = new BottomMenuModel.BottomMenuItemModel();
+        menuItemModel.setMenuName("拍照");
+        menuItemModel.setTag(1);
+        menuList.add(menuItemModel);
+
+        BottomMenuModel.BottomMenuItemModel menuItemModel2 = new BottomMenuModel.BottomMenuItemModel();
+        menuItemModel2.setMenuName("相册");
+        menuItemModel2.setTag(2);
+        menuList.add(menuItemModel2);
+
+        BottomMenuModel.BottomMenuItemModel menuItemModel3 = new BottomMenuModel.BottomMenuItemModel();
+        menuItemModel3.setMenuName("取消");
+        menuItemModel3.setTag(3);
+        menuList.add(menuItemModel3);
+
+        menuModel.setMenuList(menuList);
+        menuModel.setClickListener(new BottomMenuModel.BottomMenuItemClickListener() {
+            @Override
+            public void onClick(BottomMenuDialog dialog, View v, BottomMenuModel.BottomMenuItemModel itemModel) {
+                int tag = ((int) itemModel.getTag());
+                if (tag == 1) {
+                    PhotoUtils.getInstance().takePhoto(RechargeUnderLineActivity.this);
+                } else if(tag ==2){
+                    PhotoUtils.getInstance().setCrop(true);
+                    PhotoUtils.getInstance().choosePhone(RechargeUnderLineActivity.this);
+                }
+                dialog.dismiss();
+            }
+        });
+        BottomMenuDialog bottomMenuDialog = new BottomMenuDialog(this, menuModel);
+        bottomMenuDialog.show();
+
     }
 
     @Override
@@ -103,5 +153,21 @@ public class RechargeUnderLineActivity extends AppBaseActivity<RechargeUnderline
     @Override
     public void payState(String msg) {
         ToastUtils.showShort(msg);
+        finish();
+    }
+
+    @Override
+    public void callBackImagePath(String path) {
+        imageUploadPath = path;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //获取图片路径
+        String path = PhotoUtils.getInstance().onActivityResult(this, requestCode, resultCode, data);
+        if (!TextUtils.isEmpty(path)) {
+            presenter.uploadImage(path);
+        }
     }
 }
