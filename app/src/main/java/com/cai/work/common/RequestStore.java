@@ -122,4 +122,11 @@ public class RequestStore {
                 .subscribe(onNext, onError);
         return disposable;
     }
+    public Disposable commitPay(String offlineName,String amount,int offlineId,String offlineAccount,String offlineImageUrl,String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).commitPay(offlineName,amount,offlineId,offlineAccount,offlineImageUrl,token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
 }

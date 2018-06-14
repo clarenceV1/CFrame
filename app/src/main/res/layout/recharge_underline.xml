@@ -54,6 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:inputType="numberDecimal"
                     android:hint="@string/recharge_money_hint" />
             </LinearLayout>
 
@@ -96,6 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:inputType="number"
                     android:hint="@string/recharge_pay_acccount_hint" />
             </LinearLayout>
 
@@ -123,6 +125,7 @@
                 android:background="@drawable/ic_launcher" />
 
             <Button
+                android:id="@+id/btnCommitPay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"

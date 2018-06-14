@@ -120,4 +120,6 @@
     <string name="recharge_upload_proof">请上传凭证</string>
     <string name="recharge_copy_account">复制账号</string>
     <string name="recharge_copy_account_toast">账号已复制</string>
+    <string name="recharge_no_money_toast">请输入金额</string>
+    <string name="recharge_commit_pay_success">提交成功</string>
 </resources>

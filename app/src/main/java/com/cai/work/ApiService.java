@@ -65,4 +65,9 @@ public interface ApiService {
 
     @GET("/app/recharge/getOffline")
     Flowable<RechargeBankResond> requestRechargeBankList(@Query("token") String token);
+
+    @POST("/app/recharge/offlineSave")
+    @FormUrlEncoded
+    Flowable<BaseRespond> commitPay(@Field("offlineName")String offlineName,@Field("amount")String amount,@Field("offlineId")int offlineId,@Field("offlineAccount")String offlineAccount,@Field("offlineImageUrl")String offlineImageUrl,@Field("token") String token);
+
 }

@@ -17,6 +17,15 @@ public class RechargeBank implements CBaseData {
     private String imageUrl;
     private String mImageUrl;
     private String mbgColor;
+    private boolean isCheck;//是否选中 客户端自己的数据
+
+    public boolean isCheck() {
+        return isCheck;
+    }
+
+    public void setCheck(boolean check) {
+        isCheck = check;
+    }
 
     public int getId() {
         return id;
