@@ -28,8 +28,17 @@
             android:layout_alignParentRight="true"
             android:gravity="center"
             android:textSize="22sp"
-            tools:text="清空"
             android:visibility="gone"
-            tools:visibility="visible"/>
+            tools:text="清空"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/imgRight"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_launcher"
+            android:visibility="gone"
+            tools:visibility="visible" />
     </RelativeLayout>
 </layout>

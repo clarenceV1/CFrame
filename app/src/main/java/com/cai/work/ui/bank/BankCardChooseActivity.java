@@ -64,6 +64,13 @@ public class BankCardChooseActivity extends AppBaseActivity<BankCardChooseBindin
                 finish();
             }
         });
+        mViewBinding.commonHeadView.imgRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               ARouter.getInstance().build("/AppModule/BankAddActivity").navigation();
+            }
+        });
+        mViewBinding.commonHeadView.imgRight.setVisibility(View.VISIBLE);
         mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.bank_card_choose_titile));
 
         if (!TextUtils.isEmpty(dataJson)) {
