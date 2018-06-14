@@ -9,11 +9,8 @@ import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.UserDAO;
-import com.cai.work.event.LoginStateEvent;
 import com.example.clarence.utillibrary.Md5Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
-
-import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 

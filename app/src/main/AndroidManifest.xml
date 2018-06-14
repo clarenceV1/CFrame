@@ -81,6 +81,9 @@
         <activity
             android:name=".ui.withdrawal.WithdrawalActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.bank.BankCardChooseActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

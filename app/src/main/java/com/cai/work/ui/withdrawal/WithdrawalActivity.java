@@ -4,18 +4,27 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.widget.dialog.BottomMenuDialog;
 import com.cai.framework.widget.dialog.BottomMenuModel;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Withdrawal;
+import com.cai.work.bean.WithdrawalBank;
 import com.cai.work.bean.Withdrawalkind;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WithdrawalBinding;
+import com.cai.work.event.BankCardChooseEvent;
 import com.example.clarence.utillibrary.KeyBoardUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +37,12 @@ public class WithdrawalActivity extends AppBaseActivity<WithdrawalBinding> imple
     Withdrawal withdrawal;
     int withdrawKind = 1;
     List<Withdrawalkind> withdrawalkindList = new ArrayList<>();
+    WithdrawalBank chooseBankCard;
 
     @Override
     public void initDagger() {
         DaggerAppComponent.create().inject(this);
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -55,7 +66,12 @@ public class WithdrawalActivity extends AppBaseActivity<WithdrawalBinding> imple
                 showMenuDialog();
             }
         });
-
+        mViewBinding.imgChooseBankCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/BankCardChooseActivity").withCharSequence("dataList", JSON.toJSONString(withdrawal.getBank_list())).navigation();
+            }
+        });
         mViewBinding.btnCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,8 +90,11 @@ public class WithdrawalActivity extends AppBaseActivity<WithdrawalBinding> imple
                     KeyBoardUtils.forceShow(mViewBinding.editPassword);
                     return;
                 }
-                int cardId = withdrawal.getBank_list().get(1).getId();
-                presenter.commitWithdrawal(cardId, amount, password, withdrawKind);
+                if(chooseBankCard == null){
+                    ToastUtils.showShort(getString(R.string.withdrawal_no_card_toast));
+                    return;
+                }
+                presenter.commitWithdrawal(chooseBankCard.getId(), amount, password, withdrawKind);
             }
         });
         presenter.requestWithdrawal();
@@ -145,5 +164,17 @@ public class WithdrawalActivity extends AppBaseActivity<WithdrawalBinding> imple
     public void commitState(String msg) {
         ToastUtils.showShort(msg);
         finish();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void chooseBankCard(BankCardChooseEvent event) {
+        chooseBankCard = event.bankCard;
+        mViewBinding.tvBankAccount.setText(chooseBankCard.getSimpleCardNo());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

@@ -12,14 +12,9 @@ import com.cai.work.bean.User;
 import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainHomeFragmentBinding;
-import com.cai.work.event.LoginStateEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 

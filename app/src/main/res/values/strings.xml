@@ -133,4 +133,6 @@
     <string name="withdrawal_amount_toast">请输入提现金额</string>
     <string name="withdrawal_password_toast">请输入提现密码</string>
     <string name="withdrawal_titile">提现</string>
+    <string name="bank_card_choose_titile">选择银行卡</string>
+    <string name="withdrawal_no_card_toast">请选择银行卡</string>
 </resources>

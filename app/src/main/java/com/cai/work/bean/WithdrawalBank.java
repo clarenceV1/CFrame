@@ -1,6 +1,13 @@
 package com.cai.work.bean;
 
-public class WithdrawalBank {
+import android.text.TextUtils;
+
+import com.cai.framework.bean.CBaseData;
+import com.example.clarence.utillibrary.StringUtils;
+
+import java.io.Serializable;
+
+public class WithdrawalBank implements CBaseData, Serializable {
 //"id": 1845,
 //        "cardNo": "24646647766686568",
 //        "bankName": "建设银行",
@@ -14,6 +21,15 @@ public class WithdrawalBank {
     private String imageUrl;
     private String mImageUrl;
     private String mbgColor;
+    private boolean isChoose;//客户端自己加的
+
+    public boolean isChoose() {
+        return isChoose;
+    }
+
+    public void setChoose(boolean choose) {
+        isChoose = choose;
+    }
 
     public int getId() {
         return id;
@@ -61,5 +77,12 @@ public class WithdrawalBank {
 
     public void setMbgColor(String mbgColor) {
         this.mbgColor = mbgColor;
+    }
+
+    public String getSimpleCardNo() {
+        if (TextUtils.isEmpty(cardNo)) {
+            return "";
+        }
+        return StringUtils.buildString("尾号",cardNo.substring(cardNo.length() - 4, cardNo.length()),"储蓄卡");
     }
 }

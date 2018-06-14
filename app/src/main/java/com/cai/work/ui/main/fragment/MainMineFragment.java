@@ -3,8 +3,6 @@ package com.cai.work.ui.main.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
-import com.alibaba.android.arouter.facade.Postcard;
-import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
@@ -13,11 +11,8 @@ import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineListData;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainMineFragmentBinding;
-import com.cai.work.event.LoginStateEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 

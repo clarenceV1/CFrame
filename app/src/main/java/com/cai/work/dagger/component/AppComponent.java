@@ -4,6 +4,8 @@ import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.dagger.module.AppModule;
 import com.cai.work.ui.bank.AddBankCardActivity;
 import com.cai.work.ui.bank.AddBankCardPresenter;
+import com.cai.work.ui.bank.BankCardChooseActivity;
+import com.cai.work.ui.bank.BankCardChoosePresenter;
 import com.cai.work.ui.bank.BankCardListActivity;
 import com.cai.work.ui.bank.BankCardListPresenter;
 import com.cai.work.ui.fund.FundDetailActivity;
@@ -109,4 +111,7 @@ public interface AppComponent {
 
     void inject(WithdrawalPresenter withdrawalPresenter);
 
+    void inject(BankCardChooseActivity bankCardChooseActivity);
+
+    void inject(BankCardChoosePresenter bankCardChoosePresenter);
 }
