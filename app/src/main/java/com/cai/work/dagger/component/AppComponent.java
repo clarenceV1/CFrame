@@ -15,6 +15,8 @@ import com.cai.work.ui.login.ForgetPasswordActivity;
 import com.cai.work.ui.login.ForgetPasswordPresenter;
 import com.cai.work.ui.login.LoginActivity;
 import com.cai.work.ui.login.LoginPresenter;
+import com.cai.work.ui.login.RegisterActivity;
+import com.cai.work.ui.login.RegisterPresenter;
 import com.cai.work.ui.login.SaveActivity;
 import com.cai.work.ui.login.SavePresenter;
 import com.cai.work.ui.main.MainActivity;
@@ -114,4 +116,9 @@ public interface AppComponent {
     void inject(BankCardChooseActivity bankCardChooseActivity);
 
     void inject(BankCardChoosePresenter bankCardChoosePresenter);
+
+    void inject(RegisterActivity registerActivity);
+
+    void inject(RegisterPresenter registerPresenter);
+
 }

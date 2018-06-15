@@ -68,10 +68,15 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
         mViewBinding.tvForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ARouter.getInstance().build("/AppModule/ForgetPasswordActivity").navigation();
             }
         });
-
+        mViewBinding.tvRegiser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/RegisterActivity").navigation();
+            }
+        });
         if (GodBaseConfig.getInstance().isDebug()) {
             mViewBinding.editMobile.setText("13276967598");
             mViewBinding.editPassword.setText("123456");

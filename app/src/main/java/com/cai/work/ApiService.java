@@ -9,6 +9,7 @@ import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.RechargeBankResond;
 import com.cai.work.bean.respond.RedPacketRespond;
+import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.UploadRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.bean.respond.WithdrawalRespond;
@@ -69,16 +70,23 @@ public interface ApiService {
 
     @POST("/app/recharge/offlineSave")
     @FormUrlEncoded
-    Flowable<BaseRespond> commitPay(@Field("offlineName")String offlineName,@Field("amount")String amount,
-                                    @Field("offlineId")int offlineId,@Field("offlineAccount")String offlineAccount,
-                                    @Field("offlineImageUrl")String offlineImageUrl,@Field("token") String token);
+    Flowable<BaseRespond> commitPay(@Field("offlineName") String offlineName, @Field("amount") String amount,
+                                    @Field("offlineId") int offlineId, @Field("offlineAccount") String offlineAccount,
+                                    @Field("offlineImageUrl") String offlineImageUrl, @Field("token") String token);
 
     @GET("/app/withdraw/getData")
     Flowable<WithdrawalRespond> requestWithdrawal(@Query("token") String token);
 
     @POST("/app/recharge/offlineSave")
     @FormUrlEncoded
-    Flowable<BaseRespond> commitWithdrawal(@Field("cardId")int cardId,@Field("amount")String amount,
-                                           @Field("password")String password,@Field("withdrawKind")int withdrawKind,
+    Flowable<BaseRespond> commitWithdrawal(@Field("cardId") int cardId, @Field("amount") String amount,
+                                           @Field("password") String password, @Field("withdrawKind") int withdrawKind,
                                            @Field("token") String token);
+
+    @POST("/app/register")
+    @FormUrlEncoded
+    Flowable<CommonRespond> requestRegister(@Field("mobile") String mobile, @Field("sms") String sms, @Field("loginPassword") String loginPassword, @Field("invitationCode") String invitationCode);
+
+    @GET("/app/send/get_code")
+    Flowable<CommonRespond> requestIdentifyCode(@Query("mobile") String mobile, @Query("type") int type);
 }

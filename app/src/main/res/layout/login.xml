@@ -35,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:inputType="number"
                 android:hint="@string/login_mobile_hint" />
         </LinearLayout>
 
@@ -57,7 +58,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="@string/login_mobile_hint" />
+                android:inputType="textPassword"
+                android:hint="@string/login_password_hint" />
 
             <CheckBox
                 android:id="@+id/showPassword"
@@ -68,23 +70,30 @@
                 android:checked="true" />
         </LinearLayout>
 
+        <CheckBox
+            android:id="@+id/cbSavePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/login_save_password" />
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_height="wrap_content">
 
-            <CheckBox
-                android:id="@+id/cbSavePassword"
+            <TextView
+                android:id="@+id/tvRegiser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/login_save_password" />
+                android:padding="10dp"
+                android:text="@string/login_register" />
 
             <TextView
                 android:id="@+id/tvForgetPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:padding="10dp"
                 android:text="@string/login_forget_password" />
         </RelativeLayout>
 

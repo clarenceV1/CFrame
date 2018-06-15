@@ -108,8 +108,8 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable uploadUserHeadImg(String token, String type,String data, Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request().create(ApiService.class).uploadUserHeadImg(token, type,data)
+    public Disposable uploadUserHeadImg(String token, String type, String data, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).uploadUserHeadImg(token, type, data)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
@@ -124,8 +124,8 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable commitPay(String offlineName,String amount,int offlineId,String offlineAccount,String offlineImageUrl,String token, Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request().create(ApiService.class).commitPay(offlineName,amount,offlineId,offlineAccount,offlineImageUrl,token)
+    public Disposable commitPay(String offlineName, String amount, int offlineId, String offlineAccount, String offlineImageUrl, String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).commitPay(offlineName, amount, offlineId, offlineAccount, offlineImageUrl, token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
@@ -141,7 +141,23 @@ public class RequestStore {
     }
 
     public Disposable commitWithdrawal(int cardId, String amount, String password, int withdrawKind, String token, Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request().create(ApiService.class).commitWithdrawal(cardId,amount,password,withdrawKind,token)
+        Disposable disposable = iNet.request().create(ApiService.class).commitWithdrawal(cardId, amount, password, withdrawKind, token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable requestRegister(String mobile, String sms, String loginPassword, String invitationCode, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestRegister(mobile, sms, loginPassword, invitationCode)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable requestIdentifyCode(String mobile, int type, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestIdentifyCode(mobile, type)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
