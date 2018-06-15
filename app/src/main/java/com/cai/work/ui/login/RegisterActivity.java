@@ -151,8 +151,11 @@ public class RegisterActivity extends AppBaseActivity<RegisterBinding> implement
     }
 
     @Override
-    public void toast(String msg) {
+    public void toast(int type, String msg) {
         ToastUtils.showShort(msg);
+        if (type == 4) {
+            finish();
+        }
     }
 
     @Override

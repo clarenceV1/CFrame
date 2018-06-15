@@ -5,7 +5,6 @@ import com.cai.lib.logger.Logger;
 import com.cai.work.R;
 import com.cai.work.bean.Account;
 import com.cai.work.bean.respond.CommonRespond;
-import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
@@ -48,8 +47,9 @@ public class RegisterPresenter extends GodBasePresenter<RegisterView> {
                     account.setPassword(loginPassword);
                     account.setMobile(mobile);
                     accountDAO.save(account);
+                    mView.toast(4,context.getResources().getString(R.string.register_success));
                 } else {
-                    mView.toast(data.getResponseText());
+                    mView.toast(3,data.getResponseText());
                 }
             }
         }, new Consumer<Throwable>() {
@@ -76,9 +76,9 @@ public class RegisterPresenter extends GodBasePresenter<RegisterView> {
             public void accept(CommonRespond data) {
                 if (data.getCode() == 200) {
                     String tostStr = context.getString(R.string.register_identify_code_send);
-                    mView.toast(tostStr);
+                    mView.toast(1,tostStr);
                 } else {
-                    mView.toast(data.getResponseText());
+                    mView.toast(2,data.getResponseText());
                 }
             }
         }, new Consumer<Throwable>() {

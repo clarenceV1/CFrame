@@ -7,5 +7,5 @@ import com.cai.framework.base.GodBaseView;
  */
 
 public interface RegisterView extends GodBaseView {
-        void toast(String msg);
+    void toast(int type, String msg);
 }
