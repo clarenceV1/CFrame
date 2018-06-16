@@ -10,6 +10,8 @@ import com.cai.work.ui.bank.BankCardListActivity;
 import com.cai.work.ui.bank.BankCardListPresenter;
 import com.cai.work.ui.fund.FundDetailActivity;
 import com.cai.work.ui.fund.FundDetailPresenter;
+import com.cai.work.ui.invite.InviteActivity;
+import com.cai.work.ui.invite.InvitePresenter;
 import com.cai.work.ui.listview.ListviewScollActivity;
 import com.cai.work.ui.login.ForgetPasswordActivity;
 import com.cai.work.ui.login.ForgetPasswordPresenter;
@@ -132,4 +134,8 @@ public interface AppComponent {
     void inject(WithdrawalPasswordActivity withdrawalPasswordActivity);
 
     void inject(WithdrawalPasswordPresenter withdrawalPasswordPresenter);
+
+    void inject(InviteActivity inviteActivity);
+
+    void inject(InvitePresenter invitePresenter);
 }

@@ -138,6 +138,7 @@
     <string name="withdrawal_password_toast">请输入提现密码</string>
     <string name="withdrawal_titile">提现</string>
     <string name="withdrawal_no_card_toast">请选择银行卡</string>
+    <string name="withdrawal_password_titile">设置提现密码</string>
 
     <string name="register_titile">注册</string>
     <string name="register_identify_hint">请输入4位短信验证码</string>
@@ -162,6 +163,22 @@
 
     <string name="reset_password_titile">重置密码</string>
     <string name="reset_password_toast">密码重置成功</string>
-    <string name="withdrawal_password_titile">设置提现密码</string>
+
+    <string name="invite_titile">邀请中心</string>
+    <string name="invite_rule">邀请规则</string>
+    <string name="invite_success_rebate">成功提现佣金(元)</string>
+    <string name="invite_can_rebate">可提现佣金(元)</string>
+    <string name="invite_can_rebate_from">(返佣账户</string>
+    <string name="invite_can_rebate_to">会员账户)</string>
+    <string name="invite_rebate_cash">佣金提现</string>
+    <string name="invite_link_title">我的邀请链接</string>
+    <string name="invite_copy_link">复制链接</string>
+    <string name="invite_QR_code">我的邀请二维码</string>
+    <string name="invite_save_pic">保存图片</string>
+    <string name="invite_introduce">说明:直接点击\"分享好友,可分享给QQ好友、微信好友等。凡是通过该链接或者二维码注册进来的用户，都是您的邀请客户，他们操作了，你就有一定的返佣哦。\"</string>
+    <string name="invite_method">邀请方式</string>
+    <string name="invite_my_invite">我的邀请</string>
+    <string name="invite_rebate_detail">返佣明细</string>
+    <string name="invite_withdrawal_detail">提现明细</string>
 
 </resources>

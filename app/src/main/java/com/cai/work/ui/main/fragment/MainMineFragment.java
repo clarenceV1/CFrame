@@ -68,6 +68,9 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
                         case 4:
                             ARouter.getInstance().build("/AppModule/RedPacketActivity").navigation();
                             break;
+                        case 5:
+                            ARouter.getInstance().build("/AppModule/InviteActivity").navigation();
+                            break;
                         case 9:
                             ARouter.getInstance().build("/AppModule/SaveActivity").navigation();
                             break;

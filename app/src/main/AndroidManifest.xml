@@ -75,6 +75,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
         <activity
             android:name=".ui.recharge.RechargeUnderLineActivity"
             android:screenOrientation="portrait" />
@@ -92,6 +93,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.withdrawal.WithdrawalPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.invite.InviteActivity"
             android:screenOrientation="portrait" />
     </application>
 
