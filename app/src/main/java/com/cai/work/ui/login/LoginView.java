@@ -8,4 +8,5 @@ import com.cai.framework.base.GodBaseView;
 
 public interface LoginView extends GodBaseView {
         void loginSuccess();
+        void toast(int type, String msg);
 }

@@ -89,4 +89,9 @@ public interface ApiService {
 
     @GET("/app/send/get_code")
     Flowable<CommonRespond> requestIdentifyCode(@Query("mobile") String mobile, @Query("type") int type);
+
+    @POST("/app/resetpwd")
+    @FormUrlEncoded
+    Flowable<CommonRespond> forgetPassword(@Field("mobile")String mobile,  @Field("sms")String sms,  @Field("loginPassword")String loginPassword);
+
 }

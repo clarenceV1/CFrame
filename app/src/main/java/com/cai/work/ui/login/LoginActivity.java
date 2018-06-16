@@ -94,9 +94,13 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
             @Override
             public void onArrival(Postcard postcard) {
                 ToastUtils.showShort(getResources().getString(R.string.login_success));
-//                EventBus.getDefault().post(new LoginStateEvent(2));
                 finish();
             }
         });
+    }
+
+    @Override
+    public void toast(int type, String msg) {
+        ToastUtils.showShort(msg);
     }
 }

@@ -55,6 +55,8 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
                     account.setToken(data.getData());
                     accountDAO.save(account);
                     requestUserInfo(data.getData());
+                }else{
+                    mView.toast(1,data.getResponseText());
                 }
             }
         }, new Consumer<Throwable>() {

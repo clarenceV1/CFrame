@@ -7,5 +7,5 @@ import com.cai.framework.base.GodBaseView;
  */
 
 public interface ForgetPasswordView extends GodBaseView {
-
+    void toast(int type, String msg);
 }

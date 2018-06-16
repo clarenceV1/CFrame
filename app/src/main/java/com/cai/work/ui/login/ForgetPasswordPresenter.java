@@ -2,13 +2,13 @@ package com.cai.work.ui.login;
 
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
-import com.cai.work.bean.respond.LoginRespond;
+import com.cai.work.R;
+import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.UserDAO;
-import com.example.clarence.utillibrary.Md5Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
 
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-public class ForgetPasswordPresenter extends GodBasePresenter<LoginView> {
+public class ForgetPasswordPresenter extends GodBasePresenter<ForgetPasswordView> {
 
     @Inject
     RequestStore requestStore;
@@ -37,41 +37,42 @@ public class ForgetPasswordPresenter extends GodBasePresenter<LoginView> {
     }
 
     /**
-     * 请求登录
-     *
-     * @return
+     * 获取短信验证码
      */
-    public void requestLogin(final String userName, String password, boolean isSavePassword) {
-        Disposable disposable = requestStore.requestLogin(userName, Md5Utils.md5(password), new Consumer<LoginRespond>() {
+    public void requestIdentifyCode(String mobile) {
+        int type = 2;
+        Disposable disposable = requestStore.requestIdentifyCode(mobile, type, new Consumer<CommonRespond>() {
             @Override
-            public void accept(LoginRespond data) {
-                if (data != null && data.getCode() == 200) {
-                    accountDAO.updateToken(userName,data.getData());
-                    requestUserInfo(data.getData());
+            public void accept(CommonRespond data) {
+                if (data.getCode() == 200) {
+                    String tostStr = context.getString(R.string.register_identify_code_send);
+                    mView.toast(1, tostStr);
+                } else {
+                    mView.toast(2, data.getResponseText());
                 }
             }
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) {
                 if (NetWorkUtil.isNetConnected(context)) {
-                    Logger.d("请求login数据失败！！！---有网络");
+                    Logger.d("请求验证码数据失败！！！---有网络");
                 } else {
-                    Logger.d("请求login数据失败！！！---没网络");
+                    Logger.d("请求验证码数据失败！！！---没网络");
                 }
             }
         });
         mCompositeSubscription.add(disposable);
     }
-    /**
-     * 请求用户数据
-     * @param token
-     * @return
-     */
-    private void requestUserInfo(String token) {
-        Disposable disposable = requestStore.requestUserInfo(token, new Consumer<UserInfoRespond>() {
+
+    public void forgetPassword(String mobile, String sms, String loginPassword) {
+        Disposable disposable = requestStore.forgetPassword(mobile, sms, loginPassword, new Consumer<CommonRespond>() {
             @Override
-            public void accept(UserInfoRespond data) {
-                userDAO.save(data.getData());
+            public void accept(CommonRespond data) {
+                if (data.getCode() == 200) {
+                    mView.toast(3, context.getString(R.string.forget_password_toast));
+                } else {
+                    mView.toast(4, data.getResponseText());
+                }
             }
         }, new Consumer<Throwable>() {
             @Override
@@ -85,5 +86,4 @@ public class ForgetPasswordPresenter extends GodBasePresenter<LoginView> {
         });
         mCompositeSubscription.add(disposable);
     }
-
 }

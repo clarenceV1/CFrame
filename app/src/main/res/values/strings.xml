@@ -141,7 +141,6 @@
     <string name="withdrawal_no_card_toast">请选择银行卡</string>
 
     <string name="register_titile">注册</string>
-    <string name="register_mobile_hint">请输入手机号码</string>
     <string name="register_identify_hint">请输入4位短信验证码</string>
     <string name="register_get_identify">获取验证码</string>
     <string name="register_password_hint">请设置登录密码</string>
@@ -155,4 +154,6 @@
     <string name="register_agree_protocol_toast">请点击同意本协议</string>
     <string name="register_mobile_err_toast">请输入正确的手机号</string>
     <string name="register_success">注册成功</string>
+    <string name="forget_password_titile">忘记密码</string>
+    <string name="forget_password_toast">密码已设置成功</string>
 </resources>

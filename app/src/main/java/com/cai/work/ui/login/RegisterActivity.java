@@ -52,7 +52,7 @@ public class RegisterActivity extends AppBaseActivity<RegisterBinding> implement
             public void onClick(View v) {
                 String mobile = mViewBinding.editMobile.getText().toString();
                 if (TextUtils.isEmpty(mobile)) {
-                    ToastUtils.showShort(getString(R.string.register_mobile_hint));
+                    ToastUtils.showShort(getString(R.string.login_mobile_hint));
                     mViewBinding.editMobile.requestFocus();
                     KeyBoardUtils.forceShow(mViewBinding.editMobile);
                     return;
@@ -98,7 +98,7 @@ public class RegisterActivity extends AppBaseActivity<RegisterBinding> implement
             public void onClick(View v) {
                 String mobile = mViewBinding.editMobile.getText().toString();
                 if (TextUtils.isEmpty(mobile)) {
-                    ToastUtils.showShort(getString(R.string.register_mobile_hint));
+                    ToastUtils.showShort(getString(R.string.login_mobile_hint));
                     mViewBinding.editMobile.requestFocus();
                     KeyBoardUtils.forceShow(mViewBinding.editMobile);
                     return;
