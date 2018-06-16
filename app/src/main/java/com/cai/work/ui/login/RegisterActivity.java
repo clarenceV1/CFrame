@@ -138,13 +138,6 @@ public class RegisterActivity extends AppBaseActivity<RegisterBinding> implement
         });
     }
 
-    private void clearTimer() {
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
-            countDownTimer = null;
-        }
-    }
-
     @Override
     public int getLayoutId() {
         return R.layout.register;
@@ -162,5 +155,12 @@ public class RegisterActivity extends AppBaseActivity<RegisterBinding> implement
     protected void onDestroy() {
         super.onDestroy();
         clearTimer();
+    }
+
+    private void clearTimer() {
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
     }
 }

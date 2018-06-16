@@ -63,12 +63,12 @@ public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveVi
             @Override
             public void onClick(View v) {
                 ARouter.getInstance().build("/AppModule/ResetPasswordActivity").navigation();
-            }
+        }
         });
         mViewBinding.rlCashPss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ARouter.getInstance().build("/AppModule/WithdrawalPasswordActivity").navigation();
             }
         });
         mViewBinding.btnQuit.setOnClickListener(new View.OnClickListener() {

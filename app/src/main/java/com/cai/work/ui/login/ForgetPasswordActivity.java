@@ -139,4 +139,17 @@ public class ForgetPasswordActivity extends AppBaseActivity<ForgetPasswordBindin
             finish();
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        clearTimer();
+    }
+
+    private void clearTimer() {
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+    }
 }

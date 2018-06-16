@@ -56,6 +56,13 @@ public class AccountDAO  extends  BaseDAO{
         }
         return null;
     }
+    public String getMobile(){
+        Account account = getAccount();
+        if (account != null) {
+            return account.getMobile();
+        }
+        return null;
+    }
 
     public void deleteAll() {
         Box<Account> box = boxStore.boxFor(Account.class);

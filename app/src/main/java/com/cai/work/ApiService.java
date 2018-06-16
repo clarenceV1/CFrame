@@ -98,4 +98,8 @@ public interface ApiService {
     @FormUrlEncoded
     Flowable<CommonRespond> resetPassword(@Field("sms")String sms,  @Field("old_pwd")String loginOldPassword, @Field("new_pwd")String loginPassword, @Field("token") String token);
 
+    @POST("/app/userSafe/updateWithdrawPwd")
+    @FormUrlEncoded
+    Flowable<CommonRespond> resetWithdrawalPassword(@Field("sms")String sms,  @Field("old_pwd")String loginOldPassword, @Field("new_pwd")String loginPassword, @Field("token") String token);
+
 }

@@ -20,6 +20,7 @@
     <string name="btn_quit">安全退出</string>
     <string name="btn_commit_pay">确认支付</string>
     <string name="btn_commit_recharge">提交充值</string>
+    <string name="btn_commit_fix">提交修改</string>
 
     <string name="main_tab_title_1">首页</string>
     <string name="main_tab_title_2">咨询</string>
@@ -75,6 +76,7 @@
     <string name="bank_add_bank_name">开户行</string>
     <string name="bank_add_bank_name_hint">请输入开户行</string>
     <string name="bank_add_title">添加银行卡</string>
+    <string name="bank_card_choose_titile">选择银行卡</string>
 
     <string name="message_title">消息中心</string>
     <string name="message_clean">清空</string>
@@ -135,9 +137,6 @@
     <string name="withdrawal_amount_toast">请输入提现金额</string>
     <string name="withdrawal_password_toast">请输入提现密码</string>
     <string name="withdrawal_titile">提现</string>
-
-    <string name="bank_card_choose_titile">选择银行卡</string>
-
     <string name="withdrawal_no_card_toast">请选择银行卡</string>
 
     <string name="register_titile">注册</string>
@@ -154,9 +153,15 @@
     <string name="register_agree_protocol_toast">请点击同意本协议</string>
     <string name="register_mobile_err_toast">请输入正确的手机号</string>
     <string name="register_success">注册成功</string>
+    <string name="register_old_password_hint">请输入旧密码</string>
+    <string name="register_new_password_hint">请输入6位数字新密码</string>
+    <string name="register_new_password_commit_hint">请确认6位数字新密码</string>
+
     <string name="forget_password_titile">忘记密码</string>
     <string name="forget_password_toast">密码已设置成功</string>
+
     <string name="reset_password_titile">重置密码</string>
-    <string name="register_old_password_hint">请输入旧密码</string>
     <string name="reset_password_toast">密码重置成功</string>
+    <string name="withdrawal_password_titile">设置提现密码</string>
+
 </resources>
