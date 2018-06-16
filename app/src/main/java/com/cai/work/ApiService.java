@@ -94,4 +94,8 @@ public interface ApiService {
     @FormUrlEncoded
     Flowable<CommonRespond> forgetPassword(@Field("mobile")String mobile,  @Field("sms")String sms,  @Field("loginPassword")String loginPassword);
 
+    @POST("/app/userSafe/updatePwd")
+    @FormUrlEncoded
+    Flowable<CommonRespond> resetPassword(@Field("sms")String sms,  @Field("old_pwd")String loginOldPassword, @Field("new_pwd")String loginPassword, @Field("token") String token);
+
 }

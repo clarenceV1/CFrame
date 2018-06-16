@@ -165,7 +165,15 @@ public class RequestStore {
     }
 
     public Disposable forgetPassword(String mobile, String sms, String loginPassword, Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request().create(ApiService.class).forgetPassword(mobile, sms,loginPassword)
+        Disposable disposable = iNet.request().create(ApiService.class).forgetPassword(mobile, sms, loginPassword)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable resetPassword(String mobile, String sms, String loginOldPassword, String loginPassword, String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).resetPassword(sms, loginOldPassword, loginPassword, token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);

@@ -17,6 +17,8 @@ import com.cai.work.ui.login.LoginActivity;
 import com.cai.work.ui.login.LoginPresenter;
 import com.cai.work.ui.login.RegisterActivity;
 import com.cai.work.ui.login.RegisterPresenter;
+import com.cai.work.ui.login.ResetPasswordActivity;
+import com.cai.work.ui.login.ResetPasswordPresenter;
 import com.cai.work.ui.login.SaveActivity;
 import com.cai.work.ui.login.SavePresenter;
 import com.cai.work.ui.main.MainActivity;
@@ -121,4 +123,7 @@ public interface AppComponent {
 
     void inject(RegisterPresenter registerPresenter);
 
+    void inject(ResetPasswordActivity resetPasswordActivity);
+
+    void inject(ResetPasswordPresenter resetPasswordPresenter);
 }

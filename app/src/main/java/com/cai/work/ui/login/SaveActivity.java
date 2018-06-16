@@ -62,7 +62,7 @@ public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveVi
         mViewBinding.rlFixLoginPss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ARouter.getInstance().build("/AppModule/ResetPasswordActivity").navigation();
             }
         });
         mViewBinding.rlCashPss.setOnClickListener(new View.OnClickListener() {
@@ -107,11 +107,11 @@ public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveVi
         menuModel.setMenuList(menuList);
         menuModel.setClickListener(new BottomMenuModel.BottomMenuItemClickListener() {
             @Override
-            public void onClick(BottomMenuDialog dialog,View v, BottomMenuModel.BottomMenuItemModel itemModel) {
+            public void onClick(BottomMenuDialog dialog, View v, BottomMenuModel.BottomMenuItemModel itemModel) {
                 int tag = ((int) itemModel.getTag());
                 if (tag == 1) {
                     PhotoUtils.getInstance().takePhoto(SaveActivity.this);
-                } else if(tag ==2){
+                } else if (tag == 2) {
                     PhotoUtils.getInstance().setCrop(true);
                     PhotoUtils.getInstance().choosePhone(SaveActivity.this);
                 }

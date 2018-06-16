@@ -156,4 +156,7 @@
     <string name="register_success">注册成功</string>
     <string name="forget_password_titile">忘记密码</string>
     <string name="forget_password_toast">密码已设置成功</string>
+    <string name="reset_password_titile">重置密码</string>
+    <string name="register_old_password_hint">请输入旧密码</string>
+    <string name="reset_password_toast">密码重置成功</string>
 </resources>
