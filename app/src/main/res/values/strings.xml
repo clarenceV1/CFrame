@@ -16,11 +16,13 @@
     <string name="btn_add">立即添加</string>
     <string name="btn_delete">删除</string>
     <string name="btn_cancle">取消</string>
+    <string name="btn_save">保存</string>
     <string name="btn_commit">确定</string>
     <string name="btn_quit">安全退出</string>
     <string name="btn_commit_pay">确认支付</string>
     <string name="btn_commit_recharge">提交充值</string>
     <string name="btn_commit_fix">提交修改</string>
+    <string name="btn_copy">复制</string>
 
     <string name="main_tab_title_1">首页</string>
     <string name="main_tab_title_2">咨询</string>
@@ -185,9 +187,15 @@
     <string name="invite_one">一级邀请</string>
     <string name="invite_two">二级邀请</string>
     <string name="invite_my_titile">我的邀请</string>
+
     <string name="my_invite_item_1">序号</string>
     <string name="my_invite_item_2">被邀人</string>
     <string name="my_invite_item_3">手机号</string>
     <string name="my_invite_item_4">注册时间</string>
+
+    <string name="invite_way_method_1">方法一:发送下面邀请链接给好友或者其他朋友，通过此链接，注册成功即可成为你的推广客户。</string>
+    <string name="invite_way_link">邀请链接:</string>
+    <string name="invite_way_method_2">方法二:保存你的专属二维码，并分享给你的好友</string>
+    <string name="invite_way_titile">邀请方式</string>
 
 </resources>

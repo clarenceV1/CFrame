@@ -86,6 +86,13 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
                         .navigation();
             }
         });
+        mViewBinding.rlInviteWay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/InviteWayActivity").withCharSequence("inviteUrl",invite.getInvited_url()).navigation();
+            }
+        });
+
         presenter.requestInvite();
 
 

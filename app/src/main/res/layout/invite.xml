@@ -169,7 +169,7 @@
                     android:layout_below="@+id/tvQRcode"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/ic_launcher" />
+                    tools:background="@drawable/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tvSavePic"
@@ -198,6 +198,7 @@
                 android:padding="10dp">
 
                 <RelativeLayout
+                    android:id="@+id/rlInviteWay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
