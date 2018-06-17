@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.alibaba.fastjson.JSON;
 import com.cai.annotation.aspect.Permission;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.utils.QRCodeUtils;
@@ -75,7 +77,18 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
                 saveQRcode();
             }
         });
+        mViewBinding.rlMyInvite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/MyInviteActivity")
+                        .withCharSequence("inviteOne", JSON.toJSONString(invite.getOne_invite()))
+                        .withCharSequence("inviteTwo", JSON.toJSONString(invite.getTwo_invite()))
+                        .navigation();
+            }
+        });
         presenter.requestInvite();
+
+
     }
 
     @Permission(value = Manifest.permission.WRITE_EXTERNAL_STORAGE)

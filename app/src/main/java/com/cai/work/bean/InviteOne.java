@@ -1,6 +1,10 @@
 package com.cai.work.bean;
 
-public class InviteOne {
+import com.cai.framework.bean.CBaseData;
+
+import java.io.Serializable;
+
+public class InviteOne implements Serializable,CBaseData{
     /*			"id": 688,
                         "realName": "",
                         "userName": "130****1732",

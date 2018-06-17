@@ -12,6 +12,8 @@ import com.cai.work.ui.fund.FundDetailActivity;
 import com.cai.work.ui.fund.FundDetailPresenter;
 import com.cai.work.ui.invite.InviteActivity;
 import com.cai.work.ui.invite.InvitePresenter;
+import com.cai.work.ui.invite.MyInviteActivity;
+import com.cai.work.ui.invite.MyInvitePresenter;
 import com.cai.work.ui.listview.ListviewScollActivity;
 import com.cai.work.ui.login.ForgetPasswordActivity;
 import com.cai.work.ui.login.ForgetPasswordPresenter;
@@ -138,4 +140,8 @@ public interface AppComponent {
     void inject(InviteActivity inviteActivity);
 
     void inject(InvitePresenter invitePresenter);
+
+    void inject(MyInviteActivity myInviteActivity);
+
+    void inject(MyInvitePresenter myInvitePresenter);
 }

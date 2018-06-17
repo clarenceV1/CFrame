@@ -182,5 +182,12 @@
     <string name="invite_withdrawal_detail">提现明细</string>
     <string name="invite_link_toast">链接已复制</string>
     <string name="invite_save_qrcode_success_toast">保存二维码成功</string>
+    <string name="invite_one">一级邀请</string>
+    <string name="invite_two">二级邀请</string>
+    <string name="invite_my_titile">我的邀请</string>
+    <string name="my_invite_item_1">序号</string>
+    <string name="my_invite_item_2">被邀人</string>
+    <string name="my_invite_item_3">手机号</string>
+    <string name="my_invite_item_4">注册时间</string>
 
 </resources>
