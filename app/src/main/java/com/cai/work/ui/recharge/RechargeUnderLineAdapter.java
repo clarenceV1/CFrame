@@ -13,6 +13,7 @@ import com.cai.work.bean.RechargeBank;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
+import com.example.clarence.utillibrary.ClipBoardUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.ArrayList;
@@ -54,9 +55,7 @@ class RechargeUnderLineAdapter extends GodBaseAdapter {
             ViewHolder.getTextView(convertView, R.id.tvCopyAccount).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-                    ClipData clipData = ClipData.newPlainText("账号", rechargeBank.getOfflineAccount());
-                    clipboardManager.setPrimaryClip(clipData);
+                    ClipBoardUtils.copyToClipBoard(context,"账号",rechargeBank.getOfflineAccount());
                     ToastUtils.showShort(context.getResources().getString(R.string.recharge_copy_account_toast));
                 }
             });

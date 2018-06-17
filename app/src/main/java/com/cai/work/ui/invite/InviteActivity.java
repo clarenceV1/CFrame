@@ -8,6 +8,8 @@ import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.InviteBinding;
+import com.example.clarence.utillibrary.ClipBoardUtils;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
 
@@ -47,7 +49,13 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
 
             }
         });
-//        mViewBinding.tvCopyLink.setOnClickListener(new OnC);
+        mViewBinding.tvCopyLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipBoardUtils.copyToClipBoard(InviteActivity.this, "链接", "htpp:www.baidu.com");
+//                ToastUtils.showShort(getString(R.string.invite_link_toast));
+            }
+        });
     }
 
     @Override
