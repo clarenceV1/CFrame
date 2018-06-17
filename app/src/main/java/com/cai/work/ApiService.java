@@ -4,6 +4,7 @@ import com.cai.work.bean.respond.BankCardRespond;
 import com.cai.work.bean.respond.BankListRespond;
 import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.FundDetailRespond;
+import com.cai.work.bean.respond.InviteResond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.respond.MessageRespond;
@@ -101,5 +102,8 @@ public interface ApiService {
     @POST("/app/userSafe/updateWithdrawPwd")
     @FormUrlEncoded
     Flowable<CommonRespond> resetWithdrawalPassword(@Field("sms")String sms,  @Field("old_pwd")String loginOldPassword, @Field("new_pwd")String loginPassword, @Field("token") String token);
+
+    @GET("/app/rebate")
+    Flowable<InviteResond> requestInvite(@Query("token") String token);
 
 }

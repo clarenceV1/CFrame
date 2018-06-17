@@ -1,16 +1,26 @@
 package com.cai.work.ui.invite;
 
+import android.Manifest;
+import android.graphics.Bitmap;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.cai.annotation.aspect.Permission;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.utils.QRCodeUtils;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
+import com.cai.work.bean.Invite;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.InviteBinding;
 import com.example.clarence.utillibrary.ClipBoardUtils;
+import com.example.clarence.utillibrary.DimensUtils;
+import com.example.clarence.utillibrary.ImageUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,6 +30,7 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
 
     @Inject
     InvitePresenter presenter;
+    Invite invite;
 
     @Override
     public void initDagger() {
@@ -52,10 +63,29 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
         mViewBinding.tvCopyLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ClipBoardUtils.copyToClipBoard(InviteActivity.this, "链接", "htpp:www.baidu.com");
-//                ToastUtils.showShort(getString(R.string.invite_link_toast));
+                if (invite != null) {
+                    ClipBoardUtils.copyToClipBoard(InviteActivity.this, "链接", invite.getInvited_url());
+                    ToastUtils.showShort(getString(R.string.invite_link_toast));
+                }
             }
         });
+        mViewBinding.tvSavePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveQRcode();
+            }
+        });
+        presenter.requestInvite();
+    }
+
+    @Permission(value = Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    private void saveQRcode() {
+        int witd = DimensUtils.dip2px(this, 80);
+        Bitmap imag = QRCodeUtils.createQRCodeBitmap(invite.getInvited_url(), witd, witd);
+        DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+        String imageName = format.format(new Date()) + ".JPEG";
+        ImageUtils.saveBitmap(this, imag, imageName);
+        ToastUtils.showShort(getString(R.string.invite_save_qrcode_success_toast));
     }
 
     @Override
@@ -63,4 +93,13 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
         return R.layout.invite;
     }
 
+    @Override
+    public void refreshView(Invite invite) {
+        this.invite = invite;
+        mViewBinding.tvSuccessRebate.setText("¥" + invite.getAlready_withdraw_money());
+        mViewBinding.tvCanRebate.setText("¥" + invite.getCan_withdraw_money());
+        mViewBinding.tvLinkAddress.setText(invite.getInvited_url());
+        int witd = DimensUtils.dip2px(this, 80);
+        mViewBinding.imgQRCode.setImageBitmap(QRCodeUtils.createQRCodeBitmap(invite.getInvited_url(), witd, witd));
+    }
 }

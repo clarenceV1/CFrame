@@ -180,5 +180,7 @@
     <string name="invite_my_invite">我的邀请</string>
     <string name="invite_rebate_detail">返佣明细</string>
     <string name="invite_withdrawal_detail">提现明细</string>
+    <string name="invite_link_toast">链接已复制</string>
+    <string name="invite_save_qrcode_success_toast">保存二维码成功</string>
 
 </resources>

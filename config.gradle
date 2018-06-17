@@ -61,7 +61,8 @@ ext {
 
             "blockcanary-android"           : "com.github.markzhai:blockcanary-android:1.5.0",
             "blockcanary-no-op"             : "com.github.markzhai:blockcanary-no-op:1.5.0",
-            "android-support-percent"       : "com.android.support:percent:23.0.0"
+            "android-support-percent"       : "com.android.support:percent:23.0.0",
+            "QR-code"       : "com.google.zxing:core:3.3.0"
     ]
 
 }

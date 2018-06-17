@@ -18,6 +18,7 @@ import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.ListViewScollBinding;
 import com.cai.work.ui.adapter.ScrollAdapter;
 import com.example.clarence.utillibrary.DeviceUtils;
+import com.example.clarence.utillibrary.DimensUtils;
 
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class ListviewScollActivity extends AppBaseActivity<ListViewScollBinding>
     @Override
     public void initView() {
         TextView textView = new TextView(this);
-        AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(DeviceUtils.getScreenWidth(this), DeviceUtils.dip2px(this, 100));
+        AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(DeviceUtils.getScreenWidth(this), DimensUtils.dip2px(this, 100));
         textView.setLayoutParams(layoutParams);
         mViewBinding.lvContainer.addHeaderView(textView);
         ScrollAdapter scrollAdapter = new ScrollAdapter(this, presenterForRTB.getDatas());

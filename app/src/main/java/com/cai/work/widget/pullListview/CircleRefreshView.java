@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import com.cai.work.R;
 import com.cai.work.utils.CircleAnimation;
 import com.example.clarence.utillibrary.DeviceUtils;
+import com.example.clarence.utillibrary.DimensUtils;
 
 
 /**
@@ -94,7 +95,7 @@ public class CircleRefreshView extends RelativeLayout implements IRefreshView {
         mCircleStartRotateHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, displayMetrics);
         mReleaseToRefreshHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, displayMetrics);
         mPerDegreePullOffset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0.3f, displayMetrics);
-        dp50 = DeviceUtils.dip2px(getContext(), 50);
+        dp50 = DimensUtils.dip2px(getContext(), 50);
     }
 
     @Override
