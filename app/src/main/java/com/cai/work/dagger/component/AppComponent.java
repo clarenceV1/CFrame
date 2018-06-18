@@ -45,6 +45,8 @@ import com.cai.work.ui.web.WebActivity;
 import com.cai.work.ui.welcome.WelcomeActivity;
 import com.cai.work.ui.welcome.WelcomePresenter;
 import com.cai.work.ui.withdrawal.WithdrawalActivity;
+import com.cai.work.ui.withdrawal.WithdrawalDetailActivity;
+import com.cai.work.ui.withdrawal.WithdrawalDetailPresenter;
 import com.cai.work.ui.withdrawal.WithdrawalPasswordActivity;
 import com.cai.work.ui.withdrawal.WithdrawalPasswordPresenter;
 import com.cai.work.ui.withdrawal.WithdrawalPresenter;
@@ -150,5 +152,9 @@ public interface AppComponent {
     void inject(InviteWayActivity inviteWayActivity);
 
     void inject(InviteWayPresenter inviteWayPresenter);
+
+    void inject(WithdrawalDetailActivity withdrawalDetailActivity);
+
+    void inject(WithdrawalDetailPresenter withdrawalDetailPresenter );
 
 }

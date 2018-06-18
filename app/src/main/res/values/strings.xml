@@ -197,5 +197,7 @@
     <string name="invite_way_link">邀请链接:</string>
     <string name="invite_way_method_2">方法二:保存你的专属二维码，并分享给你的好友</string>
     <string name="invite_way_titile">邀请方式</string>
+    <string name="main_service_online">在线客服</string>
+    <string name="main_service_telephone">客服电话</string>
 
 </resources>

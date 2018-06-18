@@ -1,14 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/ic_launcher" />
+
+        <RelativeLayout
+            android:id="@+id/rlOnlineServiece"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="服务" />
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imgeOnline"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/imgeOnline"
+                android:text="@string/main_service_online" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_launcher" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlTelephone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imgeTelephone"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/imgeTelephone"
+                android:text="@string/main_service_telephone" />
+
+            <ImageView
+                android:id="@+id/imgArrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/imgArrow"
+                tools:text="13283773211" />
+        </RelativeLayout>
     </LinearLayout>
 </layout>

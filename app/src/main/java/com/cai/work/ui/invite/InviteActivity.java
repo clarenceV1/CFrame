@@ -93,6 +93,12 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
             }
         });
 
+        mViewBinding.rlWithdrawalDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/WithdrawalDetailActivity").navigation();
+            }
+        });
         presenter.requestInvite();
 
 
