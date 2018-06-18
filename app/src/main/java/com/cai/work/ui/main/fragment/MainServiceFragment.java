@@ -28,6 +28,8 @@ public class MainServiceFragment extends AppBaseFragment<MainServiceFragmentBind
 
     @Override
     public void initView(View view) {
+        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.service_title));
+        mViewBinding.commonHeadView.ivGoBack.setVisibility(View.GONE);
         mViewBinding.rlOnlineServiece.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
