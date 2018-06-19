@@ -223,4 +223,5 @@
     <string name="rebate_product">交易产品</string>
     <string name="rebate_real_name">交易人</string>
     <string name="rebate_price">交易综合费(元)</string>
+    <string name="rebate_my_rebate">我的返佣</string>
 </resources>

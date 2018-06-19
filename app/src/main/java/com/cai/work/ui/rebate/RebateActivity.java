@@ -80,8 +80,6 @@ public class RebateActivity extends AppBaseActivity<RebateBinding> implements Re
         });
 
         adapter = new RebateAdapter(this);
-        View headView = LayoutInflater.from(this).inflate(R.layout.rebate_head, null);
-        mViewBinding.listView.addHeaderView(headView);
         mViewBinding.listView.setAdapter(adapter);
         mViewBinding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
