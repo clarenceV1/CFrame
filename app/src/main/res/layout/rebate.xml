@@ -27,7 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="@string/withdrawal_detail_all" />
+                    android:text="@string/rebate_one" />
 
                 <View
                     android:id="@+id/bottomLine1"
@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="@string/withdrawal_detail_hold" />
+                    android:text="@string/rebate_two" />
 
                 <View
                     android:id="@+id/bottomLine2"
@@ -64,57 +64,19 @@
                     android:visibility="gone" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rlTab3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-
-                <TextView
-                    android:id="@+id/tvTab3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="@string/withdrawal_detail_already" />
-
-                <View
-                    android:id="@+id/bottomLine3"
-                    android:layout_width="100dp"
-                    android:layout_height="2dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:background="@color/red_b"
-                    android:visibility="gone" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rlTab4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/tvTab4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="@string/withdrawal_detail_miss" />
-
-                <View
-                    android:id="@+id/bottomLine4"
-                    android:layout_width="100dp"
-                    android:layout_height="2dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:background="@color/red_b"
-                    android:visibility="gone" />
-            </RelativeLayout>
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/container"
+        <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnCommit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/btn_rebate" />
     </LinearLayout>
 </layout>

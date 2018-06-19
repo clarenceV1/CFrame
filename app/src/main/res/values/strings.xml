@@ -23,6 +23,7 @@
     <string name="btn_commit_recharge">提交充值</string>
     <string name="btn_commit_fix">提交修改</string>
     <string name="btn_copy">复制</string>
+    <string name="btn_rebate">提现</string>
 
     <string name="main_tab_title_1">首页</string>
     <string name="main_tab_title_2">咨询</string>
@@ -188,20 +189,34 @@
     <string name="invite_two">二级邀请</string>
     <string name="invite_my_titile">我的邀请</string>
 
+    <string name="invite_way_method_1">方法一:发送下面邀请链接给好友或者其他朋友，通过此链接，注册成功即可成为你的推广客户。</string>
+    <string name="invite_way_link">邀请链接:</string>
+    <string name="invite_way_method_2">方法二:保存你的专属二维码，并分享给你的好友</string>
+    <string name="invite_way_titile">邀请方式</string>
+
     <string name="my_invite_item_1">序号</string>
     <string name="my_invite_item_2">被邀人</string>
     <string name="my_invite_item_3">手机号</string>
     <string name="my_invite_item_4">注册时间</string>
 
-    <string name="invite_way_method_1">方法一:发送下面邀请链接给好友或者其他朋友，通过此链接，注册成功即可成为你的推广客户。</string>
-    <string name="invite_way_link">邀请链接:</string>
-    <string name="invite_way_method_2">方法二:保存你的专属二维码，并分享给你的好友</string>
-    <string name="invite_way_titile">邀请方式</string>
     <string name="main_service_online">在线客服</string>
     <string name="main_service_telephone">客服电话</string>
+
     <string name="service_title">客服中心</string>
+
     <string name="trade_title">交易</string>
     <string name="trade_tab_title_1">实盘交易</string>
     <string name="trade_tab_title_2"><![CDATA[ 模拟体验]]></string>
 
+    <string name="withdrawal_detail_titile">提现明细</string>
+    <string name="withdrawal_detail_rule">提现说明</string>
+    <string name="withdrawal_detail_all">所有</string>
+    <string name="withdrawal_detail_hold">待审核</string>
+    <string name="withdrawal_detail_already">已提现</string>
+    <string name="withdrawal_detail_miss">无效</string>
+
+    <string name="rebate_titile">返佣明细</string>
+    <string name="rebate_rule">返佣说明</string>
+    <string name="rebate_one">一级返佣</string>
+    <string name="rebate_two">二级返佣</string>
 </resources>

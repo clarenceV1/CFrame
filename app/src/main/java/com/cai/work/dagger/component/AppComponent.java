@@ -39,6 +39,8 @@ import com.cai.work.ui.message.MessageActivity;
 import com.cai.work.ui.message.MessagePresenter;
 import com.cai.work.ui.rank.RankActivity;
 import com.cai.work.ui.rank.RankPresenter;
+import com.cai.work.ui.rebate.RebateActivity;
+import com.cai.work.ui.rebate.RebatePresenter;
 import com.cai.work.ui.recharge.RechargeActivity;
 import com.cai.work.ui.recharge.RechargePresenter;
 import com.cai.work.ui.recharge.RechargeUnderLineActivity;
@@ -168,4 +170,8 @@ public interface AppComponent {
     void inject(MainServiceFragment mainServiceFragment);
 
     void inject(MainServicePresenter mainServicePresenter);
+
+    void inject(RebateActivity rebateActivity);
+
+    void inject(RebatePresenter rebatePresenter);
 }

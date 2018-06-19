@@ -250,6 +250,7 @@
                 android:padding="10dp">
 
                 <RelativeLayout
+                    android:id="@+id/rlRebateDetail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">

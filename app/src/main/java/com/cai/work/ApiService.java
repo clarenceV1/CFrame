@@ -14,6 +14,7 @@ import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.ServiceRespond;
 import com.cai.work.bean.respond.UploadRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
+import com.cai.work.bean.respond.RebateRespond;
 import com.cai.work.bean.respond.WithdrawalRespond;
 
 import io.reactivex.Flowable;
@@ -107,6 +108,14 @@ public interface ApiService {
     @GET("/app/rebate")
     Flowable<InviteResond> requestInvite(@Query("token") String token);
 
-    @GET("app/ask/index")
+    @GET("/app/ask/index")
     Flowable<ServiceRespond> requestAskData();
+
+    @GET("/app/rebate/getRebate")
+    Flowable<RebateRespond> requestRebate(@Query("token") String token);
+
+    @POST("/app/rebate/withdrawRebate")
+    @FormUrlEncoded
+    Flowable<CommonRespond> requestWithdrawRebate(@Field("ids")String ids,  @Field("token")String token);
+
 }

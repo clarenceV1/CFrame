@@ -89,7 +89,7 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
         mViewBinding.rlInviteWay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/AppModule/InviteWayActivity").withCharSequence("inviteUrl",invite.getInvited_url()).navigation();
+                ARouter.getInstance().build("/AppModule/InviteWayActivity").withCharSequence("inviteUrl", invite.getInvited_url()).navigation();
             }
         });
 
@@ -99,6 +99,14 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
                 ARouter.getInstance().build("/AppModule/WithdrawalDetailActivity").navigation();
             }
         });
+
+        mViewBinding.rlRebateDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/RebateActivity").navigation();
+            }
+        });
+
         presenter.requestInvite();
 
 
