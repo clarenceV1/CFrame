@@ -219,4 +219,8 @@
     <string name="rebate_rule">返佣说明</string>
     <string name="rebate_one">一级返佣</string>
     <string name="rebate_two">二级返佣</string>
+    <string name="rebate_time">时间</string>
+    <string name="rebate_product">交易产品</string>
+    <string name="rebate_real_name">交易人</string>
+    <string name="rebate_price">交易综合费(元)</string>
 </resources>

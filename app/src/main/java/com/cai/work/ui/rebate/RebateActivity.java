@@ -1,5 +1,6 @@
 package com.cai.work.ui.rebate;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -70,15 +71,17 @@ public class RebateActivity extends AppBaseActivity<RebateBinding> implements Re
         mViewBinding.btnCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(selectedTabType == 1){
+                if (selectedTabType == 1) {
                     presenter.commit(oneLever);
-                }else{
+                } else {
                     presenter.commit(twoLever);
                 }
             }
         });
 
         adapter = new RebateAdapter(this);
+        View headView = LayoutInflater.from(this).inflate(R.layout.rebate_head, null);
+        mViewBinding.listView.addHeaderView(headView);
         mViewBinding.listView.setAdapter(adapter);
         mViewBinding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
