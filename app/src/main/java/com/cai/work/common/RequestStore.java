@@ -194,4 +194,12 @@ public class RequestStore {
                 .subscribe(onNext, onError);
         return disposable;
     }
+
+    public Disposable requestAskData(Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestAskData()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
 }

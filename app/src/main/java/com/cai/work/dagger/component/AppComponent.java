@@ -31,6 +31,10 @@ import com.cai.work.ui.main.MainActivity;
 import com.cai.work.ui.main.MainPresenter;
 import com.cai.work.ui.main.fragment.MainHomeFragment;
 import com.cai.work.ui.main.fragment.MainMineFragment;
+import com.cai.work.ui.main.fragment.MainServiceFragment;
+import com.cai.work.ui.main.fragment.MainServicePresenter;
+import com.cai.work.ui.main.fragment.MainTradeFragment;
+import com.cai.work.ui.main.fragment.MainTradePresenter;
 import com.cai.work.ui.message.MessageActivity;
 import com.cai.work.ui.message.MessagePresenter;
 import com.cai.work.ui.rank.RankActivity;
@@ -155,6 +159,13 @@ public interface AppComponent {
 
     void inject(WithdrawalDetailActivity withdrawalDetailActivity);
 
-    void inject(WithdrawalDetailPresenter withdrawalDetailPresenter );
+    void inject(WithdrawalDetailPresenter withdrawalDetailPresenter);
 
+    void inject(MainTradeFragment mainTradeFragment);
+
+    void inject(MainTradePresenter mainTradePresenter);
+
+    void inject(MainServiceFragment mainServiceFragment);
+
+    void inject(MainServicePresenter mainServicePresenter);
 }

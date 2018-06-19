@@ -199,5 +199,9 @@
     <string name="invite_way_titile">邀请方式</string>
     <string name="main_service_online">在线客服</string>
     <string name="main_service_telephone">客服电话</string>
+    <string name="service_title">客服中心</string>
+    <string name="trade_title">交易</string>
+    <string name="trade_tab_title_1">实盘交易</string>
+    <string name="trade_tab_title_2"><![CDATA[ 模拟体验]]></string>
 
 </resources>

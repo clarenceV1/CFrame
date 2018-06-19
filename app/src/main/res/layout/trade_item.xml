@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+
+    <com.cai.framework.widget.CircleView
+        android:id="@+id/circleView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:background="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvShortCode"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textColor="@color/white_a"
+        tools:text="A股" />
+
+    <TextView
+        android:id="@+id/tvStockNmae"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/circleView"
+        android:textSize="17sp"
+        tools:text="A股" />
+
+    <TextView
+        android:id="@+id/tvTradeState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/tvStockNmae"
+        android:textSize="14sp"
+        tools:text="交易中" />
+
+    <TextView
+        android:id="@+id/tvRemark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvStockNmae"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/circleView"
+        android:textSize="14sp"
+        tools:text="1000元起即可交易" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="测试数据" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/imgArrow"
+        android:text="测试数据" />
+
+    <ImageView
+        android:id="@+id/imgArrow"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/ic_launcher" />
+</RelativeLayout>
