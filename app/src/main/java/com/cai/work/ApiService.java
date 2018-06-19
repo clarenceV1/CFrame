@@ -116,6 +116,6 @@ public interface ApiService {
 
     @POST("/app/rebate/withdrawRebate")
     @FormUrlEncoded
-    Flowable<CommonRespond> requestWithdrawRebate(@Field("ids")String ids,  @Field("token")String token);
+    Flowable<CommonRespond> requestWithdrawRebate(@Field("rebateIds")String rebateIds,  @Field("token")String token);
 
 }

@@ -69,7 +69,7 @@ public class RebatePresenter extends GodBasePresenter<RebateView> {
             }
             ids = idsBuilder.toString();
             if (ids.contains(",") && ids.length() > 1) {
-                ids.substring(0,ids.length() - 1);
+                ids = ids.substring(0,ids.length() - 1);
             }
         }
         if (ids == null) {
