@@ -1,12 +1,17 @@
 package com.cai.work.ui.welcome;
 
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.work.bean.respond.AppUpdateResond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.dao.UserDAO;
 
 import javax.inject.Inject;
+
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by clarence on 2018/1/12.
@@ -30,8 +35,20 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
         DaggerAppComponent.create().inject(this);
     }
 
-    public void loadData() {
-
+    public void loadUpgrade() {
+        Disposable disposable = requestStore.loadUpgrade(new Consumer<AppUpdateResond>() {
+            @Override
+            public void accept(AppUpdateResond data) {
+                dataStore.saveAppUpdate(JSON.toJSONString(data));
+                mView.appUpdate();
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                mView.appUpdate();
+            }
+        });
+        mCompositeSubscription.add(disposable);
     }
 
 //    /**

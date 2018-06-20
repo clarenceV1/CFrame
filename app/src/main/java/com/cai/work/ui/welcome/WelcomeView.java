@@ -9,4 +9,5 @@ import com.cai.framework.base.GodBaseView;
 public interface WelcomeView extends GodBaseView {
 
     void toastNotice(String txt);
+    void appUpdate();
 }

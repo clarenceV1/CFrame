@@ -16,6 +16,10 @@ public class DataStore {
 
     @Inject
     public DataStore() {
+
+    }
+    public void saveAppUpdate(String json){
+        sharePreference.get().write("AppUpdate", json);
     }
 //
 //    public void setToken(String value) {
