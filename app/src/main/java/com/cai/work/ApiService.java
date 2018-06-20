@@ -15,6 +15,7 @@ import com.cai.work.bean.respond.ServiceRespond;
 import com.cai.work.bean.respond.UploadRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.bean.respond.RebateRespond;
+import com.cai.work.bean.respond.WithdrawalDetailRespond;
 import com.cai.work.bean.respond.WithdrawalRespond;
 
 import io.reactivex.Flowable;
@@ -117,5 +118,9 @@ public interface ApiService {
     @POST("/app/rebate/withdrawRebate")
     @FormUrlEncoded
     Flowable<CommonRespond> requestWithdrawRebate(@Field("rebateIds")String rebateIds,  @Field("token")String token);
+
+
+    @GET("/app/rebate/getRebateWithdraw")
+    Flowable<WithdrawalDetailRespond> getRebateWithdraw(@Query("page") int page, @Query("token") String token);
 
 }

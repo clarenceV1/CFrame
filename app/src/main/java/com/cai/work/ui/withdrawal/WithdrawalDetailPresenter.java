@@ -3,6 +3,7 @@ package com.cai.work.ui.withdrawal;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.bean.respond.RebateRespond;
+import com.cai.work.bean.respond.WithdrawalDetailRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
@@ -33,12 +34,15 @@ public class WithdrawalDetailPresenter extends GodBasePresenter<WithdrawalDetail
 
     }
 
-    public void requestData() {
+    public void requestData(int page) {
         String token = accountDAO.getToken();
-        Disposable disposable = requestStore.requestRebate(token, new Consumer<RebateRespond>() {
+        Disposable disposable = requestStore.getRebateWithdraw(page,token, new Consumer<WithdrawalDetailRespond>() {
             @Override
-            public void accept(RebateRespond data) {
-                Logger.d(data.getData());
+            public void accept(WithdrawalDetailRespond data) {
+                if (data != null && data.getCode() == 200) {
+//                    addTestMsg(data.getData());
+                    mView.refreshList(data.getData());
+                }
             }
         }, new Consumer<Throwable>() {
             @Override

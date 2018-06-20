@@ -217,4 +217,11 @@ public class RequestStore {
                 .subscribe(onNext, onError);
         return disposable;
     }
+    public Disposable getRebateWithdraw(int page,String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).getRebateWithdraw(page,token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
 }
