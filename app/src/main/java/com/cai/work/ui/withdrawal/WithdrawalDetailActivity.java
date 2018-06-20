@@ -14,6 +14,7 @@ import com.cai.work.bean.WithdrawalDetailItem;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WithdrawalDetailBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -121,7 +122,6 @@ public class WithdrawalDetailActivity extends AppBaseActivity<WithdrawalDetailBi
                 mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
                 mViewBinding.tvTab3.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
                 mViewBinding.tvTab4.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                adapter.update(this.data);
                 break;
             case 2:
                 mViewBinding.bottomLine1.setVisibility(View.GONE);
@@ -154,6 +154,24 @@ public class WithdrawalDetailActivity extends AppBaseActivity<WithdrawalDetailBi
                 mViewBinding.tvTab4.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
                 break;
         }
+        update();
+    }
+
+    private void update() {
+        if (data == null || data.size() == 0) {
+            return;
+        }
+        if (selectedTabType == 1) {
+            adapter.updateAndClean(this.data);
+        } else {
+            List<WithdrawalDetailItem> list = new ArrayList<>();
+            for (WithdrawalDetailItem items : data) {
+                if (items.getOrderState() == selectedTabType - 1) {
+                    list.add(items);
+                }
+            }
+            adapter.updateAndClean(list);
+        }
     }
 
     @Override
@@ -168,7 +186,7 @@ public class WithdrawalDetailActivity extends AppBaseActivity<WithdrawalDetailBi
         total = data.getTotal();
         total_page = data.getTotal_page();
         this.data = data.getData();
-        adapter.update(this.data);
+        update();
 
         if (page == total_page) {
             mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.DISABLED);

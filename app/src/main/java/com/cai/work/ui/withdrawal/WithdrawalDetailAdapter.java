@@ -25,16 +25,23 @@ class WithdrawalDetailAdapter extends GodBaseAdapter {
         }
     }
 
+    public void updateAndClean(List data) {
+        if (data != null) {
+            dataList.clear();
+            dataList.addAll(data);
+            notifyDataSetChanged();
+        }
+    }
     @Override
     public void initItemView(final View convertView, CBaseData itemData, int position) {
         if (itemData != null && itemData instanceof WithdrawalDetailItem) {
             WithdrawalDetailItem detailItem = (WithdrawalDetailItem) itemData;
             ViewHolder.getTextView(convertView, R.id.tvTime).setText(detailItem.getOrderDate());
             ViewHolder.getTextView(convertView, R.id.tvAmount).setText(detailItem.getAmount());
-            String stateStr = "";
+            String stateStr ;
             if (detailItem.getOrderState() == 1) {
                 stateStr = "待审核";
-            } else if (detailItem.getOrderState() == 1) {
+            } else if (detailItem.getOrderState() == 2) {
                 stateStr = "提现成功";
             } else {
                 stateStr = "提现失败";
