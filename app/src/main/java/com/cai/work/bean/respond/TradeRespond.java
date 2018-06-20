@@ -5,13 +5,13 @@ import com.cai.work.bean.Trade;
 import java.util.List;
 
 public class TradeRespond extends BaseRespond{
-    private List<Trade> data;
+    private Trade data;
 
-    public List<Trade> getData() {
+    public Trade getData() {
         return data;
     }
 
-    public void setData(List<Trade> data) {
+    public void setData(Trade data) {
         this.data = data;
     }
 }

@@ -32,10 +32,9 @@
                 android:text="@string/trade_tab_title_2" />
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/container"
+        <com.cai.framework.widget.CustomExpandListview
+            android:id="@+id/expandListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 </layout>

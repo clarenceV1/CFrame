@@ -12,6 +12,7 @@ import com.cai.work.bean.respond.RechargeBankResond;
 import com.cai.work.bean.respond.RedPacketRespond;
 import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.ServiceRespond;
+import com.cai.work.bean.respond.TradeRespond;
 import com.cai.work.bean.respond.UploadRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.bean.respond.RebateRespond;
@@ -122,5 +123,8 @@ public interface ApiService {
 
     @GET("/app/rebate/getRebateWithdraw")
     Flowable<WithdrawalDetailRespond> getRebateWithdraw(@Query("page") int page, @Query("token") String token);
+
+    @GET("/app/trade")
+    Flowable<TradeRespond> requestTradeData(@Query("token") String token);
 
 }

@@ -50,18 +50,20 @@
         tools:text="1000元起即可交易" />
 
     <TextView
+        android:id="@+id/tvHandMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="测试数据" />
+        tools:text="测试数据" />
 
     <TextView
+        android:id="@+id/tvPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginRight="10dp"
         android:layout_toLeftOf="@+id/imgArrow"
-        android:text="测试数据" />
+        tools:text="测试数据" />
 
     <ImageView
         android:id="@+id/imgArrow"
