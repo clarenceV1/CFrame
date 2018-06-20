@@ -8,9 +8,7 @@ import com.cai.work.bean.Account;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dagger.component.DaggerAppComponent;
-import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.UserDAO;
-import com.cai.work.dao.HomeDataSqlDAO;
 import com.example.clarence.utillibrary.Md5Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
 

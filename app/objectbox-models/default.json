@@ -4,21 +4,6 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "3:3058473060516162951",
-      "lastPropertyId": "2:8297752145147179361",
-      "name": "HomeDataSql",
-      "properties": [
-        {
-          "id": "1:7878415734164021925",
-          "name": "id"
-        },
-        {
-          "id": "2:8297752145147179361",
-          "name": "data"
-        }
-      ]
-    },
-    {
       "id": "4:2456853371102544556",
       "lastPropertyId": "4:9096030313314192662",
       "name": "User",
@@ -71,7 +56,8 @@
   "modelVersion": 2,
   "retiredEntityUids": [
     860363883005073981,
-    6905634692392613875
+    6905634692392613875,
+    3058473060516162951
   ],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
@@ -80,7 +66,9 @@
     7500845243903636408,
     3751355986429938285,
     9063365721909991722,
-    9183463363231810212
+    9183463363231810212,
+    7878415734164021925,
+    8297752145147179361
   ],
   "version": 1
 }

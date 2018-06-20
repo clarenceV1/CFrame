@@ -1,4 +1,4 @@
-package com.cai.work;
+package com.cai.work.common;
 
 /**
  * Created by clarence on 2018/1/12.

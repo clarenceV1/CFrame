@@ -2,8 +2,6 @@ package com.cai.work.ui.web;
 
 import com.cai.framework.base.GodBaseConfig;
 import com.cai.framework.base.GodBasePresenter;
-import com.cai.work.dao.AccountDAO;
-import com.example.clarence.utillibrary.StringUtils;
 
 import javax.inject.Inject;
 
