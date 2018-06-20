@@ -69,6 +69,7 @@ public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding>
             }
         });
         switchTab();
+        presenter.requestTradeData();
     }
 
     private void switchTab() {

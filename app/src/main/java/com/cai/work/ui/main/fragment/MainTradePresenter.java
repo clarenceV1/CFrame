@@ -25,7 +25,7 @@ public class MainTradePresenter extends GodBasePresenter<HomeView> {
     }
 
 
-    private void requestHomeData() {
+    public void requestTradeData() {
         try {
             Disposable disposable = requestStore.requestHomeData(new Consumer<HomeRespond>() {
                 @Override
