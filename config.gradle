@@ -5,7 +5,7 @@ ext {
                targetSdkVersion : 25,
                versionCode      : 1,
                versionName      : "1.0"]
-    applicationId = "com.cai.work2"
+    applicationId = "com.cai.work4"
     dependencies = [
             "appcompat-v7"                  : "com.android.support:appcompat-v7:25.3.1",
             "android-support"               : "com.android.support:support-v4:25.0.0",

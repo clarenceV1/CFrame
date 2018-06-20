@@ -51,20 +51,13 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     @Override
     public void initView() {
-        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.save_titile));
-        mViewBinding.commonHeadView.ivGoBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         initFragment();
     }
 
     private void initFragment() {
         Bundle bundle = new Bundle();
-        bundle.putString(WebViewFragment.KEY_RUL, presenter.getUrl(paymentWay));
+        bundle.putString(WebViewFragment.KEY_RUL, "http;//www.baidu.com");
         Fragment fragment = Fragment.instantiate(this, WebViewFragment.class.getName(), bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();

@@ -6,10 +6,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/commonHeadView"
-            layout="@layout/common_head" />
-
         <FrameLayout
             android:id="@+id/containLayout"
             android:layout_width="match_parent"
