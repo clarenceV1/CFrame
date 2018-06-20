@@ -1,10 +1,7 @@
 package com.cai.work.common;
 
 import com.cai.work.ApiService;
-import com.cai.work.bean.respond.WithdrawalRespond;
 import com.example.clarence.netlibrary.INet;
-
-import java.net.URLEncoder;
 
 import javax.inject.Inject;
 
@@ -12,7 +9,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.http.Query;
 
 /**
  * Created by clarence on 2018/3/26.

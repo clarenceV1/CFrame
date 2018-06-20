@@ -1,7 +1,5 @@
 package com.cai.work.dao;
 
-import com.cai.work.bean.HomeDataSql;
-
 import java.util.List;
 
 import javax.inject.Inject;

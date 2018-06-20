@@ -8,7 +8,7 @@
         android:layout_centerInParent="true"
         android:orientation="horizontal">
 
-        <com.cai.work.widget.pullListview.BallLoadingView
+        <com.cai.framework.widget.pullListview.BallLoadingView
             android:id="@+id/ball_loading_view"
             android:layout_width="18dp"
             android:layout_height="18dp"
