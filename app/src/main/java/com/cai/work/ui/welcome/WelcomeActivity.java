@@ -4,6 +4,8 @@ import android.Manifest;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.cai.annotation.aspect.CheckLogin;
+import com.cai.annotation.aspect.CostTime;
 import com.cai.annotation.aspect.Permission;
 import com.cai.annotation.aspect.SingleClick;
 import com.cai.framework.base.GodBasePresenter;
@@ -45,7 +47,9 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
     }
 
     @SingleClick
+    @CostTime
     @Permission(value = {Manifest.permission.CALL_PHONE, Manifest.permission.CAMERA})
+    @CheckLogin
     public void testClick(View view) {
         toastNotice("点击了");
     }

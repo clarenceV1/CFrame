@@ -4,7 +4,6 @@ import android.text.TextUtils;
 
 import com.cai.framework.MemoryCacheManager;
 import com.cai.framework.manager.LogDock;
-import com.example.clarence.utillibrary.log.LogFactory;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

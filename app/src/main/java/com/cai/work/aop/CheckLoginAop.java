@@ -1,5 +1,7 @@
 package com.cai.work.aop;
 
+import com.example.clarence.utillibrary.ToastUtils;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,7 +21,12 @@ public class CheckLoginAop {
 
     @Around("methodAnnotated()")//在连接点进行方法替换
     public void aroundJoinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
-        joinPoint.proceed();//执行原方法
+        if(false){
+            joinPoint.proceed();//执行原方法
+        }else{
+            ToastUtils.showShort("你还没登录");
+        }
+
     }
 }
 
