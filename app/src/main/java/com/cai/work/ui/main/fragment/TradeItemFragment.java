@@ -8,11 +8,12 @@ import com.cai.work.R;
 import com.cai.work.base.AppBaseFragment;
 import com.cai.work.bean.Trade;
 import com.cai.work.databinding.HomeForwardFragmentBinding;
+import com.cai.work.databinding.TradeItemFragmentBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TradeItemFragment extends AppBaseFragment<HomeForwardFragmentBinding> {
+public class TradeItemFragment extends AppBaseFragment<TradeItemFragmentBinding> {
 
     String type;
     List<Trade> dataList;

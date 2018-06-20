@@ -51,13 +51,21 @@ public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding>
         mViewBinding.tvTradeTabLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(selectedTabType == 1){
+                    return;
+                }
+                selectedTabType = 1;
+                switchTab();
             }
         });
         mViewBinding.tvTradeTabRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(selectedTabType == 2){
+                    return;
+                }
+                selectedTabType = 2;
+                switchTab();
             }
         });
         switchTab();
