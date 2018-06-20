@@ -47,6 +47,8 @@ import com.cai.work.ui.recharge.RechargeUnderLineActivity;
 import com.cai.work.ui.recharge.RechargeUnderLinePresenter;
 import com.cai.work.ui.redPacket.RedPacketActivity;
 import com.cai.work.ui.redPacket.RedPacketPresenter;
+import com.cai.work.ui.trade.TradeDetailActivity;
+import com.cai.work.ui.trade.TradeDetailPresenter;
 import com.cai.work.ui.web.WebActivity;
 import com.cai.work.ui.welcome.WelcomeActivity;
 import com.cai.work.ui.welcome.WelcomePresenter;
@@ -174,4 +176,8 @@ public interface AppComponent {
     void inject(RebateActivity rebateActivity);
 
     void inject(RebatePresenter rebatePresenter);
+
+    void inject(TradeDetailActivity tradeDetailActivity);
+
+    void inject(TradeDetailPresenter tradeDetailPresenter);
 }
