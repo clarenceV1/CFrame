@@ -5,6 +5,7 @@ import android.view.WindowManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.utils.LanguageLocalUtil;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
@@ -43,6 +44,7 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
         fitImage();
         time = System.currentTimeMillis();
+        LanguageLocalUtil.changeLanguage(this,presenter.getCurrent());
         presenter.loadUpgrade();
     }
 

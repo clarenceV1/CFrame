@@ -18,9 +18,24 @@ public class DataStore {
     public DataStore() {
 
     }
-    public void saveAppUpdate(String json){
+
+    public void saveAppUpdate(String json) {
         sharePreference.get().write("AppUpdate", json);
     }
+
+    /**
+     * 保存语言
+     *
+     * @param language
+     */
+    public void setLanguage(String language) {
+        sharePreference.get().write("app_language", language);
+    }
+
+    public String getLanguage() {
+        return sharePreference.get().read("app_language", "zh");
+    }
+
 //
 //    public void setToken(String value) {
 //        sharePreference.get().write("LOGIN_TOKEN", value);
