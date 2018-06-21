@@ -155,7 +155,7 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
                 childViewHolder.tvTradeState.setVisibility(View.GONE);
                 childViewHolder.tvRemark.setText(tradeItem.getContractCode());
             }
-            childViewHolder.tvPrice.setText("不会计算");
+            childViewHolder.tvPrice.setText(tradeItem.getZdfu());
         }
 
 

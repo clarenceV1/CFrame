@@ -11,15 +11,7 @@
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c7e2154-df42-4688-b25a-d8b6563ca112" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/trade/TradeDetailActivity.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/trade/TradeDetailPresenter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/trade/TradeDetailView.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/trade_detail.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/dagger/component/AppComponent.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/dagger/component/AppComponent.java" />
-    </list>
+    <list default="true" id="1c7e2154-df42-4688-b25a-d8b6563ca112" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10512,7 +10504,7 @@
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="2.3.3" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1529538379028" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1529538411900" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
