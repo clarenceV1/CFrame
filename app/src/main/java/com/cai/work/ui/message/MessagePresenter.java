@@ -97,4 +97,26 @@ public class MessagePresenter extends GodBasePresenter<MessageView> {
         });
         mCompositeSubscription.add(disposable);
     }
+
+    public void deleteMessageAll() {
+        String token = accountDAO.getToken();
+        Disposable disposable = requestStore.deleteMessageAll(token, new Consumer<BaseRespond>() {
+            @Override
+            public void accept(BaseRespond data) {
+                if (data != null) {
+                    mView.showToast(data.getResponseText());
+                }
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                if (NetWorkUtil.isNetConnected(context)) {
+                    Logger.d("请求删除消息失败！！！---有网络");
+                } else {
+                    Logger.d("请求删除消息失败！！！---没网络");
+                }
+            }
+        });
+        mCompositeSubscription.add(disposable);
+    }
 }

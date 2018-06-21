@@ -1,5 +1,6 @@
 package com.cai.work.ui.message;
 
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
@@ -7,13 +8,16 @@ import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.pull.PullToRefreshBase;
+import com.cai.framework.widget.dialog.GodDialog;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Message;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MessageBinding;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
 
@@ -55,14 +59,14 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
         tvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cleanAllMessage();
+                showDialog();
             }
         });
         listView = mViewBinding.pullListView.getRefreshableView();
         adapter = new MessageAdapter(this, presenter);
         listView.setAdapter(adapter);
         PullToRefreshBase.Mode.isShowFooterLoadingView = false;
-        View emptyView = LayoutInflater.from(this).inflate(R.layout.empty_view,null);
+        View emptyView = LayoutInflater.from(this).inflate(R.layout.empty_view, null);
         mViewBinding.pullListView.setEmptyView(emptyView);
         mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
         mViewBinding.pullListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
@@ -77,8 +81,28 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
         presenter.getMessage(page);
     }
 
+    private void showDialog() {
+        new GodDialog.Builder(this)
+                .setMessage(R.string.clean_message)
+                .setPositiveButton(R.string.btn_cancle, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setNegativeButton(R.string.btn_clean, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        cleanAllMessage();
+                    }
+                }).create().show();
+    }
+
     private void cleanAllMessage() {
-//        presenter.deleteMessage();
+        presenter.deleteMessageAll();
+        if (adapter != null) {
+            adapter.cleanAll();
+        }
     }
 
     @Override
@@ -103,6 +127,6 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
 
     @Override
     public void showToast(String message) {
-
+        ToastUtils.showShort(message);
     }
 }

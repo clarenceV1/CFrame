@@ -2,6 +2,7 @@ package com.cai.work.ui.main.fragment;
 
 import android.annotation.SuppressLint;
 
+import com.cai.framework.base.GodBaseConfig;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.bean.User;
@@ -113,5 +114,33 @@ public class MainMinePresenter extends GodBasePresenter<MineView> {
                         mView.loginOut();
                     }
                 });
+    }
+
+    public String getToken() {
+        return accountDAO.getToken();
+    }
+
+    public String getActivityH5() {
+//      http://{domain}/app/h5/activity/index?token=D8BE20C92A1A57B06D58DB28B5CD56FF
+        StringBuilder builder = new StringBuilder();
+        builder.append(GodBaseConfig.getInstance().getBaseUrl());
+        builder.append("/app/h5/activity/index?");
+        builder.append("token=").append(getToken());
+        return builder.toString();
+    }
+
+    public String getCommonQuestionH5() {
+//      http://{domain}/app/h5/help/question
+        StringBuilder builder = new StringBuilder();
+        builder.append(GodBaseConfig.getInstance().getBaseUrl());
+        builder.append("/app/h5/help/question");
+        return builder.toString();
+    }
+    public String getAboutUsH5() {
+//      http://{domain}/app/h5/cms/see?name=about_us
+        StringBuilder builder = new StringBuilder();
+        builder.append(GodBaseConfig.getInstance().getBaseUrl());
+        builder.append("/app/h5/cms/see?name=about_us");
+        return builder.toString();
     }
 }

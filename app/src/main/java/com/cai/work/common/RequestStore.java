@@ -100,6 +100,14 @@ public class RequestStore {
         return disposable;
     }
 
+    public Disposable deleteMessageAll(String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).deleteMessageAll(token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
     public Disposable getRedPacket(int page, String token, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).getRedPacket(page, token)
                 .subscribeOn(Schedulers.newThread())

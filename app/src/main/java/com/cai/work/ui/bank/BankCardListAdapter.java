@@ -40,7 +40,7 @@ class BankCardListAdapter extends GodBaseAdapter {
             BankCard bank = (BankCard) itemData;
 
             ImageView ivBankIcon = ViewHolder.getImageView(convertView, R.id.ivBankIcon);
-            ILoadImageParams imageParams = new ImageForGlideParams.Builder().url("http:"+bank.getImageUrl())
+            ILoadImageParams imageParams = new ImageForGlideParams.Builder().url("http:"+bank.getmImageUrl())
                     .transformation(new GlideCircleTransform(context)).build();
             imageParams.setImageView(ivBankIcon);
             imageLoader.loadImage(context, imageParams);

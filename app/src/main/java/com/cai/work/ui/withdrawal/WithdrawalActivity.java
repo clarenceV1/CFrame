@@ -1,6 +1,8 @@
 package com.cai.work.ui.withdrawal;
 
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -35,9 +37,10 @@ public class WithdrawalActivity extends AppBaseActivity<WithdrawalBinding> imple
     @Inject
     WithdrawalPresenter presenter;
     Withdrawal withdrawal;
-    int withdrawKind = 1;
+    int withdrawKindSelect = 1;
     List<Withdrawalkind> withdrawalkindList = new ArrayList<>();
     WithdrawalBank chooseBankCard;
+    Withdrawalkind withdrawalkind;
 
     @Override
     public void initDagger() {
@@ -94,7 +97,36 @@ public class WithdrawalActivity extends AppBaseActivity<WithdrawalBinding> imple
                     ToastUtils.showShort(getString(R.string.withdrawal_no_card_toast));
                     return;
                 }
-                presenter.commitWithdrawal(chooseBankCard.getId(), amount, password, withdrawKind);
+                presenter.commitWithdrawal(chooseBankCard.getId(), amount, password, withdrawKindSelect);
+            }
+        });
+        mViewBinding.editWithdrawalMoney.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    float price = 0;
+                    float fee = 0;
+                    if (withdrawalkind != null) {
+                        fee = Float.valueOf(withdrawalkind.getFee());
+                    }
+                    String str = s.toString();
+                    if(!TextUtils.isEmpty(str)){
+                        price = Float.valueOf(str);
+                    }
+                    mViewBinding.tvWithdrawalPoundage.setText((fee * price) + "");
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
         presenter.requestWithdrawal();
@@ -125,9 +157,16 @@ public class WithdrawalActivity extends AppBaseActivity<WithdrawalBinding> imple
             @Override
             public void onClick(BottomMenuDialog dialog, View v, BottomMenuModel.BottomMenuItemModel itemModel) {
                 if (itemModel.getTag() instanceof Withdrawalkind) {
-                    Withdrawalkind withdrawalkind = ((Withdrawalkind) itemModel.getTag());
+                    withdrawalkind = ((Withdrawalkind) itemModel.getTag());
                     mViewBinding.tvWithdrawKind.setText(withdrawalkind.getType());//到账时间
-                    mViewBinding.tvWithdrawalPoundage.setText(withdrawalkind.getFee());
+                    try {
+                        String priceStr = mViewBinding.editWithdrawalMoney.getText().toString();
+                        float price = Float.valueOf(priceStr);
+                        float fee = Float.valueOf(withdrawalkind.getFee());
+                        mViewBinding.tvWithdrawalPoundage.setText((fee * price) + "");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 dialog.dismiss();
             }
@@ -154,8 +193,9 @@ public class WithdrawalActivity extends AppBaseActivity<WithdrawalBinding> imple
             withdrawalkindList.add(withdrawalkind);
         }
         if (withdrawalkindList.size() > 0) {
-            mViewBinding.tvWithdrawKind.setText(withdrawalkindList.get(0).getType());
-            mViewBinding.tvWithdrawalPoundage.setText(withdrawalkindList.get(0).getFee());
+            this.withdrawalkind = withdrawalkindList.get(0);
+            mViewBinding.tvWithdrawKind.setText(withdrawalkind.getType());
+            mViewBinding.tvWithdrawalPoundage.setText(withdrawalkind.getFee());
         }
         mViewBinding.tvBalanceMoney.setText(data.getBalance());
     }

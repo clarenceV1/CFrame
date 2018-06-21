@@ -54,7 +54,6 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
             public void onItemClick(View view, int postion, IRecycleViewBaseData data) {
                 if (data instanceof MineListData) {
                     MineListData mineListData = (MineListData) data;
-                    ToastUtils.showShort(getActivity().getResources().getString(mineListData.getItemName()));
                     switch (postion) {
                         case 1:
                             ARouter.getInstance().build("/AppModule/FundDetailActivity").navigation();
@@ -71,6 +70,24 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
                         case 5:
                             ARouter.getInstance().build("/AppModule/InviteActivity").navigation();
                             break;
+                        case 6://活动专区
+                        {
+                            String url = presenter.getActivityH5();
+                            ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title","活动专区").navigation();
+                        }
+                        break;
+                        case 7://常见问题
+                        {
+                            String url = presenter.getCommonQuestionH5();
+                            ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title","常见问题").navigation();
+                        }
+                        break;
+                        case 8://关于我们
+                        {
+                            String url = presenter.getAboutUsH5();
+                            ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title","关于我们").navigation();
+                        }
+                        break;
                         case 9:
                             ARouter.getInstance().build("/AppModule/SaveActivity").navigation();
                             break;

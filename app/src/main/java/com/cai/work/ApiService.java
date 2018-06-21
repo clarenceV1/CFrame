@@ -58,10 +58,13 @@ public interface ApiService {
     @GET("/app/message/index")
     Flowable<MessageRespond> getMessage(@Query("page") int page, @Query("token") String token);
 
-    @POST("/app/login/index")
+    @POST("/app/message/delete")
     @FormUrlEncoded
     Flowable<MessageRespond> deleteMessage(@Field("ids") int ids, @Field("token") String token);
 
+    @POST("/app/message/deleteAll")
+    @FormUrlEncoded
+    Flowable<BaseRespond> deleteMessageAll(@Field("token") String token);
 
     @GET("/app/redBags/index")
     Flowable<RedPacketRespond> getRedPacket(@Query("page") int page, @Query("token") String token);

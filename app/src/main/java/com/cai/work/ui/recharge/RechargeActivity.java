@@ -1,6 +1,5 @@
 package com.cai.work.ui.recharge;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 
@@ -75,11 +74,14 @@ public class RechargeActivity extends AppBaseActivity<RechargeBinding> implement
             @Override
             public void onClick(View v) {
                 switch (choosePosition) {
-                    case 0:
-                        ARouter.getInstance().build("/AppModule/WebActivity").withInt("paymentWay", 2).navigation();
-                        break;
+                    case 0: {
+                        String url = presenter.getUrl(2);
+                        ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title","线上充值").navigation();
+                    }
+                    break;
                     case 1:
-                        ARouter.getInstance().build("/AppModule/WebActivity").withInt("paymentWay", 1).navigation();
+                        String url = presenter.getUrl(1);
+                        ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title","线上充值").navigation();
                         break;
                     case 2:
                         ARouter.getInstance().build("/AppModule/RechargeUnderLine").navigation();

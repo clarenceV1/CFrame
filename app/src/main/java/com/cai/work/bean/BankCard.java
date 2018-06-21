@@ -7,6 +7,15 @@ public class BankCard implements CBaseData {
     private String cardNo;
     private String bankName;
     private String imageUrl;
+    private String mImageUrl;
+
+    public String getmImageUrl() {
+        return mImageUrl;
+    }
+
+    public void setmImageUrl(String mImageUrl) {
+        this.mImageUrl = mImageUrl;
+    }
 
     public int getId() {
         return id;

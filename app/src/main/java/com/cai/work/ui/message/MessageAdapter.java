@@ -28,6 +28,13 @@ class MessageAdapter extends GodBaseAdapter {
         }
     }
 
+    public void cleanAll() {
+        if (dataList != null) {
+            dataList.clear();
+            notifyDataSetChanged();
+        }
+    }
+
     @Override
     public void initItemView(final View convertView, CBaseData itemData, int position) {
         if (itemData != null && itemData instanceof MessageItem) {
@@ -44,6 +51,8 @@ class MessageAdapter extends GodBaseAdapter {
                 @Override
                 public void onClick(View v) {
                     presenter.deleteMessage(messageItem.getId());
+                    dataList.remove(messageItem);
+                    notifyDataSetChanged();
                 }
             });
             if (messageItem.isShowMsgContent()) {
@@ -54,10 +63,10 @@ class MessageAdapter extends GodBaseAdapter {
             ViewHolder.getImageView(convertView, R.id.ivSwitch).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(messageItem.isShowMsgContent()){
+                    if (messageItem.isShowMsgContent()) {
                         messageItem.setShowMsgContent(false);
                         ViewHolder.getView(convertView, R.id.rlContent).setVisibility(View.GONE);
-                    }else{
+                    } else {
                         messageItem.setShowMsgContent(true);
                         ViewHolder.getView(convertView, R.id.rlContent).setVisibility(View.VISIBLE);
                     }

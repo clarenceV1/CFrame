@@ -1,9 +1,10 @@
 package com.cai.work.ui.web;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
@@ -19,14 +20,20 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import static android.view.KeyEvent.KEYCODE_BACK;
+
 @Route(path = "/AppModule/WebActivity", name = "web")
 public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRTB {
 
-    @Autowired(name = "paymentWay")
-    int paymentWay = 1;//支付方式： 1 微信 ； 2 支付宝
+    @Autowired(name = "url")
+    String url;
+
+    @Autowired(name = "title")
+    String title;
 
     @Inject
     WebPresenter presenter;
+    WebViewFragment webViewFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +58,11 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     @Override
     public void initView() {
-        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.save_titile));
+        if(!TextUtils.isEmpty(title)){
+            mViewBinding.commonHeadView.tvTitle.setText(title);
+        }else{
+            mViewBinding.commonHeadView.tvTitle.setVisibility(View.GONE);
+        }
         mViewBinding.commonHeadView.ivGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,12 +75,21 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     private void initFragment() {
         Bundle bundle = new Bundle();
-        bundle.putString(WebViewFragment.KEY_RUL, presenter.getUrl(paymentWay));
-        Fragment fragment = Fragment.instantiate(this, WebViewFragment.class.getName(), bundle);
+        bundle.putString(WebViewFragment.KEY_RUL, url);
+        webViewFragment = new WebViewFragment();
+        webViewFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.containLayout, fragment);
+        fragmentTransaction.replace(R.id.containLayout, webViewFragment);
         fragmentTransaction.commit();
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KEYCODE_BACK) && webViewFragment.canGoBack()) {
+            webViewFragment.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
