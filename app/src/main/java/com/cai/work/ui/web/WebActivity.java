@@ -69,12 +69,23 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
                 finish();
             }
         });
-
+        //测试数据开始
+//        mViewBinding.commonHeadView.imgRight.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                webViewFragment.loadJavascript("callJS", null);
+//            }
+//        });
+//        mViewBinding.commonHeadView.imgRight.setVisibility(View.VISIBLE);
+        //测试数据结束
         initFragment();
     }
 
     private void initFragment() {
         Bundle bundle = new Bundle();
+        //测试数据开始
+//        url = "file:///android_asset/javascript.html";
+        //测试数据结束
         bundle.putString(WebViewFragment.KEY_RUL, url);
         webViewFragment = new WebViewFragment();
         webViewFragment.setArguments(bundle);
