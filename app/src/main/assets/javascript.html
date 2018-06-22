@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Carson_Ho</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script>
    function callJS(){
       alert("Android调用了JS的callJS方法");
@@ -12,8 +13,14 @@
             test.hello("js调用了android中的hello方法");
          }
 
+
+
     </script>
     //点击按钮则调用callAndroid函数
     <button type="button" id="button1" onclick="callAndroid()"></button>
+
+    <a href="meetone://moreone.com">打开app</a><br/>
+
+    <a href="intent://moreone.com/#Intent;scheme=meetone;package=wan.candy.main;S.browser_fallback_url=http%3A%2F%2Fzxing.org;end">itent dakai</a>
 </head>
 </html>
