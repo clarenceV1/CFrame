@@ -2,7 +2,11 @@ package com.cai.work.base;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBaseApplication;
+import com.cai.framework.web.IWebProtocol;
+import com.cai.framework.web.WebProtocolManager;
 import com.cai.work.bean.MyObjectBox;
+
+import java.util.Map;
 
 import io.objectbox.BoxStore;
 
@@ -21,6 +25,16 @@ public class App extends GodBaseApplication {
         super.onCreate();
         initRouter();
         boxStore = MyObjectBox.builder().androidContext(this).build();
+        initWebProtocol();
+    }
+
+    private void initWebProtocol() {
+        WebProtocolManager.getInstall().init(new IWebProtocol() {
+            @Override
+            public Map<String, String> handlerProtocol(String protocol, String params) {
+                return null;
+            }
+        });
     }
 
     public static BoxStore getBoxStore() {
