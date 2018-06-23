@@ -1,8 +1,10 @@
 package com.cai.work;
 
+import com.cai.work.bean.SocketInfo;
 import com.cai.work.bean.respond.BankCardRespond;
 import com.cai.work.bean.respond.BankListRespond;
 import com.cai.work.bean.respond.BaseRespond;
+import com.cai.work.bean.respond.ForwardAccountRespond;
 import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.bean.respond.InviteResond;
 import com.cai.work.bean.respond.LoginRespond;
@@ -12,6 +14,8 @@ import com.cai.work.bean.respond.RechargeBankResond;
 import com.cai.work.bean.respond.RedPacketRespond;
 import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.ServiceRespond;
+import com.cai.work.bean.respond.StockAccountRespond;
+import com.cai.work.bean.respond.StockHoldRespond;
 import com.cai.work.bean.respond.TradeRespond;
 import com.cai.work.bean.respond.UploadRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
@@ -100,15 +104,15 @@ public interface ApiService {
 
     @POST("/app/resetpwd")
     @FormUrlEncoded
-    Flowable<CommonRespond> forgetPassword(@Field("mobile")String mobile,  @Field("sms")String sms,  @Field("loginPassword")String loginPassword);
+    Flowable<CommonRespond> forgetPassword(@Field("mobile") String mobile, @Field("sms") String sms, @Field("loginPassword") String loginPassword);
 
     @POST("/app/userSafe/updatePwd")
     @FormUrlEncoded
-    Flowable<CommonRespond> resetPassword(@Field("sms")String sms,  @Field("old_pwd")String loginOldPassword, @Field("new_pwd")String loginPassword, @Field("token") String token);
+    Flowable<CommonRespond> resetPassword(@Field("sms") String sms, @Field("old_pwd") String loginOldPassword, @Field("new_pwd") String loginPassword, @Field("token") String token);
 
     @POST("/app/userSafe/updateWithdrawPwd")
     @FormUrlEncoded
-    Flowable<CommonRespond> resetWithdrawalPassword(@Field("sms")String sms,  @Field("old_pwd")String loginOldPassword, @Field("new_pwd")String loginPassword, @Field("token") String token);
+    Flowable<CommonRespond> resetWithdrawalPassword(@Field("sms") String sms, @Field("old_pwd") String loginOldPassword, @Field("new_pwd") String loginPassword, @Field("token") String token);
 
     @GET("/app/rebate")
     Flowable<InviteResond> requestInvite(@Query("token") String token);
@@ -121,7 +125,7 @@ public interface ApiService {
 
     @POST("/app/rebate/withdrawRebate")
     @FormUrlEncoded
-    Flowable<CommonRespond> requestWithdrawRebate(@Field("rebateIds")String rebateIds,  @Field("token")String token);
+    Flowable<CommonRespond> requestWithdrawRebate(@Field("rebateIds") String rebateIds, @Field("token") String token);
 
 
     @GET("/app/rebate/getRebateWithdraw")
@@ -130,4 +134,27 @@ public interface ApiService {
     @GET("/app/trade")
     Flowable<TradeRespond> requestTradeData(@Query("token") String token);
 
+
+    @GET("/app/trade/getSocketAddr")
+    Flowable<SocketInfo> requestSocketInfo(@Query("token") String token);
+
+
+    @GET("/app/stockTrade/sell")
+    Flowable<StockHoldRespond> requestRealStockHold(@Query("token") String token);
+
+
+    @GET("app/mnstockTrade/sell")
+    Flowable<StockHoldRespond> requestFakeStockHold(@Query("token") String token);
+
+    @GET("app/stockTrade/finish")
+    Flowable<StockAccountRespond> requestRealStockAccounts(@Query("token") String token);
+
+    @GET("app/mnstockTrade/finish")
+    Flowable<StockAccountRespond> requestFakeStockAccounts(@Query("token") String token);
+
+    @GET("app/mnstockTrade/finish")
+    Flowable<ForwardAccountRespond> requestRealForwardAccounts(@Query("page") int page, @Query("token") String token);
+
+    @GET("app/mnstockTrade/finish")
+    Flowable<ForwardAccountRespond> requestFakeForwardAccounts(@Query("page") int page, @Query("token") String token);
 }

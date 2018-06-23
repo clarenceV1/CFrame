@@ -226,4 +226,14 @@
     <string name="rebate_real_name">交易人</string>
     <string name="rebate_price">交易综合费(元)</string>
     <string name="rebate_my_rebate">我的返佣</string>
+    <string name="main_hold_real_trade">实盘交易</string>
+    <string name="main_hold_fake_trade">模拟交易</string>
+    <string name="main_hold_stock_real">实盘股票</string>
+    <string name="main_hold_forward_real">实盘期货</string>
+    <string name="main_hold_stock_fake">股票模拟</string>
+    <string name="main_hold_forward_fake">期货模拟</string>
+    <string name="main_hold_holder">持仓</string>
+    <string name="main_hold_accounts">结算</string>
+    <string name="main_hold_holder_fake">模拟持仓</string>
+    <string name="main_hold_accounts_fake">模拟结算</string>
 </resources>

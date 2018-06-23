@@ -29,6 +29,8 @@ import com.cai.work.ui.login.SaveActivity;
 import com.cai.work.ui.login.SavePresenter;
 import com.cai.work.ui.main.MainActivity;
 import com.cai.work.ui.main.MainPresenter;
+import com.cai.work.ui.main.fragment.MainHoldFragment;
+import com.cai.work.ui.main.fragment.MainHoldPresenter;
 import com.cai.work.ui.main.fragment.MainHomeFragment;
 import com.cai.work.ui.main.fragment.MainMineFragment;
 import com.cai.work.ui.main.fragment.MainServiceFragment;
@@ -180,4 +182,8 @@ public interface AppComponent {
     void inject(TradeDetailActivity tradeDetailActivity);
 
     void inject(TradeDetailPresenter tradeDetailPresenter);
+
+    void inject(MainHoldFragment fragment);
+
+    void inject(MainHoldPresenter presenter);
 }
