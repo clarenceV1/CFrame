@@ -28,7 +28,7 @@ public class SellDialog {
 
     public void show() {
         new GodDialog.Builder(context)
-                .setMessage(R.string.sell_dialog_title)
+                .setTitle(R.string.sell_dialog_title)
                 .setContentView(contentView)
                 .setPositiveButton(R.string.btn_commit, new DialogInterface.OnClickListener() {
                     @Override
