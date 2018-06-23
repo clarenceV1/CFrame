@@ -1,11 +1,13 @@
 package com.cai.work.bean;
 
-public class StockHold {
+import com.cai.framework.bean.CBaseData;
+
+public class StockHold implements CBaseData {
 //"id": 1,
 //        "orderNo": "GPJY1806201355193601",
 //        "stockCode": "600000",
 //        "stockName": "浦发银行",
-//        "marketType": "2",
+//        "marketType": "2",//1:SZ  2 SH
 //        "principal": "10000",
 //        "bond": "1000.00",
 //        "dealAmount": "1000",

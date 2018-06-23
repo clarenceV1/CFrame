@@ -4,9 +4,12 @@ import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.RadioGroup;
 
+import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.lib.logger.Logger;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseFragment;
@@ -47,6 +50,8 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
     SocketInfo socketInfo;
     boolean isRequestData = true;//是否要重新请求数据
     int page = 1;
+    ListView listView;
+    MainHoldAdapter adapter;
 
     @Override
     public int getLayoutId() {
@@ -66,6 +71,23 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
 
     @Override
     public void initView(View view) {
+        listView = mViewBinding.pullListView.getRefreshableView();
+        adapter = new MainHoldAdapter(getContext());
+        listView.setAdapter(adapter);
+        PullToRefreshBase.Mode.isShowFooterLoadingView = false;
+        mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+        View emptyView = LayoutInflater.from(getContext()).inflate(R.layout.empty_view, null);
+        mViewBinding.pullListView.setEmptyView(emptyView);
+        // Add an end-of-list listener
+        mViewBinding.pullListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
+            @Override
+            public void onLastItemVisible() {
+//                if (hasData) {
+//                    ++page;
+//                    presenter.requestNews(page);
+//                }
+            }
+        });
         mViewBinding.radioBtn1.setChecked(true);
         mViewBinding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -257,7 +279,7 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
 
     @Override
     public void stockHold(List<StockHold> dataList) {
-
+        adapter.update(dataList);
     }
 
     @Override

@@ -238,4 +238,9 @@
     <string name="main_hold_accounts_fake">模拟结算</string>
     <string name="news_title">站内公告</string>
     <string name="news_read">阅读全文</string>
+    <string name="main_hold_trade_money">交易盈亏</string>
+    <string name="main_hold_buy_price">买入价格</string>
+    <string name="main_hold_current_price">当前价格</string>
+    <string name="main_hold_buy_num">成交数量</string>
+    <string name="btn_look_detail">查看详情</string>
 </resources>

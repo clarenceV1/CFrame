@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.view.View;
@@ -35,8 +36,9 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     MainPresenter mainPresenter;
 
     List<MainTabView> tabViewList = new ArrayList<>();
-    Map<String, WeakReference<Fragment>> fragmentMap = new HashMap<>();
-    String currentFragment;
+    String currentFragmentName;
+    Fragment currentFragment;
+    FragmentManager fragmentManager;
 
     @Autowired(name = "position")
     int position = 1;
@@ -74,6 +76,8 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     }
 
     private void initTabView() {
+        fragmentManager = getSupportFragmentManager();
+
         tabViewList.add(MainTabView.creatTabView(mViewBinding.mainTab0, 0));
         tabViewList.add(MainTabView.creatTabView(mViewBinding.mainTab1, 1));
         tabViewList.add(MainTabView.creatTabView(mViewBinding.mainTab2, 2));
@@ -83,7 +87,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         MainTabView.setOnTabClickListener(new MainTabView.OnTabClickListener() {
             @Override
             public boolean onClick(View view, int position, String fragmentName) {
-                if (fragmentName.equals(currentFragment)) {
+                if (fragmentName.equals(currentFragmentName)) {
                     return false;// 已经在当前页面不处理
                 }
                 if (position != 0 && !mainPresenter.isLogin()) {
@@ -139,16 +143,20 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         if (TextUtils.isEmpty(fragmentName)) {
             return false;
         }
-        currentFragment = fragmentName;
-        Fragment fragment;
-        WeakReference<Fragment> fragmentWeakReference = fragmentMap.get(fragmentName);
-        if (fragmentWeakReference != null && fragmentWeakReference.get() != null) {
-            fragment = fragmentWeakReference.get();
-        } else {
-            fragment = creatFragment(fragmentName);
-            fragmentMap.put(fragmentName, new WeakReference<>(fragment));
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        if (currentFragment != null) {
+            transaction.hide(currentFragment);
         }
-        return switchFragment(fragment);
+        currentFragmentName = fragmentName;
+        currentFragment = fragmentManager.findFragmentByTag(fragmentName);
+        if (currentFragment == null) {
+            currentFragment = creatFragment(fragmentName);
+            transaction.add(R.id.flMainContainer, currentFragment, fragmentName);
+        } else {
+            transaction.show(currentFragment);
+        }
+        transaction.commitAllowingStateLoss();
+        return true;
     }
 
     public Fragment creatFragment(String fragmentName) {
@@ -157,19 +165,5 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         }
         Bundle bundle = new Bundle();
         return Fragment.instantiate(this, fragmentName, bundle);
-    }
-
-    private boolean switchFragment(Fragment fragment) {
-        if (fragment == null) {
-            return false;
-        }
-        try {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.flMainContainer, fragment);
-            transaction.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return true;
     }
 }
