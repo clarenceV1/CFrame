@@ -155,10 +155,10 @@ public interface ApiService {
     @GET("/app/mnstockTrade/finish")
     Flowable<StockAccountRespond> requestFakeStockAccounts(@Query("token") String token);
 
-    @GET("/app/mnstockTrade/finish")
+    @GET("/app/futures/settlement")
     Flowable<ForwardAccountRespond> requestRealForwardAccounts(@Query("page") int page, @Query("token") String token);
 
-    @GET("/app/mnstockTrade/finish")
+    @GET("/app/futuresVirtual/settlement")
     Flowable<ForwardAccountRespond> requestFakeForwardAccounts(@Query("page") int page, @Query("token") String token);
 
     @GET("/app/news/queryPage")

@@ -1,12 +1,14 @@
 package com.cai.work.bean;
 
-public class ForwardAccount {
-//    "id": 6814,
+import com.cai.framework.bean.CBaseData;
+
+public class ForwardAccount implements CBaseData {
+    //    "id": 6814,
 //            "orderNo": "1806081410264304",
 //            "contractCode": "HG1807",
 //            "contractName": "美精铜",
 //            "buyAmount": "1",
-//            "buyWay": "2",
+//            "buyWay": "2",// 1 买涨 2 买跌
 //            "openPrice": "3.2595",
 //            "closePrice": "3.26",
 //            "bond": "2125",
@@ -19,6 +21,7 @@ public class ForwardAccount {
     private int id;
     private String orderNo;
     private String contractCode;
+    private String contractName;
     private String buyAmount;
     private String buyWay;
     private String openPrice;
@@ -30,6 +33,14 @@ public class ForwardAccount {
     private String approveStateText;
     private String stateText;
     private String ykMoney;
+
+    public String getContractName() {
+        return contractName;
+    }
+
+    public void setContractName(String contractName) {
+        this.contractName = contractName;
+    }
 
     public int getId() {
         return id;

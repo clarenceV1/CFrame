@@ -284,11 +284,11 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
 
     @Override
     public void forwardAccount(List<ForwardAccount> dataList) {
-
+        adapter.update(dataList);
     }
 
     @Override
     public void stockAccount(List<StockAccount> dataList) {
-
+        adapter.update(dataList);
     }
 }

@@ -240,7 +240,12 @@
     <string name="news_read">阅读全文</string>
     <string name="main_hold_trade_money">交易盈亏</string>
     <string name="main_hold_buy_price">买入价格</string>
+    <string name="main_hold_open_price">买入价格</string>
     <string name="main_hold_current_price">当前价格</string>
+    <string name="main_hold_sell_price">结算价格</string>
+    <string name="main_hold_close_price">平仓价格</string>
     <string name="main_hold_buy_num">成交数量</string>
+    <string name="main_hold_open_num">开仓数量</string>
+    <string name="main_hold_open_direction">开仓方向</string>
     <string name="btn_look_detail">查看详情</string>
 </resources>

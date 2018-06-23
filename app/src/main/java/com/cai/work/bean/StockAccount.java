@@ -1,6 +1,8 @@
 package com.cai.work.bean;
 
-public class StockAccount {
+import com.cai.framework.bean.CBaseData;
+
+public class StockAccount implements CBaseData{
 //    "id": 8181,
 //            "orderNo": "1806071057174278",
 //            "stockCode": "600000",
