@@ -2,7 +2,9 @@ package com.cai.work.bean;
 
 import com.cai.framework.bean.CBaseData;
 
-public class News implements CBaseData{
+import java.io.Serializable;
+
+public class News implements CBaseData, Serializable {
     //    "id": 1779,
 //            "channelName": "Notice",
 //            "title": "清明节交易安排",
@@ -18,6 +20,15 @@ public class News implements CBaseData{
     private String imageUrl1;
     private String srcUrlM;
     private String srcUrlPC;
+    private String contentPC;
+
+    public String getContentPC() {
+        return contentPC;
+    }
+
+    public void setContentPC(String contentPC) {
+        this.contentPC = contentPC;
+    }
 
     public int getId() {
         return id;

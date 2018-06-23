@@ -2,9 +2,13 @@ package com.cai.work.ui.news;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.work.R;
@@ -16,6 +20,7 @@ import com.cai.work.databinding.NewsBinding;
 import java.util.List;
 
 import javax.inject.Inject;
+
 @Route(path = "/AppModule/NewsActivity", name = "站内公告")
 public class NewsActivity extends AppBaseActivity<NewsBinding> implements NewsView {
 
@@ -24,7 +29,7 @@ public class NewsActivity extends AppBaseActivity<NewsBinding> implements NewsVi
     int page = 1;
     ListView listView;
     NewsAdapter adapter;
-    boolean hasData;
+    boolean hasData = true;
 
     @Override
     public void initDagger() {
@@ -68,6 +73,13 @@ public class NewsActivity extends AppBaseActivity<NewsBinding> implements NewsVi
             }
         });
         presenter.requestNews(page);
+        mViewBinding.pullListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                News news = (News) adapter.getItem(position);
+                ARouter.getInstance().build("/AppModule/NewsDetailActivity").withCharSequence("news", JSON.toJSONString(news)).navigation();
+            }
+        });
     }
 
 
@@ -77,6 +89,7 @@ public class NewsActivity extends AppBaseActivity<NewsBinding> implements NewsVi
         adapter.update(dataList);
 
         if (dataList == null || dataList.size() == 0) {
+            hasData = false;
             mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.DISABLED);
             View view = LayoutInflater.from(this).inflate(R.layout.listview_foot, null);
             listView.addFooterView(view);

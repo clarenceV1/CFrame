@@ -2,8 +2,6 @@ package com.cai.work.dagger.component;
 
 import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.dagger.module.AppModule;
-import com.cai.work.ui.news.NewsActivity;
-import com.cai.work.ui.news.NewsPresenter;
 import com.cai.work.ui.bank.AddBankCardActivity;
 import com.cai.work.ui.bank.AddBankCardPresenter;
 import com.cai.work.ui.bank.BankCardChooseActivity;
@@ -41,6 +39,8 @@ import com.cai.work.ui.main.fragment.MainTradeFragment;
 import com.cai.work.ui.main.fragment.MainTradePresenter;
 import com.cai.work.ui.message.MessageActivity;
 import com.cai.work.ui.message.MessagePresenter;
+import com.cai.work.ui.news.NewsActivity;
+import com.cai.work.ui.news.NewsPresenter;
 import com.cai.work.ui.rank.RankActivity;
 import com.cai.work.ui.rank.RankPresenter;
 import com.cai.work.ui.rebate.RebateActivity;

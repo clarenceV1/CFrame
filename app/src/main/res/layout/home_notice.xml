@@ -126,7 +126,6 @@
             android:id="@+id/tvMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:text="@string/home_notice_more" />
     </LinearLayout>
 </LinearLayout>

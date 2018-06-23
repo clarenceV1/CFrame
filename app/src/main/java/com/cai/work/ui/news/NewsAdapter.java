@@ -7,7 +7,6 @@ import com.cai.framework.base.GodBaseAdapter;
 import com.cai.framework.bean.CBaseData;
 import com.cai.framework.utils.ViewHolder;
 import com.cai.work.R;
-import com.cai.work.bean.FundDetailItem;
 import com.cai.work.bean.News;
 
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ class NewsAdapter extends GodBaseAdapter {
     }
 
     public void update(List data) {
-        if (data != null) {
+        if (data != null && data.size() > 0) {
             dataList.addAll(data);
             notifyDataSetChanged();
         }
@@ -28,7 +27,7 @@ class NewsAdapter extends GodBaseAdapter {
 
     @Override
     public void initItemView(View convertView, CBaseData itemData, int position) {
-        if (itemData != null && itemData instanceof FundDetailItem) {
+        if (itemData != null && itemData instanceof News) {
             News news = (News) itemData;
             ViewHolder.getTextView(convertView, R.id.tvNewsTitle).setText(news.getTitle());
             ViewHolder.getTextView(convertView, R.id.tvDate).setText(news.getCreateDate());
