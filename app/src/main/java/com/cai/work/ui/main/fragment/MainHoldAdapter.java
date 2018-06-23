@@ -3,6 +3,8 @@ package com.cai.work.ui.main.fragment;
 import android.content.Context;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBaseAdapter;
 import com.cai.framework.bean.CBaseData;
 import com.cai.framework.utils.ViewHolder;
@@ -115,7 +117,7 @@ public class MainHoldAdapter extends GodBaseAdapter {
      * 实盘/模拟--股票结算
      */
     private void forwardAccount(View convertView, CBaseData itemData) {
-        ForwardAccount item = (ForwardAccount) itemData;
+        final ForwardAccount item = (ForwardAccount) itemData;
         ViewHolder.getTextView(convertView, R.id.tvBuyDealDate).setText("平仓时间：" + item.getCloseDealDate());
         ViewHolder.getTextView(convertView, R.id.tvStockName).setText(item.getContractName());
         ViewHolder.getTextView(convertView, R.id.tvstockCode).setText(item.getContractCode());
@@ -141,7 +143,7 @@ public class MainHoldAdapter extends GodBaseAdapter {
         ViewHolder.getButton(convertView, R.id.btnCommit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("期货结算");
+                ARouter.getInstance().build("/AppModule/AccountsDetailActivity").withCharSequence("forwardAccount", JSON.toJSONString(item)).navigation();
             }
         });
     }

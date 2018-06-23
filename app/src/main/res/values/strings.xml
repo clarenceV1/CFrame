@@ -248,4 +248,13 @@
     <string name="main_hold_open_num">开仓数量</string>
     <string name="main_hold_open_direction">开仓方向</string>
     <string name="btn_look_detail">查看详情</string>
+    <string name="account_detail_title">结算详情</string>
+    <string name="accounts_detail_trade_id">交易单号</string>
+    <string name="accounts_detail_trade_kind">交易品种</string>
+    <string name="accounts_detail_trade_num">交易数量</string>
+    <string name="accounts_detail_trade_price">交易价格</string>
+    <string name="accounts_detail_close_price">结算价格</string>
+    <string name="accounts_detail_close_time">结算时间</string>
+    <string name="accounts_detail_close_reson">结算原因</string>
+    <string name="accounts_detail_trade_yk">交易盈亏</string>
 </resources>
