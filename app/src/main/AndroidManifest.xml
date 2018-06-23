@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:name="com.cai.work.base.App"
         android:allowBackup="true"
@@ -111,6 +112,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.trade.TradeDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.news.NewsActivity"
             android:screenOrientation="portrait" />
     </application>
 

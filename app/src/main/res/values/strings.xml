@@ -236,4 +236,6 @@
     <string name="main_hold_accounts">结算</string>
     <string name="main_hold_holder_fake">模拟持仓</string>
     <string name="main_hold_accounts_fake">模拟结算</string>
+    <string name="news_title">站内公告</string>
+    <string name="news_read">阅读全文</string>
 </resources>

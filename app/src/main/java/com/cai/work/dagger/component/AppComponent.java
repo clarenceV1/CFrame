@@ -2,6 +2,8 @@ package com.cai.work.dagger.component;
 
 import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.dagger.module.AppModule;
+import com.cai.work.ui.news.NewsActivity;
+import com.cai.work.ui.news.NewsPresenter;
 import com.cai.work.ui.bank.AddBankCardActivity;
 import com.cai.work.ui.bank.AddBankCardPresenter;
 import com.cai.work.ui.bank.BankCardChooseActivity;
@@ -186,4 +188,8 @@ public interface AppComponent {
     void inject(MainHoldFragment fragment);
 
     void inject(MainHoldPresenter presenter);
+
+    void inject(NewsActivity activity);
+
+    void inject(NewsPresenter presenter);
 }

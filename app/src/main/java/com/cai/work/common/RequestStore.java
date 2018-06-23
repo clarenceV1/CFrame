@@ -187,6 +187,7 @@ public class RequestStore {
                 .subscribe(onNext, onError);
         return disposable;
     }
+
     public Disposable resetWithdrawalPassword(String mobile, String sms, String loginOldPassword, String loginPassword, String token, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).resetWithdrawalPassword(sms, loginOldPassword, loginPassword, token)
                 .subscribeOn(Schedulers.newThread())
@@ -210,6 +211,7 @@ public class RequestStore {
                 .subscribe(onNext, onError);
         return disposable;
     }
+
     public Disposable requestRebate(String token, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).requestRebate(token)
                 .subscribeOn(Schedulers.newThread())
@@ -218,15 +220,16 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable requestWithdrawRebate(String ids,String token, Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request().create(ApiService.class).requestWithdrawRebate(ids,token)
+    public Disposable requestWithdrawRebate(String ids, String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestWithdrawRebate(ids, token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
         return disposable;
     }
-    public Disposable getRebateWithdraw(int page,String token, Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request().create(ApiService.class).getRebateWithdraw(page,token)
+
+    public Disposable getRebateWithdraw(int page, String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).getRebateWithdraw(page, token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
@@ -241,7 +244,7 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable requestSocketInfo(String token,Consumer onNext, Consumer onError) {
+    public Disposable requestSocketInfo(String token, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).requestSocketInfo(token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -249,7 +252,7 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable requestRealStockHold(String token,Consumer onNext, Consumer onError) {
+    public Disposable requestRealStockHold(String token, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).requestRealStockHold(token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -257,7 +260,7 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable requestFakeStockHold(String token,Consumer onNext, Consumer onError) {
+    public Disposable requestFakeStockHold(String token, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).requestFakeStockHold(token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -265,7 +268,7 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable requestRealStockAccounts(String token,Consumer onNext, Consumer onError) {
+    public Disposable requestRealStockAccounts(String token, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).requestRealStockAccounts(token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -273,7 +276,7 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable requestFakeStockAccounts(String token,Consumer onNext, Consumer onError) {
+    public Disposable requestFakeStockAccounts(String token, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).requestFakeStockAccounts(token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -281,16 +284,24 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable requestRealForwardAccounts(int page,String token,Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request().create(ApiService.class).requestRealForwardAccounts(page,token)
+    public Disposable requestRealForwardAccounts(int page, String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestRealForwardAccounts(page, token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
         return disposable;
     }
 
-    public Disposable requestFakeForwardAccounts(int page,String token,Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request().create(ApiService.class).requestFakeForwardAccounts(page,token)
+    public Disposable requestFakeForwardAccounts(int page, String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestFakeForwardAccounts(page, token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable requestNews(int page, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestNews(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);

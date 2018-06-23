@@ -1,5 +1,6 @@
 package com.cai.work;
 
+import com.cai.work.bean.News;
 import com.cai.work.bean.SocketInfo;
 import com.cai.work.bean.respond.BankCardRespond;
 import com.cai.work.bean.respond.BankListRespond;
@@ -22,6 +23,8 @@ import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.bean.respond.RebateRespond;
 import com.cai.work.bean.respond.WithdrawalDetailRespond;
 import com.cai.work.bean.respond.WithdrawalRespond;
+
+import java.util.List;
 
 import io.reactivex.Flowable;
 import retrofit2.http.Field;
@@ -143,18 +146,22 @@ public interface ApiService {
     Flowable<StockHoldRespond> requestRealStockHold(@Query("token") String token);
 
 
-    @GET("app/mnstockTrade/sell")
+    @GET("/app/mnstockTrade/sell")
     Flowable<StockHoldRespond> requestFakeStockHold(@Query("token") String token);
 
-    @GET("app/stockTrade/finish")
+    @GET("/app/stockTrade/finish")
     Flowable<StockAccountRespond> requestRealStockAccounts(@Query("token") String token);
 
-    @GET("app/mnstockTrade/finish")
+    @GET("/app/mnstockTrade/finish")
     Flowable<StockAccountRespond> requestFakeStockAccounts(@Query("token") String token);
 
-    @GET("app/mnstockTrade/finish")
+    @GET("/app/mnstockTrade/finish")
     Flowable<ForwardAccountRespond> requestRealForwardAccounts(@Query("page") int page, @Query("token") String token);
 
-    @GET("app/mnstockTrade/finish")
+    @GET("/app/mnstockTrade/finish")
     Flowable<ForwardAccountRespond> requestFakeForwardAccounts(@Query("page") int page, @Query("token") String token);
+
+    @GET("/app/news/queryPage")
+    Flowable<List<News>> requestNews(@Query("page") int page);
+
 }
