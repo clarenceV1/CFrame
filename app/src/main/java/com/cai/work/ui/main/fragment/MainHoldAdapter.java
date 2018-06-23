@@ -12,6 +12,7 @@ import com.cai.work.R;
 import com.cai.work.bean.ForwardAccount;
 import com.cai.work.bean.StockAccount;
 import com.cai.work.bean.StockHold;
+import com.cai.work.dialog.SellDialog;
 import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class MainHoldAdapter extends GodBaseAdapter {
      * 实盘/模拟--股票持仓
      */
     private void stockHold(View convertView, CBaseData itemData) {
-        StockHold item = (StockHold) itemData;
+        final StockHold item = (StockHold) itemData;
         ViewHolder.getTextView(convertView, R.id.tvBuyDealDate).setText("点买时间：" + item.getBuyDealDate());
         String tag = "SZ";
         if ("2".equals(item.getMarketType())) {
@@ -73,12 +74,18 @@ public class MainHoldAdapter extends GodBaseAdapter {
         ViewHolder.getTextView(convertView, R.id.tvTitle4).setVisibility(View.GONE);
         ViewHolder.getTextView(convertView, R.id.tvValue4).setVisibility(View.GONE);
         ViewHolder.getButton(convertView, R.id.btnCommit).setText(item.getBtnText());
-        ViewHolder.getButton(convertView, R.id.btnCommit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.showShort("股票持仓");
-            }
-        });
+        if ("1".equals(item.getIsTrade())) {
+            ViewHolder.getButton(convertView, R.id.btnCommit).setClickable(true);
+            ViewHolder.getButton(convertView, R.id.btnCommit).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SellDialog dialog = new SellDialog(context, item);
+                    dialog.show();
+                }
+            });
+        } else {
+            ViewHolder.getButton(convertView, R.id.btnCommit).setClickable(false);
+        }
     }
 
     /**
