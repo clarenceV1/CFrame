@@ -152,7 +152,7 @@ public class MainHoldAdapter extends GodBaseAdapter {
             public void onClick(View v) {
                 ARouter.getInstance().build("/AppModule/AccountsDetailActivity")
                         .withCharSequence("jsonStr", JSON.toJSONString(item))
-                        .withInt("type", 1)
+                        .withInt("type", 2)
                         .navigation();
             }
         });

@@ -52,6 +52,7 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
     int page = 1;
     ListView listView;
     MainHoldAdapter adapter;
+    boolean hasAccountsData = true;
 
     @Override
     public int getLayoutId() {
@@ -82,10 +83,10 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
         mViewBinding.pullListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
             @Override
             public void onLastItemVisible() {
-//                if (hasData) {
-//                    ++page;
-//                    presenter.requestNews(page);
-//                }
+                if (hasAccountsData && !isHolder) {
+                    ++page;
+                    presenter.requestData(isRealTrade, isStock, isHolder, page);
+                }
             }
         });
         mViewBinding.radioBtn1.setChecked(true);
@@ -239,6 +240,8 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
                 mViewBinding.tvHold.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
                 mViewBinding.tvAccount.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
             } else {
+                hasAccountsData = true;
+                page = 1;
                 mViewBinding.tvHold.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
                 mViewBinding.tvAccount.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
             }
@@ -284,11 +287,20 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
 
     @Override
     public void forwardAccount(List<ForwardAccount> dataList) {
-        adapter.update(dataList);
+        mViewBinding.pullListView.onRefreshComplete();
+        if (page == 1) {
+            adapter.update(dataList);
+        }
+        if (dataList == null || dataList.size() == 0) {
+            hasAccountsData = false;
+        } else {
+            adapter.addAll(dataList);
+        }
     }
 
     @Override
     public void stockAccount(List<StockAccount> dataList) {
+        mViewBinding.pullListView.onRefreshComplete();
         adapter.update(dataList);
     }
 }
