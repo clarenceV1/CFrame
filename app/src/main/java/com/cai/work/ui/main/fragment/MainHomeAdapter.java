@@ -236,7 +236,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         noticeViewHolder.tvMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("更多");
+              ARouter.getInstance().build("/AppModule/NewsActivity").navigation();
             }
         });
         noticeViewHolder.rlTab1.setOnClickListener(new View.OnClickListener() {

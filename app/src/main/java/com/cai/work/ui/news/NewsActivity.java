@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.work.R;
@@ -15,7 +16,7 @@ import com.cai.work.databinding.NewsBinding;
 import java.util.List;
 
 import javax.inject.Inject;
-
+@Route(path = "/AppModule/NewsActivity", name = "站内公告")
 public class NewsActivity extends AppBaseActivity<NewsBinding> implements NewsView {
 
     @Inject

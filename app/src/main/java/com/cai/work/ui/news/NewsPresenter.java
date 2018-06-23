@@ -16,6 +16,10 @@ public class NewsPresenter extends GodBasePresenter<NewsView> {
     @Inject
     RequestStore requestStore;
 
+    @Inject
+    public NewsPresenter() {
+    }
+
     @Override
     public void onAttached() {
 
