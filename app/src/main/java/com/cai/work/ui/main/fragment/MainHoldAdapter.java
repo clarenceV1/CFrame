@@ -72,6 +72,7 @@ public class MainHoldAdapter extends GodBaseAdapter {
 
         ViewHolder.getTextView(convertView, R.id.tvTitle4).setVisibility(View.GONE);
         ViewHolder.getTextView(convertView, R.id.tvValue4).setVisibility(View.GONE);
+        ViewHolder.getButton(convertView, R.id.btnCommit).setText(item.getBtnText());
         ViewHolder.getButton(convertView, R.id.btnCommit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +85,7 @@ public class MainHoldAdapter extends GodBaseAdapter {
      * 实盘/模拟--股票结算
      */
     private void stockAccount(View convertView, CBaseData itemData) {
-        StockAccount item = (StockAccount) itemData;
+        final StockAccount item = (StockAccount) itemData;
         ViewHolder.getTextView(convertView, R.id.tvBuyDealDate).setText("点买时间：" + item.getBuyDealDate());
         String tag = "SZ";
         if ("2".equals(item.getMarketType())) {
@@ -105,16 +106,21 @@ public class MainHoldAdapter extends GodBaseAdapter {
 
         ViewHolder.getTextView(convertView, R.id.tvTitle4).setVisibility(View.GONE);
         ViewHolder.getTextView(convertView, R.id.tvValue4).setVisibility(View.GONE);
+        ViewHolder.getButton(convertView, R.id.btnCommit).setText(context.getResources().getString(R.string.btn_look_detail));
         ViewHolder.getButton(convertView, R.id.btnCommit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ToastUtils.showShort("股票结算");
+                ARouter.getInstance().build("/AppModule/AccountsDetailActivity")
+                        .withCharSequence("jsonStr", JSON.toJSONString(item))
+                        .withInt("type", 1)
+                        .navigation();
             }
         });
     }
 
     /**
-     * 实盘/模拟--股票结算
+     * 实盘/模拟--期货结算
      */
     private void forwardAccount(View convertView, CBaseData itemData) {
         final ForwardAccount item = (ForwardAccount) itemData;
@@ -140,10 +146,14 @@ public class MainHoldAdapter extends GodBaseAdapter {
         } else {
             ViewHolder.getTextView(convertView, R.id.tvValue4).setText("买涨");
         }
+        ViewHolder.getButton(convertView, R.id.btnCommit).setText(context.getResources().getString(R.string.btn_look_detail));
         ViewHolder.getButton(convertView, R.id.btnCommit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/AppModule/AccountsDetailActivity").withCharSequence("forwardAccount", JSON.toJSONString(item)).navigation();
+                ARouter.getInstance().build("/AppModule/AccountsDetailActivity")
+                        .withCharSequence("jsonStr", JSON.toJSONString(item))
+                        .withInt("type", 1)
+                        .navigation();
             }
         });
     }

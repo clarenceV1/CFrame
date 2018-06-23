@@ -12,6 +12,7 @@ import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.ForwardAccount;
+import com.cai.work.bean.StockAccount;
 import com.cai.work.databinding.AccountsDetailBinding;
 
 import java.util.List;
@@ -19,8 +20,11 @@ import java.util.List;
 @Route(path = "/AppModule/AccountsDetailActivity", name = "结算详情")
 public class AccountsDetailActivity extends AppBaseActivity<AccountsDetailBinding> {
 
-    @Autowired(name = "forwardAccount")
+    @Autowired(name = "jsonStr")
     String forwardAccountJson;
+
+    @Autowired(name = "type")
+    int type;//1：stock 2:forword
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +55,30 @@ public class AccountsDetailActivity extends AppBaseActivity<AccountsDetailBindin
         });
         mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.account_detail_title));
 
+
         if (!TextUtils.isEmpty(forwardAccountJson)) {
-            ForwardAccount forwardAccount = JSON.parseObject(forwardAccountJson, ForwardAccount.class);
-            mViewBinding.tvTradeId.setText(forwardAccount.getOrderNo());
-            mViewBinding.tvTradeKind.setText(forwardAccount.getContractName());
-            mViewBinding.tvTradeNum.setText(forwardAccount.getBuyAmount() + "手");
-            mViewBinding.tvTradePrice.setText(forwardAccount.getOpenPrice());
-            mViewBinding.tvClosePrice.setText(forwardAccount.getClosePrice());
-            mViewBinding.tvCloseTime.setText(forwardAccount.getCloseDealDate());
-            mViewBinding.tvCloseReson.setText(forwardAccount.getApproveStateText());
-            mViewBinding.tvTradeYK.setText(forwardAccount.getYkMoney());
+            if (type == 2) {
+                ForwardAccount forwardAccount = JSON.parseObject(forwardAccountJson, ForwardAccount.class);
+                mViewBinding.tvTradeId.setText(forwardAccount.getOrderNo());
+                mViewBinding.tvTradeKind.setText(forwardAccount.getContractName());
+                mViewBinding.tvTradeNum.setText(forwardAccount.getBuyAmount() + "手");
+                mViewBinding.tvTradePrice.setText(forwardAccount.getOpenPrice());
+                mViewBinding.tvClosePrice.setText(forwardAccount.getClosePrice());
+                mViewBinding.tvCloseTime.setText(forwardAccount.getCloseDealDate());
+                mViewBinding.tvCloseReson.setText(forwardAccount.getApproveStateText());
+                mViewBinding.tvTradeYK.setText(forwardAccount.getYkMoney());
+            } else if (type == 1) {
+                StockAccount stockAccount = JSON.parseObject(forwardAccountJson, StockAccount.class);
+                mViewBinding.tvTradeId.setText(stockAccount.getOrderNo());
+                mViewBinding.tvTradeKind.setText(stockAccount.getStockName());
+                mViewBinding.tvTradeNum.setText(stockAccount.getDealAmount() + "股");
+                mViewBinding.tvTradePrice.setText(stockAccount.getBuyPrice());
+                mViewBinding.tvClosePrice.setText(stockAccount.getSellPrice());
+                mViewBinding.tvCloseTime.setText(stockAccount.getSellDealDate());
+                mViewBinding.tvCloseReson.setText(stockAccount.getApproveStateText());
+                mViewBinding.tvTradeYK.setText(stockAccount.getYkMoney());
+            }
+
         }
     }
 }
