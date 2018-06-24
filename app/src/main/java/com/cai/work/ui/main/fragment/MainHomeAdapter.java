@@ -49,7 +49,6 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     Context context;
     ILoadImage imageLoader;
     FragmentManager fragmentManager;
-    Map<String, WeakReference<Fragment>> fragmentMap = new HashMap<>();
     int selectedTabType = 1;
 
     public MainHomeAdapter(Context context, ILoadImage imageLoader, HomeItemData data, FragmentManager fragmentManager) {
@@ -187,25 +186,34 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             forwardViewHolder.tvHomeTabLeft.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color));
             forwardViewHolder.tvHomeTabRight.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color_selected));
         }
-        Fragment fragment;
-        WeakReference<Fragment> weakReference = fragmentMap.get("Left");
-        if (weakReference != null) {
-            fragment = weakReference.get();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        Fragment wpFragment = fragmentManager.findFragmentByTag(HomeForwardFragment.TYPE_WPHY);
+        Fragment npFragment = fragmentManager.findFragmentByTag(HomeForwardFragment.TYPE_NPHY);
+        if (tabType == 1) {
+            if (wpFragment != null) {
+                transaction.hide(wpFragment);
+            }
+            if (npFragment == null) {
+                npFragment = creatFragment(HomeForwardFragment.TYPE_NPHY, nphyData);
+                transaction.add(R.id.homeForwardContainer, npFragment, HomeForwardFragment.TYPE_NPHY);
+            } else {
+                transaction.show(npFragment);
+            }
         } else {
-            if (tabType == 1) { //LEFT
-                fragment = getForwardFragment("left", nphyData);
-                fragmentMap.put("left", new WeakReference<>(fragment));
-            } else {//RIGHT
-                fragment = getForwardFragment("right", wphyData);
-                fragmentMap.put("right", new WeakReference<>(fragment));
+            if (npFragment != null) {
+                transaction.hide(npFragment);
+            }
+            if (wpFragment == null) {
+                wpFragment = creatFragment(HomeForwardFragment.TYPE_WPHY, wphyData);
+                transaction.add(R.id.homeForwardContainer, wpFragment, HomeForwardFragment.TYPE_WPHY);
+            } else {
+                transaction.show(npFragment);
             }
         }
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.homeForwardContainer, fragment);
-        transaction.commit();
+        transaction.commitAllowingStateLoss();
     }
 
-    public <T> Fragment getForwardFragment(String type, List<T> data) {
+    public <T> Fragment creatFragment(String type, List<T> data) {
         Bundle bundle = new Bundle();
         bundle.putString("type", type);
         bundle.putSerializable("dataList", (Serializable) data);

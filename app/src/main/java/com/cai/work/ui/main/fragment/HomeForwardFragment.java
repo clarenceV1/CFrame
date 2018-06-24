@@ -18,6 +18,8 @@ import java.util.List;
 
 public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBinding> {
 
+    public static final String TYPE_NPHY = "type_nphy";
+    public static final String TYPE_WPHY = "type_nphy";
     String type;
     List<HomeNphyData> nphyData;
     List<HomeWphyData> wphyData;
@@ -45,7 +47,7 @@ public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBind
     }
 
     private void initListView() {
-        if ("left".equals(type)) {
+        if (TYPE_NPHY.equals(type)) {
             adapter = new HomeForwardAdapter(getContext(), nphyData);
         } else {
             adapter = new HomeForwardAdapter(getContext(), wphyData);
@@ -55,7 +57,7 @@ public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBind
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Forward forward = null;
-                if ("left".equals(type)) {
+                if (TYPE_NPHY.equals(type)) {
                     HomeNphyData nphyData = (HomeNphyData) adapter.getItem(position);
                     forward = new Forward(nphyData.getContractName(), nphyData.getContractCode());
                 } else {
@@ -72,7 +74,7 @@ public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBind
     private void initData() {
         Bundle bundle = getArguments();
         type = bundle.getString("type");
-        if ("left".equals(type)) {
+        if (TYPE_NPHY.equals(type)) {
             nphyData = (List<HomeNphyData>) bundle.getSerializable("dataList");
         } else {
             wphyData = (List<HomeWphyData>) bundle.getSerializable("dataList");
