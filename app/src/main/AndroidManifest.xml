@@ -125,6 +125,9 @@
         <activity
             android:name=".ui.forward.ForwardActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.stock.StockActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

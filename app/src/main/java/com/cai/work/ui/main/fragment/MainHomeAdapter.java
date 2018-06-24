@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
 import com.cai.framework.widget.CircleView;
+import com.cai.framework.widget.ListViewEx;
 import com.cai.framework.widget.VerticalScrollTextView;
 import com.cai.work.R;
 import com.cai.work.bean.Forward;
@@ -27,16 +28,12 @@ import com.cai.work.bean.home.HomeNphyData;
 import com.cai.work.bean.home.HomeRangeData;
 import com.cai.work.bean.home.HomeStockData;
 import com.cai.work.bean.home.HomeWphyData;
-import com.cai.framework.widget.ListViewEx;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
 
 import java.io.Serializable;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int NOTICE = 0;
@@ -227,7 +224,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return Fragment.instantiate(context, HomeForwardFragment.class.getName(), bundle);
     }
 
-    private void onBindStockView(StockViewHolder stockViewHolder, HomeStockData stockData) {
+    private void onBindStockView(StockViewHolder stockViewHolder, final HomeStockData stockData) {
         stockViewHolder.tvStockNmae.setText(stockData.getContractName());
         if (stockData.getIsTrade() == 1) {
             stockViewHolder.tvTradeState.setText("交易中");
@@ -239,6 +236,12 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         stockViewHolder.tvTradeTime.setText(stockData.getTradeTime());
         stockViewHolder.circleView.setColor("#" + stockData.getColor());
         stockViewHolder.tvShortCode.setText(stockData.getShortCode());
+        stockViewHolder.rlStock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/StockActivity").navigation();
+            }
+        });
     }
 
     private void onBindNoticeView(NoticeViewHolder noticeViewHolder, List<HomeNoticeData> noticeDataList) {
@@ -258,7 +261,12 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         noticeViewHolder.rlTab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("rlTab1");
+                if (data != null && data.getNphy() != null) {
+                    HomeStockData stockData = data.getStock();
+                    if (stockData != null) {
+                        ARouter.getInstance().build("/AppModule/StockActivity").navigation();
+                    }
+                }
             }
         });
         noticeViewHolder.rlTab2.setOnClickListener(new View.OnClickListener() {
@@ -277,7 +285,12 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         noticeViewHolder.rlTab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("rlTab3");
+                if (data != null && data.getNphy() != null) {
+                    HomeStockData stockData = data.getStock();
+                    if (stockData != null) {
+                        ARouter.getInstance().build("/AppModule/StockActivity").navigation();
+                    }
+                }
             }
         });
         noticeViewHolder.rlTab4.setOnClickListener(new View.OnClickListener() {
@@ -343,6 +356,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     class StockViewHolder extends RecyclerView.ViewHolder {
         TextView tvStockNmae, tvTradeState, tvRemark, tvBound, tvTradeTime, tvShortCode;
         CircleView circleView;
+        RelativeLayout rlStock;
 
         public StockViewHolder(View itemView) {
             super(itemView);
@@ -353,6 +367,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             tvTradeTime = (TextView) itemView.findViewById(R.id.tvTradeTime);
             circleView = (CircleView) itemView.findViewById(R.id.circleView);
             tvShortCode = (TextView) itemView.findViewById(R.id.tvShortCode);
+            rlStock = (RelativeLayout) itemView.findViewById(R.id.rlStock);
         }
     }
 

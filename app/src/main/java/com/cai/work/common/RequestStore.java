@@ -323,4 +323,25 @@ public class RequestStore {
                 .subscribe(onNext, onError);
         return disposable;
     }
+    public Disposable requestStockTrade(String token, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestStockTrade(token)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+    public Disposable requestStockHq(String code, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestStockHq(code)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+    public Disposable requestStockList(String code, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestStockList(code)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
 }

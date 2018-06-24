@@ -27,6 +27,7 @@
             android:text="13779926287" />
 
         <ImageView
+            android:id="@+id/imgSet"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"

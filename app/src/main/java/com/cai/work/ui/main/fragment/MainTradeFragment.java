@@ -79,7 +79,8 @@ public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding>
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 if (groupPosition == 0) {
-                    //todo 股票跳转
+                    TradeItem tradeItem = (TradeItem) adapter.getChild(groupPosition, childPosition);
+                    ARouter.getInstance().build("/AppModule/StockActivity").navigation();
                 } else {
                     TradeItem tradeItem = (TradeItem) adapter.getChild(groupPosition, childPosition);
                     if(tradeItem!=null){

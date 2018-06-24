@@ -102,6 +102,12 @@ public class MainMineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 ARouter.getInstance().build("/AppModule/WithdrawalActivity").navigation();
             }
         });
+        topViewHolder.btnRecharge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/SaveActivity").navigation();
+            }
+        });
     }
 
     private void onBindListView(ListViewHolder listViewHolder, MineListData mineListData, final int position) {
@@ -140,7 +146,7 @@ public class MainMineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     class TopViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivIcon;
+        ImageView ivIcon, imgSet;
         TextView tvAccount, tvMoney;
         Button btnRecharge, btnWithdrawal;
 
@@ -151,6 +157,7 @@ public class MainMineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             tvMoney = (TextView) itemView.findViewById(R.id.tvMoney);
             btnRecharge = (Button) itemView.findViewById(R.id.btnRecharge);
             btnWithdrawal = (Button) itemView.findViewById(R.id.btnWithdrawal);
+            imgSet = (ImageView) itemView.findViewById(R.id.imgSet);
         }
     }
 

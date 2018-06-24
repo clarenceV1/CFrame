@@ -270,4 +270,16 @@
     <string name="forward_zhang">买涨</string>
     <string name="forward_die">买跌</string>
     <string name="forward_trade_time">交易时间</string>
+    <string name="stock_search_hint">输入股票代码/名称/拼音</string>
+    <string name="stock_bottom1">今开</string>
+    <string name="stock_bottom2">振幅</string>
+    <string name="stock_bottom3">最高</string>
+    <string name="stock_bottom4">最低</string>
+    <string name="stock_bottom5">涨停</string>
+    <string name="stock_bottom6">跌停</string>
+    <string name="stock_bottom7">总手</string>
+    <string name="stock_bottom8">金额</string>
+    <string name="btn_not_buy">非点买时间断</string>
+    <string name="stock_rule">规则</string>
+    <string name="stock_titile">A股</string>
 </resources>
