@@ -1,8 +1,11 @@
 package com.cai.work.ui.stock;
 
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.lib.logger.Logger;
 import com.cai.work.bean.Forward;
 import com.cai.work.bean.ForwardRecord;
+import com.cai.work.bean.StockHistory;
 import com.cai.work.bean.respond.ForwardContractsRespond;
 import com.cai.work.bean.respond.StockHQRespond;
 import com.cai.work.bean.respond.StockListRespond;
@@ -53,8 +56,8 @@ public class StockPresenter extends GodBasePresenter<StockView> {
     }
 
 
-    public void requestStockHq(String stock_code) {
-        Disposable disposable = requestStore.requestStockHq(stock_code, new Consumer<StockHQRespond>() {
+    public void requestStockHq(String code) {
+        Disposable disposable = requestStore.requestStockHq(code, new Consumer<StockHQRespond>() {
             @Override
             public void accept(StockHQRespond data) {
                 mView.callBack(data.getData());
@@ -82,4 +85,20 @@ public class StockPresenter extends GodBasePresenter<StockView> {
         });
         mCompositeSubscription.add(disposable);
     }
+
+    public void requestStockHistory(String code) {
+        Disposable disposable = requestStore.requestStockHistory(code, new Consumer<String[][]>() {
+            @Override
+            public void accept(String[][] data) {
+                mView.callBack(data);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                mView.toast("请求异常", 3);
+            }
+        });
+        mCompositeSubscription.add(disposable);
+    }
+
 }

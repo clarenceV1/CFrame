@@ -3,6 +3,7 @@ package com.cai.work;
 import com.cai.work.bean.ForwardRecord;
 import com.cai.work.bean.News;
 import com.cai.work.bean.SocketInfo;
+import com.cai.work.bean.StockHistory;
 import com.cai.work.bean.respond.BankCardRespond;
 import com.cai.work.bean.respond.BankListRespond;
 import com.cai.work.bean.respond.BaseRespond;
@@ -183,4 +184,7 @@ public interface ApiService {
 
     @GET("/app/stock/getStock")
     Flowable<StockListRespond> requestStockList(@Query("code") String code);
+
+    @GET("/app/stock/getHistory")
+    Flowable<String[][]> requestStockHistory(@Query("code") String code);
 }

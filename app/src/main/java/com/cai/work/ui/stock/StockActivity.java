@@ -111,6 +111,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Stock stock = (Stock) adapter.getItem(position);
                 presenter.requestStockHq(stock.getStockCode());
+                presenter.requestStockHistory(stock.getStockCode());
                 KeyBoardUtils.forceHide(mViewBinding.tvSearch);
                 spinerPopWindow.dismiss();
             }
@@ -175,6 +176,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
     @Override
     public void callBack(StockTrade data) {
         presenter.requestStockHq(data.getStock_code());
+        presenter.requestStockHistory(data.getStock_code());
     }
 
     @Override
@@ -198,6 +200,11 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     }
 
+    @Override
+    public void callBack(String[][] data) {
+
+    }
+
     private void refreshView() {
 
         mViewBinding.tvName.setText(stockHQ.getStName());
@@ -213,11 +220,11 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.tvSell4.setText(stockHQ.getSp4());
         mViewBinding.tvSell5.setText(stockHQ.getSp5());
 
-        mViewBinding.tvSellNum1.setText(stockHQ.getSn1()/100);
-        mViewBinding.tvSellNum2.setText(stockHQ.getSn2()/100);
-        mViewBinding.tvSellNum3.setText(stockHQ.getSn3()/100);
-        mViewBinding.tvSellNum4.setText(stockHQ.getSn4()/100);
-        mViewBinding.tvSellNum5.setText(stockHQ.getSn5()/100);
+        mViewBinding.tvSellNum1.setText(stockHQ.getSn1()/100+"");
+        mViewBinding.tvSellNum2.setText(stockHQ.getSn2()/100+"");
+        mViewBinding.tvSellNum3.setText(stockHQ.getSn3()/100+"");
+        mViewBinding.tvSellNum4.setText(stockHQ.getSn4()/100+"");
+        mViewBinding.tvSellNum5.setText(stockHQ.getSn5()/100+"");
 
         mViewBinding.tvBuy1.setText(stockHQ.getBp1());
         mViewBinding.tvBuy2.setText(stockHQ.getBp2());
@@ -225,11 +232,11 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.tvBuy4.setText(stockHQ.getBp4());
         mViewBinding.tvBuy5.setText(stockHQ.getBp5());
 
-        mViewBinding.tvBuyNum1.setText(stockHQ.getBn1()/100);
-        mViewBinding.tvBuyNum2.setText(stockHQ.getBn2()/100);
-        mViewBinding.tvBuyNum3.setText(stockHQ.getBn3()/100);
-        mViewBinding.tvBuyNum4.setText(stockHQ.getBn4()/100);
-        mViewBinding.tvBuyNum5.setText(stockHQ.getBn5()/100);
+        mViewBinding.tvBuyNum1.setText(stockHQ.getBn1()/100+"");
+        mViewBinding.tvBuyNum2.setText(stockHQ.getBn2()/100+"");
+        mViewBinding.tvBuyNum3.setText(stockHQ.getBn3()/100+"");
+        mViewBinding.tvBuyNum4.setText(stockHQ.getBn4()/100+"");
+        mViewBinding.tvBuyNum5.setText(stockHQ.getBn5()/100+"");
 
         mViewBinding.stockBottom1.setText(stockHQ.getKp_price());
         mViewBinding.stockBottom2.setText(stockHQ.getZhenfu());
