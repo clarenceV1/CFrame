@@ -17,4 +17,6 @@ public interface StockView extends GodBaseView {
     void callBack(StockHQ data);
 
     void callBack(List<Stock> data);
+
+    void callBack(String[][] data);
 }
