@@ -28,6 +28,7 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
     @Inject
     MainHomePresenter presenter;
     MainHomeAdapter adapter;
+    LinearLayoutManager layoutmanager;
 
     @Override
     public void addPresenters(List<GodBasePresenter> observerList) {
@@ -64,7 +65,7 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
     }
 
     private void initRecycleView() {
-        LinearLayoutManager layoutmanager = new LinearLayoutManager(getContext());
+        layoutmanager = new LinearLayoutManager(getContext());
         mViewBinding.mRecyclerView.setLayoutManager(layoutmanager);
     }
 
