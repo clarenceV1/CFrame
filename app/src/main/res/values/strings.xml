@@ -266,4 +266,8 @@
     <string name="sell_dialog_mark_price">市价卖出</string>
     <string name="sell_dialog_notice">金主将执行您的买卖指令,盈亏由您自己承担</string>
     <string name="forward_rule">规则</string>
+    <string name="forward_notice">本时段持仓时间至18:20</string>
+    <string name="forward_zhang">买涨</string>
+    <string name="forward_die">买跌</string>
+    <string name="forward_trade_time">交易时间</string>
 </resources>
