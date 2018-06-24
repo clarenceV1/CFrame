@@ -36,9 +36,9 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
 
     }
 
-    public void requestRecord() {
+    public void requestRecord(String code) {
         String token = accountDAO.getToken();
-        Disposable disposable = requestStore.requestRecord(token, new Consumer<ForwardRecord>() {
+        Disposable disposable = requestStore.requestRecord(token, code,new Consumer<ForwardRecord>() {
             @Override
             public void accept(ForwardRecord data) {
                 mView.callBack(data);

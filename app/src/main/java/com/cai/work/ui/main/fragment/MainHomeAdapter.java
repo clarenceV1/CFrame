@@ -20,6 +20,7 @@ import com.alibaba.fastjson.JSON;
 import com.cai.framework.widget.CircleView;
 import com.cai.framework.widget.VerticalScrollTextView;
 import com.cai.work.R;
+import com.cai.work.bean.Forward;
 import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.bean.home.HomeNoticeData;
 import com.cai.work.bean.home.HomeNphyData;
@@ -192,10 +193,10 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             fragment = weakReference.get();
         } else {
             if (tabType == 1) { //LEFT
-                fragment = getForwardFragment("left", wphyData);
+                fragment = getForwardFragment("left", nphyData);
                 fragmentMap.put("left", new WeakReference<>(fragment));
             } else {//RIGHT
-                fragment = getForwardFragment("right", nphyData);
+                fragment = getForwardFragment("right", wphyData);
                 fragmentMap.put("right", new WeakReference<>(fragment));
             }
         }
@@ -248,7 +249,14 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         noticeViewHolder.rlTab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/AppModule/ForwardActivity").navigation();
+                if (data != null && data.getNphy() != null) {
+                    List<HomeNphyData> nphyList = data.getNphy();
+                    if (nphyList.size() > 0) {
+                        HomeNphyData nphyData = nphyList.get(0);
+                        Forward forward = new Forward(nphyData.getContractName(), nphyData.getContractCode());
+                        ARouter.getInstance().build("/AppModule/ForwardActivity").withCharSequence("forwardJson", JSON.toJSONString(forward)).navigation();
+                    }
+                }
             }
         });
         noticeViewHolder.rlTab3.setOnClickListener(new View.OnClickListener() {
@@ -260,7 +268,14 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         noticeViewHolder.rlTab4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/AppModule/ForwardActivity").navigation();
+                if (data != null && data.getNphy() != null) {
+                    List<HomeNphyData> nphyList = data.getNphy();
+                    if (nphyList.size() > 0) {
+                        HomeNphyData nphyData = nphyList.get(0);
+                        Forward forward = new Forward(nphyData.getContractName(), nphyData.getContractCode());
+                        ARouter.getInstance().build("/AppModule/ForwardActivity").withCharSequence("forwardJson", JSON.toJSONString(forward)).navigation();
+                    }
+                }
             }
         });
     }

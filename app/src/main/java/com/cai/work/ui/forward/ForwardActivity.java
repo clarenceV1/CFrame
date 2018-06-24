@@ -1,10 +1,14 @@
 package com.cai.work.ui.forward;
 
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.widget.spiner.SpinerPopWindow;
 import com.cai.work.R;
@@ -16,19 +20,26 @@ import com.cai.work.databinding.ForwardBinding;
 import com.example.clarence.utillibrary.DimensUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-@Route(path = "/AppModule/ForwardActivity", name = "站内公告")
+@Route(path = "/AppModule/ForwardActivity", name = "期货详情页面")
 public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements ForwardView {
 
+    @Autowired(name = "forwardJson")
+    String forwardJson;
     @Inject
     ForwardPresenter presenter;
     ForwardAdapter adapter;
     SpinerPopWindow spinerPopWindow;
     int spinerPopwindowHeight;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ARouter.getInstance().inject(this);
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public void initDagger() {
@@ -77,7 +88,12 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                 spinerPopWindow.dismiss();
             }
         });
-        presenter.requestRecord();
+        if (!TextUtils.isEmpty(forwardJson)) {
+            Forward forward = JSON.parseObject(forwardJson, Forward.class);
+            mViewBinding.tvTitle.setText(forward.getName());
+            presenter.requestRecord(forward.getCode());
+        }
+
         presenter.requestContracts();
     }
 
@@ -105,6 +121,5 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     @Override
     public void callBack(List<Forward> forwardList) {
         adapter.update(forwardList);
-        mViewBinding.tvTitle.setText(forwardList.get(0).getName());
     }
 }

@@ -64,9 +64,9 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
     public String getGroup(int groupPosition) {
         if (groupPosition == 0) {
             return trade.getGp();
-        } else if (groupPosition == 1) {
-            return trade.getGj();
         } else if (groupPosition == 2) {
+            return trade.getGj();
+        } else if (groupPosition == 1) {
             return trade.getGn();
         }
         return "";
@@ -77,9 +77,9 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
         if (groupPosition == 0) {
             return trade.getStock();
         } else if (groupPosition == 1) {
-            return trade.getGj_contract();
+            return trade.getGj_contract().get(childPosition);
         } else if (groupPosition == 2) {
-            return trade.getGn_contract();
+            return trade.getGn_contract().get(childPosition);
         }
         return null;
     }
@@ -157,8 +157,6 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
             }
             childViewHolder.tvPrice.setText(tradeItem.getZdfu());
         }
-
-
         return convertView;
     }
 

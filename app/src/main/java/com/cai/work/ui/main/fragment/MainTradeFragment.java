@@ -5,10 +5,13 @@ import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseFragment;
+import com.cai.work.bean.Forward;
 import com.cai.work.bean.Trade;
+import com.cai.work.bean.TradeItem;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainTradeFragmentBinding;
 import com.example.clarence.utillibrary.ToastUtils;
@@ -75,7 +78,15 @@ public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding>
         mViewBinding.expandListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                ARouter.getInstance().build("/AppModule/ForwardActivity").navigation();
+                if (groupPosition == 0) {
+                    //todo 股票跳转
+                } else {
+                    TradeItem tradeItem = (TradeItem) adapter.getChild(groupPosition, childPosition);
+                    if(tradeItem!=null){
+                        Forward forward = new Forward(tradeItem.getContractName(),tradeItem.getContractCode());
+                        ARouter.getInstance().build("/AppModule/ForwardActivity").withCharSequence("forwardJson", JSON.toJSONString(forward)).navigation();
+                    }
+                }
                 return true;
             }
         });

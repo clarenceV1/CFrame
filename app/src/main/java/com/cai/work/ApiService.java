@@ -167,7 +167,7 @@ public interface ApiService {
     Flowable<List<News>> requestNews(@Query("page") int page);
 
     @GET("/app/futures/get_code")
-    Flowable<ForwardRecord> requestRecord(@Query("token") String token);
+    Flowable<ForwardRecord> requestRecord(@Query("token") String token,@Query("code") String code);
 
     @GET("/app/futures/get_contracts")
     Flowable<ForwardContractsRespond> requestContracts(@Query("token") String token);
