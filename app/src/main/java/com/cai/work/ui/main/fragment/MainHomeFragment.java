@@ -27,6 +27,7 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
 
     @Inject
     MainHomePresenter presenter;
+    MainHomeAdapter adapter;
 
     @Override
     public void addPresenters(List<GodBasePresenter> observerList) {
@@ -70,7 +71,7 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
 
     @Override
     public void reFreshView(HomeItemData data) {
-        MainHomeAdapter adapter = new MainHomeAdapter(mContext, imageLoader, data, getChildFragmentManager());
+        adapter = new MainHomeAdapter(mContext, imageLoader, data, getChildFragmentManager());
         mViewBinding.mRecyclerView.setAdapter(adapter);
     }
 

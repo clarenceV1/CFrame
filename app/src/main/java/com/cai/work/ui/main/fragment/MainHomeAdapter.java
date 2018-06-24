@@ -158,7 +158,9 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 if (selectedTabType == 1) {
                     return;
                 }
-                switchTab(forwardViewHolder, 1, nphyData, wphyData);
+                selectedTabType = 1;
+                switchTab(forwardViewHolder);
+                swtichFragment(nphyData, wphyData);
             }
         });
         forwardViewHolder.rlTab2.setOnClickListener(new View.OnClickListener() {
@@ -167,15 +169,17 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 if (selectedTabType == 2) {
                     return;
                 }
-                switchTab(forwardViewHolder, 2, nphyData, wphyData);
+                selectedTabType = 2;
+                switchTab(forwardViewHolder);
+                swtichFragment(nphyData, wphyData);
             }
         });
-        switchTab(forwardViewHolder, 1, nphyData, wphyData);
+        switchTab(forwardViewHolder);
+        swtichFragment(nphyData, wphyData);
     }
 
-    private void switchTab(ForwardViewHolder forwardViewHolder, int tabType, List<HomeNphyData> nphyData, List<HomeWphyData> wphyData) {
-        selectedTabType = tabType;
-        if (tabType == 1) {
+    private void switchTab(ForwardViewHolder forwardViewHolder) {
+        if (selectedTabType == 1) {
             forwardViewHolder.bottomLine1.setVisibility(View.VISIBLE);
             forwardViewHolder.bottomLine2.setVisibility(View.GONE);
             forwardViewHolder.tvHomeTabLeft.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color_selected));
@@ -186,10 +190,13 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             forwardViewHolder.tvHomeTabLeft.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color));
             forwardViewHolder.tvHomeTabRight.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color_selected));
         }
+    }
+
+    private void swtichFragment(List<HomeNphyData> nphyData, List<HomeWphyData> wphyData) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment wpFragment = fragmentManager.findFragmentByTag(HomeForwardFragment.TYPE_WPHY);
         Fragment npFragment = fragmentManager.findFragmentByTag(HomeForwardFragment.TYPE_NPHY);
-        if (tabType == 1) {
+        if (selectedTabType == 1) {
             if (wpFragment != null) {
                 transaction.hide(wpFragment);
             }
@@ -207,7 +214,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 wpFragment = creatFragment(HomeForwardFragment.TYPE_WPHY, wphyData);
                 transaction.add(R.id.homeForwardContainer, wpFragment, HomeForwardFragment.TYPE_WPHY);
             } else {
-                transaction.show(npFragment);
+                transaction.show(wpFragment);
             }
         }
         transaction.commitAllowingStateLoss();

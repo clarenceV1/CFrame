@@ -19,7 +19,7 @@ import java.util.List;
 public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBinding> {
 
     public static final String TYPE_NPHY = "type_nphy";
-    public static final String TYPE_WPHY = "type_nphy";
+    public static final String TYPE_WPHY = "type_wphy";
     String type;
     List<HomeNphyData> nphyData;
     List<HomeWphyData> wphyData;
