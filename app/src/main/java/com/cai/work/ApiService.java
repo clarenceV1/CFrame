@@ -1,11 +1,13 @@
 package com.cai.work;
 
+import com.cai.work.bean.ForwardRecord;
 import com.cai.work.bean.News;
 import com.cai.work.bean.SocketInfo;
 import com.cai.work.bean.respond.BankCardRespond;
 import com.cai.work.bean.respond.BankListRespond;
 import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.ForwardAccountRespond;
+import com.cai.work.bean.respond.ForwardContractsRespond;
 import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.bean.respond.InviteResond;
 import com.cai.work.bean.respond.LoginRespond;
@@ -164,4 +166,9 @@ public interface ApiService {
     @GET("/app/news/queryPage")
     Flowable<List<News>> requestNews(@Query("page") int page);
 
+    @GET("/app/futures/get_code")
+    Flowable<ForwardRecord> requestRecord(@Query("token") String token);
+
+    @GET("/app/futures/get_contracts")
+    Flowable<ForwardContractsRespond> requestContracts(@Query("token") String token);
 }

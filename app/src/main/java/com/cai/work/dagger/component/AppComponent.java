@@ -8,6 +8,8 @@ import com.cai.work.ui.bank.BankCardChooseActivity;
 import com.cai.work.ui.bank.BankCardChoosePresenter;
 import com.cai.work.ui.bank.BankCardListActivity;
 import com.cai.work.ui.bank.BankCardListPresenter;
+import com.cai.work.ui.forward.ForwardActivity;
+import com.cai.work.ui.forward.ForwardPresenter;
 import com.cai.work.ui.fund.FundDetailActivity;
 import com.cai.work.ui.fund.FundDetailPresenter;
 import com.cai.work.ui.invite.InviteActivity;
@@ -192,4 +194,8 @@ public interface AppComponent {
     void inject(NewsActivity activity);
 
     void inject(NewsPresenter presenter);
+
+    void inject(ForwardActivity activity);
+
+    void inject(ForwardPresenter presenter);
 }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ExpandableListView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseFragment;
@@ -67,14 +68,14 @@ public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding>
             }
         });
 
-        adapter = new TradeAdapter(getContext(),mViewBinding.expandListView);
+        adapter = new TradeAdapter(getContext(), mViewBinding.expandListView);
         mViewBinding.expandListView.setAdapter(adapter);
         mViewBinding.expandListView.setHeaderView(LayoutInflater.from(getContext()).inflate(
                 R.layout.trade_group_item, mViewBinding.expandListView, false));
         mViewBinding.expandListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                ToastUtils.showShort("groupPosition:" + groupPosition + " childPosition:" + childPosition);
+                ARouter.getInstance().build("/AppModule/ForwardActivity").navigation();
                 return true;
             }
         });

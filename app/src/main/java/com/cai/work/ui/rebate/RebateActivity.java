@@ -1,6 +1,5 @@
 package com.cai.work.ui.rebate;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 

@@ -236,7 +236,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         noticeViewHolder.tvMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              ARouter.getInstance().build("/AppModule/NewsActivity").navigation();
+                ARouter.getInstance().build("/AppModule/NewsActivity").navigation();
             }
         });
         noticeViewHolder.rlTab1.setOnClickListener(new View.OnClickListener() {
@@ -248,7 +248,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         noticeViewHolder.rlTab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("rlTab2");
+                ARouter.getInstance().build("/AppModule/ForwardActivity").navigation();
             }
         });
         noticeViewHolder.rlTab3.setOnClickListener(new View.OnClickListener() {
@@ -260,7 +260,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         noticeViewHolder.rlTab4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("rlTab4");
+                ARouter.getInstance().build("/AppModule/ForwardActivity").navigation();
             }
         });
     }

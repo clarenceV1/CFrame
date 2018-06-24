@@ -2,7 +2,9 @@ package com.cai.work.ui.main.fragment;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseFragment;
@@ -47,6 +49,12 @@ public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBind
             adapter = new HomeForwardAdapter(getContext(), wphyData);
         }
         mViewBinding.forwardListView.setAdapter(adapter);
+        mViewBinding.forwardListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ARouter.getInstance().build("/AppModule/ForwardActivity").navigation();
+            }
+        });
     }
 
     private void initData() {
