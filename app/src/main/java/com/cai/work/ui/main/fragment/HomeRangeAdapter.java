@@ -14,7 +14,7 @@ import com.cai.work.bean.home.HomeRangeData;
 import java.util.List;
 
 public class HomeRangeAdapter extends GodBaseAdapter {
-    int[] rangeImage = new int[]{R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher};
+    int[] rangeImage = new int[]{R.drawable.crown1, R.drawable.crown2, R.drawable.crown3};
 
     boolean isFromeRankActivity = false;//是否来自排行榜页面
 
@@ -32,6 +32,7 @@ public class HomeRangeAdapter extends GodBaseAdapter {
                 imageView.setBackgroundResource(rangeImage[position]);
                 imageView.setVisibility(View.VISIBLE);
                 tvRange.setVisibility(View.GONE);
+                tvRange.setText(position + "");
             } else {
                 imageView.setVisibility(View.GONE);
                 tvRange.setVisibility(View.VISIBLE);

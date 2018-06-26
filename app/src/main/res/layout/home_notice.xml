@@ -18,14 +18,15 @@
             android:id="@+id/rlTab1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:paddingTop="10dp">
 
             <ImageView
                 android:id="@+id/imgRange1"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/ic_launcher" />
+                android:background="@drawable/main_module1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -41,20 +42,22 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:background="@color/ys_51_51_51" />
 
         <RelativeLayout
             android:id="@+id/rlTab2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:paddingTop="10dp">
 
             <ImageView
                 android:id="@+id/imgRange2"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/ic_launcher" />
+                android:background="@drawable/main_module2" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,6 +72,7 @@
 
         <View
             android:layout_width="1dp"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent"
             android:background="@color/ys_51_51_51" />
 
@@ -76,14 +80,15 @@
             android:id="@+id/rlTab3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:paddingTop="10dp">
 
             <ImageView
                 android:id="@+id/imgRange3"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/ic_launcher" />
+                android:background="@drawable/main_module3" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,6 +103,7 @@
 
         <View
             android:layout_width="1dp"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent"
             android:background="@color/ys_51_51_51" />
 
@@ -105,14 +111,15 @@
             android:id="@+id/rlTab4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:paddingTop="10dp">
 
             <ImageView
                 android:id="@+id/imgRange4"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/ic_launcher" />
+                android:background="@drawable/main_module4" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -145,18 +152,16 @@
             android:textColor="@color/ys_255_255_255"
             android:textSize="13sp" />
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="公告"
-            android:textColor="@color/ys_255_255_255"
-            android:textSize="13sp" />
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/notice" />
 
         <com.cai.framework.widget.VerticalScrollTextView
             android:id="@+id/scrollTextView"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:textColor="@color/ys_255_255_255"
@@ -166,17 +171,17 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:background="@color/ys_118_118_118" />
 
         <TextView
             android:id="@+id/tvMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="15dp"
             android:text="@string/home_notice_more"
-            android:layout_marginLeft="20dp"
             android:textColor="@color/ys_255_255_255"
             android:textSize="13sp" />
     </LinearLayout>

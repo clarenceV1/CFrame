@@ -19,6 +19,7 @@ import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainBinding;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
 
     @Autowired(name = "position")
     int position = 1;
+    private long fistTouchTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,5 +167,20 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
         }
         Bundle bundle = new Bundle();
         return Fragment.instantiate(this, fragmentName, bundle);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        long nowTouchTime = System.currentTimeMillis();
+        if (nowTouchTime - fistTouchTime < 501) {//
+            //sSystem.exit(0);
+            super.onBackPressed();
+            finish();
+        } else {
+            fistTouchTime = nowTouchTime;
+            ToastUtils.showShort(R.string.quit_app);
+            //new MyController().test();
+        }
     }
 }
