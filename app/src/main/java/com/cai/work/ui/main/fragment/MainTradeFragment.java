@@ -83,8 +83,8 @@ public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding>
                     ARouter.getInstance().build("/AppModule/StockActivity").navigation();
                 } else {
                     TradeItem tradeItem = (TradeItem) adapter.getChild(groupPosition, childPosition);
-                    if(tradeItem!=null){
-                        Forward forward = new Forward(tradeItem.getContractName(),tradeItem.getContractCode());
+                    if (tradeItem != null) {
+                        Forward forward = new Forward(tradeItem.getContractName(), tradeItem.getContractCode());
                         ARouter.getInstance().build("/AppModule/ForwardActivity").withCharSequence("forwardJson", JSON.toJSONString(forward)).navigation();
                     }
                 }
@@ -97,15 +97,19 @@ public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding>
 
     private void switchTab() {
         if (selectedTabType == 1) {
-            mViewBinding.tvTradeTabLeft.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
-            mViewBinding.tvTradeTabRight.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
+            mViewBinding.tvTradeTabLeft.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+            mViewBinding.tvTradeTabLeft.setBackgroundResource(R.drawable.trade_tab_bg_selected_left);
+            mViewBinding.tvTradeTabRight.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+            mViewBinding.tvTradeTabRight.setBackgroundColor(getResources().getColor(R.color.touming));
             if (trade != null) {
                 trade.setGp("A股");
                 adapter.notifyDataSetChanged();
             }
         } else {
-            mViewBinding.tvTradeTabLeft.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-            mViewBinding.tvTradeTabRight.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
+            mViewBinding.tvTradeTabLeft.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+            mViewBinding.tvTradeTabLeft.setBackgroundColor(getResources().getColor(R.color.touming));
+            mViewBinding.tvTradeTabRight.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+            mViewBinding.tvTradeTabRight.setBackgroundResource(R.drawable.trade_tab_bg_selected_right);
             if (trade != null) {
                 trade.setGp("股票模拟");
                 adapter.notifyDataSetChanged();

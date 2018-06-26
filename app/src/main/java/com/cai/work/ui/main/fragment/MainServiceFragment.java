@@ -82,6 +82,7 @@ public class MainServiceFragment extends AppBaseFragment<MainServiceFragmentBind
             service = data.get(0);
             phone = service.getTelephone();
             qq = service.getQq();
+            mViewBinding.tvPhone.setText(phone);
         }
     }
 

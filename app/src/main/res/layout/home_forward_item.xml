@@ -2,22 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="10dp">
-
+    android:layout_height="65dp"
+    android:padding="12dp"
+    android:background="@color/ys_33_33_33">
 
     <com.cai.framework.widget.CircleView
         android:id="@+id/circleView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
         tools:background="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/tvShortCode"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:gravity="center"
-        android:textColor="@color/white_a"
+        android:textColor="@color/ys_255_255_255"
+        android:textSize="18sp"
         tools:text="A股" />
 
     <TextView
@@ -26,7 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/circleView"
-        android:textSize="17sp"
+        android:textColor="@color/ys_255_255_255"
+        android:textSize="18sp"
         tools:text="A股" />
 
     <TextView
@@ -34,8 +37,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/tvStockNmae"
-        android:textSize="14sp"
+        android:background="@drawable/stock_code_bg"
+        android:padding="1dp"
+        android:textColor="@color/ys_255_255_255"
+        android:textSize="11sp"
         tools:text="交易中" />
 
     <TextView
@@ -44,9 +51,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvStockNmae"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="3dp"
         android:layout_toRightOf="@+id/circleView"
-        android:textSize="14sp"
+        android:textColor="@color/ys_102_102_102"
+        android:textSize="11sp"
         tools:text="1000元起投,T+N实盘交易" />
 
     <TextView
@@ -54,6 +62,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/imgArrow"
+        android:textColor="@color/ys_241_83_83"
+        android:textSize="14sp"
         tools:text="$1000元" />
 
     <TextView
@@ -61,15 +71,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvBound"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_toLeftOf="@+id/imgArrow"
+        android:textColor="@color/ys_135_135_135"
+        android:textSize="14sp"
         tools:text="09:30-15:00" />
 
     <ImageView
         android:id="@+id/imgArrow"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/ic_launcher" />
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/zx_arrow" />
 </RelativeLayout>

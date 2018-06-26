@@ -5,27 +5,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/ys_30_30_30"
         android:orientation="vertical">
 
         <include
             android:id="@+id/commonHeadView"
             layout="@layout/common_head" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/ys_51_51_51" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="@drawable/ic_launcher" />
+            android:background="@color/ys_255_255_255" />
 
         <RelativeLayout
             android:id="@+id/rlOnlineServiece"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_height="58dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/ys_34_34_34"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
 
             <ImageView
                 android:id="@+id/imgeOnline"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_centerVertical="true"
                 android:background="@drawable/ic_launcher" />
 
             <TextView
@@ -34,25 +44,37 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/imgeOnline"
-                android:text="@string/main_service_online" />
+                android:text="@string/main_service_online"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="16sp" />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/ic_launcher" />
+                android:layout_centerVertical="true"
+                android:background="@drawable/zx_arrow" />
         </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="12dp"
+            android:background="@color/ys_51_51_51" />
 
         <RelativeLayout
             android:id="@+id/rlTelephone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_height="58dp"
+            android:background="@color/ys_34_34_34"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
 
             <ImageView
                 android:id="@+id/imgeTelephone"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_centerVertical="true"
                 android:background="@drawable/ic_launcher" />
 
             <TextView
@@ -61,21 +83,27 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/imgeTelephone"
-                android:text="@string/main_service_telephone" />
+                android:text="@string/main_service_telephone"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/imgArrow"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/ic_launcher" />
+                android:layout_centerVertical="true"
+                android:background="@drawable/zx_arrow" />
 
             <TextView
+                android:id="@+id/tvPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@+id/imgArrow"
+                android:textColor="@color/ys_219_183_108"
+                android:textSize="14sp"
                 tools:text="13283773211" />
         </RelativeLayout>
     </LinearLayout>

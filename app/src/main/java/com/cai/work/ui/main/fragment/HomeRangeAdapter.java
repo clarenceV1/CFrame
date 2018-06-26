@@ -41,7 +41,7 @@ public class HomeRangeAdapter extends GodBaseAdapter {
             if (isFromeRankActivity) {
                 ViewHolder.getTextView(convertView, R.id.tvContent).setText(rangeData.getPrincipal());
             } else {
-                ViewHolder.getTextView(convertView, R.id.tvContent).setText("操盘金额" + rangeData.getPrincipal());
+                ViewHolder.getTextView(convertView, R.id.tvContent).setText(rangeData.getPrincipal());
             }
             ViewHolder.getTextView(convertView, R.id.tvDate).setText(rangeData.getBuyWTDate());
         }

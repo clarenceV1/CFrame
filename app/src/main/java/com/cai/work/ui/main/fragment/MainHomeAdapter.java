@@ -179,13 +179,13 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (selectedTabType == 1) {
             forwardViewHolder.bottomLine1.setVisibility(View.VISIBLE);
             forwardViewHolder.bottomLine2.setVisibility(View.GONE);
-            forwardViewHolder.tvHomeTabLeft.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color_selected));
-            forwardViewHolder.tvHomeTabRight.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color));
+            forwardViewHolder.tvHomeTabLeft.setTextColor(context.getResources().getColor(R.color.ys_202_169_101));
+            forwardViewHolder.tvHomeTabRight.setTextColor(context.getResources().getColor(R.color.ys_255_255_255));
         } else {
             forwardViewHolder.bottomLine1.setVisibility(View.GONE);
             forwardViewHolder.bottomLine2.setVisibility(View.VISIBLE);
-            forwardViewHolder.tvHomeTabLeft.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color));
-            forwardViewHolder.tvHomeTabRight.setTextColor(context.getResources().getColor(R.color.home_forward_tab_color_selected));
+            forwardViewHolder.tvHomeTabLeft.setTextColor(context.getResources().getColor(R.color.ys_255_255_255));
+            forwardViewHolder.tvHomeTabRight.setTextColor(context.getResources().getColor(R.color.ys_202_169_101));
         }
     }
 

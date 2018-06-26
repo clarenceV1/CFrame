@@ -10,4 +10,34 @@
 
     <color name="home_forward_tab_color">#000000</color>
     <color name="home_forward_tab_color_selected">#FF4081</color>
+
+    <color name="touming">#00000000</color>
+    <color name="ys_16_20_25">#101419</color>
+    <color name="ys_24_24_24">#181818</color>
+    <color name="ys_24_25_25">#181919</color>
+    <color name="ys_26_26_26">#1a1a1a</color>
+    <color name="ys_30_30_30">#1e1e1e</color>
+    <color name="ys_33_33_33">#212121</color>
+    <color name="ys_34_34_34">#222222</color>
+    <color name="ys_51_51_51">#333333</color>
+    <color name="ys_70_76_82">#464c52</color>
+    <color name="ys_102_102_102">#666666</color>
+    <color name="ys_118_118_118">#767676</color>
+    <color name="ys_121_121_121">#797979</color>
+    <color name="ys_128_128_130">#808082</color>
+    <color name="ys_135_135_135">#878787</color>
+    <color name="ys_153_153_153">#999999</color>
+    <color name="ys_160_161_161">#a0a1a1</color>
+    <color name="ys_170_180_189">#aab4bd</color>
+    <color name="ys_197_170_111">#c5aa6f</color>
+    <color name="ys_202_169_101">#caa965</color>
+    <color name="ys_200_208_214">#c8d0d6</color>
+    <color name="ys_204_204_204">#cccccc</color>
+    <color name="ys_219_183_108">#dbb76c</color>
+    <color name="ys_230_66_63">#e6423f</color>
+    <color name="ys_234_205_118">#eacd76</color>
+    <color name="ys_241_83_83">#f15353</color>
+    <color name="ys_247_247_247">#f7f7f7</color>
+    <color name="ys_254_254_254">#fefefe</color>
+    <color name="ys_255_255_255">#ffffff</color>
 </resources>

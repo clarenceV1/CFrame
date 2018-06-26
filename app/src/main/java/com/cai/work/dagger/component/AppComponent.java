@@ -54,6 +54,8 @@ import com.cai.work.ui.recharge.RechargeUnderLinePresenter;
 import com.cai.work.ui.redPacket.RedPacketActivity;
 import com.cai.work.ui.redPacket.RedPacketPresenter;
 import com.cai.work.ui.stock.StockActivity;
+import com.cai.work.ui.stock.StockBuyActivity;
+import com.cai.work.ui.stock.StockBuyPresenter;
 import com.cai.work.ui.stock.StockPresenter;
 import com.cai.work.ui.trade.TradeDetailActivity;
 import com.cai.work.ui.trade.TradeDetailPresenter;
@@ -204,4 +206,8 @@ public interface AppComponent {
     void inject(StockActivity activity);
 
     void inject(StockPresenter presenter);
+
+    void inject(StockBuyActivity activity);
+
+    void inject(StockBuyPresenter presenter);
 }

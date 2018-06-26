@@ -282,4 +282,11 @@
     <string name="btn_not_buy">非点买时间断</string>
     <string name="stock_rule">规则</string>
     <string name="stock_titile">A股</string>
+    <string name="stock_buy_titile">点买</string>
+    <string name="stock_buy_user_money">账户余额</string>
+    <string name="stock_buy_recharge">充值</string>
+    <string name="stock_buy_sell_money">买卖金额</string>
+    <string name="stock_buy_can_sell">今日还可点买</string>
+    <string name="stock_buy_notice">资金使用率</string>
+    <string name="stock_buy_hold_time">持仓时间</string>
 </resources>
