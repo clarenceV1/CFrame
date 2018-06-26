@@ -1,6 +1,67 @@
 <resources>
-
-    <string name="app_name">测试demo</string>
-    <string name="no_net">请检查网络</string>
-
+    <string name="app_name">MORE.ONE</string>
+    <!--main页面-->
+    <string name="candy">Candy</string>
+    <string name="wallet">Wallet</string>
+    <string name="discover">Discovery</string>
+    <string name="mine">Mine</string>
+    <string name="candy_pie">Candy Pie</string>
+    <string name="my_more">My MORE.ONE:1$s</string>
+    <string name="wallet_total">Already Held \n%1$s</string>
+    <string name="quit_app">Click one more time to quit MORE.ONE</string>
+    <string name="share_getmore">Invite</string>
+    <string name="share_getmore_candy">Send Invitation</string>
+    <string name="update_title">Upgrade Info</string>
+    <string name="update_ok">Upgrade Now</string>
+    <string name="update_no">Next time</string>
+    <!--登录 注册页面-->
+    <string name="phone_locale">China</string>
+    <string name="phone_code_get">Get Code</string>
+    <string name="phone_code_resend">Resend</string>
+    <string name="phone_code_hit">Verification Code</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="login_now">Login Now</string>
+    <string name="login_tip">Please login first</string>
+    <string name="phone_null">Please input your phone number</string>
+    <!--用户页面-->
+    <string name="user_head">Avatar</string>
+    <string name="user_nickname">Nickname</string>
+    <string name="user_phone">Phone Number</string>
+    <string name="person">Personal</string>
+    <string name="message">Messages</string>
+    <string name="help">Help</string>
+    <string name="my_invite">Already invited %1$s,will get %2$s ONE</string>
+    <string name="nick_name_empty">Please input your nickname</string>
+    <string name="share_tip">MORE.ONE will launch new candies soon, go to home page to check it</string>
+    <string name="edit_nickname_title">Modify nickname</string>
+    <string name="edit_nickname_hit">Please input your new nickname</string>
+    <string name="user_loginout_tip_title">Whether to logout</string>
+    <string name="user_loginout_tip_content">If logout,you can not get candy anymore</string>
+    <string name="user_login_out">logout</string>
+    <!--设置页面的文案-->
+    <string name="setting">Settings</string>
+    <string name="language_setting">Language Setting</string>
+    <string name="new_message_setting">New Message Notification</string>
+    <string name="modify_password">Modify Password</string>
+    <string name="login_out">Logout</string>
+    <string name="about">About</string>
+    <string name="about_us">About us</string>
+    <string name="about_disclaimer">User agreement</string>
+    <string name="chinese">简体中文</string>
+    <string name="english">English</string>
+    <!--candy-->
+    <string name="record">Record</string>
+    <string name="profit">Profit</string>
+    <string name="profit_1000">airdrop</string>
+    <string name="candy_hold">Already Held</string>
+    <string name="candy_get_wallet">Extract to wallet</string>
+    <string name="candy_list_other_content">Total%1$s/Remain%2$s</string>
+    <string name="candy_receive_now">Get Now</string>
+    <string name="candy_receive_success">Get candy successfully</string>
+    <string name="candy_receive_more">Get More</string>
+    <string name="shareContent">Copy invitation code</string>
+    <string name="shareContentSuccessfully">Copy invitation code successfully</string>
+    <string name="search">search</string>
+    <string name="choose_country">Choose the country</string>
 </resources>

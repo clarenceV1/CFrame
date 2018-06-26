@@ -1,11 +1,12 @@
 package com.cai.work.ui.welcome;
 
+import android.os.Bundle;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
-import com.cai.framework.utils.LanguageLocalUtil;
+import com.cai.framework.bean.TitleBarLayout;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
@@ -24,6 +25,12 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
     long time;
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public void initDagger() {
         DaggerAppComponent.create().inject(this);
     }
@@ -40,10 +47,11 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
 
     @Override
     public void initView() {
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
         fitImage();
         time = System.currentTimeMillis();
         presenter.loadUpgrade();
+        mViewBinding.tvTitleBar.setTitleText("huanying");
+//        TitleBarLayout tvTitleBar = () findViewById(R.id.tvTitleBar);
     }
 
     private void fitImage() {

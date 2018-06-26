@@ -23,6 +23,11 @@ public class App extends GodBaseApplication {
         boxStore = MyObjectBox.builder().androidContext(this).build();
     }
 
+    @Override
+    public void initWebProtocol() {
+
+    }
+
     public static BoxStore getBoxStore() {
         return boxStore;
     }

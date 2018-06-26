@@ -11,6 +11,8 @@ ext {
             "android-support"               : "com.android.support:support-v4:25.0.0",
             "support-design"                : "com.android.support:design:25.0.0",
 
+            "systembartint"                 : "com.readystatesoftware.systembartint:systembartint:1.0.3",
+
             "objectbox-android"             : "io.objectbox:objectbox-android:0.9.12",
             "objectbox-rxjava"              : "io.objectbox:objectbox-rxjava:0.9.8",
 
