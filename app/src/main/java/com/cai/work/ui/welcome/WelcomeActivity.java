@@ -6,7 +6,6 @@ import android.view.WindowManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
-import com.cai.framework.bean.TitleBarLayout;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
@@ -50,8 +49,6 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
         fitImage();
         time = System.currentTimeMillis();
         presenter.loadUpgrade();
-        mViewBinding.tvTitleBar.setTitleText("huanying");
-//        TitleBarLayout tvTitleBar = () findViewById(R.id.tvTitleBar);
     }
 
     private void fitImage() {
