@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cai.framework.widget.CircleView;
@@ -110,6 +111,11 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
             groupViewHolder = (GroupViewHolder) convertView.getTag();
         }
         groupViewHolder.tvGroupName.setText(getGroup(groupPosition));
+        if (isExpanded) {
+            groupViewHolder.tvArrow.setBackgroundResource(R.drawable.jy_open);
+        } else {
+            groupViewHolder.tvArrow.setBackgroundResource(R.drawable.jy_sousuo);
+        }
         return convertView;
     }
 
@@ -187,14 +193,16 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
 
     static class GroupViewHolder {
         TextView tvGroupName;
+        ImageView tvArrow;
 
         public GroupViewHolder(View view) {
             this.tvGroupName = (TextView) view.findViewById(R.id.tvGroupName);
+            this.tvArrow = (ImageView) view.findViewById(R.id.tvArrow);
         }
     }
 
     static class ChildViewHolder {
-        TextView tvStockNmae, tvShortCode, tvRemark, tvHandMoney, tvTradeState,tvPrice;
+        TextView tvStockNmae, tvShortCode, tvRemark, tvHandMoney, tvTradeState, tvPrice;
         CircleView circleView;
 
         public ChildViewHolder(View view) {

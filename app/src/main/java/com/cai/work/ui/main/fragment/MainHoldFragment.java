@@ -89,19 +89,16 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
                 }
             }
         });
-        mViewBinding.radioBtn1.setChecked(true);
-        mViewBinding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        mViewBinding.tvTradeTabLeft.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int id = group.getCheckedRadioButtonId();
-                switch (id) {
-                    case R.id.radioBtn1:
-                        freshData(true, true, true);
-                        break;
-                    case R.id.radioBtn2:
-                        freshData(false, true, true);
-                        break;
-                }
+            public void onClick(View v) {
+                freshData(true, true, true);
+            }
+        });
+        mViewBinding.tvTradeTabRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                freshData(false, true, true);
             }
         });
         mViewBinding.rlTab1.setOnClickListener(new View.OnClickListener() {
@@ -212,12 +209,22 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
 
                 mViewBinding.tvHold.setText(getString(R.string.main_hold_holder));
                 mViewBinding.tvAccount.setText(getString(R.string.main_hold_accounts));
+
+                mViewBinding.tvTradeTabLeft.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvTradeTabLeft.setBackgroundResource(R.drawable.trade_tab_bg_selected_left);
+                mViewBinding.tvTradeTabRight.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+                mViewBinding.tvTradeTabRight.setBackgroundColor(getResources().getColor(R.color.touming));
             } else {
                 mViewBinding.tvHomeTabLeft.setText(getString(R.string.main_hold_stock_fake));
                 mViewBinding.tvHomeTabRight.setText(getString(R.string.main_hold_forward_fake));
 
                 mViewBinding.tvHold.setText(getString(R.string.main_hold_holder_fake));
                 mViewBinding.tvAccount.setText(getString(R.string.main_hold_accounts_fake));
+
+                mViewBinding.tvTradeTabLeft.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+                mViewBinding.tvTradeTabLeft.setBackgroundColor(getResources().getColor(R.color.touming));
+                mViewBinding.tvTradeTabRight.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvTradeTabRight.setBackgroundResource(R.drawable.trade_tab_bg_selected_right);
             }
             this.isRealTrade = isRealTrade;
         }
@@ -225,25 +232,29 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
             if (isStock) {
                 mViewBinding.bottomLine1.setVisibility(View.VISIBLE);
                 mViewBinding.bottomLine2.setVisibility(View.GONE);
-                mViewBinding.tvHomeTabLeft.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
-                mViewBinding.tvHomeTabRight.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
+                mViewBinding.tvHomeTabLeft.setTextColor(getResources().getColor(R.color.ys_202_169_101));
+                mViewBinding.tvHomeTabRight.setTextColor(getResources().getColor(R.color.ys_255_255_255));
             } else {
                 mViewBinding.bottomLine1.setVisibility(View.GONE);
                 mViewBinding.bottomLine2.setVisibility(View.VISIBLE);
-                mViewBinding.tvHomeTabLeft.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                mViewBinding.tvHomeTabRight.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
+                mViewBinding.tvHomeTabLeft.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvHomeTabRight.setTextColor(getResources().getColor(R.color.ys_202_169_101));
             }
             this.isStock = isStock;
         }
         if (this.isHolder != isHolder) {
             if (isHolder) {
-                mViewBinding.tvHold.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
-                mViewBinding.tvAccount.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
+                mViewBinding.llHolder.setBackgroundResource(R.drawable.hold_bg_selected);
+                mViewBinding.llAccounts.setBackgroundResource(R.drawable.hold_bg);
+                mViewBinding.tvHold.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvAccount.setTextColor(getResources().getColor(R.color.ys_102_102_102));
             } else {
+                mViewBinding.llHolder.setBackgroundResource(R.drawable.hold_bg);
+                mViewBinding.llAccounts.setBackgroundResource(R.drawable.hold_bg_selected);
                 hasAccountsData = true;
                 page = 1;
-                mViewBinding.tvHold.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                mViewBinding.tvAccount.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
+                mViewBinding.tvHold.setTextColor(getResources().getColor(R.color.ys_102_102_102));
+                mViewBinding.tvAccount.setTextColor(getResources().getColor(R.color.ys_255_255_255));
             }
             this.isHolder = isHolder;
         }

@@ -40,4 +40,6 @@
     <color name="ys_247_247_247">#f7f7f7</color>
     <color name="ys_254_254_254">#fefefe</color>
     <color name="ys_255_255_255">#ffffff</color>
+
+    <color name="ys_d3d3d3">#d3d3d3</color>
 </resources>

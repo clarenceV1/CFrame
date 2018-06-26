@@ -72,14 +72,15 @@ public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding>
         });
 
         adapter = new TradeAdapter(getContext(), mViewBinding.expandListView);
+//        mViewBinding.expandListView.setGroupIndicator(this.getResources().getDrawable(R.drawable.group_selected));
         mViewBinding.expandListView.setAdapter(adapter);
         mViewBinding.expandListView.setHeaderView(LayoutInflater.from(getContext()).inflate(
-                R.layout.trade_group_item, mViewBinding.expandListView, false));
+                R.layout.trade_head, mViewBinding.expandListView, false));
         mViewBinding.expandListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 if (groupPosition == 0) {
-                    TradeItem tradeItem = (TradeItem) adapter.getChild(groupPosition, childPosition);
+//                    TradeItem tradeItem = (TradeItem) adapter.getChild(groupPosition, childPosition);
                     ARouter.getInstance().build("/AppModule/StockActivity").navigation();
                 } else {
                     TradeItem tradeItem = (TradeItem) adapter.getChild(groupPosition, childPosition);

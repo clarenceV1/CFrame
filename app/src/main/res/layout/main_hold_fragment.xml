@@ -7,30 +7,44 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/ys_33_33_33">
 
-            <RadioButton
-                android:id="@+id/radioBtn1"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:checked="true"
-                android:text="@string/main_hold_real_trade" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/trade_tab_bg"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/radioBtn2"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:text="@string/main_hold_fake_trade" />
-        </RadioGroup>
+                <TextView
+                    android:id="@+id/tvTradeTabLeft"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/main_hold_real_trade"
+                    android:textColor="@color/ys_219_183_108"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tvTradeTabRight"
+                    android:layout_width="100dp"
+                    android:layout_height="31dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/trade_tab_bg_selected_right"
+                    android:gravity="center"
+                    android:text="@string/main_hold_fake_trade"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="44dp"
+            android:background="@color/ys_33_33_33"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -44,18 +58,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="@string/main_hold_stock_real" />
+                    android:text="@string/main_hold_stock_real"
+                    android:textColor="@color/ys_202_169_101"
+                    android:textSize="13sp" />
 
                 <View
                     android:id="@+id/bottomLine1"
-                    android:layout_width="100dp"
+                    android:layout_width="75dp"
                     android:layout_height="2dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:background="@color/red_b"
+                    android:background="@color/ys_202_169_101"
                     android:visibility="gone"
                     tools:visibility="visible" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/ys_51_51_51" />
             </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/ys_51_51_51" />
 
             <RelativeLayout
                 android:id="@+id/rlTab2"
@@ -68,37 +95,47 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="@string/main_hold_forward_real" />
+                    android:text="@string/main_hold_forward_real"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="13sp" />
 
                 <View
                     android:id="@+id/bottomLine2"
-                    android:layout_width="100dp"
+                    android:layout_width="75dp"
                     android:layout_height="2dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:background="@color/red_b"
+                    android:background="@color/ys_202_169_101"
                     android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/ys_51_51_51" />
             </RelativeLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="43dp"
             android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/ys_30_30_30">
 
             <LinearLayout
                 android:id="@+id/llHolder"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
+                android:layout_width="90dp"
+                android:layout_height="25dp"
                 android:gravity="center"
+                android:layout_gravity="center"
                 android:orientation="horizontal"
-                android:padding="5dp">
+                android:background="@drawable/hold_bg">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:background="@drawable/ic_launcher" />
 
                 <TextView
@@ -106,30 +143,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/ys_102_102_102"
+                    android:textSize="13sp"
                     android:text="@string/main_hold_holder" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llAccounts"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="50dp"
+                android:layout_width="90dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="60dp"
+                android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="5dp">
+                android:background="@drawable/hold_bg_selected">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:background="@drawable/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tvAccount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="13sp"
                     android:layout_marginLeft="10dp"
                     android:text="@string/main_hold_accounts" />
 
@@ -148,6 +189,7 @@
             android:fastScrollEnabled="false"
             android:footerDividersEnabled="false"
             android:headerDividersEnabled="false"
-            android:smoothScrollbar="true" />
+            android:smoothScrollbar="true"
+            android:background="@color/ys_30_30_30"/>
     </LinearLayout>
 </layout>

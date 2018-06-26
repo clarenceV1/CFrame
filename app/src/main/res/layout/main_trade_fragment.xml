@@ -55,8 +55,10 @@
             android:id="@+id/expandListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/ys_30_30_30"
             android:divider="@color/ys_51_51_51"
             android:childDivider="@color/ys_51_51_51"
+            android:groupIndicator="@null"
             android:dividerHeight="1dp" />
     </LinearLayout>
 </layout>
