@@ -12,6 +12,7 @@ import com.cai.work.bean.User;
 import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainHomeFragmentBinding;
+import com.example.clarence.imageloaderlibrary.GlideCircleTransform;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
@@ -88,7 +89,10 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
 
     private void refreshTopView(User user) {
         if (user != null) {
-            ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(user.getAvatarUrl()).build();
+            ILoadImageParams imageParams = new ImageForGlideParams.Builder()
+                    .url("http://" + user.getAvatarUrl())
+                    .transformation(new GlideCircleTransform(getContext()))
+                    .build();
             imageParams.setImageView(mViewBinding.ivIcon);
             imageLoader.loadImage(this, imageParams);
 
