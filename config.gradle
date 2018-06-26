@@ -11,6 +11,8 @@ ext {
             "android-support"               : "com.android.support:support-v4:25.0.0",
             "support-design"                : "com.android.support:design:25.0.0",
 
+            "systembartint"                 : "com.readystatesoftware.systembartint:systembartint:1.0.3",
+
             "objectbox-android"             : "io.objectbox:objectbox-android:0.9.12",
             "objectbox-rxjava"              : "io.objectbox:objectbox-rxjava:0.9.8",
 
@@ -62,7 +64,7 @@ ext {
             "blockcanary-android"           : "com.github.markzhai:blockcanary-android:1.5.0",
             "blockcanary-no-op"             : "com.github.markzhai:blockcanary-no-op:1.5.0",
             "android-support-percent"       : "com.android.support:percent:23.0.0",
-            "QR-code"       : "com.google.zxing:core:3.3.0"
+            "QR-code"                       : "com.google.zxing:core:3.3.0"
     ]
 
 }
