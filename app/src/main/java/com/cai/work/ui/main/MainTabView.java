@@ -18,9 +18,11 @@ public class MainTabView {
     private ImageView imgTitle;
     private int position;
     private String fragmentName;
+    boolean isSelected;//是否被选中
 
-    private static int[] imageResorcesIds = new int[]{R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher};
+    private static int[] imageResorcesIds = new int[]{R.drawable.tab_main_nor, R.drawable.tab_consult_nor, R.drawable.tab_deal_nor, R.drawable.tab_position_nor, R.drawable.tab_mine_nor};
     private static int[] titleResorcesIds = new int[]{R.string.main_tab_title_1, R.string.main_tab_title_2, R.string.main_tab_title_3, R.string.main_tab_title_4, R.string.main_tab_title_5};
+    private static int[] imageResorcesIds_selected = new int[]{R.drawable.tab_main_sel, R.drawable.tab_consult_sel, R.drawable.tab_deal_sel, R.drawable.tab_position_sel, R.drawable.tab_mine_sel};
 
     public static OnTabClickListener onTabClickListener;
 
@@ -35,8 +37,6 @@ public class MainTabView {
     }
 
     private void init() {
-
-
         imgTitle = (ImageView) view.getChildAt(0);
         tvTittle = (TextView) view.getChildAt(1);
 
@@ -50,7 +50,7 @@ public class MainTabView {
                     isSwitchTab = onTabClickListener.onClick(view, position, fragmentName);
                 }
                 if (isSwitchTab) {
-                    refreshTabView();
+                    setSelected();
                 }
             }
         });
@@ -81,8 +81,16 @@ public class MainTabView {
         }
     }
 
-    private void refreshTabView() {
+    private void setSelected() {
+        this.isSelected = false;
+        this.imgTitle.setImageResource(imageResorcesIds_selected[position]);
+        this.tvTittle.setTextColor(view.getResources().getColor(R.color.ys_219_183_108));
+    }
 
+    public void reset() {
+        this.isSelected = false;
+        this.imgTitle.setImageResource(imageResorcesIds[position]);
+        this.tvTittle.setTextColor(view.getResources().getColor(R.color.ys_160_161_161));
     }
 
     public static MainTabView creatTabView(View view, int position) {

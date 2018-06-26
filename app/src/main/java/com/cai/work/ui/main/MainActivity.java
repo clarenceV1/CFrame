@@ -55,10 +55,6 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     protected void onCreate(Bundle savedInstanceState) {
         ARouter.getInstance().inject(this);
         super.onCreate(savedInstanceState);
-
-        if (tintManager != null) {
-            tintManager.setTintColor(getResources().getColor(R.color.ys_34_34_34));
-        }
     }
 
     @Override
@@ -106,11 +102,18 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
                     showDialog();
                     return false;
                 }
+                tabViewReset();
                 return tabClick(fragmentName);
             }
         });
 
         mViewBinding.mainTab0.performClick();
+    }
+
+    private void tabViewReset() {
+        for (MainTabView mainTabView : tabViewList) {
+            mainTabView.reset();
+        }
     }
 
     private void clickTab(int position) {
