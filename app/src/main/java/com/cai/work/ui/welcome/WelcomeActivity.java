@@ -11,7 +11,6 @@ import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WelcomeBinding;
 import com.example.clarence.utillibrary.DeviceUtils;
-import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
 
@@ -44,7 +43,6 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
         fitImage();
         time = System.currentTimeMillis();
-        LanguageLocalUtil.changeLanguage(this,presenter.getCurrent());
         presenter.loadUpgrade();
     }
 
@@ -63,11 +61,6 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
     }
 
     @Override
-    public void toastNotice(String txt) {
-        ToastUtils.showShort(txt);
-    }
-
-    @Override
     public void appUpdate() {
         long timeMillis = 3000 - (System.currentTimeMillis() - time);
         if (timeMillis > 0) {
@@ -76,8 +69,8 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
                 public void run() {
                     goMainActivity();
                 }
-            },timeMillis);
-        }else{
+            }, timeMillis);
+        } else {
             goMainActivity();
         }
     }
