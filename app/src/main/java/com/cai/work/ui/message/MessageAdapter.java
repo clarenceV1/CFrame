@@ -41,13 +41,13 @@ class MessageAdapter extends GodBaseAdapter {
             final MessageItem messageItem = (MessageItem) itemData;
             ViewHolder.getTextView(convertView, R.id.tvMsgTitile).setText("服务端没提供");
             if (messageItem.getReadType() == 1) { //1已读2未读
-                ViewHolder.getImageView(convertView, R.id.ivNew).setVisibility(View.VISIBLE);
+                ViewHolder.getTextView(convertView, R.id.ivNew).setVisibility(View.VISIBLE);
             } else {
-                ViewHolder.getImageView(convertView, R.id.ivNew).setVisibility(View.GONE);
+                ViewHolder.getTextView(convertView, R.id.ivNew).setVisibility(View.GONE);
             }
             ViewHolder.getTextView(convertView, R.id.tvMsgContent).setText(messageItem.getContent());
             ViewHolder.getTextView(convertView, R.id.tvMsgDate).setText(messageItem.getCreateTime());
-            ViewHolder.getButton(convertView, R.id.tvDelete).setOnClickListener(new View.OnClickListener() {
+            ViewHolder.getTextView(convertView, R.id.tvDelete).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     presenter.deleteMessage(messageItem.getId());
@@ -60,14 +60,16 @@ class MessageAdapter extends GodBaseAdapter {
             } else {
                 ViewHolder.getView(convertView, R.id.rlContent).setVisibility(View.GONE);
             }
-            ViewHolder.getImageView(convertView, R.id.ivSwitch).setOnClickListener(new View.OnClickListener() {
+            ViewHolder.getView(convertView, R.id.rlWhich).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (messageItem.isShowMsgContent()) {
                         messageItem.setShowMsgContent(false);
+                        ViewHolder.getImageView(convertView, R.id.ivSwitch).setBackgroundResource(R.drawable.jy_open);
                         ViewHolder.getView(convertView, R.id.rlContent).setVisibility(View.GONE);
                     } else {
                         messageItem.setShowMsgContent(true);
+                        ViewHolder.getImageView(convertView, R.id.ivSwitch).setBackgroundResource(R.drawable.jy_sousuo);
                         ViewHolder.getView(convertView, R.id.rlContent).setVisibility(View.VISIBLE);
                     }
                 }

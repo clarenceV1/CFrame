@@ -3,21 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:background="@color/ys_33_33_33"
+    android:paddingLeft="14dp"
+    android:paddingRight="20dp"
+    android:paddingTop="24dp">
 
     <TextView
         android:id="@+id/tvMsgTitile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/ys_255_255_255"
+        android:textSize="15sp"
         tools:text="tvMsgTitile" />
 
-    <ImageView
+    <TextView
         android:id="@+id/ivNew"
-        android:layout_width="50dp"
-        android:layout_height="20dp"
+        android:layout_width="35dp"
+        android:layout_height="15dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
         android:layout_toRightOf="@+id/tvMsgTitile"
-        android:background="@drawable/ic_launcher" />
+        android:background="@drawable/message_bg"
+        android:gravity="center"
+        android:text="NEW"
+        android:textColor="@color/ys_255_255_255"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tvMsgDate"
@@ -25,36 +35,55 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvMsgTitile"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="11dp"
+        android:textColor="@color/ys_255_255_255"
+        android:textSize="11sp"
         tools:text="tvMsgDate" />
 
-    <ImageView
-        android:id="@+id/ivSwitch"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+    <RelativeLayout
+        android:id="@+id/rlWhich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="4dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/ic_launcher" />
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/ivSwitch"
+            android:layout_width="14dp"
+            android:layout_height="8dp"
+            android:background="@drawable/jy_open" />
+
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/rlContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvMsgDate">
+        android:layout_below="@+id/tvMsgDate"
+        android:layout_marginTop="18dp">
 
         <TextView
             android:id="@+id/tvMsgContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="12sp"
             tools:text="tvMsgContent" />
 
-        <Button
+        <TextView
             android:id="@+id/tvDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/tvMsgContent"
-            android:text="@string/btn_delete" />
+            android:layout_marginBottom="5dp"
+            android:padding="10dp"
+            android:text="@string/btn_delete"
+            android:textColor="@color/ys_ff5065"
+            android:textSize="13dp" />
     </RelativeLayout>
 
 

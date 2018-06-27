@@ -19,8 +19,9 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@color/ys_255_255_255" />
+            android:layout_height="125dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/zx_banner" />
 
         <RelativeLayout
             android:id="@+id/rlOnlineServiece"

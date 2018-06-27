@@ -21,6 +21,7 @@
             android:fastScrollEnabled="false"
             android:footerDividersEnabled="false"
             android:headerDividersEnabled="false"
-            android:smoothScrollbar="true" />
+            android:smoothScrollbar="true"
+            android:background="@color/ys_33_33_33"/>
     </LinearLayout>
 </layout>

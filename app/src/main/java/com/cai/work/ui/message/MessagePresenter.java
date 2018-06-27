@@ -43,7 +43,7 @@ public class MessagePresenter extends GodBasePresenter<MessageView> {
             @Override
             public void accept(MessageRespond data) {
                 if (data != null && data.getCode() == 200) {
-//                    addTestMsg(data.getData());
+                    addTestMsg(data.getData());
                     mView.refreshMessageList(data.getData());
                 }
             }
