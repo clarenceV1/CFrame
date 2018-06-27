@@ -1,6 +1,7 @@
 package com.cai.work.ui.main;
 
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.work.base.App;
 
 import javax.inject.Inject;
 
@@ -9,7 +10,6 @@ import javax.inject.Inject;
  */
 public class MainPresenter extends GodBasePresenter<MainView> {
 
-
     @Inject
     public MainPresenter() {
 
@@ -17,7 +17,7 @@ public class MainPresenter extends GodBasePresenter<MainView> {
 
     @Override
     public void onAttached() {
-
+        App.getAppComponent().inject(this);
     }
 
 }

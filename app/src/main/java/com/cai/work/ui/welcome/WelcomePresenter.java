@@ -2,14 +2,15 @@ package com.cai.work.ui.welcome;
 
 import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.dao.UserDAO;
 
 import javax.inject.Inject;
 
+import dagger.Lazy;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -18,12 +19,11 @@ import io.reactivex.functions.Consumer;
  */
 public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
     @Inject
-    DataStore dataStore;
+    Lazy<DataStore> dataStore;
     @Inject
-    RequestStore requestStore;
+    Lazy<RequestStore> requestStore;
     @Inject
-    UserDAO userDAO;
-
+    Lazy<UserDAO> userDAO;
 
     @Inject
     public WelcomePresenter() {
@@ -32,14 +32,14 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
 
     @Override
     public void onAttached() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     public void loadUpgrade() {
-        Disposable disposable = requestStore.loadUpgrade(new Consumer<AppUpdateResond>() {
+        Disposable disposable = requestStore.get().loadUpgrade(new Consumer<AppUpdateResond>() {
             @Override
             public void accept(AppUpdateResond data) {
-                dataStore.saveAppUpdate(JSON.toJSONString(data));
+                dataStore.get().saveAppUpdate(JSON.toJSONString(data));
                 mView.appUpdate();
             }
         }, new Consumer<Throwable>() {
@@ -52,10 +52,10 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
     }
 
     public void loadMineData() {
-        Disposable disposable = requestStore.loadMineData(new Consumer<AppUpdateResond>() {
+        Disposable disposable = requestStore.get().loadMineData(new Consumer<AppUpdateResond>() {
             @Override
             public void accept(AppUpdateResond data) {
-                dataStore.saveAppUpdate(JSON.toJSONString(data));
+                dataStore.get().saveAppUpdate(JSON.toJSONString(data));
                 mView.appUpdate();
             }
         }, new Consumer<Throwable>() {

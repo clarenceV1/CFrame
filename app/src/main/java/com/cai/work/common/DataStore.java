@@ -4,15 +4,13 @@ import com.example.clarence.datastorelibrary.store.share_preference.ISharePrefer
 
 import javax.inject.Inject;
 
-import dagger.Lazy;
-
 /**
  * Created by clarence on 2018/3/26.
  */
 
 public class DataStore {
     @Inject
-    Lazy<ISharePreference> sharePreference;
+    ISharePreference sharePreference;
 
     @Inject
     public DataStore() {
@@ -20,7 +18,7 @@ public class DataStore {
     }
 
     public void saveAppUpdate(String json) {
-        sharePreference.get().write("AppUpdate", json);
+        sharePreference.write("AppUpdate", json);
     }
 
     /**
@@ -29,11 +27,11 @@ public class DataStore {
      * @param language
      */
     public void setLanguage(String language) {
-        sharePreference.get().write("app_language", language);
+        sharePreference.write("app_language", language);
     }
 
     public String getLanguage() {
-        return sharePreference.get().read("app_language", "zh");
+        return sharePreference.read("app_language", "zh");
     }
 
 //

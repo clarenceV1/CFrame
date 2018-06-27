@@ -1,6 +1,5 @@
 package com.cai.work.common;
 
-import com.cai.framework.utils.LanguageLocalUtil;
 import com.example.clarence.netlibrary.INet;
 
 import java.util.HashMap;
@@ -25,7 +24,7 @@ public class RequestStore {
     public RequestStore() {
     }
 
-    public Map getRequestHeader(Map<String, String> headerMap) {
+    public Map<String, String> getRequestHeader(Map<String, String> headerMap) {
         if (headerMap == null) {
             headerMap = new HashMap<>();
         }
@@ -45,8 +44,8 @@ public class RequestStore {
      * @param onError
      * @return
      */
-    public Disposable loadUpgrade(Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request().create(ApiService.class).loadUpgrade()
+    public Disposable loadUpgrade(Consumer onNext, Consumer<Throwable> onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).loadUpgrade(getRequestHeader(null))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
@@ -60,8 +59,8 @@ public class RequestStore {
      * @param onError
      * @return
      */
-    public Disposable loadMineData(Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request(getRequestHeader(null)).create(ApiService.class).loadMineData()
+    public Disposable loadMineData(Consumer onNext, Consumer<Throwable> onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).loadMineData(getRequestHeader(null))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);

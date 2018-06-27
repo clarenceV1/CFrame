@@ -5,8 +5,10 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WelcomeBinding;
@@ -31,7 +33,7 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     @Override
@@ -82,6 +84,7 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
     }
 
     private void goMainActivity() {
-//        dd
+        ARouter.getInstance().build("/AppModule/MainActivity").navigation();
+        finish();
     }
 }

@@ -1,5 +1,6 @@
 package com.cai.work.dagger.component;
 
+import com.cai.framework.dagger.component.FrameWorkComponent;
 import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.dagger.module.AppModule;
 import com.cai.work.ui.main.MainActivity;
@@ -16,8 +17,8 @@ import dagger.Component;
  * Created by clarence on 2018/3/26.
  */
 @Singleton
-@Component(modules = {AppModule.class, FrameWorkModule.class})
-public interface AppComponent {
+@Component(modules = {FrameWorkModule.class,AppModule.class})
+public interface AppComponent extends FrameWorkComponent{
     void inject(WebActivity webActivity);
 
     void inject(WelcomeActivity activity);
@@ -27,6 +28,4 @@ public interface AppComponent {
     void inject(MainActivity activity);
 
     void inject(MainPresenter presenter);
-
-
 }

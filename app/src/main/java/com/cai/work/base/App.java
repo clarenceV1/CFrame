@@ -3,6 +3,8 @@ package com.cai.work.base;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBaseApplication;
 import com.cai.work.bean.MyObjectBox;
+import com.cai.work.dagger.component.AppComponent;
+import com.cai.work.dagger.component.DaggerAppComponent;
 
 import io.objectbox.BoxStore;
 
@@ -16,11 +18,16 @@ public class App extends GodBaseApplication {
     public static String BASEURL = "https://more.ethte.com/api/";
 
     public static BoxStore boxStore;
+    public static AppComponent appComponent;
 
     public void onCreate() {
         super.onCreate();
         initRouter();
         boxStore = MyObjectBox.builder().androidContext(this).build();
+        if (appComponent == null) {
+            appComponent = DaggerAppComponent.create();
+        }
+
     }
 
     @Override
@@ -49,5 +56,9 @@ public class App extends GodBaseApplication {
             ARouter.printStackTrace(); // 打印日志的时候打印线程堆栈
         }
         ARouter.init(getAppContext()); // 尽可能早，推荐在Application中初始化
+    }
+
+    public static AppComponent getAppComponent() {
+        return appComponent;
     }
 }
