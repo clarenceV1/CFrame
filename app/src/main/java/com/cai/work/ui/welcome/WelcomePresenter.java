@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.R;
-import com.cai.work.base.App;
 import com.cai.work.bean.Account;
 import com.cai.work.bean.HomeDataSql;
 import com.cai.work.bean.respond.HomeRespond;
@@ -12,10 +11,9 @@ import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
 import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.dao.AccountDAO;
-import com.cai.work.dao.UserDAO;
 import com.cai.work.dao.HomeDataSqlDAO;
+import com.cai.work.dao.UserDAO;
 import com.example.clarence.utillibrary.Md5Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
 
@@ -49,7 +47,7 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
 
     @Override
     public void onAttached() {
-        App.getAppComponent().inject(this);
+
     }
 
     public void loadData() {
