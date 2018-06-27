@@ -11,8 +11,11 @@ import retrofit2.http.GET;
 
 public interface ApiService {
 
-    @GET("upgrade")
-    Flowable<AppUpdateResond> getHomeData();
+    @GET("/upgrade")
+    Flowable<AppUpdateResond> loadUpgrade();
+
+    @GET("/mine")
+    Flowable<AppUpdateResond> loadMineData();
 //
 //    @POST("/app/login/index")
 //    @FormUrlEncoded

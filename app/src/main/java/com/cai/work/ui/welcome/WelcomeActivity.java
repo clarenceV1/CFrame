@@ -49,6 +49,7 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
         fitImage();
         time = System.currentTimeMillis();
         presenter.loadUpgrade();
+        presenter.loadMineData();
     }
 
     private void fitImage() {

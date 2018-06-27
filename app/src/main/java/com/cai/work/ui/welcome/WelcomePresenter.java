@@ -51,6 +51,21 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
         mCompositeSubscription.add(disposable);
     }
 
+    public void loadMineData() {
+        Disposable disposable = requestStore.loadMineData(new Consumer<AppUpdateResond>() {
+            @Override
+            public void accept(AppUpdateResond data) {
+                dataStore.saveAppUpdate(JSON.toJSONString(data));
+                mView.appUpdate();
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                mView.appUpdate();
+            }
+        });
+        mCompositeSubscription.add(disposable);
+    }
 //    /**
 //     * 请求首页数据
 //     *
