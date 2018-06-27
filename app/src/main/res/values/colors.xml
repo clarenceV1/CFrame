@@ -42,4 +42,8 @@
     <color name="ys_255_255_255">#ffffff</color>
 
     <color name="ys_d3d3d3">#d3d3d3</color>
+    <color name="ys_2c2c2c">#2c2c2c</color>
+    <color name="ys_6a6766">#6a6766</color>
+    <color name="ys_666666">#666666</color>
+    <color name="ys_f8f8f8">#f8f8f8</color>
 </resources>

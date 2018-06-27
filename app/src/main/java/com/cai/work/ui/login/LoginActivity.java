@@ -56,6 +56,14 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
                 }
             }
         });
+
+        mViewBinding.llForgetPwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mViewBinding.cbSavePassword.setChecked(!mViewBinding.cbSavePassword.isChecked());
+            }
+        });
+
         mViewBinding.showPassword.setChecked(false);
         mViewBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

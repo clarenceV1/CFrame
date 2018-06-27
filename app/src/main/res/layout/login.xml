@@ -3,7 +3,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/ys_30_30_30"
         android:orientation="vertical">
 
         <include
@@ -11,98 +12,139 @@
             layout="@layout/common_head" />
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/ic_launcher" />
+            android:layout_marginTop="50dp"
+            android:background="@drawable/dl_logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/red_b"
-            android:padding="10dp">
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="33dp"
+            android:background="@color/ys_2c2c2c">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="12dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/ic_launcher" />
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/dl_phone" />
 
             <EditText
                 android:id="@+id/editMobile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
+                android:background="@color/touming"
+                android:hint="@string/login_mobile_hint"
                 android:inputType="number"
-                android:hint="@string/login_mobile_hint" />
+                android:textColor="@color/ys_255_255_255"
+                android:textColorHint="@color/ys_6a6766" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/red_b"
-            android:padding="10dp">
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="18dp"
+            android:background="@color/ys_2c2c2c">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="17dp"
+                android:layout_height="19dp"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/ic_launcher" />
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/dl_lock" />
 
             <EditText
                 android:id="@+id/editPassword"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
+                android:background="@color/touming"
+                android:hint="@string/login_password_hint"
                 android:inputType="textPassword"
-                android:hint="@string/login_password_hint" />
+                android:textColor="@color/ys_255_255_255"
+                android:textColorHint="@color/ys_6a6766" />
 
             <CheckBox
                 android:id="@+id/showPassword"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="22dp"
+                android:layout_height="16dp"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/ic_launcher"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/btn_check"
+                android:button="@null"
                 android:checked="true" />
         </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/cbSavePassword"
+        <LinearLayout
+            android:id="@+id/llForgetPwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/login_save_password" />
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cbSavePassword"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/btn_check_duigou"
+                android:button="@null"
+                android:checked="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/login_save_password"
+                android:textColor="@color/ys_666666"
+                android:textSize="11sp" />
+        </LinearLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="22dp">
 
             <TextView
                 android:id="@+id/tvRegiser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="@string/login_register" />
+                android:text="@string/login_register"
+                android:textColor="@color/ys_219_183_108"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvForgetPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:padding="10dp"
-                android:text="@string/login_forget_password" />
+                android:text="@string/login_forget_password"
+                android:textColor="@color/ys_219_183_108"
+                android:textSize="12sp" />
         </RelativeLayout>
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="@string/login_titile" />
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15sp"
+            android:background="@color/ys_234_205_118"
+            android:text="@string/login_titile"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="18sp" />
     </LinearLayout>
 </layout>

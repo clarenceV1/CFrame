@@ -99,10 +99,13 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
 
             mViewBinding.llUserInfo.setClickable(false);
             mViewBinding.tvAccount.setText(user.getMobile());
+            mViewBinding.ivIcon.setVisibility(View.VISIBLE);
+            mViewBinding.ivHeadOri.setVisibility(View.GONE);
         } else {
             mViewBinding.tvAccount.setText(getResources().getString(R.string.login));
             mViewBinding.llUserInfo.setClickable(true);
-            mViewBinding.ivIcon.setImageResource(R.drawable.ic_launcher);
+            mViewBinding.ivIcon.setVisibility(View.GONE);
+            mViewBinding.ivHeadOri.setVisibility(View.VISIBLE);
         }
     }
 }
