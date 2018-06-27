@@ -3,67 +3,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:background="@color/ys_23282d"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tvBuyDealDate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/ys_153_153_153"
+        android:textSize="13sp"
         tools:text="点买时间：2018-06-20 13:55:19" />
 
-    <LinearLayout
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ys_51_51_51" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_margin="10dp">
 
-        <TextView
-            android:id="@+id/tvStockName"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            tools:text="浦发银行" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_hold_trade_money" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvStockName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="20sp"
+                tools:text="浦发银行" />
 
-        <TextView
-            android:id="@+id/tvstockCode"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            tools:text="SH600000" />
+            <TextView
+                android:id="@+id/tvstockCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="12sp"
+                tools:text="SH600000" />
 
-        <TextView
-            android:id="@+id/tvYkMoney"
+        </LinearLayout>
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="-180" />
-    </LinearLayout>
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/trade_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/main_hold_trade_money"
+                android:textColor="@color/ys_fffefe"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvYkMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/trade_money"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/ys_009a44"
+                android:textSize="13sp"
+                tools:text="-180" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/trade_money"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/tvYkMoney"
+                android:text="(后台平仓)"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="13sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ys_51_51_51" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingLeft="10dp"
             android:paddingRight="10dp">
 
             <TextView
                 android:id="@+id/tvTitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/main_hold_buy_price" />
+                android:text="@string/main_hold_buy_price"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/tvValue1"
@@ -71,21 +120,30 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:textColor="@color/ys_e6241a"
+                android:textSize="13sp"
                 tools:text="9.9元" />
         </RelativeLayout>
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/ys_51_51_51" />
+
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="10dp">
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:id="@+id/tvTitle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/main_hold_current_price" />
+                android:text="@string/main_hold_current_price"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/tvValue2"
@@ -93,19 +151,28 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="13sp"
                 tools:text="9.7元" />
         </RelativeLayout>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ys_51_51_51" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
+            android:paddingLeft="10dp"
             android:paddingRight="10dp">
 
             <TextView
@@ -113,7 +180,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="@string/main_hold_buy_num" />
+                android:text="@string/main_hold_buy_num"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/tvValue3"
@@ -121,21 +190,31 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="13sp"
                 tools:text="9.9元" />
         </RelativeLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/ys_51_51_51" />
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:paddingLeft="10dp">
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:id="@+id/tvTitle4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="@string/main_hold_current_price" />
+                android:text="@string/main_hold_current_price"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/tvValue4"
@@ -143,15 +222,26 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                tools:text="9.7元" />
+                android:textColor="@color/ys_009a44"
+                android:textSize="13sp"
+                tools:text="买跌" />
         </RelativeLayout>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ys_51_51_51" />
+
     <Button
         android:id="@+id/btnCommit"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="165dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:text="@string/btn_look_detail" />
+        android:layout_marginTop="15dp"
+        android:background="@color/ys_ff2121"
+        android:text="@string/btn_look_detail"
+        android:textColor="@color/ys_255_255_255"
+        android:textSize="15dp"
+        android:layout_marginBottom="15dp"/>
 </LinearLayout>

@@ -134,9 +134,10 @@
                 android:background="@drawable/hold_bg">
 
                 <ImageView
+                    android:id="@+id/ivChiCang"
                     android:layout_width="14dp"
                     android:layout_height="14dp"
-                    android:background="@drawable/ic_launcher" />
+                    android:background="@drawable/cc_chicangweidianji" />
 
                 <TextView
                     android:id="@+id/tvHold"
@@ -161,9 +162,10 @@
                 android:background="@drawable/hold_bg_selected">
 
                 <ImageView
+                    android:id="@+id/ivJieSuan"
                     android:layout_width="14dp"
                     android:layout_height="14dp"
-                    android:background="@drawable/ic_launcher" />
+                    android:background="@drawable/cc_jiesuandianji" />
 
                 <TextView
                     android:id="@+id/tvAccount"

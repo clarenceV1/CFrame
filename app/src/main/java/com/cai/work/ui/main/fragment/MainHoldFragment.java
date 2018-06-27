@@ -249,6 +249,9 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
                 mViewBinding.llAccounts.setBackgroundResource(R.drawable.hold_bg);
                 mViewBinding.tvHold.setTextColor(getResources().getColor(R.color.ys_255_255_255));
                 mViewBinding.tvAccount.setTextColor(getResources().getColor(R.color.ys_102_102_102));
+
+                mViewBinding.ivChiCang.setBackgroundResource(R.drawable.cc_chicangdianji);
+                mViewBinding.ivJieSuan.setBackgroundResource(R.drawable.cc_jiesuanweidianji);
             } else {
                 mViewBinding.llHolder.setBackgroundResource(R.drawable.hold_bg);
                 mViewBinding.llAccounts.setBackgroundResource(R.drawable.hold_bg_selected);
@@ -256,6 +259,9 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
                 page = 1;
                 mViewBinding.tvHold.setTextColor(getResources().getColor(R.color.ys_102_102_102));
                 mViewBinding.tvAccount.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+
+                mViewBinding.ivChiCang.setBackgroundResource(R.drawable.cc_chicangweidianji);
+                mViewBinding.ivJieSuan.setBackgroundResource(R.drawable.cc_jiesuandianji);
             }
             this.isHolder = isHolder;
         }
