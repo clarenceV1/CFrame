@@ -1,6 +1,7 @@
 package com.cai.work.common;
 
 import com.cai.work.bean.respond.AppUpdateResond;
+import com.cai.work.bean.respond.MineRespond;
 
 import java.util.Map;
 
@@ -14,11 +15,11 @@ import retrofit2.http.HeaderMap;
 
 public interface ApiService {
 
-    @GET("/upgrade")
+    @GET("/api/upgrade")
     Flowable<AppUpdateResond> loadUpgrade(@HeaderMap Map<String,String> map);
 
-    @GET("/mine")
-    Flowable<AppUpdateResond> loadMineData(@HeaderMap Map<String,String> map);
+    @GET("/api/mine")
+    Flowable<MineRespond> loadMineData(@HeaderMap Map<String,String> map);
 //
 //    @POST("/app/login/index")
 //    @FormUrlEncoded

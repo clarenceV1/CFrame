@@ -1,4 +1,4 @@
-package com.cai.work.bean;
+package com.cai.work.bean.respond;
 
 public class BaseRespond {
     private String message;

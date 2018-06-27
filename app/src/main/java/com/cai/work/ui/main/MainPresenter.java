@@ -1,14 +1,14 @@
 package com.cai.work.ui.main;
 
-import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.base.App;
+import com.cai.work.base.AppBasePresenter;
 
 import javax.inject.Inject;
 
 /**
  * Created by clarence on 2018/1/12.
  */
-public class MainPresenter extends GodBasePresenter<MainView> {
+public class MainPresenter extends AppBasePresenter<MainView> {
 
     @Inject
     public MainPresenter() {

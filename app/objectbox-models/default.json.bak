@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:2435546572950396204",
-      "lastPropertyId": "10:1092057895058674806",
+      "lastPropertyId": "4:2944456024296944319",
       "name": "User",
       "properties": [
         {
@@ -13,28 +13,16 @@
           "name": "id"
         },
         {
-          "id": "5:808260875912391003",
-          "name": "user_id"
+          "id": "2:4650404790915090060",
+          "name": "balance"
         },
         {
-          "id": "6:5189528993862617165",
-          "name": "nickname"
+          "id": "3:4490979501355132756",
+          "name": "mobile"
         },
         {
-          "id": "7:2141136237189904450",
-          "name": "avatar"
-        },
-        {
-          "id": "8:457823566947370918",
-          "name": "phone"
-        },
-        {
-          "id": "9:850910776887224972",
-          "name": "nation_code"
-        },
-        {
-          "id": "10:1092057895058674806",
-          "name": "token"
+          "id": "4:2944456024296944319",
+          "name": "avatarUrl"
         }
       ]
     }
@@ -45,10 +33,6 @@
   "modelVersion": 2,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [
-    4650404790915090060,
-    4490979501355132756,
-    2944456024296944319
-  ],
+  "retiredPropertyUids": [],
   "version": 1
 }
