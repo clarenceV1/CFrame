@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.cai.annotation.aspect.Permission;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
 import com.cai.work.R;
 import com.cai.work.bean.Service;
@@ -36,7 +37,7 @@ public class MainServiceFragment extends AppBaseFragment<MainServiceFragmentBind
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     @Override

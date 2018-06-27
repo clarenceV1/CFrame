@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.lib.logger.Logger;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
 import com.cai.work.bean.ForwardAccount;
 import com.cai.work.bean.SocketInfo;
@@ -66,7 +67,7 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
 

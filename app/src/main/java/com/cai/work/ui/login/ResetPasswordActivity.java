@@ -10,6 +10,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.utils.SMSCountDownTimer;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.ResetPasswordBinding;
@@ -30,7 +31,7 @@ public class ResetPasswordActivity extends AppBaseActivity<ResetPasswordBinding>
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     @Override

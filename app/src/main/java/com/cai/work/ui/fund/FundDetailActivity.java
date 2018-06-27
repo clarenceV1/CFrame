@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.FundDetail;
 import com.cai.work.dagger.component.DaggerAppComponent;
@@ -31,7 +32,7 @@ public class FundDetailActivity extends AppBaseActivity<FundDetailBinding> imple
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     @Override

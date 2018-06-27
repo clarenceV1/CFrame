@@ -8,6 +8,7 @@ import com.cai.framework.widget.dialog.wheel.OneWheelDialog;
 import com.cai.framework.widget.dialog.wheel.OneWheelModel;
 import com.cai.framework.widget.dialog.wheel.WheelCallBackListener;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Bank;
 import com.cai.work.dagger.component.DaggerAppComponent;
@@ -27,7 +28,7 @@ public class AddBankCardActivity extends AppBaseActivity<AddBankCardBinding> imp
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     @Override

@@ -16,6 +16,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.widget.spiner.SpinerPopWindow;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Stock;
 import com.cai.work.bean.StockHQ;
@@ -50,7 +51,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     @Override

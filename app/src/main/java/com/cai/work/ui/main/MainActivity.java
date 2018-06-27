@@ -1,18 +1,13 @@
 package com.cai.work.ui.main;
 
-import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -20,18 +15,14 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.widget.dialog.GodDialog;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainBinding;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
-import com.readystatesoftware.systembartint.SystemBarTintManager;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -65,7 +56,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     @Override

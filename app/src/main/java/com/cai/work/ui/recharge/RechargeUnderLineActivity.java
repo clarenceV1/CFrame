@@ -11,6 +11,7 @@ import com.cai.framework.utils.PhotoUtils;
 import com.cai.framework.widget.dialog.BottomMenuDialog;
 import com.cai.framework.widget.dialog.BottomMenuModel;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.RechargeBank;
 import com.cai.work.dagger.component.DaggerAppComponent;
@@ -36,7 +37,7 @@ public class RechargeUnderLineActivity extends AppBaseActivity<RechargeUnderline
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     @Override

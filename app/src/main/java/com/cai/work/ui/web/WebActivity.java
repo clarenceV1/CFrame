@@ -12,6 +12,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.web.WebViewFragment;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WebBinding;
@@ -43,7 +44,7 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.cai.work.dagger.component;
 
+import com.cai.framework.dagger.component.FrameWorkComponent;
 import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.dagger.module.AppModule;
 import com.cai.work.ui.bank.AddBankCardActivity;
@@ -78,7 +79,7 @@ import dagger.Component;
  */
 @Singleton
 @Component(modules = {AppModule.class, FrameWorkModule.class})
-public interface AppComponent {
+public interface AppComponent extends FrameWorkComponent{
     void inject(WebActivity webActivity);
 
     void inject(ListviewScollActivity listviewScollActivity);

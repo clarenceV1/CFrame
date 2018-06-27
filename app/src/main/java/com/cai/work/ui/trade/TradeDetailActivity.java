@@ -2,6 +2,7 @@ package com.cai.work.ui.trade;
 
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.TradeDetailBinding;
@@ -16,7 +17,7 @@ public class TradeDetailActivity extends AppBaseActivity<TradeDetailBinding> imp
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     @Override

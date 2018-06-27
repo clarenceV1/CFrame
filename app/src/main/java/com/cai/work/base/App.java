@@ -9,6 +9,8 @@ import com.cai.framework.web.IWebProtocolCallback;
 import com.cai.framework.web.WebProtocolDO;
 import com.cai.framework.web.WebProtocolManager;
 import com.cai.work.bean.MyObjectBox;
+import com.cai.work.dagger.component.AppComponent;
+import com.cai.work.dagger.component.DaggerAppComponent;
 import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.Map;
@@ -26,10 +28,20 @@ public class App extends GodBaseApplication {
 
     public static BoxStore boxStore;
 
+    private static AppComponent appComponent;
+
     public void onCreate() {
         super.onCreate();
         initRouter();
         boxStore = MyObjectBox.builder().androidContext(this).build();
+
+        if (appComponent == null) {
+            appComponent = DaggerAppComponent.create();
+        }
+    }
+
+    public static AppComponent getAppComponent() {
+        return appComponent;
     }
 
     @Override

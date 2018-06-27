@@ -6,6 +6,7 @@ import android.widget.AdapterView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.RebateDetail;
 import com.cai.work.bean.RebateItem;
@@ -29,7 +30,7 @@ public class RebateActivity extends AppBaseActivity<RebateBinding> implements Re
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.bean.Account;
 import com.cai.work.bean.HomeDataSql;
 import com.cai.work.bean.respond.HomeRespond;
@@ -48,7 +49,7 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
 
     @Override
     public void onAttached() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
     }
 
     public void loadData() {

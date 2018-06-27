@@ -12,6 +12,7 @@ import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.widget.dialog.BottomMenuDialog;
 import com.cai.framework.widget.dialog.BottomMenuModel;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Withdrawal;
 import com.cai.work.bean.WithdrawalBank;
@@ -44,7 +45,7 @@ public class WithdrawalActivity extends AppBaseActivity<WithdrawalBinding> imple
 
     @Override
     public void initDagger() {
-        DaggerAppComponent.create().inject(this);
+        App.getAppComponent().inject(this);
         EventBus.getDefault().register(this);
     }
 
