@@ -21,6 +21,5 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp"
             android:src="@drawable/startup_logo" />
-
     </RelativeLayout>
 </layout>

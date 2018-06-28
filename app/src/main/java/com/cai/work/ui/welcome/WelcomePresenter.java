@@ -1,7 +1,5 @@
 package com.cai.work.ui.welcome;
 
-import android.annotation.SuppressLint;
-
 import com.alibaba.fastjson.JSON;
 import com.cai.work.R;
 import com.cai.work.base.App;
@@ -11,23 +9,19 @@ import com.cai.work.bean.MineUserModel;
 import com.cai.work.bean.respond.AppUpdateResond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.qrcode.QRCodeCreat;
-
-import org.reactivestreams.Subscription;
+import com.example.clarence.netlibrary.NetRespondNoCallBack;
 
 import java.io.File;
 
 import javax.inject.Inject;
 
-import io.reactivex.Flowable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 /**
  * Created by clarence on 2018/1/12.
  */
 public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
-
 
     @Inject
     public WelcomePresenter() {
@@ -40,30 +34,22 @@ public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
     }
 
     public void loadUpgrade() {
-//        Flowable<AppUpdateResond> flowable = requestStore.get().loadUpgrade();
-//        flowable.doAfterNext(new Consumer<AppUpdateResond>() {
-//            @Override
-//            public void accept(AppUpdateResond o){
-//
-//            }
-//        });
-//        flowable.subscribe(new Consumer<AppUpdateResond>() {
-//            @Override
-//            public void accept(AppUpdateResond data) {
-//                dataStore.get().saveAppUpdate(JSON.toJSONString(data));
-//                mView.appUpdate();
-//            }
-//        }, new Consumer<Throwable>() {
-//            @Override
-//            public void accept(Throwable throwable) {
-//                mView.appUpdate();
-//            }
-//        });
-//        mCompositeSubscription.add(disposable);
+        requestStore.get().loadUpgrade()
+                .map(new Function<AppUpdateResond, String>() {
+                    @Override
+                    public String apply(AppUpdateResond appUpdateResond) {
+                        return JSON.toJSONString(appUpdateResond.getData());
+                    }
+                }).doOnNext(new Consumer<String>() {
+            @Override
+            public void accept(String jsonStr) {
+                dataStore.get().saveAppUpdate(jsonStr);
+            }
+        }).subscribe(new NetRespondNoCallBack<String>());
     }
 
     public void loadMineData() {
-        Disposable disposable = requestStore.get().loadMineData(new Consumer<MineRespond>() {
+        requestStore.get().loadMineData().doOnNext(new Consumer<MineRespond>() {
             @Override
             public void accept(MineRespond data) {
                 MineModel mineModel = data.getData();
@@ -82,12 +68,7 @@ public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
                     createQRcode(mineModel);
                 }
             }
-        }, new Consumer<Throwable>() {
-            @Override
-            public void accept(Throwable throwable) {
-            }
-        });
-        mCompositeSubscription.add(disposable);
+        }).subscribe(new NetRespondNoCallBack<>());
     }
 
     //二维码生成

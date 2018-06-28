@@ -10,7 +10,6 @@ import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WelcomeBinding;
 import com.example.clarence.utillibrary.DeviceUtils;
 
@@ -23,7 +22,6 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
 
     @Inject
     WelcomePresenter presenter;
-    long time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +47,15 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
     @Override
     public void initView() {
         fitImage();
-        time = System.currentTimeMillis();
         presenter.loadUpgrade();
         presenter.loadMineData();
+        mViewBinding.imgTitle.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ARouter.getInstance().build("/AppModule/MainActivity").navigation();
+                finish();
+            }
+        },3000);
     }
 
     private void fitImage() {
@@ -66,25 +70,5 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
                 mViewBinding.imgTitle.setY(height - imgeHeight / 2);
             }
         });
-    }
-
-    @Override
-    public void appUpdate() {
-        long timeMillis = 3000 - (System.currentTimeMillis() - time);
-        if (timeMillis > 0) {
-            mViewBinding.imgTitle.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    goMainActivity();
-                }
-            }, timeMillis);
-        } else {
-            goMainActivity();
-        }
-    }
-
-    private void goMainActivity() {
-        ARouter.getInstance().build("/AppModule/MainActivity").navigation();
-        finish();
     }
 }
