@@ -1,5 +1,9 @@
 package com.cai.work.ui.welcome;
 
+import android.Manifest;
+import android.content.Context;
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.cai.work.R;
 import com.cai.work.base.App;
@@ -79,6 +83,12 @@ public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
             QRCodeCreat.createLogoQRImage(inviteUrl, 270, null, QRCodeCreat.resourceToBitmap(context, R.drawable.qcode_bg), file);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void createShortCut() {
+        if (!dataStore.get().getShortCut()) {
+            dataStore.get().saveShortCut();
         }
     }
 }

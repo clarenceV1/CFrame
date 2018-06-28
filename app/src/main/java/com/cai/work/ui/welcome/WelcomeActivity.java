@@ -1,5 +1,6 @@
 package com.cai.work.ui.welcome;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
@@ -47,15 +48,40 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
     @Override
     public void initView() {
         fitImage();
+        presenter.createShortCut();
         presenter.loadUpgrade();
         presenter.loadMineData();
+        installShortCut();
+        goMainActivity();
+    }
+
+    public void installShortCut() {
+        Intent shortcut = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+        // 快捷方式的名称
+        shortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, getString(R.string.app_name));
+        shortcut.putExtra("duplicate", false); // 不允许重复创建
+
+        // 快捷方式的图标
+        Intent.ShortcutIconResource iconRes = Intent.ShortcutIconResource.fromContext(mContext, R.drawable.ic_launcher);
+        shortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, iconRes);
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        intent.setAction("android.intent.action.MAIN");// 桌面图标和应用绑定，卸载应用后系统会同时自动删除图标
+        intent.addCategory("android.intent.category.LAUNCHER");// 桌面图标和应用绑定，卸载应用后系统会同时自动删除图标
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intent);
+        mContext.sendBroadcast(shortcut);
+    }
+
+
+    private void goMainActivity() {
         mViewBinding.imgTitle.postDelayed(new Runnable() {
             @Override
             public void run() {
                 ARouter.getInstance().build("/AppModule/MainActivity").navigation();
                 finish();
             }
-        },3000);
+        }, 3000);
     }
 
     private void fitImage() {

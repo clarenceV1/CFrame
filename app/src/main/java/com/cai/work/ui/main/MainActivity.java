@@ -1,9 +1,11 @@
 package com.cai.work.ui.main;
 
+import android.Manifest;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.cai.annotation.aspect.Permission;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.App;
@@ -32,7 +34,7 @@ public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements 
 
     @Override
     public void initView() {
-
+        requestPermission();
     }
 
     @Override
@@ -43,5 +45,14 @@ public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements 
     public void jump(View view){
         ARouter.getInstance().build("/AppModule/WelcomeActivity").navigation();
         finish();
+    }
+
+    @Permission(value = {
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.ACCESS_WIFI_STATE})
+    private void requestPermission() {
+
     }
 }
