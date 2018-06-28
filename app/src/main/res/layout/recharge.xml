@@ -5,6 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/ys_30_30_30"
         android:orientation="vertical">
 
         <include
@@ -13,8 +14,14 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/recharge_payway" />
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/ys_33_33_33"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="@string/recharge_payway"
+            android:textColor="@color/ys_666666"
+            android:textSize="15sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,106 +36,125 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:paddingLeft="10dp">
+                    android:layout_height="51dp"
+                    android:paddingLeft="15dp">
 
                     <ImageView
                         android:id="@+id/onLineRecharge"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_launcher" />
+                        android:background="@drawable/czzx_zhifubaoicon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="17dp"
                         android:layout_toRightOf="@+id/onLineRecharge"
-                        android:text="@string/recharge_pay_ali" />
+                        android:text="@string/recharge_pay_ali"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="14sp" />
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_launcher" />
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/czzx_erweima" />
                 </RelativeLayout>
 
-                <View style="@style/divider" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ys_51_51_51" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:paddingLeft="10dp">
+                    android:paddingLeft="15dp">
 
                     <ImageView
                         android:id="@+id/scanRecharge"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_launcher" />
+                        android:background="@drawable/exp_wxpay" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="17dp"
                         android:layout_toRightOf="@+id/scanRecharge"
-                        android:text="@string/recharge_pay_wechat" />
+                        android:text="@string/recharge_pay_wechat"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="14sp" />
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_launcher" />
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/czzx_erweima" />
 
                 </RelativeLayout>
 
-                <View style="@style/divider" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ys_51_51_51" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:paddingLeft="10dp">
+                    android:paddingLeft="15dp">
 
                     <ImageView
                         android:id="@+id/underRecharge"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_launcher" />
+                        android:background="@drawable/czzx_xianxiafukuan" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="17dp"
                         android:layout_toRightOf="@+id/underRecharge"
-                        android:text="@string/recharge_underline" />
+                        android:text="@string/recharge_underline"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="14sp" />
                 </RelativeLayout>
             </LinearLayout>
 
             <RadioGroup
-                android:layout_width="40dp"
+                android:layout_width="35dp"
                 android:layout_height="match_parent">
 
                 <RadioButton
                     android:id="@+id/checkboxAli"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    style="@style/CustomCheckboxTheme"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:paddingRight="5dp" />
 
                 <RadioButton
                     android:id="@+id/checkboxWechat"
+                    style="@style/CustomCheckboxTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <RadioButton
                     android:id="@+id/checkboxUnderLine"
+                    style="@style/CustomCheckboxTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -138,9 +164,13 @@
 
         <Button
             android:id="@+id/btnCommitPay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="@string/btn_commit_pay" />
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="43dp"
+            android:background="@color/ys_234_205_118"
+            android:text="@string/btn_commit_pay"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="18sp" />
     </LinearLayout>
 </layout>

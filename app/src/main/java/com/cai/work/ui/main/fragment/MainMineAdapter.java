@@ -102,12 +102,6 @@ public class MainMineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 ARouter.getInstance().build("/AppModule/WithdrawalActivity").navigation();
             }
         });
-        topViewHolder.btnRecharge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ARouter.getInstance().build("/AppModule/SaveActivity").navigation();
-            }
-        });
     }
 
     private void onBindListView(ListViewHolder listViewHolder, MineListData mineListData, final int position) {
