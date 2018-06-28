@@ -144,6 +144,7 @@ public class SaveActivity extends AppBaseActivity<SaveBinding> implements SaveVi
         ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(image).build();
         imageParams.setImageView(mViewBinding.imgIcon);
         imageLoader.loadImage(this, imageParams);
+        mViewBinding.imgSaveHead.setVisibility(View.GONE);
     }
 
 
