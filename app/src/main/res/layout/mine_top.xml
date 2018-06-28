@@ -3,18 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/wd_bg"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:layout_marginTop="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
 
         <ImageView
             android:id="@+id/ivIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/ic_launcher" />
+            android:background="@drawable/mine_head" />
 
         <TextView
             android:id="@+id/tvAccount"
@@ -24,29 +27,36 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/ivIcon"
             android:gravity="center_vertical"
-            android:text="13779926287" />
+            android:text="13779926287"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="19sp" />
 
         <ImageView
             android:id="@+id/imgSet"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:background="@drawable/ic_launcher" />
+            android:padding="10dp"
+            android:src="@drawable/wd_setting" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:padding="10dp">
+        android:layout_marginTop="50dp"
+        android:paddingBottom="30dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="15dp">
 
         <TextView
             android:id="@+id/tvMoneyTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mine_head_money" />
+            android:text="@string/mine_head_money"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tvMoney"
@@ -54,22 +64,30 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvMoneyTitle"
             android:layout_marginTop="10dp"
-            android:textSize="20sp"
-            tools:text="1000000.00" />
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="34sp"
+            tools:text="10000.00" />
 
         <Button
             android:id="@+id/btnRecharge"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
-            android:text="@string/mine_head_button_recharge" />
+            android:background="@drawable/btn_yellow_small"
+            android:text="@string/mine_head_button_recharge"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnWithdrawal"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/btnRecharge"
-            android:text="@string/mine_head_button_withdrawal" />
+            android:layout_marginTop="20dp"
+            android:background="@drawable/trade_tab_bg_small"
+            android:text="@string/mine_head_button_withdrawal"
+            android:textColor="@color/ys_234_205_118"
+            android:textSize="16sp" />
     </RelativeLayout>
 </LinearLayout>

@@ -168,7 +168,7 @@
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="43dp"
-            android:background="@color/ys_234_205_118"
+            android:background="@drawable/btn_yellow"
             android:text="@string/btn_commit_pay"
             android:textColor="@color/ys_255_255_255"
             android:textSize="18sp" />

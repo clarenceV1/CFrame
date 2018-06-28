@@ -35,9 +35,9 @@ public class MainMinePresenter extends GodBasePresenter<MineView> {
             R.string.mine_menu_title7, R.string.mine_menu_title8, R.string.mine_menu_title9
     };
     private int[] icons = new int[]{
-            R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher,
-            R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher,
-            R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher
+            R.drawable.mine_1, R.drawable.mine_2, R.drawable.mine_3,
+            R.drawable.mine_4, R.drawable.mine_5, R.drawable.mine_6,
+            R.drawable.mine_7, R.drawable.mine_8, R.drawable.mine_9
     };
 
     @Inject

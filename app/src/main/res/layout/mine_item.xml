@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="50dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="10dp">
+    android:background="@color/ys_33_33_33">
 
 
     <ImageView
         android:id="@+id/itemIcon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_centerVertical="true"
         tools:background="@drawable/ic_launcher" />
 
@@ -18,15 +19,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="15sp"
+        android:textColor="@color/ys_255_255_255"
         android:layout_toRightOf="@+id/itemIcon"
         tools:text="@string/mine_menu_title1" />
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/ic_launcher" />
+        android:layout_marginRight="17sp"
+        android:background="@drawable/mine_arrow" />
 
 </RelativeLayout>
