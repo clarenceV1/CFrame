@@ -14,6 +14,6 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 public abstract class AppBaseActivity<M extends ViewDataBinding> extends GodBasePresenterActivity<M> {
     @Override
     public void setStatusBar(SystemBarTintManager tintManager) {
-        tintManager.setTintColor(getResources().getColor(R.color.white_a));
+        tintManager.setTintColor(getResources().getColor(R.color.transparent));
     }
 }

@@ -1,7 +1,10 @@
 package com.cai.work.common;
 
 import android.net.Uri;
+import android.text.TextUtils;
 
+import com.alibaba.fastjson.JSON;
+import com.cai.work.bean.AppUpdate;
 import com.example.clarence.datastorelibrary.store.share_preference.ISharePreference;
 import com.example.clarence.utillibrary.encrypt.CipherUtil;
 
@@ -46,6 +49,14 @@ public class DataStore {
         sharePreference.write(APP_UPDATE, json);
     }
 
+    public AppUpdate getAppUpdate() {
+        String json = sharePreference.read(APP_UPDATE, null);
+        if (!TextUtils.isEmpty(json)) {
+            return JSON.parseObject(json, AppUpdate.class);
+        }
+        return null;
+    }
+
     /**
      * 保存语言
      *
@@ -64,7 +75,7 @@ public class DataStore {
     }
 
     public String getInviteTitle() {
-        return sharePreference.read(INVITE_TITLE, "");
+        return sharePreference.read(INVITE_TITLE, null);
     }
 
     public void saveInviteUrl(String inviteUrl) {
@@ -72,7 +83,7 @@ public class DataStore {
     }
 
     public String getInviteUrl() {
-        return sharePreference.read(INVITE_URL, "");
+        return sharePreference.read(INVITE_URL, null);
     }
 
     public void saveShortCut() {

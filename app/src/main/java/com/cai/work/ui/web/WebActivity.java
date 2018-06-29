@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -19,11 +18,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-@Route(path = "/AppModule/WebActivity", name = "web")
+@Route(path = "/moreOne/WebActivity", name = "web")
 public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRTB {
 
-    @Autowired(name = "paymentWay")
-    int paymentWay = 1;//支付方式： 1 微信 ； 2 支付宝
+    @Autowired(name = "url")
+    String url;
 
     @Inject
     WebPresenter presenter;
@@ -57,7 +56,7 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     private void initFragment() {
         Bundle bundle = new Bundle();
-        bundle.putString(WebViewFragment.KEY_RUL, "http;//www.baidu.com");
+        bundle.putString(WebViewFragment.KEY_RUL, url);
         Fragment fragment = Fragment.instantiate(this, WebViewFragment.class.getName(), bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();

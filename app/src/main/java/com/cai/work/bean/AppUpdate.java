@@ -11,6 +11,15 @@ public class AppUpdate {
     private String sha;
     private int is_remind;
     private String latest_version;
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public String getDownload_url() {
         return download_url;
