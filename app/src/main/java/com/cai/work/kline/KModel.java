@@ -23,8 +23,6 @@ public class KModel {
     private double price_h;
     private double price_l;
     private long volume;
-    private String volume_price;
-    private String zf_bfb;
 
     public String getTime() {
         return time;
@@ -72,21 +70,5 @@ public class KModel {
 
     public void setVolume(long volume) {
         this.volume = volume;
-    }
-
-    public String getVolume_price() {
-        return volume_price;
-    }
-
-    public void setVolume_price(String volume_price) {
-        this.volume_price = volume_price;
-    }
-
-    public String getZf_bfb() {
-        return zf_bfb;
-    }
-
-    public void setZf_bfb(String zf_bfb) {
-        this.zf_bfb = zf_bfb;
     }
 }

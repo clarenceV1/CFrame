@@ -15,7 +15,6 @@ public class HisData {
     private long amountVol;
     private double avePrice;
     private double total;
-    private double maSum;
 
     public HisData() {
     }
