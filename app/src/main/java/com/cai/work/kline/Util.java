@@ -28,13 +28,8 @@ public class Util {
 
     private static SimpleDateFormat sFormat2 = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
-    public static List<HisData> getK(Context context, int day) {
+    public static List<HisData> getK(Context context) {
         int res = R.raw.day_k;
-        if (day == 7) {
-            res = R.raw.week_k;
-        } else if (day == 30) {
-            res = R.raw.month_k;
-        }
         InputStream is = context.getResources().openRawResource(res);
         Writer writer = new StringWriter();
         char[] buffer = new char[1024];

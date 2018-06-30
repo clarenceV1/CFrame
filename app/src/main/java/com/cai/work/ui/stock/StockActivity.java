@@ -144,7 +144,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
     }
 
     protected void initData() {
-        final List<HisData> hisData = Util.getK(this, 7);
+        final List<HisData> hisData = Util.getK(this);
         List<HisData> subHisData = hisData.subList(50, hisData.size());
         mKLineView.initData(subHisData);
         mKLineView.setLimitLine();
