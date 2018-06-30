@@ -10,6 +10,7 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -21,8 +22,11 @@ import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Stock;
 import com.cai.work.bean.StockHQ;
 import com.cai.work.bean.StockTrade;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.StockBinding;
+import com.cai.work.kline.HisData;
+import com.cai.work.kline.KLineView;
+import com.cai.work.kline.OnLoadMoreListener;
+import com.cai.work.kline.Util;
 import com.example.clarence.utillibrary.DimensUtils;
 import com.example.clarence.utillibrary.KeyBoardUtils;
 
@@ -40,6 +44,8 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
     StockAdapter adapter;
     SpinerPopWindow spinerPopWindow;
     ViewTreeObserver.OnGlobalLayoutListener layoutListener;
+
+    private KLineView mKLineView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,8 +130,40 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
                 removeKeyboardListener();
             }
         });
+
+        mKLineView = (KLineView) findViewById(R.id.kline);
+        mKLineView.setDateFormat("yyyy-MM-dd");
+
+        initData();
+        mKLineView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mKLineView.showVolume();
+            }
+        },1000);
     }
 
+    protected void initData() {
+        final List<HisData> hisData = Util.getK(this, 7);
+        List<HisData> subHisData = hisData.subList(50, hisData.size());
+        mKLineView.initData(subHisData);
+        mKLineView.setLimitLine();
+        mKLineView.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                Toast.makeText(StockActivity.this, "触发加载更多", Toast.LENGTH_SHORT).show();
+                mKLineView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(StockActivity.this, "加载更多完成", Toast.LENGTH_SHORT).show();
+                        mKLineView.addDatasFirst(hisData.subList(0, 50));
+                        mKLineView.loadMoreComplete();
+                        mKLineView.setOnLoadMoreListener(null);
+                    }
+                }, 3000);
+            }
+        });
+    }
     public void addKeyboardListener() {
         layoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
             //当键盘弹出隐藏的时候会 调用此方法。

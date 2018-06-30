@@ -19,7 +19,7 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
-
+        multiDexEnabled true
 //        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 //        vectorDrawables.useSupportLibrary = true
     }
@@ -72,6 +72,7 @@ dependencies {
 //    annotationProcessor project(':LibAptCompiler')
 //    compile project(':LibAnnotation')
     compile project(':LibFrameWork')
+    compile project(':MPChartLib')
 
     compile rootProject.ext.dependencies["dagger"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
@@ -84,4 +85,7 @@ dependencies {
 
     compile rootProject.ext.dependencies["support-design"]
     compile rootProject.ext.dependencies["fastjson"]
+
+    compile 'com.google.android:multidex:0.1'
+//    compile project(':klinelib')
 }

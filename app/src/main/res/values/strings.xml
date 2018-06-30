@@ -1,9 +1,17 @@
 <resources>
+    <string name="loading">加载中</string>
 
     <string name="pull_to_refresh_guide_tips">下拉即可刷新</string>
     <string name="pull_to_refreshing_tips">正在刷新列表</string>
     <string name="release_to_refresh_guide_tips">松开即可刷新</string>
     <string name="quit_app">再次点击退出 MORE.ONE</string>
+    <string name="open_price">开盘价</string>
+    <string name="close_price">收盘价</string>
+    <string name="high_price">最高价</string>
+    <string name="low_price">最低价</string>
+    <string name="price">价格</string>
+    <string name="change_rate">涨跌幅</string>
+    <string name="volume">成交量</string>
 
     <string name="app_name">金囤在线</string>
     <string name="no_net">请检查网络</string>
