@@ -27,9 +27,15 @@ import com.cai.work.kline.HisData;
 import com.cai.work.kline.KLineView;
 import com.cai.work.kline.OnLoadMoreListener;
 import com.cai.work.kline.Util;
+import com.example.clarence.imageloaderlibrary.GlideCircleTransform;
+import com.example.clarence.imageloaderlibrary.ILoadImage;
+import com.example.clarence.imageloaderlibrary.ILoadImageParams;
+import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
+import com.example.clarence.utillibrary.DateUtils;
 import com.example.clarence.utillibrary.DimensUtils;
 import com.example.clarence.utillibrary.KeyBoardUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -39,6 +45,8 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     @Inject
     StockPresenter presenter;
+    @Inject
+    ILoadImage imageLoader;
     StockHQ stockHQ;
     int spinerPopwindowHeight;
     StockAdapter adapter;
@@ -46,6 +54,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
     ViewTreeObserver.OnGlobalLayoutListener layoutListener;
 
     private KLineView mKLineView;
+    String imgeUrl = "http://image.sinajs.cn/newchart/min/sh600000.gif";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,36 +143,16 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mKLineView = (KLineView) findViewById(R.id.kline);
         mKLineView.setDateFormat("yyyy-MM-dd");
 
-        initData();
-        mKLineView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mKLineView.showVolume();
-            }
-        },1000);
+        showImage();
+
     }
 
-    protected void initData() {
-        final List<HisData> hisData = Util.getK(this);
-        List<HisData> subHisData = hisData.subList(50, hisData.size());
-        mKLineView.initData(subHisData);
-        mKLineView.setLimitLine();
-        mKLineView.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                Toast.makeText(StockActivity.this, "触发加载更多", Toast.LENGTH_SHORT).show();
-                mKLineView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(StockActivity.this, "加载更多完成", Toast.LENGTH_SHORT).show();
-                        mKLineView.addDatasFirst(hisData.subList(0, 50));
-                        mKLineView.loadMoreComplete();
-                        mKLineView.setOnLoadMoreListener(null);
-                    }
-                }, 3000);
-            }
-        });
+    public void showImage() {
+        ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(imgeUrl).build();
+        imageParams.setImageView(mViewBinding.imgFenshi);
+        imageLoader.loadImage(this, imageParams);
     }
+
     public void addKeyboardListener() {
         layoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
             //当键盘弹出隐藏的时候会 调用此方法。
@@ -241,7 +230,23 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     @Override
     public void callBack(String[][] data) {
-
+        if (data != null && data.length > 0) {
+            List<HisData> hisDataList = new ArrayList<>();
+            for (int i = 0; i < data.length; i++) {
+                HisData hisData = new HisData();
+                long date = DateUtils.date2TimeStamp(data[i][0], "yyyy/MM/dd");
+                hisData.setDate(date);
+                hisData.setOpen(Float.valueOf(data[i][1]));
+                hisData.setClose(Float.valueOf(data[i][2]));
+                hisData.setLow(Float.valueOf(data[i][3]));
+                hisData.setHigh(Float.valueOf(data[i][1]));
+                hisData.setVol(Long.valueOf(data[i][6]));
+                hisDataList.add(hisData);
+            }
+            mKLineView.initData(hisDataList);
+            mKLineView.setLimitLine();
+            mKLineView.setOnLoadMoreListener(null);
+        }
     }
 
     private void refreshView() {
@@ -259,11 +264,11 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.tvSell4.setText(stockHQ.getSp4());
         mViewBinding.tvSell5.setText(stockHQ.getSp5());
 
-        mViewBinding.tvSellNum1.setText(stockHQ.getSn1()/100+"");
-        mViewBinding.tvSellNum2.setText(stockHQ.getSn2()/100+"");
-        mViewBinding.tvSellNum3.setText(stockHQ.getSn3()/100+"");
-        mViewBinding.tvSellNum4.setText(stockHQ.getSn4()/100+"");
-        mViewBinding.tvSellNum5.setText(stockHQ.getSn5()/100+"");
+        mViewBinding.tvSellNum1.setText(stockHQ.getSn1() / 100 + "");
+        mViewBinding.tvSellNum2.setText(stockHQ.getSn2() / 100 + "");
+        mViewBinding.tvSellNum3.setText(stockHQ.getSn3() / 100 + "");
+        mViewBinding.tvSellNum4.setText(stockHQ.getSn4() / 100 + "");
+        mViewBinding.tvSellNum5.setText(stockHQ.getSn5() / 100 + "");
 
         mViewBinding.tvBuy1.setText(stockHQ.getBp1());
         mViewBinding.tvBuy2.setText(stockHQ.getBp2());
@@ -271,11 +276,11 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.tvBuy4.setText(stockHQ.getBp4());
         mViewBinding.tvBuy5.setText(stockHQ.getBp5());
 
-        mViewBinding.tvBuyNum1.setText(stockHQ.getBn1()/100+"");
-        mViewBinding.tvBuyNum2.setText(stockHQ.getBn2()/100+"");
-        mViewBinding.tvBuyNum3.setText(stockHQ.getBn3()/100+"");
-        mViewBinding.tvBuyNum4.setText(stockHQ.getBn4()/100+"");
-        mViewBinding.tvBuyNum5.setText(stockHQ.getBn5()/100+"");
+        mViewBinding.tvBuyNum1.setText(stockHQ.getBn1() / 100 + "");
+        mViewBinding.tvBuyNum2.setText(stockHQ.getBn2() / 100 + "");
+        mViewBinding.tvBuyNum3.setText(stockHQ.getBn3() / 100 + "");
+        mViewBinding.tvBuyNum4.setText(stockHQ.getBn4() / 100 + "");
+        mViewBinding.tvBuyNum5.setText(stockHQ.getBn5() / 100 + "");
 
         mViewBinding.stockBottom1.setText(stockHQ.getKp_price());
         mViewBinding.stockBottom2.setText(stockHQ.getZhenfu());

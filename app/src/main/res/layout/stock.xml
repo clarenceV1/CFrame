@@ -97,11 +97,23 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <com.cai.work.kline.KLineView
-                        android:id="@+id/kline"
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" />
+                        android:layout_weight="1">
+
+                        <com.cai.work.kline.KLineView
+                            android:id="@+id/kline"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:id="@+id/imgFenshi"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/black_e" />
+                    </RelativeLayout>
+
 
                     <LinearLayout
                         android:layout_width="100dp"
