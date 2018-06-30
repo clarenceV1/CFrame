@@ -20,15 +20,6 @@ public class HisData {
     public HisData() {
     }
 
-    public HisData(double open, double close, double high, double low, long vol, long date) {
-        this.open = open;
-        this.close = close;
-        this.high = high;
-        this.low = low;
-        this.vol = vol;
-        this.date = date;
-    }
-
     public double getClose() {
         return close;
     }
@@ -117,13 +108,5 @@ public class HisData {
     @Override
     public int hashCode() {
         return (int) (date ^ (date >>> 32));
-    }
-
-    public double getMaSum() {
-        return maSum;
-    }
-
-    public void setMaSum(double maSum) {
-        this.maSum = maSum;
     }
 }

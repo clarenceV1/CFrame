@@ -10,21 +10,9 @@
         android:layout_height="@dimen/bottom_chart_height"
         android:layout_gravity="bottom" />
 
-    <FrameLayout
+    <com.cai.work.kline.CustomCombinedChart
+        android:id="@+id/price_chart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.cai.work.kline.CustomCombinedChart
-            android:id="@+id/price_chart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-
-        <com.cai.work.kline.KLineChartInfoView
-            android:id="@+id/k_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-    </FrameLayout>
+        android:layout_height="match_parent" />
 
 </FrameLayout>

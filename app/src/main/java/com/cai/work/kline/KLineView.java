@@ -69,7 +69,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
     protected CustomCombinedChart mChartPrice;
     protected CustomCombinedChart mChartVolume;
 
-    protected ChartInfoView mChartInfoView;
     protected Context mContext;
 
     /**
@@ -102,8 +101,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         LayoutInflater.from(context).inflate(R.layout.view_kline, this);
         mChartPrice = (CustomCombinedChart) findViewById(R.id.price_chart);
         mChartVolume = (CustomCombinedChart) findViewById(R.id.vol_chart);
-        mChartInfoView = (ChartInfoView) findViewById(R.id.k_info);
-        mChartInfoView.setChart(mChartPrice, mChartVolume);
 
         mChartPrice.setNoDataText(context.getString(R.string.loading));
         initChartPrice();
@@ -201,7 +198,7 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
     private void initChartListener() {
         mCoupleChartGestureListener = new CoupleChartGestureListener(this, mChartPrice, mChartVolume);
         mChartPrice.setOnChartGestureListener(mCoupleChartGestureListener);
-        mChartPrice.setOnChartValueSelectedListener(new InfoViewListener(mContext, mLastClose, mData, mChartInfoView, mChartVolume));
+        mChartPrice.setOnChartValueSelectedListener(new InfoViewListener(mContext, mLastClose, mData, mChartVolume));
         mChartPrice.setOnTouchListener(new ChartInfoViewHandler(mChartPrice));
     }
 
@@ -533,12 +530,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
 
     public void setLimitLine() {
         setLimitLine(mLastClose);
-    }
-
-    public void setLastClose(double lastClose) {
-        mLastClose = lastClose;
-        mChartPrice.setOnChartValueSelectedListener(new InfoViewListener(mContext, mLastClose, mData, mChartInfoView, mChartVolume));
-        mChartVolume.setOnChartValueSelectedListener(new InfoViewListener(mContext, mLastClose, mData, mChartInfoView, mChartPrice));
     }
 
 
