@@ -10,7 +10,6 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.PopupWindow;
-import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -25,9 +24,6 @@ import com.cai.work.bean.StockTrade;
 import com.cai.work.databinding.StockBinding;
 import com.cai.work.kline.HisData;
 import com.cai.work.kline.KLineView;
-import com.cai.work.kline.OnLoadMoreListener;
-import com.cai.work.kline.Util;
-import com.example.clarence.imageloaderlibrary.GlideCircleTransform;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
@@ -55,6 +51,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     private KLineView mKLineView;
     String imgeUrl = "http://image.sinajs.cn/newchart/min/sh600000.gif";
+    String stockCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +90,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.commonHeadView.tvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("http://www.baidu.com").navigation();
+                ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", "http://m.hellceshi.com/tpl/app/stock_rule.html").withCharSequence("title","规则").navigation();
             }
         });
         mViewBinding.tvSearch.addTextChangedListener(new TextWatcher() {
@@ -117,6 +114,14 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
             @Override
             public void afterTextChanged(Editable s) {
 
+            }
+        });
+        mViewBinding.btnCommit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!TextUtils.isEmpty(stockCode)){
+                    ARouter.getInstance().build("/AppModule/StockBuyActivity").withCharSequence("stockCode",stockCode).navigation();
+                }
             }
         });
         adapter = new StockAdapter(this);
@@ -203,6 +208,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     @Override
     public void callBack(StockTrade data) {
+        stockCode = data.getStock_code();
         presenter.requestStockHq(data.getStock_code());
         presenter.requestStockHistory(data.getStock_code());
     }

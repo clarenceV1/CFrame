@@ -2,10 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <include
@@ -14,30 +13,39 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:background="@color/ys_24_24_24"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:padding="10dp">
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp">
 
                     <TextView
                         android:id="@+id/tvStockName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text="xxxxxx" />
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="18sp"
+                        tools:text="普法银行" />
 
                     <TextView
                         android:id="@+id/tvStockCode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tvStockName"
-                        tools:text="xxxxxx" />
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="11sp"
+                        tools:text="(60000)" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -49,71 +57,94 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/stock_buy_user_money" />
+                            android:text="@string/stock_buy_user_money"
+                            android:textColor="@color/ys_255_255_255"
+                            android:textSize="13dp" />
 
                         <TextView
                             android:id="@+id/tvMoney"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
+                            android:textColor="@color/ys_219_183_108"
+                            android:textSize="16sp"
                             tools:text="99999" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="元" />
+                            android:text="元"
+                            android:textColor="@color/ys_254_254_254"
+                            android:textSize="13sp" />
 
                         <TextView
+                            android:id="@+id/tvRecharge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:background="@color/red_a"
-                            android:padding="10dp"
-                            android:text="@string/stock_buy_recharge" />
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/btn_recharge"
+                            android:paddingBottom="2dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:text="@string/stock_buy_recharge"
+                            android:textColor="@color/ys_255_255_255"
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/black_a" />
+                    android:background="@color/ys_51_51_51" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp">
+                    android:layout_height="60dp"
+                    android:paddingTop="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/stock_buy_sell_money" />
+                        android:layout_height="25dp"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center_vertical"
+                        android:text="@string/stock_buy_sell_money"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="13sp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_alignParentBottom="true"
                         android:layout_alignParentRight="true"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/stock_buy_can_sell" />
+                            android:text="@string/stock_buy_can_sell"
+                            android:textColor="@color/ys_255_255_255"
+                            android:textSize="13sp" />
 
                         <TextView
                             android:id="@+id/tvCanBuyNum"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="25dp"
                             android:layout_marginLeft="5dp"
-                            android:background="@color/red_a"
-                            android:padding="10dp"
-                            tools:text="99999" />
+                            android:background="@drawable/btn_buy_num"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingTop="5dp"
+                            android:textColor="@color/ys_219_183_108"
+                            tools:text="10" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:text="次" />
+                            android:text="次"
+                            android:textColor="@color/ys_255_255_255"
+                            android:textSize="13sp" />
 
                     </LinearLayout>
                 </RelativeLayout>
@@ -122,51 +153,260 @@
                     android:id="@+id/gridView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:numColumns="4" />
+                    android:layout_marginTop="20dp"
+                    android:horizontalSpacing="10dp"
+                    android:numColumns="4"
+                    android:verticalSpacing="10dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/stock_buy_notice" />
+                        android:text="@string/stock_buy_notice"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tvNotice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
+                        android:textColor="@color/ys_219_183_108"
+                        android:textSize="13sp"
                         tools:text="@string/stock_buy_notice" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/stock_buy_hold_time" />
+                        android:text="@string/stock_buy_hold_time"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="12sp" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/ic_launcher" />
-
-                    <CheckBox
-                        android:id="@+id/cbHoldTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="T+1/D" />
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/quest" />
+
+                    <com.cai.framework.widget.GridViewEx
+                        android:id="@+id/gridViewHoldTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:horizontalSpacing="10dp"
+                        android:numColumns="3"
+                        android:verticalSpacing="10dp" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_buy_zy"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/quest" />
+
+                    <com.cai.framework.widget.GridViewEx
+                        android:id="@+id/gridViewZy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:horizontalSpacing="10dp"
+                        android:numColumns="3"
+                        android:verticalSpacing="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_buy_zs"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/quest" />
+
+                    <com.cai.framework.widget.GridViewEx
+                        android:id="@+id/gridViewZs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:horizontalSpacing="10dp"
+                        android:numColumns="3"
+                        android:verticalSpacing="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_buy_bond"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/quest" />
+
+                    <com.cai.framework.widget.GridViewEx
+                        android:id="@+id/gridViewBond"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:horizontalSpacing="10dp"
+                        android:numColumns="3"
+                        android:verticalSpacing="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_buy_trade_money"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTradeMoney"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:textColor="@color/ys_219_183_108"
+                        android:textSize="18sp"
+                        tools:text="55" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_buy_trade_money_des"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_buy_red_bag"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvRedBag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="75dp"
+                        android:textColor="@color/ys_219_183_108"
+                        android:textSize="18sp"
+                        tools:text="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_buy_unit"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvSelectRedBag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/btn_recharge"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="@string/stock_buy_select_red_bag"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_buy_total"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTotalMoney"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/stock_buy_total"
+                        android:textColor="@color/ys_219_183_108"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_buy_unit"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnCommit"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/ys_251_38_45"
+                    android:text="@string/btn_commit"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="18sp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

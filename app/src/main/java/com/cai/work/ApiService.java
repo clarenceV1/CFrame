@@ -19,6 +19,7 @@ import com.cai.work.bean.respond.RedPacketRespond;
 import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.ServiceRespond;
 import com.cai.work.bean.respond.StockAccountRespond;
+import com.cai.work.bean.respond.StockBuyRespond;
 import com.cai.work.bean.respond.StockHQRespond;
 import com.cai.work.bean.respond.StockHoldRespond;
 import com.cai.work.bean.respond.StockListRespond;
@@ -187,4 +188,7 @@ public interface ApiService {
 
     @GET("/app/stock/getHistory")
     Flowable<String[][]> requestStockHistory(@Query("code") String code);
+
+    @GET("/app/stockTrade/checkInfo")
+    Flowable<StockBuyRespond> requestStockHistory(@Query("code") String code, @Query("token") String token);
 }

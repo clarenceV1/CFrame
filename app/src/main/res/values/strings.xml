@@ -298,4 +298,13 @@
     <string name="stock_buy_can_sell">今日还可点买</string>
     <string name="stock_buy_notice">资金使用率</string>
     <string name="stock_buy_hold_time">持仓时间</string>
+    <string name="stock_buy_zy">触发止盈</string>
+    <string name="stock_buy_zs">触发止损</string>
+    <string name="stock_buy_bond">触发保证金</string>
+    <string name="stock_buy_trade_money">交易综合费用</string>
+    <string name="stock_buy_trade_money_des">元(含两个交易日的费用)</string>
+    <string name="stock_buy_red_bag">红包抵扣</string>
+    <string name="stock_buy_unit">元</string>
+    <string name="stock_buy_select_red_bag">选择红包</string>
+    <string name="stock_buy_total">总计</string>
 </resources>

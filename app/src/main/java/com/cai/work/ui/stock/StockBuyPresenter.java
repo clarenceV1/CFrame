@@ -1,6 +1,7 @@
 package com.cai.work.ui.stock;
 
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.work.bean.respond.StockBuyRespond;
 import com.cai.work.bean.respond.StockHQRespond;
 import com.cai.work.bean.respond.StockListRespond;
 import com.cai.work.bean.respond.StockTradeRespond;
@@ -28,17 +29,17 @@ public class StockBuyPresenter extends GodBasePresenter<StockBuyView> {
 
     }
 
-    public void requestStockTrade() {
+    public void requestData(String code) {
         String token = accountDAO.getToken();
-        Disposable disposable = requestStore.requestStockTrade(token, new Consumer<StockTradeRespond>() {
+        Disposable disposable = requestStore.requestStockBuy(code, token, new Consumer<StockBuyRespond>() {
             @Override
-            public void accept(StockTradeRespond data) {
-//                mView.callBack(data.getData());
+            public void accept(StockBuyRespond data) {
+                mView.callBack(data.getData());
             }
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) {
-//                mView.toast("请求异常", 3);
+                mView.callBack("错误");
             }
         });
         mCompositeSubscription.add(disposable);
