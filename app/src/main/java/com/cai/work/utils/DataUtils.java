@@ -2,8 +2,6 @@ package com.cai.work.utils;
 
 
 import com.cai.work.kline.HisData;
-import com.cai.work.kline.KDJ;
-import com.cai.work.kline.MACD;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,39 +18,12 @@ public class DataUtils {
      */
     public static List<HisData> calculateHisData(List<HisData> list, HisData lastData) {
 
-
-        List<Double> ma5List = calculateMA(5, list);
-        List<Double> ma10List = calculateMA(10, list);
-        List<Double> ma20List = calculateMA(20, list);
-        List<Double> ma30List = calculateMA(30, list);
-        MACD macd = new MACD(list);
-        List<Double> bar = macd.getMACD();
-        List<Double> dea = macd.getDEA();
-        List<Double> dif = macd.getDIF();
-        KDJ kdj = new KDJ(list);
-        ArrayList<Double> d = kdj.getD();
-        ArrayList<Double> k = kdj.getK();
-        ArrayList<Double> j = kdj.getJ();
-
         long amountVol = 0;
         if (lastData != null) {
             amountVol = lastData.getAmountVol();
         }
         for (int i = 0; i < list.size(); i++) {
             HisData hisData = list.get(i);
-
-            hisData.setMa5(ma5List.get(i));
-            hisData.setMa10(ma10List.get(i));
-            hisData.setMa20(ma20List.get(i));
-            hisData.setMa30(ma30List.get(i));
-
-            hisData.setMacd(bar.get(i));
-            hisData.setDea(dea.get(i));
-            hisData.setDif(dif.get(i));
-
-            hisData.setD(d.get(i));
-            hisData.setK(k.get(i));
-            hisData.setJ(j.get(i));
 
             amountVol += hisData.getVol();
             hisData.setAmountVol(amountVol);
@@ -88,11 +59,6 @@ public class DataUtils {
         HisData lastData = hisDatas.get(hisDatas.size() - 1);
         long amountVol = lastData.getAmountVol();
 
-        newData.setMa5(calculateLastMA(5, hisDatas));
-        newData.setMa10(calculateLastMA(10, hisDatas));
-        newData.setMa20(calculateLastMA(20, hisDatas));
-        newData.setMa30(calculateLastMA(30, hisDatas));
-
         amountVol += newData.getVol();
         newData.setAmountVol(amountVol);
 
@@ -100,21 +66,6 @@ public class DataUtils {
         newData.setTotal(total);
         double avePrice = total / amountVol;
         newData.setAvePrice(avePrice);
-
-        MACD macd = new MACD(hisDatas);
-        List<Double> bar = macd.getMACD();
-        newData.setMacd(bar.get(bar.size() - 1));
-        List<Double> dea = macd.getDEA();
-        newData.setDea(dea.get(dea.size() - 1));
-        List<Double> dif = macd.getDIF();
-        newData.setDif(dif.get(dif.size() - 1));
-        KDJ kdj = new KDJ(hisDatas);
-        ArrayList<Double> d = kdj.getD();
-        newData.setD(d.get(d.size() - 1));
-        ArrayList<Double> k = kdj.getK();
-        newData.setK(k.get(k.size() - 1));
-        ArrayList<Double> j = kdj.getJ();
-        newData.setJ(j.get(j.size() - 1));
 
         return newData;
     }
@@ -139,26 +90,4 @@ public class DataUtils {
         }
         return result;
     }
-
-    /**
-     * calculate last MA value, return a double value
-     */
-    public static double calculateLastMA(int dayCount, List<HisData> data) {
-        dayCount--;
-        double result = Double.NaN;
-        for (int i = 0, len = data.size(); i < len; i++) {
-            if (i < dayCount) {
-                result = Double.NaN;
-                continue;
-            }
-            double sum = 0;
-            for (int j = 0; j < dayCount; j++) {
-                sum += data.get(i - j).getOpen();
-            }
-            result = (+(sum / dayCount));
-        }
-        return result;
-    }
-
-
 }

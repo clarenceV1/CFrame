@@ -10,19 +10,6 @@
         android:layout_height="@dimen/bottom_chart_height"
         android:layout_gravity="bottom" />
 
-
-    <com.cai.work.kline.CustomCombinedChart
-        android:id="@+id/macd_chart"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_chart_height"
-        android:layout_gravity="bottom" />
-
-    <com.cai.work.kline.CustomCombinedChart
-        android:id="@+id/kdj_chart"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_chart_height"
-        android:layout_gravity="bottom" />
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

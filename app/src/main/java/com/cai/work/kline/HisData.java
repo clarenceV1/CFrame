@@ -16,24 +16,6 @@ public class HisData {
     private double avePrice;
     private double total;
     private double maSum;
-    private double ma5;
-    private double ma10;
-    private double ma20;
-    private double ma30;
-
-    private double dif;
-    private double dea;
-    private double macd;
-
-    private double k;
-    private double d;
-    private double j;
-
-    public double getDif() {
-        return dif;
-    }
-
-
 
     public HisData() {
     }
@@ -114,39 +96,6 @@ public class HisData {
         this.total = total;
     }
 
-    public double getMa5() {
-        return ma5;
-    }
-
-    public void setMa5(double ma5) {
-        this.ma5 = ma5;
-    }
-
-    public double getMa10() {
-        return ma10;
-    }
-
-    public void setMa10(double ma10) {
-        this.ma10 = ma10;
-    }
-
-    public double getMa20() {
-        return ma20;
-    }
-
-    public void setMa20(double ma20) {
-        this.ma20 = ma20;
-    }
-
-    public double getMa30() {
-        return ma30;
-    }
-
-    public void setMa30(double ma30) {
-        this.ma30 = ma30;
-    }
-
-
     public long getDate() {
         return date;
     }
@@ -177,75 +126,4 @@ public class HisData {
     public void setMaSum(double maSum) {
         this.maSum = maSum;
     }
-
-    public void setDif(double dif) {
-        this.dif = dif;
-    }
-
-    public double getDea() {
-        return dea;
-    }
-
-    public void setDea(double dea) {
-        this.dea = dea;
-    }
-
-    public double getMacd() {
-        return macd;
-    }
-
-    public void setMacd(double macd) {
-        this.macd = macd;
-    }
-
-    public double getK() {
-        return k;
-    }
-
-    public void setK(double k) {
-        this.k = k;
-    }
-
-    public double getD() {
-        return d;
-    }
-
-    public void setD(double d) {
-        this.d = d;
-    }
-
-    public double getJ() {
-        return j;
-    }
-
-    public void setJ(double j) {
-        this.j = j;
-    }
-
-    @Override
-    public String toString() {
-        return "HisData{" +
-                "close=" + close +
-                ", high=" + high +
-                ", low=" + low +
-                ", open=" + open +
-                ", vol=" + vol +
-                ", date=" + date +
-                ", amountVol=" + amountVol +
-                ", avePrice=" + avePrice +
-                ", total=" + total +
-                ", maSum=" + maSum +
-                ", ma5=" + ma5 +
-                ", ma10=" + ma10 +
-                ", ma20=" + ma20 +
-                ", ma30=" + ma30 +
-                ", dif=" + dif +
-                ", dea=" + dea +
-                ", macd=" + macd +
-                ", k=" + k +
-                ", d=" + d +
-                ", j=" + j +
-                '}';
-    }
-
 }

@@ -62,10 +62,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
     public static final int MA20 = 20;
     public static final int MA30 = 30;
 
-    public static final int K = 31;
-    public static final int D = 32;
-    public static final int J = 33;
-
     public static final int DIF = 34;
     public static final int DEA = 35;
 
@@ -224,22 +220,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         for (int i = 0; i < mData.size(); i++) {
             HisData hisData = mData.get(i);
             lineCJEntries.add(new CandleEntry(i, (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
-
-            if (!Double.isNaN(hisData.getMa5())) {
-                ma5Entries.add(new Entry(i, (float) hisData.getMa5()));
-            }
-
-            if (!Double.isNaN(hisData.getMa10())) {
-                ma10Entries.add(new Entry(i, (float) hisData.getMa10()));
-            }
-
-            if (!Double.isNaN(hisData.getMa20())) {
-                ma20Entries.add(new Entry(i, (float) hisData.getMa20()));
-            }
-
-            if (!Double.isNaN(hisData.getMa30())) {
-                ma30Entries.add(new Entry(i, (float) hisData.getMa30()));
-            }
         }
 
         if (!mData.isEmpty() && mData.size() < MAX_COUNT) {
@@ -273,8 +253,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
 
         HisData hisData = getLastData();
         setDescription(mChartVolume, "成交量 " + hisData.getVol());
-        setDescription(mChartPrice, String.format(Locale.getDefault(), "MA5:%.2f  MA10:%.2f  MA20:%.2f  MA30:%.2f",
-                hisData.getMa5(), hisData.getMa10(), hisData.getMa20(), hisData.getMa30()));
     }
 
 
@@ -297,18 +275,7 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         if (type == NORMAL_LINE) {
             lineDataSetMa.setColor(getResources().getColor(R.color.normal_line_color));
             lineDataSetMa.setCircleColor(ContextCompat.getColor(mContext, R.color.normal_line_color));
-        } else if (type == K) {
-            lineDataSetMa.setColor(getResources().getColor(R.color.k));
-            lineDataSetMa.setCircleColor(mTransparentColor);
-        } else if (type == D) {
-            lineDataSetMa.setColor(getResources().getColor(R.color.d));
-            lineDataSetMa.setCircleColor(mTransparentColor);
-            lineDataSetMa.setHighlightEnabled(false);
-        } else if (type == J) {
-            lineDataSetMa.setColor(getResources().getColor(R.color.j));
-            lineDataSetMa.setCircleColor(mTransparentColor);
-            lineDataSetMa.setHighlightEnabled(false);
-        } else if (type == DIF) {
+        } else  if (type == DIF) {
             lineDataSetMa.setColor(getResources().getColor(R.color.dif));
             lineDataSetMa.setCircleColor(mTransparentColor);
             lineDataSetMa.setHighlightEnabled(false);
@@ -469,20 +436,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         klineSet.addEntry(new CandleEntry(klineCount, (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
         volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol(), hisData));
 
-        // 因为ma的数量会少，所以这里用kline的set数量作为x
-        if (!Double.isNaN(hisData.getMa5())) {
-            ma5Set.addEntry(new Entry(klineCount, (float) hisData.getMa5()));
-        }
-        if (!Double.isNaN(hisData.getMa10())) {
-            ma10Set.addEntry(new Entry(klineCount, (float) hisData.getMa10()));
-        }
-        if (!Double.isNaN(hisData.getMa20())) {
-            ma20Set.addEntry(new Entry(klineCount, (float) hisData.getMa20()));
-        }
-        if (!Double.isNaN(hisData.getMa30())) {
-            ma30Set.addEntry(new Entry(klineCount, (float) hisData.getMa30()));
-        }
-
 
         mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 1.5f);
         mChartVolume.getXAxis().setAxisMaximum(mChartVolume.getData().getXMax() + 1.5f);
@@ -528,22 +481,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         for (int i = 0; i < mData.size(); i++) {
             HisData hisData = mData.get(i);
             klineSet.addEntry(new CandleEntry(i, (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
-
-            if (!Double.isNaN(hisData.getMa5())) {
-                ma5Set.addEntry(new Entry(i, (float) hisData.getMa5()));
-            }
-
-            if (!Double.isNaN(hisData.getMa10())) {
-                ma10Set.addEntry(new Entry(i, (float) hisData.getMa10()));
-            }
-
-            if (!Double.isNaN(hisData.getMa20())) {
-                ma20Set.addEntry(new Entry(i, (float) hisData.getMa20()));
-            }
-
-            if (!Double.isNaN(hisData.getMa30())) {
-                ma30Set.addEntry(new Entry(i, (float) hisData.getMa30()));
-            }
             volSet.addEntry(new BarEntry(i, hisData.getVol(), hisData));
         }
 
@@ -567,8 +504,8 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
     }
 
     private void setChartDescription(HisData hisData) {
-        setDescription(mChartPrice, String.format(Locale.getDefault(), "MA5:%.2f  MA10:%.2f  MA20:%.2f  MA30:%.2f",
-                hisData.getMa5(), hisData.getMa10(), hisData.getMa20(), hisData.getMa30()));
+//        setDescription(mChartPrice, String.format(Locale.getDefault(), "MA5:%.2f  MA10:%.2f  MA20:%.2f  MA30:%.2f",
+//                hisData.getMa5(), hisData.getMa10(), hisData.getMa20(), hisData.getMa30()));
         setDescription(mChartVolume, "成交量 " + hisData.getVol());
     }
 
