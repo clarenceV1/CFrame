@@ -191,4 +191,11 @@ public interface ApiService {
 
     @GET("/app/stockTrade/checkInfo")
     Flowable<StockBuyRespond> requestStockHistory(@Query("code") String code, @Query("token") String token);
+
+    @POST("/app/stockTrade/checkBuy")
+    @FormUrlEncoded
+    Flowable<CommonRespond> commitStockBuy(@Field("token") String token, @Field("code") String code, @Field("name") String name,
+                                           @Field("marketType") String marketType,@Field("price") String price,@Field("amount") String amount,
+                                           @Field("principal") String principal,@Field("bzj") String bzj,@Field("zy") String zy,
+                                           @Field("zs") String zs,@Field("redbagIds") String redbagIds,@Field("zhf") String zhf);
 }

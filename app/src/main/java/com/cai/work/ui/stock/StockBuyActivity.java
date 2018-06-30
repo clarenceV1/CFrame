@@ -31,6 +31,7 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
     StockBuyMoneyAdapter bondAdapter;
     StockBuyMoneyAdapter zsAdapter;
     StockBuyMoneyAdapter holdTimeAdapter;
+    StockBuy data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +118,23 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
                 zsAdapter.setCheckPosition(position);
             }
         });
+        mViewBinding.btnCommit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String code = data.getStock().getStockCode();
+                String name = data.getStock().getStockName();
+                String marketType = data.getStock().getStockMarket();
+                String price = "";
+                String amount = "";
+                String principal = "";
+                String bzj = "";
+                String zy = "";
+                String zs = "";
+                String redbagIds = "";
+                String zhf = "";
+                presenter.commitBuy(code, name, marketType, price, amount, principal, bzj, zy, zs, redbagIds, zhf);
+            }
+        });
     }
 
     @Override
@@ -126,6 +144,7 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
 
     @Override
     public void callBack(StockBuy data) {
+        this.data = data;
         if (data.getStock() != null) {
             mViewBinding.tvStockName.setText(data.getStock().getStockName());
             mViewBinding.tvStockCode.setText("(" + data.getStock().getStockCode() + ")");

@@ -44,4 +44,35 @@ public class StockBuyPresenter extends GodBasePresenter<StockBuyView> {
         });
         mCompositeSubscription.add(disposable);
     }
+
+    /**
+     * @param code       股票代码
+     * @param name       股票名称
+     * @param marketType 市场类别
+     * @param price      价格
+     * @param amount     数量
+     * @param principal  点买金额
+     * @param bzj        保证金
+     * @param zy         止盈
+     * @param zs         止损
+     * @param redbagIds  红包id
+     * @param zhf        综合费
+     */
+    public void commitBuy(String code, String name, String marketType, String price, String amount, String principal,
+                          String bzj, String zy, String zs, String redbagIds, String zhf) {
+        String token = accountDAO.getToken();
+        Disposable disposable = requestStore.commitStockBuy(token, code, name, marketType, price, amount, principal,
+                bzj, zy, zs, redbagIds, zhf, new Consumer<StockBuyRespond>() {
+                    @Override
+                    public void accept(StockBuyRespond data) {
+                        mView.callBack(data.getData());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) {
+                        mView.callBack("错误");
+                    }
+                });
+        mCompositeSubscription.add(disposable);
+    }
 }
