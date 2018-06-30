@@ -96,7 +96,7 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
                     public void onClick(DialogInterface dialog, int which) {
                         cleanAllMessage();
                     }
-                }).create().show();
+                }).build().show();
     }
 
     private void cleanAllMessage() {

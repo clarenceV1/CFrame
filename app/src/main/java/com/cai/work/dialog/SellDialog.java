@@ -41,6 +41,6 @@ public class SellDialog {
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
-                }).create().show();
+                }).build().show();
     }
 }

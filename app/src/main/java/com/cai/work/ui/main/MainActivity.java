@@ -142,7 +142,7 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
                     public void onClick(DialogInterface dialog, int which) {
                         ARouter.getInstance().build("/AppModule/LoginActivity").navigation();
                     }
-                }).create().show();
+                }).build().show();
     }
 
     private boolean tabClick(String fragmentName) {
