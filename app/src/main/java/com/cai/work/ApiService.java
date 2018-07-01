@@ -8,6 +8,7 @@ import com.cai.work.bean.respond.BankCardRespond;
 import com.cai.work.bean.respond.BankListRespond;
 import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.ForwardAccountRespond;
+import com.cai.work.bean.respond.ForwardBuyRespond;
 import com.cai.work.bean.respond.ForwardContractsRespond;
 import com.cai.work.bean.respond.FundDetailRespond;
 import com.cai.work.bean.respond.InviteResond;
@@ -198,4 +199,7 @@ public interface ApiService {
                                            @Field("marketType") String marketType,@Field("price") String price,@Field("amount") String amount,
                                            @Field("principal") String principal,@Field("bzj") String bzj,@Field("zy") String zy,
                                            @Field("zs") String zs,@Field("redbagIds") String redbagIds,@Field("zhf") String zhf);
+    @GET("/app/futures/futures_info")
+    Flowable<ForwardBuyRespond> requestForwardBuy(@Query("code") String code, @Query("token") String token);
+
 }

@@ -7,6 +7,7 @@ import com.cai.work.ui.bank.AddBankCardActivity;
 import com.cai.work.ui.bank.BankCardChooseActivity;
 import com.cai.work.ui.bank.BankCardListActivity;
 import com.cai.work.ui.forward.ForwardActivity;
+import com.cai.work.ui.forward.ForwardBuyActivity;
 import com.cai.work.ui.fund.FundDetailActivity;
 import com.cai.work.ui.invite.InviteActivity;
 import com.cai.work.ui.invite.InviteWayActivity;
@@ -180,4 +181,6 @@ public interface AppComponent extends FrameWorkComponent{
     void inject(StockBuyActivity activity);
 
 //    void inject(StockBuyPresenter presenter);
+
+    void inject(ForwardBuyActivity activity);
 }

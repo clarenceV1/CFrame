@@ -1,6 +1,7 @@
 package com.cai.work.ui.stock;
 
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.StockBuyRespond;
 import com.cai.work.bean.respond.StockHQRespond;
 import com.cai.work.bean.respond.StockListRespond;
@@ -62,9 +63,9 @@ public class StockBuyPresenter extends GodBasePresenter<StockBuyView> {
                           String bzj, String zy, String zs, String redbagIds, String zhf) {
         String token = accountDAO.getToken();
         Disposable disposable = requestStore.commitStockBuy(token, code, name, marketType, price, amount, principal,
-                bzj, zy, zs, redbagIds, zhf, new Consumer<StockBuyRespond>() {
+                bzj, zy, zs, redbagIds, zhf, new Consumer<CommonRespond>() {
                     @Override
-                    public void accept(StockBuyRespond data) {
+                    public void accept(CommonRespond data) {
                         mView.callBack(data.getData());
                     }
                 }, new Consumer<Throwable>() {

@@ -131,6 +131,10 @@
         <activity
             android:name=".ui.stock.StockBuyActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.forward.ForwardBuyActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

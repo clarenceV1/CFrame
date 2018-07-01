@@ -4,7 +4,7 @@ import com.cai.framework.bean.CBaseData;
 
 public class StockBuyMoney implements CBaseData {
     private float time;//倍率
-    private int type;//1:买入金额，2:止盈，3，止损，4，保证金,0持仓时间
+    private int type;//1:买入金额/几手，2:止盈，3，止损，4，保证金,0持仓时间
 
     private String txt;
 

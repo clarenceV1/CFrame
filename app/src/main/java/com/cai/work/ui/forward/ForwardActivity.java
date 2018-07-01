@@ -66,6 +66,24 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
         initHead();
         initSpinner();
         refreshView();
+        mViewBinding.btnRise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/ForwardDetailActivity")
+                        .withInt("type",1)
+                        .withCharSequence("forwardCode",forward.getCode())
+                        .navigation();
+            }
+        });
+        mViewBinding.btnDrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/ForwardDetailActivity")
+                        .withInt("type",2)
+                        .withCharSequence("forwardCode",forward.getCode())
+                        .navigation();
+            }
+        });
     }
 
     private void refreshView() {

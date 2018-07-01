@@ -16,6 +16,7 @@ import com.cai.work.bean.StockBuyMoney;
 import com.cai.work.dagger.module.AppModule;
 import com.cai.work.databinding.StockBuyBinding;
 import com.cai.work.ui.recharge.RechargeActivity;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -131,24 +132,20 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
         mViewBinding.btnCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (data == null || data.getStock() == null) {
+                    return;
+                }
                 String code = data.getStock().getStockCode();
                 String name = data.getStock().getStockName();
                 String marketType = data.getStock().getStockMarket();
-                String price = "";
-                String amount = "";
-                String principal = "";
-                String bzj = "";
-                String zy = "";
-                if (zyAdapter != null && data != null && data.getZy() != null) {
-                    int zyPosition = zyAdapter.getCheckPosition();
-                    zy = data.getZy()[zyPosition] + "";
-                }
-                String zs = "";
-                if (zsAdapter != null && data != null) {
-                    zs = data.getZs() + "";
-                }
+                String price = data.getStock().getMk_price() + "";
+                String amount = ((int) (buyMoneyAdapter.getBuyMoney() / data.getStock().getMk_price()) + "");
+                String principal = buyMoneyAdapter.getBuyMoney() + "";
+                String bzj = bondAdapter.getBuyMoney() + "";
+                String zy = zyAdapter.getBuyMoney() + "";
+                String zs = zsAdapter.getBuyMoney() + "";
                 String redbagIds = "";
-                String zhf = "";
+                String zhf = data.getZhf() + "";
                 presenter.commitBuy(code, name, marketType, price, amount, principal, bzj, zy, zs, redbagIds, zhf);
             }
         });
@@ -238,7 +235,8 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
         int buyMoney = buyMoneyAdapter.getBuyMoney();
         float mkPrice = data.getStock().getMk_price();
         int stockNum = (int) (buyMoney / mkPrice);
-        float shiyonglv = mkPrice * stockNum / buyMoney;
+        String shiyonglv = (mkPrice * stockNum * 100 / buyMoney) + "";
+        shiyonglv = shiyonglv.substring(0, 5);
         mViewBinding.tvNotice.setText(String.format(getString(R.string.stock_buy_can_buy_stock_num), stockNum + "", shiyonglv + "%"));
 
         float bondMoney = bondAdapter.getBuyMoney() + data.getZhf();
@@ -248,6 +246,6 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
 
     @Override
     public void callBack(String msg) {
-
+        ToastUtils.showShort(msg);
     }
 }

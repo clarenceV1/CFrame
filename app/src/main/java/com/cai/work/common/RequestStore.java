@@ -366,9 +366,17 @@ public class RequestStore {
     }
 
     public Disposable commitStockBuy(String token, String code, String name, String marketType, String price, String amount, String principal,
-                                      String bzj, String zy, String zs, String redbagIds, String zhf, Consumer onNext, Consumer onError) {
+                                     String bzj, String zy, String zs, String redbagIds, String zhf, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).commitStockBuy(token, code, name, marketType, price, amount, principal, bzj, zy, zs
                 , redbagIds, zhf)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable requestForwardBuy(String token, String code, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestForwardBuy(code, token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);
