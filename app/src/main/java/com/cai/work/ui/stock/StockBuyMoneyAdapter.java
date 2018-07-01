@@ -49,4 +49,8 @@ public class StockBuyMoneyAdapter extends GodBaseAdapter {
         this.checkPosition = checkPosition;
         notifyDataSetChanged();
     }
+
+    public int getCheckPosition() {
+        return checkPosition;
+    }
 }

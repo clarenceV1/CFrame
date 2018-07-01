@@ -129,7 +129,14 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
                 String principal = "";
                 String bzj = "";
                 String zy = "";
+                if (zyAdapter != null && data != null && data.getZy() != null) {
+                    int zyPosition = zyAdapter.getCheckPosition();
+                    zy = data.getZy()[zyPosition] + "";
+                }
                 String zs = "";
+                if (zsAdapter != null && data != null) {
+                    zs = data.getZs()+ "";
+                }
                 String redbagIds = "";
                 String zhf = "";
                 presenter.commitBuy(code, name, marketType, price, amount, principal, bzj, zy, zs, redbagIds, zhf);
