@@ -11,7 +11,7 @@ public class StockBuyStock {
     private String stockName;
     private String shortHand;
     private String stockMarket;
-    private String mk_price;
+    private float mk_price;
     private String shortMarket;
 
     public String getStockCode() {
@@ -46,11 +46,11 @@ public class StockBuyStock {
         this.stockMarket = stockMarket;
     }
 
-    public String getMk_price() {
+    public float getMk_price() {
         return mk_price;
     }
 
-    public void setMk_price(String mk_price) {
+    public void setMk_price(float mk_price) {
         this.mk_price = mk_price;
     }
 

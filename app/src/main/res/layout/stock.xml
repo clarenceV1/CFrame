@@ -5,6 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/ys_30_30_30"
         android:orientation="vertical">
 
         <include
@@ -24,37 +25,44 @@
                 <RelativeLayout
                     android:id="@+id/rlSearch"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:layout_height="56dp"
+                    android:background="@color/ys_34_34_34"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="10dp">
 
                     <EditText
                         android:id="@+id/tvSearch"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="@color/red_a"
+                        android:background="@drawable/search_input_bg2"
                         android:hint="@string/stock_search_hint"
-                        android:paddingLeft="50dp" />
+                        android:paddingLeft="30dp"
+                        android:textColorHint="@color/ys_102_102_102"
+                        android:textSize="12sp" />
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
-                        android:background="@drawable/ic_launcher" />
+                        android:background="@drawable/jy_search" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp">
+                    android:layout_marginTop="20dp"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="15dp">
 
                     <TextView
                         android:id="@+id/tvName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="18sp"
                         tools:text="沪金" />
 
                     <TextView
@@ -62,8 +70,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tvName"
-                        android:layout_marginTop="5dp"
-                        tools:text="kjsdfjsf" />
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/ys_153_153_153"
+                        android:textSize="12sp"
+                        tools:text="(kjsdfjsf)" />
 
                     <TextView
                         android:id="@+id/tvPrice1"
@@ -71,7 +81,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:text="0.00"
-                        android:textSize="25sp" />
+                        android:textColor="@color/ys_232_0_63"
+                        android:textSize="27sp" />
 
                     <TextView
                         android:id="@+id/tvPrice2"
@@ -79,6 +90,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignLeft="@+id/tvPrice1"
                         android:layout_below="@+id/tvPrice1"
+                        android:textColor="@color/ys_232_0_63"
+                        android:textSize="12sp"
                         tools:text="+0" />
 
                     <TextView
@@ -88,9 +101,48 @@
                         android:layout_below="@+id/tvPrice1"
                         android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@+id/tvPrice2"
-                        android:text="+0.00%" />
+                        android:text="+0.00%"
+                        android:textColor="@color/ys_232_0_63"
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ys_28_38_47" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp">
+
+                    <TextView
+                        android:id="@+id/tvFenShi"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="分时"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvKLine"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="K线"
+                        android:textColor="@color/ys_219_183_108"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -118,6 +170,7 @@
                     <LinearLayout
                         android:layout_width="100dp"
                         android:layout_height="200dp"
+                        android:layout_marginLeft="10dp"
                         android:orientation="vertical">
 
                         <LinearLayout

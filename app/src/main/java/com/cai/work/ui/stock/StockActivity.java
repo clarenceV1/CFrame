@@ -78,6 +78,10 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     @Override
     public void initView() {
+        View rootView = findViewById(android.R.id.content);
+        if (rootView != null) {
+            rootView.setBackgroundResource(R.color.ys_24_24_24);
+        }
         mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.stock_titile));
         mViewBinding.commonHeadView.ivGoBack.setOnClickListener(new View.OnClickListener() {
             @Override

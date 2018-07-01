@@ -16,6 +16,7 @@
     <color name="ys_24_24_24">#181818</color>
     <color name="ys_24_25_25">#181919</color>
     <color name="ys_26_26_26">#1a1a1a</color>
+    <color name="ys_28_38_47">#1c262f</color>
     <color name="ys_30_30_30">#1e1e1e</color>
     <color name="ys_33_33_33">#212121</color>
     <color name="ys_34_34_34">#222222</color>
@@ -41,6 +42,7 @@
     <color name="ys_247_247_247">#f7f7f7</color>
     <color name="ys_251_38_45">#fb262d</color>
     <color name="ys_252_238_238">#fceeee</color>
+    <color name="ys_232_0_63">#e8003f</color>
     <color name="ys_254_254_254">#fefefe</color>
     <color name="ys_255_255_255">#ffffff</color>
 

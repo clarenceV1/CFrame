@@ -25,7 +25,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="120dp"
                     android:paddingBottom="20dp"
                     android:paddingTop="20dp">
 
@@ -207,6 +207,33 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:horizontalSpacing="10dp"
+                        android:numColumns="2"
+                        android:verticalSpacing="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_buy_bond"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/quest" />
+
+                    <com.cai.framework.widget.GridViewEx
+                        android:id="@+id/gridViewBond"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:horizontalSpacing="10dp"
                         android:numColumns="3"
                         android:verticalSpacing="10dp" />
                 </LinearLayout>
@@ -262,33 +289,6 @@
 
                     <com.cai.framework.widget.GridViewEx
                         android:id="@+id/gridViewZs"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:horizontalSpacing="10dp"
-                        android:numColumns="3"
-                        android:verticalSpacing="10dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/stock_buy_bond"
-                        android:textColor="@color/ys_255_255_255"
-                        android:textSize="12sp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/quest" />
-
-                    <com.cai.framework.widget.GridViewEx
-                        android:id="@+id/gridViewBond"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:horizontalSpacing="10dp"
@@ -396,6 +396,15 @@
                         android:textColor="@color/ys_255_255_255"
                         android:textSize="13sp" />
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/stock_buy_notice2"
+                    android:textColor="@color/ys_204_204_204"
+                    android:textSize="10dp" />
 
                 <Button
                     android:id="@+id/btnCommit"

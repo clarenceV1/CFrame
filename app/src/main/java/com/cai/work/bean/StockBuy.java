@@ -4,7 +4,7 @@ public class StockBuy {
    private float[] bond;
    private float[] zy;
    private float zs;
-   private String zhf;
+   private float zhf;
    private String yybzj;
    private float[] buyMoney;
    private String begin;
@@ -41,11 +41,11 @@ public class StockBuy {
       this.zs = zs;
    }
 
-   public String getZhf() {
+   public float getZhf() {
       return zhf;
    }
 
-   public void setZhf(String zhf) {
+   public void setZhf(float zhf) {
       this.zhf = zhf;
    }
 

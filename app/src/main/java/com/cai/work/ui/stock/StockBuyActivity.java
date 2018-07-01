@@ -13,7 +13,9 @@ import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.StockBuy;
 import com.cai.work.bean.StockBuyMoney;
+import com.cai.work.dagger.module.AppModule;
 import com.cai.work.databinding.StockBuyBinding;
+import com.cai.work.ui.recharge.RechargeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +72,12 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
                 ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", "http://m.hellceshi.com/tpl/app/stock_rule.html").withCharSequence("title", "规则").navigation();
             }
         });
+        mViewBinding.tvRecharge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/RechargeActivity").navigation();
+            }
+        });
         presenter.requestData(stockCode);
 
         holdTimeAdapter = new StockBuyMoneyAdapter(this);
@@ -88,6 +96,7 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 buyMoneyAdapter.setCheckPosition(position);
+                refreshView(true);
             }
         });
 
@@ -97,6 +106,7 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 bondAdapter.setCheckPosition(position);
+                refreshView(false);
             }
         });
 
@@ -135,7 +145,7 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
                 }
                 String zs = "";
                 if (zsAdapter != null && data != null) {
-                    zs = data.getZs()+ "";
+                    zs = data.getZs() + "";
                 }
                 String redbagIds = "";
                 String zhf = "";
@@ -158,16 +168,11 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
         }
         mViewBinding.tvMoney.setText(data.getBalance());
         mViewBinding.tvCanBuyNum.setText(data.getClick_times());
-
-        mViewBinding.tvNotice.setText("可买入1800股，资金使用率96.84%");
-        mViewBinding.tvTradeMoney.setText(data.getZhf());
-
-        mViewBinding.tvTotalMoney.setText("88888");
-        mViewBinding.tvRedBag.setText("0");
+        mViewBinding.tvTradeMoney.setText(data.getZhf() + "");
 
         List<StockBuyMoney> holdList = new ArrayList<>();
         StockBuyMoney holdMoney = new StockBuyMoney();
-        holdMoney.setMoney("¥" + data.getHoldTime());
+        holdMoney.setTxt(data.getHoldTime());
         holdMoney.setType(0);
         holdList.add(holdMoney);
         holdTimeAdapter.update(holdList);
@@ -177,7 +182,7 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
             List<StockBuyMoney> buyMoneyList = new ArrayList<>();
             for (float buyMoney : buyMoneys) {
                 StockBuyMoney money = new StockBuyMoney();
-                money.setMoney(buyMoney + "万");
+                money.setTime(buyMoney);
                 money.setType(1);
                 buyMoneyList.add(money);
             }
@@ -189,9 +194,9 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
             List<StockBuyMoney> zyList = new ArrayList<>();
             for (float zy : zys) {
                 StockBuyMoney buyMoney = new StockBuyMoney();
-                buyMoney.setType(2);
+                buyMoney.setType(3);
                 try {
-                    buyMoney.setMoney("¥" + (int) (zy * 10000));
+                    buyMoney.setTime(zy);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -200,24 +205,45 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
             zyAdapter.update(zyList);
         }
 
-        List<StockBuyMoney> zsList = new ArrayList<>();
-        StockBuyMoney buyMoney = new StockBuyMoney();
-        buyMoney.setMoney("¥" + data.getZs());
-        buyMoney.setType(3);
-        zsList.add(buyMoney);
-        zsAdapter.update(zsList);
-
         float[] bonds = data.getBond();
         if (bonds != null && bonds.length > 0) {
+            List<StockBuyMoney> zsList = new ArrayList<>();
             List<StockBuyMoney> bondList = new ArrayList<>();
             for (float bond : bonds) {
                 StockBuyMoney stockBuyMoney = new StockBuyMoney();
-                stockBuyMoney.setMoney("¥" + bond);
-                stockBuyMoney.setType(4);
+                stockBuyMoney.setTime(bond);
+                stockBuyMoney.setType(2);
                 bondList.add(stockBuyMoney);
+
+                StockBuyMoney zsMoney = new StockBuyMoney();
+                zsMoney.setTime(data.getZs());
+                zsMoney.setType(4);
+                zsList.add(zsMoney);
             }
             bondAdapter.update(bondList);
+            zsAdapter.update(zsList);
         }
+        refreshView(false);
+    }
+
+    private void refreshView(boolean isfreshBonde) {
+        if (data == null || data.getStock() == null) {
+            return;
+        }
+        if (isfreshBonde) {
+            bondAdapter.setBaseMoney(buyMoneyAdapter.getBuyMoney());
+        }
+        zsAdapter.setBaseMoney(bondAdapter.getBuyMoney());
+
+        int buyMoney = buyMoneyAdapter.getBuyMoney();
+        float mkPrice = data.getStock().getMk_price();
+        int stockNum = (int) (buyMoney / mkPrice);
+        float shiyonglv = mkPrice * stockNum / buyMoney;
+        mViewBinding.tvNotice.setText(String.format(getString(R.string.stock_buy_can_buy_stock_num), stockNum + "", shiyonglv + "%"));
+
+        float bondMoney = bondAdapter.getBuyMoney() + data.getZhf();
+        mViewBinding.tvTotalMoney.setText(bondMoney + "");
+        mViewBinding.tvRedBag.setText("0");
     }
 
     @Override
