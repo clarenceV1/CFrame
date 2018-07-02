@@ -49,10 +49,8 @@ public class SocThread extends Thread {
             client = new Socket(ip, port);
             client.setSoTimeout(timeout);// 设置阻塞时间
             Log.i(TAG, "连接成功");
-            in = new BufferedReader(new InputStreamReader(
-                    client.getInputStream()));
-            out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(
-                    client.getOutputStream())), true);
+            in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(client.getOutputStream())), true);
             Log.i(TAG, "输入输出流获取成功");
         } catch (UnknownHostException e) {
             Log.i(TAG, "连接错误UnknownHostException 重新获取");

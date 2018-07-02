@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.RadioGroup;
 
 import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.lib.logger.Logger;
@@ -18,12 +17,18 @@ import com.cai.work.bean.ForwardAccount;
 import com.cai.work.bean.SocketInfo;
 import com.cai.work.bean.StockAccount;
 import com.cai.work.bean.StockHold;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainHoldFragmentBinding;
 import com.cai.work.socket.SocThread;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -142,6 +147,31 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
 //        initSocket();
 //        String userID = presenter.getUserId();
 //        socketThread.Send("hold|0|" + userID + "|mn");
+//        socketTest();
+    }
+
+    private void socketTest() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Socket socket = new Socket("ws://47.75.37.208",7709);
+                    //向服务器发送消息
+                    PrintWriter out = new PrintWriter( new BufferedWriter( new OutputStreamWriter(socket.getOutputStream())),true);
+                    String userID = presenter.getUserId();
+                    userID = "hold|0|" + userID;
+                    out.println(userID);
+                    BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    String msg = br.readLine();
+                    Log.d("socketTest",msg);
+                    //关闭流
+                    out.close();
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     @SuppressLint("HandlerLeak")
