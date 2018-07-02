@@ -2,7 +2,6 @@ package com.cai.work.ui.main;
 
 import android.Manifest;
 import android.content.DialogInterface;
-import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -14,6 +13,7 @@ import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.AppUpdate;
 import com.cai.work.databinding.MainLayoutBinding;
+import com.cai.work.widget.TabItem;
 import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
@@ -25,6 +25,9 @@ public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements 
 
     @Inject
     MainPresenter presenter;
+    @Inject
+    TabManager tabManager;
+
     private long fistTouchTime;
 
     @Override
@@ -39,8 +42,20 @@ public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements 
 
     @Override
     public void initView() {
+        initTab();
+
         requestPermission();
-        showUpdateAppDialog();
+//        showUpdateAppDialog();
+    }
+
+    private void initTab() {
+        tabManager.initTab(mViewBinding.tab1, mViewBinding.tab2, mViewBinding.tab3);
+        tabManager.setTabClickListener(new TabItem.TabClickListener() {
+            @Override
+            public void clickListener(TabItem view, int position) {
+                ToastUtils.showShort("position:" + position);
+            }
+        });
     }
 
     private void showUpdateAppDialog() {
@@ -76,11 +91,6 @@ public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements 
     @Override
     public int getLayoutId() {
         return R.layout.main_layout;
-    }
-
-    public void jump(View view) {
-        ARouter.getInstance().build("/AppModule/WelcomeActivity").navigation();
-        finish();
     }
 
     @Permission(value = {
