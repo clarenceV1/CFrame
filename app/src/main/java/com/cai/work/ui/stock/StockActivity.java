@@ -58,7 +58,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         ARouter.getInstance().inject(this);
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        spinerPopwindowHeight = DimensUtils.dip2px(this, 350);
+        spinerPopwindowHeight = DimensUtils.dp2px(this, 350);
     }
 
     @Override

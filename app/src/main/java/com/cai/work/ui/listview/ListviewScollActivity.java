@@ -51,7 +51,7 @@ public class ListviewScollActivity extends AppBaseActivity<ListViewScollBinding>
     @Override
     public void initView() {
         TextView textView = new TextView(this);
-        AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(DeviceUtils.getScreenWidth(this), DimensUtils.dip2px(this, 100));
+        AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(DeviceUtils.getScreenWidth(this), DimensUtils.dp2px(this, 100));
         textView.setLayoutParams(layoutParams);
         mViewBinding.lvContainer.addHeaderView(textView);
         ScrollAdapter scrollAdapter = new ScrollAdapter(this, presenterForRTB.getDatas());

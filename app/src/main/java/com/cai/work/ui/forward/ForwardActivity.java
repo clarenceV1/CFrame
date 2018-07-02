@@ -42,7 +42,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     protected void onCreate(Bundle savedInstanceState) {
         ARouter.getInstance().inject(this);
         super.onCreate(savedInstanceState);
-        spinerPopwindowHeight = DimensUtils.dip2px(this, 350);
+        spinerPopwindowHeight = DimensUtils.dp2px(this, 350);
     }
 
     @Override

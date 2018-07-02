@@ -81,13 +81,13 @@ public class InviteWayActivity extends AppBaseActivity<InviteWayBinding> impleme
         });
         mViewBinding.tvInviteLink.setText(inviteUrl);
 
-        int witd = DimensUtils.dip2px(this, 100);
+        int witd = DimensUtils.dp2px(this, 100);
         mViewBinding.imgQRCode.setImageBitmap(QRCodeUtils.createQRCodeBitmap(inviteUrl, witd, witd));
     }
 
     @Permission(value = Manifest.permission.WRITE_EXTERNAL_STORAGE)
     private void saveQRcode() {
-        int witd = DimensUtils.dip2px(this, 100);
+        int witd = DimensUtils.dp2px(this, 100);
         Bitmap imag = QRCodeUtils.createQRCodeBitmap(inviteUrl, witd, witd);
         DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
         String imageName = format.format(new Date()) + ".JPEG";

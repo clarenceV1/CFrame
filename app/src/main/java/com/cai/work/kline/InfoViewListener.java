@@ -5,7 +5,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.example.clarence.utillibrary.DisplayUtils;
+import com.example.clarence.utillibrary.DimensUtils;
 import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
@@ -28,7 +28,7 @@ public class InfoViewListener implements OnChartValueSelectedListener {
     private Chart[] mOtherChart;
 
     public InfoViewListener(Context context, double lastClose, List<HisData> list,  Chart... otherChart) {
-        mWidth = DisplayUtils.getWidthHeight(context)[0];
+        mWidth = DimensUtils.getWidthHeight(context)[0];
         mLastClose = lastClose;
         mList = list;
         mOtherChart = otherChart;

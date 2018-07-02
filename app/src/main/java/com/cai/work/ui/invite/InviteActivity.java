@@ -115,7 +115,7 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
 
     @Permission(value = Manifest.permission.WRITE_EXTERNAL_STORAGE)
     private void saveQRcode() {
-        int witd = DimensUtils.dip2px(this, 80);
+        int witd = DimensUtils.dp2px(this, 80);
         Bitmap imag = QRCodeUtils.createQRCodeBitmap(invite.getInvited_url(), witd, witd);
         DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
         String imageName = format.format(new Date()) + ".JPEG";
@@ -134,7 +134,7 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
         mViewBinding.tvSuccessRebate.setText("¥" + invite.getAlready_withdraw_money());
         mViewBinding.tvCanRebate.setText("¥" + invite.getCan_withdraw_money());
         mViewBinding.tvLinkAddress.setText(invite.getInvited_url());
-        int witd = DimensUtils.dip2px(this, 80);
+        int witd = DimensUtils.dp2px(this, 80);
         mViewBinding.imgQRCode.setImageBitmap(QRCodeUtils.createQRCodeBitmap(invite.getInvited_url(), witd, witd));
     }
 }

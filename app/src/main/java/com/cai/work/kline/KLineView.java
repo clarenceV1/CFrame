@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 
 import com.cai.work.R;
 import com.cai.work.utils.DataUtils;
-import com.example.clarence.utillibrary.DisplayUtils;
+import com.example.clarence.utillibrary.DimensUtils;
 import com.example.clarence.utillibrary.DoubleUtil;
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.components.AxisBase;
@@ -513,7 +513,7 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
     private void setOffset() {
         int chartHeight = getResources().getDimensionPixelSize(R.dimen.bottom_chart_height);
         mChartPrice.setViewPortOffsets(0, 0, 0, chartHeight);
-        int bottom = DisplayUtils.dip2px(mContext, 20);
+        int bottom = DimensUtils.dp2px(mContext, 20);
         mChartVolume.setViewPortOffsets(0, 0, 0, bottom);
     }
 
