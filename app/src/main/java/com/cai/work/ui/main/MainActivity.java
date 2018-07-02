@@ -2,6 +2,9 @@ package com.cai.work.ui.main;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -23,12 +26,15 @@ import javax.inject.Inject;
 @Route(path = "/AppModule/MainActivity", name = "主页面")
 public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements MainView {
 
+    public final String FRAGMENT_TAG = "main_fragment_";
     @Inject
     MainPresenter presenter;
     @Inject
     TabManager tabManager;
 
     private long fistTouchTime;
+    private FragmentManager mFragmentManager;
+    int oldPosition = 0;
 
     @Override
     public void initDagger() {
@@ -42,20 +48,52 @@ public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements 
 
     @Override
     public void initView() {
+        mFragmentManager = getSupportFragmentManager();
         initTab();
-
         requestPermission();
-//        showUpdateAppDialog();
+        showUpdateAppDialog();
     }
 
     private void initTab() {
         tabManager.initTab(mViewBinding.tab1, mViewBinding.tab2, mViewBinding.tab3);
         tabManager.setTabClickListener(new TabItem.TabClickListener() {
             @Override
-            public void clickListener(TabItem view, int position) {
-                ToastUtils.showShort("position:" + position);
+            public void clickListener(TabItem view, int currentPosition) {
+                switchFragment(currentPosition);
+                oldPosition = currentPosition;
             }
         });
+        switchFragment(0);
+    }
+
+    public void switchFragment(int currentPosition) {
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        Fragment oldFragment = mFragmentManager.findFragmentByTag(FRAGMENT_TAG + oldPosition);
+        if (oldFragment != null) {
+            transaction.hide(oldFragment);
+        }
+        Fragment currentFragment = mFragmentManager.findFragmentByTag(FRAGMENT_TAG + currentPosition);
+        if (currentFragment != null) {
+            transaction.show(currentFragment);
+        } else {
+            currentFragment = creatFragment(currentPosition);
+            if (currentFragment != null) {
+                transaction.add(R.id.mainContainer, currentFragment, FRAGMENT_TAG + currentPosition);
+            }
+        }
+        transaction.commitAllowingStateLoss();
+    }
+
+    public Fragment creatFragment(int position) {
+        switch (position) {
+            case 0:
+                return Fragment.instantiate(this, CandyFragment.class.getName());
+            case 1:
+                return Fragment.instantiate(this, DiscoverFragment.class.getName());
+            case 2:
+                return Fragment.instantiate(this, MineFragment.class.getName());
+        }
+        return null;
     }
 
     private void showUpdateAppDialog() {

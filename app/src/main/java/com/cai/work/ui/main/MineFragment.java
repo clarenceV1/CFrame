@@ -5,16 +5,16 @@ import android.view.View;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
-import com.cai.work.databinding.CandyBinding;
+import com.cai.work.databinding.MineBinding;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-public class CandyFragment extends AppBaseFragment<CandyBinding> implements CandyView{
-    @Inject
-    CandyPresenter presenter;
+public class MineFragment extends AppBaseFragment<MineBinding> implements MineView {
 
+    @Inject
+    MinePresenter presenter;
 
     @Override
     public void addPresenters(List observerList) {
@@ -28,7 +28,7 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
 
     @Override
     public int getLayoutId() {
-        return R.layout.candy;
+        return R.layout.mine;
     }
 
     @Override

@@ -2,12 +2,9 @@ package com.cai.work.ui.main;
 
 import android.text.TextUtils;
 
-import com.cai.work.base.App;
 import com.cai.work.base.AppBasePresenter;
 import com.cai.work.bean.AppUpdate;
 import com.example.clarence.utillibrary.PackageUtils;
-
-import java.util.Observable;
 
 import javax.inject.Inject;
 
@@ -23,7 +20,7 @@ public class MainPresenter extends AppBasePresenter<MainView> {
 
     @Override
     public void onAttached() {
-        App.getAppComponent().inject(this);
+
     }
 
     public AppUpdate isNewVersion() {

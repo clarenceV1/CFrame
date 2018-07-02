@@ -4,9 +4,9 @@ import com.cai.work.base.AppBasePresenter;
 
 import javax.inject.Inject;
 
-public class CandyPresenter extends AppBasePresenter<CandyView> {
+public class MinePresenter extends AppBasePresenter<MineView>  {
     @Inject
-    public CandyPresenter() {
+    public MinePresenter() {
     }
 
     @Override

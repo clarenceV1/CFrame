@@ -1,20 +1,21 @@
 package com.cai.work.ui.main;
 
+import android.view.Display;
 import android.view.View;
 
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
-import com.cai.work.databinding.CandyBinding;
+import com.cai.work.databinding.DiscoverBinding;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-public class CandyFragment extends AppBaseFragment<CandyBinding> implements CandyView{
-    @Inject
-    CandyPresenter presenter;
+public class DiscoverFragment extends AppBaseFragment<DiscoverBinding> implements DiscoverView {
 
+    @Inject
+    DiscoverPresenter presenter;
 
     @Override
     public void addPresenters(List observerList) {
@@ -28,7 +29,7 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
 
     @Override
     public int getLayoutId() {
-        return R.layout.candy;
+        return R.layout.discover;
     }
 
     @Override

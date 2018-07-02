@@ -1,7 +1,5 @@
 package com.cai.work.ui.main;
 
-import android.view.View;
-
 import com.cai.work.R;
 import com.cai.work.widget.TabItem;
 
@@ -66,5 +64,9 @@ public class TabManager {
                 }
             });
         }
+    }
+
+    public int getCurrentPositon() {
+        return selectPosition;
     }
 }

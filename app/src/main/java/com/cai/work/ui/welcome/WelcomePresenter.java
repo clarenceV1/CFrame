@@ -35,7 +35,7 @@ public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
 
     @Override
     public void onAttached() {
-        App.getAppComponent().inject(this);
+
     }
 
     public void loadUpgrade() {
