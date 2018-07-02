@@ -58,7 +58,6 @@ repositories {
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile rootProject.ext.dependencies["android-support"]
 
 //    testCompile rootProject.ext.dependencies["junit"]
 //    testCompile rootProject.ext.dependencies["assertj-core"]

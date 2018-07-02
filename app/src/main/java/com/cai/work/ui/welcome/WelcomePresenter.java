@@ -14,6 +14,7 @@ import com.cai.work.bean.respond.AppUpdateResond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.qrcode.QRCodeCreat;
 import com.example.clarence.netlibrary.NetRespondNoCallBack;
+import com.example.clarence.utillibrary.ShortCutUtils;
 
 import java.io.File;
 
@@ -88,7 +89,9 @@ public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
 
     public void createShortCut() {
         if (!dataStore.get().getShortCut()) {
+            ShortCutUtils.creatShortCut(context, context.getResources().getString(R.string.app_name), R.drawable.ic_launcher, WelcomeActivity.class);
             dataStore.get().saveShortCut();
         }
     }
+
 }

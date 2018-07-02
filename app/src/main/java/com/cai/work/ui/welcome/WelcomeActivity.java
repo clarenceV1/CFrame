@@ -51,7 +51,6 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
         presenter.createShortCut();
         presenter.loadUpgrade();
         presenter.loadMineData();
-        ShortCutUtils.creatShortCut(this,getString(R.string.app_name), R.drawable.ic_launcher,WelcomeActivity.class);
         goMainActivity();
     }
 

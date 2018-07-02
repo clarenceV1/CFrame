@@ -25,6 +25,7 @@ public class DataStore {
     private static final String INVITE_TITLE = "invite_title";
     private static final String INVITE_URL = "invite_url";
     private static final String SHORT_CUT = "short_cut";
+    private boolean creatShortCut;
 
     @Inject
     public DataStore() {
@@ -92,5 +93,9 @@ public class DataStore {
 
     public boolean getShortCut() {
         return sharePreference.read(SHORT_CUT, false);
+    }
+
+    public boolean isCreatShortCut() {
+        return creatShortCut;
     }
 }

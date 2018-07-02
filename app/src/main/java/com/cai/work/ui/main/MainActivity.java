@@ -14,6 +14,7 @@ import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.AppUpdate;
 import com.cai.work.databinding.MainLayoutBinding;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements 
 
     @Inject
     MainPresenter presenter;
+    private long fistTouchTime;
 
     @Override
     public void initDagger() {
@@ -88,5 +90,17 @@ public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements 
             Manifest.permission.ACCESS_WIFI_STATE})
     private void requestPermission() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        long nowTouchTime = System.currentTimeMillis();
+        if (nowTouchTime - fistTouchTime < 501) {//
+            super.onBackPressed();
+            finish();
+        } else {
+            fistTouchTime = nowTouchTime;
+            ToastUtils.showShort(R.string.quit_app);
+        }
     }
 }
