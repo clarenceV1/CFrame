@@ -41,25 +41,29 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
 
     }
 
-    @SuppressLint("CheckResult")
     public void requestCandyList() {
+        getCandyListOfCache();
         getCandyListOfNet();
     }
 
     public void getCandyListOfCache() {
         Disposable disposable = Observable.create(new ObservableOnSubscribe<List<CandyList>>() {
             @Override
-            public void subscribe(ObservableEmitter<List<CandyList>> e) throws Exception {
-
+            public void subscribe(ObservableEmitter<List<CandyList>> e) {
+                List<CandyList> candyList = cacheStore.get().getCandyList();
+                e.onNext(candyList);
             }
         }).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<CandyList>>() {
                     @Override
-                    public void accept(List<CandyList> candyLists) throws Exception {
-
+                    public void accept(List<CandyList> candyList) {
+                        if (candyList != null && candyList.size() > 0) {
+                            mView.callBack(candyList);
+                        }
                     }
                 });
+        mCompositeSubscription.add(disposable);
     }
 
     public void getCandyListOfNet() {
