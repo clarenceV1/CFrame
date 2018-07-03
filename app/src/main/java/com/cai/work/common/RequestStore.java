@@ -18,8 +18,6 @@ import javax.inject.Singleton;
 import dagger.Lazy;
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
@@ -63,7 +61,8 @@ public class RequestStore {
     public Flowable<AppUpdateResond> loadUpgrade() {
         Flowable<AppUpdateResond> flowable = retrofit.get().create(ApiService.class)
                 .loadUpgrade(getRequestHeader())
-                .subscribeOn(Schedulers.newThread());
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io());
         return flowable;
     }
 
@@ -75,7 +74,8 @@ public class RequestStore {
     public Flowable<MineRespond> loadMineData() {
         Flowable<MineRespond> flowable = retrofit.get().create(ApiService.class)
                 .loadMineData(getRequestHeader())
-                .subscribeOn(Schedulers.newThread());
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io());
         return flowable;
     }
 
@@ -87,7 +87,8 @@ public class RequestStore {
     public Flowable<CandyListRespond> questCandyList() {
         Flowable<CandyListRespond> flowable = retrofit.get().create(ApiService.class)
                 .questCandyList(getRequestHeader())
-                .subscribeOn(Schedulers.newThread());
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io());
         return flowable;
     }
 
@@ -99,7 +100,8 @@ public class RequestStore {
     public Flowable<CandyListRespond> receiveCandy(int tokenId) {
         Flowable<CandyListRespond> flowable = retrofit.get().create(ApiService.class)
                 .receiveCandy(getRequestHeader(), tokenId)
-                .subscribeOn(Schedulers.newThread());
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io());
         return flowable;
     }
 }

@@ -1,10 +1,12 @@
 package com.cai.work.ui.main;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.framework.widget.dialog.LoadDialog;
 import com.cai.work.R;
 import com.cai.work.base.App;
@@ -45,20 +47,21 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
     @Override
     public void initView(View view) {
         initHead();
-//        PullToRefreshBase.Mode.isShowFooterLoadingView = false;
-//        mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
-//        View emptyView = LayoutInflater.from(getContext()).inflate(R.layout.empty_view,null);
-//        mViewBinding.pullListView.setEmptyView(emptyView);
-//        listView = mViewBinding.pullListView.getRefreshableView();
-//        mViewBinding.pullListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
-//            @Override
-//            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-//
-//            }
-//        });
+
+        PullToRefreshBase.Mode.isShowFooterLoadingView = false;
+        mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+        View emptyView = LayoutInflater.from(getContext()).inflate(R.layout.empty_view,null);
+        mViewBinding.pullListView.setEmptyView(emptyView);
+        listView = mViewBinding.pullListView.getRefreshableView();
+        mViewBinding.pullListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+
+            }
+        });
         adapter = new CandyAdapter(getContext(), iLoadImage, presenter);
-        mViewBinding.listView.setAdapter(adapter);
-        mViewBinding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CandyList candyList = adapter.getItem(position);

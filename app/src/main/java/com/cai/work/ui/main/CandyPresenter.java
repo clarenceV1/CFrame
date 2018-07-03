@@ -1,7 +1,10 @@
 package com.cai.work.ui.main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.work.R;
@@ -17,7 +20,16 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 public class CandyPresenter extends AppBasePresenter<CandyView> {
     @Inject
@@ -29,7 +41,28 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
 
     }
 
+    @SuppressLint("CheckResult")
     public void requestCandyList() {
+        getCandyListOfNet();
+    }
+
+    public void getCandyListOfCache() {
+        Disposable disposable = Observable.create(new ObservableOnSubscribe<List<CandyList>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<CandyList>> e) throws Exception {
+
+            }
+        }).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<CandyList>>() {
+                    @Override
+                    public void accept(List<CandyList> candyLists) throws Exception {
+
+                    }
+                });
+    }
+
+    public void getCandyListOfNet() {
         requestStore.get().questCandyList()
                 .doOnNext(new Consumer<CandyListRespond>() {
                     @Override
@@ -41,21 +74,22 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
                             }
                         }
                     }
-                }).subscribe(new NetRespondCallBack<CandyListRespond>() {
-            @Override
-            public void respondResult(Subscription subscription, CandyListRespond respond) {
-                if (respond.getErrorcode() == 0) {
-                    mView.callBack(respond.getData());
-                } else {
-                    mView.callBack(respond.getMessage());
-                }
-            }
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetRespondCallBack<CandyListRespond>() {
+                    @Override
+                    public void respondResult(Subscription subscription, CandyListRespond respond) {
+                        if (respond.getErrorcode() == 0) {
+                            mView.callBack(respond.getData());
+                        } else {
+                            mView.callBack(respond.getMessage());
+                        }
+                    }
 
-            @Override
-            public void respondError(Throwable t) {
-                mView.callBack(t.getMessage());
-            }
-        });
+                    @Override
+                    public void respondError(Throwable t) {
+                        mView.callBack(t.getMessage());
+                    }
+                });
     }
 
     /**
@@ -94,7 +128,8 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
         if (!TextUtils.isEmpty(userDAO.get().getToken())) { //login
             if (candyList.getGive_total() > 0) {
                 mView.showDialog();
-                receiveCandy(candyList.getToken_id());
+                mView.callBack("登录页面还没弄暂时不能领取");
+//                receiveCandy(candyList.getToken_id());
             } else {//查看更多
                 shareAll(getShareText());
             }

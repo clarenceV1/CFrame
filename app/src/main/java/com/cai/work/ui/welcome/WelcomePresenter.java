@@ -1,6 +1,7 @@
 package com.cai.work.ui.welcome;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.cai.work.R;
@@ -17,6 +18,7 @@ import java.io.File;
 
 import javax.inject.Inject;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
@@ -40,6 +42,7 @@ public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
                 .map(new Function<AppUpdateResond, String>() {
                     @Override
                     public String apply(AppUpdateResond appUpdateResond) {
+                        Log.d("Threads", "apply==>" + Thread.currentThread().getName());
                         if (appUpdateResond.getData() != null) {
                             return JSON.toJSONString(appUpdateResond.getData());
                         }
@@ -52,7 +55,8 @@ public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
                     dataStore.get().saveAppUpdate(jsonStr);
                 }
             }
-        }).subscribe(new NetRespondNoCallBack<String>());
+        }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetRespondNoCallBack<>());
     }
 
     public void loadMineData() {
@@ -75,7 +79,8 @@ public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
                     createQRcode(mineModel);
                 }
             }
-        }).subscribe(new NetRespondNoCallBack<>());
+        }).observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new NetRespondNoCallBack<>());
     }
 
     //二维码生成
