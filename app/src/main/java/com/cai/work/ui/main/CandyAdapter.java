@@ -29,10 +29,12 @@ public class CandyAdapter extends GodBaseAdapter<CandyList> {
     ILoadImage iLoadImage;
     int itemWeight;
     int itemWidth;
+    CandyPresenter presenter;
 
-    public CandyAdapter(Context context, ILoadImage iLoadImage) {
+    public CandyAdapter(Context context, ILoadImage iLoadImage,CandyPresenter presenter) {
         super(context, new ArrayList());
         this.iLoadImage = iLoadImage;
+        this.presenter = presenter;
         itemWidth = DeviceUtils.getScreenWidth(context) - DimensUtils.dp2px(context, 40);
         itemWeight = (int) (itemWidth * 130 / 345.0f);
     }
@@ -46,7 +48,7 @@ public class CandyAdapter extends GodBaseAdapter<CandyList> {
     }
 
     @Override
-    public void initItemView(View convertView, CandyList candyList, int position) {
+    public void initItemView(View convertView, final CandyList candyList, int position) {
         if (candyList.getType() == 2) {
             ImageView imageAd = ViewHolder.getImageView(convertView, R.id.imageAd);
             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) imageAd.getLayoutParams();
@@ -79,7 +81,9 @@ public class CandyAdapter extends GodBaseAdapter<CandyList> {
         tvCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (presenter != null) {
+                    presenter.clickReeceiveCoinBtn(candyList);
+                }
             }
         });
         ViewHolder.getTextView(convertView, R.id.tvReward).setText(context.getString(R.string.candy_list_other_content,

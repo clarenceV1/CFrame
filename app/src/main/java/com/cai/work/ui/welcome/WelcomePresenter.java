@@ -1,13 +1,9 @@
 package com.cai.work.ui.welcome;
 
-import android.Manifest;
-import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.cai.work.R;
-import com.cai.work.base.App;
 import com.cai.work.base.AppBasePresenter;
 import com.cai.work.bean.MineModel;
 import com.cai.work.bean.MineUserModel;

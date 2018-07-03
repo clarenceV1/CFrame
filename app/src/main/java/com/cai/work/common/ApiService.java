@@ -9,6 +9,8 @@ import java.util.Map;
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * Created by clarence on 2018/1/12.
@@ -17,13 +19,16 @@ import retrofit2.http.HeaderMap;
 public interface ApiService {
 
     @GET("/api/upgrade")
-    Flowable<AppUpdateResond> loadUpgrade(@HeaderMap Map<String,String> map);
+    Flowable<AppUpdateResond> loadUpgrade(@HeaderMap Map<String, String> map);
 
     @GET("/api/mine")
-    Flowable<MineRespond> loadMineData(@HeaderMap Map<String,String> map);
+    Flowable<MineRespond> loadMineData(@HeaderMap Map<String, String> map);
 
     @GET("/api/candy")
-    Flowable<CandyListRespond> questCandyList(@HeaderMap Map<String,String> map);
+    Flowable<CandyListRespond> questCandyList(@HeaderMap Map<String, String> map);
+
+    @POST("/api/candy")
+    Flowable<CandyListRespond> receiveCandy(@HeaderMap Map<String, String> map, @Query(value = "token_id") int tokenid);
 //
 //    @POST("/app/login/index")
 //    @FormUrlEncoded

@@ -5,6 +5,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.cai.framework.widget.dialog.LoadDialog;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
@@ -24,6 +25,7 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
     CandyAdapter adapter;
     @Inject
     ILoadImage iLoadImage;
+    LoadDialog loadDialog;
 
     @Override
     public void addPresenters(List observerList) {
@@ -54,7 +56,7 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
 //
 //            }
 //        });
-        adapter = new CandyAdapter(getContext(), iLoadImage);
+        adapter = new CandyAdapter(getContext(), iLoadImage, presenter);
         mViewBinding.listView.setAdapter(adapter);
         mViewBinding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -83,6 +85,17 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
     @Override
     public void callBack(List<CandyList> data) {
         adapter.updateAll(data);
+    }
 
+    @Override
+    public void showDialog() {
+        loadDialog = new LoadDialog();
+        loadDialog.show();
+    }
+
+    public void closeDialog() {
+        if (loadDialog != null) {
+            loadDialog.dismiss();
+        }
     }
 }

@@ -8,4 +8,6 @@ public interface CandyView {
     void callBack(String msg);
 
     void callBack(List<CandyList> data);
+
+    void showDialog();
 }

@@ -69,6 +69,7 @@ public class RequestStore {
 
     /**
      * 获取我对页面数据
+     *
      * @return
      */
     public Flowable<MineRespond> loadMineData() {
@@ -77,13 +78,27 @@ public class RequestStore {
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }
+
     /**
-     * 获取我对页面数据
+     * 获取糖果列表
+     *
      * @return
      */
     public Flowable<CandyListRespond> questCandyList() {
         Flowable<CandyListRespond> flowable = retrofit.get().create(ApiService.class)
                 .questCandyList(getRequestHeader())
+                .subscribeOn(Schedulers.newThread());
+        return flowable;
+    }
+
+    /**
+     * 获取糖果列表
+     *
+     * @return
+     */
+    public Flowable<CandyListRespond> receiveCandy(int tokenId) {
+        Flowable<CandyListRespond> flowable = retrofit.get().create(ApiService.class)
+                .receiveCandy(getRequestHeader(), tokenId)
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }

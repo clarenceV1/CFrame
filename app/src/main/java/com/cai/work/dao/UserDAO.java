@@ -28,6 +28,14 @@ public class UserDAO extends BaseDAO {
         }
     }
 
+    public String getToken() {
+        User user = userBox.query().build().findFirst();
+        if (user != null) {
+            return user.getToken();
+        }
+        return null;
+    }
+
 //
 //    public Disposable getBalance(Consumer onNext, Consumer<Throwable> onError) {
 //        Box<User> box = boxStore.boxFor(User.class);

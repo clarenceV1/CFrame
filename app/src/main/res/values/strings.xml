@@ -64,4 +64,6 @@
     <string name="shareContentSuccessfully">Copy invitation code successfully</string>
     <string name="search">search</string>
     <string name="choose_country">Choose the country</string>
+
+    <string name="share_text">More.One，To help you get millions of EOS sweets！</string>
 </resources>
