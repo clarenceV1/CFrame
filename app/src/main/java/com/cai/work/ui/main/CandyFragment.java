@@ -42,6 +42,7 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
 
     @Override
     public void initView(View view) {
+        initHead();
 //        PullToRefreshBase.Mode.isShowFooterLoadingView = false;
 //        mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
 //        View emptyView = LayoutInflater.from(getContext()).inflate(R.layout.empty_view,null);
@@ -53,9 +54,14 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
 //
 //            }
 //        });
-        adapter = new CandyAdapter(getContext());
+        adapter = new CandyAdapter(getContext(),iLoadImage);
         mViewBinding.listView.setAdapter(adapter);
         presenter.requestCandyList();
+    }
+
+    private void initHead() {
+        mViewBinding.titleBar.setTitleText(getString(R.string.candy));
+        mViewBinding.titleBar.hideBackBtn();
     }
 
     @Override

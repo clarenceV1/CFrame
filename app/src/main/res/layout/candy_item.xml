@@ -9,6 +9,15 @@
     android:paddingRight="20dp"
     android:paddingTop="10dp">
 
+    <ImageView
+        android:id="@+id/imageAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_height="100dp"
+        android:visibility="gone"
+        android:scaleType="fitXY"
+        tools:visibility="visible"/>
+
     <LinearLayout
         android:id="@+id/rlItemRoot"
         android:layout_width="match_parent"
@@ -67,9 +76,9 @@
         <View
             android:layout_width="0.5dp"
             android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="0dp"
             android:background="#50ffffff"
-            android:layout_gravity="center_vertical"
             android:gravity="center_vertical" />
 
         <LinearLayout

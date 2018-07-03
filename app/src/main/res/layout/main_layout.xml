@@ -21,7 +21,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/title_color"
+            android:background="@color/white_a"
             android:orientation="horizontal">
 
             <com.cai.work.widget.TabItem
