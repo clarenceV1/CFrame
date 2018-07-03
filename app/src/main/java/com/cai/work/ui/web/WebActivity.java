@@ -18,7 +18,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-@Route(path = "/moreOne/WebActivity", name = "web")
+@Route(path = "/MeetOne/WebActivity", name = "web")
 public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRTB {
 
     @Autowired(name = "url")

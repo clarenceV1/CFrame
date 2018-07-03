@@ -18,7 +18,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-@Route(path = "/AppModule/WelcomeActivity", name = "欢迎页面")
+@Route(path = "/MeetOne/WelcomeActivity", name = "欢迎页面")
 public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements WelcomeView {
 
     @Inject
@@ -58,7 +58,7 @@ public class WelcomeActivity extends AppBaseActivity<WelcomeBinding> implements 
         mViewBinding.imgTitle.postDelayed(new Runnable() {
             @Override
             public void run() {
-                ARouter.getInstance().build("/AppModule/MainActivity").navigation();
+                ARouter.getInstance().build("/MeetOne/MainActivity").navigation();
                 finish();
             }
         }, 3000);

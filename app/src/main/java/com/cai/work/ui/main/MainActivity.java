@@ -23,7 +23,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-@Route(path = "/AppModule/MainActivity", name = "主页面")
+@Route(path = "/MeetOne/MainActivity", name = "主页面")
 public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements MainView {
 
     public final String FRAGMENT_TAG = "main_fragment_";

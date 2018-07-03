@@ -1,10 +1,10 @@
 package com.cai.work.ui.main;
 
-import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.cai.framework.pull.PullToRefreshBase;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
@@ -54,8 +54,19 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
 //
 //            }
 //        });
-        adapter = new CandyAdapter(getContext(),iLoadImage);
+        adapter = new CandyAdapter(getContext(), iLoadImage);
         mViewBinding.listView.setAdapter(adapter);
+        mViewBinding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CandyList candyList = adapter.getItem(position);
+                if (candyList.getType() == 2) {
+                    ARouter.getInstance().build("/MeetOne/WebActivity").withCharSequence("url", candyList.getUri()).navigation();
+                } else {
+                    ARouter.getInstance().build("/MeetOne/CandyDetailActivity").withInt("tokenId", candyList.getToken_id()).navigation();
+                }
+            }
+        });
         presenter.requestCandyList();
     }
 
