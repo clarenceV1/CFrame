@@ -15,6 +15,7 @@ import io.objectbox.BoxStore;
 public class App extends GodBaseApplication {
 
     public static boolean isDebug = true;
+//    public static String BASEURL = "http://192.168.50.79/MoreServer/api/index.php/";
     public static String BASEURL = "https://more.ethte.com/";
 
     public static BoxStore boxStore;

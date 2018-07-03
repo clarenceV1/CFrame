@@ -2,6 +2,7 @@ package com.cai.work.ui.welcome;
 
 import android.Manifest;
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
@@ -43,12 +44,17 @@ public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
                 .map(new Function<AppUpdateResond, String>() {
                     @Override
                     public String apply(AppUpdateResond appUpdateResond) {
-                        return JSON.toJSONString(appUpdateResond.getData());
+                        if (appUpdateResond.getData() != null) {
+                            return JSON.toJSONString(appUpdateResond.getData());
+                        }
+                        return "";
                     }
                 }).doOnNext(new Consumer<String>() {
             @Override
             public void accept(String jsonStr) {
-                dataStore.get().saveAppUpdate(jsonStr);
+                if (!TextUtils.isEmpty(jsonStr)) {
+                    dataStore.get().saveAppUpdate(jsonStr);
+                }
             }
         }).subscribe(new NetRespondNoCallBack<String>());
     }

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.cai.framework.utils.LanguageLocalUtil;
 import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
+import com.cai.work.bean.respond.CandyListRespond;
 import com.cai.work.bean.respond.MineRespond;
 import com.example.clarence.utillibrary.PackageUtils;
 
@@ -73,6 +74,16 @@ public class RequestStore {
     public Flowable<MineRespond> loadMineData() {
         Flowable<MineRespond> flowable = retrofit.get().create(ApiService.class)
                 .loadMineData(getRequestHeader())
+                .subscribeOn(Schedulers.newThread());
+        return flowable;
+    }
+    /**
+     * 获取我对页面数据
+     * @return
+     */
+    public Flowable<CandyListRespond> questCandyList() {
+        Flowable<CandyListRespond> flowable = retrofit.get().create(ApiService.class)
+                .questCandyList(getRequestHeader())
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }

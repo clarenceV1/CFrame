@@ -1,6 +1,7 @@
 package com.cai.work.common;
 
 import com.cai.work.bean.respond.AppUpdateResond;
+import com.cai.work.bean.respond.CandyListRespond;
 import com.cai.work.bean.respond.MineRespond;
 
 import java.util.Map;
@@ -20,6 +21,9 @@ public interface ApiService {
 
     @GET("/api/mine")
     Flowable<MineRespond> loadMineData(@HeaderMap Map<String,String> map);
+
+    @GET("/api/candy")
+    Flowable<CandyListRespond> questCandyList(@HeaderMap Map<String,String> map);
 //
 //    @POST("/app/login/index")
 //    @FormUrlEncoded
