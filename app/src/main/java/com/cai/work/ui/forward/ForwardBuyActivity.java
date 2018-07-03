@@ -8,6 +8,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.utils.ViewHolder;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
@@ -82,6 +83,7 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 amountAdapter.setCheckPosition(position);
+                refreshView();
             }
         });
 
@@ -116,6 +118,15 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
 
     }
 
+    private void refreshView() {
+        boundAdapter.setBaseMoney(amountAdapter.getBuyMoney());
+        zyAdapter.setBaseMoney(amountAdapter.getBuyMoney());
+        zsAdapter.setBaseMoney(amountAdapter.getBuyMoney(), boundAdapter.getCheckPosition());
+        mViewBinding.tvTradeMoney.setText(data.getCost() * (amountAdapter.getCheckPosition() + 1) + "");
+        int totalMoney = (int) (boundAdapter.getBuyMoney() + data.getCost() * (amountAdapter.getCheckPosition() + 1));
+        mViewBinding.tvTotalMoney.setText(totalMoney + "");
+    }
+
     private void freshViewColor() {
         if (type == 1) {
             mViewBinding.tvMoney.setTextColor(getResources().getColor(R.color.ys_e6241a));
@@ -132,6 +143,16 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
             mViewBinding.tvRedBag.setTextColor(getResources().getColor(R.color.ys_0_154_68));
             mViewBinding.btnCommit.setBackgroundColor(getResources().getColor(R.color.ys_0_229_0));
         }
+
+        if (type == 1) {
+            mViewBinding.tvMarkPrice.setTextColor(getResources().getColor(R.color.ys_e6241a));
+            mViewBinding.rlMarkPrice.setBackgroundResource(R.drawable.forward_buy_item_red_bg);
+            mViewBinding.imgeMarkPrice.setBackgroundResource(R.drawable.jy_selectred);
+        } else {
+            mViewBinding.tvMarkPrice.setTextColor(getResources().getColor(R.color.ys_0_154_68));
+            mViewBinding.rlMarkPrice.setBackgroundResource(R.drawable.forward_buy_item_green_bg);
+            mViewBinding.imgeMarkPrice.setBackgroundResource(R.drawable.jy_selectgreen);
+        }
     }
 
     @Override
@@ -145,55 +166,57 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
         mViewBinding.tvForwardName.setText(data.getName());
         mViewBinding.tvForwardCode.setText(data.getCode());
         mViewBinding.tvMoney.setText(data.getBalance());
-        mViewBinding.tvTradeMoney.setText(data.getCost());
+        mViewBinding.tvTradeMoney.setText(data.getCost() + "");
+        mViewBinding.tvHoldTime.setText(data.getNightTime());
 
-        String[] amounts = data.getAmount();
+        int[] amounts = data.getAmount();
         if (amounts != null && amounts.length > 0) {
             List<StockBuyMoney> buyMoneyList = new ArrayList<>();
-            for (String amount : amounts) {
+            for (int amount : amounts) {
                 StockBuyMoney money = new StockBuyMoney();
-                money.setTxt(amount);
+                money.setTime(amount);
                 money.setType(1);
                 buyMoneyList.add(money);
             }
             amountAdapter.update(buyMoneyList);
         }
 
-        String[] bonds = data.getBond();
+        float[] bonds = data.getBond();
         if (bonds != null && bonds.length > 0) {
             List<StockBuyMoney> buyMoneyList = new ArrayList<>();
-            for (String bond : bonds) {
+            for (float bond : bonds) {
                 StockBuyMoney money = new StockBuyMoney();
-                money.setTxt(bond);
+                money.setTime(bond);
                 money.setType(2);
                 buyMoneyList.add(money);
             }
             boundAdapter.update(buyMoneyList);
         }
 
-        String[] zys = data.getZy();
+        float[] zys = data.getZy();
         if (zys != null && zys.length > 0) {
             List<StockBuyMoney> buyMoneyList = new ArrayList<>();
-            for (String zy : zys) {
+            for (float zy : zys) {
                 StockBuyMoney money = new StockBuyMoney();
-                money.setTxt(zy);
+                money.setTime(zy);
                 money.setType(3);
                 buyMoneyList.add(money);
             }
             zyAdapter.update(buyMoneyList);
         }
 
-        String[] zss = data.getZs();
+        float[] zss = data.getZs();
         if (zss != null && zss.length > 0) {
             List<StockBuyMoney> buyMoneyList = new ArrayList<>();
-            for (String zs : zss) {
+            for (float zs : zss) {
                 StockBuyMoney money = new StockBuyMoney();
-                money.setTxt(zs);
+                money.setTime(zs);
                 money.setType(4);
                 buyMoneyList.add(money);
             }
             zsAdapter.update(buyMoneyList);
         }
+        refreshView();
     }
 
     @Override

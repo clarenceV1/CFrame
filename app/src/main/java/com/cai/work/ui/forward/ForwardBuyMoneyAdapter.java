@@ -16,8 +16,9 @@ import java.util.List;
 public class ForwardBuyMoneyAdapter extends GodBaseAdapter {
 
     int checkPosition = 0;
-    int baseMoney = 10000;
+    int baseMoney = 1;
     int type = 1;//1涨，2 跌
+    int maxSelectPosition = 0;
 
     public ForwardBuyMoneyAdapter(Context context, int type) {
         super(context, new ArrayList());
@@ -31,13 +32,13 @@ public class ForwardBuyMoneyAdapter extends GodBaseAdapter {
             if (buyMoney.getType() == 0) {
                 ViewHolder.getTextView(convertView, R.id.tvMoney).setText(buyMoney.getTxt());
             } else if (buyMoney.getType() == 1) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText(buyMoney.getTxt() + "手");
+                ViewHolder.getTextView(convertView, R.id.tvMoney).setText(buyMoney.getTime() + "手");
             } else if (buyMoney.getType() == 2) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + buyMoney.getTxt());
+                ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + (buyMoney.getTime() * baseMoney));
             } else if (buyMoney.getType() == 3) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + buyMoney.getTxt());
+                ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + (buyMoney.getTime() * baseMoney));
             } else if (buyMoney.getType() == 4) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + buyMoney.getTxt());
+                ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + (buyMoney.getTime() * baseMoney));
             }
 
             if (checkPosition == position) {
@@ -59,6 +60,18 @@ public class ForwardBuyMoneyAdapter extends GodBaseAdapter {
 
     public void setBaseMoney(int baseMoney) {
         this.baseMoney = baseMoney;
+        notifyDataSetChanged();
+    }
+
+    /**
+     * 止损才有用到
+     *
+     * @param baseMoney
+     * @param maxSelectPosition
+     */
+    public void setBaseMoney(int baseMoney, int maxSelectPosition) {
+        this.baseMoney = baseMoney;
+        this.maxSelectPosition = maxSelectPosition;
         notifyDataSetChanged();
     }
 
@@ -88,5 +101,14 @@ public class ForwardBuyMoneyAdapter extends GodBaseAdapter {
             return 0;
         }
         return (int) (buyMoney.getTime() * baseMoney);
+    }
+
+    public List<Float> getTimes() {
+        List<Float> times = new ArrayList<>();
+        for (int i = 0; i < dataList.size(); i++) {
+            StockBuyMoney buyMoney = (StockBuyMoney) dataList.get(i);
+            times.add(buyMoney.getTime());
+        }
+        return times;
     }
 }

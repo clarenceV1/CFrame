@@ -6,11 +6,11 @@ public class ForwardBuy {
     private String price;
     private String type;
     private String attributeType;
-    private String[] amount;
-    private String[] bond;
-    private String[] zs;
-    private String[] zy;
-    private String cost;
+    private int[] amount;
+    private float[] bond;
+    private float[] zs;
+    private float[] zy;
+    private float cost;
     private String buyDate;
     private String isMonth;
     private String nightTime;
@@ -53,43 +53,43 @@ public class ForwardBuy {
         this.type = type;
     }
 
-    public String[] getAmount() {
+    public int[] getAmount() {
         return amount;
     }
 
-    public void setAmount(String[] amount) {
+    public void setAmount(int[] amount) {
         this.amount = amount;
     }
 
-    public String[] getBond() {
+    public float[] getBond() {
         return bond;
     }
 
-    public void setBond(String[] bond) {
+    public void setBond(float[] bond) {
         this.bond = bond;
     }
 
-    public String[] getZs() {
+    public float[] getZs() {
         return zs;
     }
 
-    public void setZs(String[] zs) {
+    public void setZs(float[] zs) {
         this.zs = zs;
     }
 
-    public String[] getZy() {
+    public float[] getZy() {
         return zy;
     }
 
-    public void setZy(String[] zy) {
+    public void setZy(float[] zy) {
         this.zy = zy;
     }
 
-    public String getCost() {
+    public float getCost() {
         return cost;
     }
 
-    public void setCost(String cost) {
+    public void setCost(float cost) {
         this.cost = cost;
     }
 

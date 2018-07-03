@@ -16,6 +16,8 @@ public class StockBuyMoneyAdapter extends GodBaseAdapter {
 
     int checkPosition = 0;
     int baseMoney = 10000;
+    List<Float> boundsTimes;
+    int maxSelectPosition = 0;
 
     public StockBuyMoneyAdapter(Context context) {
         super(context, new ArrayList());
@@ -30,6 +32,14 @@ public class StockBuyMoneyAdapter extends GodBaseAdapter {
             } else if (buyMoney.getType() == 1) {
                 int money = (int) buyMoney.getTime();
                 ViewHolder.getTextView(convertView, R.id.tvMoney).setText(money + "万");
+            } else if (buyMoney.getType() == 4) {
+                int money = (int) (buyMoney.getTime() * baseMoney);
+                if (boundsTimes != null) {
+                    money *= boundsTimes.get(position);
+                    ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + money);
+                } else {
+                    ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + money);
+                }
             } else {
                 int money = (int) (buyMoney.getTime() * baseMoney);
                 ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + money);
@@ -45,6 +55,20 @@ public class StockBuyMoneyAdapter extends GodBaseAdapter {
 
     public void setBaseMoney(int baseMoney) {
         this.baseMoney = baseMoney;
+        notifyDataSetChanged();
+    }
+
+    /**
+     * 止损才有用到
+     *
+     * @param baseMoney
+     * @param boundsTime
+     * @param maxSelectPosition
+     */
+    public void setBaseMoney(int baseMoney, List<Float> boundsTime, int maxSelectPosition) {
+        this.baseMoney = baseMoney;
+        this.boundsTimes = boundsTime;
+        this.maxSelectPosition = maxSelectPosition;
         notifyDataSetChanged();
     }
 
@@ -74,5 +98,19 @@ public class StockBuyMoneyAdapter extends GodBaseAdapter {
             return 0;
         }
         return (int) (buyMoney.getTime() * baseMoney);
+    }
+
+    public int getTime() {
+        StockBuyMoney buyMoney = (StockBuyMoney) dataList.get(checkPosition);
+        return (int) buyMoney.getTime();
+    }
+
+    public List<Float> getTimes() {
+        List<Float> times = new ArrayList<>();
+        for (int i = 0; i < dataList.size(); i++) {
+            StockBuyMoney buyMoney = (StockBuyMoney) dataList.get(i);
+            times.add(buyMoney.getTime());
+        }
+        return times;
     }
 }

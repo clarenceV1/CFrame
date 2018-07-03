@@ -230,7 +230,8 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
         if (isfreshBonde) {
             bondAdapter.setBaseMoney(buyMoneyAdapter.getBuyMoney());
         }
-        zsAdapter.setBaseMoney(bondAdapter.getBuyMoney());
+        zyAdapter.setBaseMoney(buyMoneyAdapter.getBuyMoney());
+        zsAdapter.setBaseMoney(buyMoneyAdapter.getBuyMoney(), bondAdapter.getTimes(), bondAdapter.getCheckPosition());
 
         int buyMoney = buyMoneyAdapter.getBuyMoney();
         float mkPrice = data.getStock().getMk_price();
@@ -239,7 +240,8 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
         shiyonglv = shiyonglv.substring(0, 5);
         mViewBinding.tvNotice.setText(String.format(getString(R.string.stock_buy_can_buy_stock_num), stockNum + "", shiyonglv + "%"));
 
-        float bondMoney = bondAdapter.getBuyMoney() + data.getZhf();
+        mViewBinding.tvTradeMoney.setText(data.getZhf()*buyMoneyAdapter.getTime() + "");
+        float bondMoney = bondAdapter.getBuyMoney() + data.getZhf() * buyMoneyAdapter.getTime();
         mViewBinding.tvTotalMoney.setText(bondMoney + "");
         mViewBinding.tvRedBag.setText("0");
     }

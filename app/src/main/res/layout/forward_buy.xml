@@ -134,9 +134,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="夜间到 05:55"
                         android:textColor="@color/ys_e6241a"
-                        android:textSize="13sp" />
+                        android:textSize="13sp"
+                        tools:text="夜间到 05:55" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -160,13 +160,33 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/quest" />
 
-                    <com.cai.framework.widget.GridViewEx
-                        android:id="@+id/gridViewHoldTime"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:horizontalSpacing="10dp"
-                        android:numColumns="2"
-                        android:verticalSpacing="10dp" />
+                    <RelativeLayout
+                        android:id="@+id/rlMarkPrice"
+                        android:layout_width="120dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/stock_buy_item_bg">
+
+                        <TextView
+                            android:id="@+id/tvMarkPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingTop="5dp"
+                            android:text="市价"
+                            android:textColor="@color/ys_219_183_108"
+                            android:textSize="13sp" />
+
+                        <ImageView
+                            android:id="@+id/imgeMarkPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/xuanzdui" />
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -300,9 +320,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="75dp"
+                        android:text="0"
                         android:textColor="@color/ys_e6241a"
-                        android:textSize="18sp"
-                        android:text="0" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -343,9 +363,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:text="0"
                         android:textColor="@color/ys_e6241a"
-                        android:textSize="18sp"
-                        android:text="0" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
