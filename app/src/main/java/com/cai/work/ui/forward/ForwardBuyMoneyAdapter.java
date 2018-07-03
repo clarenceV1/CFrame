@@ -1,7 +1,6 @@
 package com.cai.work.ui.forward;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 
 import com.cai.framework.base.GodBaseAdapter;
@@ -32,7 +31,7 @@ public class ForwardBuyMoneyAdapter extends GodBaseAdapter {
             if (buyMoney.getType() == 0) {
                 ViewHolder.getTextView(convertView, R.id.tvMoney).setText(buyMoney.getTxt());
             } else if (buyMoney.getType() == 1) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText(buyMoney.getTime() + "手");
+                ViewHolder.getTextView(convertView, R.id.tvMoney).setText(((int) buyMoney.getTime()) + "手");
             } else if (buyMoney.getType() == 2) {
                 ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + (buyMoney.getTime() * baseMoney));
             } else if (buyMoney.getType() == 3) {

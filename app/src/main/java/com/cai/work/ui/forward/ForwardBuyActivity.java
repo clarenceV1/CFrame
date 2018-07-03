@@ -8,7 +8,6 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
-import com.cai.framework.utils.ViewHolder;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
@@ -83,7 +82,7 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 amountAdapter.setCheckPosition(position);
-                refreshView();
+                refreshView(true);
             }
         });
 
@@ -93,6 +92,7 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 boundAdapter.setCheckPosition(position);
+                refreshView(false);
             }
         });
 
@@ -118,8 +118,10 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
 
     }
 
-    private void refreshView() {
-        boundAdapter.setBaseMoney(amountAdapter.getBuyMoney());
+    private void refreshView(boolean bondRefresh) {
+        if (bondRefresh) {
+            boundAdapter.setBaseMoney(amountAdapter.getBuyMoney());
+        }
         zyAdapter.setBaseMoney(amountAdapter.getBuyMoney());
         zsAdapter.setBaseMoney(amountAdapter.getBuyMoney(), boundAdapter.getCheckPosition());
         mViewBinding.tvTradeMoney.setText(data.getCost() * (amountAdapter.getCheckPosition() + 1) + "");
@@ -216,7 +218,7 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
             }
             zsAdapter.update(buyMoneyList);
         }
-        refreshView();
+        refreshView(true);
     }
 
     @Override

@@ -113,10 +113,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="50dp"
                     android:orientation="horizontal"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="15dp">
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
 
                     <TextView
                         android:id="@+id/tvFenShi"
@@ -125,7 +125,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="分时"
-                        android:textColor="@color/ys_255_255_255"
+                        android:textColor="@color/ys_219_183_108"
                         android:textSize="14sp" />
 
                     <TextView
@@ -135,7 +135,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="K线"
-                        android:textColor="@color/ys_219_183_108"
+                        android:textColor="@color/ys_255_255_255"
                         android:textSize="14sp" />
 
                     <TextView
@@ -146,13 +146,16 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="233dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="10dp">
 
                     <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:id="@+id/rlLeft"
+                        android:layout_width="250dp"
+                        android:layout_height="233dp"
+                        tools:background="@color/ys_255_255_255">
 
                         <com.cai.work.kline.KLineView
                             android:id="@+id/kline"
@@ -161,17 +164,19 @@
 
                         <ImageView
                             android:id="@+id/imgFenshi"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/black_e" />
+                            android:layout_width="250dp"
+                            android:layout_height="233dp"
+                            android:layout_marginTop="-17dp"
+                            android:scaleType="fitXY" />
                     </RelativeLayout>
 
 
                     <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="200dp"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="5dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -181,122 +186,173 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="卖5" />
+                                android:text="卖5"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvSell5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:textColor="@color/ys_220_1_7"
+                                android:textSize="11sp"
                                 tools:text="9.80" />
 
                             <TextView
                                 android:id="@+id/tvSellNum5"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp"
                                 tools:text="950" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="卖4" />
+                                android:text="卖4"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvSell4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:textColor="@color/ys_220_1_7"
+                                android:textSize="11sp"
                                 tools:text="9.80" />
 
                             <TextView
                                 android:id="@+id/tvSellNum4"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp"
                                 tools:text="950" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="卖3" />
+                                android:text="卖3"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvSell3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:textColor="@color/ys_220_1_7"
+                                android:textSize="11sp"
                                 tools:text="9.80" />
 
                             <TextView
                                 android:id="@+id/tvSellNum3"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp"
                                 tools:text="950" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="卖2" />
+                                android:text="卖2"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvSell2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:textColor="@color/ys_220_1_7"
+                                android:textSize="11sp"
                                 tools:text="9.80" />
 
                             <TextView
                                 android:id="@+id/tvSellNum2"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp"
                                 tools:text="950" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="卖1" />
+                                android:text="卖1"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvSell1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:textColor="@color/ys_220_1_7"
+                                android:textSize="11sp"
                                 tools:text="9.80" />
 
                             <TextView
                                 android:id="@+id/tvSellNum1"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp"
                                 tools:text="950" />
                         </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/xuxian2" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -306,120 +362,164 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="买1" />
+                                android:text="买1"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvBuy1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:textColor="@color/ys_65_255_173"
+                                android:textSize="11sp"
                                 tools:text="9.80" />
 
                             <TextView
                                 android:id="@+id/tvBuyNum1"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp"
                                 tools:text="950" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="买2" />
+                                android:text="买2"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvBuy2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:textColor="@color/ys_65_255_173"
+                                android:textSize="11sp"
                                 tools:text="9.80" />
 
                             <TextView
                                 android:id="@+id/tvBuyNum2"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp"
                                 tools:text="950" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="买3" />
+                                android:text="买3"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvBuy3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:textColor="@color/ys_65_255_173"
+                                android:textSize="11sp"
                                 tools:text="9.80" />
 
                             <TextView
                                 android:id="@+id/tvBuyNum3"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp"
                                 tools:text="950" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="买4" />
+                                android:text="买4"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvBuy4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:textColor="@color/ys_65_255_173"
+                                android:textSize="11sp"
                                 tools:text="9.80" />
 
                             <TextView
                                 android:id="@+id/tvBuyNum4"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp"
                                 tools:text="950" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="买5" />
+                                android:text="买5"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvBuy5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:textColor="@color/ys_65_255_173"
+                                android:textSize="11sp"
                                 tools:text="9.80" />
 
                             <TextView
                                 android:id="@+id/tvBuyNum5"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/ys_255_255_255"
+                                android:textSize="11sp"
                                 tools:text="950" />
                         </LinearLayout>
                     </LinearLayout>
@@ -428,6 +528,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp">
@@ -436,25 +537,33 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/stock_bottom1" />
+                        android:text="@string/stock_bottom1"
+                        android:textColor="@color/ys_109_109_109"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/stock_bottom2" />
+                        android:text="@string/stock_bottom2"
+                        android:textColor="@color/ys_109_109_109"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/stock_bottom3" />
+                        android:text="@string/stock_bottom3"
+                        android:textColor="@color/ys_109_109_109"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/stock_bottom4" />
+                        android:text="@string/stock_bottom4"
+                        android:textColor="@color/ys_109_109_109"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -469,6 +578,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="15sp"
                         tools:text="9.83" />
 
                     <TextView
@@ -476,6 +587,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="15sp"
                         tools:text="1.83" />
 
                     <TextView
@@ -483,6 +596,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="15sp"
                         tools:text="9.86" />
 
                     <TextView
@@ -490,6 +605,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="15sp"
                         tools:text="7.88" />
                 </LinearLayout>
 
@@ -505,25 +622,33 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/stock_bottom5" />
+                        android:text="@string/stock_bottom5"
+                        android:textColor="@color/ys_109_109_109"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/stock_bottom6" />
+                        android:text="@string/stock_bottom6"
+                        android:textColor="@color/ys_109_109_109"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/stock_bottom7" />
+                        android:text="@string/stock_bottom7"
+                        android:textColor="@color/ys_109_109_109"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/stock_bottom8" />
+                        android:text="@string/stock_bottom8"
+                        android:textColor="@color/ys_109_109_109"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -538,6 +663,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="15sp"
                         tools:text="9.83" />
 
                     <TextView
@@ -545,6 +672,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="15sp"
                         tools:text="1.83" />
 
                     <TextView
@@ -552,6 +681,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="15sp"
                         tools:text="9.86" />
 
                     <TextView
@@ -559,20 +690,26 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="15sp"
                         tools:text="7.88" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/black_a" />
+                    android:layout_marginTop="20dp"
+                    android:background="@color/ys_28_38_47" />
 
                 <Button
                     android:id="@+id/btnCommit"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="@string/btn_not_buy" />
+                    android:layout_height="50dp"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/btn_red"
+                    android:text="@string/btn_not_buy"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </ScrollView>

@@ -1,5 +1,6 @@
 package com.cai.work.ui.stock;
 
+import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,6 +14,7 @@ import android.widget.PopupWindow;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.bumptech.glide.Glide;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.widget.spiner.SpinerPopWindow;
 import com.cai.work.R;
@@ -33,6 +35,7 @@ import com.example.clarence.utillibrary.KeyBoardUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import javax.inject.Inject;
 
@@ -49,7 +52,6 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
     SpinerPopWindow spinerPopWindow;
     ViewTreeObserver.OnGlobalLayoutListener layoutListener;
 
-    private KLineView mKLineView;
     String imgeUrl = "http://image.sinajs.cn/newchart/min/sh600000.gif";
     String stockCode;
 
@@ -94,7 +96,19 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.commonHeadView.tvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", "http://m.hellceshi.com/tpl/app/stock_rule.html").withCharSequence("title","规则").navigation();
+                ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", "http://m.hellceshi.com/tpl/app/stock_rule.html").withCharSequence("title", "规则").navigation();
+            }
+        });
+        mViewBinding.tvFenShi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchImage(1);
+            }
+        });
+        mViewBinding.tvKLine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchImage(2);
             }
         });
         mViewBinding.tvSearch.addTextChangedListener(new TextWatcher() {
@@ -123,8 +137,8 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.btnCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!TextUtils.isEmpty(stockCode)){
-                    ARouter.getInstance().build("/AppModule/StockBuyActivity").withCharSequence("stockCode",stockCode).navigation();
+                if (!TextUtils.isEmpty(stockCode)) {
+                    ARouter.getInstance().build("/AppModule/StockBuyActivity").withCharSequence("stockCode", stockCode).navigation();
                 }
             }
         });
@@ -141,6 +155,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
                 spinerPopWindow.dismiss();
             }
         });
+        switchImage(1);
         presenter.requestStockTrade();
         spinerPopWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
@@ -149,17 +164,23 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
             }
         });
 
-        mKLineView = (KLineView) findViewById(R.id.kline);
-        mKLineView.setDateFormat("yyyy-MM-dd");
+        mViewBinding.kline.setDateFormat("yyyy-MM-dd");
 
-        showImage();
-
+        presenter.loadImage(imgeUrl);
     }
 
-    public void showImage() {
-        ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(imgeUrl).build();
-        imageParams.setImageView(mViewBinding.imgFenshi);
-        imageLoader.loadImage(this, imageParams);
+    private void switchImage(int i) {
+        if (i == 1) {
+            mViewBinding.tvFenShi.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+            mViewBinding.tvKLine.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+            mViewBinding.kline.setVisibility(View.GONE);
+            mViewBinding.imgFenshi.setVisibility(View.VISIBLE);
+        } else {
+            mViewBinding.tvFenShi.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+            mViewBinding.tvKLine.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+            mViewBinding.kline.setVisibility(View.VISIBLE);
+            mViewBinding.imgFenshi.setVisibility(View.GONE);
+        }
     }
 
     public void addKeyboardListener() {
@@ -246,17 +267,33 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
                 HisData hisData = new HisData();
                 long date = DateUtils.date2TimeStamp(data[i][0], "yyyy/MM/dd");
                 hisData.setDate(date);
-                hisData.setOpen(Float.valueOf(data[i][1]));
-                hisData.setClose(Float.valueOf(data[i][2]));
-                hisData.setLow(Float.valueOf(data[i][3]));
-                hisData.setHigh(Float.valueOf(data[i][1]));
-                hisData.setVol(Long.valueOf(data[i][6]));
+                if (data[i].length > 1) {
+                    hisData.setOpen(Float.valueOf(data[i][1]));
+                }
+                if (data[i].length > 2) {
+                    hisData.setClose(Float.valueOf(data[i][2]));
+                }
+                if (data[i].length > 3) {
+                    hisData.setLow(Float.valueOf(data[i][3]));
+                }
+                if (data[i].length > 1) {
+                    hisData.setHigh(Float.valueOf(data[i][1]));
+                }
+
+                if (data[i].length > 6) {
+                    hisData.setVol(Long.valueOf(data[i][6]));
+                }
                 hisDataList.add(hisData);
             }
-            mKLineView.initData(hisDataList);
-            mKLineView.setLimitLine();
-            mKLineView.setOnLoadMoreListener(null);
+            mViewBinding.kline.initData(hisDataList);
+            mViewBinding.kline.setLimitLine();
+            mViewBinding.kline.setOnLoadMoreListener(null);
         }
+    }
+
+    @Override
+    public void showImage(Bitmap bitmap) {
+        mViewBinding.imgFenshi.setImageBitmap(bitmap);
     }
 
     private void refreshView() {

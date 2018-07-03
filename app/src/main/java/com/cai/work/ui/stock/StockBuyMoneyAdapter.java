@@ -12,7 +12,7 @@ import com.cai.work.bean.StockBuyMoney;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StockBuyMoneyAdapter extends GodBaseAdapter {
+public class StockBuyMoneyAdapter extends GodBaseAdapter<StockBuyMoney> {
 
     int checkPosition = 0;
     int baseMoney = 10000;
@@ -24,32 +24,38 @@ public class StockBuyMoneyAdapter extends GodBaseAdapter {
     }
 
     @Override
-    public void initItemView(View convertView, CBaseData itemData, int position) {
-        if (itemData != null && itemData instanceof StockBuyMoney) {
-            StockBuyMoney buyMoney = (StockBuyMoney) itemData;
-            if (buyMoney.getType() == 0) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText(buyMoney.getTxt());
-            } else if (buyMoney.getType() == 1) {
-                int money = (int) buyMoney.getTime();
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText(money + "万");
-            } else if (buyMoney.getType() == 4) {
-                int money = (int) (buyMoney.getTime() * baseMoney);
-                if (boundsTimes != null) {
-                    money *= boundsTimes.get(position);
-                    ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + money);
-                } else {
-                    ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + money);
-                }
+    public void initItemView(View convertView, StockBuyMoney buyMoney, int position) {
+        if (buyMoney.getType() == 0) {
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setText(buyMoney.getTxt());
+        } else if (buyMoney.getType() == 1) {
+            int money = (int) buyMoney.getTime();
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setText(money + "万");
+        } else if (buyMoney.getType() == 4) {
+            int money = (int) (buyMoney.getTime() * baseMoney);
+            if (boundsTimes != null) {
+                money *= boundsTimes.get(position);
+                ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + money);
             } else {
-                int money = (int) (buyMoney.getTime() * baseMoney);
                 ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + money);
             }
-
-            if (checkPosition == position) {
-                ViewHolder.getImageView(convertView, R.id.xuanzdui).setVisibility(View.VISIBLE);
-            } else {
+        } else {
+            int money = (int) (buyMoney.getTime() * baseMoney);
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + money);
+        }
+        if (buyMoney.getType() == 4 && position > maxSelectPosition) {
+            ViewHolder.getView(convertView, R.id.itemRoot).setBackgroundResource(R.drawable.stock_buy_item_bg_no_choose);
+        } else {
+            ViewHolder.getView(convertView, R.id.itemRoot).setBackgroundResource(R.drawable.stock_buy_item_bg);
+        }
+        if (checkPosition == position) {
+            if (buyMoney.getType() == 4 && position > maxSelectPosition) {
+                ViewHolder.getView(convertView, R.id.itemRoot).setBackgroundResource(R.drawable.stock_buy_item_bg_no_choose);
                 ViewHolder.getImageView(convertView, R.id.xuanzdui).setVisibility(View.GONE);
+            } else {
+                ViewHolder.getImageView(convertView, R.id.xuanzdui).setVisibility(View.VISIBLE);
             }
+        } else {
+            ViewHolder.getImageView(convertView, R.id.xuanzdui).setVisibility(View.GONE);
         }
     }
 
@@ -84,6 +90,10 @@ public class StockBuyMoneyAdapter extends GodBaseAdapter {
     }
 
     public void setCheckPosition(int checkPosition) {
+        StockBuyMoney buyMoney = dataList.get(checkPosition);
+        if (buyMoney.getType() == 4 && checkPosition > maxSelectPosition) {
+            return;
+        }
         this.checkPosition = checkPosition;
         notifyDataSetChanged();
     }

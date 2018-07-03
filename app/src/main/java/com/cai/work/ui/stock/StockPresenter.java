@@ -1,27 +1,28 @@
 package com.cai.work.ui.stock;
 
-import com.alibaba.fastjson.JSON;
+import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+
+import com.bumptech.glide.Glide;
 import com.cai.framework.base.GodBasePresenter;
-import com.cai.lib.logger.Logger;
-import com.cai.work.bean.Forward;
-import com.cai.work.bean.ForwardRecord;
-import com.cai.work.bean.StockHistory;
-import com.cai.work.bean.respond.ForwardContractsRespond;
 import com.cai.work.bean.respond.StockHQRespond;
 import com.cai.work.bean.respond.StockListRespond;
 import com.cai.work.bean.respond.StockTradeRespond;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
-import com.cai.work.ui.forward.ForwardView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class StockPresenter extends GodBasePresenter<StockView> {
 
@@ -37,6 +38,31 @@ public class StockPresenter extends GodBasePresenter<StockView> {
     @Override
     public void onAttached() {
 
+    }
+
+    public void loadImage(final String imgeUrl) {
+        Disposable disposable = Observable.create(new ObservableOnSubscribe<Bitmap>() {
+            @Override
+            public void subscribe(ObservableEmitter<Bitmap> e) throws Exception {
+                Bitmap myBitmap = Glide.with(context)
+                        .load(imgeUrl)
+                        .asBitmap() //必须
+                        .centerCrop()
+                        .into(550, 450)
+                        .get();
+                e.onNext(myBitmap);
+            }
+        }).subscribeOn(Schedulers.newThread())
+          .observeOn(AndroidSchedulers.mainThread())
+           .subscribe(new Consumer<Bitmap>() {
+                    @Override
+                    public void accept(Bitmap bitmap) throws Exception {
+                        if (bitmap != null) {
+                            mView.showImage(bitmap);
+                        }
+                    }
+                });
+        mCompositeSubscription.add(disposable);
     }
 
     public void requestStockTrade() {

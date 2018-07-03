@@ -1,5 +1,7 @@
 package com.cai.work.ui.stock;
 
+import android.graphics.Bitmap;
+
 import com.cai.framework.base.GodBaseView;
 import com.cai.work.bean.Stock;
 import com.cai.work.bean.StockHQ;
@@ -19,4 +21,6 @@ public interface StockView extends GodBaseView {
     void callBack(List<Stock> data);
 
     void callBack(String[][] data);
+
+    void showImage(Bitmap bitmap);
 }

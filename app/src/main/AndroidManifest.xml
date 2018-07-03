@@ -127,6 +127,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.stock.StockActivity"
+            android:hardwareAccelerated="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.stock.StockBuyActivity"

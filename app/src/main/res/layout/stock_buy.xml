@@ -65,7 +65,7 @@
                             android:id="@+id/tvMoney"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginLeft="2dp"
                             android:textColor="@color/ys_219_183_108"
                             android:textSize="16sp"
                             tools:text="99999" />

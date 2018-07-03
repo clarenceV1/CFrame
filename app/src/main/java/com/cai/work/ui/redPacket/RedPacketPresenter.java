@@ -47,7 +47,7 @@ public class RedPacketPresenter extends GodBasePresenter<RedPacketView> {
             @Override
             public void accept(RedPacketRespond data) {
                 if (data != null && data.getCode() == 200) {
-                    addTestMsg(data.getData());
+//                    addTestMsg(data.getData());
                     mView.refreshData(data.getData());
                 }
             }
