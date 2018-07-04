@@ -16,6 +16,7 @@ import com.example.clarence.utillibrary.StringUtils;
 
 import org.reactivestreams.Subscription;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -53,6 +54,9 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
             @Override
             public void subscribe(ObservableEmitter<List<CandyList>> e) {
                 List<CandyList> candyList = cacheStore.get().getCandyList();
+                if(candyList==null){
+                    candyList = new ArrayList<>();//rxjava 不允许传null
+                }
                 e.onNext(candyList);
             }
         }).subscribeOn(Schedulers.newThread())
