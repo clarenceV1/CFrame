@@ -71,6 +71,7 @@ dependencies {
 //    annotationProcessor project(':LibAptCompiler')
 //    compile project(':LibAnnotation')
     compile project(':LibFrameWork')
+    compile project(':pullrefresh-lib')
 
     compile rootProject.ext.dependencies["dagger"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]

@@ -1,13 +1,12 @@
 package com.cai.work.ui.main;
 
-import android.view.LayoutInflater;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.framework.widget.dialog.LoadDialog;
+import com.cai.pullrefresh.BaseListPtrFrameLayout;
+import com.cai.pullrefresh.PtrRecyclerView;
+import com.cai.pullrefresh.lib.PtrFrameLayout;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
@@ -23,11 +22,12 @@ import javax.inject.Inject;
 public class CandyFragment extends AppBaseFragment<CandyBinding> implements CandyView {
     @Inject
     CandyPresenter presenter;
-    ListView listView;
     CandyAdapter adapter;
     @Inject
     ILoadImage iLoadImage;
     LoadDialog loadDialog;
+
+    private PtrRecyclerView mPtrRecyclerView;
 
     @Override
     public void addPresenters(List observerList) {
@@ -48,30 +48,22 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
     public void initView(View view) {
         initHead();
 
-        PullToRefreshBase.Mode.isShowFooterLoadingView = false;
-        mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
-        View emptyView = LayoutInflater.from(getContext()).inflate(R.layout.empty_view,null);
-        mViewBinding.pullListView.setEmptyView(emptyView);
-        listView = mViewBinding.pullListView.getRefreshableView();
-        mViewBinding.pullListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+        mPtrRecyclerView = (PtrRecyclerView) mViewBinding.pullListView.getRecyclerView();
+        adapter = new CandyAdapter(getContext(),iLoadImage,presenter);
+        mPtrRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mPtrRecyclerView.setAdapter(adapter);
+        mViewBinding.pullListView.setCloseLoadMore(true);
+        mViewBinding.pullListView.setOnPullLoadListener(new BaseListPtrFrameLayout.OnPullLoadListener() {
             @Override
-            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onRefresh(final PtrFrameLayout frame) {
                 presenter.requestCandyList(false);
             }
-        });
-        adapter = new CandyAdapter(getContext(), iLoadImage, presenter);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                CandyList candyList = adapter.getItem(position);
-                if (candyList.getType() == 2) {
-                    ARouter.getInstance().build("/MeetOne/WebActivity").withCharSequence("url", candyList.getUri()).navigation();
-                } else {
-                    ARouter.getInstance().build("/MeetOne/CandyDetailActivity").withInt("tokenId", candyList.getToken_id()).navigation();
-                }
+            public void onLoadMore() {
             }
         });
+
         presenter.requestCandyList(true);
     }
 
@@ -87,8 +79,8 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
 
     @Override
     public void callBack(List<CandyList> data) {
-        mViewBinding.pullListView.onRefreshComplete();
-        adapter.updateAll(data);
+        mViewBinding.pullListView.refreshOrLoadMoreComplete(false);
+        adapter.setDatas(data);
     }
 
     @Override

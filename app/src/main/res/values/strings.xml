@@ -66,4 +66,8 @@
     <string name="choose_country">Choose the country</string>
 
     <string name="share_text">More.One，To help you get millions of EOS sweets！</string>
+
+    <string name="pull_to_refresh_pull_label">Pull to refresh…</string>
+    <string name="pull_to_refresh_release_label">Release to refresh…</string>
+    <string name="pull_to_refresh_refreshing_label">Loading…</string>
 </resources>

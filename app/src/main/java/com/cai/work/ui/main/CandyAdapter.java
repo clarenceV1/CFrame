@@ -3,12 +3,15 @@ package com.cai.work.ui.main;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.cai.framework.base.GodBaseAdapter;
-import com.cai.framework.utils.ViewHolder;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.cai.pullrefresh.BasePtrAdapter;
+import com.cai.pullrefresh.BasePtrViewHold;
+import com.cai.pullrefresh.BaseViewHold;
 import com.cai.work.R;
 import com.cai.work.bean.CandyList;
 import com.example.clarence.imageloaderlibrary.GlideCircleTransform;
@@ -19,10 +22,7 @@ import com.example.clarence.utillibrary.DeviceUtils;
 import com.example.clarence.utillibrary.DimensUtils;
 import com.example.clarence.utillibrary.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class CandyAdapter extends GodBaseAdapter<CandyList> {
+public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHolder> {
 
     int[] bgIds = new int[]{R.drawable.candy_img_background1, R.drawable.candy_img_background2, R.drawable.candy_img_background3};
     int[] textColors = new int[]{Color.parseColor("#EB58FF"), Color.parseColor("#5470FF"), Color.parseColor("#4C93FF")};
@@ -30,92 +30,128 @@ public class CandyAdapter extends GodBaseAdapter<CandyList> {
     int itemWeight;
     int itemWidth;
     CandyPresenter presenter;
+    Context context;
 
-    public CandyAdapter(Context context, ILoadImage iLoadImage,CandyPresenter presenter) {
-        super(context, new ArrayList());
+    public CandyAdapter(Context context, ILoadImage iLoadImage, CandyPresenter presenter) {
         this.iLoadImage = iLoadImage;
         this.presenter = presenter;
+        this.context = context;
         itemWidth = DeviceUtils.getScreenWidth(context) - DimensUtils.dp2px(context, 40);
         itemWeight = (int) (itemWidth * 130 / 345.0f);
     }
 
-    public void updateAll(List<CandyList> data) {
-        dataList.clear();
-        if (data != null) {
-            dataList.addAll(data);
-        }
-        notifyDataSetChanged();
+//    public void updateAll(List<CandyList> data) {
+//        dataList.clear();
+//        if (data != null) {
+//            dataList.addAll(data);
+//        }
+//        notifyDataSetChanged();
+//    }
+
+    @Override
+    protected BasePtrViewHold onPtrCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = inflateItemView(parent, R.layout.candy_item);
+        ViewHolder viewHolder = new ViewHolder(itemView, new BaseViewHold.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                CandyList candyList = datas.get(position);
+                if (candyList.getType() == 2) {
+                    ARouter.getInstance().build("/MeetOne/WebActivity").withCharSequence("url", candyList.getUri()).navigation();
+                } else {
+                    ARouter.getInstance().build("/MeetOne/CandyDetailActivity").withInt("tokenId", candyList.getToken_id()).navigation();
+                }
+            }
+
+            @Override
+            public void onItemLongClick(View v, int position) {
+
+            }
+        });
+        return viewHolder;
     }
 
     @Override
-    public void initItemView(View convertView, final CandyList candyList, int position) {
-        if (candyList.getType() == 2) {
-            ImageView imageAd = ViewHolder.getImageView(convertView, R.id.imageAd);
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) imageAd.getLayoutParams();
+    protected void onPtrBindViewHolder(ViewHolder holder, final CandyList data, int position) {
+        if (data.getType() == 2) {
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) holder.imageAd.getLayoutParams();
             layoutParams.width = itemWidth;
             layoutParams.height = itemWeight;
-            imageAd.setLayoutParams(layoutParams);
+            holder.imageAd.setLayoutParams(layoutParams);
 
-            ViewHolder.getView(convertView, R.id.imageAd).setVisibility(View.VISIBLE);
-            ViewHolder.getView(convertView, R.id.rlItemRoot).setVisibility(View.GONE);
+            holder.imageAd.setVisibility(View.VISIBLE);
+            holder.rlItemRoot.setVisibility(View.GONE);
             ILoadImageParams imageParams = new ImageForGlideParams.Builder()
-                    .url(candyList.getImage())
+                    .url(data.getImage())
                     .build();
 
-            imageParams.setImageView(imageAd);
+            imageParams.setImageView(holder.imageAd);
             iLoadImage.loadImage(context, imageParams);
             return;
         }
 
-        View rlItemRoot = ViewHolder.getView(convertView, R.id.rlItemRoot);
-        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) rlItemRoot.getLayoutParams();
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) holder.rlItemRoot.getLayoutParams();
         layoutParams.width = itemWidth;
         layoutParams.height = itemWeight;
-        rlItemRoot.setLayoutParams(layoutParams);
+        holder.rlItemRoot.setLayoutParams(layoutParams);
 
-        ViewHolder.getView(convertView, R.id.imageAd).setVisibility(View.GONE);
-        ViewHolder.getView(convertView, R.id.rlItemRoot).setVisibility(View.VISIBLE);
+        holder.imageAd.setVisibility(View.GONE);
+        holder.rlItemRoot.setVisibility(View.VISIBLE);
 
-        ViewHolder.getView(convertView, R.id.rlItemRoot).setBackgroundResource(bgIds[position % 3]);
-        TextView tvCommit = ViewHolder.getTextView(convertView, R.id.tvCommit);
-        tvCommit.setOnClickListener(new View.OnClickListener() {
+        holder.rlItemRoot.setBackgroundResource(bgIds[position % 3]);
+        holder.tvCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (presenter != null) {
-                    presenter.clickReeceiveCoinBtn(candyList);
+                    presenter.clickReeceiveCoinBtn(data);
                 }
             }
         });
-        ViewHolder.getTextView(convertView, R.id.tvReward).setText(context.getString(R.string.candy_list_other_content,
-                StringUtils.formatNum(candyList.getCandy_total()),
-                StringUtils.formatNum(candyList.getCandy_surplus())));
-        ViewHolder.getTextView(convertView, R.id.tvDescrible).setText(candyList.getToken_remark());
-        ViewHolder.getTextView(convertView, R.id.tvTitle).setText(candyList.getToken_symbol());
-        if (candyList.getGive_total() > 0) {
-            ViewHolder.getTextView(convertView, R.id.tvGive).setVisibility(View.VISIBLE);
-            ViewHolder.getTextView(convertView, R.id.tvGive).setText("+" + StringUtils.formatNum(candyList.getGive_total()));
-            tvCommit.setText(R.string.candy_receive_now);
-            tvCommit.setBackgroundResource(R.drawable.candy_btn_getnow);
-            tvCommit.setTextColor(Color.WHITE);
-            ViewHolder.getTextView(convertView, R.id.tvTotal).setVisibility(View.GONE);
+        holder.tvReward.setText(context.getString(R.string.candy_list_other_content,
+                StringUtils.formatNum(data.getCandy_total()),
+                StringUtils.formatNum(data.getCandy_surplus())));
+        holder.tvDescrible.setText(data.getToken_remark());
+        holder.tvTitle.setText(data.getToken_symbol());
+        if (data.getGive_total() > 0) {
+            holder.tvGive.setVisibility(View.VISIBLE);
+            holder.tvGive.setText("+" + StringUtils.formatNum(data.getGive_total()));
+            holder.tvCommit.setText(R.string.candy_receive_now);
+            holder.tvCommit.setBackgroundResource(R.drawable.candy_btn_getnow);
+            holder.tvCommit.setTextColor(Color.WHITE);
+            holder.tvTotal.setVisibility(View.GONE);
         } else {
-            ViewHolder.getTextView(convertView, R.id.tvGive).setVisibility(View.GONE);
-            ViewHolder.getTextView(convertView, R.id.tvTotal).setVisibility(View.VISIBLE);
-            ViewHolder.getTextView(convertView, R.id.tvTotal).setText(context.getString(R.string.wallet_total, StringUtils.formatNum(candyList.getWallet_total())));
-            tvCommit.setText(R.string.candy_receive_more);
-            tvCommit.setTextColor(textColors[position % 3]);
-            tvCommit.setBackgroundResource(R.drawable.candy_btn_getmore);
+            holder.tvGive.setVisibility(View.GONE);
+            holder.tvTotal.setVisibility(View.VISIBLE);
+            holder.tvTotal.setText(context.getString(R.string.wallet_total, StringUtils.formatNum(data.getWallet_total())));
+            holder.tvCommit.setText(R.string.candy_receive_more);
+            holder.tvCommit.setTextColor(textColors[position % 3]);
+            holder.tvCommit.setBackgroundResource(R.drawable.candy_btn_getmore);
         }
         ILoadImageParams imageParams = new ImageForGlideParams.Builder()
-                .url(candyList.getToken_icon())
+                .url(data.getToken_icon())
                 .transformation(new GlideCircleTransform(context))
                 .build();
-        imageParams.setImageView(ViewHolder.getImageView(convertView, R.id.imageView));
+        imageParams.setImageView(holder.imageView);
         iLoadImage.loadImage(context, imageParams);
     }
 
-    @Override
-    protected int getItemLayout() {
-        return R.layout.candy_item;
+    class ViewHolder extends BasePtrViewHold {
+
+        ImageView imageAd, imageView;
+        View rlItemRoot;
+        TextView tvCommit, tvReward, tvDescrible, tvTitle, tvGive, tvTotal;
+
+        public ViewHolder(View itemView, OnRecyclerViewItemClickListener listener) {
+            super(itemView, listener);
+            imageAd = getView(R.id.imageAd);
+            imageView = getView(R.id.imageView);
+            rlItemRoot = getView(R.id.rlItemRoot);
+            tvCommit = getView(R.id.tvCommit);
+            tvReward = getView(R.id.tvReward);
+            tvDescrible = getView(R.id.tvDescrible);
+            tvTitle = getView(R.id.tvTitle);
+            tvGive = getView(R.id.tvGive);
+            tvTotal = getView(R.id.tvTotal);
+        }
     }
+
 }

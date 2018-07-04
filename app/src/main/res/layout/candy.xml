@@ -14,16 +14,9 @@
 
         <View style="@style/item_line" />
 
-        <com.cai.framework.pull.PullToRefreshListView
+        <com.cai.pullrefresh.PtrRecyclerViewFrameLayout
             android:id="@+id/pullListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:cacheColorHint="@color/transparent"
-            android:divider="@null"
-            android:fadingEdge="none"
-            android:fastScrollEnabled="false"
-            android:footerDividersEnabled="false"
-            android:headerDividersEnabled="false"
-            android:smoothScrollbar="true" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 </layout>
