@@ -71,4 +71,8 @@
     <string name="pull_to_refresh_release_label">Release to refresh…</string>
     <string name="pull_to_refresh_refreshing_label">Loading…</string>
     <string name="shareContentFailed">Copy invitation code failed</string>
+
+    <string name="qq_uninstall">not installed QQ yet, please install QQ and try again</string>
+    <string name="wx_uninstall">not installed WeChat yet, please install WeChat and try again！</string>
+    <string name="sina_uninstall">not installed Sina yet, please install WeChat and try again！</string>
 </resources>

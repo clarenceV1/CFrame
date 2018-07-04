@@ -1,7 +1,9 @@
 package com.cai.work.ui.main;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
+import android.text.TextUtils;
 
+import com.cai.work.R;
 import com.cai.work.base.AppBasePresenter;
 import com.cai.work.bean.Invite;
 import com.cai.work.bean.MineInviteModel;
@@ -9,9 +11,7 @@ import com.cai.work.bean.MineModel;
 import com.cai.work.bean.User;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.qrcode.QRCodeCreat;
-import com.example.clarence.netlibrary.NetRespondCallBack;
-
-import org.reactivestreams.Subscription;
+import com.example.clarence.utillibrary.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +26,6 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 public class MinePresenter extends AppBasePresenter<MineView> {
@@ -37,6 +36,37 @@ public class MinePresenter extends AppBasePresenter<MineView> {
     @Override
     public void onAttached() {
 
+    }
+
+    public String getShareText() {
+        String url = dataStore.get().getInviteUrl();
+        String title = dataStore.get().getInviteTitle();
+        if (StringUtils.isEmpty(url)) {
+            return null;
+        } else {
+            String shareText = "More.one";
+            if (!TextUtils.isEmpty(title)) {
+                shareText = title + url;
+            } else {
+                shareText = context.getString(R.string.share_text) + url;
+            }
+            return shareText;
+        }
+
+    }
+
+    public String copyShareText() {
+        String url = dataStore.get().getInviteUrl();
+        String title = dataStore.get().getInviteTitle();
+        if (StringUtils.isEmpty(url)) {
+            return null;
+        } else {
+            if (!TextUtils.isEmpty(title)) {
+                return title + url;
+            } else {
+                return context.getString(R.string.share_text) + url;
+            }
+        }
     }
 
     public void getUserInfo() {

@@ -20,7 +20,7 @@ import com.cai.work.base.AppBaseFragment;
 import com.cai.work.bean.MineModel;
 import com.cai.work.bean.User;
 import com.cai.work.databinding.MineBinding;
-import com.cai.work.ui.login.LoginActivity;
+import com.cai.work.utils.ShareUtil;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
@@ -163,48 +163,48 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                 break;
             case R.id.ivShareWX:
                 if (presenter.isLogin()) {
-//                    ShareUtil.shareToWeiXin(ShareUtil.getShareText());
+                    ShareUtil.shareToWeiXin(getContext(),presenter.getShareText());
                 } else {
 //                    LoginActivity.entryActivity(false);
                 }
                 break;
             case R.id.ivShareWxq:
                 if (presenter.isLogin()) {
-//                    ShareUtil.shareToWeiXin(ShareUtil.getShareText());
+                    ShareUtil.shareToWeiXin(getContext(),presenter.getShareText());
                 } else {
 //                    LoginActivity.entryActivity(false);
                 }
                 break;
             case R.id.ivShareQq:
                 if (presenter.isLogin()) {
-//                    ShareUtil.shareToQQ(ShareUtil.getShareText());
+                    ShareUtil.shareToQQ(getContext(),presenter.getShareText());
                 } else {
 //                    LoginActivity.entryActivity(false);
                 }
 
             case R.id.ivShareSina:
                 if (presenter.isLogin()) {
-//                    ShareUtil.shareToSina(ShareUtil.getShareText());
+                    ShareUtil.shareToSina(getContext(),presenter.getShareText());
                 } else {
 //                    LoginActivity.entryActivity(false);
                 }
             case R.id.btnShareCopy:
                 if (presenter.isLogin()) {
-//                    String share = ShareUtil.copyShareText();
-//                    if (StringUtils.isEmpty(share)) {
-//                        ToastUtils.showShort(R.string.shareContentFailed);
-//                    } else {
-//                        ToastUtils.showShort(R.string.shareContentSuccessfully);
-//                    }
-//                    try {
-//                        ClipData mClipData = ClipData.newPlainText("share", share);
-//                        ClipboardManager cmb = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-//                        if (cmb != null) {
-//                            cmb.setPrimaryClip(mClipData);
-//                        }
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
+                    String share = presenter.copyShareText();
+                    if (StringUtils.isEmpty(share)) {
+                        ToastUtils.showShort(R.string.shareContentFailed);
+                    } else {
+                        ToastUtils.showShort(R.string.shareContentSuccessfully);
+                    }
+                    try {
+                        ClipData mClipData = ClipData.newPlainText("share", share);
+                        ClipboardManager cmb = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                        if (cmb != null) {
+                            cmb.setPrimaryClip(mClipData);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 } else {
 //                    LoginActivity.entryActivity(false);
                 }
