@@ -14,7 +14,9 @@
       <module fileurl="file://$PROJECT_DIR$/../../LibLog/LibLog.iml" filepath="$PROJECT_DIR$/../../LibLog/LibLog.iml" />
       <module fileurl="file://$PROJECT_DIR$/../LibLogger/LibLogger.iml" filepath="$PROJECT_DIR$/../LibLogger/LibLogger.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibNet/LibNet.iml" filepath="$PROJECT_DIR$/../../LibNet/LibNet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../LibPullToRefresh/LibPullToRefresh.iml" filepath="$PROJECT_DIR$/../../LibPullToRefresh/LibPullToRefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibUtils/LibUtils.iml" filepath="$PROJECT_DIR$/../../LibUtils/LibUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/../../MPChartLib/MPChartLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../RemotePlugin/RemotePlugin.iml" filepath="$PROJECT_DIR$/../../RemotePlugin/RemotePlugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../apt/apt.iml" filepath="$PROJECT_DIR$/../apt/apt.iml" />

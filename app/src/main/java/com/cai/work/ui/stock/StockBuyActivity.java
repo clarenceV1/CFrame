@@ -235,12 +235,12 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
 
         int buyMoney = buyMoneyAdapter.getBuyMoney();
         float mkPrice = data.getStock().getMk_price();
-        int stockNum = (int) (buyMoney / mkPrice);
-        String shiyonglv = (mkPrice * stockNum * 100 / buyMoney) + "";
-        shiyonglv = shiyonglv.substring(0, 5);
-        mViewBinding.tvNotice.setText(String.format(getString(R.string.stock_buy_can_buy_stock_num), stockNum + "", shiyonglv + "%"));
+        int stockNum = (int) (buyMoney / (mkPrice * 100));
+        stockNum *= 100;
+        float shiyonglv = (mkPrice * stockNum * 100 / buyMoney);
+        mViewBinding.tvNotice.setText(String.format(getString(R.string.stock_buy_can_buy_stock_num), stockNum + "", String.format("%.2f", shiyonglv) + "%"));
 
-        mViewBinding.tvTradeMoney.setText(data.getZhf()*buyMoneyAdapter.getTime() + "");
+        mViewBinding.tvTradeMoney.setText(data.getZhf() * buyMoneyAdapter.getTime() + "");
         float bondMoney = bondAdapter.getBuyMoney() + data.getZhf() * buyMoneyAdapter.getTime();
         mViewBinding.tvTotalMoney.setText(bondMoney + "");
         mViewBinding.tvRedBag.setText("0");

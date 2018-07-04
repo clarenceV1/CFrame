@@ -153,7 +153,8 @@
 
                     <RelativeLayout
                         android:id="@+id/rlLeft"
-                        android:layout_width="250dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="233dp"
                         tools:background="@color/ys_255_255_255">
 
@@ -164,7 +165,7 @@
 
                         <ImageView
                             android:id="@+id/imgFenshi"
-                            android:layout_width="250dp"
+                            android:layout_width="match_parent"
                             android:layout_height="233dp"
                             android:layout_marginTop="-17dp"
                             android:scaleType="fitXY" />
@@ -596,7 +597,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/ys_255_255_255"
+                        android:textColor="@color/ys_226_39_46"
                         android:textSize="15sp"
                         tools:text="9.86" />
 
@@ -605,7 +606,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/ys_255_255_255"
+                        android:textColor="@color/ys_22_110_15"
                         android:textSize="15sp"
                         tools:text="7.88" />
                 </LinearLayout>
@@ -663,7 +664,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/ys_255_255_255"
+                        android:textColor="@color/ys_226_39_46"
                         android:textSize="15sp"
                         tools:text="9.83" />
 
@@ -672,7 +673,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/ys_255_255_255"
+                        android:textColor="@color/ys_22_110_15"
                         android:textSize="15sp"
                         tools:text="1.83" />
 
@@ -706,8 +707,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="15dp"
-                    android:background="@drawable/btn_red"
+                    android:background="@drawable/btn_gray"
                     android:text="@string/btn_not_buy"
+                    android:clickable="false"
                     android:textColor="@color/ys_255_255_255"
                     android:textSize="18sp" />
             </LinearLayout>

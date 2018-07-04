@@ -239,7 +239,7 @@
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:background="@color/ys_ff2121"
+        android:background="@drawable/btn_red"
         android:text="@string/btn_look_detail"
         android:textColor="@color/ys_255_255_255"
         android:textSize="15dp"

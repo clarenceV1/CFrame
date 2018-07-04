@@ -75,6 +75,7 @@ public class MainHoldAdapter extends GodBaseAdapter {
         ViewHolder.getTextView(convertView, R.id.tvValue4).setVisibility(View.GONE);
         ViewHolder.getButton(convertView, R.id.btnCommit).setText(item.getBtnText());
         if ("1".equals(item.getIsTrade())) {
+            ViewHolder.getButton(convertView, R.id.btnCommit).setBackgroundResource(R.drawable.btn_red);
             ViewHolder.getButton(convertView, R.id.btnCommit).setClickable(true);
             ViewHolder.getButton(convertView, R.id.btnCommit).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -84,6 +85,7 @@ public class MainHoldAdapter extends GodBaseAdapter {
                 }
             });
         } else {
+            ViewHolder.getButton(convertView, R.id.btnCommit).setBackgroundResource(R.drawable.btn_gray);
             ViewHolder.getButton(convertView, R.id.btnCommit).setClickable(false);
         }
     }
@@ -113,6 +115,7 @@ public class MainHoldAdapter extends GodBaseAdapter {
 
         ViewHolder.getTextView(convertView, R.id.tvTitle4).setVisibility(View.GONE);
         ViewHolder.getTextView(convertView, R.id.tvValue4).setVisibility(View.GONE);
+        ViewHolder.getButton(convertView, R.id.btnCommit).setBackgroundResource(R.drawable.btn_red);
         ViewHolder.getButton(convertView, R.id.btnCommit).setText(context.getResources().getString(R.string.btn_look_detail));
         ViewHolder.getButton(convertView, R.id.btnCommit).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,6 +156,7 @@ public class MainHoldAdapter extends GodBaseAdapter {
         } else {
             ViewHolder.getTextView(convertView, R.id.tvValue4).setText("买涨");
         }
+        ViewHolder.getButton(convertView, R.id.btnCommit).setBackgroundResource(R.drawable.btn_red);
         ViewHolder.getButton(convertView, R.id.btnCommit).setText(context.getResources().getString(R.string.btn_look_detail));
         ViewHolder.getButton(convertView, R.id.btnCommit).setOnClickListener(new View.OnClickListener() {
             @Override

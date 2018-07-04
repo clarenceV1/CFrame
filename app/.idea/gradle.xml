@@ -23,7 +23,9 @@
             <option value="$PROJECT_DIR$/../../LibImageLoader" />
             <option value="$PROJECT_DIR$/../../LibLog" />
             <option value="$PROJECT_DIR$/../../LibNet" />
+            <option value="$PROJECT_DIR$/../../LibPullToRefresh" />
             <option value="$PROJECT_DIR$/../../LibUtils" />
+            <option value="$PROJECT_DIR$/../../MPChartLib" />
             <option value="$PROJECT_DIR$/../../RemotePlugin" />
           </set>
         </option>

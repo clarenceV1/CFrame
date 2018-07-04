@@ -5,6 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/ys_30_30_30"
         android:orientation="vertical">
 
         <include
@@ -13,209 +14,250 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/ys_33_33_33"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_launcher" />
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/point" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="@string/accounts_detail_trade_id" />
+                android:text="@string/accounts_detail_trade_id"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTradeId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="12sp"
                 tools:text="2342342342342" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
+            android:background="@color/ys_33_33_33"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_launcher" />
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/point" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="@string/accounts_detail_trade_kind" />
+                android:text="@string/accounts_detail_trade_kind"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTradeKind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="12sp"
                 tools:text="2342342342342" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
+            android:background="@color/ys_33_33_33"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_launcher" />
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/point" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="@string/accounts_detail_trade_num" />
+                android:text="@string/accounts_detail_trade_num"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTradeNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="12sp"
                 tools:text="2342342342342" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
+            android:background="@color/ys_33_33_33"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_launcher" />
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/point" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="@string/accounts_detail_trade_price" />
+                android:text="@string/accounts_detail_trade_price"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTradePrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="12sp"
                 tools:text="2342342342342" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
+            android:background="@color/ys_33_33_33"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_launcher" />
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/point" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="@string/accounts_detail_close_price" />
+                android:text="@string/accounts_detail_close_price"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvClosePrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="12sp"
                 tools:text="2342342342342" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
+            android:background="@color/ys_33_33_33"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_launcher" />
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/point" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="@string/accounts_detail_close_time" />
+                android:text="@string/accounts_detail_close_time"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvCloseTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="12sp"
                 tools:text="2342342342342" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
+            android:background="@color/ys_33_33_33"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_launcher" />
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/point" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="@string/accounts_detail_close_reson" />
+                android:text="@string/accounts_detail_close_reson"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvCloseReson"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="12sp"
                 tools:text="2342342342342" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
+            android:background="@color/ys_33_33_33"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_launcher" />
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/point" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="@string/accounts_detail_trade_yk" />
+                android:text="@string/accounts_detail_trade_yk"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTradeYK"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/ys_0_178_89"
+                android:textSize="12sp"
                 tools:text="2342342342342" />
         </LinearLayout>
     </LinearLayout>

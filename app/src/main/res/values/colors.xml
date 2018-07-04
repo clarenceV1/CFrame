@@ -14,8 +14,10 @@
     <color name="touming">#00000000</color>
     <color name="ys_0_229_0">#00e500</color>
     <color name="ys_0_154_68">#009a44</color>
+    <color name="ys_0_178_89">#00b259</color>
     <color name="ys_16_20_25">#101419</color>
     <color name="ys_24_24_24">#181818</color>
+    <color name="ys_22_110_15">#166e0f</color>
     <color name="ys_24_25_25">#181919</color>
     <color name="ys_26_26_26">#1a1a1a</color>
     <color name="ys_28_38_47">#1c262f</color>
@@ -42,6 +44,7 @@
     <color name="ys_204_204_204">#cccccc</color>
     <color name="ys_219_183_108">#dbb76c</color>
     <color name="ys_220_1_7">#dc0107</color>
+    <color name="ys_226_39_46">#e2272e</color>
     <color name="ys_230_66_63">#e6423f</color>
     <color name="ys_234_205_118">#eacd76</color>
     <color name="ys_241_83_83">#f15353</color>

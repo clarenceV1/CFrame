@@ -54,9 +54,9 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
         if (groupPosition == 0) {
             return 1;
         } else if (groupPosition == 1) {
-            return trade.getGj_contract().size();
-        } else if (groupPosition == 2) {
             return trade.getGn_contract().size();
+        } else if (groupPosition == 2) {
+            return trade.getGj_contract().size();
         }
         return 0;
     }
@@ -78,9 +78,9 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
         if (groupPosition == 0) {
             return trade.getStock();
         } else if (groupPosition == 1) {
-            return trade.getGj_contract().get(childPosition);
-        } else if (groupPosition == 2) {
             return trade.getGn_contract().get(childPosition);
+        } else if (groupPosition == 2) {
+            return trade.getGj_contract().get(childPosition);
         }
         return null;
     }
@@ -136,21 +136,21 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
                 tradeItem = trade.getStock();
                 childViewHolder.tvStockNmae.setText(tradeItem.getContractName());
             } else if (groupPosition == 1) {
-                List<TradeItem> gjList = trade.getGj_contract();
-                tradeItem = gjList.get(childPosition);
-            } else if (groupPosition == 2) {
                 List<TradeItem> gnList = trade.getGn_contract();
                 tradeItem = gnList.get(childPosition);
+            } else if (groupPosition == 2) {
+                List<TradeItem> gjList = trade.getGj_contract();
+                tradeItem = gjList.get(childPosition);
             }
             childViewHolder.tvStockNmae.setText(tradeItem.getContractName());
             childViewHolder.circleView.setColor("#" + tradeItem.getColor());
             childViewHolder.tvShortCode.setText(tradeItem.getShortCode());
 
-            if (!TextUtils.isEmpty(tradeItem.getHandMoney())) {
-                childViewHolder.tvHandMoney.setText(tradeItem.getHandMoney());
+            if (!TextUtils.isEmpty(tradeItem.getMk_price())) {
+                childViewHolder.tvHandMoney.setText(tradeItem.getMk_price());
                 childViewHolder.tvHandMoney.setVisibility(View.VISIBLE);
             } else {
-                childViewHolder.tvHandMoney.setText(tradeItem.getHandMoney());
+                childViewHolder.tvHandMoney.setText(tradeItem.getMk_price());
                 childViewHolder.tvHandMoney.setVisibility(View.GONE);
             }
             if (groupPosition == 0) {
@@ -161,7 +161,18 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
                 childViewHolder.tvTradeState.setVisibility(View.GONE);
                 childViewHolder.tvRemark.setText(tradeItem.getContractCode());
             }
-            childViewHolder.tvPrice.setText(tradeItem.getZdfu());
+            if(groupPosition==0){
+                childViewHolder.tvPrice.setText(tradeItem.getZdfu()+"%");
+            }else{
+                childViewHolder.tvPrice.setText(tradeItem.getZdfu());
+            }
+            if (tradeItem.getZdfu().contains("-")) {
+                childViewHolder.tvHandMoney.setTextColor(context.getResources().getColor(R.color.ys_0_229_0));
+                childViewHolder.tvPrice.setTextColor(context.getResources().getColor(R.color.ys_0_229_0));
+            } else {
+                childViewHolder.tvHandMoney.setTextColor(context.getResources().getColor(R.color.ys_241_83_83));
+                childViewHolder.tvPrice.setTextColor(context.getResources().getColor(R.color.ys_241_83_83));
+            }
         }
         return convertView;
     }
