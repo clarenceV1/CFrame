@@ -42,7 +42,6 @@ public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
                 .map(new Function<AppUpdateResond, String>() {
                     @Override
                     public String apply(AppUpdateResond appUpdateResond) {
-                        Log.d("Threads", "apply==>" + Thread.currentThread().getName());
                         if (appUpdateResond.getData() != null) {
                             return JSON.toJSONString(appUpdateResond.getData());
                         }
