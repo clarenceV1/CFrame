@@ -33,6 +33,14 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
 
     @Override
     public void initView(View view) {
+        setDefultShow(false);
+    }
 
+    public void setDefultShow(boolean defultShow) {
+        if (presenter.isLogin()) {
+
+        } else {
+
+        }
     }
 }

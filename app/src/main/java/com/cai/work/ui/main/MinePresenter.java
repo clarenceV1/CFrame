@@ -14,4 +14,7 @@ public class MinePresenter extends AppBasePresenter<MineView>  {
 
     }
 
+    public boolean isLogin() {
+        return false;
+    }
 }

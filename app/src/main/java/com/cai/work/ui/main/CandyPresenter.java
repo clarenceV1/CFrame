@@ -41,8 +41,10 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
 
     }
 
-    public void requestCandyList() {
-        getCandyListOfCache();
+    public void requestCandyList(boolean isloadCache) {
+        if (isloadCache) {
+            getCandyListOfCache();
+        }
         getCandyListOfNet();
     }
 

@@ -56,7 +56,7 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
         mViewBinding.pullListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-
+                presenter.requestCandyList(false);
             }
         });
         adapter = new CandyAdapter(getContext(), iLoadImage, presenter);
@@ -72,7 +72,7 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
                 }
             }
         });
-        presenter.requestCandyList();
+        presenter.requestCandyList(true);
     }
 
     private void initHead() {
@@ -87,6 +87,7 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
 
     @Override
     public void callBack(List<CandyList> data) {
+        mViewBinding.pullListView.onRefreshComplete();
         adapter.updateAll(data);
     }
 
