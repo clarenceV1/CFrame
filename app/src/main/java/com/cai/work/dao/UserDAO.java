@@ -1,5 +1,7 @@
 package com.cai.work.dao;
 
+import android.text.TextUtils;
+
 import com.cai.work.bean.User;
 import com.cai.work.bean.User_;
 
@@ -34,6 +36,19 @@ public class UserDAO extends BaseDAO {
             return user.getToken();
         }
         return null;
+    }
+
+    public boolean isLogin(){
+        String token = getToken();
+        if(TextUtils.isEmpty(token)){
+            return false;
+        }
+        return true;
+    }
+
+    public User getUserInfo() {
+        User user = userBox.query().build().findFirst();
+        return user;
     }
 
 //

@@ -1,5 +1,7 @@
 package com.cai.work.bean;
 
+import java.util.List;
+
 /**
  * Created by davy on 2018/3/7.
  */
@@ -38,18 +40,36 @@ public class MineModel extends BaseModel {
      * }
      */
 
-    private MineUserModel user;
+    private User user;
     private MineInviteModel invite;
     private MineBonusModle bonus;
     private String inviterule;
     private String inviteurl;
     private String invitetitle;
+    private List<Invite> inviteList;//自己用的
+    private int inviteTotal;//邀请总人数
 
-    public MineUserModel getUser() {
+    public int getInviteTotal() {
+        return inviteTotal;
+    }
+
+    public void setInviteTotal(int inviteTotal) {
+        this.inviteTotal = inviteTotal;
+    }
+
+    public List<Invite> getInviteList() {
+        return inviteList;
+    }
+
+    public void setInviteList(List<Invite> inviteList) {
+        this.inviteList = inviteList;
+    }
+
+    public User getUser() {
         return user;
     }
 
-    public void setUser(MineUserModel user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

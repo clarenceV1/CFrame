@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 
+import com.cai.work.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.common.BitMatrix;
@@ -24,6 +25,15 @@ import java.util.Hashtable;
  * Created by davy on 2018/3/21.
  */
 public class QRCodeCreat {
+
+    //二维码生成
+    public static void createQRcode(Context context,File file,String inviteUrl) {
+        try {
+            QRCodeCreat.createLogoQRImage(inviteUrl, 270, null, QRCodeCreat.resourceToBitmap(context, R.drawable.qcode_bg), file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 生成二维码

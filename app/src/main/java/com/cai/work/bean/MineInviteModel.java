@@ -73,14 +73,4 @@ public class MineInviteModel extends BaseModel {
     public void setM6(int m6) {
         this.m6 = m6;
     }
-
-    public ArrayList<Integer> getDatas() {
-        ArrayList<Integer> datas = new ArrayList<>();
-        datas.add(m1);
-        datas.add(m2);
-        datas.add(m3);
-        datas.add(m4);
-        datas.add(m5);
-        return datas;
-    }
 }

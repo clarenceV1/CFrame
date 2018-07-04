@@ -117,7 +117,8 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
                             }
                         }
                     }
-                }).subscribe(new NetRespondCallBack<CandyListRespond>() {
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetRespondCallBack<CandyListRespond>() {
             @Override
             public void respondResult(Subscription subscription, CandyListRespond respond) {
                 if (respond.getErrorcode() == 0) {

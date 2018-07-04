@@ -17,6 +17,4 @@ public class WebPresenter extends AppBasePresenter<WebForRTB> {
     @Override
     public void onAttached() {
     }
-
-
 }

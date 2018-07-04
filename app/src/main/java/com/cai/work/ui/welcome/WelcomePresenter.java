@@ -1,13 +1,12 @@
 package com.cai.work.ui.welcome;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.cai.work.R;
 import com.cai.work.base.AppBasePresenter;
 import com.cai.work.bean.MineModel;
-import com.cai.work.bean.MineUserModel;
+import com.cai.work.bean.User;
 import com.cai.work.bean.respond.AppUpdateResond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.qrcode.QRCodeCreat;
@@ -64,33 +63,22 @@ public class WelcomePresenter extends AppBasePresenter<WelcomeView> {
             public void accept(MineRespond data) {
                 MineModel mineModel = data.getData();
                 if (mineModel != null) {
-                    MineUserModel mineUserModel = mineModel.getUser();
-                    if (mineUserModel != null) {
-                        userDAO.get().update(mineUserModel.getUser_id(),
-                                mineUserModel.getAvatar(),
-                                mineUserModel.getNation_code(),
-                                mineUserModel.getNickname(),
-                                mineUserModel.getPhone());
+                    User user = mineModel.getUser();
+                    if (user != null) {
+                        userDAO.get().update(user.getUser_id(),
+                                user.getAvatar(),
+                                user.getNation_code(),
+                                user.getNickname(),
+                                user.getPhone());
                     }
                     cacheStore.get().saveMineData(mineModel);
                     dataStore.get().saveInviteTitle(mineModel.getInvitetitle());
                     dataStore.get().saveInviteUrl(mineModel.getInviteurl());
-                    createQRcode(mineModel);
+                    QRCodeCreat.createQRcode(context,fileStore.get().getQRcodeFile(1),mineModel.getInviteurl());
                 }
             }
         }).observeOn(AndroidSchedulers.mainThread())
         .subscribe(new NetRespondNoCallBack<>());
-    }
-
-    //二维码生成
-    private void createQRcode(MineModel mineModel) {
-        try {
-            File file = fileStore.get().getQRcodeFile(1);
-            String inviteUrl = mineModel.getInviteurl();
-            QRCodeCreat.createLogoQRImage(inviteUrl, 270, null, QRCodeCreat.resourceToBitmap(context, R.drawable.qcode_bg), file);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public void createShortCut() {

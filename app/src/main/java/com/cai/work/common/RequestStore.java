@@ -61,8 +61,7 @@ public class RequestStore {
     public Flowable<AppUpdateResond> loadUpgrade() {
         Flowable<AppUpdateResond> flowable = retrofit.get().create(ApiService.class)
                 .loadUpgrade(getRequestHeader())
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.io());
+                .subscribeOn(Schedulers.newThread());
         return flowable;
     }
 
@@ -74,8 +73,7 @@ public class RequestStore {
     public Flowable<MineRespond> loadMineData() {
         Flowable<MineRespond> flowable = retrofit.get().create(ApiService.class)
                 .loadMineData(getRequestHeader())
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.io());
+                .subscribeOn(Schedulers.newThread());
         return flowable;
     }
 
@@ -87,8 +85,7 @@ public class RequestStore {
     public Flowable<CandyListRespond> questCandyList() {
         Flowable<CandyListRespond> flowable = retrofit.get().create(ApiService.class)
                 .questCandyList(getRequestHeader())
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.io());
+                .subscribeOn(Schedulers.newThread());
         return flowable;
     }
 
@@ -100,8 +97,7 @@ public class RequestStore {
     public Flowable<CandyListRespond> receiveCandy(int tokenId) {
         Flowable<CandyListRespond> flowable = retrofit.get().create(ApiService.class)
                 .receiveCandy(getRequestHeader(), tokenId)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(Schedulers.io());
+                .subscribeOn(Schedulers.newThread());
         return flowable;
     }
 }

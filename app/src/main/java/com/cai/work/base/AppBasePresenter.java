@@ -23,4 +23,8 @@ public abstract class AppBasePresenter<V> extends GodBasePresenter<V> {
     public Lazy<UserDAO> userDAO;
     @Inject
     public Lazy<DataCacheStore> cacheStore;
+
+    public String getToken() {
+        return userDAO.get().getToken();
+    }
 }
