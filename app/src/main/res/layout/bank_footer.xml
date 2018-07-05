@@ -3,11 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="15dp">
 
     <Button
         android:id="@+id/btnAddBank"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/bank_add_bank" />
+        android:layout_height="40dp"
+        android:background="@drawable/btn_bule_empty"
+        android:text="@string/bank_add_bank"
+        android:textColor="@color/ys_31_121_242"
+        android:textSize="13sp" />
 </LinearLayout>

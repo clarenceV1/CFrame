@@ -4,15 +4,57 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/ys_30_30_30"
         android:orientation="vertical">
 
         <include
             android:id="@+id/commonHeadView"
             layout="@layout/common_head" />
 
-        <ListView
-            android:id="@+id/listView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/loadView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/yyk_nocard" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:text="您还没有添加任何银行卡"
+                    android:textColor="@color/ys_204_204_204"
+                    android:textSize="13dp" />
+
+                <Button
+                    android:id="@+id/btnAdd"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="17dp"
+                    android:background="@drawable/btn_yellow"
+                    android:text="去添加"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null" />
+        </RelativeLayout>
+
     </LinearLayout>
 </layout>

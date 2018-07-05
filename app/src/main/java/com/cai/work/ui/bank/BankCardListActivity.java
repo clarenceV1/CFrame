@@ -55,6 +55,12 @@ public class BankCardListActivity extends AppBaseActivity<BankCardListBinding> i
         });
         mViewBinding.listView.addFooterView(footer);
         mViewBinding.listView.setAdapter(adapter);
+        mViewBinding.btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/BankAddActivity").navigation();
+            }
+        });
     }
 
     @Override
@@ -70,8 +76,11 @@ public class BankCardListActivity extends AppBaseActivity<BankCardListBinding> i
 
     @Override
     public void update(List<BankCard> dataList) {
-        if (adapter != null) {
+        if (adapter != null && dataList != null) {
+            mViewBinding.loadView.setVisibility(View.GONE);
             adapter.update(dataList);
+        } else {
+            mViewBinding.loadView.setVisibility(View.VISIBLE);
         }
     }
 }
