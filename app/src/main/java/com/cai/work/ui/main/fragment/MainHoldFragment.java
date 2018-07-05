@@ -1,9 +1,5 @@
 package com.cai.work.ui.main.fragment;
 
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
@@ -41,9 +37,7 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
     boolean isStock;//是股票还是期货
     boolean isHolder;//是否是持仓 还是结算
 
-    Handler mhandler;
-    Handler mhandlerSend;
-    private String TAG = "socket thread";
+    SocketInfo socketInfo;
     boolean isRequestData = true;//是否要重新请求数据
     int page = 1;
     ListView listView;
@@ -137,65 +131,6 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
 //        initSocket();
         String userID = presenter.getUserId();
 //        socketThread.Send("hold|0|" + userID + "|mn");
-        SocketTest.socketTest();
-    }
-
-    @SuppressLint("HandlerLeak")
-    private void initSocket() {
-        mhandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                try {
-                    Log.i(TAG, "mhandler接收到msg=" + msg.what);
-                    if (msg.obj != null) {
-                        String s = msg.obj.toString();
-                        if (s.trim().length() > 0) {
-                            Log.i(TAG, "mhandler接收到obj=" + s);
-                            Log.i(TAG, "开始更新UI");
-                            Log.i(TAG, "Server:" + s);
-                            Log.i(TAG, "更新UI完毕");
-                        } else {
-                            Log.i(TAG, "没有数据返回不更新");
-                        }
-                    }
-                } catch (Exception ee) {
-                    Log.i(TAG, "加载过程出现异常");
-                    ee.printStackTrace();
-                }
-            }
-        };
-        mhandlerSend = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                try {
-                    Log.i(TAG, "mhandlerSend接收到msg.what=" + msg.what);
-                    String s = msg.obj.toString();
-                    if (msg.what == 1) {
-                        Log.i(TAG, "\n ME: " + s + "      发送成功");
-                    } else {
-                        Log.i(TAG, "\n ME: " + s + "     发送失败");
-                    }
-                } catch (Exception ee) {
-                    Log.i(TAG, "加载过程出现异常");
-                    ee.printStackTrace();
-                }
-            }
-        };
-        startSocket();
-    }
-
-    public void startSocket() {
-        socketThread = new SocThread(mhandler, mhandlerSend, getContext());
-        socketThread.start();
-    }
-
-    private void stopSocket() {
-        if (socketThread != null) {
-            socketThread.isRun = false;
-            socketThread.close();
-            socketThread = null;
-            Log.i(TAG, "Socket已终止");
-        }
     }
 
     private void freshData(boolean isRealTrade, boolean isStock, boolean isHolder) {
@@ -274,10 +209,9 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
-        Log.e(TAG, "start onStop~~~");
-        stopSocket();
+    public void onDestroy() {
+        super.onDestroy();
+
     }
 
     @Override
