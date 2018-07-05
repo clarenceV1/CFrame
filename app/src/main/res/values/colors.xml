@@ -32,6 +32,7 @@
     <color name="ys_66_66_66">#424242</color>
     <color name="ys_66_147_232">#4293e8</color>
     <color name="ys_70_76_82">#464c52</color>
+    <color name="ys_77_77_77">#4d4d4d</color>
     <color name="ys_102_102_102">#666666</color>
     <color name="ys_109_109_109">#6d6d6d</color>
     <color name="ys_118_118_118">#767676</color>
@@ -57,6 +58,7 @@
     <color name="ys_252_38_45">#fc262d</color>
     <color name="ys_232_0_63">#e8003f</color>
     <color name="ys_254_254_254">#fefefe</color>
+    <color name="ys_255_231_59">#ffe73b</color>
     <color name="ys_255_33_33">#ff2121</color>
     <color name="ys_255_255_255">#ffffff</color>
 

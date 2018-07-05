@@ -1,66 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/red_b"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:paddingBottom="7.5dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="7.5dp">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="50dp">
-
-        <TextView
-            android:id="@+id/tvRmb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="¥"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tvParValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/tvRmb"
-            android:textSize="30sp"
-            tools:text="8" />
-
-        <TextView
-            android:id="@+id/tvRedText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:textSize="25sp"
-            tools:text="全民红包" />
-
-    </RelativeLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layerType="software"
-        android:src="@drawable/xuxian" />
-
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/llContain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:background="@drawable/hb_unused"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvDueDate"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="2018-06-03" />
+            android:layout_height="75dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
 
-        <TextView
-            android:id="@+id/tvState"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tvRmb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:text="¥"
+                android:textColor="@color/ys_255_231_59"
+                android:textSize="19sp" />
+
+            <TextView
+                android:id="@+id/tvParValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/tvRmb"
+                android:textColor="@color/ys_255_231_59"
+                android:textSize="40sp"
+                tools:text="8" />
+
+            <TextView
+                android:id="@+id/tvRedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="16sp"
+                tools:text="全民红包" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            tools:text="未使用" />
-    </RelativeLayout>
-</LinearLayout>
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:id="@+id/tvDueDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ys_204_204_204"
+                android:textSize="12sp"
+                tools:text="2018-06-03" />
+
+            <TextView
+                android:id="@+id/tvState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="12sp"
+                tools:text="未使用" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

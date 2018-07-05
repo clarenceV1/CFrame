@@ -30,13 +30,28 @@ class RedPacketAdapter extends GodBaseAdapter {
         if (itemData != null && itemData instanceof RedPacketItem) {
             final RedPacketItem redPacketItem = (RedPacketItem) itemData;
             if (redPacketItem.getStatus() == 1) { //1未使用2已使用3过期
-                convertView.setBackgroundColor(context.getResources().getColor(R.color.red_b));
+                ViewHolder.getView(convertView,R.id.llContain).setBackgroundResource(R.drawable.hb_unused);
+                ViewHolder.getTextView(convertView, R.id.tvRmb).setTextColor(context.getResources().getColor(R.color.ys_255_231_59));
+                ViewHolder.getTextView(convertView, R.id.tvParValue).setTextColor(context.getResources().getColor(R.color.ys_255_231_59));
+                ViewHolder.getTextView(convertView, R.id.tvDueDate).setTextColor(context.getResources().getColor(R.color.ys_204_204_204));
+                ViewHolder.getTextView(convertView, R.id.tvRedText).setTextColor(context.getResources().getColor(R.color.ys_255_255_255));
+                ViewHolder.getTextView(convertView, R.id.tvState).setTextColor(context.getResources().getColor(R.color.ys_255_255_255));
                 ViewHolder.getTextView(convertView, R.id.tvState).setText(context.getResources().getString(R.string.red_packet_no_use));
             } else if (redPacketItem.getStatus() == 2) {
-                convertView.setBackgroundColor(context.getResources().getColor(R.color.red_light));
+                ViewHolder.getView(convertView,R.id.llContain).setBackgroundResource(R.drawable.hb_used);
+                ViewHolder.getTextView(convertView, R.id.tvRmb).setTextColor(context.getResources().getColor(R.color.ys_204_204_204));
+                ViewHolder.getTextView(convertView, R.id.tvParValue).setTextColor(context.getResources().getColor(R.color.ys_204_204_204));
+                ViewHolder.getTextView(convertView, R.id.tvDueDate).setTextColor(context.getResources().getColor(R.color.ys_77_77_77));
+                ViewHolder.getTextView(convertView, R.id.tvRedText).setTextColor(context.getResources().getColor(R.color.ys_204_204_204));
+                ViewHolder.getTextView(convertView, R.id.tvState).setTextColor(context.getResources().getColor(R.color.ys_77_77_77));
                 ViewHolder.getTextView(convertView, R.id.tvState).setText(context.getResources().getString(R.string.red_packet_use));
             } else if (redPacketItem.getStatus() == 3) {
-                convertView.setBackgroundColor(context.getResources().getColor(R.color.black_b));
+                ViewHolder.getView(convertView,R.id.llContain).setBackgroundResource(R.drawable.hb_used);
+                ViewHolder.getTextView(convertView, R.id.tvRmb).setTextColor(context.getResources().getColor(R.color.ys_204_204_204));
+                ViewHolder.getTextView(convertView, R.id.tvParValue).setTextColor(context.getResources().getColor(R.color.ys_204_204_204));
+                ViewHolder.getTextView(convertView, R.id.tvDueDate).setTextColor(context.getResources().getColor(R.color.ys_77_77_77));
+                ViewHolder.getTextView(convertView, R.id.tvRedText).setTextColor(context.getResources().getColor(R.color.ys_204_204_204));
+                ViewHolder.getTextView(convertView, R.id.tvState).setTextColor(context.getResources().getColor(R.color.ys_77_77_77));
                 ViewHolder.getTextView(convertView, R.id.tvState).setText(context.getResources().getString(R.string.red_packet_overdue));
             }
 

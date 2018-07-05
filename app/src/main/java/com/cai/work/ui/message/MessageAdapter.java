@@ -39,7 +39,7 @@ class MessageAdapter extends GodBaseAdapter {
     public void initItemView(final View convertView, CBaseData itemData, int position) {
         if (itemData != null && itemData instanceof MessageItem) {
             final MessageItem messageItem = (MessageItem) itemData;
-            ViewHolder.getTextView(convertView, R.id.tvMsgTitile).setText("服务端没提供");
+            ViewHolder.getTextView(convertView, R.id.tvMsgTitile).setText(messageItem.getContent());
             if (messageItem.getReadType() == 1) { //1已读2未读
                 ViewHolder.getTextView(convertView, R.id.ivNew).setVisibility(View.VISIBLE);
             } else {

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/ys_33_33_33"
-    android:paddingLeft="14dp"
+    android:paddingLeft="15dp"
     android:paddingRight="20dp"
     android:paddingTop="24dp">
 
@@ -86,28 +86,9 @@
             android:textSize="13dp" />
     </RelativeLayout>
 
-
-    <!-- <TextView
-         android:id="@+id/tvAmount"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentRight="true"
-         tools:text="tvRelatedType" />
-
-     <TextView
-         android:id="@+id/tvRemark"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/tvRelatedType"
-         android:layout_marginTop="10dp"
-         tools:text="tvRelatedType" />
-
-     <TextView
-         android:id="@+id/tvCreateDate"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentRight="true"
-         android:layout_below="@+id/tvAmount"
-         android:layout_marginTop="10dp"
-         tools:text="tvCreateDate" />-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/ys_77_77_77" />
 </RelativeLayout>

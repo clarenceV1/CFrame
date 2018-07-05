@@ -2,6 +2,7 @@ package com.cai.work.ui.redPacket;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -53,6 +54,8 @@ public class RedPacketActivity extends AppBaseActivity<RedPacketBinding> impleme
         listView.setAdapter(adapter);
         PullToRefreshBase.Mode.isShowFooterLoadingView = false;
         View emptyView = LayoutInflater.from(this).inflate(R.layout.empty_view, null);
+        ImageView imgLoad= (ImageView) emptyView.findViewById(R.id.imgLoad);
+        imgLoad.setBackgroundResource(R.drawable.noredpacket);
         mViewBinding.pullListView.setEmptyView(emptyView);
         mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
         mViewBinding.pullListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
