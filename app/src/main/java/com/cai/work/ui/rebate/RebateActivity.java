@@ -102,13 +102,13 @@ public class RebateActivity extends AppBaseActivity<RebateBinding> implements Re
         if (selectedTabType == 1) {
             mViewBinding.bottomLine1.setVisibility(View.VISIBLE);
             mViewBinding.bottomLine2.setVisibility(View.GONE);
-            mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
-            mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
+            mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+            mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.ys_255_255_255));
         } else {
             mViewBinding.bottomLine1.setVisibility(View.GONE);
             mViewBinding.bottomLine2.setVisibility(View.VISIBLE);
-            mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-            mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
+            mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+            mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.ys_219_183_108));
         }
         if (selectedTabType == 1) {
             adapter.update(oneLever);
