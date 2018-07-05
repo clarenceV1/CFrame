@@ -87,5 +87,10 @@ dependencies {
     compile rootProject.ext.dependencies["fastjson"]
 
     compile 'com.google.android:multidex:0.1'
+
+//    compile 'com.koushikdutta.async:androidasync:2.+'
 //    compile project(':klinelib')
+
+    compile project(':AndroidAsync')
+
 }

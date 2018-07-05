@@ -3,12 +3,11 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="disableWrapperSourceDistributionNotification" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="/Applications/Android Studio 2.app/Contents/gradle/gradle-2.14.1" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$/../../AndroidAsync" />
             <option value="$PROJECT_DIR$/.." />
             <option value="$PROJECT_DIR$/../Amodule" />
             <option value="$PROJECT_DIR$/../Bmodule" />

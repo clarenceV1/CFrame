@@ -18,18 +18,9 @@ import com.cai.work.bean.SocketInfo;
 import com.cai.work.bean.StockAccount;
 import com.cai.work.bean.StockHold;
 import com.cai.work.databinding.MainHoldFragmentBinding;
-import com.cai.work.socket.SocThread;
-import com.cai.work.socket.SocketTest;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.Socket;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -53,8 +44,6 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
     Handler mhandler;
     Handler mhandlerSend;
     private String TAG = "socket thread";
-    SocThread socketThread;
-    SocketInfo socketInfo;
     boolean isRequestData = true;//是否要重新请求数据
     int page = 1;
     ListView listView;

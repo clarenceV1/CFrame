@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Amodule/Amodule.iml" filepath="$PROJECT_DIR$/../Amodule/Amodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../AndroidAsync/AndroidAsync.iml" filepath="$PROJECT_DIR$/../../AndroidAsync/AndroidAsync.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Bmodule/Bmodule.iml" filepath="$PROJECT_DIR$/../Bmodule/Bmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/../CFrame.iml" filepath="$PROJECT_DIR$/../CFrame.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibAnnotation/LibAnnotation.iml" filepath="$PROJECT_DIR$/../../LibAnnotation/LibAnnotation.iml" />
@@ -19,10 +20,6 @@
       <module fileurl="file://$PROJECT_DIR$/../../MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/../../MPChartLib/MPChartLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../RemotePlugin/RemotePlugin.iml" filepath="$PROJECT_DIR$/../../RemotePlugin/RemotePlugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../apt/apt.iml" filepath="$PROJECT_DIR$/../apt/apt.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../buildsrc/buildsrc.iml" filepath="$PROJECT_DIR$/../buildsrc/buildsrc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../framework/framework.iml" filepath="$PROJECT_DIR$/../framework/framework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../lib/lib.iml" filepath="$PROJECT_DIR$/../lib/lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/../plugin/plugin.iml" filepath="$PROJECT_DIR$/../plugin/plugin.iml" />
     </modules>
   </component>

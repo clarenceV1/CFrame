@@ -17,15 +17,16 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:layout_height="55dp"
+                android:background="@color/ys_33_33_33"
+                android:padding="15dp">
 
                 <ImageView
                     android:id="@+id/imgSuccessRebate"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_launcher" />
+                    android:background="@drawable/yj_tixianyongjin" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -33,33 +34,45 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/imgSuccessRebate"
-                    android:text="@string/invite_success_rebate" />
+                    android:text="@string/invite_success_rebate"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/tvSuccessRebate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:textColor="@color/red_b"
+                    android:textColor="@color/ys_255_33_33"
+                    android:textSize="16sp"
                     tools:text="Y900" />
             </RelativeLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ys_66_66_66" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:layout_height="70dp"
+                android:background="@color/ys_33_33_33"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp">
 
                 <ImageView
                     android:id="@+id/imgCanRebate"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_launcher" />
+                    android:background="@drawable/yj_ketixianyongjin" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_toRightOf="@+id/imgCanRebate"
                     android:orientation="vertical">
 
@@ -68,32 +81,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="@string/invite_can_rebate" />
+                        android:text="@string/invite_can_rebate"
+                        android:textColor="@color/ys_255_255_255"
+                        android:textSize="15sp" />
 
-                    <LinearLayout
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_toRightOf="@+id/imgCanRebate"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="@string/invite_can_rebate_from" />
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/ic_launcher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="@string/invite_can_rebate_to" />
-                    </LinearLayout>
+                        android:background="@drawable/yj_text" />
                 </LinearLayout>
 
                 <TextView
@@ -101,32 +98,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:textColor="@color/red_b"
+                    android:textColor="@color/ys_255_33_33"
+                    android:textSize="16sp"
                     tools:text="Y900" />
 
                 <TextView
                     android:id="@+id/tvRebateCash"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="22dp"
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/tvCanRebate"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/red_b"
-                    android:padding="10dp"
-                    android:text="@string/invite_rebate_cash" />
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/btn_yellow_empty"
+                    android:gravity="center"
+                    android:text="@string/invite_rebate_cash"
+                    android:textColor="@color/ys_234_205_118"
+                    android:textSize="12sp" />
             </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/ys_30_30_30" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:background="@color/ys_33_33_33">
 
                 <TextView
                     android:id="@+id/tvInviteLink"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="@string/invite_link_title" />
+                    android:layout_marginTop="20dp"
+                    android:text="@string/invite_link_title"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvLinkAddress"
@@ -134,61 +142,89 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvInviteLink"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="15dp"
                     android:ellipsize="end"
                     android:singleLine="true"
+                    android:textColor="@color/ys_49_131_232"
+                    android:textSize="16sp"
                     tools:text="http://www.baidu.com/sdfsljxlcv/xcvxljcv" />
 
                 <TextView
                     android:id="@+id/tvCopyLink"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="65dp"
+                    android:layout_height="24dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:background="@color/red_b"
-                    android:padding="10dp"
-                    android:text="@string/invite_copy_link" />
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/btn_yellow_empty"
+                    android:gravity="center"
+                    android:text="@string/invite_copy_link"
+                    android:textColor="@color/ys_234_205_118"
+                    android:textSize="13sp" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:background="@color/ys_30_30_30">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/xuxian2" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/ys_30_30_30"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
 
                 <TextView
                     android:id="@+id/tvQRcode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="@string/invite_QR_code" />
+                    android:layout_marginTop="20dp"
+                    android:text="@string/invite_QR_code"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:id="@+id/imgQRCode"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
                     android:layout_below="@+id/tvQRcode"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
+                    android:scaleType="fitXY"
                     tools:background="@drawable/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tvSavePic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="65dp"
+                    android:layout_height="24dp"
                     android:layout_alignBottom="@+id/imgQRCode"
                     android:layout_alignParentRight="true"
-                    android:background="@color/red_b"
-                    android:padding="10dp"
-                    android:text="@string/invite_save_pic" />
+                    android:background="@drawable/btn_yellow_empty"
+                    android:gravity="center"
+                    android:text="@string/invite_save_pic"
+                    android:textColor="@color/ys_234_205_118" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="65dp"
+                    android:layout_height="24dp"
                     android:layout_below="@+id/imgQRCode"
                     android:layout_marginTop="20dp"
                     android:background="@color/red_b"
                     android:gravity="center"
-                    android:text="@string/invite_introduce" />
+                    android:text="@string/invite_introduce"
+                    android:textSize="13sp" />
             </RelativeLayout>
 
             <LinearLayout
