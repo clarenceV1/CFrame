@@ -60,7 +60,7 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
         mViewBinding.tvRebateCash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ARouter.getInstance().build("/AppModule/RebateActivity").navigation();
             }
         });
         mViewBinding.tvCopyLink.setOnClickListener(new View.OnClickListener() {
