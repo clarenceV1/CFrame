@@ -19,6 +19,7 @@ import com.cai.work.bean.StockAccount;
 import com.cai.work.bean.StockHold;
 import com.cai.work.databinding.MainHoldFragmentBinding;
 import com.cai.work.socket.SocThread;
+import com.cai.work.socket.SocketTest;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
 
@@ -145,33 +146,9 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
         });
         freshData(true, true, true);
 //        initSocket();
-//        String userID = presenter.getUserId();
+        String userID = presenter.getUserId();
 //        socketThread.Send("hold|0|" + userID + "|mn");
-//        socketTest();
-    }
-
-    private void socketTest() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Socket socket = new Socket("ws://47.75.37.208",7709);
-                    //向服务器发送消息
-                    PrintWriter out = new PrintWriter( new BufferedWriter( new OutputStreamWriter(socket.getOutputStream())),true);
-                    String userID = presenter.getUserId();
-                    userID = "hold|0|" + userID;
-                    out.println(userID);
-                    BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                    String msg = br.readLine();
-                    Log.d("socketTest",msg);
-                    //关闭流
-                    out.close();
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        SocketTest.socketTest();
     }
 
     @SuppressLint("HandlerLeak")
