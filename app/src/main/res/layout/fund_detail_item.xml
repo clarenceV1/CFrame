@@ -2,13 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp">
+    android:layout_height="63dp"
+    android:background="@color/ys_33_33_33"
+    android:paddingTop="8dp">
 
     <TextView
         android:id="@+id/tvRelatedType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:textColor="@color/ys_255_255_255"
+        android:textSize="14sp"
         tools:text="tvRelatedType" />
 
     <TextView
@@ -16,22 +21,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:textColor="@color/ys_223_5_21"
         tools:text="tvRelatedType" />
 
     <TextView
         android:id="@+id/tvRemark"
         android:layout_width="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvRelatedType"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:textColor="@color/ys_153_153_153"
+        android:textSize="11sp"
         tools:text="tvRelatedType" />
 
     <TextView
         android:id="@+id/tvCreateDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tvAmount"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:textColor="@color/ys_153_153_153"
+        android:textSize="11sp"
         tools:text="tvCreateDate" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/ys_51_51_51" />
 </RelativeLayout>

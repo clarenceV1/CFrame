@@ -51,7 +51,7 @@ public class RebatePresenter extends GodBasePresenter<RebateView> {
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) {
-                mView.toast("请求异常");
+
             }
         });
         mCompositeSubscription.add(disposable);

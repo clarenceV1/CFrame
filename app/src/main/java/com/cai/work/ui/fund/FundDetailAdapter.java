@@ -32,8 +32,10 @@ class FundDetailAdapter extends GodBaseAdapter {
             ViewHolder.getTextView(convertView, R.id.tvRelatedType).setText(fundDetail.getRelatedType());
             if (fundDetail.getInoutType() == 1) {
                 ViewHolder.getTextView(convertView, R.id.tvAmount).setText("+" + fundDetail.getAmount());
+                ViewHolder.getTextView(convertView, R.id.tvAmount).setTextColor(context.getResources().getColor(R.color.ys_223_5_21));
             } else {
                 ViewHolder.getTextView(convertView, R.id.tvAmount).setText("-" + fundDetail.getAmount());
+                ViewHolder.getTextView(convertView, R.id.tvAmount).setTextColor(context.getResources().getColor(R.color.ys_50_153_50));
             }
             ViewHolder.getTextView(convertView, R.id.tvRemark).setText(fundDetail.getRemark());
             ViewHolder.getTextView(convertView, R.id.tvCreateDate).setText(fundDetail.getCreateDate());

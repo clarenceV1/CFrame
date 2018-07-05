@@ -90,6 +90,12 @@ public class MainMineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         imageLoader.loadImage(context, imageParams);
         topViewHolder.tvAccount.setText(mineTopData.getAccount());
         topViewHolder.tvMoney.setText(mineTopData.getMoney());
+        topViewHolder.imgSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/SaveActivity").navigation();
+            }
+        });
         topViewHolder.btnRecharge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
