@@ -46,8 +46,6 @@ public class MyInviteFragment extends AppBaseFragment<MyInviteFragmentBinding> {
             mViewBinding.llNoDataView.setVisibility(View.VISIBLE);
         } else {
             MyInviteAdapter adapter = new MyInviteAdapter(getContext(), dataList);
-            View headView = LayoutInflater.from(getContext()).inflate(R.layout.my_invite_head, null);
-            mViewBinding.listView.addHeaderView(headView);
             mViewBinding.listView.setAdapter(adapter);
             mViewBinding.listView.setVisibility(View.VISIBLE);
             mViewBinding.llNoDataView.setVisibility(View.GONE);

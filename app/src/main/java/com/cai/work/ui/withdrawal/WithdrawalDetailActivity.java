@@ -119,40 +119,40 @@ public class WithdrawalDetailActivity extends AppBaseActivity<WithdrawalDetailBi
                 mViewBinding.bottomLine2.setVisibility(View.GONE);
                 mViewBinding.bottomLine3.setVisibility(View.GONE);
                 mViewBinding.bottomLine4.setVisibility(View.GONE);
-                mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
-                mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                mViewBinding.tvTab3.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                mViewBinding.tvTab4.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
+                mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+                mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvTab3.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvTab4.setTextColor(getResources().getColor(R.color.ys_255_255_255));
                 break;
             case 2:
                 mViewBinding.bottomLine1.setVisibility(View.GONE);
                 mViewBinding.bottomLine2.setVisibility(View.VISIBLE);
                 mViewBinding.bottomLine3.setVisibility(View.GONE);
                 mViewBinding.bottomLine4.setVisibility(View.GONE);
-                mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
-                mViewBinding.tvTab3.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                mViewBinding.tvTab4.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
+                mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+                mViewBinding.tvTab3.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvTab4.setTextColor(getResources().getColor(R.color.ys_255_255_255));
                 break;
             case 3:
                 mViewBinding.bottomLine1.setVisibility(View.GONE);
                 mViewBinding.bottomLine2.setVisibility(View.GONE);
                 mViewBinding.bottomLine3.setVisibility(View.VISIBLE);
                 mViewBinding.bottomLine4.setVisibility(View.GONE);
-                mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                mViewBinding.tvTab3.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
-                mViewBinding.tvTab4.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
+                mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvTab3.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+                mViewBinding.tvTab4.setTextColor(getResources().getColor(R.color.ys_255_255_255));
                 break;
             case 4:
                 mViewBinding.bottomLine1.setVisibility(View.GONE);
                 mViewBinding.bottomLine2.setVisibility(View.GONE);
                 mViewBinding.bottomLine3.setVisibility(View.GONE);
                 mViewBinding.bottomLine4.setVisibility(View.VISIBLE);
-                mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                mViewBinding.tvTab3.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-                mViewBinding.tvTab4.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
+                mViewBinding.tvTab1.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvTab2.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvTab3.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+                mViewBinding.tvTab4.setTextColor(getResources().getColor(R.color.ys_219_183_108));
                 break;
         }
         update();

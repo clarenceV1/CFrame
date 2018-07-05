@@ -5,6 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/ys_30_30_30"
         android:orientation="vertical">
 
         <include
@@ -13,7 +14,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="44dp"
+            android:background="@color/ys_33_33_33"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -27,7 +29,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="@string/invite_one" />
+                    android:text="@string/invite_one"
+                    android:textColor="@color/ys_219_183_108"
+                    android:textSize="15sp" />
 
                 <View
                     android:id="@+id/bottomLine1"
@@ -35,10 +39,15 @@
                     android:layout_height="2dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:background="@color/red_b"
+                    android:background="@color/ys_219_183_108"
                     android:visibility="gone"
                     tools:visibility="visible" />
             </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/ys_666666" />
 
             <RelativeLayout
                 android:id="@+id/rlTab2"
@@ -52,7 +61,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="@string/invite_two" />
+                    android:text="@string/invite_two"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="15sp" />
 
                 <View
                     android:id="@+id/bottomLine2"
@@ -60,11 +71,21 @@
                     android:layout_height="2dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:background="@color/red_b"
+                    android:background="@color/ys_219_183_108"
                     android:visibility="gone" />
             </RelativeLayout>
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/ys_666666" />
+
+        <include
+            layout="@layout/my_invite_head"
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
 
         <FrameLayout
             android:id="@+id/container"

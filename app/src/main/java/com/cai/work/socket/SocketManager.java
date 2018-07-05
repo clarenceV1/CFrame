@@ -1,7 +1,6 @@
 package com.cai.work.socket;
 
 import android.util.Log;
-import android.view.View;
 
 import com.koushikdutta.async.ByteBufferList;
 import com.koushikdutta.async.DataEmitter;

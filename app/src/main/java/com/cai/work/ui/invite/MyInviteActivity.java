@@ -69,8 +69,16 @@ public class MyInviteActivity extends AppBaseActivity<MyInviteBinding> implement
             }
         });
         mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.invite_my_titile));
-        mViewBinding.tvTabLeft.setText(StringUtils.buildString(getString(R.string.invite_one), "(", oneInvite.size(), ")"));
-        mViewBinding.tvTabRight.setText(StringUtils.buildString(getString(R.string.invite_two), "(", twoInvite.size(), ")"));
+        if (oneInvite != null) {
+            mViewBinding.tvTabLeft.setText(StringUtils.buildString(getString(R.string.invite_one), "(", oneInvite.size(), ")"));
+        } else {
+            mViewBinding.tvTabLeft.setText(StringUtils.buildString(getString(R.string.invite_one), "(0)"));
+        }
+        if (twoInvite != null) {
+            mViewBinding.tvTabRight.setText(StringUtils.buildString(getString(R.string.invite_two), "(", twoInvite.size(), ")"));
+        } else {
+            mViewBinding.tvTabRight.setText(StringUtils.buildString(getString(R.string.invite_two), "(0)"));
+        }
 
         mViewBinding.rlTab1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,13 +120,13 @@ public class MyInviteActivity extends AppBaseActivity<MyInviteBinding> implement
         if (selectedTabType == 1) {
             mViewBinding.bottomLine1.setVisibility(View.VISIBLE);
             mViewBinding.bottomLine2.setVisibility(View.GONE);
-            mViewBinding.tvTabLeft.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
-            mViewBinding.tvTabRight.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
+            mViewBinding.tvTabLeft.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+            mViewBinding.tvTabRight.setTextColor(getResources().getColor(R.color.ys_255_255_255));
         } else {
             mViewBinding.bottomLine1.setVisibility(View.GONE);
             mViewBinding.bottomLine2.setVisibility(View.VISIBLE);
-            mViewBinding.tvTabLeft.setTextColor(getResources().getColor(R.color.home_forward_tab_color));
-            mViewBinding.tvTabRight.setTextColor(getResources().getColor(R.color.home_forward_tab_color_selected));
+            mViewBinding.tvTabLeft.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+            mViewBinding.tvTabRight.setTextColor(getResources().getColor(R.color.ys_219_183_108));
         }
         Fragment fragment;
         WeakReference<Fragment> weakReference = fragmentMap.get("Left");
