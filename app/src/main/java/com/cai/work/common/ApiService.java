@@ -5,10 +5,13 @@ import com.cai.work.bean.respond.AppUpdateResond;
 import com.cai.work.bean.respond.CandyListRespond;
 import com.cai.work.bean.respond.DiscoverRespond;
 import com.cai.work.bean.respond.MineRespond;
+import com.cai.work.bean.respond.PhoneCodeRespond;
 
 import java.util.Map;
 
 import io.reactivex.Flowable;
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -39,6 +42,8 @@ public interface ApiService {
     @GET(App.PATH + "discover")
     Flowable<DiscoverRespond> questDiscoverList(@HeaderMap Map<String, String> map);
 
+    @POST(App.PATH + "vercode")
+    Flowable<PhoneCodeRespond> getPhoneCode(@HeaderMap Map<String, String> map, @Body RequestBody body);
 
 //
 //    @POST("/app/login/index")
