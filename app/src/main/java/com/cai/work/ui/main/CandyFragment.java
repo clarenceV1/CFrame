@@ -23,6 +23,7 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
     @Inject
     CandyPresenter presenter;
     CandyAdapter adapter;
+
     @Inject
     ILoadImage iLoadImage;
     LoadDialog loadDialog;
@@ -49,7 +50,7 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
         initHead();
 
         mPtrRecyclerView = (PtrRecyclerView) mViewBinding.pullListView.getRecyclerView();
-        adapter = new CandyAdapter(getContext(),iLoadImage,presenter);
+        adapter = new CandyAdapter(getContext(), iLoadImage, presenter);
         mPtrRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mPtrRecyclerView.setAdapter(adapter);
         mViewBinding.pullListView.setCloseLoadMore(true);
@@ -80,7 +81,9 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
     @Override
     public void callBack(List<CandyList> data) {
         mViewBinding.pullListView.refreshOrLoadMoreComplete(false);
-        adapter.setDatas(data);
+        if (data != null && data.size() > 0) {
+            adapter.setDatas(data);
+        }
     }
 
     @Override

@@ -2,6 +2,9 @@ package com.cai.work.base;
 
 
 import android.databinding.ViewDataBinding;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.cai.framework.base.GodBasePresenterActivity;
 import com.cai.work.R;
@@ -12,6 +15,15 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
  */
 
 public abstract class AppBaseActivity<M extends ViewDataBinding> extends GodBasePresenterActivity<M> {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        View rootView = findViewById(android.R.id.content);
+        if (rootView != null) {
+            rootView.setBackgroundResource(com.cai.framework.R.color.white_a);
+        }
+    }
+
     @Override
     public void setStatusBar(SystemBarTintManager tintManager) {
         tintManager.setTintColor(getResources().getColor(R.color.transparent));

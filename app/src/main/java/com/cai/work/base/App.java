@@ -13,11 +13,12 @@ import io.objectbox.BoxStore;
  */
 
 public class App extends GodBaseApplication {
-    //    public static final String PATH = "MoreServer/api/index.php/"; //测试用的被逼
-    public static final String PATH = "api/";
+    public static final String PATH = "api/index.php/"; //测试用的被逼
+    //    public static final String PATH = "api/";
+    public static String BASEURL = "http://101.37.146.65/";
+//    public static String BASEURL = "https://more.ethte.com/";
+
     public static boolean isDebug = true;
-    //    public static String BASEURL = "http://192.168.50.79/";
-    public static String BASEURL = "https://more.ethte.com/";
     public static final String H5_NAME = "http://more.one/h5";
     public static final String H5_CANDY = "https://myeoscandy.com";
     public static final String DOMAIN_NAME = "more.ethte.com";
@@ -32,7 +33,6 @@ public class App extends GodBaseApplication {
         if (appComponent == null) {
             appComponent = DaggerAppComponent.create();
         }
-
     }
 
     @Override

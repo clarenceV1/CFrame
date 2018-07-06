@@ -6,6 +6,7 @@ import com.cai.framework.utils.LanguageLocalUtil;
 import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
 import com.cai.work.bean.respond.CandyListRespond;
+import com.cai.work.bean.respond.DiscoverRespond;
 import com.cai.work.bean.respond.MineRespond;
 import com.example.clarence.utillibrary.PackageUtils;
 
@@ -97,6 +98,18 @@ public class RequestStore {
     public Flowable<CandyListRespond> receiveCandy(int tokenId) {
         Flowable<CandyListRespond> flowable = retrofit.get().create(ApiService.class)
                 .receiveCandy(getRequestHeader(), tokenId)
+                .subscribeOn(Schedulers.newThread());
+        return flowable;
+    }
+
+    /**
+     * 获取发现列表
+     *
+     * @return
+     */
+    public Flowable<DiscoverRespond> questDiscoverList() {
+        Flowable<DiscoverRespond> flowable = retrofit.get().create(ApiService.class)
+                .questDiscoverList(getRequestHeader())
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }

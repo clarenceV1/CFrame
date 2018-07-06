@@ -3,6 +3,7 @@ package com.cai.work.common;
 import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
 import com.cai.work.bean.respond.CandyListRespond;
+import com.cai.work.bean.respond.DiscoverRespond;
 import com.cai.work.bean.respond.MineRespond;
 
 import java.util.Map;
@@ -34,6 +35,9 @@ public interface ApiService {
     @POST(App.PATH + "candy")
     @FormUrlEncoded
     Flowable<CandyListRespond> receiveCandy(@FieldMap Map<String, String> map, @Field("token_id") int tokenid);
+
+    @GET(App.PATH + "discover")
+    Flowable<DiscoverRespond> questDiscoverList(@HeaderMap Map<String, String> map);
 
 
 //

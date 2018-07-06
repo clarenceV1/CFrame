@@ -2,6 +2,7 @@ package com.cai.work.ui.main;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -21,6 +22,7 @@ import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.DeviceUtils;
 import com.example.clarence.utillibrary.DimensUtils;
 import com.example.clarence.utillibrary.StringUtils;
+import com.example.clarence.utillibrary.ToastUtils;
 
 public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHolder> {
 
@@ -72,6 +74,7 @@ public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHol
 
     @Override
     protected void onPtrBindViewHolder(ViewHolder holder, final CandyList data, int position) {
+        handleHead(holder, data);
         if (data.getType() == 2) {
             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) holder.imageAd.getLayoutParams();
             layoutParams.width = itemWidth;
@@ -134,11 +137,36 @@ public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHol
         iLoadImage.loadImage(context, imageParams);
     }
 
+    private void handleHead(ViewHolder holder, CandyList data) {
+        if (TextUtils.isEmpty(data.getBarOne())) {
+            holder.itemHead.setVisibility(View.GONE);
+        } else {
+            holder.itemHead.setVisibility(View.VISIBLE);
+            holder.tvBigTitle.setText(data.getBarOne());
+            if (TextUtils.isEmpty(data.getBarTwo())) {
+                holder.tvSmallTitle.setVisibility(View.GONE);
+            } else {
+                holder.tvSmallTitle.setVisibility(View.VISIBLE);
+                holder.tvSmallTitle.setText(data.getBarTwo());
+                holder.tvSmallTitle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ToastUtils.showShort("资产页面还做");
+                    }
+                });
+            }
+        }
+    }
+
     class ViewHolder extends BasePtrViewHold {
 
         ImageView imageAd, imageView;
         View rlItemRoot;
         TextView tvCommit, tvReward, tvDescrible, tvTitle, tvGive, tvTotal;
+
+        //head
+        RelativeLayout itemHead;
+        TextView tvBigTitle, tvSmallTitle;
 
         public ViewHolder(View itemView, OnRecyclerViewItemClickListener listener) {
             super(itemView, listener);
@@ -151,6 +179,10 @@ public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHol
             tvTitle = getView(R.id.tvTitle);
             tvGive = getView(R.id.tvGive);
             tvTotal = getView(R.id.tvTotal);
+
+            itemHead = getView(R.id.itemHead);
+            tvSmallTitle = getView(R.id.tvSmallTitle);
+            tvBigTitle = getView(R.id.tvBigTitle);
         }
     }
 

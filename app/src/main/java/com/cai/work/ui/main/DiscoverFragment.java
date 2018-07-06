@@ -1,12 +1,18 @@
 package com.cai.work.ui.main;
 
-import android.view.Display;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import com.cai.pullrefresh.BaseListPtrFrameLayout;
+import com.cai.pullrefresh.PtrRecyclerView;
+import com.cai.pullrefresh.lib.PtrFrameLayout;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
+import com.cai.work.bean.Discover;
 import com.cai.work.databinding.DiscoverBinding;
+import com.example.clarence.imageloaderlibrary.ILoadImage;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
 
@@ -16,6 +22,11 @@ public class DiscoverFragment extends AppBaseFragment<DiscoverBinding> implement
 
     @Inject
     DiscoverPresenter presenter;
+    @Inject
+    ILoadImage iLoadImage;
+
+    PtrRecyclerView mPtrRecyclerView;
+    DiscoverAdapter adapter;
 
     @Override
     public void addPresenters(List observerList) {
@@ -34,6 +45,43 @@ public class DiscoverFragment extends AppBaseFragment<DiscoverBinding> implement
 
     @Override
     public void initView(View view) {
+        initHead();
 
+        mPtrRecyclerView = (PtrRecyclerView) mViewBinding.pullListView.getRecyclerView();
+        adapter = new DiscoverAdapter(getContext(), iLoadImage);
+        mPtrRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mPtrRecyclerView.setAdapter(adapter);
+        mViewBinding.pullListView.setCloseLoadMore(true);
+        mViewBinding.pullListView.setOnPullLoadListener(new BaseListPtrFrameLayout.OnPullLoadListener() {
+            @Override
+            public void onRefresh(final PtrFrameLayout frame) {
+                presenter.requestDiscoverList(false);
+            }
+
+            @Override
+            public void onLoadMore() {
+            }
+        });
+
+        presenter.requestDiscoverList(true);
+    }
+
+
+    private void initHead() {
+        mViewBinding.titleBar.setTitleText(getString(R.string.discover));
+        mViewBinding.titleBar.hideBackBtn();
+    }
+
+    @Override
+    public void callBack(List<Discover> data) {
+        mViewBinding.pullListView.refreshOrLoadMoreComplete(false);
+        if (data != null && data.size() > 0) {
+            adapter.setDatas(data);
+        }
+    }
+
+    @Override
+    public void callBack(String message) {
+        ToastUtils.showShort(message);
     }
 }

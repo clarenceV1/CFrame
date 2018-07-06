@@ -48,6 +48,33 @@ public class CandyList implements CBaseData {
     private String token_remark;
     private int type;
     private float wallet_total;
+    private String barOne;
+    private String barTwo;
+    private int is_barTwo;//1显示，0不显示
+
+    public String getBarOne() {
+        return barOne;
+    }
+
+    public void setBarOne(String barOne) {
+        this.barOne = barOne;
+    }
+
+    public String getBarTwo() {
+        return barTwo;
+    }
+
+    public void setBarTwo(String barTwo) {
+        this.barTwo = barTwo;
+    }
+
+    public int getIs_barTwo() {
+        return is_barTwo;
+    }
+
+    public void setIs_barTwo(int is_barTwo) {
+        this.is_barTwo = is_barTwo;
+    }
 
     public String getTitle() {
         return title;

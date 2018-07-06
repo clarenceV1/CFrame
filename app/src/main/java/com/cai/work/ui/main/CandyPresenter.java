@@ -54,7 +54,7 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
             @Override
             public void subscribe(ObservableEmitter<List<CandyList>> e) {
                 List<CandyList> candyList = cacheStore.get().getCandyList();
-                if(candyList==null){
+                if (candyList == null) {
                     candyList = new ArrayList<>();//rxjava 不允许传null
                 }
                 e.onNext(candyList);
@@ -91,6 +91,7 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
                         if (respond.getErrorcode() == 0) {
                             mView.callBack(respond.getData());
                         } else {
+                            mView.callBack(new ArrayList<CandyList>());
                             mView.callBack(respond.getMessage());
                         }
                     }
@@ -98,6 +99,7 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
                     @Override
                     public void respondError(Throwable t) {
                         mView.callBack(t.getMessage());
+                        mView.callBack(new ArrayList<CandyList>());
                     }
                 });
     }
@@ -119,20 +121,20 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
                     }
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetRespondCallBack<CandyListRespond>() {
-            @Override
-            public void respondResult(Subscription subscription, CandyListRespond respond) {
-                if (respond.getErrorcode() == 0) {
-                    mView.callBack(respond.getData());
-                } else {
-                    mView.callBack(respond.getMessage());
-                }
-            }
+                    @Override
+                    public void respondResult(Subscription subscription, CandyListRespond respond) {
+                        if (respond.getErrorcode() == 0) {
+                            mView.callBack(respond.getData());
+                        } else {
+                            mView.callBack(respond.getMessage());
+                        }
+                    }
 
-            @Override
-            public void respondError(Throwable t) {
-                mView.callBack(t.getMessage());
-            }
-        });
+                    @Override
+                    public void respondError(Throwable t) {
+                        mView.callBack(t.getMessage());
+                    }
+                });
     }
 
     public void clickReeceiveCoinBtn(CandyList candyList) {
