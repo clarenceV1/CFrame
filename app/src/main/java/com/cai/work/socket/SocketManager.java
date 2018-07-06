@@ -90,4 +90,41 @@ public class SocketManager {
             webSocket.close();
         }
     }
+//    [{
+//        "id": "148",
+//                "orderNo": "QHJY1807061339191586",
+//                "openData": "2018-07-06",
+//                "openTime": "13:39:19",
+//                "contractName": "铁矿石",
+//                "contractCode": "i1809",
+//                "openPrice": "458.5",
+//                "buyWay": "1",
+//                "buyWayText": "买涨",
+//                "buyAmount": "1",
+//                "mk_price": "458.5",
+//                "ykMoney": "0.00",
+//                "bond": "600",
+//                "zsMoney": "500",
+//                "zyMoney": "800",
+//                "isClosing": "2",
+//                "btnText": "平仓"
+//    }, {
+//        "id": "147",
+//                "orderNo": "QHJY1807061338506801",
+//                "openData": "2018-07-06",
+//                "openTime": "13:38:50",
+//                "contractName": "国内原油",
+//                "contractCode": "sc1809",
+//                "openPrice": "496.3",
+//                "buyWay": "1",
+//                "buyWayText": "买涨",
+//                "buyAmount": "1",
+//                "mk_price": "496.4",
+//                "ykMoney": "100.00",
+//                "bond": "2000",
+//                "zsMoney": "1700",
+//                "zyMoney": "2500",
+//                "isClosing": "2",
+//                "btnText": "平仓"
+//    }]
 }
