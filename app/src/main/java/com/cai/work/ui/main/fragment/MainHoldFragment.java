@@ -14,6 +14,7 @@ import com.cai.work.bean.SocketInfo;
 import com.cai.work.bean.StockAccount;
 import com.cai.work.bean.StockHold;
 import com.cai.work.databinding.MainHoldFragmentBinding;
+import com.cai.work.socket.SocketManager;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
 
@@ -131,6 +132,7 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
 //        initSocket();
         String userID = presenter.getUserId();
 //        socketThread.Send("hold|0|" + userID + "|mn");
+        SocketManager.sendSocket("hold|0|684");
     }
 
     private void freshData(boolean isRealTrade, boolean isStock, boolean isHolder) {

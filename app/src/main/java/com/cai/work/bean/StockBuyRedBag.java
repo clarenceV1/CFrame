@@ -1,6 +1,8 @@
 package com.cai.work.bean;
 
-public class StockBuyRedBag {
+import com.cai.framework.bean.CBaseData;
+
+public class StockBuyRedBag implements CBaseData{
     //    data.redBags.id	红包id	string
 //    data.redBags.parValue	红包金额	string
 //    data.redBags.failureTime

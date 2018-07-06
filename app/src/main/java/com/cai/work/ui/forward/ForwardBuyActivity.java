@@ -1,12 +1,14 @@
 package com.cai.work.ui.forward;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.App;
@@ -14,6 +16,7 @@ import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.ForwardBuy;
 import com.cai.work.bean.StockBuyMoney;
 import com.cai.work.databinding.ForwardBuyBinding;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,9 +116,17 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
                 zsAdapter.setCheckPosition(position);
             }
         });
-
+        mViewBinding.tvSelectRedBag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (data != null && data.getRedBags()!=null) {
+                    ARouter.getInstance().build("/AppModule/RedPacketSelectActivity").withCharSequence("datas", JSON.toJSONString(data.getRedBags())).navigation();
+                } else {
+                    ToastUtils.showShort("您没有可用的红包！");
+                }
+            }
+        });
         presenter.requestForwardBuy(forwardCode);
-
     }
 
     private void refreshView(boolean bondRefresh) {

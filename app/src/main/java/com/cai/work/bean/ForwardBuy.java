@@ -1,5 +1,7 @@
 package com.cai.work.bean;
 
+import java.util.List;
+
 public class ForwardBuy {
     private String code;
     private String name;
@@ -14,12 +16,20 @@ public class ForwardBuy {
     private String buyDate;
     private String isMonth;
     private String nightTime;
-    private String[] redBags;
     private String[] holdTime;
     private String balance;
     private String virtualBalance;
     private String socket_host;
     private String socket_port;
+    private List<StockBuyRedBag> redBags;
+
+    public List<StockBuyRedBag> getRedBags() {
+        return redBags;
+    }
+
+    public void setRedBags(List<StockBuyRedBag> redBags) {
+        this.redBags = redBags;
+    }
 
     public String getCode() {
         return code;
@@ -123,14 +133,6 @@ public class ForwardBuy {
 
     public void setAttributeType(String attributeType) {
         this.attributeType = attributeType;
-    }
-
-    public String[] getRedBags() {
-        return redBags;
-    }
-
-    public void setRedBags(String[] redBags) {
-        this.redBags = redBags;
     }
 
     public String getVirtualBalance() {

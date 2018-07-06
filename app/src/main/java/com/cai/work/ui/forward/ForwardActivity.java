@@ -19,6 +19,7 @@ import com.cai.work.bean.ForwardRecord;
 import com.cai.work.bean.Record;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.ForwardBinding;
+import com.cai.work.socket.SocketManager;
 import com.example.clarence.utillibrary.DimensUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 
