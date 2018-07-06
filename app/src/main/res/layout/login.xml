@@ -1,11 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="200.5dp"
+                    android:layout_height="101.5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="60dp"
+                    android:src="@drawable/about_logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:text="MORE.ONE"
+                    android:textColor="@color/black_292929"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/shape_edit"
+                    android:orientation="horizontal"
+                    android:paddingRight="@dimen/dp_10">
+
+                    <TextView
+                        android:id="@+id/login_locale_tv"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@drawable/shape_nation_code"
+                        android:gravity="center"
+                        android:text="+86"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_16" />
+
+                    <EditText
+                        android:id="@+id/login_phone_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edit_height"
+                        android:background="@color/transparent"
+                        android:hint="@string/user_phone"
+                        android:inputType="phone"
+                        android:paddingLeft="@dimen/dp_10"
+                        android:paddingRight="@dimen/dp_10"
+                        android:textColor="@color/black_292929"
+                        android:textColorHint="@color/gray_757575"
+                        android:textSize="@dimen/sp_16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_height"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:background="@drawable/shape_edit"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10">
+
+                    <EditText
+                        android:id="@+id/login_phone_code_et"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/edit_height"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:hint="@string/phone_code_hit"
+                        android:inputType="numberSigned"
+                        android:textColor="@color/black_292929"
+                        android:textColorHint="@color/gray_757575"
+                        android:textSize="@dimen/sp_16" />
+
+                    <TextView
+                        android:id="@+id/login_getcode_btn"
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/shape_phone_code"
+                        android:gravity="center"
+                        android:text="@string/phone_code_get"
+                        android:textColor="@color/blue_8D48FF"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/login_click_btn"
+                    style="@style/btn_style"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:text="@string/login" />
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/dp_30"
+            android:text="MORE.ONE"
+            android:textColor="@color/gray_A9A9A9" />
 
     </LinearLayout>
 </layout>

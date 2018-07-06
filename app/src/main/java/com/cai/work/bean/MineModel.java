@@ -47,7 +47,7 @@ public class MineModel extends BaseModel {
     private String inviteurl;
     private String invitetitle;
     private List<Invite> inviteList;//自己用的
-    private int inviteTotal;//邀请总人数
+    private int inviteTotal;//邀请总人数,自己用的
 
     public int getInviteTotal() {
         return inviteTotal;

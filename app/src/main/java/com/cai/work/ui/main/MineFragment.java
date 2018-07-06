@@ -12,6 +12,7 @@ import android.view.View;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
+import com.cai.pullrefresh.PtrRecyclerView;
 import com.cai.pullrefresh.lib.PtrFrameLayout;
 import com.cai.pullrefresh.swipemenulistview.BasePtrFrameLayout;
 import com.cai.work.R;
@@ -121,6 +122,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
 
     @Override
     public void updataMineData(MineModel data) {
+        mViewBinding.pullToRefresh.refreshComplete();
         User user = data.getUser();
         setDefultShow(user);
         if (data.getInviteList() != null) {
@@ -132,6 +134,11 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
         if (data.getInvite() != null && data.getBonus() != null) {
             mViewBinding.tvMyInvite.setText(getInvite(data.getInviteTotal() + "", data.getBonus().getGrand_total()));
         }
+    }
+
+    @Override
+    public void toast(String message) {
+        ToastUtils.showShort(message);
     }
 
     @Override
@@ -159,32 +166,33 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
 //                    UserActivity.entryActivity();
                 } else {
 //                    LoginActivity.entryActivity(false);
+                    ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 }
                 break;
             case R.id.ivShareWX:
                 if (presenter.isLogin()) {
-                    ShareUtil.shareToWeiXin(getContext(),presenter.getShareText());
+                    ShareUtil.shareToWeiXin(getContext(), presenter.getShareText());
                 } else {
 //                    LoginActivity.entryActivity(false);
                 }
                 break;
             case R.id.ivShareWxq:
                 if (presenter.isLogin()) {
-                    ShareUtil.shareToWeiXin(getContext(),presenter.getShareText());
+                    ShareUtil.shareToWeiXin(getContext(), presenter.getShareText());
                 } else {
 //                    LoginActivity.entryActivity(false);
                 }
                 break;
             case R.id.ivShareQq:
                 if (presenter.isLogin()) {
-                    ShareUtil.shareToQQ(getContext(),presenter.getShareText());
+                    ShareUtil.shareToQQ(getContext(), presenter.getShareText());
                 } else {
 //                    LoginActivity.entryActivity(false);
                 }
 
             case R.id.ivShareSina:
                 if (presenter.isLogin()) {
-                    ShareUtil.shareToSina(getContext(),presenter.getShareText());
+                    ShareUtil.shareToSina(getContext(), presenter.getShareText());
                 } else {
 //                    LoginActivity.entryActivity(false);
                 }

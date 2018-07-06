@@ -181,7 +181,16 @@ public class MinePresenter extends AppBasePresenter<MineView> {
                     public void accept(MineRespond mineRespond) {
                         if (mineRespond.getData() != null) {
                             mView.updataMineData(mineRespond.getData());
+                        } else {
+                            mView.toast(mineRespond.getMessage());
+                            mView.updataMineData(new MineModel());
                         }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mView.toast(throwable.getMessage());
+                        mView.updataMineData(new MineModel());
                     }
                 });
         mCompositeSubscription.add(disposable);
