@@ -1,8 +1,10 @@
 package com.cai.work.ui.redPacket;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -53,8 +55,29 @@ public class RedPacketSelectActivity extends AppBaseActivity<RedPacketSelectBind
         if (!TextUtils.isEmpty(dataStr)) {
             redBags = JSON.parseArray(dataStr, StockBuyRedBag.class);
         }
-//        adapter = new RedPacketSelectAdapter(this);
-//        mViewBinding.listView.setAdapter(adapter);
+        mViewBinding.btnCommit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                List<StockBuyRedBag> select = adapter.getSelect();
+                //把返回数据存入Intent
+                intent.putExtra("result", JSON.toJSONString(select));
+                RedPacketSelectActivity.this.setResult(RESULT_OK, intent);
+                RedPacketSelectActivity.this.finish();
+            }
+        });
+        if (redBags != null) {
+            adapter = new RedPacketSelectAdapter(this, redBags);
+            mViewBinding.listView.setAdapter(adapter);
+            mViewBinding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    redBags.get(position).setSelect(true);
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }
+
     }
 
     @Override

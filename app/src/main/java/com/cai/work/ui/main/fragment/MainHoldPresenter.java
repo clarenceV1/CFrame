@@ -332,9 +332,9 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
     }
 
     private void moniPingCang(String token, String id, String code) {
-        Disposable disposable = requestStore.moniPingCang(token, id, code, new Consumer<ForwardAccountRespond>() {
+        Disposable disposable = requestStore.moniPingCang(token, id, code, new Consumer<CommonRespond>() {
             @Override
-            public void accept(ForwardAccountRespond data) {
+            public void accept(CommonRespond data) {
                 mView.toast(data.getResponseText(), 2);
             }
         }, new Consumer<Throwable>() {
@@ -356,9 +356,9 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
     }
 
     private void moniFanshou(String token, String id, String code) {
-        Disposable disposable = requestStore.moniFanshou(token, id, code, new Consumer<ForwardAccountRespond>() {
+        Disposable disposable = requestStore.moniFanshou(token, id, code, new Consumer<CommonRespond>() {
             @Override
-            public void accept(ForwardAccountRespond data) {
+            public void accept(CommonRespond data) {
                 mView.toast(data.getResponseText(), 2);
             }
         }, new Consumer<Throwable>() {
@@ -371,9 +371,9 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
     }
 
     private void realFanshou(String token, String id, String code) {
-        Disposable disposable = requestStore.realFanshou(token, id, code, new Consumer<ForwardAccountRespond>() {
+        Disposable disposable = requestStore.realFanshou(token, id, code, new Consumer<CommonRespond>() {
             @Override
-            public void accept(ForwardAccountRespond data) {
+            public void accept(CommonRespond data) {
                 mView.toast(data.getResponseText(), 2);
             }
         }, new Consumer<Throwable>() {

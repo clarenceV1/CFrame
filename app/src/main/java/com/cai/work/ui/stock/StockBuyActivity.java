@@ -1,7 +1,9 @@
 package com.cai.work.ui.stock;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -15,6 +17,7 @@ import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.StockBuy;
 import com.cai.work.bean.StockBuyMoney;
+import com.cai.work.bean.StockBuyRedBag;
 import com.cai.work.dagger.module.AppModule;
 import com.cai.work.databinding.StockBuyBinding;
 import com.cai.work.ui.recharge.RechargeActivity;
@@ -37,6 +40,8 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
     StockBuyMoneyAdapter zsAdapter;
     StockBuyMoneyAdapter holdTimeAdapter;
     StockBuy data;
+    List<StockBuyRedBag> selectRedBags;
+    float redbagTotal = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,14 +159,36 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
         mViewBinding.tvSelectRedBag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (data != null && data.getRedBags()!=null) {
-                    ARouter.getInstance().build("/AppModule/RedPacketSelectActivity").withCharSequence("datas", JSON.toJSONString(data.getRedBags())).navigation();
+                if (data != null && data.getRedBags() != null && data.getRedBags().size() > 0) {
+                    ARouter.getInstance().build("/AppModule/RedPacketSelectActivity").withCharSequence("datas", JSON.toJSONString(data.getRedBags())).navigation(StockBuyActivity.this, 666);
                 } else {
                     ToastUtils.showShort("您没有可用的红包！");
                 }
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (intent == null || intent.getExtras() == null) {
+            return;
+        }
+        String result = intent.getExtras().getString("result");//得到新Activity 关闭后返回的数据
+        Log.i("onActivityResult", result);
+        if (!TextUtils.isEmpty(result)) {
+            selectRedBags = JSON.parseArray(result, StockBuyRedBag.class);
+            if (selectRedBags != null) {
+                redbagTotal = 0;
+                for (StockBuyRedBag selectRedBag : selectRedBags) {
+                    redbagTotal += Float.valueOf(selectRedBag.getParValue());
+                }
+                mViewBinding.tvRedBag.setText(redbagTotal + "");
+                float bondMoney = bondAdapter.getBuyMoney() + data.getZhf() * buyMoneyAdapter.getTime() - redbagTotal;
+                mViewBinding.tvTotalMoney.setText(bondMoney + "");
+            }
+        }
+    }
+
 
     @Override
     public int getLayoutId() {
@@ -253,9 +280,8 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
         mViewBinding.tvNotice.setText(String.format(getString(R.string.stock_buy_can_buy_stock_num), stockNum + "", String.format("%.2f", shiyonglv) + "%"));
 
         mViewBinding.tvTradeMoney.setText(data.getZhf() * buyMoneyAdapter.getTime() + "");
-        float bondMoney = bondAdapter.getBuyMoney() + data.getZhf() * buyMoneyAdapter.getTime();
+        float bondMoney = bondAdapter.getBuyMoney() + data.getZhf() * buyMoneyAdapter.getTime() - redbagTotal;
         mViewBinding.tvTotalMoney.setText(bondMoney + "");
-        mViewBinding.tvRedBag.setText("0");
     }
 
     @Override

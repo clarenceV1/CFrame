@@ -1,7 +1,9 @@
 package com.cai.work.ui.forward;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -15,7 +17,9 @@ import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.ForwardBuy;
 import com.cai.work.bean.StockBuyMoney;
+import com.cai.work.bean.StockBuyRedBag;
 import com.cai.work.databinding.ForwardBuyBinding;
+import com.cai.work.ui.stock.StockBuyActivity;
 import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.ArrayList;
@@ -37,6 +41,8 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
     ForwardBuyMoneyAdapter boundAdapter;
     ForwardBuyMoneyAdapter zyAdapter;
     ForwardBuyMoneyAdapter zsAdapter;
+    List<StockBuyRedBag> selectRedBags;
+    float redbagTotal = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,14 +125,35 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
         mViewBinding.tvSelectRedBag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (data != null && data.getRedBags()!=null) {
-                    ARouter.getInstance().build("/AppModule/RedPacketSelectActivity").withCharSequence("datas", JSON.toJSONString(data.getRedBags())).navigation();
+                if (data != null && data.getRedBags() != null && data.getRedBags().size() > 0) {
+                    ARouter.getInstance().build("/AppModule/RedPacketSelectActivity").withCharSequence("datas", JSON.toJSONString(data.getRedBags())).navigation(ForwardBuyActivity.this, 666);
                 } else {
                     ToastUtils.showShort("您没有可用的红包！");
                 }
             }
         });
         presenter.requestForwardBuy(forwardCode);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (intent == null || intent.getExtras() == null) {
+            return;
+        }
+        String result = intent.getExtras().getString("result");//得到新Activity 关闭后返回的数据
+        Log.i("onActivityResult", result);
+        if (!TextUtils.isEmpty(result)) {
+            selectRedBags = JSON.parseArray(result, StockBuyRedBag.class);
+            if (selectRedBags != null) {
+                redbagTotal = 0;
+                for (StockBuyRedBag selectRedBag : selectRedBags) {
+                    redbagTotal += Float.valueOf(selectRedBag.getParValue());
+                }
+                mViewBinding.tvRedBag.setText(redbagTotal + "");
+                int totalMoney = (int) (boundAdapter.getBuyMoney() + data.getCost() * (amountAdapter.getCheckPosition() + 1) - redbagTotal);
+                mViewBinding.tvTotalMoney.setText(totalMoney + "");
+            }
+        }
     }
 
     private void refreshView(boolean bondRefresh) {

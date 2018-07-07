@@ -40,7 +40,7 @@ public class StockBuyPresenter extends GodBasePresenter<StockBuyView> {
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) {
-                mView.callBack("错误");
+                mView.callBack(throwable.getMessage());
             }
         });
         mCompositeSubscription.add(disposable);
