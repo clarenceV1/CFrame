@@ -101,28 +101,28 @@ public class CustomCombinedChart extends CombinedChart {
     protected void drawDescription(Canvas c) {
 
         // check if description should be drawn
-//        if (mDescription != null && mDescription.isEnabled()) {
-//
-//            MPPointF position = mDescription.getPosition();
-//
-//            mDescPaint.setTypeface(mDescription.getTypeface());
-//            mDescPaint.setTextSize(mDescription.getTextSize());
-//            mDescPaint.setColor(mDescription.getTextColor());
-//            mDescPaint.setTextAlign(mDescription.getTextAlign());
-//
-//            float x, y;
-//
-//            // if no position specified, draw on default position
-//            if (position == null) {
-//                x = getWidth() - mViewPortHandler.offsetRight() - mDescription.getXOffset();
-//                y = mDescription.getTextSize() + mViewPortHandler.offsetTop() + mDescription.getYOffset();
-//            } else {
-//                x = position.x;
-//                y = position.y;
-//            }
+        if (mDescription != null && mDescription.isEnabled()) {
 
-//            c.drawText(mDescription.getText(), x, y, mDescPaint);
-//        }
+            MPPointF position = mDescription.getPosition();
+
+            mDescPaint.setTypeface(mDescription.getTypeface());
+            mDescPaint.setTextSize(mDescription.getTextSize());
+            mDescPaint.setColor(mDescription.getTextColor());
+            mDescPaint.setTextAlign(mDescription.getTextAlign());
+
+            float x, y;
+
+            // if no position specified, draw on default position
+            if (position == null) {
+                x = getWidth() - mViewPortHandler.offsetRight() - mDescription.getXOffset();
+                y = mDescription.getTextSize() + mViewPortHandler.offsetTop() + mDescription.getYOffset();
+            } else {
+                x = position.x;
+                y = position.y;
+            }
+
+            c.drawText(mDescription.getText(), x, y, mDescPaint);
+        }
     }
 
 

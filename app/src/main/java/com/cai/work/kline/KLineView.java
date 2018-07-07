@@ -30,9 +30,6 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ICandleDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.Transformer;
 
 import java.util.ArrayList;
@@ -61,6 +58,10 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
     public static final int MA10 = 10;
     public static final int MA20 = 20;
     public static final int MA30 = 30;
+
+    public static final int K = 31;
+    public static final int D = 32;
+    public static final int J = 33;
 
     public static final int DIF = 34;
     public static final int DEA = 35;
@@ -99,20 +100,16 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         super(context, attrs, defStyleAttr);
         mContext = context;
         LayoutInflater.from(context).inflate(R.layout.view_kline, this);
-        mChartPrice = (CustomCombinedChart) findViewById(R.id.price_chart);
-        mChartVolume = (CustomCombinedChart) findViewById(R.id.vol_chart);
+        mChartPrice = (CustomCombinedChart)findViewById(R.id.price_chart);
+        mChartVolume = (CustomCombinedChart)findViewById(R.id.vol_chart);
 
         mChartPrice.setNoDataText(context.getString(R.string.loading));
         initChartPrice();
         initBottomChart(mChartVolume);
         setOffset();
         initChartListener();
-    }
-
-    public void showVolume() {
         mChartVolume.setVisibility(VISIBLE);
     }
-
 
     protected void initChartPrice() {
         mChartPrice.setScaleEnabled(true);
@@ -198,7 +195,7 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
     private void initChartListener() {
         mCoupleChartGestureListener = new CoupleChartGestureListener(this, mChartPrice, mChartVolume);
         mChartPrice.setOnChartGestureListener(mCoupleChartGestureListener);
-        mChartPrice.setOnChartValueSelectedListener(new InfoViewListener(mContext, mLastClose, mData, mChartVolume));
+        mChartPrice.setOnChartValueSelectedListener(new InfoViewListener(mChartVolume));
         mChartPrice.setOnTouchListener(new ChartInfoViewHandler(mChartPrice));
     }
 
@@ -272,7 +269,18 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         if (type == NORMAL_LINE) {
             lineDataSetMa.setColor(getResources().getColor(R.color.normal_line_color));
             lineDataSetMa.setCircleColor(ContextCompat.getColor(mContext, R.color.normal_line_color));
-        } else  if (type == DIF) {
+        } else if (type == K) {
+            lineDataSetMa.setColor(getResources().getColor(R.color.k));
+            lineDataSetMa.setCircleColor(mTransparentColor);
+        } else if (type == D) {
+            lineDataSetMa.setColor(getResources().getColor(R.color.d));
+            lineDataSetMa.setCircleColor(mTransparentColor);
+            lineDataSetMa.setHighlightEnabled(false);
+        } else if (type == J) {
+            lineDataSetMa.setColor(getResources().getColor(R.color.j));
+            lineDataSetMa.setCircleColor(mTransparentColor);
+            lineDataSetMa.setHighlightEnabled(false);
+        } else if (type == DIF) {
             lineDataSetMa.setColor(getResources().getColor(R.color.dif));
             lineDataSetMa.setCircleColor(mTransparentColor);
             lineDataSetMa.setHighlightEnabled(false);
@@ -362,147 +370,7 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         moveToLast(mChartVolume);
 
     }
-
-    /**
-     * according to the price to refresh the last data of the chart
-     */
-    public void refreshData(float price) {
-        if (price <= 0 || price == mLastPrice) {
-            return;
-        }
-        mLastPrice = price;
-        CombinedData data = mChartPrice.getData();
-        if (data == null) return;
-        LineData lineData = data.getLineData();
-        if (lineData != null) {
-            ILineDataSet set = lineData.getDataSetByIndex(0);
-            if (set.removeLast()) {
-                set.addEntry(new Entry(set.getEntryCount(), price));
-            }
-        }
-        CandleData candleData = data.getCandleData();
-        if (candleData != null) {
-            ICandleDataSet set = candleData.getDataSetByIndex(0);
-            if (set.removeLast()) {
-                HisData hisData = mData.get(mData.size() - 1);
-                hisData.setClose(price);
-                hisData.setHigh(Math.max(hisData.getHigh(), price));
-                hisData.setLow(Math.min(hisData.getLow(), price));
-                set.addEntry(new CandleEntry(set.getEntryCount(), (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), price));
-
-            }
-        }
-        mChartPrice.notifyDataSetChanged();
-        mChartPrice.invalidate();
-    }
-
-    public void addDatas(List<HisData> hisDatas) {
-        for (HisData hisData : hisDatas) {
-            addData(hisData);
-        }
-    }
-
-    public void addData(HisData hisData) {
-        hisData = DataUtils.calculateHisData(hisData, mData);
-        CombinedData combinedData = mChartPrice.getData();
-        LineData priceData = combinedData.getLineData();
-        ILineDataSet padding = priceData.getDataSetByIndex(0);
-        ILineDataSet ma5Set = priceData.getDataSetByIndex(1);
-        ILineDataSet ma10Set = priceData.getDataSetByIndex(2);
-        ILineDataSet ma20Set = priceData.getDataSetByIndex(3);
-        ILineDataSet ma30Set = priceData.getDataSetByIndex(4);
-        CandleData kData = combinedData.getCandleData();
-        ICandleDataSet klineSet = kData.getDataSetByIndex(0);
-        IBarDataSet volSet = mChartVolume.getData().getBarData().getDataSetByIndex(0);
-
-        if (mData.contains(hisData)) {
-            int index = mData.indexOf(hisData);
-            klineSet.removeEntry(index);
-            padding.removeFirst();
-            // ma比较特殊，entry数量和k线的不一致，移除最后一个
-            ma5Set.removeLast();
-            ma10Set.removeLast();
-            ma20Set.removeLast();
-            ma30Set.removeLast();
-            volSet.removeEntry(index);
-            mData.remove(index);
-        }
-        mData.add(hisData);
-        mChartPrice.setRealCount(mData.size());
-        int klineCount = klineSet.getEntryCount();
-        klineSet.addEntry(new CandleEntry(klineCount, (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
-        volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol(), hisData));
-
-
-        mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 1.5f);
-        mChartVolume.getXAxis().setAxisMaximum(mChartVolume.getData().getXMax() + 1.5f);
-
-
-        mChartPrice.setVisibleXRange(MAX_COUNT, MIN_COUNT);
-        mChartVolume.setVisibleXRange(MAX_COUNT, MIN_COUNT);
-
-        mChartPrice.notifyDataSetChanged();
-        mChartPrice.invalidate();
-        mChartVolume.notifyDataSetChanged();
-        mChartVolume.invalidate();
-
-        setChartDescription(hisData);
-
-    }
-
-    public void addDatasFirst(List<HisData> hisDatas) {
-        CombinedData combinedData = mChartPrice.getData();
-        LineData priceData = combinedData.getLineData();
-        ILineDataSet padding = priceData.getDataSetByIndex(0);
-        ILineDataSet ma5Set = priceData.getDataSetByIndex(1);
-        ILineDataSet ma10Set = priceData.getDataSetByIndex(2);
-        ILineDataSet ma20Set = priceData.getDataSetByIndex(3);
-        ILineDataSet ma30Set = priceData.getDataSetByIndex(4);
-        CandleData kData = combinedData.getCandleData();
-        ICandleDataSet klineSet = kData.getDataSetByIndex(0);
-        IBarDataSet volSet = mChartVolume.getData().getBarData().getDataSetByIndex(0);
-
-        mData.addAll(0, hisDatas);
-        // 这里需要重新绘制图表，把之前的图表清理掉
-        klineSet.clear();
-        padding.clear();
-        ma5Set.clear();
-        ma10Set.clear();
-        ma20Set.clear();
-        ma30Set.clear();
-        volSet.clear();
-
-        // 重新计算各个指标
-        DataUtils.calculateHisData(mData);
-        mChartPrice.setRealCount(mData.size());
-        for (int i = 0; i < mData.size(); i++) {
-            HisData hisData = mData.get(i);
-            klineSet.addEntry(new CandleEntry(i, (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
-            volSet.addEntry(new BarEntry(i, hisData.getVol(), hisData));
-        }
-
-
-        mChartPrice.setVisibleXRange(MAX_COUNT, MIN_COUNT);
-        mChartVolume.setVisibleXRange(MAX_COUNT, MIN_COUNT);
-
-        mChartPrice.moveViewToX(hisDatas.size() - 0.5f);
-        mChartVolume.moveViewToX(hisDatas.size() - 0.5f);
-
-
-        mChartPrice.notifyDataSetChanged();
-        mChartPrice.invalidate();
-        mChartVolume.notifyDataSetChanged();
-        mChartVolume.invalidate();
-
-
-        HisData hisData = mData.get(0);
-        setChartDescription(hisData);
-
-    }
-
     private void setChartDescription(HisData hisData) {
-//        setDescription(mChartPrice, String.format(Locale.getDefault(), "MA5:%.2f  MA10:%.2f  MA20:%.2f  MA30:%.2f",
-//                hisData.getMa5(), hisData.getMa10(), hisData.getMa20(), hisData.getMa30()));
         setDescription(mChartVolume, "成交量 " + hisData.getVol());
     }
 
@@ -541,17 +409,5 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         int x = Math.min(maxX, mData.size() - 1);
         HisData hisData = mData.get(x < 0 ? 0 : x);
         setChartDescription(hisData);
-    }
-
-    public void setOnLoadMoreListener(OnLoadMoreListener l) {
-        if (mCoupleChartGestureListener != null) {
-            mCoupleChartGestureListener.setOnLoadMoreListener(l);
-        }
-    }
-
-    public void loadMoreComplete() {
-        if (mCoupleChartGestureListener != null) {
-            mCoupleChartGestureListener.loadMoreComplete();
-        }
     }
 }

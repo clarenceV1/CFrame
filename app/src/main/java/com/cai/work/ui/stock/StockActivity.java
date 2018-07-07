@@ -297,7 +297,6 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
             }
             mViewBinding.kline.initData(hisDataList);
             mViewBinding.kline.setLimitLine();
-            mViewBinding.kline.setOnLoadMoreListener(null);
         }
     }
 

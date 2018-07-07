@@ -36,9 +36,9 @@ class BaseView extends LinearLayout {
 
     public int MAX_COUNT = 50;
     public int MIN_COUNT = 10;
-    public int INIT_COUNT = 30;
+    public int INIT_COUNT = 50;
 
-    protected List<HisData> mData = new ArrayList<>(50);
+    protected List<HisData> mData = new ArrayList<>(300);
 
     public BaseView(Context context) {
         this(context, null);
