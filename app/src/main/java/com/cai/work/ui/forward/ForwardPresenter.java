@@ -38,7 +38,7 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
 
     public void requestRecord(String code) {
         String token = accountDAO.getToken();
-        Disposable disposable = requestStore.requestRecord(token, code,new Consumer<ForwardRecord>() {
+        Disposable disposable = requestStore.requestRecord(token, code, new Consumer<ForwardRecord>() {
             @Override
             public void accept(ForwardRecord data) {
                 mView.callBack(data);
@@ -74,7 +74,25 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) {
-                mView.toast("请求异常", 2);
+                mView.toast(throwable.getMessage(), 2);
+            }
+        });
+        mCompositeSubscription.add(disposable);
+    }
+
+    public void requestMinData(String code, final String resolution) {
+        Disposable disposable = requestStore.requestMinData(code, resolution, new Consumer<String[][]>() {
+            @Override
+            public void accept(String[][] data) {
+                if (data != null) {
+                    Log.d("datum",data.toString());
+                    mView.callBack(data,resolution);
+                }
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                mView.toast(throwable.getMessage(), 2);
             }
         });
         mCompositeSubscription.add(disposable);

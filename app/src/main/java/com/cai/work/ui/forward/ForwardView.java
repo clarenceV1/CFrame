@@ -15,4 +15,6 @@ public interface ForwardView extends GodBaseView {
     void callBack(ForwardRecord forwardRecord);
 
     void callBack(List<Forward> forwardList);
+
+    void callBack(String[][] data, String resolution);
 }

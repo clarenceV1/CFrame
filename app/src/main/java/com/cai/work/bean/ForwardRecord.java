@@ -1,15 +1,15 @@
 package com.cai.work.bean;
 
 public class ForwardRecord {
-    //    {
+//    {
 //        "records": {
 //        "isTrade": "1",
-//                "buyDate": "09:00-10:15,10:30-11:30,13:30-14:50,21:00-次日02:20",
+//                "buyDate": "09:00-10:15,10:30-11:30,13:30-14:50,21:00-\u6b21\u65e502:20",
 //                "attributeType": "1",
 //                "type": "1",
 //                "contractCode": "ag1812",
 //                "subMarketCode": "",
-//                "contractName": "沪银",
+//                "contractName": "\u6caa\u94f6",
 //                "ruleName": null
 //    },
 //        "socket_host": "47.75.37.208",

@@ -220,4 +220,7 @@ public interface ApiService {
     @FormUrlEncoded
     Flowable<CommonRespond> realFanshou(@Field("token") String token, @Field("id") String id, @Field("code") String code);
 
+    @GET("http://114.55.224.60:8081/web_new.php")
+    Flowable<String[][]> requestMinData(@Query("symbol") String code, @Query("resolution") String resolution);
+
 }

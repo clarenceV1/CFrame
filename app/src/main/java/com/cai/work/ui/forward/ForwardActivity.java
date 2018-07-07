@@ -91,7 +91,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
         if (forward != null) {
             mViewBinding.tvTitle.setText(forward.getName());
             mViewBinding.tvName.setText(forward.getName());
-            mViewBinding.tvCode.setText("(" + forward.getCode() + ")");
+            mViewBinding.tvCode.setText("(" + forward.getCode().toUpperCase() + ")");
         }
         requestData();
     }
@@ -125,8 +125,10 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     private void requestData() {
         if (forward != null) {
             presenter.requestRecord(forward.getCode());
+            presenter.requestMinData(forward.getCode(),"minute");
         }
         presenter.requestContracts();
+
     }
 
     private void initHead() {
@@ -165,11 +167,17 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
         Record record = forwardRecord.getRecords();
         if (record != null) {
             mViewBinding.tvTradeTime.setText(record.getBuyDate());
+
         }
     }
 
     @Override
     public void callBack(List<Forward> forwardList) {
         adapter.update(forwardList);
+    }
+
+    @Override
+    public void callBack(String[][] data, String resolution) {
+
     }
 }
