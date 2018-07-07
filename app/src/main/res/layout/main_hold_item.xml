@@ -74,17 +74,6 @@
                 android:textColor="@color/ys_009a44"
                 android:textSize="13sp"
                 tools:text="-180" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/trade_money"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/tvYkMoney"
-                android:text="(后台平仓)"
-                android:textColor="@color/ys_255_255_255"
-                android:textSize="13sp" />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -238,10 +227,40 @@
         android:layout_width="165dp"
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/btn_red"
         android:text="@string/btn_look_detail"
         android:textColor="@color/ys_255_255_255"
-        android:textSize="15dp"
-        android:layout_marginBottom="15dp"/>
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:id="@+id/llChicang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <Button
+            android:id="@+id/btnPincang"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_red"
+            android:text="快速平仓"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/btnFanshou"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_blue"
+            android:text="一键反手"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="15dp" />
+    </LinearLayout>
 </LinearLayout>

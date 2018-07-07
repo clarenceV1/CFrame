@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.utils.ViewHolder;
 import com.cai.work.R;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.ForwardAccount;
@@ -67,6 +68,7 @@ public class AccountsDetailActivity extends AppBaseActivity<AccountsDetailBindin
                 mViewBinding.tvCloseTime.setText(forwardAccount.getCloseDealDate());
                 mViewBinding.tvCloseReson.setText(forwardAccount.getApproveStateText());
                 mViewBinding.tvTradeYK.setText(forwardAccount.getYkMoney());
+                mViewBinding.tvTradeYK.setTextColor(getResources().getColor(R.color.ys_009a44));
             } else if (type == 1) {
                 StockAccount stockAccount = JSON.parseObject(forwardAccountJson, StockAccount.class);
                 mViewBinding.tvTradeId.setText(stockAccount.getOrderNo());
@@ -77,6 +79,7 @@ public class AccountsDetailActivity extends AppBaseActivity<AccountsDetailBindin
                 mViewBinding.tvCloseTime.setText(stockAccount.getSellDealDate());
                 mViewBinding.tvCloseReson.setText(stockAccount.getApproveStateText());
                 mViewBinding.tvTradeYK.setText(stockAccount.getYkMoney());
+                mViewBinding.tvTradeYK.setTextColor(getResources().getColor(R.color.ys_e6241a));
             }
 
         }

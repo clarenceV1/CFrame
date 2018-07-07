@@ -1,5 +1,6 @@
 package com.cai.work.ui.main.fragment;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
@@ -10,13 +11,20 @@ import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
 import com.cai.work.bean.ForwardAccount;
+import com.cai.work.bean.ForwardHold;
 import com.cai.work.bean.SocketInfo;
 import com.cai.work.bean.StockAccount;
 import com.cai.work.bean.StockHold;
 import com.cai.work.databinding.MainHoldFragmentBinding;
+import com.cai.work.event.BankCardChooseEvent;
+import com.cai.work.event.ForwardHoldEvent;
 import com.cai.work.socket.SocketManager;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -60,11 +68,22 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
         App.getAppComponent().inject(this);
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 
     @Override
     public void initView(View view) {
         listView = mViewBinding.pullListView.getRefreshableView();
-        adapter = new MainHoldAdapter(getContext());
+        adapter = new MainHoldAdapter(getContext(), presenter);
         listView.setAdapter(adapter);
         PullToRefreshBase.Mode.isShowFooterLoadingView = false;
         mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
@@ -76,7 +95,7 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
             public void onLastItemVisible() {
                 if (hasAccountsData && !isHolder) {
                     ++page;
-                    presenter.requestData(isRealTrade, isStock, isHolder, page);
+                    presenter.requestData(isRealTrade, isStock, isHolder, page, socketInfo);
                 }
             }
         });
@@ -129,10 +148,7 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
             }
         });
         freshData(true, true, true);
-//        initSocket();
-        String userID = presenter.getUserId();
-//        socketThread.Send("hold|0|" + userID + "|mn");
-        SocketManager.sendSocket("hold|0|684");
+
     }
 
     private void freshData(boolean isRealTrade, boolean isStock, boolean isHolder) {
@@ -202,7 +218,7 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
         Logger.e("isRealTrade:" + isRealTrade + " isStock:" + isStock + " isHolder:" + isHolder);
         if (socketInfo != null) {
             isRequestData = false;
-            presenter.requestData(isRealTrade, isStock, isHolder, page);
+            presenter.requestData(isRealTrade, isStock, isHolder, page, socketInfo);
         } else {
             isRequestData = true;
             presenter.getSocketInfo();
@@ -211,9 +227,13 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            SocketManager.pauseSocket();
+        } else {
+            SocketManager.resumeSocket();
+        }
     }
 
     @Override
@@ -221,7 +241,7 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
         this.socketInfo = socketInfo;
         if (isRequestData) {
             isRequestData = false;
-            presenter.requestData(isRealTrade, isStock, isHolder, page);
+            presenter.requestData(isRealTrade, isStock, isHolder, page, socketInfo);
         }
     }
 
@@ -232,17 +252,16 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
 
     @Override
     public void stockHold(List<StockHold> dataList) {
-        adapter.update(dataList);
+        adapter.update(dataList,isRealTrade);
     }
 
     @Override
     public void forwardAccount(List<ForwardAccount> dataList) {
         mViewBinding.pullListView.onRefreshComplete();
-        if (page == 1) {
-            adapter.update(dataList);
-        }
         if (dataList == null || dataList.size() == 0) {
             hasAccountsData = false;
+        } else if (page == 1) {
+            adapter.update(dataList, isRealTrade);
         } else {
             adapter.addAll(dataList);
         }
@@ -251,6 +270,12 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
     @Override
     public void stockAccount(List<StockAccount> dataList) {
         mViewBinding.pullListView.onRefreshComplete();
-        adapter.update(dataList);
+        adapter.update(dataList, isRealTrade);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void chooseBankCard(ForwardHoldEvent event) {
+        List<ForwardHold> data = event.data;
+        adapter.update(data, isRealTrade);
     }
 }

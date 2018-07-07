@@ -1,8 +1,14 @@
 package com.cai.work.ui.main.fragment;
 
+import android.text.TextUtils;
+import android.util.Log;
+
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.work.bean.ForwardHold;
 import com.cai.work.bean.SocketInfo;
 import com.cai.work.bean.User;
+import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.ForwardAccountRespond;
 import com.cai.work.bean.respond.StockAccountRespond;
 import com.cai.work.bean.respond.StockHoldRespond;
@@ -10,11 +16,19 @@ import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.HomeDataSqlDAO;
 import com.cai.work.dao.UserDAO;
+import com.cai.work.event.ForwardHoldEvent;
+import com.cai.work.socket.SocketManager;
+import com.koushikdutta.async.http.WebSocket;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -57,7 +71,8 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
         mCompositeSubscription.add(disposable);
     }
 
-    public void requestData(boolean isRealTrade, boolean isStock, boolean isHolder,int page) {
+    public void requestData(boolean isRealTrade, boolean isStock, boolean isHolder, int page, SocketInfo socketInfo) {
+        SocketManager.closeSocket();
         if (isRealTrade) {//实盘
             if (isStock) { //股票
                 if (isHolder) {
@@ -67,7 +82,7 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
                 }
             } else { //期货
                 if (isHolder) {
-                    requestRealForwardHold();
+                    requestRealForwardHold(socketInfo);
                 } else {
                     requestRealForwardAccounts(page);
                 }
@@ -81,7 +96,7 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
                 }
             } else {
                 if (isHolder) {
-                    requestFakeForwardHold();
+                    requestFakeForwardHold(socketInfo);
                 } else {
                     requestFakeForwardAccounts(page);
                 }
@@ -185,15 +200,63 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
     /**
      * 期货实盘持仓
      */
-    public void requestRealForwardHold() {
+    public void requestRealForwardHold(SocketInfo socketInfo) {
+        if (socketInfo == null) {
+            return;
+        }
         //socket
-    }
+        SocketManager.init(socketInfo.getSocket_host(), socketInfo.getSocket_port(), new WebSocket.StringCallback() {
+            @Override
+            public void onStringAvailable(String json) {
+              //  Log.i("requestRealForwardHold", "实盘 ip:" + SocketManager.mIp + "====>" + json);
+                json = replaceBlank(json);
+                if (!TextUtils.isEmpty(json) && !"[]".equals(json)) {
+                    List<ForwardHold> data = JSON.parseArray(json, ForwardHold.class);
+                    EventBus.getDefault().post(new ForwardHoldEvent(data));
+                }
+            }
+        });
+        SocketManager.connect();
+        int userId = userDAO.getData().getMemberId();
+        SocketManager.sendSocket("hold|0|" + userId);
 
+        List<ForwardHold> data = SocketManager.getTestData();
+        EventBus.getDefault().post(new ForwardHoldEvent(data));
+    }
+    public  String replaceBlank(String str) {
+        String dest = "";
+        if (str!=null) {
+            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+            Matcher m = p.matcher(str);
+            dest = m.replaceAll("");
+        }
+        return dest;
+    }
     /**
      * 期货模拟持仓
      */
-    public void requestFakeForwardHold() {
+    public void requestFakeForwardHold(SocketInfo socketInfo) {
+        if (socketInfo == null) {
+            return;
+        }
         //socket
+        SocketManager.init(socketInfo.getSocket_host(), socketInfo.getSocket_port(), new WebSocket.StringCallback() {
+            @Override
+            public void onStringAvailable(String json) {
+               // Log.i("requestRealForwardHold", " 模拟 ip:" + SocketManager.mIp + "====>" + json);
+                json = replaceBlank(json);
+                if (!TextUtils.isEmpty(json) && !"[]".equals(json)) {
+                    List<ForwardHold> data = JSON.parseArray(json, ForwardHold.class);
+                    EventBus.getDefault().post(new ForwardHoldEvent(data));
+                }
+            }
+        });
+        SocketManager.connect();
+        int userId = userDAO.getData().getMemberId();
+        SocketManager.sendSocket("hold|0|" + userId + "|mn");
+
+        List<ForwardHold> data = SocketManager.getTestData();
+        EventBus.getDefault().post(new ForwardHoldEvent(data));
     }
 
     /**
@@ -220,7 +283,6 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
         mCompositeSubscription.add(disposable);
     }
 
-
     /**
      * 期货模拟结算
      */
@@ -245,42 +307,81 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
         mCompositeSubscription.add(disposable);
     }
 
-    public void creatSocket(String host, int port) {
-        try {
-
-            System.out.println("准备连接");
-            Socket socket = new Socket(host, port);
-            System.out.println("连接上了");
-
-            InputStream inputStream = socket.getInputStream();
-            byte buffer[] = new byte[1024 * 4];
-            int temp = 0;
-            String res = null;
-            //从inputstream中读取客户端所发送的数据
-            System.out.println("接收到服务器的信息是：");
-
-            while ((temp = inputStream.read(buffer)) != -1) {
-                System.out.println(new String(buffer, 0, temp));
-                res += new String(buffer, 0, temp);
-            }
-
-            System.out.println("已经结束接收信息……");
-
-            socket.close();
-            inputStream.close();
-
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void postPingCang(boolean isRealTrade, String id, String code) {
+        String token = accountDAO.getToken();
+        if (isRealTrade) {
+            realPingCang(token, id, code);
+        } else {
+            moniPingCang(token, id, code);
         }
     }
 
-    public String getUserId() {
-        User user = userDAO.getData();
-        if (user != null) {
-            return user.getMemberId() + "";
+    private void realPingCang(String token, String id, String code) {
+        Disposable disposable = requestStore.realPingCang(token, id, code, new Consumer<CommonRespond>() {
+            @Override
+            public void accept(CommonRespond data) {
+                mView.toast(data.getResponseText(), 2);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                mView.toast(throwable.getMessage(), 2);
+            }
+        });
+        mCompositeSubscription.add(disposable);
+    }
+
+    private void moniPingCang(String token, String id, String code) {
+        Disposable disposable = requestStore.moniPingCang(token, id, code, new Consumer<ForwardAccountRespond>() {
+            @Override
+            public void accept(ForwardAccountRespond data) {
+                mView.toast(data.getResponseText(), 2);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                mView.toast(throwable.getMessage(), 2);
+            }
+        });
+        mCompositeSubscription.add(disposable);
+    }
+
+    public void postFanshou(boolean isRealTrade, String id, String code) {
+        String token = accountDAO.getToken();
+        if (isRealTrade) {
+            realFanshou(token, id, code);
+        } else {
+            moniFanshou(token, id, code);
         }
-        return null;
+    }
+
+    private void moniFanshou(String token, String id, String code) {
+        Disposable disposable = requestStore.moniFanshou(token, id, code, new Consumer<ForwardAccountRespond>() {
+            @Override
+            public void accept(ForwardAccountRespond data) {
+                mView.toast(data.getResponseText(), 2);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                mView.toast(throwable.getMessage(), 2);
+            }
+        });
+        mCompositeSubscription.add(disposable);
+    }
+
+    private void realFanshou(String token, String id, String code) {
+        Disposable disposable = requestStore.realFanshou(token, id, code, new Consumer<ForwardAccountRespond>() {
+            @Override
+            public void accept(ForwardAccountRespond data) {
+                mView.toast(data.getResponseText(), 2);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                mView.toast(throwable.getMessage(), 2);
+            }
+        });
+        mCompositeSubscription.add(disposable);
     }
 }

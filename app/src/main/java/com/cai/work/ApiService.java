@@ -173,7 +173,7 @@ public interface ApiService {
     Flowable<List<News>> requestNews(@Query("page") int page);
 
     @GET("/app/futures/get_code")
-    Flowable<ForwardRecord> requestRecord(@Query("token") String token,@Query("code") String code);
+    Flowable<ForwardRecord> requestRecord(@Query("token") String token, @Query("code") String code);
 
     @GET("/app/futures/get_contracts")
     Flowable<ForwardContractsRespond> requestContracts(@Query("token") String token);
@@ -196,10 +196,28 @@ public interface ApiService {
     @POST("/app/stockTrade/checkBuy")
     @FormUrlEncoded
     Flowable<CommonRespond> commitStockBuy(@Field("token") String token, @Field("code") String code, @Field("name") String name,
-                                           @Field("marketType") String marketType,@Field("price") String price,@Field("amount") String amount,
-                                           @Field("principal") String principal,@Field("bzj") String bzj,@Field("zy") String zy,
-                                           @Field("zs") String zs,@Field("redbagIds") String redbagIds,@Field("zhf") String zhf);
+                                           @Field("marketType") String marketType, @Field("price") String price, @Field("amount") String amount,
+                                           @Field("principal") String principal, @Field("bzj") String bzj, @Field("zy") String zy,
+                                           @Field("zs") String zs, @Field("redbagIds") String redbagIds, @Field("zhf") String zhf);
+
     @GET("/app/futures/futures_info")
     Flowable<ForwardBuyRespond> requestForwardBuy(@Query("code") String code, @Query("token") String token);
+
+    @POST("/app/futures/close")
+    @FormUrlEncoded
+    Flowable<CommonRespond> realPingCang(@Field("token") String token, @Field("id") String id, @Field("code") String code);
+
+    @POST("/app/futuresVirtual/open")
+    @FormUrlEncoded
+    Flowable<CommonRespond> moniPingCang(@Field("token") String token, @Field("id") String id, @Field("code") String code);
+
+    @POST("/app/futures/oneKeyBackHand")
+    @FormUrlEncoded
+    Flowable<CommonRespond> moniFanshou(@Field("token") String token, @Field("id") String id, @Field("code") String code);
+
+
+    @POST("/app/futuresVirtual/oneKeyBackHand")
+    @FormUrlEncoded
+    Flowable<CommonRespond> realFanshou(@Field("token") String token, @Field("id") String id, @Field("code") String code);
 
 }

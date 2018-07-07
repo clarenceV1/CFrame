@@ -382,4 +382,36 @@ public class RequestStore {
                 .subscribe(onNext, onError);
         return disposable;
     }
+
+    public Disposable realPingCang(String token, String id, String code, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).realPingCang(token, id, code)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable moniPingCang(String token, String id, String code, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).moniPingCang(token, id, code)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable moniFanshou(String token, String id, String code, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).moniFanshou(token, id, code)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable realFanshou(String token, String id, String code, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).realFanshou(token, id, code)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
 }
