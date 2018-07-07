@@ -174,21 +174,10 @@
                     android:layout_height="1dp"
                     android:background="@color/ys_28_38_47" />
 
-                <ImageView
+                <com.cai.work.kline.KLineView
+                    android:id="@+id/kline"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="fitXY"
-                    tools:background="@drawable/ic_launcher" />
-
-                <TextView
-                    android:id="@+id/tvHoldTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:textColor="@color/ys_102_102_102"
-                    android:textSize="12sp"
-                    tools:text="本时段持仓时间至05：55" />
+                    android:layout_height="200dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -322,14 +311,17 @@
 
                 <TextView
                     android:id="@+id/tvTradeTime"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/ys_255_255_255"
                     android:textSize="12sp"
-                    tools:text="21:00-次日"
-                    android:layout_marginBottom="20dp"/>
+                    tools:text="21:00-次日" />
 
             </LinearLayout>
         </ScrollView>

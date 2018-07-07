@@ -36,6 +36,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import retrofit2.http.PUT;
+
 /**
  * kline
  * Created by guoziwei on 2017/10/26.
@@ -109,6 +111,10 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         setOffset();
         initChartListener();
         mChartVolume.setVisibility(VISIBLE);
+    }
+
+    public void setChartVolumeHide(){
+        mChartVolume.setVisibility(GONE);
     }
 
     protected void initChartPrice() {

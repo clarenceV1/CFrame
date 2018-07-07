@@ -18,6 +18,7 @@ import com.cai.work.dao.HomeDataSqlDAO;
 import com.cai.work.dao.UserDAO;
 import com.cai.work.event.ForwardHoldEvent;
 import com.cai.work.socket.SocketManager;
+import com.example.clarence.utillibrary.StringUtils;
 import com.koushikdutta.async.http.WebSocket;
 
 import org.greenrobot.eventbus.EventBus;
@@ -209,7 +210,7 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
             @Override
             public void onStringAvailable(String json) {
               //  Log.i("requestRealForwardHold", "实盘 ip:" + SocketManager.mIp + "====>" + json);
-                json = replaceBlank(json);
+                json = StringUtils.replaceBlank(json);
                 if (!TextUtils.isEmpty(json) && !"[]".equals(json)) {
                     List<ForwardHold> data = JSON.parseArray(json, ForwardHold.class);
                     EventBus.getDefault().post(new ForwardHoldEvent(data));
@@ -223,15 +224,7 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
         List<ForwardHold> data = SocketManager.getTestData();
         EventBus.getDefault().post(new ForwardHoldEvent(data));
     }
-    public  String replaceBlank(String str) {
-        String dest = "";
-        if (str!=null) {
-            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
-            Matcher m = p.matcher(str);
-            dest = m.replaceAll("");
-        }
-        return dest;
-    }
+
     /**
      * 期货模拟持仓
      */
@@ -244,7 +237,7 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
             @Override
             public void onStringAvailable(String json) {
                // Log.i("requestRealForwardHold", " 模拟 ip:" + SocketManager.mIp + "====>" + json);
-                json = replaceBlank(json);
+                json = StringUtils.replaceBlank(json);
                 if (!TextUtils.isEmpty(json) && !"[]".equals(json)) {
                     List<ForwardHold> data = JSON.parseArray(json, ForwardHold.class);
                     EventBus.getDefault().post(new ForwardHoldEvent(data));

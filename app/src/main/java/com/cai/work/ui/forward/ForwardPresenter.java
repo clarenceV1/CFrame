@@ -1,22 +1,39 @@
 package com.cai.work.ui.forward;
 
+import android.text.TextUtils;
 import android.util.Log;
 
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.bean.Forward;
+import com.cai.work.bean.ForwardDetail;
+import com.cai.work.bean.ForwardHold;
 import com.cai.work.bean.ForwardRecord;
+import com.cai.work.bean.Record;
 import com.cai.work.bean.respond.ForwardContractsRespond;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
+import com.cai.work.event.ForwardDetailEvent;
+import com.cai.work.event.ForwardHoldEvent;
+import com.cai.work.socket.SocketManager;
+import com.example.clarence.utillibrary.StringUtils;
+import com.koushikdutta.async.http.WebSocket;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -40,8 +57,20 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
         String token = accountDAO.getToken();
         Disposable disposable = requestStore.requestRecord(token, code, new Consumer<ForwardRecord>() {
             @Override
-            public void accept(ForwardRecord data) {
-                mView.callBack(data);
+            public void accept(ForwardRecord forwardRecord) {
+                mView.callBack(forwardRecord);
+                SocketManager.init(forwardRecord.getSocket_host(), forwardRecord.getSocket_port(), new WebSocket.StringCallback() {
+                    @Override
+                    public void onStringAvailable(String json) {
+                        json = StringUtils.replaceBlank(json);
+                        Log.d("requestRecord", "ip: " + SocketManager.mIp + "===>" + json);
+                        if (!TextUtils.isEmpty(json) && !"[]".equals(json)) {
+                            ForwardDetail detail = JSON.parseObject(json, ForwardDetail.class);
+                            EventBus.getDefault().post(new ForwardDetailEvent(detail));
+                        }
+                    }
+                });
+                startTimes(forwardRecord);
             }
         }, new Consumer<Throwable>() {
             @Override
@@ -50,6 +79,37 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
             }
         });
         mCompositeSubscription.add(disposable);
+    }
+
+    private void startTimes(final ForwardRecord forwardRecord) {
+        Disposable disposable = Observable.interval(0,3, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        startSocket(forwardRecord);
+                    }
+                });
+        mCompositeSubscription.add(disposable);
+    }
+
+    private void startSocket(ForwardRecord forwardRecord) {
+        Record record = forwardRecord.getRecords();
+        if (record != null) {
+            SocketManager.connect();
+            StringBuilder builder = new StringBuilder();
+            builder.append("hq|");
+            if (record.getType() == 1) {
+                if (record.getAttributeType() == 1) {
+                    builder.append("sp|");
+                } else {
+                    builder.append("gz|");
+                }
+            } else {
+                builder.append("wp|");
+            }
+            SocketManager.sendSocket(builder.toString() + record.getContractCode());
+        }
     }
 
     public void requestContracts() {
@@ -85,8 +145,8 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
             @Override
             public void accept(String[][] data) {
                 if (data != null) {
-                    Log.d("datum",data.toString());
-                    mView.callBack(data,resolution);
+                    Log.d("datum", data.toString());
+                    mView.callBack(data, resolution);
                 }
             }
         }, new Consumer<Throwable>() {

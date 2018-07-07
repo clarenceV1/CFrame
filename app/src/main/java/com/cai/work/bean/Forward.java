@@ -6,7 +6,7 @@ public class Forward implements CBaseData {
     private String name;
     private String code;
 
-    public Forward() {
+    public Forward() {//不要删JSON 要用
     }
 
     public Forward(String name, String code) {

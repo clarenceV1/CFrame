@@ -101,7 +101,6 @@ public class SocketManager {
     }
 
     public static void resumeSocket() {
-        WebSocket webSocket = getWebSocket();
         if (webSocket != null && webSocket.isPaused()) {
             webSocket.resume();
         }
