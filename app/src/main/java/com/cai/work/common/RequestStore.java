@@ -8,6 +8,7 @@ import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
 import com.cai.work.bean.respond.CandyListRespond;
 import com.cai.work.bean.respond.DiscoverRespond;
+import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
 import com.example.clarence.utillibrary.PackageUtils;
@@ -145,6 +146,19 @@ public class RequestStore {
     public Flowable<PhoneCodeRespond> getPhoneCode(Map<String, String> params) {
         Flowable<PhoneCodeRespond> flowable = retrofit.get().create(ApiService.class)
                 .getPhoneCode(getRequestHeader(), getRequestBody(params))
+                .subscribeOn(Schedulers.newThread());
+        return flowable;
+    }
+
+
+    /**
+     *
+     *
+     * @return
+     */
+    public Flowable<LoginRespond> loginOrRegister(Map<String, String> params) {
+        Flowable<LoginRespond> flowable = retrofit.get().create(ApiService.class)
+                .loginOrRegister(getRequestHeader(), getRequestBody(params))
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }

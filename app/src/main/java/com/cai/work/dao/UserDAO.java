@@ -38,9 +38,9 @@ public class UserDAO extends BaseDAO {
         return null;
     }
 
-    public boolean isLogin(){
+    public boolean isLogin() {
         String token = getToken();
-        if(TextUtils.isEmpty(token)){
+        if (TextUtils.isEmpty(token)) {
             return false;
         }
         return true;
@@ -49,6 +49,13 @@ public class UserDAO extends BaseDAO {
     public User getUserInfo() {
         User user = userBox.query().build().findFirst();
         return user;
+    }
+
+    public void save(User user) {
+        if (user != null) {
+            userBox.removeAll();
+            userBox.put(user);
+        }
     }
 
 //

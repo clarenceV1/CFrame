@@ -14,6 +14,7 @@ import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.PhoneCode;
+import com.cai.work.bean.User;
 import com.cai.work.databinding.LoginBinding;
 import com.example.clarence.utillibrary.ToastUtils;
 
@@ -120,7 +121,7 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
             case R.id.tvCommit:
                 String phoneNum = mViewBinding.editPhone.getText().toString();
                 String code = mViewBinding.editCode.getText().toString();
-//                mLoginController.loginOrRegister(nation_code, phoneNum, code, isRegister);
+                presenter.loginOrRegister(nation_code, phoneNum, code);
                 break;
         }
     }
@@ -161,6 +162,11 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
     @Override
     public void callBack(String message) {
         ToastUtils.showShort(message);
+    }
+
+    @Override
+    public void callBack(User data) {
+//        finish();
     }
 
 }

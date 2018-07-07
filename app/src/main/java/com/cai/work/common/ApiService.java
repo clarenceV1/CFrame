@@ -4,6 +4,7 @@ import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
 import com.cai.work.bean.respond.CandyListRespond;
 import com.cai.work.bean.respond.DiscoverRespond;
+import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
 
@@ -44,6 +45,9 @@ public interface ApiService {
 
     @POST(App.PATH + "vercode")
     Flowable<PhoneCodeRespond> getPhoneCode(@HeaderMap Map<String, String> map, @Body RequestBody body);
+
+    @POST(App.PATH + "login")
+    Flowable<LoginRespond> loginOrRegister(@HeaderMap Map<String, String> map, @Body RequestBody body);
 
 //
 //    @POST("/app/login/index")
