@@ -34,11 +34,11 @@ class BaseView extends LinearLayout {
     protected int mTransparentColor;
 
 
-    public int MAX_COUNT = 50;
+    public int MAX_COUNT = 380;
     public int MIN_COUNT = 10;
     public int INIT_COUNT = 30;
 
-    protected List<HisData> mData = new ArrayList<>(300);
+    protected List<HisData> mData = new ArrayList<>(390);
 
     public BaseView(Context context) {
         this(context, null);
@@ -124,6 +124,10 @@ class BaseView extends LinearLayout {
         if (mData.size() > INIT_COUNT) {
             chart.moveViewToX(mData.size() - INIT_COUNT);
         }
+    }
+
+    protected void moveToLast(CustomCombinedChart chart, int p) {
+        chart.moveViewToX(MAX_COUNT - INIT_COUNT);
     }
 
     /**

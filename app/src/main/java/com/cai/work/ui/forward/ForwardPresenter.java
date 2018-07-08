@@ -82,21 +82,22 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
     }
 
     private void startTimes(final ForwardRecord forwardRecord) {
-        Disposable disposable = Observable.interval(0,3, TimeUnit.SECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Long>() {
-                    @Override
-                    public void accept(Long aLong) throws Exception {
-                        startSocket(forwardRecord);
-                    }
-                });
-        mCompositeSubscription.add(disposable);
+        SocketManager.connect();
+        startSocket(forwardRecord);
+//        Disposable disposable = Observable.interval(0,3, TimeUnit.SECONDS)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<Long>() {
+//                    @Override
+//                    public void accept(Long aLong) throws Exception {
+//
+//                    }
+//                });
+//        mCompositeSubscription.add(disposable);
     }
 
     private void startSocket(ForwardRecord forwardRecord) {
         Record record = forwardRecord.getRecords();
         if (record != null) {
-            SocketManager.connect();
             StringBuilder builder = new StringBuilder();
             builder.append("hq|");
             if (record.getType() == 1) {

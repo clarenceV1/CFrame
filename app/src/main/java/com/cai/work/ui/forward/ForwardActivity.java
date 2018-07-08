@@ -2,7 +2,6 @@ package com.cai.work.ui.forward;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -17,20 +16,16 @@ import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Forward;
 import com.cai.work.bean.ForwardDetail;
-import com.cai.work.bean.ForwardHold;
 import com.cai.work.bean.ForwardRecord;
 import com.cai.work.bean.Record;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.ForwardBinding;
 import com.cai.work.event.ForwardDetailEvent;
-import com.cai.work.event.ForwardHoldEvent;
 import com.cai.work.kline.HisData;
 import com.cai.work.socket.SocketManager;
 import com.example.clarence.utillibrary.DateUtils;
 import com.example.clarence.utillibrary.DimensUtils;
-import com.example.clarence.utillibrary.StringUtils;
 import com.example.clarence.utillibrary.ToastUtils;
-import com.koushikdutta.async.http.WebSocket;
+import com.github.mikephil.charting.data.Entry;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -54,6 +49,9 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     Forward forward;
     ForwardDetail forwardDetailt;
     boolean isStartSocket;
+
+    public final String TYPE_RESOLUTION_DAY = "day";
+    public final String TYPE_RESOLUTION_MINUTE = "minute";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +100,39 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                         .navigation();
             }
         });
+        mViewBinding.tvFenShi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchImage(1);
+            }
+        });
+        mViewBinding.tvKLine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchImage(2);
+            }
+        });
+        switchImage(1);
         mViewBinding.kline.setDateFormat("yyyy-MM-dd");
         mViewBinding.kline.setChartVolumeHide();
+
+//        mViewBinding.fenshiView.setDateFormat("HH:mm");
+//        int count = 100;
+//        mViewBinding.fenshiView.setCount(count, count, count);
+    }
+
+    private void switchImage(int i) {
+        if (i == 1) {
+            mViewBinding.tvFenShi.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+            mViewBinding.tvKLine.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+            mViewBinding.kline.setVisibility(View.GONE);
+            mViewBinding.fenshiView.setVisibility(View.VISIBLE);
+        } else {
+            mViewBinding.tvFenShi.setTextColor(getResources().getColor(R.color.ys_255_255_255));
+            mViewBinding.tvKLine.setTextColor(getResources().getColor(R.color.ys_219_183_108));
+            mViewBinding.kline.setVisibility(View.VISIBLE);
+            mViewBinding.fenshiView.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -165,8 +194,8 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     private void requestData() {
         if (forward != null) {
             presenter.requestRecord(forward.getCode());
-//            presenter.requestMinData(forward.getCode(),"minute");
-            presenter.requestMinData(forward.getCode(), "day");
+            presenter.requestMinData(forward.getCode(), TYPE_RESOLUTION_MINUTE);
+            presenter.requestMinData(forward.getCode(), TYPE_RESOLUTION_DAY);
         }
         presenter.requestContracts();
 
@@ -235,35 +264,57 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     public void callBack(String[][] data, String resolution) {
         if (data != null && data.length > 0) {
             List<HisData> hisDataList = new ArrayList<>();
-            for (int i = 0; i < data.length; i++) {
-                HisData hisData = new HisData();
-                long date = DateUtils.date2TimeStamp(data[i][0], "yyyy/MM/dd");
-                hisData.setDate(date);
-                if (data[i].length > 1) {
-                    hisData.setOpen(Float.valueOf(data[i][1]));
-                }
-                if (data[i].length > 2) {
-                    hisData.setClose(Float.valueOf(data[i][2]));
-                }
-                if (data[i].length > 3) {
-                    hisData.setLow(Float.valueOf(data[i][3]));
-                }
-                if (data[i].length > 1) {
-                    hisData.setHigh(Float.valueOf(data[i][1]));
-                }
+            if (TYPE_RESOLUTION_DAY.equals(resolution)) {
+                for (int i = 0; i < data.length; i++) {
+                    HisData hisData = new HisData();
+                    long date = DateUtils.date2TimeStamp(data[i][0], "yyyyMMdd");
+                    hisData.setDate(date);
+                    if (data[i].length > 1) {
+                        hisData.setOpen(Float.valueOf(data[i][1]));
+                    }
+                    if (data[i].length > 2) {
+                        hisData.setClose(Float.valueOf(data[i][2]));
+                    }
+                    if (data[i].length > 3) {
+                        hisData.setLow(Float.valueOf(data[i][3]));
+                    }
+                    if (data[i].length > 1) {
+                        hisData.setHigh(Float.valueOf(data[i][1]));
+                    }
 
-                if (data[i].length > 6) {
-                    hisData.setVol(Long.valueOf(data[i][6]));
+                    if (data[i].length > 6) {
+                        hisData.setVol(Long.valueOf(data[i][6]));
+                    }
+                    hisDataList.add(hisData);
                 }
-                hisDataList.add(hisData);
+                int size = hisDataList.size();
+                mViewBinding.kline.setCount(size, size, size);
+                mViewBinding.kline.initData(hisDataList);
+                mViewBinding.kline.setLimitLine();
+            } else {
+                int size = data.length;
+                for (int i = 0; i < size; i++) {
+                    HisData hisData = new HisData();
+                    long date = DateUtils.date2TimeStamp(data[i][0], "HH:mm");
+                    hisData.setDate(date);
+                    if (data[i].length > 1) {
+                        hisData.setClose(Long.valueOf(data[i][1]));
+                    }
+//                    if (data[i].length > 2) {
+//                        hisData.setClose(Float.valueOf(data[i][2]));
+//                    }
+                    hisDataList.add(hisData);
+                }
+                mViewBinding.fenshiView.setDateFormat("HH:mm");
+                mViewBinding.fenshiView.setCount(size / 2, size + 30, size / 2);
+                mViewBinding.fenshiView.setLastClose(hisDataList.get(0).getClose());
+                mViewBinding.fenshiView.initData(hisDataList);
             }
-            mViewBinding.kline.initData(hisDataList);
-            mViewBinding.kline.setLimitLine();
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void chooseBankCard(ForwardDetailEvent event) {
+    public void forwardDetailtCallback(ForwardDetailEvent event) {
         forwardDetailt = event.detail;
         isStartSocket = true;
         refreshForwardView();

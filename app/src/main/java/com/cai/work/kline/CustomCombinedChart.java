@@ -121,7 +121,7 @@ public class CustomCombinedChart extends CombinedChart {
                 y = position.y;
             }
 
-            c.drawText(mDescription.getText(), x, y, mDescPaint);
+//            c.drawText(mDescription.getText(), x, y, mDescPaint);
         }
     }
 

@@ -272,8 +272,9 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
     @Override
     public void callBack(String[][] data) {
         if (data != null && data.length > 0) {
+            int size = data.length;
             List<HisData> hisDataList = new ArrayList<>();
-            for (int i = 0; i < data.length; i++) {
+            for (int i = 0; i < size; i++) {
                 HisData hisData = new HisData();
                 long date = DateUtils.date2TimeStamp(data[i][0], "yyyy/MM/dd");
                 hisData.setDate(date);
@@ -295,6 +296,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
                 }
                 hisDataList.add(hisData);
             }
+            mViewBinding.kline.setCount(size,size,size);
             mViewBinding.kline.initData(hisDataList);
             mViewBinding.kline.setLimitLine();
         }
