@@ -23,6 +23,7 @@ import com.cai.work.bean.MineModel;
 import com.cai.work.bean.User;
 import com.cai.work.databinding.MineBinding;
 import com.cai.work.event.LoginEvent;
+import com.cai.work.event.UserInfoUpdateEvent;
 import com.cai.work.utils.ShareUtil;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
@@ -163,6 +164,11 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
     }
 
     @Override
+    public void updateUserInfo(User user) {
+        setDefultShow(user);
+    }
+
+    @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
@@ -248,5 +254,9 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
         } else if (even.loginState == LoginEvent.STATE_LOGIN_OUT) {
 
         }
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLoginEvent(UserInfoUpdateEvent even) {
+        presenter.getUserInfo();
     }
 }

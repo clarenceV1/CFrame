@@ -5,11 +5,13 @@ import android.util.Log;
 import com.cai.work.base.AppBasePresenter;
 import com.cai.work.bean.User;
 import com.cai.work.bean.respond.NicknameRespond;
+import com.cai.work.event.UserInfoUpdateEvent;
 import com.cai.work.qinius.QiNiuController;
 import com.example.clarence.utillibrary.StringUtils;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -94,6 +96,7 @@ public class PersonPresenter extends AppBasePresenter<PersonView> {
                         } else {
                             mView.callBack(respond.getMessage());
                         }
+                        EventBus.getDefault().post(new UserInfoUpdateEvent());
                     }
                 }, new Consumer<Throwable>() {
                     @Override

@@ -84,6 +84,9 @@ public class MinePresenter extends AppBasePresenter<MineView> {
                 .subscribe(new Consumer<User>() {
                     @Override
                     public void accept(User user) {
+                        if (!TextUtils.isEmpty(user.getPhone())) {
+                            mView.updateUserInfo(user);
+                        }
                     }
                 });
         mCompositeSubscription.add(disposable);

@@ -8,4 +8,6 @@ public interface MineView {
     void updataMineData(MineModel data);
 
     void toast(String message);
+
+    void updateUserInfo(User user);
 }
