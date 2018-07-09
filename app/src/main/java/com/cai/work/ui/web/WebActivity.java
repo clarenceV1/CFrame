@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -35,7 +37,8 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
     @Autowired(name = "paramMap")
     String paramString;
 
-    Map<String,String> paramMap;
+    Map<String, String> paramMap;
+    WebViewFragment webViewFragment;
 
     @Inject
     WebPresenter presenter;
@@ -44,6 +47,10 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
     protected void onCreate(Bundle savedInstanceState) {
         ARouter.getInstance().inject(this);
         super.onCreate(savedInstanceState);
+        View rootView = findViewById(android.R.id.content);
+        if (rootView != null) {
+            rootView.setBackgroundResource(com.cai.framework.R.color.white_a);
+        }
     }
 
     @Override
@@ -63,14 +70,24 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     @Override
     public void initView() {
-        if (!TextUtils.isEmpty(title)) {
-            mViewBinding.titleBar.setTitleText(title);
-        }
+        initTitleBar();
         if (!TextUtils.isEmpty(paramString)) {
             paramMap = JSONObject.parseObject(paramString, HashMap.class);
         }
         initUrl();
         initFragment();
+    }
+
+    private void initTitleBar() {
+        if (!TextUtils.isEmpty(title)) {
+            mViewBinding.titleBar.setTitleText(title);
+        }
+        mViewBinding.titleBar.setLeftClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
     }
 
     private void initUrl() {
@@ -121,11 +138,29 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
     private void initFragment() {
         Bundle bundle = new Bundle();
         bundle.putString(WebViewFragment.KEY_RUL, url);
-        Fragment fragment = Fragment.instantiate(this, WebViewFragment.class.getName(), bundle);
+        webViewFragment = (WebViewFragment) Fragment.instantiate(this, WebViewFragment.class.getName(), bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.containLayout, fragment);
+        fragmentTransaction.replace(R.id.containLayout, webViewFragment);
         fragmentTransaction.commit();
+    }
+
+
+    private void goBack() {
+        if (webViewFragment != null && webViewFragment.canGoBack()) {
+            webViewFragment.goBack();
+        } else {
+            finish();
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            goBack();
+            return true;
+        }
+        return false;
     }
 }
