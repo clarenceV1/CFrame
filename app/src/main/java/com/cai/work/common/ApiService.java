@@ -9,6 +9,7 @@ import com.cai.work.bean.respond.DiscoverRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
+import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
 
 import java.util.Map;
@@ -59,6 +60,8 @@ public interface ApiService {
     @GET(App.PATH + "configuration")
     Flowable<ConfigerRespond> laodConfiguration(@HeaderMap Map<String, String> map);
 
+    @POST(App.PATH + "profile")
+    Flowable<NicknameRespond> upUserNickName(@HeaderMap Map<String, String> map, @Body RequestBody body);
 
 //
 //    @POST("/app/login/index")

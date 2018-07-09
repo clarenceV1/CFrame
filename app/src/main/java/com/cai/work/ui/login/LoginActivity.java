@@ -81,6 +81,12 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
                 reset();
             }
         });
+        mViewBinding.titleBar.setLeftClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void reset() {

@@ -77,4 +77,17 @@
     <string name="sina_uninstall">not installed Sina yet, please install WeChat and try again！</string>
     <string name="net_not_good">The network is not very good. Please try again later</string>
     <string name="try_again">Click Retry</string>
+
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
+
+    <string name="open_camera_failure">Failed to open the camera</string>
+    <string name="permission_camera_denied">Camera permission denied</string>
+
+    <string name="sd_disable">SD card is not available</string>
+    <string name="permission_storage_denied">Storage permission denied</string>
+    <string name="confirm_format">%1$s(%2$d/%3$d)</string>
+    <string name="minnum">Select at least one picture.</string>
+    <string name="maxnum">Select up to %1$d pictures</string>
+    <string name="takephoto">Photo</string>
 </resources>

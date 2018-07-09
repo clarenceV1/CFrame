@@ -11,6 +11,7 @@ import com.cai.work.ui.main.DiscoverFragment;
 import com.cai.work.ui.main.MainActivity;
 import com.cai.work.ui.main.MineFragment;
 import com.cai.work.ui.message.MessageActivity;
+import com.cai.work.ui.person.PersonActivity;
 import com.cai.work.ui.web.WebActivity;
 import com.cai.work.ui.welcome.WelcomeActivity;
 
@@ -24,6 +25,9 @@ import dagger.Component;
 @Singleton
 @Component(modules = {FrameWorkModule.class, AppModule.class})
 public interface AppComponent extends FrameWorkComponent {
+
+    void inject(App app);
+
     void inject(WebActivity webActivity);
 
     void inject(WelcomeActivity activity);
@@ -42,5 +46,5 @@ public interface AppComponent extends FrameWorkComponent {
 
     void inject(MessageActivity activity);
 
-    void inject(App app);
+    void inject(PersonActivity activity);
 }

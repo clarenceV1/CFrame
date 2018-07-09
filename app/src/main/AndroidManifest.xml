@@ -33,6 +33,9 @@
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.about.AboutActivity" />
         <activity android:name=".ui.message.MessageActivity" />
+        <activity android:name=".ui.person.PersonActivity" />
+        <activity android:name=".selectimg.ISCameraActivity" />
+        <activity android:name=".selectimg.ISListActivity" />
     </application>
 
 </manifest>

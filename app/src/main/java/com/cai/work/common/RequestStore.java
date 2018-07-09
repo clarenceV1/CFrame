@@ -15,6 +15,7 @@ import com.cai.work.bean.respond.DiscoverRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
+import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
 import com.cai.work.dao.UserDAO;
 import com.example.clarence.utillibrary.PackageUtils;
@@ -189,6 +190,18 @@ public class RequestStore {
     public Flowable<ConfigerRespond> laodConfiguration() {
         Flowable<ConfigerRespond> flowable = retrofit.get().create(ApiService.class)
                 .laodConfiguration(getRequestHeader())
+                .subscribeOn(Schedulers.newThread());
+        return flowable;
+    }
+
+    /**
+     * 获取验证码
+     *
+     * @return
+     */
+    public Flowable<NicknameRespond> upUserNickName(Map<String, String> params) {
+        Flowable<NicknameRespond> flowable = retrofit.get().create(ApiService.class)
+                .upUserNickName(getRequestHeader(), getRequestBody(params))
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }

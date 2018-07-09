@@ -83,4 +83,6 @@ dependencies {
 
     compile rootProject.ext.dependencies["support-design"]
     compile rootProject.ext.dependencies["fastjson"]
+
+    compile rootProject.ext.dependencies["easyadapter"]
 }

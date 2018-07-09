@@ -181,8 +181,8 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                 break;
             case R.id.rlHeadView:
             case R.id.btnSetting:
-                if (!presenter.isLogin()) {
-//                    UserActivity.entryActivity();
+                if (presenter.isLogin()) {
+                    ARouter.getInstance().build("/MeetOne/PersonActivity").navigation();
                 } else {
                     ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 }
