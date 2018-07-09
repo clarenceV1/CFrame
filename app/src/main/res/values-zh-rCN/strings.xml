@@ -70,4 +70,6 @@
     <string name="qq_uninstall">您还未安装QQ，请安装QQ后重试！</string>
     <string name="wx_uninstall">您还未安装微信，请安装微信后重试！</string>
     <string name="sina_uninstall">您还未安装新浪微博，请安装新浪微博后重试！</string>
+    <string name="net_not_good">网络不太好，请稍后再试</string>
+    <string name="try_again">点击重试</string>
 </resources>

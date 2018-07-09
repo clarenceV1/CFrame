@@ -146,7 +146,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
         int id = v.getId();
         switch (id) {
             case R.id.btnMessage:
-                // MessageActivity.entryActivity();
+                ARouter.getInstance().build("/MeetOne/MessageActivity").navigation();
                 break;
             case R.id.btnHelp:
                 Map<String, String> params = new HashMap<>();

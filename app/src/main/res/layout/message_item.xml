@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_height_f"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/left_and_right_padding"
+        android:paddingRight="@dimen/left_and_right_padding">
+
+
+        <ImageView
+            android:id="@+id/msg_item_head_iv"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center_vertical"
+            tool:src="@drawable/about_logo" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/msg_item_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textColor="@color/black_292929"
+                android:textSize="@dimen/sp_16"
+                tool:text="标题" />
+
+
+            <TextView
+                android:id="@+id/msg_item_content_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/msg_item_title_tv"
+                android:layout_marginTop="@dimen/dp_2"
+                android:maxLines="2"
+                android:textColor="@color/gray_757575"
+                android:textSize="@dimen/sp_14"
+                tool:text="内容" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/msg_item_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_2"
+            android:textColor="@color/gray_757575"
+            android:textSize="@dimen/sp_14"
+            tool:text="时间" />
+    </LinearLayout>
+
+    <View style="@style/item_line" />
+
+</LinearLayout>

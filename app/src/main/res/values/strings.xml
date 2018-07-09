@@ -75,4 +75,6 @@
     <string name="qq_uninstall">not installed QQ yet, please install QQ and try again</string>
     <string name="wx_uninstall">not installed WeChat yet, please install WeChat and try again！</string>
     <string name="sina_uninstall">not installed Sina yet, please install WeChat and try again！</string>
+    <string name="net_not_good">The network is not very good. Please try again later</string>
+    <string name="try_again">Click Retry</string>
 </resources>

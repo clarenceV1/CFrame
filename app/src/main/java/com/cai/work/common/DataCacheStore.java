@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.alibaba.fastjson.JSON;
 import com.cai.work.bean.CandyList;
 import com.cai.work.bean.Discover;
+import com.cai.work.bean.Message;
 import com.cai.work.bean.MineModel;
 import com.example.clarence.datastorelibrary.store.share_preference.ISharePreference;
 
@@ -24,6 +25,7 @@ public class DataCacheStore {
     private static final String MINE_DATA = "mine_data";
     private static final String CANDY_LIST_DATA = "candy_list_data";
     private static final String DISCOVER_LIST_DATA = "discover_list_data";
+    private static final String MSG_LIST_DATA = "msg_list_data";
 
     @Inject
     public DataCacheStore() {
@@ -67,5 +69,19 @@ public class DataCacheStore {
             return null;
         }
         return JSON.parseArray(json, Discover.class);
+    }
+
+
+    public void saveMsgList(List<Message> messageList) {
+        String json = JSON.toJSONString(messageList);
+        sharePreference.write(MSG_LIST_DATA, json);
+    }
+
+    public List<Message> getMsgList() {
+        String json = sharePreference.read(MSG_LIST_DATA, "");
+        if (TextUtils.isEmpty(json)) {
+            return null;
+        }
+        return JSON.parseArray(json, Message.class);
     }
 }
