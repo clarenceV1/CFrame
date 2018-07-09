@@ -1,22 +1,18 @@
 package com.cai.work.ui.person;
 
+import android.util.Log;
+
 import com.cai.work.base.AppBasePresenter;
-import com.cai.work.bean.Message;
-import com.cai.work.bean.PhoneCode;
 import com.cai.work.bean.User;
-import com.cai.work.bean.respond.MessageRespond;
-import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.bean.respond.NicknameRespond;
-import com.cai.work.bean.respond.PhoneCodeRespond;
-import com.cai.work.dao.UserDAO;
-import com.cai.work.ui.message.MessageView;
-import com.example.clarence.netlibrary.NetRespondCallBack;
+import com.cai.work.qinius.QiNiuController;
+import com.example.clarence.utillibrary.StringUtils;
+import com.qiniu.android.http.ResponseInfo;
+import com.qiniu.android.storage.UpCompletionHandler;
 
-import org.reactivestreams.Subscription;
+import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -33,6 +29,9 @@ import io.reactivex.schedulers.Schedulers;
  * Created by clarence on 2018/1/12.
  */
 public class PersonPresenter extends AppBasePresenter<PersonView> {
+
+    @Inject
+    QiNiuController qiNiuController;
 
     @Inject
     public PersonPresenter() {
@@ -66,8 +65,12 @@ public class PersonPresenter extends AppBasePresenter<PersonView> {
     }
 
     public void upUserNickName(final String nickname) {
+        uploadUserInfo("", nickname);
+    }
+
+    public void uploadUserInfo(String avatar, String nickname) {
         Map<String, String> params = new HashMap<>();
-        params.put("avatar", "");
+        params.put("avatar", avatar);
         params.put("nickname", nickname);
         Disposable disposable = requestStore.get().upUserNickName(params)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -99,5 +102,21 @@ public class PersonPresenter extends AppBasePresenter<PersonView> {
                     }
                 });
         mCompositeSubscription.add(disposable);
+    }
+
+    public void upUserHead(String filePath) {
+        String key = "MoreOne/image/Android/avatar_" + System.currentTimeMillis() + "." + StringUtils.getSuffixName(filePath);
+        String token = dataStore.get().getQiniuToken();
+        qiNiuController.uploadManager(filePath, key, token, new UpCompletionHandler() {
+            @Override
+            public void complete(String key, ResponseInfo info, JSONObject response) {
+                Log.e("upUserHead", "ResponseInfo =" + info.toString());
+                if (info.isOK()) {
+                    uploadUserInfo(key, "");
+                } else {
+                    mView.callBack("上传错误");
+                }
+            }
+        });
     }
 }

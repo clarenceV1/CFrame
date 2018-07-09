@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -78,6 +79,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
     public void initView(View view) {
         adapter = new InviteAdapter(getContext(), presenter.getDefaultData());
         mViewBinding.gridInvite.setAdapter(adapter);
+        mViewBinding.gridInvite.setSelector(new ColorDrawable(Color.TRANSPARENT));
         initLinster();
         presenter.loadMineData(true);
     }

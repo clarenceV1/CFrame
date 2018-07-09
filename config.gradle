@@ -66,7 +66,8 @@ ext {
             "blockcanary-no-op"             : "com.github.markzhai:blockcanary-no-op:1.5.0",
             "android-support-percent"       : "com.android.support:percent:23.0.0",
             "QR-code"                       : "com.google.zxing:core:3.3.0",
-            "easyadapter"                   : "com.yuyh.easyadapter:library:1.1.0"
+            "easyadapter"                   : "com.yuyh.easyadapter:library:1.1.0",
+            "qiniu"                         : "com.qiniu:qiniu-android-sdk:7.3.10"
     ]
 
 }

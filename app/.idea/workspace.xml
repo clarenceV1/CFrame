@@ -11,62 +11,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42542d13-e29d-4406-96e5-6b0185a2de2f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_yuyh_easyadapter_library_1_1_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/NicknameRespond.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/dialog/BaseDialog.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/dialog/EditInputDialog.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/Callback.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/Folder.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/FolderListAdapter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISCameraActivity.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISCameraConfig.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISListActivity.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISListConfig.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISNav.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/Image.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ImageListAdapter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ImgSelFragment.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/OnFolderChangeListener.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/OnItemClickListener.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/PreviewAdapter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/SquareRelativeLayout.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonActivity.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonPresenter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonView.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/widget/CustomViewPager.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/widget/DividerGridItemDecoration.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/drawable-xhdpi/ic_album.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/drawable-xhdpi/ic_checked.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/drawable-xhdpi/ic_default_image.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/drawable-xhdpi/ic_folder_selected.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/drawable-xhdpi/ic_uncheck.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/drawable-xxhdpi/ic_take_photo.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_img_sel.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_img_sel.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/item_img_sel.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/item_img_sel_folder.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/item_img_sel_take_photo.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/item_pager_img_sel.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/layout_base_dialog.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/layout_edit_input_dialog.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/person.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_qiniu_happy_dns_0_2_13_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_qiniu_qiniu_android_sdk_7_3_10_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_8_1_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_13_0_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/qinius/QiNiuController.java" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/ApiService.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/common/ApiService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/RequestStore.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/common/RequestStore.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/dagger/component/AppComponent.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/dagger/component/AppComponent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginActivity.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MineFragment.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MineFragment.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/mine.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/mine.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values-zh-rCN/strings.xml" afterPath="$PROJECT_DIR$/src/main/res/values-zh-rCN/strings.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonPresenter.java" />
       <change beforePath="$PROJECT_DIR$/../config.gradle" afterPath="$PROJECT_DIR$/../config.gradle" />
       <change beforePath="$PROJECT_DIR$/../../LibImageLoader/src/main/java/com/example/clarence/imageloaderlibrary/ImageForGlide.java" afterPath="$PROJECT_DIR$/../../LibImageLoader/src/main/java/com/example/clarence/imageloaderlibrary/ImageForGlide.java" />
       <change beforePath="$PROJECT_DIR$/../../LibImageLoader/src/main/java/com/example/clarence/imageloaderlibrary/ImageForGlideParams.java" afterPath="$PROJECT_DIR$/../../LibImageLoader/src/main/java/com/example/clarence/imageloaderlibrary/ImageForGlideParams.java" />
       <change beforePath="$PROJECT_DIR$/../../LibUtils/src/main/java/com/example/clarence/utillibrary/FileUtils.java" afterPath="$PROJECT_DIR$/../../LibUtils/src/main/java/com/example/clarence/utillibrary/FileUtils.java" />
       <change beforePath="$PROJECT_DIR$/../../LibUtils/src/main/java/com/example/clarence/utillibrary/PackageUtils.java" afterPath="$PROJECT_DIR$/../../LibUtils/src/main/java/com/example/clarence/utillibrary/PackageUtils.java" />
+      <change beforePath="$PROJECT_DIR$/../../LibUtils/src/main/java/com/example/clarence/utillibrary/StringUtils.java" afterPath="$PROJECT_DIR$/../../LibUtils/src/main/java/com/example/clarence/utillibrary/StringUtils.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -80,61 +41,94 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PersonActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PersonActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="26" column="43" lean-forward="true" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GodBasePresenterActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/GodBasePresenterActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ISListActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISListActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="120" column="22" lean-forward="false" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="22" />
+            <state relative-caret-position="229">
+              <caret line="75" column="49" lean-forward="true" selection-start-line="75" selection-start-column="49" selection-end-line="75" selection-end-column="49" />
               <folding>
-                <element signature="e#3301#3320#0" expanded="true" />
-                <element signature="e#4819#4853#0" expanded="true" />
-                <element signature="e#5302#5317#0" expanded="true" />
-                <element signature="e#5731#5765#0" expanded="true" />
-                <element signature="e#5929#5963#0" expanded="true" />
-                <element signature="e#10171#10205#0" expanded="true" />
+                <element signature="e#1606#1748#0" expanded="true" />
+                <element signature="e#1747#1748#0" expanded="true" />
+                <element signature="e#1794#1820#0" expanded="true" />
+                <element signature="e#2920#2959#0" expanded="true" />
+                <element signature="e#2961#2998#0" expanded="true" />
+                <element signature="e#3417#3441#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_img_sel.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_img_sel.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="PersonPresenter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="42" lean-forward="false" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+            <state relative-caret-position="182">
+              <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
               <folding>
-                <element signature="e#398#419#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1884#1885#0" expanded="true" />
+                <element signature="e#1928#1929#0" expanded="true" />
+                <element signature="e#2289#2823#0" expanded="true" />
+                <element signature="e#2822#2823#0" expanded="true" />
+                <element signature="e#3903#4303#0" expanded="true" />
+                <element signature="e#4302#4303#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QiNiuController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/qinius/QiNiuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="387">
+              <caret line="47" column="33" lean-forward="false" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#490#491#0" expanded="true" />
+                <element signature="e#541#542#0" expanded="true" />
+                <element signature="e#1359#1584#0" expanded="true" />
+                <element signature="e#1583#1584#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="87" column="47" lean-forward="false" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StringUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../LibUtils/src/main/java/com/example/clarence/utillibrary/StringUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -143,10 +137,11 @@
       <find>imgsel</find>
       <find>tvTitle</find>
       <find>rlTitleBar</find>
+      <find>adapter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../LibFrameWork" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -9619,23 +9614,25 @@
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
-    <option name="projectSyncType">
-      <map>
-        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
-      </map>
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISNav.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/mine.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_img_sel.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/SquareRelativeLayout.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/item_img_sel.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/item_img_sel_take_photo.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_img_sel.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MineFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/mine.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonActivity.java" />
+        <option value="$PROJECT_DIR$/../../LibUtils/src/main/java/com/example/clarence/utillibrary/StringUtils.java" />
+        <option value="$PROJECT_DIR$/../config.gradle" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/qiniu/QiNiuController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonPresenter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/qinius/QiNiuController.java" />
       </list>
     </option>
   </component>
@@ -9736,7 +9733,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="cai" type="462c0819:PsiDirectoryNode" />
               <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="selectimg" type="462c0819:PsiDirectoryNode" />
+              <item name="qinius" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="app" type="b2602c69:ProjectViewProjectNode" />
@@ -9748,15 +9745,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="cai" type="462c0819:PsiDirectoryNode" />
               <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CFrame" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="qrcode" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -9779,6 +9768,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cai.work.qiniu" />
       <recent name="com.cai.work.selectimg" />
     </key>
   </component>
@@ -10027,9 +10017,9 @@
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52700925" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3992095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21080369" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -10077,10 +10067,73 @@
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonPresenter.java</url>
+          <line>109</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonPresenter.java</url>
+          <line>112</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonPresenter.java</url>
+          <line>117</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/qinius/QiNiuController.java</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/qinius/QiNiuController.java</url>
+          <line>47</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonActivity.java</url>
+          <line>157</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonPresenter.java</url>
+          <line>79</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonActivity.java</url>
+          <line>166</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonActivity.java</url>
+          <line>72</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>pathList.get(0)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISNav.java">
@@ -10091,25 +10144,6 @@
             <element signature="e#931#932#0" expanded="false" />
             <element signature="e#975#976#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/mine.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MineFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="73" column="26" lean-forward="false" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -10177,12 +10211,12 @@
         <state relative-caret-position="127">
           <caret line="120" column="22" lean-forward="false" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="22" />
           <folding>
-            <element signature="e#3301#3320#0" expanded="true" />
-            <element signature="e#4819#4853#0" expanded="true" />
-            <element signature="e#5302#5317#0" expanded="true" />
-            <element signature="e#5731#5765#0" expanded="true" />
-            <element signature="e#5929#5963#0" expanded="true" />
-            <element signature="e#10171#10205#0" expanded="true" />
+            <element signature="e#3301#3320#0" expanded="false" />
+            <element signature="e#4819#4853#0" expanded="false" />
+            <element signature="e#5302#5317#0" expanded="false" />
+            <element signature="e#5731#5765#0" expanded="false" />
+            <element signature="e#5929#5963#0" expanded="false" />
+            <element signature="e#10171#10205#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -10195,16 +10229,8 @@
         <state relative-caret-position="165">
           <caret line="11" column="42" lean-forward="false" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
           <folding>
-            <element signature="e#398#419#0" expanded="true" />
+            <element signature="e#398#419#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="26" column="43" lean-forward="true" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -10218,9 +10244,140 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/GodBasePresenterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+        <state relative-caret-position="111">
+          <caret line="45" column="21" lean-forward="false" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MineFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="81" column="50" lean-forward="false" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/mine.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="218" column="30" lean-forward="false" selection-start-line="218" selection-start-column="30" selection-end-line="218" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../LibUtils/src/main/java/com/example/clarence/utillibrary/StringUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="87" column="47" lean-forward="false" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../config.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="69" column="81" lean-forward="false" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/qrcode/BarCodeCreat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.qiniu/qiniu-android-sdk/7.3.10/4083e21cd3c826cf52ccff7dcf726ce3c5a891f6/qiniu-android-sdk-7.3.10-sources.jar!/com/qiniu/android/storage/UploadManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+          <folding>
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/common/DataStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-527">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/base/AppBasePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/qiniu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/qinius/QiNiuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="47" column="33" lean-forward="false" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
+            <element signature="e#541#542#0" expanded="true" />
+            <element signature="e#1359#1584#0" expanded="true" />
+            <element signature="e#1583#1584#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1884#1885#0" expanded="true" />
+            <element signature="e#1928#1929#0" expanded="true" />
+            <element signature="e#2289#2823#0" expanded="true" />
+            <element signature="e#2822#2823#0" expanded="true" />
+            <element signature="e#3903#4303#0" expanded="true" />
+            <element signature="e#4302#4303#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="75" column="49" lean-forward="true" selection-start-line="75" selection-start-column="49" selection-end-line="75" selection-end-column="49" />
+          <folding>
+            <element signature="e#1606#1748#0" expanded="true" />
+            <element signature="e#1747#1748#0" expanded="true" />
+            <element signature="e#1794#1820#0" expanded="true" />
+            <element signature="e#2920#2959#0" expanded="true" />
+            <element signature="e#2961#2998#0" expanded="true" />
+            <element signature="e#3417#3441#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

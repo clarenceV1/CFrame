@@ -1,7 +1,9 @@
 package com.cai.work.ui.person;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -146,5 +148,25 @@ public class PersonActivity extends AppBaseActivity<PersonBinding> implements Pe
 
         ISNav.getInstance().init(iLoadImage);
         ISNav.getInstance().toListActivity(this, config, SELECT_HEAD);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SELECT_HEAD && resultCode == RESULT_OK && data != null) {//头像选择返回
+            List<String> pathList = data.getStringArrayListExtra("result");
+            if (pathList != null && pathList.size() > 0) {
+                presenter.upUserHead(pathList.get(0));
+            }
+            // 测试Fresco
+            // draweeView.setImageURI(Uri.parse("file://"+pathList.get(0)));
+            for (String path : pathList) {
+                Log.e("onActivityResult", "path=" + path);
+            }
+        } else if (requestCode == REQUEST_CAMERA_CODE && resultCode == RESULT_OK && data != null) {
+            String path = data.getStringExtra("result");
+            //mMyController.upUserHead(path);
+            Log.e("onActivityResult", "path=" + path);
+        }
     }
 }

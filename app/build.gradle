@@ -85,4 +85,5 @@ dependencies {
     compile rootProject.ext.dependencies["fastjson"]
 
     compile rootProject.ext.dependencies["easyadapter"]
+    compile rootProject.ext.dependencies["qiniu"]
 }
