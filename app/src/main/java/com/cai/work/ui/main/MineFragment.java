@@ -90,6 +90,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
         mViewBinding.btnSetting.setOnClickListener(this);
         mViewBinding.ivShareWX.setOnClickListener(this);
         mViewBinding.ivShareWxq.setOnClickListener(this);
+        mViewBinding.ivShareQq.setOnClickListener(this);
         mViewBinding.ivShareSina.setOnClickListener(this);
         mViewBinding.btnShareCopy.setOnClickListener(this);
         mViewBinding.pullToRefresh.setOnPullLoadListener(new BasePtrFrameLayout.OnPullLoadListener() {
@@ -206,13 +207,14 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                 } else {
                     ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 }
-
+                break;
             case R.id.ivShareSina:
                 if (presenter.isLogin()) {
                     ShareUtil.shareToSina(getContext(), presenter.getShareText());
                 } else {
                     ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 }
+                break;
             case R.id.btnShareCopy:
                 if (presenter.isLogin()) {
                     String share = presenter.copyShareText();
