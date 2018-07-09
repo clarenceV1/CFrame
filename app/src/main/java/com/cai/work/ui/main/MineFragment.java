@@ -158,7 +158,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                         .navigation();
                 break;
             case R.id.btnAbout:
-//                AboutActivity.entryActivity();
+                ARouter.getInstance().build("/MeetOne/AboutActivity").navigation();
                 break;
             case R.id.rlHeadView:
             case R.id.btnSetting:

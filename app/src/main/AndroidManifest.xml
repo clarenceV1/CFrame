@@ -31,6 +31,7 @@
         <activity android:name=".ui.web.WebActivity" />
         <activity android:name=".ui.candy.CandyDetailActivity" />
         <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".ui.about.AboutActivity" />
     </application>
 
 </manifest>
