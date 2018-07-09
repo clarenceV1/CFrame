@@ -166,7 +166,7 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
 
     @Override
     public void callBack(User data) {
-//        finish();
+        finish();
     }
 
 }

@@ -2,6 +2,7 @@ package com.cai.work.dagger.component;
 
 import com.cai.framework.dagger.component.FrameWorkComponent;
 import com.cai.framework.dagger.module.FrameWorkModule;
+import com.cai.work.base.App;
 import com.cai.work.dagger.module.AppModule;
 import com.cai.work.ui.candy.CandyDetailActivity;
 import com.cai.work.ui.login.LoginActivity;
@@ -41,4 +42,5 @@ public interface AppComponent extends FrameWorkComponent {
 
     void inject(MessageActivity activity);
 
+    void inject(App app);
 }

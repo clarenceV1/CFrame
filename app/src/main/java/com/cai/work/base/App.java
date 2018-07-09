@@ -6,6 +6,8 @@ import com.cai.work.bean.MyObjectBox;
 import com.cai.work.dagger.component.AppComponent;
 import com.cai.work.dagger.component.DaggerAppComponent;
 
+import javax.inject.Inject;
+
 import io.objectbox.BoxStore;
 
 /**
@@ -25,14 +27,18 @@ public class App extends GodBaseApplication {
 
     public static BoxStore boxStore;
     public static AppComponent appComponent;
+    @Inject
+    AppPresenter appPresenter;
 
     public void onCreate() {
         super.onCreate();
-        initRouter();
-        boxStore = MyObjectBox.builder().androidContext(this).build();
         if (appComponent == null) {
             appComponent = DaggerAppComponent.create();
+            appComponent.inject(this);
         }
+        initRouter();
+        boxStore = MyObjectBox.builder().androidContext(this).build();
+        appPresenter.laodConfiguration();
     }
 
     @Override
@@ -66,4 +72,5 @@ public class App extends GodBaseApplication {
     public static AppComponent getAppComponent() {
         return appComponent;
     }
+
 }

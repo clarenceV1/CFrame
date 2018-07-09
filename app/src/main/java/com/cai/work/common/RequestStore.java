@@ -1,17 +1,22 @@
 package com.cai.work.common;
 
+import android.app.VoiceInteractor;
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cai.framework.utils.LanguageLocalUtil;
 import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
+import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.CandyListRespond;
+import com.cai.work.bean.respond.ConfigerRespond;
 import com.cai.work.bean.respond.DiscoverRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
+import com.cai.work.dao.UserDAO;
 import com.example.clarence.utillibrary.PackageUtils;
 
 import java.util.HashMap;
@@ -36,6 +41,8 @@ public class RequestStore {
     Lazy<Retrofit> retrofit;
     @Inject
     Lazy<DataStore> dataStore;
+    @Inject
+    public Lazy<UserDAO> userDAO;
 
     @Inject
     public RequestStore() {
@@ -71,7 +78,11 @@ public class RequestStore {
 //        headerMap.put("openudid", UniqueIdUtils.getDeviceInfo(context, UniqueIdUtils.DEVICES_INFO.ANDROID_ID));
 //        headerMap.put("imei", UniqueIdUtils.getDeviceInfo(context, UniqueIdUtils.DEVICES_INFO.IMEI));
         headerMap.put("lang", LanguageLocalUtil.getSystemLanguage().toLowerCase());
-        headerMap.put("auth", dataStore.get().getAuthorization());
+        String token = userDAO.get().getToken();
+        if (!TextUtils.isEmpty(token)) {
+            headerMap.put("auth", token);
+        }
+
         return headerMap;
     }
 
@@ -153,8 +164,6 @@ public class RequestStore {
 
 
     /**
-     *
-     *
      * @return
      */
     public Flowable<LoginRespond> loginOrRegister(Map<String, String> params) {
@@ -163,9 +172,8 @@ public class RequestStore {
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }
+
     /**
-     *
-     *
      * @return
      */
     public Flowable<MessageRespond> loadMsgData() {
@@ -175,4 +183,13 @@ public class RequestStore {
         return flowable;
     }
 
+    /**
+     * @return
+     */
+    public Flowable<ConfigerRespond> laodConfiguration() {
+        Flowable<ConfigerRespond> flowable = retrofit.get().create(ApiService.class)
+                .laodConfiguration(getRequestHeader())
+                .subscribeOn(Schedulers.newThread());
+        return flowable;
+    }
 }

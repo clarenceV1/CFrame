@@ -73,7 +73,7 @@ public class MinePresenter extends AppBasePresenter<MineView> {
         Disposable disposable = Observable.create(new ObservableOnSubscribe<User>() {
             @Override
             public void subscribe(ObservableEmitter<User> e) {
-                User user = userDAO.get().getUserInfo();
+                User user = userDAO.get().getUser();
                 if (user == null) {
                     user = new User();
                 }

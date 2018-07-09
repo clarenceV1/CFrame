@@ -2,7 +2,9 @@ package com.cai.work.common;
 
 import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
+import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.CandyListRespond;
+import com.cai.work.bean.respond.ConfigerRespond;
 import com.cai.work.bean.respond.DiscoverRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MessageRespond;
@@ -53,6 +55,11 @@ public interface ApiService {
 
     @GET(App.PATH + "msgbox")
     Flowable<MessageRespond> loadMsgData(@HeaderMap Map<String, String> map);
+
+    @GET(App.PATH + "configuration")
+    Flowable<ConfigerRespond> laodConfiguration(@HeaderMap Map<String, String> map);
+
+
 //
 //    @POST("/app/login/index")
 //    @FormUrlEncoded

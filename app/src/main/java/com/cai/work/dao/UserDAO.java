@@ -14,47 +14,51 @@ import io.objectbox.Box;
 public class UserDAO extends BaseDAO {
     Box<User> userBox;
 
+    private static User mUser;
+
     @Inject
     public UserDAO() {
         userBox = boxStore.boxFor(User.class);
+        swtichUser();
+    }
+
+    public User getUser() {
+        return mUser;
+    }
+
+    public void swtichUser() {
+        mUser = userBox.query().build().findFirst();
     }
 
     public void update(long userId, String avatar, int nationCode, String nickname, String phone) {
-        User user = userBox.query().equal(User_.user_id, userId).build().findFirst();
-        if (user != null) {
-            user.setAvatar(avatar);
-            user.setNation_code(nationCode);
-            user.setNickname(nickname);
-            user.setPhone(phone);
-            userBox.put(user);
+        if (mUser != null && mUser.getUser_id() == userId) {
+            mUser.setAvatar(avatar);
+            mUser.setNation_code(nationCode);
+            mUser.setNickname(nickname);
+            mUser.setPhone(phone);
+            userBox.put(mUser);
         }
     }
 
     public String getToken() {
-        User user = userBox.query().build().findFirst();
-        if (user != null) {
-            return user.getToken();
+        if (mUser != null) {
+            return mUser.getToken();
         }
         return null;
     }
 
     public boolean isLogin() {
-        String token = getToken();
-        if (TextUtils.isEmpty(token)) {
+        if (mUser == null) {
             return false;
         }
         return true;
-    }
-
-    public User getUserInfo() {
-        User user = userBox.query().build().findFirst();
-        return user;
     }
 
     public void save(User user) {
         if (user != null) {
             userBox.removeAll();
             userBox.put(user);
+            swtichUser();
         }
     }
 

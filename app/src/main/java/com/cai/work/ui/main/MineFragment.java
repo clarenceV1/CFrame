@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -12,7 +13,6 @@ import android.view.View;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
-import com.cai.pullrefresh.PtrRecyclerView;
 import com.cai.pullrefresh.lib.PtrFrameLayout;
 import com.cai.pullrefresh.swipemenulistview.BasePtrFrameLayout;
 import com.cai.work.R;
@@ -21,12 +21,17 @@ import com.cai.work.base.AppBaseFragment;
 import com.cai.work.bean.MineModel;
 import com.cai.work.bean.User;
 import com.cai.work.databinding.MineBinding;
+import com.cai.work.event.LoginEvent;
 import com.cai.work.utils.ShareUtil;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.StringUtils;
 import com.example.clarence.utillibrary.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +46,18 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
     @Inject
     ILoadImage iLoadImage;
     InviteAdapter adapter;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 
     @Override
     public void addPresenters(List observerList) {
@@ -61,7 +78,6 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
     public void initView(View view) {
         adapter = new InviteAdapter(getContext(), presenter.getDefaultData());
         mViewBinding.gridInvite.setAdapter(adapter);
-
         initLinster();
         presenter.loadMineData(true);
     }
@@ -90,7 +106,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
     }
 
     public void setDefultShow(User user) {
-        if (user != null && !TextUtils.isEmpty(user.getToken())) {//login
+        if (user != null) {//login
             mViewBinding.tvNickname.setVisibility(View.VISIBLE);
             mViewBinding.tvPhone.setVisibility(View.VISIBLE);
             mViewBinding.btnLogin.setVisibility(View.GONE);
@@ -100,6 +116,8 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
 
             ILoadImageParams imageParams = new ImageForGlideParams.Builder()
                     .url(user.getAvatar())
+                    .error(R.drawable.default_avatar)
+                    .placeholder(R.drawable.default_avatar)
                     .build();
             imageParams.setImageView(mViewBinding.imgIcon);
             iLoadImage.loadImage(this, imageParams);
@@ -162,10 +180,9 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                 break;
             case R.id.rlHeadView:
             case R.id.btnSetting:
-                if (presenter.isLogin()) {
+                if (!presenter.isLogin()) {
 //                    UserActivity.entryActivity();
                 } else {
-//                    LoginActivity.entryActivity(false);
                     ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 }
                 break;
@@ -173,28 +190,28 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                 if (presenter.isLogin()) {
                     ShareUtil.shareToWeiXin(getContext(), presenter.getShareText());
                 } else {
-//                    LoginActivity.entryActivity(false);
+                    ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 }
                 break;
             case R.id.ivShareWxq:
                 if (presenter.isLogin()) {
                     ShareUtil.shareToWeiXin(getContext(), presenter.getShareText());
                 } else {
-//                    LoginActivity.entryActivity(false);
+                    ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 }
                 break;
             case R.id.ivShareQq:
                 if (presenter.isLogin()) {
                     ShareUtil.shareToQQ(getContext(), presenter.getShareText());
                 } else {
-//                    LoginActivity.entryActivity(false);
+                    ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 }
 
             case R.id.ivShareSina:
                 if (presenter.isLogin()) {
                     ShareUtil.shareToSina(getContext(), presenter.getShareText());
                 } else {
-//                    LoginActivity.entryActivity(false);
+                    ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 }
             case R.id.btnShareCopy:
                 if (presenter.isLogin()) {
@@ -214,9 +231,18 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                         e.printStackTrace();
                     }
                 } else {
-//                    LoginActivity.entryActivity(false);
+                    ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 }
                 break;
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLoginEvent(LoginEvent even) {
+        if (even.loginState == LoginEvent.STATE_LOGIN_IN) {
+            presenter.loadMineData(true);
+        } else if (even.loginState == LoginEvent.STATE_LOGIN_OUT) {
+
         }
     }
 }

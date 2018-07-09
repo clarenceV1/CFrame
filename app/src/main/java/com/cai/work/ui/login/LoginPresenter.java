@@ -7,9 +7,11 @@ import com.cai.work.bean.User;
 import com.cai.work.bean.respond.CandyListRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
+import com.cai.work.event.LoginEvent;
 import com.cai.work.ui.candy.CandyDetailView;
 import com.example.clarence.netlibrary.NetRespondCallBack;
 
+import org.greenrobot.eventbus.EventBus;
 import org.reactivestreams.Subscription;
 
 import java.util.ArrayList;
@@ -68,6 +70,7 @@ public class LoginPresenter extends AppBasePresenter<LoginView> {
                     public void accept(LoginRespond loginRespond) throws Exception {
                         if (loginRespond.getErrorcode() == 0) {
                             userDAO.get().save(loginRespond.getData());
+                            EventBus.getDefault().post(new LoginEvent(LoginEvent.STATE_LOGIN_IN));
                         }
                     }
                 })

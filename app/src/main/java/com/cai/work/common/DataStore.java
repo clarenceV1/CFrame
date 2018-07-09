@@ -25,25 +25,14 @@ public class DataStore {
     private static final String INVITE_TITLE = "invite_title";
     private static final String INVITE_URL = "invite_url";
     private static final String SHORT_CUT = "short_cut";
+    private static final String QINIU_TOKEN = "qiniu_token";
+
+
     private boolean creatShortCut;
 
     @Inject
     public DataStore() {
 
-    }
-
-    public void setAuthorization(String authorization) {
-        String aseAuthorization = CipherUtil.aesEncrypt(authorization);
-        sharePreference.write(AUTHORIZATION_KEY, aseAuthorization);
-    }
-
-    public String getAuthorization() {
-        String aseAuthorization = sharePreference.read(AUTHORIZATION_KEY, "");
-        String authorization = CipherUtil.aesDecrypt(aseAuthorization);
-        if (authorization != null && authorization.trim().isEmpty()) {
-            authorization = Uri.encode(authorization);
-        }
-        return authorization == null ? "" : authorization;
     }
 
     public void saveAppUpdate(String json) {
@@ -97,5 +86,14 @@ public class DataStore {
 
     public boolean isCreatShortCut() {
         return creatShortCut;
+    }
+
+
+    public void saveQiniuToken(String token) {
+        sharePreference.write(QINIU_TOKEN, token);
+    }
+
+    public String getQiniuToken() {
+        return sharePreference.read(QINIU_TOKEN, "");
     }
 }
