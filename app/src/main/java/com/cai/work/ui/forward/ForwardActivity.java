@@ -218,9 +218,8 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
 
     //设置PopWindow
     private void showSpinWindow() {
-        int spinerWith = mViewBinding.spinner.getWidth();
         //设置mSpinerPopWindow显示的宽度
-        spinerPopWindow.setWidth(spinerWith);
+        spinerPopWindow.setWidth(DimensUtils.dp2px(this,100));
         spinerPopWindow.setHeight(spinerPopwindowHeight);
         //设置显示的位置在哪个控件的下方
         spinerPopWindow.showAsDropDown(mViewBinding.spinner);

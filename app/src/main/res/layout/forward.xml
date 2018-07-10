@@ -176,7 +176,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="400dp">
+                    android:layout_height="300dp">
 
                     <com.cai.work.kline.KLineView
                         android:id="@+id/kline"
