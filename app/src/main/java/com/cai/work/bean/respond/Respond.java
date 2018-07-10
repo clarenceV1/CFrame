@@ -1,6 +1,8 @@
 package com.cai.work.bean.respond;
 
-public class Respond {
+import java.io.Serializable;
+
+public class Respond implements Serializable{
     private String message;
     private int errorcode;
     private String data;

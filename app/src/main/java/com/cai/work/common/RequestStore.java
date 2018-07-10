@@ -215,4 +215,17 @@ public class RequestStore {
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }
+
+
+    /**
+     *
+     *
+     * @return
+     */
+    public Flowable<ResponseBody> loadCandyDetail(Map<String, String> params) {
+        Flowable<ResponseBody> flowable = retrofit.get().create(ApiService.class)
+                .loadCandyDetail(getRequestHeader(), params)
+                .subscribeOn(Schedulers.newThread());
+        return flowable;
+    }
 }

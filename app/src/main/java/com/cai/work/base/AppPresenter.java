@@ -70,4 +70,8 @@ public class AppPresenter {
             laodConfiguration();
         }
     }
+
+    public String getToken(){
+        return userDAO.get().getToken();
+    }
 }

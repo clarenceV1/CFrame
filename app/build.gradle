@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.objectbox'
 apply plugin: 'com.cai.plugin.aspect'
+apply plugin: 'com.mob.sdk'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -13,6 +14,7 @@ android {
         renderscriptTargetApi 20
         renderscriptSupportModeEnabled true
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -49,12 +51,45 @@ android {
         enabled true
     }
 }
-repositories {
+MobSDK {
 
-    jcenter()
-
-    maven { url "http://objectbox.net/beta-repo/" }
-
+    appKey "2689d6ba3e0b8"
+    appSecret "3fa28f3c934d459253c1136afa8ad747"
+    ShareSDK {
+//        gui false
+        devInfo {
+            Wechat { //meetone 专用, 注意 applicationId 要改
+                id 1
+                sortId 1
+                appId "wx683799b37327a2ea"
+                appSecret "ee36fdbddc8d79a758afcab3ef8e1808"
+            }
+            WechatMoments { //meetone 专用, 注意 applicationId 要改
+                id 2
+                sortId 2
+                appId "wx683799b37327a2ea"
+                appSecret "ee36fdbddc8d79a758afcab3ef8e1808"
+                bypassApproval false
+                enable true
+            }
+            QQ { //meetone 用 注意 applicationId 要改
+                id 3
+                sortId 3
+                appId "101486434"
+                appKey "e80fe8ddeb6987e3752ab0d6b08f3e3d"
+                bypassApproval false
+                enable true
+            }
+            SinaWeibo { //meetone 专用, 注意 applicationId 要改
+                id 4
+                sortId 4
+                appKey "1698573935"
+                appSecret "d5c43f0a81c0ea2cb7e71ccfb5d8d4c0"
+                callbackUri "http://www.sharesdk.cn"
+                shareByAppClient false
+            }
+        }
+    }
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

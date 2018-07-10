@@ -21,6 +21,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
+import retrofit2.http.QueryMap;
 
 /**
  * Created by clarence on 2018/1/12.
@@ -62,6 +63,9 @@ public interface ApiService {
 
     @GET(App.PATH + "vercode")
     Flowable<ResponseBody> loadNationCode(@HeaderMap Map<String, String> map);
+
+    @GET(App.PATH + "token")
+    Flowable<ResponseBody> loadCandyDetail(@HeaderMap Map<String, String> headMap, @QueryMap Map<String, String> map);
 //
 //    @POST("/app/login/index")
 //    @FormUrlEncoded
