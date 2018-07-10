@@ -65,11 +65,11 @@ class MessageAdapter extends GodBaseAdapter {
                 public void onClick(View v) {
                     if (messageItem.isShowMsgContent()) {
                         messageItem.setShowMsgContent(false);
-                        ViewHolder.getImageView(convertView, R.id.ivSwitch).setBackgroundResource(R.drawable.jy_open);
+                        ViewHolder.getImageView(convertView, R.id.ivSwitch).setBackgroundResource(R.drawable.jy_sousuo);
                         ViewHolder.getView(convertView, R.id.rlContent).setVisibility(View.GONE);
                     } else {
                         messageItem.setShowMsgContent(true);
-                        ViewHolder.getImageView(convertView, R.id.ivSwitch).setBackgroundResource(R.drawable.jy_sousuo);
+                        ViewHolder.getImageView(convertView, R.id.ivSwitch).setBackgroundResource(R.drawable.jy_open);
                         ViewHolder.getView(convertView, R.id.rlContent).setVisibility(View.VISIBLE);
                     }
                 }

@@ -39,7 +39,8 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="invisible">
 
             <TextView
                 android:layout_width="wrap_content"

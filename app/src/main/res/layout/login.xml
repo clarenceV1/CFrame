@@ -79,8 +79,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/btn_check"
-                android:button="@null"
-                android:checked="true" />
+                android:button="@null" />
         </LinearLayout>
 
         <LinearLayout

@@ -66,7 +66,7 @@ public class StockBuyPresenter extends GodBasePresenter<StockBuyView> {
                 bzj, zy, zs, redbagIds, zhf, new Consumer<CommonRespond>() {
                     @Override
                     public void accept(CommonRespond data) {
-                        mView.callBack(data.getData());
+                        mView.callBack(data.getResponseText());
                     }
                 }, new Consumer<Throwable>() {
                     @Override

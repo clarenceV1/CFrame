@@ -311,4 +311,5 @@
     <string name="stock_buy_can_buy_stock_num">可买入%1$s股，资金使用率%2$s</string>
     <string name="stock_buy_notice2">点买时间段: 交易日 9:30- 11:25 | 13:00-14:55</string>
     <string name="forward_detail_account">账户余额:</string>
+    <string name="forget_password_notice">忘记6位数字旧提现密码？</string>
 </resources>
