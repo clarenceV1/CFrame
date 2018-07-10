@@ -15,6 +15,7 @@ import com.cai.work.bean.respond.DiscoverRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
+import com.cai.work.bean.respond.NationCodeRespond;
 import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
 import com.cai.work.bean.respond.Respond;
@@ -203,6 +204,16 @@ public class RequestStore {
     public Flowable<NicknameRespond> upUserNickName(Map<String, String> params) {
         Flowable<NicknameRespond> flowable = retrofit.get().create(ApiService.class)
                 .upUserNickName(getRequestHeader(), getRequestBody(params))
+                .subscribeOn(Schedulers.newThread());
+        return flowable;
+    }
+
+    /**
+     * @return
+     */
+    public Flowable<NationCodeRespond> loadNationCode() {
+        Flowable<NationCodeRespond> flowable = retrofit.get().create(ApiService.class)
+                .loadNationCode(getRequestHeader())
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }

@@ -112,6 +112,7 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
         int id = v.getId();
         switch (id) {
             case R.id.tvNationCode://选择国家
+                ARouter.getInstance().build("/MeetOne/NationCodeActivity").navigation();
 //                NationCodeActivity.entryActivityForResult(this, 100, RESULT_KEY);
                 break;
             case R.id.tvGetCode:

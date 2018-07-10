@@ -36,6 +36,7 @@
         <activity android:name=".ui.person.PersonActivity" />
         <activity android:name=".selectimg.ISCameraActivity" />
         <activity android:name=".selectimg.ISListActivity" />
+        <activity android:name=".ui.nationcode.NationCodeActivity" />
     </application>
 
 </manifest>

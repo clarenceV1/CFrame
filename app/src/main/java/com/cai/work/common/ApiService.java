@@ -9,6 +9,7 @@ import com.cai.work.bean.respond.DiscoverRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
+import com.cai.work.bean.respond.NationCodeRespond;
 import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
 import com.cai.work.bean.respond.Respond;
@@ -63,6 +64,9 @@ public interface ApiService {
     @POST(App.PATH + "profile")
     Flowable<NicknameRespond> upUserNickName(@HeaderMap Map<String, String> map, @Body RequestBody body);
 
+
+    @GET(App.PATH + "vercode")
+    Flowable<NationCodeRespond> loadNationCode(@HeaderMap Map<String, String> map);
 //
 //    @POST("/app/login/index")
 //    @FormUrlEncoded
