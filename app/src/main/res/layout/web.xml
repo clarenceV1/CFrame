@@ -12,6 +12,8 @@
             android:layout_width="match_parent"
             android:layout_height="44dp" />
 
+        <View style="@style/item_line" />
+
         <FrameLayout
             android:id="@+id/containLayout"
             android:layout_width="match_parent"
