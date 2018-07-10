@@ -151,7 +151,7 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
                 String bzj = bondAdapter.getBuyMoney() + "";
                 String zy = zyAdapter.getBuyMoney() + "";
                 String zs = zsAdapter.getBuyMoney() + "";
-                String redbagIds = "";
+                String redbagIds = getRedBagIds();
                 String zhf = data.getZhf() + "";
                 presenter.commitBuy(code, name, marketType, price, amount, principal, bzj, zy, zs, redbagIds, zhf);
             }
@@ -287,5 +287,20 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
     @Override
     public void callBack(String msg) {
         ToastUtils.showShort(msg);
+    }
+
+    public String getRedBagIds() {
+        if (selectRedBags != null && selectRedBags.size() > 0) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < selectRedBags.size(); i++) {
+                StockBuyRedBag stockBuyRedBag = selectRedBags.get(i);
+                stringBuilder.append(stockBuyRedBag.getId());
+                if (i < selectRedBags.size() - 1) {
+                    stringBuilder.append(",");
+                }
+            }
+            return stringBuilder.toString();
+        }
+        return "";
     }
 }

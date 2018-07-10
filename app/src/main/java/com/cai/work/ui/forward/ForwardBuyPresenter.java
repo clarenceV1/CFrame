@@ -1,16 +1,10 @@
 package com.cai.work.ui.forward;
 
 import com.cai.framework.base.GodBasePresenter;
-import com.cai.work.bean.Forward;
-import com.cai.work.bean.ForwardRecord;
+import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.ForwardBuyRespond;
-import com.cai.work.bean.respond.ForwardContractsRespond;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -49,4 +43,19 @@ public class ForwardBuyPresenter extends GodBasePresenter<ForwardBuyView> {
         mCompositeSubscription.add(disposable);
     }
 
+    public void requestKaiCang(String code,String amount,String bond,String zy,String zs,String redbagIds,String openWay) {
+        String token = accountDAO.getToken();
+        Disposable disposable = requestStore.requestKaiCang(token, code, amount, bond, zy, zs, redbagIds, openWay, new Consumer<CommonRespond>() {
+                    @Override
+                    public void accept(CommonRespond data) {
+                        mView.toast(data.getResponseText());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) {
+                        mView.toast("错误");
+                    }
+                });
+        mCompositeSubscription.add(disposable);
+    }
 }

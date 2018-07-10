@@ -132,7 +132,36 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
                 }
             }
         });
+        mViewBinding.btnCommit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String code = data.getCode();
+                String amount = amountAdapter.getCheckPosition()+1 + "";
+                String bond = boundAdapter.getBuyMoney() + "";
+                String zy = zyAdapter.getBuyMoney() + "";
+                String zs = zsAdapter.getBuyMoney() + "";
+                String redbagIds = getRedBagIds();
+                String openWay = type + "";
+                presenter.requestKaiCang(code, amount, bond, zy, zs, redbagIds, openWay);
+            }
+        });
         presenter.requestForwardBuy(forwardCode);
+
+    }
+
+    public String getRedBagIds() {
+        if (selectRedBags != null && selectRedBags.size() > 0) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < selectRedBags.size(); i++) {
+                StockBuyRedBag stockBuyRedBag = selectRedBags.get(i);
+                stringBuilder.append(stockBuyRedBag.getId());
+                if (i < selectRedBags.size() - 1) {
+                    stringBuilder.append(",");
+                }
+            }
+            return stringBuilder.toString();
+        }
+        return "";
     }
 
     @Override
@@ -261,6 +290,6 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
 
     @Override
     public void toast(String msg) {
-
+        ToastUtils.showShort(msg);
     }
 }

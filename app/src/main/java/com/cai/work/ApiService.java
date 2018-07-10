@@ -223,4 +223,10 @@ public interface ApiService {
     @GET("http://114.55.224.60:8081/web_new.php")
     Flowable<String[][]> requestMinData(@Query("symbol") String code, @Query("resolution") String resolution);
 
+    @POST("/app/futures/open")
+    @FormUrlEncoded
+    Flowable<CommonRespond> requestKaiCang(@Field("token") String token, @Field("code") String code, @Field("amount") String amount,
+                                           @Field("bond") String bond, @Field("zy") String zy, @Field("zs") String zs,
+                                           @Field("redbagIds") String redbagIds, @Field("openWay") String openWay);
+
 }
