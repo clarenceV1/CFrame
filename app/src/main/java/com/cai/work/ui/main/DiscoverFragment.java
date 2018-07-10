@@ -48,7 +48,7 @@ public class DiscoverFragment extends AppBaseFragment<DiscoverBinding> implement
         initHead();
 
         mPtrRecyclerView = (PtrRecyclerView) mViewBinding.pullListView.getRecyclerView();
-        adapter = new DiscoverAdapter(getContext(), iLoadImage);
+        adapter = new DiscoverAdapter(getContext(), iLoadImage,presenter);
         mPtrRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mPtrRecyclerView.setAdapter(adapter);
         mViewBinding.pullListView.setCloseLoadMore(true);

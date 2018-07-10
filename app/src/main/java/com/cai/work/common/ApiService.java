@@ -10,6 +10,7 @@ import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
+import com.cai.work.bean.respond.RecordRespond;
 import com.cai.work.bean.respond.Respond;
 
 import java.util.Map;
@@ -66,6 +67,10 @@ public interface ApiService {
 
     @GET(App.PATH + "token")
     Flowable<ResponseBody> loadCandyDetail(@HeaderMap Map<String, String> headMap, @QueryMap Map<String, String> map);
+
+    @GET(App.PATH + "record")
+    Flowable<RecordRespond> loadRecord(@HeaderMap Map<String, String> headMap, @QueryMap Map<String, String> map);
+
 //
 //    @POST("/app/login/index")
 //    @FormUrlEncoded

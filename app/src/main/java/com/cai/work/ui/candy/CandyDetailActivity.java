@@ -73,7 +73,7 @@ public class CandyDetailActivity extends AppBaseActivity<CandyDetailBinding> imp
             @Override
             public void onClick(View v) {
                 if (presenter.isLogin()) {
-//                    RecordActivity.entryActivity(tokenId);
+                    ARouter.getInstance().build("/MeetOne/RecordActivity").withInt("tokenId", tokenId).navigation();
                 } else {
                     ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 }

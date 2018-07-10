@@ -85,6 +85,8 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
     private void initTitleBar() {
         if (!TextUtils.isEmpty(title)) {
             mViewBinding.titleBar.setTitleText(title);
+        }else{
+            mViewBinding.titleBar.hideTitle();
         }
         mViewBinding.titleBar.setLeftClickListener(new View.OnClickListener() {
             @Override

@@ -13,6 +13,7 @@ import com.cai.work.ui.main.MineFragment;
 import com.cai.work.ui.message.MessageActivity;
 import com.cai.work.ui.nationcode.NationCodeActivity;
 import com.cai.work.ui.person.PersonActivity;
+import com.cai.work.ui.record.RecordActivity;
 import com.cai.work.ui.web.WebActivity;
 import com.cai.work.ui.welcome.WelcomeActivity;
 
@@ -50,4 +51,6 @@ public interface AppComponent extends FrameWorkComponent {
     void inject(PersonActivity activity);
 
     void inject(NationCodeActivity activity);
+
+    void inject(RecordActivity activity);
 }

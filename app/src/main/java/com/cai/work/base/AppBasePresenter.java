@@ -27,4 +27,8 @@ public abstract class AppBasePresenter<V> extends GodBasePresenter<V> {
     public String getToken() {
         return userDAO.get().getToken();
     }
+
+    public boolean isLogin(){
+        return userDAO.get().isLogin();
+    }
 }

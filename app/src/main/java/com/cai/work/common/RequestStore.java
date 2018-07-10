@@ -15,6 +15,7 @@ import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
+import com.cai.work.bean.respond.RecordRespond;
 import com.cai.work.bean.respond.Respond;
 import com.cai.work.dao.UserDAO;
 import com.example.clarence.utillibrary.PackageUtils;
@@ -225,6 +226,18 @@ public class RequestStore {
     public Flowable<ResponseBody> loadCandyDetail(Map<String, String> params) {
         Flowable<ResponseBody> flowable = retrofit.get().create(ApiService.class)
                 .loadCandyDetail(getRequestHeader(), params)
+                .subscribeOn(Schedulers.newThread());
+        return flowable;
+    }
+
+    /**
+     * 获取验证码
+     *
+     * @return
+     */
+    public Flowable<RecordRespond> loadRecord(Map<String, String> params) {
+        Flowable<RecordRespond> flowable = retrofit.get().create(ApiService.class)
+                .loadRecord(getRequestHeader(), params)
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }

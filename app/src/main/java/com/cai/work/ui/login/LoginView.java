@@ -1,6 +1,7 @@
 package com.cai.work.ui.login;
 
 import com.cai.work.bean.PhoneCode;
+import com.cai.work.bean.RecordDataModel;
 import com.cai.work.bean.User;
 
 public interface LoginView {

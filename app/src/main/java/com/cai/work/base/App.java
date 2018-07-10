@@ -94,7 +94,7 @@ public class App extends GodBaseApplication {
 
             @Override
             public void jumpNewActivity(String url) {
-                ARouter.getInstance().build(url).navigation();
+                ARouter.getInstance().build("/MeetOne/WebActivity").withCharSequence("url",url).navigation();
             }
         });
     }

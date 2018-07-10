@@ -1,17 +1,20 @@
 package com.cai.work.ui.main;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.pullrefresh.BasePtrAdapter;
 import com.cai.pullrefresh.BasePtrViewHold;
 import com.cai.pullrefresh.BaseViewHold;
 import com.cai.work.R;
 import com.cai.work.bean.CandyList;
 import com.cai.work.bean.Discover;
+import com.cai.work.ui.login.LoginActivity;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
@@ -24,10 +27,12 @@ public class DiscoverAdapter extends BasePtrAdapter<Discover, DiscoverAdapter.Vi
     int itemWeight;
     int itemWidth;
     Context context;
+    DiscoverPresenter presenter;
 
-    public DiscoverAdapter(Context context, ILoadImage iLoadImage) {
+    public DiscoverAdapter(Context context, ILoadImage iLoadImage, DiscoverPresenter presenter) {
         this.iLoadImage = iLoadImage;
         this.context = context;
+        this.presenter = presenter;
         itemWidth = DeviceUtils.getScreenWidth(context) - DimensUtils.dp2px(context, 40);
         itemWeight = (int) (itemWidth * 130 / 345.0f);
     }
@@ -38,7 +43,18 @@ public class DiscoverAdapter extends BasePtrAdapter<Discover, DiscoverAdapter.Vi
         ViewHolder viewHolder = new ViewHolder(itemView, new BaseViewHold.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-
+                if (presenter.isLogin()) {
+                    String url = getData(position).getDis_url();
+                    String title = getData(position).getDis_title();
+                    if (!TextUtils.isEmpty(url)) {
+                        ARouter.getInstance().build("/MeetOne/WebActivity")
+                                .withCharSequence("url", url)
+                                .withCharSequence("title", title)
+                                .navigation();
+                    }
+                } else {
+                    ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
+                }
             }
 
             @Override
