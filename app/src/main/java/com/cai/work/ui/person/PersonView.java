@@ -6,4 +6,6 @@ public interface PersonView {
     void callBack(User user);
 
     void callBack(String s);
+
+    void loginout();
 }

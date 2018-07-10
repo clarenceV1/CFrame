@@ -66,6 +66,8 @@ public class AppPresenter {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onLoginEvent(LoginEvent event) {
-        laodConfiguration();
+        if (event.loginState == LoginEvent.STATE_LOGIN_IN) {
+            laodConfiguration();
+        }
     }
 }

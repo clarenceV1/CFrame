@@ -252,7 +252,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
         if (even.loginState == LoginEvent.STATE_LOGIN_IN) {
             presenter.loadMineData(true);
         } else if (even.loginState == LoginEvent.STATE_LOGIN_OUT) {
-
+            setDefultShow(null);
         }
     }
     @Subscribe(threadMode = ThreadMode.MAIN)

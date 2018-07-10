@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_dialog_bg"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/tip_dialog_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/black_323232"
+            android:textSize="@dimen/sp_18"
+            tool:text="标题" />
+
+
+        <TextView
+            android:id="@+id/tip_dialog_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="212dp"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_15"
+            android:paddingRight="@dimen/dp_15"
+            android:textColor="@color/gray_666666"
+            android:textSize="14sp"
+            tool:text="内容" />
+
+        <View
+            style="@style/dialog_line"
+            android:layout_marginTop="@dimen/dp_10" />
+
+        <LinearLayout
+            android:id="@+id/tip_two_btn_ll"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tip_dialog_cancel_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_dialog_left_btn"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/black_292929"
+                android:textSize="@dimen/sp_16" />
+
+            <View
+                style="@style/dialog_line"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tip_dialog_ok_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_dialog_right_btn"
+                android:gravity="center"
+                android:text="@string/ok"
+                android:textColor="@color/blue_C61BFD"
+                android:textSize="@dimen/sp_16" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tip_dialog_one_btn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/selector_dialog_bottom_all_btn"
+            android:gravity="center"
+            android:text="@string/ok"
+            android:textColor="@color/blue_C61BFD"
+            android:textSize="@dimen/sp_16"
+            android:visibility="gone"
+            tool:visibility="visible" />
+    </LinearLayout>
+
+</LinearLayout>

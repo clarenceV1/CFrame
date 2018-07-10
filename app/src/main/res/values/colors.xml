@@ -8,7 +8,7 @@
     <color name="black_b">#888888</color>
     <color name="red_f">#ffddee</color>
     <color name="white_an">#ffffff</color>
-
+    <color name="dialog_divide">#e8e8e8</color>
     <color name="body_bg">#ffffff</color>
     <color name="title_line_color">#C8C8C8</color>
     <!---->

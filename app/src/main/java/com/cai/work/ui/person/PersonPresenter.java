@@ -5,6 +5,7 @@ import android.util.Log;
 import com.cai.work.base.AppBasePresenter;
 import com.cai.work.bean.User;
 import com.cai.work.bean.respond.NicknameRespond;
+import com.cai.work.event.LoginEvent;
 import com.cai.work.event.UserInfoUpdateEvent;
 import com.cai.work.qinius.QiNiuController;
 import com.example.clarence.utillibrary.StringUtils;
@@ -121,5 +122,26 @@ public class PersonPresenter extends AppBasePresenter<PersonView> {
                 }
             }
         });
+    }
+
+    public void loginOut() {
+        Disposable disposable = Observable.create(new ObservableOnSubscribe<User>() {
+            @Override
+            public void subscribe(ObservableEmitter<User> e) throws Exception {
+                userDAO.get().loginOut();
+                e.onNext(new User());
+
+            }
+        }).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<User>() {
+                    @Override
+                    public void accept(User user) throws Exception {
+                        mView.loginout();
+                        EventBus.getDefault().post(new LoginEvent(LoginEvent.STATE_LOGIN_OUT));
+                    }
+                });
+        mCompositeSubscription.add(disposable);
+
     }
 }

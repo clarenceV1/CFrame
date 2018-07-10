@@ -12,6 +12,8 @@ import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.User;
+import com.cai.work.dialog.BaseDialog;
+import com.cai.work.dialog.TipDialog;
 import com.cai.work.selectimg.ISListConfig;
 import com.cai.work.databinding.PersonBinding;
 import com.cai.work.dialog.EditInputDialog;
@@ -87,6 +89,11 @@ public class PersonActivity extends AppBaseActivity<PersonBinding> implements Pe
     }
 
     @Override
+    public void loginout() {
+        finish();
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.llNickname:
@@ -117,6 +124,19 @@ public class PersonActivity extends AppBaseActivity<PersonBinding> implements Pe
                 selectPhoto();
                 break;
             case R.id.tvCommit:
+                TipDialog tipDialog = new TipDialog(this, getString(R.string.user_loginout_tip_title), getString(R.string.user_loginout_tip_content), new BaseDialog.OnDialogClickListener() {
+                    @Override
+                    public void onOkClick() {
+                        presenter.loginOut();
+                    }
+
+                    @Override
+                    public void onCancelClick() {
+
+                    }
+                });
+                tipDialog.setOkBtnText(getString(R.string.user_login_out));
+                tipDialog.show();
                 break;
         }
     }

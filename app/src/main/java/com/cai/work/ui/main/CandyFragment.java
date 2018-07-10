@@ -1,5 +1,6 @@
 package com.cai.work.ui.main;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -11,8 +12,13 @@ import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
 import com.cai.work.bean.CandyList;
 import com.cai.work.databinding.CandyBinding;
+import com.cai.work.event.LoginEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -27,6 +33,18 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
     ILoadImage iLoadImage;
 
     private PtrRecyclerView mPtrRecyclerView;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 
     @Override
     public void addPresenters(List observerList) {
@@ -88,5 +106,10 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
     public void receiveCoinSuccess(int tokenId) {
         adapter.changData(tokenId);
         presenter.saveCache(adapter.getDatas());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLoginEvent(LoginEvent even) {
+        mViewBinding.pullListView.autoRefresh();
     }
 }

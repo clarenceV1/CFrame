@@ -20,6 +20,10 @@ import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WebBinding;
+import com.cai.work.event.LoginEvent;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 import java.util.List;
@@ -162,5 +166,12 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
             return true;
         }
         return false;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLoginEvent(LoginEvent event) {
+        if (webViewFragment != null) {
+            webViewFragment.reload();
+        }
     }
 }

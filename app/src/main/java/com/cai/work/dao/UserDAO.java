@@ -40,6 +40,11 @@ public class UserDAO extends BaseDAO {
         }
     }
 
+    public void loginOut() {
+        userBox.removeAll();
+        mUser = null;
+    }
+
     public String getToken() {
         if (mUser != null) {
             return mUser.getToken();
