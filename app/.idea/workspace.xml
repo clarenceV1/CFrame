@@ -5,32 +5,15 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2c12c9ec-09fe-4ee7-9285-ae54cf67c580" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_tencent_bugly_crashreport_2_6_6_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_tencent_bugly_nativecrashreport_3_3_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/baseview/LoadingView.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/widget/CircleProgressBar.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/widget/MaterialProgressDrawable.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/layout/loading_view.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/values-en/strings.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/proguard-rules.pro" afterPath="$PROJECT_DIR$/proguard-rules.pro" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/baseview/LoadView.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/baseview/TitleBarView.java" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/baseview/TitleBarView.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/IWebProtocol.java" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/IWebProtocol.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/IWebProtocolCallback.java" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/IWebProtocolCallback.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebProtocolManager.java" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebProtocolManager.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewClientBase.java" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewClientBase.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/layout/load_view.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/values/attrs.xml" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/values/attrs.xml" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/values/colors.xml" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/values/strings.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,44 +36,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LanguageLocalUtil.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LanguageLocalUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/utils/LanguageLocalUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="180">
+              <caret line="21" column="45" lean-forward="false" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppPresenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/base/AppPresenter.java">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="71" column="5" lean-forward="false" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
-              <folding>
-                <element signature="e#2542#2543#0" expanded="true" />
-                <element signature="e#2589#2590#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="26" column="37" lean-forward="false" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="37" />
+            <state relative-caret-position="191">
+              <caret line="60" column="26" lean-forward="false" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CandyDetailActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="36" column="43" lean-forward="false" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="43" />
+            <state relative-caret-position="208">
+              <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -118,7 +88,7 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../LibFrameWork" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -9709,10 +9679,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/cai/work/share/ShareQQManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cai/work/share/ShareCallback.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cai/work/base/AppPresenter.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/proguard-rules.pro" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java" />
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
       </list>
     </option>
   </component>
@@ -10072,10 +10042,10 @@
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58498025" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3768116" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3768116" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -10517,17 +10487,9 @@
         <state relative-caret-position="637">
           <caret line="71" column="5" lean-forward="false" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
           <folding>
-            <element signature="e#2542#2543#0" expanded="true" />
-            <element signature="e#2589#2590#0" expanded="true" />
+            <element signature="e#2542#2543#0" expanded="false" />
+            <element signature="e#2589#2590#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="99" column="64" lean-forward="false" selection-start-line="99" selection-start-column="64" selection-end-line="99" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -10542,14 +10504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proguard-rules.pro">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -10560,8 +10514,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/utils/LanguageLocalUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="180">
+          <caret line="21" column="45" lean-forward="false" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="60" column="26" lean-forward="false" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
           <folding />
         </state>
       </provider>
