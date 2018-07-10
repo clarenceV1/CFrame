@@ -39,6 +39,29 @@
         <activity android:name=".selectimg.ISCameraActivity" />
         <activity android:name=".selectimg.ISListActivity" />
         <activity android:name=".ui.nationcode.NationCodeActivity" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5b20a535a40fa3053200023a" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="MORE.ONE" />
+        <!-- 配置APP ID -->
+        <meta-data
+            android:name="BUGLY_APPID"
+            android:value="7f5cfd9b86" />
+        <!-- 配置APP版本号 -->
+        <meta-data
+            android:name="BUGLY_APP_VERSION"
+            android:value="new_2.1.3.8" />
+        <!-- 配置APP渠道号 -->
+        <meta-data
+            android:name="BUGLY_APP_CHANNEL"
+            android:value="1" />
+        <!-- 配置Bugly调试模式（true或者false）-->
+        <meta-data
+            android:name="BUGLY_ENABLE_DEBUG"
+            android:value="false" />
     </application>
 
 </manifest>

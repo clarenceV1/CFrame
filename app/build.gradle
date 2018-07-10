@@ -21,7 +21,10 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
-
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
 //        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 //        vectorDrawables.useSupportLibrary = true
     }
@@ -93,7 +96,8 @@ MobSDK {
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
 //    testCompile rootProject.ext.dependencies["junit"]
 //    testCompile rootProject.ext.dependencies["assertj-core"]
 //    testCompile rootProject.ext.dependencies["robolectric"]

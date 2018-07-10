@@ -20,6 +20,7 @@ import com.cai.work.ui.candy.CandyDetailActivity;
 import com.cai.work.ui.login.LoginActivity;
 import com.example.clarence.utillibrary.ToastUtils;
 import com.mob.MobSDK;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +59,7 @@ public class App extends GodBaseApplication {
         boxStore = MyObjectBox.builder().androidContext(this).build();
         appPresenter.laodConfiguration();
         MobSDK.init(this);
+        CrashReport.initCrashReport(getApplicationContext());
     }
 
     @Override
