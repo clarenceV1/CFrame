@@ -17,6 +17,7 @@ import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
+import com.cai.work.bean.respond.Respond;
 import com.cai.work.dao.UserDAO;
 import com.example.clarence.utillibrary.PackageUtils;
 
@@ -132,9 +133,9 @@ public class RequestStore {
      *
      * @return
      */
-    public Flowable<CandyListRespond> receiveCandy(int tokenId) {
-        Flowable<CandyListRespond> flowable = retrofit.get().create(ApiService.class)
-                .receiveCandy(getRequestHeader(), tokenId)
+    public Flowable<Respond> receiveCandy(Map<String, String> params) {
+        Flowable<Respond> flowable = retrofit.get().create(ApiService.class)
+                .receiveCandy(getRequestHeader(), getRequestBody(params))
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }

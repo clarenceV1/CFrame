@@ -42,13 +42,17 @@ public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHol
         itemWeight = (int) (itemWidth * 130 / 345.0f);
     }
 
-//    public void updateAll(List<CandyList> data) {
-//        dataList.clear();
-//        if (data != null) {
-//            dataList.addAll(data);
-//        }
-//        notifyDataSetChanged();
-//    }
+    public void changData(int token_id) {
+        for (CandyList data : datas) {
+            if (data.getToken_id() == token_id) {
+                float giveTotal = data.getGive_total();
+                data.setWallet_total(giveTotal + data.getWallet_total());
+                data.setGive_total(0);
+                break;
+            }
+        }
+        notifyDataSetChanged();
+    }
 
     @Override
     protected BasePtrViewHold onPtrCreateViewHolder(ViewGroup parent, int viewType) {
@@ -105,7 +109,7 @@ public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHol
             @Override
             public void onClick(View v) {
                 if (presenter != null) {
-                    presenter.clickReeceiveCoinBtn(data);
+                    presenter.clickReceiveCoinBtn(data);
                 }
             }
         });

@@ -9,5 +9,5 @@ public interface CandyView {
 
     void callBack(List<CandyList> data);
 
-    void showDialog();
+    void receiveCoinSuccess(int token_id);
 }

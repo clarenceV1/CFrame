@@ -11,13 +11,16 @@ import com.cai.work.R;
 import com.cai.work.base.AppBasePresenter;
 import com.cai.work.bean.CandyList;
 import com.cai.work.bean.respond.CandyListRespond;
+import com.cai.work.bean.respond.Respond;
 import com.example.clarence.netlibrary.NetRespondCallBack;
 import com.example.clarence.utillibrary.StringUtils;
 
 import org.reactivestreams.Subscription;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -72,6 +75,25 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
         mCompositeSubscription.add(disposable);
     }
 
+    public void saveCache(final List<CandyList> datas) {
+        Disposable disposable = Observable.create(new ObservableOnSubscribe<List<CandyList>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<CandyList>> e) throws Exception {
+
+            }
+        }).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<CandyList>>() {
+                    @Override
+                    public void accept(List<CandyList> candyLists) throws Exception {
+                        if (datas != null) {
+                            cacheStore.get().saveCandyList(datas);
+                        }
+                    }
+                });
+        mCompositeSubscription.add(disposable);
+    }
+
     public void getCandyListOfNet() {
         requestStore.get().questCandyList()
                 .doOnNext(new Consumer<CandyListRespond>() {
@@ -107,24 +129,17 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
     /**
      * 领取糖果
      */
-    public void receiveCandy(int tokenId) {
-        requestStore.get().receiveCandy(tokenId)
-                .doOnNext(new Consumer<CandyListRespond>() {
+    public void receiveCandy(final int tokenId) {
+        Map<String, String> params = new HashMap<>();
+        params.put("token_id", tokenId + "");
+        requestStore.get().receiveCandy(params)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetRespondCallBack<Respond>() {
                     @Override
-                    public void accept(CandyListRespond candyListRespond) {
-                        if (candyListRespond.getErrorcode() == 0) {
-                            List<CandyList> candyList = candyListRespond.getData();
-                            if (candyList != null) {
-                                cacheStore.get().saveCandyList(candyList);
-                            }
-                        }
-                    }
-                }).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetRespondCallBack<CandyListRespond>() {
-                    @Override
-                    public void respondResult(Subscription subscription, CandyListRespond respond) {
+                    public void respondResult(Subscription subscription, Respond respond) {
                         if (respond.getErrorcode() == 0) {
-                            mView.callBack(respond.getData());
+                            mView.receiveCoinSuccess(tokenId);
+                            mView.callBack(context.getResources().getString(R.string.candy_receive_success));
                         } else {
                             mView.callBack(respond.getMessage());
                         }
@@ -137,12 +152,10 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
                 });
     }
 
-    public void clickReeceiveCoinBtn(CandyList candyList) {
-        if (!TextUtils.isEmpty(userDAO.get().getToken())) { //login
+    public void clickReceiveCoinBtn(CandyList candyList) {
+        if (userDAO.get().isLogin()) { //login
             if (candyList.getGive_total() > 0) {
-                mView.showDialog();
-                mView.callBack("登录页面还没弄暂时不能领取");
-//                receiveCandy(candyList.getToken_id());
+                receiveCandy(candyList.getToken_id());
             } else {//查看更多
                 shareAll(getShareText());
             }

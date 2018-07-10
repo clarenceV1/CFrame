@@ -3,7 +3,6 @@ package com.cai.work.ui.main;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
-import com.cai.framework.widget.dialog.LoadDialog;
 import com.cai.pullrefresh.BaseListPtrFrameLayout;
 import com.cai.pullrefresh.PtrRecyclerView;
 import com.cai.pullrefresh.lib.PtrFrameLayout;
@@ -26,7 +25,6 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
 
     @Inject
     ILoadImage iLoadImage;
-    LoadDialog loadDialog;
 
     private PtrRecyclerView mPtrRecyclerView;
 
@@ -87,14 +85,8 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
     }
 
     @Override
-    public void showDialog() {
-        loadDialog = new LoadDialog();
-        loadDialog.show();
-    }
-
-    public void closeDialog() {
-        if (loadDialog != null) {
-            loadDialog.dismiss();
-        }
+    public void receiveCoinSuccess(int tokenId) {
+        adapter.changData(tokenId);
+        presenter.saveCache(adapter.getDatas());
     }
 }

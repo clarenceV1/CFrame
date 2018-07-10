@@ -11,6 +11,7 @@ import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
+import com.cai.work.bean.respond.Respond;
 
 import java.util.Map;
 
@@ -41,8 +42,7 @@ public interface ApiService {
     Flowable<CandyListRespond> questCandyList(@HeaderMap Map<String, String> map);
 
     @POST(App.PATH + "candy")
-    @FormUrlEncoded
-    Flowable<CandyListRespond> receiveCandy(@FieldMap Map<String, String> map, @Field("token_id") int tokenid);
+    Flowable<Respond> receiveCandy(@HeaderMap Map<String, String> map, @Body RequestBody body);
 
     @GET(App.PATH + "discover")
     Flowable<DiscoverRespond> questDiscoverList(@HeaderMap Map<String, String> map);
