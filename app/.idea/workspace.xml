@@ -7,28 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fd36fb1-221d-423e-ab2a-1adb2b8cec6b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/RecordDataModel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/RecordModel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/RecordRespond.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordActivity.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordAdapter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordPresent.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordView.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/record.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/res/layout/record_item.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/base/AppBasePresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/base/AppBasePresenter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/ApiService.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/common/ApiService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/RequestStore.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/common/RequestStore.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/dagger/component/AppComponent.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/dagger/component/AppComponent.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginView.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginView.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverFragment.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverFragment.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebActivity.java" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/web.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/web.xml" />
       <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java" />
       <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/layout/title_bar.xml" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/layout/title_bar.xml" />
@@ -74,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CandyDetailActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CandyDetailActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="82" column="36" lean-forward="false" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+            <state relative-caret-position="35">
+              <caret line="104" column="35" lean-forward="false" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
               <folding>
                 <element signature="e#2198#2340#0" expanded="true" />
                 <element signature="e#2339#2340#0" expanded="true" />
@@ -86,6 +66,19 @@
                 <element signature="e#2467#2874#0" expanded="true" />
                 <element signature="e#2873#2874#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="candy_detail.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/candy_detail.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="82" column="51" lean-forward="false" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="51" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,28 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebViewFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-              <folding>
-                <element signature="e#1191#1192#0" expanded="true" />
-                <element signature="e#1246#1247#0" expanded="true" />
-                <element signature="e#1284#1285#0" expanded="true" />
-                <element signature="e#1336#1337#0" expanded="true" />
-                <element signature="e#4736#4737#0" expanded="true" />
-                <element signature="e#4767#4768#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="WebActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-491">
-              <caret line="88" column="44" lean-forward="false" selection-start-line="88" selection-start-column="44" selection-end-line="88" selection-end-column="44" />
+            <state relative-caret-position="70">
+              <caret line="89" column="9" lean-forward="false" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -150,10 +126,11 @@
       <find>mViewBinding.titleBar</find>
       <find>paramString</find>
       <find>mWebView</find>
+      <find>webViewcontain</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../LibFrameWork" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -9735,6 +9712,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverFragment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebActivity.java" />
         <option value="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java" />
       </list>
     </option>
   </component>
@@ -10078,8 +10057,14 @@
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebActivity.java</url>
+          <line>77</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -10180,21 +10165,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="82" column="5" lean-forward="false" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
-          <folding>
-            <element signature="e#2376#2377#0" expanded="true" />
-            <element signature="e#2438#2439#0" expanded="true" />
-            <element signature="e#2500#2501#0" expanded="true" />
-            <element signature="e#2567#2568#0" expanded="true" />
-            <element signature="e#3530#3531#0" expanded="true" />
-            <element signature="e#3575#3576#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
@@ -10207,31 +10177,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="50" column="72" lean-forward="false" selection-start-line="50" selection-start-column="72" selection-end-line="50" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="82" column="36" lean-forward="false" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
-          <folding>
-            <element signature="e#2198#2340#0" expanded="true" />
-            <element signature="e#2339#2340#0" expanded="true" />
-            <element signature="e#2386#2412#0" expanded="true" />
-            <element signature="e#2467#2874#0" expanded="true" />
-            <element signature="e#2873#2874#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/web.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -10263,6 +10208,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="58" column="52" lean-forward="false" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="52" />
+          <folding>
+            <element signature="e#1191#1192#0" expanded="false" />
+            <element signature="e#1246#1247#0" expanded="false" />
+            <element signature="e#1284#1285#0" expanded="false" />
+            <element signature="e#1336#1337#0" expanded="false" />
+            <element signature="e#4742#4743#0" expanded="false" />
+            <element signature="e#4773#4774#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -10271,25 +10231,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-491">
-          <caret line="88" column="44" lean-forward="false" selection-start-line="88" selection-start-column="44" selection-end-line="88" selection-end-column="44" />
+        <state relative-caret-position="84">
+          <caret line="82" column="5" lean-forward="false" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+          <folding>
+            <element signature="e#2376#2377#0" expanded="true" />
+            <element signature="e#2438#2439#0" expanded="true" />
+            <element signature="e#2500#2501#0" expanded="true" />
+            <element signature="e#2567#2568#0" expanded="true" />
+            <element signature="e#3530#3531#0" expanded="true" />
+            <element signature="e#3575#3576#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/candy_detail.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="82" column="51" lean-forward="false" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/web.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="89" column="9" lean-forward="false" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="104" column="35" lean-forward="false" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
           <folding>
-            <element signature="e#1191#1192#0" expanded="true" />
-            <element signature="e#1246#1247#0" expanded="true" />
-            <element signature="e#1284#1285#0" expanded="true" />
-            <element signature="e#1336#1337#0" expanded="true" />
-            <element signature="e#4736#4737#0" expanded="true" />
-            <element signature="e#4767#4768#0" expanded="true" />
+            <element signature="e#2198#2340#0" expanded="true" />
+            <element signature="e#2339#2340#0" expanded="true" />
+            <element signature="e#2386#2412#0" expanded="true" />
+            <element signature="e#2467#2874#0" expanded="true" />
+            <element signature="e#2873#2874#0" expanded="true" />
           </folding>
         </state>
       </provider>
