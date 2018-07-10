@@ -1,5 +1,6 @@
 package com.cai.work.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import com.cai.framework.utils.LanguageLocalUtil;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
+import com.cai.work.bean.NationCodeModel;
 import com.cai.work.bean.PhoneCode;
 import com.cai.work.bean.User;
 import com.cai.work.databinding.LoginBinding;
@@ -112,8 +114,8 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
         int id = v.getId();
         switch (id) {
             case R.id.tvNationCode://选择国家
-                ARouter.getInstance().build("/MeetOne/NationCodeActivity").navigation();
-//                NationCodeActivity.entryActivityForResult(this, 100, RESULT_KEY);
+                ARouter.getInstance().build("/MeetOne/NationCodeActivity")
+                        .navigation(this, 100);
                 break;
             case R.id.tvGetCode:
                 if (!isTimeDown) {
@@ -176,4 +178,17 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
         finish();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            if (data != null && requestCode == 100) {
+                NationCodeModel mNationCodeModel = (NationCodeModel) data.getSerializableExtra("code");
+                nation_code = mNationCodeModel.getCode();
+                mViewBinding.tvNationCode.setText("+" + nation_code);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

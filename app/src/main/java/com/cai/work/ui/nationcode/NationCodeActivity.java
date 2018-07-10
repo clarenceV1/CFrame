@@ -37,10 +37,6 @@ public class NationCodeActivity extends AppBaseActivity<NationCodeBinding> imple
     LinearLayoutManager manager;
     TitleItemDecoration mDecoration;
 
-    @Autowired(name = "resultCode")
-    int resultCode;
-    @Autowired(name = "resultKey")
-    String resultKey;
     @Inject
     NationCodePresenter presenter;
 
@@ -112,8 +108,8 @@ public class NationCodeActivity extends AppBaseActivity<NationCodeBinding> imple
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 NationCodeModel data = searchAdatper.getItem(position);
                 Intent intent = new Intent();
-                intent.putExtra(resultKey, data);
-                setResult(resultCode, intent);
+                intent.putExtra("code", data);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
@@ -129,8 +125,8 @@ public class NationCodeActivity extends AppBaseActivity<NationCodeBinding> imple
             public void onItemClick(View view, int position) {
                 NationCodeModel data = mAdapter.getItem(position);
                 Intent intent = new Intent();
-                intent.putExtra(resultKey, data);
-                setResult(resultCode, intent);
+                intent.putExtra("code", data);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
@@ -139,6 +135,8 @@ public class NationCodeActivity extends AppBaseActivity<NationCodeBinding> imple
         //如果add两个，那么按照先后顺序，依次渲染。
         mViewBinding.recyclerView.addItemDecoration(mDecoration);
         mViewBinding.recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+        presenter.loadNationCode();
     }
 
     private void showSearchResult(String searchKey) {
@@ -173,7 +171,6 @@ public class NationCodeActivity extends AppBaseActivity<NationCodeBinding> imple
         } else {
             mViewBinding.searchContainer.setVisibility(View.GONE);
         }
-        presenter.loadNationCode();
     }
 
     @Override

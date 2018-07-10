@@ -2,14 +2,12 @@ package com.cai.work.common;
 
 import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
-import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.CandyListRespond;
 import com.cai.work.bean.respond.ConfigerRespond;
 import com.cai.work.bean.respond.DiscoverRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
-import com.cai.work.bean.respond.NationCodeRespond;
 import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
 import com.cai.work.bean.respond.Respond;
@@ -18,14 +16,11 @@ import java.util.Map;
 
 import io.reactivex.Flowable;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 /**
  * Created by clarence on 2018/1/12.
@@ -66,7 +61,7 @@ public interface ApiService {
 
 
     @GET(App.PATH + "vercode")
-    Flowable<NationCodeRespond> loadNationCode(@HeaderMap Map<String, String> map);
+    Flowable<ResponseBody> loadNationCode(@HeaderMap Map<String, String> map);
 //
 //    @POST("/app/login/index")
 //    @FormUrlEncoded

@@ -1,6 +1,5 @@
 package com.cai.work.common;
 
-import android.app.VoiceInteractor;
 import android.content.Context;
 import android.text.TextUtils;
 
@@ -8,14 +7,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.cai.framework.utils.LanguageLocalUtil;
 import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
-import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.CandyListRespond;
 import com.cai.work.bean.respond.ConfigerRespond;
 import com.cai.work.bean.respond.DiscoverRespond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
-import com.cai.work.bean.respond.NationCodeRespond;
 import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
 import com.cai.work.bean.respond.Respond;
@@ -30,10 +27,11 @@ import javax.inject.Singleton;
 
 import dagger.Lazy;
 import io.reactivex.Flowable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
+
 
 /**
  * Created by clarence on 2018/3/26.
@@ -211,8 +209,8 @@ public class RequestStore {
     /**
      * @return
      */
-    public Flowable<NationCodeRespond> loadNationCode() {
-        Flowable<NationCodeRespond> flowable = retrofit.get().create(ApiService.class)
+    public Flowable<ResponseBody> loadNationCode() {
+        Flowable<ResponseBody> flowable = retrofit.get().create(ApiService.class)
                 .loadNationCode(getRequestHeader())
                 .subscribeOn(Schedulers.newThread());
         return flowable;
