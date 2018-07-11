@@ -44,8 +44,10 @@ public class StockBuyMoneyAdapter extends GodBaseAdapter<StockBuyMoney> {
         }
         if (buyMoney.getType() == 4 && position > maxSelectPosition) {
             ViewHolder.getView(convertView, R.id.itemRoot).setBackgroundResource(R.drawable.stock_buy_item_bg_no_choose);
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setTextColor(context.getResources().getColor(R.color.ys_666666));
         } else {
             ViewHolder.getView(convertView, R.id.itemRoot).setBackgroundResource(R.drawable.stock_buy_item_bg);
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setTextColor(context.getResources().getColor(R.color.ys_219_183_108));
         }
         if (checkPosition == position) {
             if (buyMoney.getType() == 4 && position > maxSelectPosition) {

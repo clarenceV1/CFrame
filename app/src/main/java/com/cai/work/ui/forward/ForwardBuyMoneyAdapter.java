@@ -12,7 +12,7 @@ import com.cai.work.bean.StockBuyMoney;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ForwardBuyMoneyAdapter extends GodBaseAdapter {
+public class ForwardBuyMoneyAdapter extends GodBaseAdapter<StockBuyMoney> {
 
     int checkPosition = 0;
     int baseMoney = 1;
@@ -25,35 +25,37 @@ public class ForwardBuyMoneyAdapter extends GodBaseAdapter {
     }
 
     @Override
-    public void initItemView(View convertView, CBaseData itemData, int position) {
-        if (itemData != null && itemData instanceof StockBuyMoney) {
-            StockBuyMoney buyMoney = (StockBuyMoney) itemData;
-            if (buyMoney.getType() == 0) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText(buyMoney.getTxt());
-            } else if (buyMoney.getType() == 1) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText(((int) buyMoney.getTime()) + "手");
-            } else if (buyMoney.getType() == 2) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + (buyMoney.getTime() * baseMoney));
-            } else if (buyMoney.getType() == 3) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + (buyMoney.getTime() * baseMoney));
-            } else if (buyMoney.getType() == 4) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + (buyMoney.getTime() * baseMoney));
-            }
+    public void initItemView(View convertView, StockBuyMoney buyMoney, int position) {
+        if (buyMoney.getType() == 0) {
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setText(buyMoney.getTxt());
+        } else if (buyMoney.getType() == 1) {
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setText(((int) buyMoney.getTime()) + "手");
+        } else if (buyMoney.getType() == 2) {
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + (buyMoney.getTime() * baseMoney));
+        } else if (buyMoney.getType() == 3) {
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + (buyMoney.getTime() * baseMoney));
+        } else if (buyMoney.getType() == 4) {
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setText("¥" + (buyMoney.getTime() * baseMoney));
+        }
 
-            if (checkPosition == position) {
-                ViewHolder.getImageView(convertView, R.id.xuanzdui).setVisibility(View.VISIBLE);
-            } else {
-                ViewHolder.getImageView(convertView, R.id.xuanzdui).setVisibility(View.GONE);
-            }
-            if (type == 1) {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setTextColor(context.getResources().getColor(R.color.ys_e6241a));
-                ViewHolder.getView(convertView, R.id.itemRoot).setBackgroundResource(R.drawable.forward_buy_item_red_bg);
-                ViewHolder.getImageView(convertView, R.id.xuanzdui).setBackgroundResource(R.drawable.jy_selectred);
-            } else {
-                ViewHolder.getTextView(convertView, R.id.tvMoney).setTextColor(context.getResources().getColor(R.color.ys_0_154_68));
-                ViewHolder.getView(convertView, R.id.itemRoot).setBackgroundResource(R.drawable.forward_buy_item_green_bg);
-                ViewHolder.getImageView(convertView, R.id.xuanzdui).setBackgroundResource(R.drawable.jy_selectgreen);
-            }
+        if (checkPosition == position) {
+            ViewHolder.getImageView(convertView, R.id.xuanzdui).setVisibility(View.VISIBLE);
+        } else {
+            ViewHolder.getImageView(convertView, R.id.xuanzdui).setVisibility(View.GONE);
+        }
+        if (type == 1) {
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setTextColor(context.getResources().getColor(R.color.ys_e6241a));
+            ViewHolder.getView(convertView, R.id.itemRoot).setBackgroundResource(R.drawable.forward_buy_item_red_bg);
+            ViewHolder.getImageView(convertView, R.id.xuanzdui).setBackgroundResource(R.drawable.jy_selectred);
+        } else {
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setTextColor(context.getResources().getColor(R.color.ys_0_154_68));
+            ViewHolder.getView(convertView, R.id.itemRoot).setBackgroundResource(R.drawable.forward_buy_item_green_bg);
+            ViewHolder.getImageView(convertView, R.id.xuanzdui).setBackgroundResource(R.drawable.jy_selectgreen);
+        }
+
+        if (buyMoney.getType() == 4 && position > maxSelectPosition) {
+            ViewHolder.getView(convertView, R.id.itemRoot).setBackgroundResource(R.drawable.stock_buy_item_bg_no_choose);
+            ViewHolder.getTextView(convertView, R.id.tvMoney).setTextColor(context.getResources().getColor(R.color.ys_666666));
         }
     }
 
@@ -86,6 +88,10 @@ public class ForwardBuyMoneyAdapter extends GodBaseAdapter {
     }
 
     public void setCheckPosition(int checkPosition) {
+        StockBuyMoney buyMoney = dataList.get(checkPosition);
+        if (buyMoney.getType() == 4 && checkPosition > maxSelectPosition) {
+            return;
+        }
         this.checkPosition = checkPosition;
         notifyDataSetChanged();
     }
@@ -95,7 +101,7 @@ public class ForwardBuyMoneyAdapter extends GodBaseAdapter {
     }
 
     public int getBuyMoney() {
-        StockBuyMoney buyMoney = (StockBuyMoney) dataList.get(checkPosition);
+        StockBuyMoney buyMoney =dataList.get(checkPosition);
         if (buyMoney.getType() == 0) {
             return 0;
         }
