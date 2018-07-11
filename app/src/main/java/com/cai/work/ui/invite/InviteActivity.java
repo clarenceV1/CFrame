@@ -134,6 +134,9 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
         mViewBinding.tvSuccessRebate.setText("¥" + invite.getAlready_withdraw_money());
         mViewBinding.tvCanRebate.setText("¥" + invite.getCan_withdraw_money());
         mViewBinding.tvLinkAddress.setText(invite.getInvited_url());
+        if (invite.getOne_invite() != null && invite.getOne_invite().size() > 0) {
+            mViewBinding.tvInviteNum.setText(getString(R.string.invite_my_invite) + "(" + invite.getOne_invite().size() + ")");
+        }
         int witd = DimensUtils.dp2px(this, 80);
         mViewBinding.imgQRCode.setImageBitmap(QRCodeUtils.createQRCodeBitmap(invite.getInvited_url(), witd, witd));
     }

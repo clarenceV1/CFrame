@@ -218,21 +218,15 @@
                     android:text="@string/invite_save_pic"
                     android:textColor="@color/ys_234_205_118" />
 
-                <TextView
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imgQRCode"
-                    android:layout_marginBottom="50dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/btn_xuxian"
-                    android:gravity="center"
-                    android:paddingBottom="9dp"
-                    android:paddingLeft="25dp"
-                    android:paddingRight="25dp"
-                    android:paddingTop="9dp"
-                    android:text="@string/invite_introduce"
-                    android:textColor="@color/ys_255_255_255"
-                    android:textSize="11sp" />
+                    android:background="@drawable/exp_lab" />
             </RelativeLayout>
 
             <LinearLayout
@@ -284,9 +278,10 @@
                         android:layout_height="20dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="13dp"
-                        android:background="@drawable/yj_invitetype" />
+                        android:background="@drawable/yj_myinvite" />
 
                     <TextView
+                        android:id="@+id/tvInviteNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/imgMyInvte"
@@ -323,7 +318,7 @@
                         android:layout_height="20dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="13dp"
-                        android:background="@drawable/yj_invitetype" />
+                        android:background="@drawable/yj_fanyongminxi" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -354,7 +349,7 @@
                         android:layout_height="20dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="13dp"
-                        android:background="@drawable/yj_invitetype" />
+                        android:background="@drawable/yj_tixianminxi" />
 
                     <TextView
                         android:layout_width="wrap_content"
