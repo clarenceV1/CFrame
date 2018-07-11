@@ -176,7 +176,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="300dp">
+                    android:layout_height="250dp">
 
                     <com.cai.work.kline.KLineView
                         android:id="@+id/kline"
@@ -195,14 +195,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
+                    android:layout_marginTop="-30dp"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <ProgressBar
+                        android:id="@+id/progressLeft"
+                        style="@style/StyleProgressBarMiniRight"
                         android:layout_width="100dp"
-                        android:layout_height="10dp"
-                        android:background="@drawable/ic_launcher" />
+                        android:layout_height="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:max="100"
+                        tools:progress="20" />
 
                     <TextView
                         android:id="@+id/tvBuy"
@@ -229,10 +234,15 @@
                         android:textColor="@color/ys_1_178_142"
                         android:textSize="13sp" />
 
-                    <ImageView
+                    <ProgressBar
+                        android:id="@+id/progressRight"
+                        style="@style/StyleProgressBarMiniLeft"
                         android:layout_width="100dp"
-                        android:layout_height="10dp"
-                        android:background="@drawable/ic_launcher" />
+                        android:layout_height="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:max="100"
+                        tools:progress="20" />
                 </LinearLayout>
 
                 <LinearLayout

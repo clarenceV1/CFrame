@@ -219,7 +219,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     //设置PopWindow
     private void showSpinWindow() {
         //设置mSpinerPopWindow显示的宽度
-        spinerPopWindow.setWidth(DimensUtils.dp2px(this,100));
+        spinerPopWindow.setWidth(DimensUtils.dp2px(this, 100));
         spinerPopWindow.setHeight(spinerPopwindowHeight);
         //设置显示的位置在哪个控件的下方
         spinerPopWindow.showAsDropDown(mViewBinding.spinner);
@@ -251,6 +251,16 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
         mViewBinding.tvSell.setText(forwardDetailt.getSn1());
         mViewBinding.tvRisePrice.setText(forwardDetailt.getUp_price());
         mViewBinding.tvDropPrice.setText(forwardDetailt.getDn_price());
+
+        try {
+            int bn1 = Integer.valueOf(forwardDetailt.getBn1());
+            int sn1 = Integer.valueOf(forwardDetailt.getSn1());
+            mViewBinding.progressLeft.setProgress((int) (bn1 * 1.0 / (bn1 + sn1) * 100));
+            mViewBinding.progressRight.setProgress((int) (sn1 * 1.0 / (bn1 + sn1) * 100));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -299,9 +309,6 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                     if (data[i].length > 1) {
                         hisData.setClose(Long.valueOf(data[i][1]));
                     }
-//                    if (data[i].length > 2) {
-//                        hisData.setClose(Float.valueOf(data[i][2]));
-//                    }
                     hisDataList.add(hisData);
                 }
                 mViewBinding.fenshiView.setDateFormat("HH:mm");

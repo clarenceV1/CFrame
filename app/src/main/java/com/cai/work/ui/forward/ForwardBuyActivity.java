@@ -136,7 +136,7 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
             @Override
             public void onClick(View v) {
                 String code = data.getCode();
-                String amount = amountAdapter.getCheckPosition()+1 + "";
+                String amount = amountAdapter.getCheckPosition() + 1 + "";
                 String bond = boundAdapter.getBuyMoney() + "";
                 String zy = zyAdapter.getBuyMoney() + "";
                 String zs = zsAdapter.getBuyMoney() + "";
@@ -236,7 +236,12 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
         mViewBinding.tvForwardCode.setText(data.getCode());
         mViewBinding.tvMoney.setText(data.getBalance());
         mViewBinding.tvTradeMoney.setText(data.getCost() + "");
-        mViewBinding.tvHoldTime.setText(data.getNightTime());
+
+        if ("1".equals(data.getType())) {//国内
+            mViewBinding.tvHoldTime.setText("白天到14:55 夜间到" + data.getNightTime());
+        } else {
+            mViewBinding.tvHoldTime.setText("夜间到" + data.getNightTime());
+        }
 
         int[] amounts = data.getAmount();
         if (amounts != null && amounts.length > 0) {

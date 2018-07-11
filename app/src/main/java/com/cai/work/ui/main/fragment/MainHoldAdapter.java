@@ -88,7 +88,7 @@ public class MainHoldAdapter extends GodBaseAdapter {
         ViewHolder.getTextView(convertView, R.id.tvValue4).setVisibility(View.GONE);
 
         ViewHolder.getButton(convertView, R.id.btnCommit).setText(item.getBtnText());
-//        if ("1".equals(item.getIsTrade())) {
+        if ("1".equals(item.getIsTrade())) {
             ViewHolder.getButton(convertView, R.id.btnCommit).setBackgroundResource(R.drawable.btn_red);
             ViewHolder.getButton(convertView, R.id.btnCommit).setClickable(true);
             ViewHolder.getButton(convertView, R.id.btnCommit).setOnClickListener(new View.OnClickListener() {
@@ -98,10 +98,10 @@ public class MainHoldAdapter extends GodBaseAdapter {
                     dialog.show();
                 }
             });
-//        } else {
-//            ViewHolder.getButton(convertView, R.id.btnCommit).setBackgroundResource(R.drawable.btn_gray);
-//            ViewHolder.getButton(convertView, R.id.btnCommit).setClickable(false);
-//        }
+        } else {
+            ViewHolder.getButton(convertView, R.id.btnCommit).setBackgroundResource(R.drawable.btn_gray);
+            ViewHolder.getButton(convertView, R.id.btnCommit).setClickable(false);
+        }
         ViewHolder.getView(convertView, R.id.llChicang).setVisibility(View.GONE);
         ViewHolder.getButton(convertView, R.id.btnCommit).setVisibility(View.VISIBLE);
     }
