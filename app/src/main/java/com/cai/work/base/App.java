@@ -34,10 +34,10 @@ import io.objectbox.BoxStore;
  */
 
 public class App extends GodBaseApplication {
-//    public static final String PATH = "api/index.php/"; //测试用的被逼
-        public static final String PATH = "api/";
-//    public static String BASEURL = "http://101.37.146.65/";
-    public static String BASEURL = "https://more.ethte.com/";
+    public static final String PATH = "api/index.php/"; //测试用的被逼
+//        public static final String PATH = "api/";
+    public static String BASEURL = "http://101.37.146.65/";
+//    public static String BASEURL = "https://more.ethte.com/";
 
     public static boolean isDebug = true;
     public static final String H5_NAME = "http://more.one/h5";

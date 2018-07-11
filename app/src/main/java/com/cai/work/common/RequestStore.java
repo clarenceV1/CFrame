@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.cai.framework.utils.LanguageLocalUtil;
 import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
+import com.cai.work.bean.respond.AssetRespond;
 import com.cai.work.bean.respond.CandyListRespond;
 import com.cai.work.bean.respond.ConfigerRespond;
 import com.cai.work.bean.respond.DiscoverRespond;
@@ -17,8 +18,10 @@ import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
 import com.cai.work.bean.respond.RecordRespond;
 import com.cai.work.bean.respond.Respond;
+import com.cai.work.bean.respond.WelfareRespond;
 import com.cai.work.dao.UserDAO;
 import com.example.clarence.utillibrary.PackageUtils;
+import com.example.clarence.utillibrary.UniqueIdUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,7 +53,12 @@ public class RequestStore {
     public RequestStore() {
     }
 
-
+    /**
+     * post 参数封装
+     *
+     * @param params
+     * @return
+     */
     public RequestBody getRequestBody(Map<String, String> params) {
         if (params == null || params.size() == 0) {
             return null;
@@ -59,6 +67,12 @@ public class RequestStore {
         return RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), jsonString);
     }
 
+    /**
+     * 参数转json
+     *
+     * @param params
+     * @return
+     */
     public String getJson(Map<String, String> params) {
         if (params == null || params.size() == 0) {
             return null;
@@ -70,6 +84,12 @@ public class RequestStore {
         return jsonObject.toJSONString();
     }
 
+    /**
+     * 共用请求头
+     *
+     * @param headerMap
+     * @return
+     */
     public Map<String, String> getRequestHeader(Map<String, String> headerMap) {
         if (headerMap == null) {
             headerMap = new HashMap<>();
@@ -77,14 +97,17 @@ public class RequestStore {
         Context context = App.getAppContext();
         headerMap.put("version", PackageUtils.getVersionName(context));
         headerMap.put("platform", "2");
-//        headerMap.put("openudid", UniqueIdUtils.getDeviceInfo(context, UniqueIdUtils.DEVICES_INFO.ANDROID_ID));
-//        headerMap.put("imei", UniqueIdUtils.getDeviceInfo(context, UniqueIdUtils.DEVICES_INFO.IMEI));
         headerMap.put("lang", LanguageLocalUtil.getSystemLanguage().toLowerCase());
         String token = userDAO.get().getToken();
         if (!TextUtils.isEmpty(token)) {
             headerMap.put("auth", token);
         }
-
+        try {
+            headerMap.put("openudid", UniqueIdUtils.getDeviceInfo(context, UniqueIdUtils.DEVICES_INFO.ANDROID_ID));
+            headerMap.put("imei", UniqueIdUtils.getDeviceInfo(context, UniqueIdUtils.DEVICES_INFO.IMEI));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return headerMap;
     }
 
@@ -129,7 +152,7 @@ public class RequestStore {
     }
 
     /**
-     * 获取糖果列表
+     * 领取糖果
      *
      * @return
      */
@@ -166,6 +189,8 @@ public class RequestStore {
 
 
     /**
+     * 登录和注册
+     *
      * @return
      */
     public Flowable<LoginRespond> loginOrRegister(Map<String, String> params) {
@@ -176,6 +201,8 @@ public class RequestStore {
     }
 
     /**
+     * 加载消息
+     *
      * @return
      */
     public Flowable<MessageRespond> loadMsgData() {
@@ -186,6 +213,8 @@ public class RequestStore {
     }
 
     /**
+     * 加载配置-- 为7牛上传图片用
+     *
      * @return
      */
     public Flowable<ConfigerRespond> laodConfiguration() {
@@ -196,7 +225,7 @@ public class RequestStore {
     }
 
     /**
-     * 获取验证码
+     * 更新昵称
      *
      * @return
      */
@@ -208,6 +237,8 @@ public class RequestStore {
     }
 
     /**
+     * 获取国家编号
+     *
      * @return
      */
     public Flowable<ResponseBody> loadNationCode() {
@@ -219,7 +250,7 @@ public class RequestStore {
 
 
     /**
-     *
+     * 获取糖果详情页数据
      *
      * @return
      */
@@ -231,13 +262,37 @@ public class RequestStore {
     }
 
     /**
-     * 获取验证码
+     * 获取记录数据
      *
      * @return
      */
     public Flowable<RecordRespond> loadRecord(Map<String, String> params) {
         Flowable<RecordRespond> flowable = retrofit.get().create(ApiService.class)
                 .loadRecord(getRequestHeader(), params)
+                .subscribeOn(Schedulers.newThread());
+        return flowable;
+    }
+
+    /**
+     * 请求福利
+     *
+     * @return
+     */
+    public Flowable<WelfareRespond> requestWelfare() {
+        Flowable<WelfareRespond> flowable = retrofit.get().create(ApiService.class)
+                .requestWelfare(getRequestHeader())
+                .subscribeOn(Schedulers.newThread());
+        return flowable;
+    }
+
+    /**
+     * 我的资产
+     *
+     * @return
+     */
+    public Flowable<AssetRespond> requestAsset(Map<String, String> params) {
+        Flowable<AssetRespond> flowable = retrofit.get().create(ApiService.class)
+                .requestAsset(getRequestHeader(),params)
                 .subscribeOn(Schedulers.newThread());
         return flowable;
     }

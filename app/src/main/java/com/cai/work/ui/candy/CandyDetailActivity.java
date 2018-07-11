@@ -80,6 +80,12 @@ public class CandyDetailActivity extends AppBaseActivity<CandyDetailBinding> imp
             }
         });
         mViewBinding.loadView.setStatus(LoadingView.STATUS_LOADING);
+        mViewBinding.loadView.setClickListener(new LoadingView.LoadViewClickListener() {
+            @Override
+            public void onLoadViewClick(int status) {
+                presenter.loadCandyDetail(tokenId);
+            }
+        });
         presenter.loadCandyDetail(tokenId);
     }
 

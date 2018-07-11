@@ -2,6 +2,7 @@ package com.cai.work.common;
 
 import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
+import com.cai.work.bean.respond.AssetRespond;
 import com.cai.work.bean.respond.CandyListRespond;
 import com.cai.work.bean.respond.ConfigerRespond;
 import com.cai.work.bean.respond.DiscoverRespond;
@@ -12,6 +13,7 @@ import com.cai.work.bean.respond.NicknameRespond;
 import com.cai.work.bean.respond.PhoneCodeRespond;
 import com.cai.work.bean.respond.RecordRespond;
 import com.cai.work.bean.respond.Respond;
+import com.cai.work.bean.respond.WelfareRespond;
 
 import java.util.Map;
 
@@ -70,6 +72,12 @@ public interface ApiService {
 
     @GET(App.PATH + "record")
     Flowable<RecordRespond> loadRecord(@HeaderMap Map<String, String> headMap, @QueryMap Map<String, String> map);
+
+    @GET(App.PATH + "welfare")
+    Flowable<WelfareRespond> requestWelfare(@HeaderMap Map<String, String> headMap);
+
+    @GET(App.PATH + "myassets")
+    Flowable<AssetRespond> requestAsset(@HeaderMap Map<String, String> headMap,@QueryMap Map<String, String> map);
 
 //
 //    @POST("/app/login/index")

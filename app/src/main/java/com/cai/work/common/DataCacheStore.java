@@ -3,10 +3,12 @@ package com.cai.work.common;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
+import com.cai.work.bean.Asset;
 import com.cai.work.bean.CandyList;
 import com.cai.work.bean.Discover;
 import com.cai.work.bean.Message;
 import com.cai.work.bean.MineModel;
+import com.cai.work.bean.Welfare;
 import com.example.clarence.datastorelibrary.store.share_preference.ISharePreference;
 
 import java.util.List;
@@ -26,6 +28,8 @@ public class DataCacheStore {
     private static final String CANDY_LIST_DATA = "candy_list_data";
     private static final String DISCOVER_LIST_DATA = "discover_list_data";
     private static final String MSG_LIST_DATA = "msg_list_data";
+    private static final String WELFARE_DATA = "welfare_data";
+    private static final String ASSET_DATA = "asset_data";
 
     @Inject
     public DataCacheStore() {
@@ -83,5 +87,31 @@ public class DataCacheStore {
             return null;
         }
         return JSON.parseArray(json, Message.class);
+    }
+
+    public void saveWelfareList(List<Welfare> welfareList) {
+        String json = JSON.toJSONString(welfareList);
+        sharePreference.write(WELFARE_DATA, json);
+    }
+
+    public List<Welfare> getWelfareList() {
+        String json = sharePreference.read(WELFARE_DATA, "");
+        if (TextUtils.isEmpty(json)) {
+            return null;
+        }
+        return JSON.parseArray(json, Welfare.class);
+    }
+
+    public void saveAssetList(List<Asset> assetList) {
+        String json = JSON.toJSONString(assetList);
+        sharePreference.write(ASSET_DATA, json);
+    }
+
+    public List<Asset> getAssetList() {
+        String json = sharePreference.read(ASSET_DATA, "");
+        if (TextUtils.isEmpty(json)) {
+            return null;
+        }
+        return JSON.parseArray(json, Asset.class);
     }
 }

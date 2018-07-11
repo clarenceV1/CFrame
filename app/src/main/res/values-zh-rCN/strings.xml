@@ -85,5 +85,8 @@
     <string name="minnum">最少选择一张图片</string>
     <string name="maxnum">最多选择%1$d张图片</string>
     <string name="takephoto">拍照</string>
+    <string name="welfare">往期福利</string>
+    <string name="asset">资产</string>
+    <string name="total_asset">总资产</string>
 
 </resources>

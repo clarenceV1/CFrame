@@ -4,6 +4,7 @@ import com.cai.framework.dagger.component.FrameWorkComponent;
 import com.cai.framework.dagger.module.FrameWorkModule;
 import com.cai.work.base.App;
 import com.cai.work.dagger.module.AppModule;
+import com.cai.work.ui.asset.AssetActivity;
 import com.cai.work.ui.candy.CandyDetailActivity;
 import com.cai.work.ui.login.LoginActivity;
 import com.cai.work.ui.main.CandyFragment;
@@ -16,6 +17,7 @@ import com.cai.work.ui.person.PersonActivity;
 import com.cai.work.ui.record.RecordActivity;
 import com.cai.work.ui.web.WebActivity;
 import com.cai.work.ui.welcome.WelcomeActivity;
+import com.cai.work.ui.welfare.WelfareActivity;
 
 import javax.inject.Singleton;
 
@@ -53,4 +55,9 @@ public interface AppComponent extends FrameWorkComponent {
     void inject(NationCodeActivity activity);
 
     void inject(RecordActivity activity);
+
+    void inject(WelfareActivity activity);
+
+    void inject(AssetActivity activity);
+
 }

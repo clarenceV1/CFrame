@@ -141,7 +141,7 @@ public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHol
         iLoadImage.loadImage(context, imageParams);
     }
 
-    private void handleHead(ViewHolder holder, CandyList data) {
+    private void handleHead(ViewHolder holder, final CandyList data) {
         if (TextUtils.isEmpty(data.getBarOne())) {
             holder.itemHead.setVisibility(View.GONE);
         } else {
@@ -155,7 +155,12 @@ public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHol
                 holder.tvSmallTitle.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ToastUtils.showShort("资产页面还做");
+                        if (data.getType() == 2) {
+                            ARouter.getInstance().build("/MeetOne/WelfareActivity")
+                                    .withCharSequence("title", data.getBarTwo()).navigation();
+                        } else {
+                            ARouter.getInstance().build("/MeetOne/AssetActivity").navigation();
+                        }
                     }
                 });
             }

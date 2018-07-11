@@ -90,4 +90,7 @@
     <string name="minnum">Select at least one picture.</string>
     <string name="maxnum">Select up to %1$d pictures</string>
     <string name="takephoto">Photo</string>
+    <string name="welfare">Past welfare</string>
+    <string name="asset">asset</string>
+    <string name="total_asset">total assets</string>
 </resources>
