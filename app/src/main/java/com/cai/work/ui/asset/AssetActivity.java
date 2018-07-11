@@ -49,7 +49,7 @@ public class AssetActivity extends AppBaseActivity<AseetBinding> implements Asse
                 finish();
             }
         });
-        mViewBinding.titleBar.setTitleText(getString(R.string.asset));
+        mViewBinding.titleBar.hideTitle();
 
         mPtrRecyclerView = (PtrRecyclerView) mViewBinding.pullListView.getRecyclerView();
         adapter = new AssetAdapter(this, iLoadImage);

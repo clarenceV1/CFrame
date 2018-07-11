@@ -12,6 +12,7 @@ import com.cai.pullrefresh.BasePtrViewHold;
 import com.cai.pullrefresh.BaseViewHold;
 import com.cai.work.R;
 import com.cai.work.bean.Asset;
+import com.example.clarence.imageloaderlibrary.GlideCircleTransform;
 import com.example.clarence.imageloaderlibrary.GlideRoundTransform;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
@@ -72,7 +73,8 @@ public class AssetAdapter extends BasePtrAdapter<Asset, BasePtrViewHold> {
             headViewHolder.imgBg.setLayoutParams(layoutParams);
 
             ILoadImageParams imageParams = new ImageForGlideParams.Builder()
-                    .local(R.drawable.assets_img_background)
+                    .url(data.getToken_icon())
+                    .placeholder(R.drawable.default_image)
                     .transformation(new GlideRoundTransform(context, 12))
                     .build();
             imageParams.setImageView(headViewHolder.imgBg);
@@ -82,7 +84,8 @@ public class AssetAdapter extends BasePtrAdapter<Asset, BasePtrViewHold> {
 
             ILoadImageParams imageParams = new ImageForGlideParams.Builder()
                     .url(data.getToken_icon())
-                    .transformation(new GlideRoundTransform(context, 12))
+                    .placeholder(R.drawable.default_circle_image)
+                    .transformation(new GlideCircleTransform(context))
                     .build();
             imageParams.setImageView(itemViewHolder.imgCandy);
             iLoadImage.loadImage(context, imageParams);
