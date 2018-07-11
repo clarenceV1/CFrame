@@ -5,120 +5,209 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:background="@color/ys_30_30_30"
+        android:orientation="vertical">
 
         <include
             android:id="@+id/commonHeadView"
             layout="@layout/common_head" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/ys_51_51_51" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/ys_33_33_33"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="@string/bank_add_real_name" />
+                android:layout_marginLeft="20dp"
+                android:text="@string/bank_add_real_name"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/etRealName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:hint="@string/bank_add_real_name_hint" />
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:background="@color/touming"
+                android:hint="@string/bank_add_real_name_hint"
+                android:paddingLeft="27dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textColorHint="@color/ys_204_204_204"
+                android:textSize="12sp" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/ys_51_51_51" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@color/ys_33_33_33"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="@string/bank_add_bank_num" />
+                android:layout_marginLeft="20dp"
+                android:text="@string/bank_add_bank_num"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/etBankNum"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:hint="@string/bank_add_bank_num_hint" />
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:background="@color/touming"
+                android:hint="@string/bank_add_bank_num_hint"
+                android:paddingLeft="27dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textColorHint="@color/ys_204_204_204"
+                android:textSize="12sp" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/ys_51_51_51" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@color/ys_33_33_33"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="@string/bank_add_which_bank" />
+                android:layout_marginLeft="20dp"
+                android:text="@string/bank_add_which_bank"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/tvWhichBank"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:hint="@string/bank_add_which_bank_hint" />
+                android:gravity="center_vertical"
+                android:hint="@string/bank_add_which_bank_hint"
+                android:paddingLeft="27dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textColorHint="@color/ys_204_204_204"
+                android:textSize="12sp" />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_launcher" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/zx_arrow" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/ys_51_51_51" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@color/ys_33_33_33"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="@string/bank_add_zone" />
+                android:layout_marginLeft="20dp"
+                android:text="@string/bank_add_zone"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/tvWhichZone"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:hint="@string/bank_add_zone_hint" />
+                android:gravity="center_vertical"
+                android:hint="@string/bank_add_zone_hint"
+                android:paddingLeft="27dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textColorHint="@color/ys_204_204_204"
+                android:textSize="12sp" />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_launcher" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/zx_arrow" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/ys_51_51_51" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@color/ys_33_33_33"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="@string/bank_add_bank_name" />
+                android:layout_marginLeft="20dp"
+                android:text="@string/bank_add_bank_name"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/etBankName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:hint="@string/bank_add_bank_name_hint" />
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:background="@color/touming"
+                android:hint="@string/bank_add_bank_name_hint"
+                android:paddingLeft="27dp"
+                android:textColor="@color/ys_255_255_255"
+                android:textColorHint="@color/ys_204_204_204"
+                android:textSize="12sp" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/ys_51_51_51" />
 
         <Button
             android:id="@+id/btnAdd"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/btn_add" />
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_yellow"
+            android:text="@string/btn_add"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="18sp" />
     </LinearLayout>
 </layout>

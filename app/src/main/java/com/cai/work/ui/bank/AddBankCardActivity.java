@@ -1,5 +1,6 @@
 package com.cai.work.ui.bank;
 
+import android.text.TextUtils;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -13,6 +14,7 @@ import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Bank;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.AddBankCardBinding;
+import com.example.clarence.utillibrary.KeyBoardUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
@@ -66,17 +68,43 @@ public class AddBankCardActivity extends AppBaseActivity<AddBankCardBinding> imp
             @Override
             public void onClick(View v) {
                 String realName = mViewBinding.etRealName.getText().toString();
+                if (TextUtils.isEmpty(realName)) {
+                    ToastUtils.showShort("请输入您的真实姓名");
+                    mViewBinding.etRealName.requestFocus();
+                    KeyBoardUtils.forceShow(mViewBinding.etRealName);
+                    return;
+                }
                 String bankNum = mViewBinding.etBankNum.getText().toString();
+                if (TextUtils.isEmpty(bankNum)) {
+                    ToastUtils.showShort("请输入您的银行卡号");
+                    mViewBinding.etBankNum.requestFocus();
+                    KeyBoardUtils.forceShow(mViewBinding.etBankNum);
+                    return;
+                }
                 String whichBank = mViewBinding.tvWhichBank.getText().toString();
+                if (TextUtils.isEmpty(whichBank)) {
+                    ToastUtils.showShort("请选择银行");
+                    return;
+                }
                 String whichZone = "";
+                if (TextUtils.isEmpty(whichZone)) {
+                    ToastUtils.showShort("请选择地区");
+                    return;
+                }
                 String bankName = mViewBinding.etBankName.getText().toString();
+                if (TextUtils.isEmpty(bankName)) {
+                    mViewBinding.etBankName.requestFocus();
+                    KeyBoardUtils.forceShow(mViewBinding.etBankName);
+                    ToastUtils.showShort("请填写开户行");
+                    return;
+                }
                 presenter.postBankInfo(realName, bankNum, whichBank, bankName);
             }
         });
     }
 
     private void showZoneDialog() {
-
+        ToastUtils.showShort("还没弄没文件");
     }
 
     private void showBankListDialog() {
