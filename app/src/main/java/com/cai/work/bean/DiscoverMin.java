@@ -1,29 +1,14 @@
 package com.cai.work.bean;
 
-import java.util.List;
+import com.cai.framework.bean.CBaseData;
 
-public class Discover {
-
-//    		"dis_id": 2,
-//                    "dis_title": "敬请期待",
-//                    "dis_bgimage": "https:\/\/static.ethte.com\/\/MoreOne\/image\/activity\/cup\/2018_07_04\/9173\/export.jpg",
-//                    "dis_url": "https:\/\/static.ethte.com\/\/MoreOne\/image\/activity\/cup\/2018_07_04\/9173\/export.jpgen",
-//                    "dis_uri": "https:\/\/static.ethte.com\/\/MoreOne\/image\/activity\/cup\/2018_07_04\/9173\/export.jpg"
+public class DiscoverMin implements CBaseData {
 
     private int dis_id;
     private String dis_title;
     private String dis_bgimage;
     private String dis_url;
     private String dis_uri;
-    private List<DiscoverMin> min;
-
-    public List<DiscoverMin> getMin() {
-        return min;
-    }
-
-    public void setMin(List<DiscoverMin> min) {
-        this.min = min;
-    }
 
     public int getDis_id() {
         return dis_id;

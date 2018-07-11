@@ -13,8 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:visibility="gone"
-        tools:layout_height="100dp"
-        tools:visibility="visible" />
+        tools:background="@color/red_b"
+        tools:layout_height="100dp" />
 
 </RelativeLayout>
