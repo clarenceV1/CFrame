@@ -63,7 +63,6 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
 
     @Override
     public void initView(View view) {
-        initHead();
 
         mPtrRecyclerView = (PtrRecyclerView) mViewBinding.pullListView.getRecyclerView();
         adapter = new CandyAdapter(getContext(), iLoadImage, presenter);
@@ -82,11 +81,6 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
         });
 
         presenter.requestCandyList(true);
-    }
-
-    private void initHead() {
-        mViewBinding.titleBar.setTitleText(getString(R.string.candy));
-        mViewBinding.titleBar.hideBackBtn();
     }
 
     @Override

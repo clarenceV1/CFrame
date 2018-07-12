@@ -25,6 +25,7 @@ import com.cai.work.databinding.MineBinding;
 import com.cai.work.event.LoginEvent;
 import com.cai.work.event.UserInfoUpdateEvent;
 import com.cai.work.utils.ShareUtil;
+import com.example.clarence.imageloaderlibrary.GlideCircleTransform;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
@@ -122,6 +123,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                     .url(user.getAvatar())
                     .error(R.drawable.default_avatar)
                     .placeholder(R.drawable.default_avatar)
+                    .transformation(new GlideCircleTransform(getContext()))
                     .build();
             imageParams.setImageView(mViewBinding.imgIcon);
             iLoadImage.loadImage(this, imageParams);

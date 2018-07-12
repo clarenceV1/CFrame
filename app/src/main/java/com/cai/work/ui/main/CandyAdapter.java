@@ -163,7 +163,12 @@ public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHol
                                     .withCharSequence("title", data.getBarTwo()).navigation();
                         } else {
                             presenter.getStatistics().home_wdzc();
-                            ARouter.getInstance().build("/MeetOne/AssetActivity").navigation();
+                            if(presenter.isLogin()){
+                                ARouter.getInstance().build("/MeetOne/AssetActivity").navigation();
+                            }else{
+                                ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
+                            }
+
                         }
                     }
                 });

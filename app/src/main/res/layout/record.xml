@@ -17,13 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.cai.framework.baseview.LoadingView
-                android:id="@+id/loadView"
+            <com.cai.pullrefresh.PtrRecyclerViewFrameLayout
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-            <com.cai.pullrefresh.PtrRecyclerViewFrameLayout
-                android:id="@+id/recyclerView"
+            <com.cai.framework.baseview.LoadingView
+                android:id="@+id/loadView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </FrameLayout>

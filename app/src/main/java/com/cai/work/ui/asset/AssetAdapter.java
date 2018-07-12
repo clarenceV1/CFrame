@@ -1,6 +1,7 @@
 package com.cai.work.ui.asset;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.DeviceUtils;
 import com.example.clarence.utillibrary.DimensUtils;
+import com.umeng.commonsdk.debug.E;
 
 public class AssetAdapter extends BasePtrAdapter<Asset, BasePtrViewHold> {
 
@@ -54,9 +56,15 @@ public class AssetAdapter extends BasePtrAdapter<Asset, BasePtrViewHold> {
                 @Override
                 public void onItemClick(View v, int position) {
                     presenter.getStatistics().wdzc_jl();
-                    ARouter.getInstance().build("/MeetOne/RecordActivity")
-                            .withCharSequence("tokenId", datas.get(position)
-                                    .getToken_id()).navigation();
+                    String tokenid = datas.get(position).getToken_id();
+                    if (!TextUtils.isEmpty(tokenid)) {
+                        try {
+                            ARouter.getInstance().build("/MeetOne/RecordActivity")
+                                    .withInt("tokenId", Integer.valueOf(tokenid)).navigation();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
 
                 @Override
@@ -98,7 +106,7 @@ public class AssetAdapter extends BasePtrAdapter<Asset, BasePtrViewHold> {
 
             itemViewHolder.tvCandyName.setText(data.getToken_name());
             itemViewHolder.tvCandyNum.setText(data.getCandy_num());
-            itemViewHolder.tvCandyPrice.setText(String.valueOf(data.getPrice()));
+            itemViewHolder.tvCandyPrice.setText(String.valueOf(data.getAssets()));
         }
     }
 

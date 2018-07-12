@@ -45,7 +45,6 @@ public class DiscoverFragment extends AppBaseFragment<DiscoverBinding> implement
 
     @Override
     public void initView(View view) {
-        initHead();
 
         mPtrRecyclerView = (PtrRecyclerView) mViewBinding.pullListView.getRecyclerView();
         adapter = new DiscoverAdapter(getContext(), iLoadImage,presenter);
@@ -64,12 +63,6 @@ public class DiscoverFragment extends AppBaseFragment<DiscoverBinding> implement
         });
 
         presenter.requestDiscoverList(true);
-    }
-
-
-    private void initHead() {
-        mViewBinding.titleBar.setTitleText(getString(R.string.discover));
-        mViewBinding.titleBar.hideBackBtn();
     }
 
     @Override

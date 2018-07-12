@@ -61,12 +61,11 @@ public class RecordActivity extends AppBaseActivity<RecordBinding> implements Re
                 finish();
             }
         });
+
         mPtrRecyclerView = (PtrRecyclerView) mViewBinding.recyclerView.getRecyclerView();
-        //
         mRecordAdapter = new RecordAdapter(this);
         mPtrRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mPtrRecyclerView.setAdapter(mRecordAdapter);
-
         mViewBinding.recyclerView.setOnPullLoadListener(new BaseListPtrFrameLayout.OnPullLoadListener() {
             @Override
             public void onRefresh(PtrFrameLayout frame) {
@@ -78,7 +77,15 @@ public class RecordActivity extends AppBaseActivity<RecordBinding> implements Re
                 present.loadRecord(lastId, tokenId);
             }
         });
+
+
         mViewBinding.loadView.setStatus(LoadingView.STATUS_LOADING);
+        mViewBinding.loadView.setClickListener(new LoadingView.LoadViewClickListener() {
+            @Override
+            public void onLoadViewClick(int status) {
+                present.loadRecord(lastId, tokenId);
+            }
+        });
         present.loadRecord(lastId, tokenId);
     }
 
