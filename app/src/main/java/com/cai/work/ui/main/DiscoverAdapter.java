@@ -5,6 +5,7 @@ import android.graphics.Point;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -17,11 +18,14 @@ import com.cai.pullrefresh.BaseViewHold;
 import com.cai.work.R;
 import com.cai.work.bean.Discover;
 import com.cai.work.bean.DiscoverMin;
+import com.example.clarence.imageloaderlibrary.GlideRoundTransform;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.DeviceUtils;
 import com.example.clarence.utillibrary.DimensUtils;
+
+import java.util.List;
 
 public class DiscoverAdapter extends BasePtrAdapter<Discover, BasePtrViewHold> {
 
@@ -97,6 +101,16 @@ public class DiscoverAdapter extends BasePtrAdapter<Discover, BasePtrViewHold> {
             ViewSmallHolder smallHolder = (ViewSmallHolder) holder;
             Point point = new Point(itemSmallWidth, itemSmallWeight);
             smallHolder.gridViewEx.setAdapter(new DiscoverGrideAdapter(context, point, iLoadImage, data.getMin()));
+            smallHolder.gridViewEx.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    List<DiscoverMin> min = data.getMin();
+                    presenter.getStatistics().fx_banner();
+                    String url = min.get(position).getDis_url();
+                    String title = min.get(position).getDis_title();
+                    jump(url, title);
+                }
+            });
         } else if (holder instanceof ViewBigHolder) {
             ViewBigHolder bigHolder = (ViewBigHolder) holder;
             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) bigHolder.imageAd.getLayoutParams();
@@ -107,6 +121,8 @@ public class DiscoverAdapter extends BasePtrAdapter<Discover, BasePtrViewHold> {
             ILoadImageParams imageParams = new ImageForGlideParams.Builder()
                     .url(data.getDis_bgimage())
                     .placeholder(R.drawable.default_image)
+                    .error(R.drawable.default_image)
+                    .transformation(new GlideRoundTransform(context,12))
                     .build();
             imageParams.setImageView(bigHolder.imageAd);
             iLoadImage.loadImage(context, imageParams);

@@ -11,6 +11,7 @@ import com.cai.framework.base.GodBaseAdapter;
 import com.cai.framework.utils.ViewHolder;
 import com.cai.work.R;
 import com.cai.work.bean.DiscoverMin;
+import com.example.clarence.imageloaderlibrary.GlideRoundTransform;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
@@ -40,6 +41,7 @@ public class DiscoverGrideAdapter extends GodBaseAdapter<DiscoverMin> {
                 .url(itemData.getDis_bgimage())
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_image)
+                .transformation(new GlideRoundTransform(context,12))
                 .build();
         imageParams.setImageView(image1);
         iLoadImage.loadImage(context, imageParams);
