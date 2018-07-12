@@ -21,6 +21,7 @@ import com.cai.work.ui.login.LoginActivity;
 import com.example.clarence.utillibrary.ToastUtils;
 import com.mob.MobSDK;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 
 import java.util.HashMap;
@@ -62,6 +63,7 @@ public class App extends GodBaseApplication {
         MobSDK.init(this);
         CrashReport.initCrashReport(getApplicationContext());
         UMConfigure.init(this, "5b20a535a40fa3053200023a", "", UMConfigure.DEVICE_TYPE_PHONE, "");
+        MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
     }
 
     @Override

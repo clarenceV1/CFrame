@@ -24,11 +24,18 @@ public abstract class AppBasePresenter<V> extends GodBasePresenter<V> {
     @Inject
     public Lazy<DataCacheStore> cacheStore;
 
+    @Inject
+    public Lazy<StatisticsPresenter> statistics;
+
     public String getToken() {
         return userDAO.get().getToken();
     }
 
     public boolean isLogin(){
         return userDAO.get().isLogin();
+    }
+
+    public StatisticsPresenter getStatistics() {
+        return statistics.get();
     }
 }

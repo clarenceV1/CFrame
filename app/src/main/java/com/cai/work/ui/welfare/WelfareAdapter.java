@@ -41,12 +41,13 @@ public class WelfareAdapter extends BasePtrAdapter<Welfare, WelfareAdapter.ViewH
     }
 
     @Override
-    protected BasePtrViewHold onPtrCreateViewHolder(ViewGroup parent, int viewType) {
+    protected BasePtrViewHold onPtrCreateViewHolder(final ViewGroup parent, int viewType) {
         View itemView = inflateItemView(parent, R.layout.welfare_item);
         ViewHolder viewHolder = new ViewHolder(itemView, new BaseViewHold.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 if (presenter.isLogin()) {
+                    presenter.getStatistics().gdfl_banner();
                     String url = getData(position).getUrl();
                     String title = getData(position).getTitle();
                     if (!TextUtils.isEmpty(url)) {

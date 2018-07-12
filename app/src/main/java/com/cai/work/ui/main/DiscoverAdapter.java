@@ -63,6 +63,7 @@ public class DiscoverAdapter extends BasePtrAdapter<Discover, BasePtrViewHold> {
             viewHolder = new ViewBigHolder(itemView, new BaseViewHold.OnRecyclerViewItemClickListener() {
                 @Override
                 public void onItemClick(View v, int position) {
+                    presenter.getStatistics().fx_banner();
                     String url = getData(position).getDis_url();
                     String title = getData(position).getDis_title();
                     jump(url, title);

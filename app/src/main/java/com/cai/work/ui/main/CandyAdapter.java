@@ -62,8 +62,10 @@ public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHol
             public void onItemClick(View v, int position) {
                 CandyList candyList = datas.get(position);
                 if (candyList.getType() == 2) {
+                    presenter.getStatistics().home_fl();
                     ARouter.getInstance().build("/MeetOne/WebActivity").withCharSequence("url", candyList.getUri()).navigation();
                 } else {
+                    presenter.getStatistics().home_tgxq();
                     ARouter.getInstance().build("/MeetOne/CandyDetailActivity").withInt("tokenId", candyList.getToken_id()).navigation();
                 }
             }
@@ -156,9 +158,11 @@ public class CandyAdapter extends BasePtrAdapter<CandyList, CandyAdapter.ViewHol
                     @Override
                     public void onClick(View v) {
                         if (data.getType() == 2) {
+                            presenter.getStatistics().home_gdfl();
                             ARouter.getInstance().build("/MeetOne/WelfareActivity")
                                     .withCharSequence("title", data.getBarTwo()).navigation();
                         } else {
+                            presenter.getStatistics().home_wdzc();
                             ARouter.getInstance().build("/MeetOne/AssetActivity").navigation();
                         }
                     }

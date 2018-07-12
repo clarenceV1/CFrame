@@ -197,6 +197,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                 break;
             case R.id.ivShareWX:
                 if (presenter.isLogin()) {
+                    presenter.getStatistics().fx_fx("微信好友");
                     ShareUtil.shareToWeiXin(getContext(), presenter.getShareText());
                 } else {
                     ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
@@ -204,6 +205,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                 break;
             case R.id.ivShareWxq:
                 if (presenter.isLogin()) {
+                    presenter.getStatistics().fx_fx("朋友圈");
                     ShareUtil.shareToWeiXin(getContext(), presenter.getShareText());
                 } else {
                     ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
@@ -211,6 +213,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                 break;
             case R.id.ivShareQq:
                 if (presenter.isLogin()) {
+                    presenter.getStatistics().fx_fx("QQ");
                     ShareUtil.shareToQQ(getContext(), presenter.getShareText());
                 } else {
                     ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
@@ -218,6 +221,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                 break;
             case R.id.ivShareSina:
                 if (presenter.isLogin()) {
+                    presenter.getStatistics().fx_fx("微博");
                     ShareUtil.shareToSina(getContext(), presenter.getShareText());
                 } else {
                     ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
@@ -225,6 +229,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                 break;
             case R.id.btnShareCopy:
                 if (presenter.isLogin()) {
+                    presenter.getStatistics().fx_fzkl();
                     String share = presenter.copyShareText();
                     if (StringUtils.isEmpty(share)) {
                         ToastUtils.showShort(R.string.shareContentFailed);

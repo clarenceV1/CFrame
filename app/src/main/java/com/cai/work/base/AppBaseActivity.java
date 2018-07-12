@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.cai.framework.base.GodBasePresenterActivity;
 import com.cai.work.R;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
+import com.umeng.analytics.MobclickAgent;
 
 /**
  * Created by clarence on 2018/1/12.
@@ -27,5 +28,17 @@ public abstract class AppBaseActivity<M extends ViewDataBinding> extends GodBase
     @Override
     public void setStatusBar(SystemBarTintManager tintManager) {
         tintManager.setTintColor(getResources().getColor(R.color.transparent));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

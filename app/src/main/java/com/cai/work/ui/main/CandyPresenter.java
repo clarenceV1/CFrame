@@ -1,10 +1,7 @@
 package com.cai.work.ui.main;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.work.R;
@@ -27,12 +24,9 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
-import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class CandyPresenter extends AppBasePresenter<CandyView> {
@@ -156,8 +150,10 @@ public class CandyPresenter extends AppBasePresenter<CandyView> {
         if (userDAO.get().isLogin()) { //login
             if (candyList.getGive_total() > 0) {
                 receiveCandy(candyList.getToken_id());
+                getStatistics().home_lq();
             } else {//查看更多
                 shareAll(getShareText());
+                getStatistics().home_lqgd();
             }
         } else { //logout
             ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();

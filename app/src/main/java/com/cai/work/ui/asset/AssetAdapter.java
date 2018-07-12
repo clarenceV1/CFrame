@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.pullrefresh.BasePtrAdapter;
 import com.cai.pullrefresh.BasePtrViewHold;
 import com.cai.pullrefresh.BaseViewHold;
@@ -26,10 +27,12 @@ public class AssetAdapter extends BasePtrAdapter<Asset, BasePtrViewHold> {
     int itemWeight;
     int itemWidth;
     Context context;
+    AssetPresenter presenter;
 
-    public AssetAdapter(Context context, ILoadImage iLoadImage) {
+    public AssetAdapter(Context context, ILoadImage iLoadImage, AssetPresenter presenter) {
         this.iLoadImage = iLoadImage;
         this.context = context;
+        this.presenter = presenter;
         itemWidth = DeviceUtils.getScreenWidth(context) - DimensUtils.dp2px(context, 40);
         itemWeight = itemWidth * 122 / 335;
     }
@@ -50,7 +53,10 @@ public class AssetAdapter extends BasePtrAdapter<Asset, BasePtrViewHold> {
             viewHolder = new ItemViewHolder(itemView, new BaseViewHold.OnRecyclerViewItemClickListener() {
                 @Override
                 public void onItemClick(View v, int position) {
-
+                    presenter.getStatistics().wdzc_jl();
+                    ARouter.getInstance().build("/MeetOne/RecordActivity")
+                            .withCharSequence("tokenId", datas.get(position)
+                                    .getToken_id()).navigation();
                 }
 
                 @Override

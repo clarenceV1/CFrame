@@ -59,6 +59,13 @@ public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements 
         tabManager.setTabClickListener(new TabItem.TabClickListener() {
             @Override
             public void clickListener(TabItem view, int currentPosition) {
+                if(currentPosition == 0){
+                    presenter.getStatistics().tab_home();
+                }else if(currentPosition == 1){
+                    presenter.getStatistics().tab_fx();
+                }else if(currentPosition == 2){
+                    presenter.getStatistics().tab_wd();
+                }
                 switchFragment(currentPosition);
                 oldPosition = currentPosition;
             }
