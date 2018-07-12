@@ -235,7 +235,19 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     public void callBack(ForwardRecord forwardRecord) {
         Record record = forwardRecord.getRecords();
         if (record != null) {
-            mViewBinding.tvTradeTime.setText(record.getBuyDate());
+            String date = record.getBuyDate();
+            if (!TextUtils.isEmpty(date)) {
+                int index = date.indexOf("11:30");
+                if (index != -1) {
+                    StringBuilder builder = new StringBuilder();
+                    builder.append(date.substring(0, index + 5));
+                    builder.append("\n");
+                    builder.append(date.substring(7));
+                    mViewBinding.tvTradeTime.setText(builder.toString());
+                } else {
+                    mViewBinding.tvTradeTime.setText(record.getBuyDate());
+                }
+            }
         }
     }
 
