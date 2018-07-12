@@ -98,15 +98,21 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     private void initTitleBar() {
         if (!TextUtils.isEmpty(title)) {
-            mViewBinding.tvTitle.setTitleText(title);
+            mViewBinding.tvTitle.setText(title);
             mViewBinding.tvTitle.setVisibility(View.VISIBLE);
         } else {
             mViewBinding.tvTitle.setVisibility(View.GONE);
         }
-        mViewBinding.ivBack.setLeftClickListener(new View.OnClickListener() {
+        mViewBinding.ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goBack();
+            }
+        });
+        mViewBinding.tvClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -170,7 +176,7 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
             mViewBinding.imgGoBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    goBack();
+                    finish();
                 }
             });
             mViewBinding.imgShare.setOnClickListener(new View.OnClickListener() {
@@ -232,8 +238,8 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onWebViewEvent(WebViewEvent event) {
-        if (webViewFragment != null) {
-            webViewFragment.reload();
+        if(transparentHead == 0){
+            mViewBinding.tvClose.setVisibility(View.VISIBLE);
         }
     }
 }

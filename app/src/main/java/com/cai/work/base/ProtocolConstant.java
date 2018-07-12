@@ -8,4 +8,5 @@ public class ProtocolConstant {
     public static final String JUMP_COIN_DETAIL = "coinDetail";
     public static final String JUMP_LOGIN = "login";
     public static final String JUMP_APP_INFO = "getAppInfo";
+    public static final String HIDE_WEB_CLOSE_BTN = "hideWebCloseBtn";
 }

@@ -4,6 +4,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.cai.framework.base.GodBaseApplication;
+import com.cai.framework.event.WebViewEvent;
 import com.cai.framework.utils.LanguageLocalUtil;
 import com.cai.framework.web.IWebProtocol;
 import com.cai.framework.web.IWebProtocolCallback;
@@ -24,6 +25,8 @@ import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,7 +40,7 @@ import io.objectbox.BoxStore;
 
 public class App extends GodBaseApplication {
     public static final String PATH = "api/index.php/"; //测试用的被逼
-//        public static final String PATH = "api/";
+    //        public static final String PATH = "api/";
     public static String BASEURL = "http://101.37.146.65/";
 //    public static String BASEURL = "https://more.ethte.com/";
 
@@ -83,7 +86,9 @@ public class App extends GodBaseApplication {
                     String parama = protocolDO.getParams();
                     JSONObject jsonObject = JSON.parseObject(parama);
                     int id = jsonObject.getInteger("id");
-                    ARouter.getInstance().build("/MeetOne/CandyDetailActivity").navigation();
+                    ARouter.getInstance().build("/MeetOne/CandyDetailActivity")
+                            .withInt("tokenId", id)
+                            .navigation();
                 } else if (ProtocolConstant.JUMP_LOGIN.equals(protocolDO.getHost())) {
                     ARouter.getInstance().build("/MeetOne/LoginActivity").navigation();
                 } else if (ProtocolConstant.JUMP_APP_INFO.equals(protocolDO.getHost())) {
@@ -91,6 +96,8 @@ public class App extends GodBaseApplication {
                     map.put("auth", appPresenter.getToken());
                     map.put("lang", LanguageLocalUtil.getSystemLanguage().toUpperCase());
                     callback.callBack(getAppContext(), protocolDO, StateCode.STATE_CODE_SUCCESS, "", JSON.toJSONString(map));
+                } else if (ProtocolConstant.HIDE_WEB_CLOSE_BTN.equals(protocolDO.getHost())) {
+                    EventBus.getDefault().post(new WebViewEvent(WebViewEvent.TYPE_BTN, true));
                 } else {
                     ToastUtils.showShort("无法识别该协议" + protocolDO.getHost());
                 }
@@ -98,7 +105,7 @@ public class App extends GodBaseApplication {
 
             @Override
             public void jumpNewActivity(String url) {
-                ARouter.getInstance().build("/MeetOne/WebActivity").withCharSequence("url",url).navigation();
+                ARouter.getInstance().build("/MeetOne/WebActivity").withCharSequence("url", url).navigation();
             }
         });
     }
