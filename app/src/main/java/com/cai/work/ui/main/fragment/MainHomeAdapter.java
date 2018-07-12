@@ -332,16 +332,16 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         new GodDialog.Builder(context)
                 .setTitle(R.string.dialog_titile)
                 .setMessage(R.string.please_login)
-                .setPositiveButton(R.string.btn_cancle, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                })
-                .setNegativeButton(R.string.btn_commit, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.btn_commit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ARouter.getInstance().build("/AppModule/LoginActivity").navigation();
+                    }
+                })
+                .setNegativeButton(R.string.btn_cancle, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
                     }
                 }).build().show();
     }
