@@ -252,7 +252,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
             if (record.getIsTrade() == 1) {//交易
                 mViewBinding.btnRise.setBackgroundResource(R.drawable.btn_red_half);
                 mViewBinding.btnDrop.setBackgroundResource(R.drawable.btn_green_half);
-            }else{
+            } else {
                 mViewBinding.btnRise.setBackgroundResource(R.drawable.btn_gray_half);
                 mViewBinding.btnDrop.setBackgroundResource(R.drawable.btn_gray_half2);
                 mViewBinding.btnRise.setClickable(false);
@@ -334,7 +334,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                     hisDataList.add(hisData);
                 }
                 mViewBinding.fenshiView.setDateFormat("HH:mm");
-                mViewBinding.fenshiView.setCount(size / 2, size + 30, size / 2);
+                mViewBinding.fenshiView.setCount(size, size + 30, size);
                 mViewBinding.fenshiView.setLastClose(hisDataList.get(0).getClose());
                 mViewBinding.fenshiView.initData(hisDataList);
             }

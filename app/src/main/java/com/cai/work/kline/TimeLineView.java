@@ -329,6 +329,7 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         lineDataSetMa.setDrawCircles(false);
         lineDataSetMa.setDrawCircleHole(false);
         lineDataSetMa.setDrawFilled(true);
+        lineDataSetMa.setFillColor(getResources().getColor(R.color.ys_219_183_108));
         return lineDataSetMa;
     }
 
