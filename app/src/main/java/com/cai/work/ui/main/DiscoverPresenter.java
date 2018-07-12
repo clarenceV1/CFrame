@@ -22,7 +22,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class DiscoverPresenter extends AppBasePresenter<DiscoverView>  {
+public class DiscoverPresenter extends AppBasePresenter<DiscoverView> {
     @Inject
     public DiscoverPresenter() {
     }
@@ -31,6 +31,7 @@ public class DiscoverPresenter extends AppBasePresenter<DiscoverView>  {
     public void onAttached() {
 
     }
+
     public void requestDiscoverList(boolean isloadCache) {
         if (isloadCache) {
             getDiscoverListOfCache();
@@ -43,7 +44,7 @@ public class DiscoverPresenter extends AppBasePresenter<DiscoverView>  {
             @Override
             public void subscribe(ObservableEmitter<List<Discover>> e) {
                 List<Discover> discoverList = cacheStore.get().getDiscoverList();
-                if(discoverList==null){
+                if (discoverList == null) {
                     discoverList = new ArrayList<>();//rxjava 不允许传null
                 }
                 e.onNext(discoverList);
@@ -54,6 +55,9 @@ public class DiscoverPresenter extends AppBasePresenter<DiscoverView>  {
                     @Override
                     public void accept(List<Discover> discoverList) {
                         if (discoverList != null && discoverList.size() > 0) {
+                            Discover headData = new Discover();
+                            headData.setHead(true);
+                            discoverList.add(0, headData);
                             mView.callBack(discoverList);
                         }
                     }
@@ -78,7 +82,13 @@ public class DiscoverPresenter extends AppBasePresenter<DiscoverView>  {
                     @Override
                     public void respondResult(Subscription subscription, DiscoverRespond respond) {
                         if (respond.getErrorcode() == 0) {
-                            mView.callBack(respond.getData());
+                            List<Discover> data = respond.getData();
+                            if (data != null && data.size() > 0) {
+                                Discover headData = new Discover();
+                                headData.setHead(true);
+                                data.add(0, headData);
+                            }
+                            mView.callBack(data);
                         } else {
                             mView.callBack(respond.getMessage());
                             mView.callBack(new ArrayList<Discover>());

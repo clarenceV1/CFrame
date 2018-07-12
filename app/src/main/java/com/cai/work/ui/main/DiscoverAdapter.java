@@ -50,16 +50,21 @@ public class DiscoverAdapter extends BasePtrAdapter<Discover, BasePtrViewHold> {
 
     @Override
     public int getPtrItemViewType(int position) {
-        if (datas.get(position).getMin() != null) {
+        if (datas.get(position).isHead()) {
             return 1;
-        } else
+        } else if (datas.get(position).getMin() != null) {
             return 2;
+        } else
+            return 3;
     }
 
     @Override
     protected BasePtrViewHold onPtrCreateViewHolder(ViewGroup parent, int viewType) {
         BasePtrViewHold viewHolder;
         if (viewType == 1) {
+            View itemView = inflateItemView(parent, R.layout.discover_head_item);
+            viewHolder = new ViewHeadHolder(itemView, null);
+        } else if (viewType == 2) {
             View itemView = inflateItemView(parent, R.layout.discover_gride_item);
             viewHolder = new ViewSmallHolder(itemView, null);
         } else {
@@ -122,12 +127,19 @@ public class DiscoverAdapter extends BasePtrAdapter<Discover, BasePtrViewHold> {
                     .url(data.getDis_bgimage())
                     .placeholder(R.drawable.default_image)
                     .error(R.drawable.default_image)
-                    .transformation(new GlideRoundTransform(context,12))
+                    .transformation(new GlideRoundTransform(context, 12))
                     .build();
             imageParams.setImageView(bigHolder.imageAd);
             iLoadImage.loadImage(context, imageParams);
         }
 
+    }
+
+    class ViewHeadHolder extends BasePtrViewHold {
+
+        public ViewHeadHolder(View itemView, OnRecyclerViewItemClickListener listener) {
+            super(itemView, listener);
+        }
     }
 
     class ViewBigHolder extends BasePtrViewHold {

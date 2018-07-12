@@ -16,6 +16,15 @@ public class Discover {
     private String dis_url;
     private String dis_uri;
     private List<DiscoverMin> min;
+    private boolean isHead;// 自己用，是否是头部
+
+    public boolean isHead() {
+        return isHead;
+    }
+
+    public void setHead(boolean head) {
+        isHead = head;
+    }
 
     public List<DiscoverMin> getMin() {
         return min;
