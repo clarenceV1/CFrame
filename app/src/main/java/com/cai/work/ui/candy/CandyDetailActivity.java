@@ -126,6 +126,7 @@ public class CandyDetailActivity extends AppBaseActivity<CandyDetailBinding> imp
         bundle.putString(WebViewFragment.KEY_RUL, candyDetailModel.getToken_html());
         WebViewFragment webViewFragment = (WebViewFragment) Fragment.instantiate(this, WebViewFragment.class.getName(), bundle);
         webViewFragment.setLoadNewActivity(true);
+        webViewFragment.setCircleProgressBar(true);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.webViewcontain, webViewFragment);
