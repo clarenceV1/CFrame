@@ -14,6 +14,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSONObject;
+import com.cai.framework.event.WebViewEvent;
 import com.cai.framework.utils.LanguageLocalUtil;
 import com.cai.framework.web.WebViewFragment;
 import com.cai.work.R;
@@ -23,6 +24,7 @@ import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WebBinding;
 import com.cai.work.event.LoginEvent;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -54,10 +56,17 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
     protected void onCreate(Bundle savedInstanceState) {
         ARouter.getInstance().inject(this);
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
         View rootView = findViewById(android.R.id.content);
         if (rootView != null) {
             rootView.setBackgroundResource(com.cai.framework.R.color.white_a);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -84,18 +93,17 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
         initUrl();
         initFragment();
 
-        if (transparentHead == 1) {
-            switchTransparentHead();
-        }
+        switchTransparentHead();
     }
 
     private void initTitleBar() {
         if (!TextUtils.isEmpty(title)) {
-            mViewBinding.titleBar.setTitleText(title);
+            mViewBinding.tvTitle.setTitleText(title);
+            mViewBinding.tvTitle.setVisibility(View.VISIBLE);
         } else {
-            mViewBinding.titleBar.hideTitle();
+            mViewBinding.tvTitle.setVisibility(View.GONE);
         }
-        mViewBinding.titleBar.setLeftClickListener(new View.OnClickListener() {
+        mViewBinding.ivBack.setLeftClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goBack();
@@ -124,7 +132,7 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
             }
         }
         //
-        if (url.contains(App.DOMAIN_NAME) || url.contains(App.H5_NAME) || url.contains(App.H5_CANDY)) {
+        if (url.contains(App.DOMAIN_NAME) || url.contains(App.H5_NAME) || url.contains(App.H5_CANDY) || url.contains("101.37.146.65")) {
             //
             if (url.contains("?")) {
                 url = url + "&";
@@ -156,21 +164,22 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
      * 切换到透明到头部
      */
     private void switchTransparentHead() {
-        mViewBinding.titleBar.hideAll();
-        mViewBinding.divide.setVisibility(View.GONE);
-        mViewBinding.transparentHead.setVisibility(View.VISIBLE);
-        mViewBinding.imgGoBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goBack();
-            }
-        });
-        mViewBinding.imgShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //ToastUtils.showShort("暂未开发");
-            }
-        });
+        if (transparentHead == 1) {
+            mViewBinding.titleBar.setVisibility(View.GONE);
+            mViewBinding.transparentHead.setVisibility(View.VISIBLE);
+            mViewBinding.imgGoBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    goBack();
+                }
+            });
+            mViewBinding.imgShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //ToastUtils.showShort("暂未开发");
+                }
+            });
+        }
     }
 
     private String getMyParams() {
@@ -216,6 +225,13 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onLoginEvent(LoginEvent event) {
+        if (webViewFragment != null) {
+            webViewFragment.reload();
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onWebViewEvent(WebViewEvent event) {
         if (webViewFragment != null) {
             webViewFragment.reload();
         }
