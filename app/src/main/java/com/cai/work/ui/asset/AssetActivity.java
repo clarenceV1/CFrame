@@ -52,7 +52,7 @@ public class AssetActivity extends AppBaseActivity<AseetBinding> implements Asse
         mViewBinding.titleBar.hideTitle();
 
         mPtrRecyclerView = (PtrRecyclerView) mViewBinding.pullListView.getRecyclerView();
-        adapter = new AssetAdapter(this, iLoadImage);
+        adapter = new AssetAdapter(this, iLoadImage,presenter);
         mPtrRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mPtrRecyclerView.setAdapter(adapter);
         mViewBinding.pullListView.setCloseLoadMore(true);
