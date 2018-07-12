@@ -53,7 +53,8 @@
                 tools:text="right"
                 tools:visibility="visible" />
 
-            <View style="@style/item_line" />
+            <View style="@style/item_line"
+                android:layout_alignParentBottom="true"/>
         </RelativeLayout>
 
 
