@@ -1,24 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/white_a">
+        android:background="@color/white_a"
+        android:orientation="vertical">
 
         <com.cai.framework.baseview.TitleBarView
             android:id="@+id/titleBar"
             android:layout_width="match_parent"
             android:layout_height="44dp" />
 
-        <View style="@style/item_line" />
+        <View
+            android:id="@+id/divide"
+            style="@style/item_line" />
 
         <FrameLayout
-            android:id="@+id/containLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
 
+            <FrameLayout
+                android:id="@+id/containLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <RelativeLayout
+                android:id="@+id/transparentHead"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="49dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/imgGoBack"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/h5_btn_back" />
+
+                <ImageView
+                    android:id="@+id/imgShare"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/h5_btn_more"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+            </RelativeLayout>
+        </FrameLayout>
     </LinearLayout>
 
 </layout>

@@ -1,5 +1,6 @@
 package com.cai.work.ui.web;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -34,18 +35,20 @@ import javax.inject.Inject;
 @Route(path = "/MeetOne/WebActivity", name = "web")
 public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRTB {
 
+    @Inject
+    WebPresenter presenter;
     @Autowired(name = "url")
     String url;
     @Autowired(name = "title")
     String title;
     @Autowired(name = "paramMap")
     String paramString;
+    @Autowired(name = "transparentHead")
+    int transparentHead;//当1：用的是透明头部，0默认白底头部
 
     Map<String, String> paramMap;
     WebViewFragment webViewFragment;
-
-    @Inject
-    WebPresenter presenter;
+    static final String TRANSPARENT_HEAD = "transparentHead";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +83,16 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
         }
         initUrl();
         initFragment();
+
+        if (transparentHead == 1) {
+            switchTransparentHead();
+        }
     }
 
     private void initTitleBar() {
         if (!TextUtils.isEmpty(title)) {
             mViewBinding.titleBar.setTitleText(title);
-        }else{
+        } else {
             mViewBinding.titleBar.hideTitle();
         }
         mViewBinding.titleBar.setLeftClickListener(new View.OnClickListener() {
@@ -126,7 +133,44 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
             }
             url = url + getMyParams();
         }
+        handleTransparentHead(url);
         Log.e("WebViewActivity", "url=" + url);
+    }
+
+    private void handleTransparentHead(String url) {
+        if (TextUtils.isEmpty(url)) {
+            return;
+        }
+        Uri uri = Uri.parse(url);
+        String type = uri.getQueryParameter(TRANSPARENT_HEAD);
+        if (!TextUtils.isEmpty(type)) {
+            try {
+                transparentHead = Integer.valueOf(type);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 切换到透明到头部
+     */
+    private void switchTransparentHead() {
+        mViewBinding.titleBar.hideAll();
+        mViewBinding.divide.setVisibility(View.GONE);
+        mViewBinding.transparentHead.setVisibility(View.VISIBLE);
+        mViewBinding.imgGoBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
+        mViewBinding.imgShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //ToastUtils.showShort("暂未开发");
+            }
+        });
     }
 
     private String getMyParams() {
