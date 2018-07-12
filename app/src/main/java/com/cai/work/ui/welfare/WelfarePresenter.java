@@ -1,24 +1,14 @@
 package com.cai.work.ui.welfare;
 
 import com.cai.work.base.AppBasePresenter;
-import com.cai.work.bean.Discover;
-import com.cai.work.bean.PhoneCode;
 import com.cai.work.bean.Welfare;
-import com.cai.work.bean.respond.DiscoverRespond;
-import com.cai.work.bean.respond.LoginRespond;
-import com.cai.work.bean.respond.PhoneCodeRespond;
 import com.cai.work.bean.respond.WelfareRespond;
-import com.cai.work.event.LoginEvent;
-import com.cai.work.ui.login.LoginView;
 import com.example.clarence.netlibrary.NetRespondCallBack;
 
-import org.greenrobot.eventbus.EventBus;
 import org.reactivestreams.Subscription;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 

@@ -15,7 +15,6 @@ import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.bean.respond.NicknameRespond;
-import com.cai.work.bean.respond.PhoneCodeRespond;
 import com.cai.work.bean.respond.RecordRespond;
 import com.cai.work.bean.respond.Respond;
 import com.cai.work.bean.respond.WelfareRespond;
@@ -180,8 +179,8 @@ public class RequestStore {
      *
      * @return
      */
-    public Flowable<PhoneCodeRespond> getPhoneCode(Map<String, String> params) {
-        Flowable<PhoneCodeRespond> flowable = retrofit.get().create(ApiService.class)
+    public Flowable<Respond> getPhoneCode(Map<String, String> params) {
+        Flowable<Respond> flowable = retrofit.get().create(ApiService.class)
                 .getPhoneCode(getRequestHeader(), getRequestBody(params))
                 .subscribeOn(Schedulers.newThread());
         return flowable;

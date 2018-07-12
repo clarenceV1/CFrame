@@ -10,7 +10,6 @@ import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.MineRespond;
 import com.cai.work.bean.respond.NicknameRespond;
-import com.cai.work.bean.respond.PhoneCodeRespond;
 import com.cai.work.bean.respond.RecordRespond;
 import com.cai.work.bean.respond.Respond;
 import com.cai.work.bean.respond.WelfareRespond;
@@ -48,7 +47,7 @@ public interface ApiService {
     Flowable<DiscoverRespond> questDiscoverList(@HeaderMap Map<String, String> map);
 
     @POST(App.PATH + "vercode")
-    Flowable<PhoneCodeRespond> getPhoneCode(@HeaderMap Map<String, String> map, @Body RequestBody body);
+    Flowable<Respond> getPhoneCode(@HeaderMap Map<String, String> map, @Body RequestBody body);
 
     @POST(App.PATH + "login")
     Flowable<LoginRespond> loginOrRegister(@HeaderMap Map<String, String> map, @Body RequestBody body);

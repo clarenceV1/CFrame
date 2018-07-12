@@ -1,22 +1,17 @@
 package com.cai.work.ui.login;
 
+import com.alibaba.fastjson.JSON;
 import com.cai.work.base.AppBasePresenter;
-import com.cai.work.bean.CandyList;
 import com.cai.work.bean.PhoneCode;
-import com.cai.work.bean.User;
-import com.cai.work.bean.respond.CandyListRespond;
 import com.cai.work.bean.respond.LoginRespond;
-import com.cai.work.bean.respond.PhoneCodeRespond;
+import com.cai.work.bean.respond.Respond;
 import com.cai.work.event.LoginEvent;
-import com.cai.work.ui.candy.CandyDetailView;
 import com.example.clarence.netlibrary.NetRespondCallBack;
 
 import org.greenrobot.eventbus.EventBus;
 import org.reactivestreams.Subscription;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -40,11 +35,12 @@ public class LoginPresenter extends AppBasePresenter<LoginView> {
         params.put("phone", phone);
         requestStore.get().getPhoneCode(params)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetRespondCallBack<PhoneCodeRespond>() {
+                .subscribe(new NetRespondCallBack<Respond>() {
                     @Override
-                    public void respondResult(Subscription subscription, PhoneCodeRespond respond) {
+                    public void respondResult(Subscription subscription, Respond respond) {
                         if (respond.getErrorcode() == 0) {
-                            mView.callBack(respond.getData());
+                            PhoneCode phoneCode = JSON.parseObject(respond.getData(), PhoneCode.class);
+                            mView.callBack(phoneCode);
                         } else {
                             mView.callBack(new PhoneCode());
                             mView.callBack(respond.getMessage());
