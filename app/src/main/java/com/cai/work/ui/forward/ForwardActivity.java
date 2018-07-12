@@ -235,6 +235,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     public void callBack(ForwardRecord forwardRecord) {
         Record record = forwardRecord.getRecords();
         if (record != null) {
+            //时间
             String date = record.getBuyDate();
             if (!TextUtils.isEmpty(date)) {
                 int index = date.indexOf("11:30");
@@ -247,6 +248,15 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                 } else {
                     mViewBinding.tvTradeTime.setText(record.getBuyDate());
                 }
+            }
+            if (record.getIsTrade() == 1) {//交易
+                mViewBinding.btnRise.setBackgroundResource(R.drawable.btn_red_half);
+                mViewBinding.btnDrop.setBackgroundResource(R.drawable.btn_green_half);
+            }else{
+                mViewBinding.btnRise.setBackgroundResource(R.drawable.btn_gray_half);
+                mViewBinding.btnDrop.setBackgroundResource(R.drawable.btn_gray_half2);
+                mViewBinding.btnRise.setClickable(false);
+                mViewBinding.btnDrop.setClickable(false);
             }
         }
     }
