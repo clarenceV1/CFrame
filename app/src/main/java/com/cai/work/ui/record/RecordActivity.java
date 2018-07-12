@@ -77,15 +77,13 @@ public class RecordActivity extends AppBaseActivity<RecordBinding> implements Re
                 present.loadRecord(lastId, tokenId);
             }
         });
-
-
-        mViewBinding.loadView.setStatus(LoadingView.STATUS_LOADING);
         mViewBinding.loadView.setClickListener(new LoadingView.LoadViewClickListener() {
             @Override
             public void onLoadViewClick(int status) {
                 present.loadRecord(lastId, tokenId);
             }
         });
+        mViewBinding.loadView.setStatus(LoadingView.STATUS_LOADING);
         present.loadRecord(lastId, tokenId);
     }
 

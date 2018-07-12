@@ -11,9 +11,20 @@
             android:layout_width="match_parent"
             android:layout_height="44dp" />
 
-        <com.cai.pullrefresh.PtrRecyclerViewFrameLayout
-            android:id="@+id/pullListView"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <com.cai.pullrefresh.PtrRecyclerViewFrameLayout
+                android:id="@+id/pullListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.cai.framework.baseview.LoadingView
+                android:id="@+id/loadView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
     </LinearLayout>
 </layout>

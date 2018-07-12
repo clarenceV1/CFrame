@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.baseview.LoadingView;
 import com.cai.pullrefresh.BaseListPtrFrameLayout;
 import com.cai.pullrefresh.PtrRecyclerView;
 import com.cai.pullrefresh.lib.PtrFrameLayout;
@@ -60,7 +61,13 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
 
             }
         });
-        mViewBinding.emptyView.setVisibility(View.VISIBLE);
+        mViewBinding.loadView.setClickListener(new LoadingView.LoadViewClickListener() {
+            @Override
+            public void onLoadViewClick(int status) {
+                presenter.loadMsgData(false);
+            }
+        });
+        mViewBinding.loadView.setStatus(LoadingView.STATUS_LOADING);
         presenter.loadMsgData(true);
     }
 
@@ -84,9 +91,11 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
         mViewBinding.pullRecyclerView.refreshOrLoadMoreComplete(false);
         if (messageList != null && !messageList.isEmpty()) {
             adapter.setDatas(messageList);
-            mViewBinding.emptyView.setVisibility(View.GONE);
+        }
+        if (adapter.getDatas().isEmpty()) {
+            mViewBinding.loadView.setStatus(LoadingView.STATUS_NODATA);
         } else {
-            mViewBinding.emptyView.setVisibility(View.VISIBLE);
+            mViewBinding.loadView.setStatus(LoadingView.STATUS_HIDDEN);
         }
     }
 

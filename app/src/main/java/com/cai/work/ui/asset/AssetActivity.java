@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.baseview.LoadingView;
 import com.cai.pullrefresh.BaseListPtrFrameLayout;
 import com.cai.pullrefresh.PtrRecyclerView;
 import com.cai.pullrefresh.lib.PtrFrameLayout;
@@ -52,7 +53,7 @@ public class AssetActivity extends AppBaseActivity<AseetBinding> implements Asse
         mViewBinding.titleBar.hideTitle();
 
         mPtrRecyclerView = (PtrRecyclerView) mViewBinding.pullListView.getRecyclerView();
-        adapter = new AssetAdapter(this, iLoadImage,presenter);
+        adapter = new AssetAdapter(this, iLoadImage, presenter);
         mPtrRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mPtrRecyclerView.setAdapter(adapter);
         mViewBinding.pullListView.setCloseLoadMore(true);
@@ -69,6 +70,13 @@ public class AssetActivity extends AppBaseActivity<AseetBinding> implements Asse
                 presenter.requestAsset(true, page);
             }
         });
+        mViewBinding.loadView.setClickListener(new LoadingView.LoadViewClickListener() {
+            @Override
+            public void onLoadViewClick(int status) {
+                presenter.requestAsset(false, page);
+            }
+        });
+        mViewBinding.loadView.setStatus(LoadingView.STATUS_LOADING);
         presenter.requestAsset(true, page);
     }
 
@@ -91,7 +99,11 @@ public class AssetActivity extends AppBaseActivity<AseetBinding> implements Asse
             } else {
                 adapter.addDatas(assetList);
             }
-
+        }
+        if (adapter.getDatas().isEmpty()) {
+            mViewBinding.loadView.setStatus(LoadingView.STATUS_NODATA);
+        } else {
+            mViewBinding.loadView.setStatus(LoadingView.STATUS_HIDDEN);
         }
     }
 }

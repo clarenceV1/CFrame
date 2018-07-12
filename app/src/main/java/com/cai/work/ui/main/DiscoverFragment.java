@@ -3,6 +3,7 @@ package com.cai.work.ui.main;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import com.cai.framework.baseview.LoadingView;
 import com.cai.pullrefresh.BaseListPtrFrameLayout;
 import com.cai.pullrefresh.PtrRecyclerView;
 import com.cai.pullrefresh.lib.PtrFrameLayout;
@@ -61,7 +62,13 @@ public class DiscoverFragment extends AppBaseFragment<DiscoverBinding> implement
             public void onLoadMore() {
             }
         });
-
+        mViewBinding.loadView.setClickListener(new LoadingView.LoadViewClickListener() {
+            @Override
+            public void onLoadViewClick(int status) {
+                presenter.requestDiscoverList(false);
+            }
+        });
+        mViewBinding.loadView.setStatus(LoadingView.STATUS_LOADING);
         presenter.requestDiscoverList(true);
     }
 
@@ -70,6 +77,11 @@ public class DiscoverFragment extends AppBaseFragment<DiscoverBinding> implement
         mViewBinding.pullListView.refreshOrLoadMoreComplete(false);
         if (data != null && data.size() > 0) {
             adapter.setDatas(data);
+        }
+        if (adapter.getDatas().isEmpty()) {
+            mViewBinding.loadView.setStatus(LoadingView.STATUS_NODATA);
+        } else {
+            mViewBinding.loadView.setStatus(LoadingView.STATUS_HIDDEN);
         }
     }
 

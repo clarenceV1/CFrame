@@ -6,7 +6,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId "one.more.test"
+        applicationId "one.more"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 3
