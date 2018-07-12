@@ -74,7 +74,7 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
 
     @Override
     public void reFreshView(HomeItemData data) {
-        adapter = new MainHomeAdapter(mContext, imageLoader, data, getChildFragmentManager());
+        adapter = new MainHomeAdapter(mContext, imageLoader, data, getChildFragmentManager(),presenter);
         mViewBinding.mRecyclerView.setAdapter(adapter);
     }
 

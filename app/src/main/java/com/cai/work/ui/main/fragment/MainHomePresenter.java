@@ -63,6 +63,11 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
                 });
     }
 
+    public boolean isLogin() {
+        User user = userDAO.getData();
+        return user != null;
+    }
+
     @Override
     public void onAttached() {
         data.put(BaseLifecycleObserver.CLASS_NAME, "mainHomeFragment=====>");

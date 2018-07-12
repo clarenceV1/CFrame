@@ -1,6 +1,7 @@
 package com.cai.work.ui.main.fragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +21,7 @@ import com.alibaba.fastjson.JSON;
 import com.cai.framework.widget.CircleView;
 import com.cai.framework.widget.ListViewEx;
 import com.cai.framework.widget.VerticalScrollTextView;
+import com.cai.framework.widget.dialog.GodDialog;
 import com.cai.work.R;
 import com.cai.work.bean.Forward;
 import com.cai.work.bean.home.HomeItemData;
@@ -47,12 +49,14 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     ILoadImage imageLoader;
     FragmentManager fragmentManager;
     int selectedTabType = 1;
+    MainHomePresenter presenter;
 
-    public MainHomeAdapter(Context context, ILoadImage imageLoader, HomeItemData data, FragmentManager fragmentManager) {
+    public MainHomeAdapter(Context context, ILoadImage imageLoader, HomeItemData data, FragmentManager fragmentManager, MainHomePresenter presenter) {
         this.data = data;
         this.context = context;
         this.imageLoader = imageLoader;
         this.fragmentManager = fragmentManager;
+        this.presenter = presenter;
     }
 
     @Override
@@ -255,7 +259,11 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         noticeViewHolder.tvMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/AppModule/NewsActivity").navigation();
+                if (presenter.isLogin()) {
+                    ARouter.getInstance().build("/AppModule/NewsActivity").navigation();
+                } else {
+                    showDialog();
+                }
             }
         });
         noticeViewHolder.rlTab1.setOnClickListener(new View.OnClickListener() {
@@ -264,7 +272,11 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 if (data != null && data.getNphy() != null) {
                     HomeStockData stockData = data.getStock();
                     if (stockData != null) {
-                        ARouter.getInstance().build("/AppModule/StockActivity").navigation();
+                        if (presenter.isLogin()) {
+                            ARouter.getInstance().build("/AppModule/StockActivity").navigation();
+                        } else {
+                            showDialog();
+                        }
                     }
                 }
             }
@@ -277,7 +289,11 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     if (nphyList.size() > 0) {
                         HomeNphyData nphyData = nphyList.get(0);
                         Forward forward = new Forward(nphyData.getContractName(), nphyData.getContractCode());
-                        ARouter.getInstance().build("/AppModule/ForwardActivity").withCharSequence("forwardJson", JSON.toJSONString(forward)).navigation();
+                        if (presenter.isLogin()) {
+                            ARouter.getInstance().build("/AppModule/ForwardActivity").withCharSequence("forwardJson", JSON.toJSONString(forward)).navigation();
+                        } else {
+                            showDialog();
+                        }
                     }
                 }
             }
@@ -288,7 +304,11 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 if (data != null && data.getNphy() != null) {
                     HomeStockData stockData = data.getStock();
                     if (stockData != null) {
-                        ARouter.getInstance().build("/AppModule/StockActivity").navigation();
+                        if (presenter.isLogin()) {
+                            ARouter.getInstance().build("/AppModule/StockActivity").navigation();
+                        } else {
+                            showDialog();
+                        }
                     }
                 }
             }
@@ -306,6 +326,24 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
             }
         });
+    }
+
+    private void showDialog() {
+        new GodDialog.Builder(context)
+                .setTitle(R.string.dialog_titile)
+                .setMessage(R.string.please_login)
+                .setPositiveButton(R.string.btn_cancle, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setNegativeButton(R.string.btn_commit, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ARouter.getInstance().build("/AppModule/LoginActivity").navigation();
+                    }
+                }).build().show();
     }
 
     @Override
