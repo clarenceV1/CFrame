@@ -119,6 +119,7 @@
                         android:layout_centerInParent="true"
                         android:paddingBottom="2dp"
                         android:paddingLeft="2dp"
+                        android:gravity="center"
                         android:textColor="@color/white_half"
                         android:textSize="12sp"
                         tools:text="当前持有1000" />
