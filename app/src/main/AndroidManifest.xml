@@ -41,7 +41,8 @@
         <activity android:name=".ui.nationcode.NationCodeActivity" />
         <activity android:name=".ui.record.RecordActivity" />
         <activity android:name=".ui.welfare.WelfareActivity" />
-        <activity android:name=".ui.asset.AssetActivity"/>
+        <activity android:name=".ui.asset.AssetActivity" />
+        <activity android:name=".ui.debug.DebugActivity" />
 
         <meta-data
             android:name="UMENG_APPKEY"
@@ -53,7 +54,7 @@
         <meta-data
             android:name="BUGLY_APPID"
             android:value="7f5cfd9b86" />
-        <!-- 配置APP版本号 -->
+        <!-- 配置APP版本号  Constant.DEBUG 要改值 -->
         <meta-data
             android:name="BUGLY_APP_VERSION"
             android:value="new_2.1.3.8" />

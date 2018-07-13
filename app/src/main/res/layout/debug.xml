@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.cai.framework.baseview.TitleBarView
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
+
+        <View style="@style/item_line" />
+
+        <TextView
+            android:id="@+id/tvLine1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <View style="@style/item_line" />
+
+        <TextView
+            android:id="@+id/tvLine2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <View style="@style/item_line" />
+
+        <TextView
+            android:id="@+id/tvLine3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <View style="@style/item_line" />
+
+        <TextView
+            android:id="@+id/tvLine4"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <View style="@style/item_line" />
+
+        <TextView
+            android:id="@+id/tvLine5"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <View style="@style/item_line" />
+    </LinearLayout>
+</layout>
