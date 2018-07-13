@@ -20,6 +20,7 @@ import com.cai.framework.web.WebViewFragment;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
+import com.cai.work.common.Constant;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WebBinding;
 import com.cai.work.event.LoginEvent;
@@ -138,7 +139,7 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
             }
         }
         //
-        if (url.contains(App.DOMAIN_NAME) || url.contains(App.H5_NAME) || url.contains(App.H5_CANDY) || url.contains("101.37.146.65")) {
+        if (url.contains(Constant.DOMAIN_NAME) || url.contains(Constant.H5_NAME) || url.contains(Constant.H5_CANDY) || url.contains(Constant.TEST_IP)) {
             //
             if (url.contains("?")) {
                 url = url + "&";
@@ -190,9 +191,12 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     private String getMyParams() {
         StringBuilder sb = new StringBuilder();
-        sb.append("auth");
-        sb.append("=");
-        sb.append(presenter.getToken());
+        String token = presenter.getToken();
+        if (!TextUtils.isEmpty(token)) {
+            sb.append("auth");
+            sb.append("=");
+            sb.append(token);
+        }
         sb.append("&");
         sb.append("lang");
         sb.append("=");
@@ -238,7 +242,7 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onWebViewEvent(WebViewEvent event) {
-        if(transparentHead == 0){
+        if (transparentHead == 0) {
             mViewBinding.tvClose.setVisibility(View.VISIBLE);
         }
     }

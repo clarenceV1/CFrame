@@ -19,6 +19,7 @@ import com.cai.pullrefresh.swipemenulistview.BasePtrFrameLayout;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
+import com.cai.work.common.Constant;
 import com.cai.work.bean.MineModel;
 import com.cai.work.bean.User;
 import com.cai.work.databinding.MineBinding;
@@ -182,7 +183,7 @@ public class MineFragment extends AppBaseFragment<MineBinding> implements MineVi
                 params.put("timestamp", System.currentTimeMillis() + "");
                 ARouter.getInstance().build("/MeetOne/WebActivity")
                         .withCharSequence("title", getString(R.string.help))
-                        .withCharSequence("url", App.H5_NAME + "/help.html")
+                        .withCharSequence("url", Constant.H5_NAME + "/help.html")
                         .withCharSequence("paramMap", JSON.toJSONString(params))
                         .navigation();
                 break;

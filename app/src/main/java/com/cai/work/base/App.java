@@ -11,14 +11,13 @@ import com.cai.framework.web.IWebProtocolCallback;
 import com.cai.framework.web.WebProtocolDO;
 import com.cai.framework.web.WebProtocolManager;
 import com.cai.work.bean.MyObjectBox;
+import com.cai.work.common.Constant;
 import com.cai.work.dagger.component.AppComponent;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.share.ShareQQManager;
 import com.cai.work.share.ShareSinaManager;
 import com.cai.work.share.ShareWechatManager;
 import com.cai.work.share.ShareWechatMomentsManager;
-import com.cai.work.ui.candy.CandyDetailActivity;
-import com.cai.work.ui.login.LoginActivity;
 import com.example.clarence.utillibrary.ToastUtils;
 import com.mob.MobSDK;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -44,18 +43,18 @@ public class App extends GodBaseApplication {
     public static String BASEURL = "http://101.37.146.65/";
 //    public static String BASEURL = "https://more.ethte.com/";
 
-    public static boolean isDebug = true;
-    public static final String H5_NAME = "http://more.one/h5";
-    public static final String H5_CANDY = "https://myeoscandy.com";
-    public static final String DOMAIN_NAME = "more.ethte.com";
+
+
 
     public static BoxStore boxStore;
     public static AppComponent appComponent;
+
     @Inject
     AppPresenter appPresenter;
 
     public void onCreate() {
         super.onCreate();
+        initEnv();
         if (appComponent == null) {
             appComponent = DaggerAppComponent.create();
             appComponent.inject(this);
@@ -67,6 +66,10 @@ public class App extends GodBaseApplication {
         CrashReport.initCrashReport(getApplicationContext());
         UMConfigure.init(this, "5b20a535a40fa3053200023a", "", UMConfigure.DEVICE_TYPE_PHONE, "");
         MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
+    }
+
+    private void initEnv() {
+
     }
 
     @Override
@@ -121,11 +124,11 @@ public class App extends GodBaseApplication {
 
     @Override
     public boolean isDebug() {
-        return isDebug;
+        return Constant.IS_DEBUG;
     }
 
     private void initRouter() {
-        if (isDebug) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
+        if (Constant.IS_DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
             ARouter.openLog();     // 打印日志
             ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
             ARouter.printStackTrace(); // 打印日志的时候打印线程堆栈
