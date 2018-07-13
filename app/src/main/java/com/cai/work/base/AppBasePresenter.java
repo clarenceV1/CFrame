@@ -31,11 +31,15 @@ public abstract class AppBasePresenter<V> extends GodBasePresenter<V> {
         return userDAO.get().getToken();
     }
 
-    public boolean isLogin(){
+    public boolean isLogin() {
         return userDAO.get().isLogin();
     }
 
     public StatisticsPresenter getStatistics() {
         return statistics.get();
+    }
+
+    public long getUserId() {
+        return userDAO.get().getUserId();
     }
 }
