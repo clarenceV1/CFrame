@@ -12,30 +12,25 @@
             android:layout_width="match_parent"
             android:layout_height="44dp" />
 
-        <ScrollView
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.cai.framework.baseview.LoadingView
-                    android:id="@+id/loadView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/llHead"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:background="@drawable/candy_img_topbg1"
+                    android:layout_height="match_parent"
+                    android:background="@color/black_a"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/candy_detail_ll"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="250dp"
+                        android:background="@drawable/candy_img_topbg1"
                         android:orientation="vertical">
 
                         <ImageView
@@ -77,15 +72,23 @@
                             android:textSize="@dimen/sp_12"
                             tools:text="0" />
                     </LinearLayout>
+
+                    <FrameLayout
+                        android:id="@+id/webViewcontain"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/llHead" />
                 </LinearLayout>
 
-                <FrameLayout
-                    android:id="@+id/webViewcontain"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/llHead" />
-            </RelativeLayout>
+            </ScrollView>
 
-        </ScrollView>
+            <com.cai.framework.baseview.LoadingView
+                android:id="@+id/loadView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:visibility="visible"
+                tools:visibility="gone" />
+        </FrameLayout>
     </LinearLayout>
 </layout>

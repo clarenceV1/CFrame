@@ -90,7 +90,7 @@ public class App extends GodBaseApplication {
                     map.put("lang", LanguageLocalUtil.getSystemLanguage().toUpperCase());
                     callback.callBack(getAppContext(), protocolDO, StateCode.STATE_CODE_SUCCESS, "", JSON.toJSONString(map));
                 } else if (ProtocolConstant.HIDE_WEB_CLOSE_BTN.equals(protocolDO.getHost())) {
-                    EventBus.getDefault().post(new WebViewEvent(WebViewEvent.TYPE_BTN, true));
+                    EventBus.getDefault().post(new WebViewEvent(WebViewEvent.TYPE_HIDE_BTN, true));
                 } else {
                     ToastUtils.showShort("无法识别该协议" + protocolDO.getHost());
                 }

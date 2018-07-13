@@ -3,21 +3,15 @@ package com.cai.work.ui.candy;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.baseview.LoadingView;
+import com.cai.framework.event.WebViewEvent;
 import com.cai.framework.web.WebViewFragment;
-import com.cai.pullrefresh.PtrRecyclerView;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
@@ -29,7 +23,10 @@ import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.ToastUtils;
 
-import java.util.ArrayList;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -47,6 +44,13 @@ public class CandyDetailActivity extends AppBaseActivity<CandyDetailBinding> imp
     protected void onCreate(Bundle savedInstanceState) {
         ARouter.getInstance().inject(this);
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -105,7 +109,6 @@ public class CandyDetailActivity extends AppBaseActivity<CandyDetailBinding> imp
 
     @Override
     public void callback(CandyDetailModel candyDetailModel) {
-        mViewBinding.loadView.setStatus(LoadingView.STATUS_HIDDEN);
         refreshHead(candyDetailModel);
     }
 
@@ -126,10 +129,16 @@ public class CandyDetailActivity extends AppBaseActivity<CandyDetailBinding> imp
         bundle.putString(WebViewFragment.KEY_RUL, candyDetailModel.getToken_html());
         WebViewFragment webViewFragment = (WebViewFragment) Fragment.instantiate(this, WebViewFragment.class.getName(), bundle);
         webViewFragment.setLoadNewActivity(true);
-        webViewFragment.setCircleProgressBar(true);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.webViewcontain, webViewFragment);
         fragmentTransaction.commit();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onWebViewEvent(WebViewEvent event) {
+        if (event.type == WebViewEvent.TYPE_LOAD_FINISH) {
+            mViewBinding.loadView.setStatus(LoadingView.STATUS_HIDDEN);
+        }
     }
 }

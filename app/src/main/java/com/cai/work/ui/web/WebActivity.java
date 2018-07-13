@@ -242,7 +242,7 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onWebViewEvent(WebViewEvent event) {
-        if (transparentHead == 0) {
+        if (transparentHead == 1 && event.type == WebViewEvent.TYPE_HIDE_BTN) {
             mViewBinding.tvClose.setVisibility(View.VISIBLE);
         }
     }
