@@ -2,6 +2,7 @@ package com.cai.work.ui.main;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,10 +12,12 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.annotation.aspect.Permission;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.widget.dialog.GodDialog;
+import com.cai.work.BuildConfig;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.AppUpdate;
+import com.cai.work.common.Constant;
 import com.cai.work.databinding.MainLayoutBinding;
 import com.cai.work.widget.TabItem;
 import com.example.clarence.utillibrary.ToastUtils;
@@ -52,6 +55,17 @@ public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements 
         initTab();
         requestPermission();
         showUpdateAppDialog();
+        showEvn();
+    }
+
+    private void showEvn() {
+        if (BuildConfig.DEBUG) {
+            if (Constant.isTestEnv()) {
+                ToastUtils.showShort("测试环境---正式包不会显示的");
+            } else {
+                ToastUtils.showShort("正式环境---正式包不会显示的");
+            }
+        }
     }
 
     private void initTab() {
@@ -59,11 +73,11 @@ public class MainActivity extends AppBaseActivity<MainLayoutBinding> implements 
         tabManager.setTabClickListener(new TabItem.TabClickListener() {
             @Override
             public void clickListener(TabItem view, int currentPosition) {
-                if(currentPosition == 0){
+                if (currentPosition == 0) {
                     presenter.getStatistics().tab_home();
-                }else if(currentPosition == 1){
+                } else if (currentPosition == 1) {
                     presenter.getStatistics().tab_fx();
-                }else if(currentPosition == 2){
+                } else if (currentPosition == 2) {
                     presenter.getStatistics().tab_wd();
                 }
                 switchFragment(currentPosition);
