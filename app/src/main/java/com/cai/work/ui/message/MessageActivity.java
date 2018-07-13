@@ -88,10 +88,10 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
 
     @Override
     public void callBack(List<Message> messageList) {
-        mViewBinding.pullRecyclerView.refreshOrLoadMoreComplete(false);
         if (messageList != null && !messageList.isEmpty()) {
             adapter.setDatas(messageList);
         }
+        mViewBinding.pullRecyclerView.refreshOrLoadMoreComplete(false);
         if (adapter.getDatas().isEmpty()) {
             mViewBinding.loadView.setStatus(LoadingView.STATUS_NODATA);
         } else {

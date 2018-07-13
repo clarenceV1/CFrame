@@ -92,7 +92,6 @@ public class AssetActivity extends AppBaseActivity<AseetBinding> implements Asse
 
     @Override
     public void callBack(List<Asset> assetList) {
-        mViewBinding.pullListView.refreshOrLoadMoreComplete(false);
         if (assetList != null && assetList.size() > 0) {
             if (page == 1) {
                 adapter.setDatas(assetList);
@@ -100,6 +99,7 @@ public class AssetActivity extends AppBaseActivity<AseetBinding> implements Asse
                 adapter.addDatas(assetList);
             }
         }
+        mViewBinding.pullListView.refreshOrLoadMoreComplete(false);
         if (adapter.getDatas().isEmpty()) {
             mViewBinding.loadView.setStatus(LoadingView.STATUS_NODATA);
         } else {

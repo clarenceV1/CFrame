@@ -74,10 +74,10 @@ public class DiscoverFragment extends AppBaseFragment<DiscoverBinding> implement
 
     @Override
     public void callBack(List<Discover> data) {
-        mViewBinding.pullListView.refreshOrLoadMoreComplete(false);
         if (data != null && data.size() > 0) {
             adapter.setDatas(data);
         }
+        mViewBinding.pullListView.refreshOrLoadMoreComplete(false);
         if (adapter.getDatas().isEmpty()) {
             mViewBinding.loadView.setStatus(LoadingView.STATUS_NODATA);
         } else {

@@ -94,7 +94,6 @@ public class RecordActivity extends AppBaseActivity<RecordBinding> implements Re
 
     @Override
     public void callBack(RecordDataModel data, int lastid) {
-        mViewBinding.recyclerView.refreshOrLoadMoreComplete(true);
         lastId = data.getLastid();
         List<RecordModel> records = data.getRecord();
         if (records != null && !records.isEmpty()) {
@@ -104,6 +103,7 @@ public class RecordActivity extends AppBaseActivity<RecordBinding> implements Re
                 mRecordAdapter.addDatas(records);
             }
         }
+        mViewBinding.recyclerView.refreshOrLoadMoreComplete(true);
         if (mRecordAdapter.getDatas().isEmpty()) {
             mViewBinding.loadView.setStatus(LoadingView.STATUS_NODATA);
         } else {

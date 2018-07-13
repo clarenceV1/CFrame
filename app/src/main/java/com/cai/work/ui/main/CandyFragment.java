@@ -97,11 +97,10 @@ public class CandyFragment extends AppBaseFragment<CandyBinding> implements Cand
 
     @Override
     public void callBack(List<CandyList> data) {
-        mViewBinding.pullListView.refreshOrLoadMoreComplete(false);
         if (data != null && data.size() > 0) {
             adapter.setDatas(data);
         }
-
+        mViewBinding.pullListView.refreshOrLoadMoreComplete(false);
         if (adapter.getDatas().isEmpty()) {
             mViewBinding.loadView.setStatus(LoadingView.STATUS_NODATA);
         } else {
