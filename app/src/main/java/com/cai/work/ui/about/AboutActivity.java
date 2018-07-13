@@ -7,9 +7,10 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.utils.LanguageLocalUtil;
+import com.cai.work.BuildConfig;
 import com.cai.work.R;
-import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
+import com.cai.work.common.Constant;
 import com.cai.work.databinding.AboutBinding;
 
 import java.util.HashMap;
@@ -42,9 +43,9 @@ public class AboutActivity extends AppBaseActivity<AboutBinding> implements Abou
         mViewBinding.llAboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = App.H5_NAME + "/en/help.html";
+                String url = Constant.H5_NAME + "/en/help.html";
                 if (LanguageLocalUtil.isChinese()) {
-                    url = App.H5_NAME + "/help.html";
+                    url = Constant.H5_NAME + "/help.html";
                 }
                 Map<String, String> params = new HashMap<>();
                 params.put("timestamp", System.currentTimeMillis() + "");
@@ -62,11 +63,24 @@ public class AboutActivity extends AppBaseActivity<AboutBinding> implements Abou
                 params.put("timestamp", System.currentTimeMillis() + "");
                 ARouter.getInstance().build("/MeetOne/WebActivity")
                         .withCharSequence("title", getString(R.string.about_disclaimer))
-                        .withCharSequence("url", App.H5_NAME + "/statement.html")
+                        .withCharSequence("url", Constant.H5_NAME + "/statement.html")
                         .withCharSequence("paramMap", JSON.toJSONString(params))
                         .navigation();
             }
         });
+        showDebug();
+    }
+
+    private void showDebug() {
+        if (BuildConfig.DEBUG) {
+            findViewById(R.id.llDebug).setVisibility(View.VISIBLE);
+            findViewById(R.id.llDebug).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ARouter.getInstance().build("/MeetOne/DebugActivity").navigation();
+                }
+            });
+        }
     }
 
     @Override
