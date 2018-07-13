@@ -1,6 +1,5 @@
 package com.cai.work.common;
 
-import com.cai.work.base.App;
 import com.cai.work.bean.respond.AppUpdateResond;
 import com.cai.work.bean.respond.AssetRespond;
 import com.cai.work.bean.respond.CandyListRespond;
@@ -31,52 +30,52 @@ import retrofit2.http.QueryMap;
 
 public interface ApiService {
 
-    @GET(App.PATH + "upgrade")
+    @GET("api/upgrade")
     Flowable<AppUpdateResond> loadUpgrade(@HeaderMap Map<String, String> map);
 
-    @GET(App.PATH + "mine")
+    @GET("api/mine")
     Flowable<MineRespond> loadMineData(@HeaderMap Map<String, String> map);
 
-    @GET(App.PATH + "candy")
+    @GET("api/candy")
     Flowable<CandyListRespond> questCandyList(@HeaderMap Map<String, String> map);
 
-    @POST(App.PATH + "candy")
+    @POST("api/candy")
     Flowable<Respond> receiveCandy(@HeaderMap Map<String, String> map, @Body RequestBody body);
 
-    @GET(App.PATH + "discover")
+    @GET("api/discover")
     Flowable<DiscoverRespond> questDiscoverList(@HeaderMap Map<String, String> map);
 
-    @POST(App.PATH + "vercode")
+    @POST("api/vercode")
     Flowable<Respond> getPhoneCode(@HeaderMap Map<String, String> map, @Body RequestBody body);
 
-    @POST(App.PATH + "login")
+    @POST("api/login")
     Flowable<LoginRespond> loginOrRegister(@HeaderMap Map<String, String> map, @Body RequestBody body);
 
 
-    @GET(App.PATH + "msgbox")
+    @GET("api/msgbox")
     Flowable<MessageRespond> loadMsgData(@HeaderMap Map<String, String> map);
 
-    @GET(App.PATH + "configuration")
+    @GET("api/configuration")
     Flowable<ConfigerRespond> laodConfiguration(@HeaderMap Map<String, String> map);
 
-    @POST(App.PATH + "profile")
+    @POST("api/profile")
     Flowable<NicknameRespond> upUserNickName(@HeaderMap Map<String, String> map, @Body RequestBody body);
 
 
-    @GET(App.PATH + "vercode")
+    @GET("api/vercode")
     Flowable<ResponseBody> loadNationCode(@HeaderMap Map<String, String> map);
 
-    @GET(App.PATH + "token")
+    @GET("api/token")
     Flowable<ResponseBody> loadCandyDetail(@HeaderMap Map<String, String> headMap, @QueryMap Map<String, String> map);
 
-    @GET(App.PATH + "record")
+    @GET("api/record")
     Flowable<RecordRespond> loadRecord(@HeaderMap Map<String, String> headMap, @QueryMap Map<String, String> map);
 
-    @GET(App.PATH + "welfare")
+    @GET("api/welfare")
     Flowable<WelfareRespond> requestWelfare(@HeaderMap Map<String, String> headMap);
 
-    @GET(App.PATH + "myassets")
-    Flowable<AssetRespond> requestAsset(@HeaderMap Map<String, String> headMap,@QueryMap Map<String, String> map);
+    @GET("api/myassets")
+    Flowable<AssetRespond> requestAsset(@HeaderMap Map<String, String> headMap, @QueryMap Map<String, String> map);
 
 //
 //    @POST("/app/login/index")

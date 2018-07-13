@@ -23,25 +23,21 @@ public class DebugPresenter extends AppBasePresenter<DebugView> {
 
     }
 
-    public boolean isLogin() {
-        return userDAO.get().isLogin();
-    }
-
-    public void loadCandyDetail(int token_id) {
-        Map<String, String> params = new HashMap<>();
-        params.put("token_id", token_id + "");
-        requestStore.get().loadCandyDetail(params)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetRespondCallBack<ResponseBody>() {
-                    @Override
-                    public void respondResult(Subscription subscription, ResponseBody responseBody) {
-
-                    }
-
-                    @Override
-                    public void respondError(Throwable t) {
-//                        mView.callback(t.getMessage(), 1);
-                    }
-                });
-    }
+//    public void loadCandyDetail(int token_id) {
+//        Map<String, String> params = new HashMap<>();
+//        params.put("token_id", token_id + "");
+//        requestStore.get().loadCandyDetail(params)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new NetRespondCallBack<ResponseBody>() {
+//                    @Override
+//                    public void respondResult(Subscription subscription, ResponseBody responseBody) {
+//
+//                    }
+//
+//                    @Override
+//                    public void respondError(Throwable t) {
+////                        mView.callback(t.getMessage(), 1);
+//                    }
+//                });
+//    }
 }

@@ -1,12 +1,10 @@
 package com.cai.work.common;
 
-import android.net.Uri;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.cai.work.bean.AppUpdate;
 import com.example.clarence.datastorelibrary.store.share_preference.ISharePreference;
-import com.example.clarence.utillibrary.encrypt.CipherUtil;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -19,16 +17,12 @@ public class DataStore {
     @Inject
     ISharePreference sharePreference;
 
-    private static final String AUTHORIZATION_KEY = "authorization_key";
     private static final String APP_LANGUAGE = "app_language";
     private static final String APP_UPDATE = "app_update";
     private static final String INVITE_TITLE = "invite_title";
     private static final String INVITE_URL = "invite_url";
     private static final String SHORT_CUT = "short_cut";
     private static final String QINIU_TOKEN = "qiniu_token";
-
-
-    private boolean creatShortCut;
 
     @Inject
     public DataStore() {
@@ -83,11 +77,6 @@ public class DataStore {
     public boolean getShortCut() {
         return sharePreference.read(SHORT_CUT, false);
     }
-
-    public boolean isCreatShortCut() {
-        return creatShortCut;
-    }
-
 
     public void saveQiniuToken(String token) {
         sharePreference.write(QINIU_TOKEN, token);

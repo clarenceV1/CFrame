@@ -1,5 +1,7 @@
 package com.cai.work.base;
 
+import android.os.Build;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -10,6 +12,7 @@ import com.cai.framework.web.IWebProtocol;
 import com.cai.framework.web.IWebProtocolCallback;
 import com.cai.framework.web.WebProtocolDO;
 import com.cai.framework.web.WebProtocolManager;
+import com.cai.work.BuildConfig;
 import com.cai.work.bean.MyObjectBox;
 import com.cai.work.common.Constant;
 import com.cai.work.dagger.component.AppComponent;
@@ -38,14 +41,6 @@ import io.objectbox.BoxStore;
  */
 
 public class App extends GodBaseApplication {
-    public static final String PATH = "api/index.php/"; //测试用的被逼
-    //        public static final String PATH = "api/";
-    public static String BASEURL = "http://101.37.146.65/";
-//    public static String BASEURL = "https://more.ethte.com/";
-
-
-
-
     public static BoxStore boxStore;
     public static AppComponent appComponent;
 
@@ -54,7 +49,6 @@ public class App extends GodBaseApplication {
 
     public void onCreate() {
         super.onCreate();
-        initEnv();
         if (appComponent == null) {
             appComponent = DaggerAppComponent.create();
             appComponent.inject(this);
@@ -66,10 +60,6 @@ public class App extends GodBaseApplication {
         CrashReport.initCrashReport(getApplicationContext());
         UMConfigure.init(this, "5b20a535a40fa3053200023a", "", UMConfigure.DEVICE_TYPE_PHONE, "");
         MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
-    }
-
-    private void initEnv() {
-
     }
 
     @Override
@@ -119,7 +109,12 @@ public class App extends GodBaseApplication {
 
     @Override
     public String getBaseUrl() {
-        return BASEURL;
+        if (BuildConfig.DEBUG) {
+            if (Constant.isTestEnv()) {
+                return Constant.TEST_BASE_URL;
+            }
+        }
+        return Constant.OFFICIAL_BASE_URL;
     }
 
     @Override
@@ -139,5 +134,4 @@ public class App extends GodBaseApplication {
     public static AppComponent getAppComponent() {
         return appComponent;
     }
-
 }

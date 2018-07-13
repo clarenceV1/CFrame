@@ -71,7 +71,7 @@ public class AppPresenter {
         }
     }
 
-    public String getToken(){
+    public String getToken() {
         return userDAO.get().getToken();
     }
 }
