@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Amodule/Amodule.iml" filepath="$PROJECT_DIR$/../Amodule/Amodule.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../AndroidAsync/AndroidAsync.iml" filepath="$PROJECT_DIR$/../../AndroidAsync/AndroidAsync.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../Bmodule/Bmodule.iml" filepath="$PROJECT_DIR$/../Bmodule/Bmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/../CFrame.iml" filepath="$PROJECT_DIR$/../CFrame.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibAnnotation/LibAnnotation.iml" filepath="$PROJECT_DIR$/../../LibAnnotation/LibAnnotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibAptCompiler/LibAptCompiler.iml" filepath="$PROJECT_DIR$/../../LibAptCompiler/LibAptCompiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibDataStore/LibDataStore.iml" filepath="$PROJECT_DIR$/../../LibDataStore/LibDataStore.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../LibDownload/LibDownload.iml" filepath="$PROJECT_DIR$/../../LibDownload/LibDownload.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibFrameWork/LibFrameWork.iml" filepath="$PROJECT_DIR$/../../LibFrameWork/LibFrameWork.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibImageLoader/LibImageLoader.iml" filepath="$PROJECT_DIR$/../../LibImageLoader/LibImageLoader.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibLog/LibLog.iml" filepath="$PROJECT_DIR$/../../LibLog/LibLog.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../LibLogger/LibLogger.iml" filepath="$PROJECT_DIR$/../LibLogger/LibLogger.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibNet/LibNet.iml" filepath="$PROJECT_DIR$/../../LibNet/LibNet.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibPullToRefresh/LibPullToRefresh.iml" filepath="$PROJECT_DIR$/../../LibPullToRefresh/LibPullToRefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibUtils/LibUtils.iml" filepath="$PROJECT_DIR$/../../LibUtils/LibUtils.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/../../MPChartLib/MPChartLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../RemotePlugin/RemotePlugin.iml" filepath="$PROJECT_DIR$/../../RemotePlugin/RemotePlugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../plugin/plugin.iml" filepath="$PROJECT_DIR$/../plugin/plugin.iml" />
