@@ -196,8 +196,8 @@ public class WebActivity extends AppBaseActivity<WebBinding> implements WebForRT
             sb.append("auth");
             sb.append("=");
             sb.append(token);
+            sb.append("&");
         }
-        sb.append("&");
         sb.append("lang");
         sb.append("=");
         sb.append(LanguageLocalUtil.getSystemLanguage().toUpperCase());
