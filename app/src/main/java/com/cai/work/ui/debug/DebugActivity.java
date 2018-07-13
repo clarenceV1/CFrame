@@ -1,19 +1,15 @@
 package com.cai.work.ui.debug;
 
-import android.app.ActivityManager;
-import android.content.Context;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.cai.framework.base.GodActivityManger;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.common.Constant;
 import com.cai.work.databinding.DebugBinding;
-import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
 
@@ -73,7 +69,7 @@ public class DebugActivity extends AppBaseActivity<DebugBinding> implements Debu
             @Override
             public void onClick(View v) {
                 Constant.saveTestEnv(!isTestEnv);
-                GodActivityManger.getInstance().exitApp();
+                App.getAppContext().exitApp();
             }
         });
     }
