@@ -67,6 +67,13 @@ public class UserDAO extends BaseDAO {
         }
     }
 
+    public long getUserId() {
+        if (mUser != null) {
+            return mUser.getUser_id();
+        }
+        return 0;
+    }
+
 //
 //    public Disposable getBalance(Consumer onNext, Consumer<Throwable> onError) {
 //        Box<User> box = boxStore.boxFor(User.class);
