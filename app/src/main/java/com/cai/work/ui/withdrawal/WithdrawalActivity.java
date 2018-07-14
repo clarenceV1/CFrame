@@ -101,6 +101,13 @@ public class WithdrawalActivity extends AppBaseActivity<WithdrawalBinding> imple
                 presenter.commitWithdrawal(chooseBankCard.getId(), amount, password, withdrawKindSelect);
             }
         });
+
+        mViewBinding.tvFixPW.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/AppModule/SetPasswordActivity").navigation();
+            }
+        });
         mViewBinding.editWithdrawalMoney.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

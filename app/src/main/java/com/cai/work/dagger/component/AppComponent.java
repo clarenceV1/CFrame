@@ -26,6 +26,7 @@ import com.cai.work.ui.main.fragment.MainServiceFragment;
 import com.cai.work.ui.main.fragment.MainTradeFragment;
 import com.cai.work.ui.message.MessageActivity;
 import com.cai.work.ui.news.NewsActivity;
+import com.cai.work.ui.password.SetPasswordActivity;
 import com.cai.work.ui.rank.RankActivity;
 import com.cai.work.ui.rebate.RebateActivity;
 import com.cai.work.ui.recharge.RechargeActivity;
@@ -49,7 +50,7 @@ import dagger.Component;
  */
 @Singleton
 @Component(modules = {AppModule.class, FrameWorkModule.class})
-public interface AppComponent extends FrameWorkComponent{
+public interface AppComponent extends FrameWorkComponent {
     void inject(WebActivity webActivity);
 
     void inject(ListviewScollActivity listviewScollActivity);
@@ -183,4 +184,6 @@ public interface AppComponent extends FrameWorkComponent{
 //    void inject(StockBuyPresenter presenter);
 
     void inject(ForwardBuyActivity activity);
+
+    void inject(SetPasswordActivity activity);
 }

@@ -1,4 +1,4 @@
-package com.cai.work.ui.withdrawal;
+package com.cai.work.ui.password;
 
 import android.text.TextUtils;
 import android.view.View;
@@ -10,6 +10,8 @@ import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.databinding.WithdrawalPasswordBinding;
+import com.cai.work.ui.withdrawal.WithdrawalPasswordPresenter;
+import com.cai.work.ui.withdrawal.WithdrawalPasswordView;
 import com.example.clarence.utillibrary.KeyBoardUtils;
 import com.example.clarence.utillibrary.StringUtils;
 import com.example.clarence.utillibrary.ToastUtils;
@@ -18,8 +20,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-@Route(path = "/AppModule/WithdrawalPasswordActivity", name = "设置提现密码")
-public class WithdrawalPasswordActivity extends AppBaseActivity<WithdrawalPasswordBinding> implements WithdrawalPasswordView {
+@Route(path = "/AppModule/SetPasswordActivity", name = "修改提现密码")
+public class SetPasswordActivity extends AppBaseActivity<WithdrawalPasswordBinding> implements WithdrawalPasswordView {
 
     @Inject
     WithdrawalPasswordPresenter presenter;
@@ -38,7 +40,7 @@ public class WithdrawalPasswordActivity extends AppBaseActivity<WithdrawalPasswo
 
     @Override
     public void initView() {
-        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.withdrawal_password_titile));
+        mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.set_password_titile));
         mViewBinding.commonHeadView.ivGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,13 +67,13 @@ public class WithdrawalPasswordActivity extends AppBaseActivity<WithdrawalPasswo
                     return;
                 }
 
-                String oldPassword = mViewBinding.editOldPassword.getText().toString();
-                if (TextUtils.isEmpty(oldPassword)) {
-                    ToastUtils.showShort(getString(R.string.register_old_password_hint));
-                    mViewBinding.editOldPassword.requestFocus();
-                    KeyBoardUtils.forceShow(mViewBinding.editOldPassword);
-                    return;
-                }
+//                String oldPassword = mViewBinding.editOldPassword.getText().toString();
+//                if (TextUtils.isEmpty(oldPassword)) {
+//                    ToastUtils.showShort(getString(R.string.register_old_password_hint));
+//                    mViewBinding.editOldPassword.requestFocus();
+//                    KeyBoardUtils.forceShow(mViewBinding.editOldPassword);
+//                    return;
+//                }
 
                 String newPassword = mViewBinding.editNewPassword.getText().toString();
                 if (TextUtils.isEmpty(newPassword)) {
@@ -87,11 +89,11 @@ public class WithdrawalPasswordActivity extends AppBaseActivity<WithdrawalPasswo
                     KeyBoardUtils.forceShow(mViewBinding.editCommitNewPassword);
                     return;
                 }
-                if(!newPassword.equals(confirmNewPassword)){
+                if (!newPassword.equals(confirmNewPassword)) {
                     ToastUtils.showShort(getString(R.string.register_2_password_toast));
                     return;
                 }
-                presenter.resetWithdrawalPassword(sms,oldPassword,newPassword);
+                presenter.resetWithdrawalPassword(sms, "", newPassword);
             }
         });
         presenter.getMobile();
