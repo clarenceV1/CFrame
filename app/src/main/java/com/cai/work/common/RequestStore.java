@@ -179,8 +179,8 @@ public class RequestStore {
      *
      * @return
      */
-    public Flowable<Respond> getPhoneCode(Map<String, String> params) {
-        Flowable<Respond> flowable = retrofit.get().create(ApiService.class)
+    public Flowable<ResponseBody> getPhoneCode(Map<String, String> params) {
+        Flowable<ResponseBody> flowable = retrofit.get().create(ApiService.class)
                 .getPhoneCode(getRequestHeader(), getRequestBody(params))
                 .subscribeOn(Schedulers.newThread());
         return flowable;

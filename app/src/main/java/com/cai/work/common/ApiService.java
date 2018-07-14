@@ -46,7 +46,7 @@ public interface ApiService {
     Flowable<DiscoverRespond> questDiscoverList(@HeaderMap Map<String, String> map);
 
     @POST("api/vercode")
-    Flowable<Respond> getPhoneCode(@HeaderMap Map<String, String> map, @Body RequestBody body);
+    Flowable<ResponseBody> getPhoneCode(@HeaderMap Map<String, String> map, @Body RequestBody body);
 
     @POST("api/login")
     Flowable<LoginRespond> loginOrRegister(@HeaderMap Map<String, String> map, @Body RequestBody body);

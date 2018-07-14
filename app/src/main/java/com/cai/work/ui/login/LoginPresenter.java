@@ -18,6 +18,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
+import okhttp3.ResponseBody;
 
 public class LoginPresenter extends AppBasePresenter<LoginView> {
     @Inject
@@ -35,9 +36,9 @@ public class LoginPresenter extends AppBasePresenter<LoginView> {
         params.put("phone", phone);
         requestStore.get().getPhoneCode(params)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetRespondCallBack<Respond>() {
+                .subscribe(new NetRespondCallBack<ResponseBody>() {
                     @Override
-                    public void respondResult(Subscription subscription, Respond respond) {
+                    public void respondResult(Subscription subscription, ResponseBody respond) {
                         if (respond.getErrorcode() == 0) {
                             PhoneCode phoneCode = JSON.parseObject(respond.getData(), PhoneCode.class);
                             mView.callBack(phoneCode);
