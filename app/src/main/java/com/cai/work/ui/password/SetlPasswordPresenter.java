@@ -8,6 +8,7 @@ import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.UserDAO;
+import com.cai.work.databinding.SetPasswordBinding;
 import com.cai.work.ui.withdrawal.WithdrawalPasswordView;
 import com.example.clarence.utillibrary.Md5Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
@@ -17,7 +18,7 @@ import javax.inject.Inject;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-public class SetPasswordPresenter extends GodBasePresenter<WithdrawalPasswordView> {
+public class SetlPasswordPresenter extends GodBasePresenter<SetPasswordView> {
 
     @Inject
     RequestStore requestStore;
@@ -29,7 +30,7 @@ public class SetPasswordPresenter extends GodBasePresenter<WithdrawalPasswordVie
     AccountDAO accountDAO;
 
     @Inject
-    public SetPasswordPresenter() {
+    public SetlPasswordPresenter() {
     }
 
     @Override

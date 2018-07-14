@@ -113,11 +113,12 @@
                 <ImageView
                     android:id="@+id/imgWithdrawKind"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="17dp"
-                    android:background="@drawable/cjwt_sousuo" />
+                    android:paddingLeft="17dp"
+                    android:paddingRight="17dp"
+                    android:src="@drawable/cjwt_sousuo" />
             </RelativeLayout>
 
             <View
@@ -179,11 +180,12 @@
                 <ImageView
                     android:id="@+id/imgChooseBankCard"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="17sp"
-                    android:background="@drawable/cjwt_sousuo" />
+                    android:paddingLeft="17dp"
+                    android:paddingRight="17dp"
+                    android:src="@drawable/cjwt_sousuo" />
 
             </RelativeLayout>
 
@@ -234,12 +236,12 @@
             android:id="@+id/btnCommit"
             android:layout_width="300dp"
             android:layout_height="48dp"
-            android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:layout_marginBottom="30dp"
-            android:textSize="18sp"
-            android:textColor="@color/ys_255_255_255"
+            android:layout_marginTop="30dp"
             android:background="@drawable/btn_yellow"
-            android:text="@string/btn_commit" />
+            android:text="@string/btn_commit"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="18sp" />
     </LinearLayout>
 </layout>

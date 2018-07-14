@@ -9,6 +9,7 @@ import com.cai.framework.utils.SMSCountDownTimer;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
+import com.cai.work.databinding.SetPasswordBinding;
 import com.cai.work.databinding.WithdrawalPasswordBinding;
 import com.cai.work.ui.withdrawal.WithdrawalPasswordPresenter;
 import com.cai.work.ui.withdrawal.WithdrawalPasswordView;
@@ -21,10 +22,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 @Route(path = "/AppModule/SetPasswordActivity", name = "修改提现密码")
-public class SetPasswordActivity extends AppBaseActivity<WithdrawalPasswordBinding> implements WithdrawalPasswordView {
+public class SetPasswordActivity extends AppBaseActivity<SetPasswordBinding> implements SetPasswordView {
 
     @Inject
-    WithdrawalPasswordPresenter presenter;
+    SetlPasswordPresenter presenter;
     SMSCountDownTimer countDownTimer;
     String mobile;
 
@@ -101,7 +102,7 @@ public class SetPasswordActivity extends AppBaseActivity<WithdrawalPasswordBindi
 
     @Override
     public int getLayoutId() {
-        return R.layout.withdrawal_password;
+        return R.layout.set_password;
     }
 
     @Override
