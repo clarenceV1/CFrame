@@ -272,7 +272,7 @@
     <string name="sell_dialog_stock">点卖股票:</string>
     <string name="sell_dialog_money">点卖金额:</string>
     <string name="sell_dialog_time">结算时间:</string>
-    <string name="sell_dialog_num">卖出数量</string>
+    <string name="sell_dialog_num">卖出数量:</string>
     <string name="sell_dialog_price">卖出价格:</string>
     <string name="sell_dialog_mark_price">市价卖出</string>
     <string name="sell_dialog_notice">金主将执行您的买卖指令,盈亏由您自己承担</string>
