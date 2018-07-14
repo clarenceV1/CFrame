@@ -25,6 +25,7 @@ public class BankCardListActivity extends AppBaseActivity<BankCardListBinding> i
     BankCardListAdapter adapter;
     @Inject
     ILoadImage imageLoader;
+    View footer;
 
     @Override
     public void initDagger() {
@@ -46,7 +47,8 @@ public class BankCardListActivity extends AppBaseActivity<BankCardListBinding> i
             }
         });
         adapter = new BankCardListAdapter(this, imageLoader);
-        View footer = LayoutInflater.from(this).inflate(R.layout.bank_footer, null);
+        footer = LayoutInflater.from(this).inflate(R.layout.bank_footer, null);
+        footer.setVisibility(View.GONE);
         footer.findViewById(R.id.btnAddBank).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +81,11 @@ public class BankCardListActivity extends AppBaseActivity<BankCardListBinding> i
         if (adapter != null && dataList != null) {
             mViewBinding.loadView.setVisibility(View.GONE);
             adapter.update(dataList);
+            if (dataList.size() >= 2) {
+                footer.setVisibility(View.GONE);
+            } else {
+                footer.setVisibility(View.VISIBLE);
+            }
         } else {
             mViewBinding.loadView.setVisibility(View.VISIBLE);
         }
