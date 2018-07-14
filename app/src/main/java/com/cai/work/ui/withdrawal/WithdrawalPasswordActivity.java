@@ -92,7 +92,7 @@ public class WithdrawalPasswordActivity extends AppBaseActivity<WithdrawalPasswo
                     ToastUtils.showShort(getString(R.string.register_2_password_toast));
                     return;
                 }
-                presenter.resetWithdrawalPassword(mobile,sms,oldPassword,newPassword);
+                presenter.resetWithdrawalPassword(sms,oldPassword,newPassword);
             }
         });
         presenter.getMobile();

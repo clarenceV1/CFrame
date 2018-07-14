@@ -188,7 +188,7 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable resetWithdrawalPassword(String mobile, String sms, String loginOldPassword, String loginPassword, String token, Consumer onNext, Consumer onError) {
+    public Disposable resetWithdrawalPassword(String sms, String loginOldPassword, String loginPassword, String token, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).resetWithdrawalPassword(sms, loginOldPassword, loginPassword, token)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

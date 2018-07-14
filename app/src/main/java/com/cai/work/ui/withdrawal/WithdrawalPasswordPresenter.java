@@ -64,9 +64,9 @@ public class WithdrawalPasswordPresenter extends GodBasePresenter<WithdrawalPass
         mCompositeSubscription.add(disposable);
     }
 
-    public void resetWithdrawalPassword(String mobile, String sms, String loginOldPassword, String loginPassword) {
+    public void resetWithdrawalPassword(String sms, String loginOldPassword, String loginPassword) {
         String token = accountDAO.getToken();
-        Disposable disposable = requestStore.resetWithdrawalPassword(mobile, sms, Md5Utils.md5(loginOldPassword), Md5Utils.md5(loginPassword), token, new Consumer<CommonRespond>() {
+        Disposable disposable = requestStore.resetWithdrawalPassword(sms, Md5Utils.md5(loginOldPassword), Md5Utils.md5(loginPassword), token, new Consumer<CommonRespond>() {
             @Override
             public void accept(CommonRespond data) {
                 if (data.getCode() == 200) {

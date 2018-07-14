@@ -5,6 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/ys_30_30_30"
         android:orientation="vertical">
 
         <include
@@ -12,18 +13,20 @@
             layout="@layout/common_head" />
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            android:background="@drawable/ic_launcher" />
+            android:background="@drawable/cz_balance" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:text="@string/balance_money" />
+            android:text="@string/balance_money"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tvBalanceMoney"
@@ -31,51 +34,70 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="25dp"
             tools:text="¥6565.78" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/red_b"
+            android:background="@drawable/tixian_kuang_bg"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/withdrawal_money" />
+                android:layout_marginTop="5dp"
+                android:text="@string/withdrawal_money"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="13sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:text="¥"
-                    android:textSize="30sp" />
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="25sp" />
 
                 <EditText
                     android:id="@+id/editWithdrawalMoney"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
-                    android:inputType="numberDecimal" />
+                    android:background="@color/touming"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/ys_255_33_33"
+                    android:textSize="25sp"
+                    tools:text="89" />
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ys_51_51_51" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="40dp">
 
                 <TextView
                     android:id="@+id/tvMoneyBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/withdrawal_money_back" />
+                    android:text="@string/withdrawal_money_back"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvWithdrawKind"
@@ -84,27 +106,37 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@+id/tvMoneyBack"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp"
                     tools:text="正常提现T+1" />
 
                 <ImageView
                     android:id="@+id/imgWithdrawKind"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_launcher" />
+                    android:layout_marginRight="17dp"
+                    android:background="@drawable/cjwt_sousuo" />
             </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ys_51_51_51" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/withdrawal_poundage" />
+                    android:text="@string/withdrawal_poundage"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvWithdrawalPoundage"
@@ -112,19 +144,28 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="20dp"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp"
                     tools:text="0元" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ys_51_51_51" />
+
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="30dp">
+                android:layout_height="40dp">
 
                 <TextView
                     android:id="@+id/tvBankNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/bank_add_bank_num" />
+                    android:text="@string/bank_add_bank_num"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvBankAccount"
@@ -137,47 +178,68 @@
 
                 <ImageView
                     android:id="@+id/imgChooseBankCard"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_launcher" />
+                    android:layout_marginRight="17sp"
+                    android:background="@drawable/cjwt_sousuo" />
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ys_51_51_51" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/save_cash_password" />
+                    android:text="@string/save_cash_password"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/editPassword"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
                     android:layout_weight="1"
+                    android:background="@color/touming"
                     android:inputType="textPassword"
-                    android:textColor="@color/black_a"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textColorHint="@color/ys_153_153_153"
                     tools:text="sfsf" />
 
                 <TextView
+                    android:id="@+id/tvFixPW"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:text="@string/withdrawal_forget_password" />
+                    android:layout_marginRight="17dp"
+                    android:gravity="center"
+                    android:text="@string/withdrawal_forget_password"
+                    android:textColor="@color/ys_219_183_108"
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
 
         <Button
             android:id="@+id/btnCommit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:textSize="18sp"
+            android:textColor="@color/ys_255_255_255"
+            android:background="@drawable/btn_yellow"
             android:text="@string/btn_commit" />
     </LinearLayout>
 </layout>
