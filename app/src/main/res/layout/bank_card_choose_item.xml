@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
 
     <ImageView
         android:id="@+id/ivBankIcon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_vertical"
         tools:background="@drawable/ic_launcher" />
 
@@ -24,24 +25,18 @@
             android:id="@+id/tvBankName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/ys_255_255_255"
+            android:textSize="17sp"
             tools:text="建设银行" />
 
         <TextView
             android:id="@+id/tvBankNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/ys_109_109_109"
+            android:textSize="13sp"
             tools:text="**** **** **** 8745" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/checkbox"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/ic_launcher"
-        android:visibility="gone"
-        android:layout_gravity="center_vertical"
-        tools:visibility="visible" />
-
 </LinearLayout>

@@ -71,6 +71,7 @@ public class BankCardChooseActivity extends AppBaseActivity<BankCardChooseBindin
                ARouter.getInstance().build("/AppModule/BankAddActivity").navigation();
             }
         });
+        mViewBinding.commonHeadView.imgRight.setImageResource(R.drawable.bankadd);
         mViewBinding.commonHeadView.imgRight.setVisibility(View.VISIBLE);
         mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.bank_card_choose_titile));
 

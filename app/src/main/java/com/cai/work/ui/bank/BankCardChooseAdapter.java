@@ -41,11 +41,6 @@ class BankCardChooseAdapter extends GodBaseAdapter {
 
             ViewHolder.getTextView(convertView, R.id.tvBankName).setText(bank.getBankName());
             ViewHolder.getTextView(convertView, R.id.tvBankNum).setText(bank.getSimpleCardNo());
-            if (bank.isChoose()) {
-                ViewHolder.getImageView(convertView, R.id.checkbox).setVisibility(View.VISIBLE);
-            } else {
-                ViewHolder.getImageView(convertView, R.id.checkbox).setVisibility(View.GONE);
-            }
         }
     }
 
