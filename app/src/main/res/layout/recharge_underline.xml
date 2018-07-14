@@ -5,6 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/ys_30_30_30"
         android:orientation="vertical">
 
         <include
@@ -14,122 +15,166 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="44dp"
+                android:paddingLeft="12dp"
+                android:background="@color/ys_33_33_33"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/balance_money" />
+                    android:text="@string/balance_money"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvAccountManey"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:textColor="@color/ys_223_5_21"
+                    android:textSize="14sp"
                     tools:text="7777.90" />
             </LinearLayout>
 
-            <View style="@style/divider" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="44dp"
+                android:paddingLeft="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/ys_33_33_33"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recharge_money" />
+                    android:text="@string/recharge_money"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/editRechargeMoney"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
+                    android:background="@color/touming"
+                    android:hint="@string/recharge_money_hint"
                     android:inputType="numberDecimal"
-                    android:hint="@string/recharge_money_hint" />
+                    android:textColor="@color/ys_255_255_255"
+                    android:textColorHint="@color/ys_102_102_102"
+                    android:textSize="14sp" />
             </LinearLayout>
-
-            <View style="@style/divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="44dp"
+                android:paddingLeft="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/ys_33_33_33"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recharge_pay_user" />
+                    android:text="@string/recharge_pay_user"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/editPayUser"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:hint="@string/recharge_pay_user_hint" />
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="35dp"
+                    android:background="@color/touming"
+                    android:hint="@string/recharge_pay_user_hint"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textColorHint="@color/ys_102_102_102"
+                    android:textSize="14sp" />
             </LinearLayout>
 
-            <View style="@style/divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="44dp"
+                android:paddingLeft="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/ys_33_33_33"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recharge_pay_acccount" />
+                    android:text="@string/recharge_pay_acccount"
+                    android:textColor="@color/ys_255_255_255"
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/editPayAccount"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
+                    android:background="@color/touming"
+                    android:hint="@string/recharge_pay_acccount_hint"
                     android:inputType="number"
-                    android:hint="@string/recharge_pay_acccount_hint" />
+                    android:textColor="@color/ys_255_255_255"
+                    android:textColorHint="@color/ys_102_102_102"
+                    android:textSize="14sp" />
             </LinearLayout>
-
-            <View style="@style/divider" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/recharge_pay_way" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/recharge_pay_way"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="13sp" />
 
             <com.cai.framework.widget.ListViewEx
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
-                android:layout_height="100dp" />
+                android:layout_height="170dp"
+                android:layout_marginLeft="18dp"
+                android:divider="@color/touming"
+                android:dividerHeight="7.5dp"
+                android:layout_marginRight="18dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/recharge_upload_proof" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/recharge_upload_proof"
+                android:textColor="@color/ys_153_153_153"
+                android:textSize="13sp" />
 
             <ImageView
                 android:id="@+id/imgUploadProof"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/ic_launcher" />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/addphoto" />
 
             <Button
                 android:id="@+id/btnCommitPay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="310dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="20dp"
-                android:text="@string/btn_commit_recharge" />
+                android:background="@drawable/btn_yellow"
+                android:text="@string/btn_commit_recharge"
+                android:textColor="@color/ys_255_255_255"
+                android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
 </layout>

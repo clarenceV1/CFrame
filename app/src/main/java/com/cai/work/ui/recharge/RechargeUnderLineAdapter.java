@@ -10,6 +10,7 @@ import com.cai.framework.bean.CBaseData;
 import com.cai.framework.utils.ViewHolder;
 import com.cai.work.R;
 import com.cai.work.bean.RechargeBank;
+import com.example.clarence.imageloaderlibrary.GlideCircleTransform;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
@@ -40,14 +41,19 @@ class RechargeUnderLineAdapter extends GodBaseAdapter {
     public void initItemView(View convertView, CBaseData itemData, int position) {
         if (itemData != null && itemData instanceof RechargeBank) {
             final RechargeBank rechargeBank = (RechargeBank) itemData;
-            ILoadImageParams imageParams = new ImageForGlideParams.Builder().url(rechargeBank.getmImageUrl()).build();
+            ILoadImageParams imageParams = new ImageForGlideParams.Builder()
+                    .url("http:" + rechargeBank.getmImageUrl())
+                    .transformation(new GlideCircleTransform(context))
+                    .build();
             imageParams.setImageView(ViewHolder.getImageView(convertView, R.id.imgeBankIcon));
             imageLoader.loadImage(context, imageParams);
             if (rechargeBank.isCheck()) {
                 choose = rechargeBank;
-                convertView.setBackgroundColor(context.getResources().getColor(R.color.red_b));
+                ViewHolder.getView(convertView, R.id.imgChoose).setVisibility(View.VISIBLE);
+                ViewHolder.getView(convertView, R.id.container).setBackgroundResource(R.drawable.bank_red_bg);
             } else {
-                convertView.setBackgroundColor(context.getResources().getColor(R.color.black_e));
+                ViewHolder.getView(convertView, R.id.container).setBackgroundResource(R.drawable.bank_bg);
+                ViewHolder.getView(convertView, R.id.imgChoose).setVisibility(View.GONE);
             }
             ViewHolder.getTextView(convertView, R.id.tvBankAccount).setText(rechargeBank.getOfflineAccount());
             ViewHolder.getTextView(convertView, R.id.tvBankUserName).setText(rechargeBank.getOfflineName());
@@ -55,7 +61,7 @@ class RechargeUnderLineAdapter extends GodBaseAdapter {
             ViewHolder.getTextView(convertView, R.id.tvCopyAccount).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ClipBoardUtils.copyToClipBoard(context,"账号",rechargeBank.getOfflineAccount());
+                    ClipBoardUtils.copyToClipBoard(context, "账号", rechargeBank.getOfflineAccount());
                     ToastUtils.showShort(context.getResources().getString(R.string.recharge_copy_account_toast));
                 }
             });

@@ -152,4 +152,8 @@ public class RechargeUnderLinePresenter extends GodBasePresenter<RechargeUnderLi
         });
         mCompositeSubscription.add(disposable);
     }
+
+    public String getMoney() {
+        return userDAO.getData().getBalance();
+    }
 }

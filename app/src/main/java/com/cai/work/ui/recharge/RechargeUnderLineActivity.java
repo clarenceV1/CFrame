@@ -54,6 +54,7 @@ public class RechargeUnderLineActivity extends AppBaseActivity<RechargeUnderline
                 finish();
             }
         });
+        mViewBinding.tvAccountManey.setText(presenter.getMoney());
         adapter = new RechargeUnderLineAdapter(this, imageLoader);
         mViewBinding.listView.setAdapter(adapter);
         mViewBinding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
