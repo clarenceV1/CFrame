@@ -209,7 +209,7 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
         SocketManager.init(socketInfo.getSocket_host(), socketInfo.getSocket_port(), new WebSocket.StringCallback() {
             @Override
             public void onStringAvailable(String json) {
-              //  Log.i("requestRealForwardHold", "实盘 ip:" + SocketManager.mIp + "====>" + json);
+                //  Log.i("requestRealForwardHold", "实盘 ip:" + SocketManager.mIp + "====>" + json);
                 json = StringUtils.replaceBlank(json);
                 if (!TextUtils.isEmpty(json) && !"[]".equals(json)) {
                     List<ForwardHold> data = JSON.parseArray(json, ForwardHold.class);
@@ -236,7 +236,7 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
         SocketManager.init(socketInfo.getSocket_host(), socketInfo.getSocket_port(), new WebSocket.StringCallback() {
             @Override
             public void onStringAvailable(String json) {
-               // Log.i("requestRealForwardHold", " 模拟 ip:" + SocketManager.mIp + "====>" + json);
+                // Log.i("requestRealForwardHold", " 模拟 ip:" + SocketManager.mIp + "====>" + json);
                 json = StringUtils.replaceBlank(json);
                 if (!TextUtils.isEmpty(json) && !"[]".equals(json)) {
                     List<ForwardHold> data = JSON.parseArray(json, ForwardHold.class);
@@ -326,6 +326,26 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
 
     private void moniPingCang(String token, String id, String code) {
         Disposable disposable = requestStore.moniPingCang(token, id, code, new Consumer<CommonRespond>() {
+            @Override
+            public void accept(CommonRespond data) {
+                mView.toast(data.getResponseText(), 2);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                mView.toast(throwable.getMessage(), 2);
+            }
+        });
+        mCompositeSubscription.add(disposable);
+    }
+
+
+    /**
+     * 股票实盘持仓
+     */
+    public void checkSell(String id, String sellWTPrice, String stockCode) {
+        String token = accountDAO.getToken();
+        Disposable disposable = requestStore.checkSell(token, id, sellWTPrice, stockCode, new Consumer<CommonRespond>() {
             @Override
             public void accept(CommonRespond data) {
                 mView.toast(data.getResponseText(), 2);

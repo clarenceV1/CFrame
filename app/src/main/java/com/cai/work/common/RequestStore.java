@@ -415,7 +415,7 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable requestMinData(String code, String resolution,Consumer onNext, Consumer onError) {
+    public Disposable requestMinData(String code, String resolution, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).requestMinData(code, resolution)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -423,8 +423,16 @@ public class RequestStore {
         return disposable;
     }
 
-    public Disposable requestKaiCang(String token, String code,String amount,String bond,String zy,String zs,String redbagIds,String openWay, Consumer onNext, Consumer onError) {
+    public Disposable requestKaiCang(String token, String code, String amount, String bond, String zy, String zs, String redbagIds, String openWay, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).requestKaiCang(token, code, amount, bond, zy, zs, redbagIds, openWay)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable checkSell(String token, String id, String sellWTPrice, String stockCode, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).checkSell(token, id, sellWTPrice, stockCode)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);

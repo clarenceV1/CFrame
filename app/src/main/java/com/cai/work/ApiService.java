@@ -229,4 +229,8 @@ public interface ApiService {
                                            @Field("bond") String bond, @Field("zy") String zy, @Field("zs") String zs,
                                            @Field("redbagIds") String redbagIds, @Field("openWay") String openWay);
 
+    @POST("/app/mnstockTrade/checkSell")
+    @FormUrlEncoded
+    Flowable<CommonRespond> checkSell(@Field("token") String token, @Field("id") String id, @Field("sellWTPrice") String sellWTPrice,@Field("stockCode") String stockCode);
+
 }
