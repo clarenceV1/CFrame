@@ -8,4 +8,6 @@ public interface ForwardBuyView extends GodBaseView {
     void callBack(ForwardBuy data);
 
     void toast(String msg);
+
+    void kaiCangSuccess();
 }

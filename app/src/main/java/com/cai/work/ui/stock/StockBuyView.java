@@ -13,4 +13,7 @@ public interface StockBuyView extends GodBaseView {
     void callBack(StockBuy data);
 
     void callBack(String msg);
+
+    void buySuccess();
+
 }

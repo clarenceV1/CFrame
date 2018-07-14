@@ -61,10 +61,7 @@ public class ForwardBuyPresenter extends GodBasePresenter<ForwardBuyView> {
             @Override
             public void accept(CommonRespond data) {
                 mView.toast(data.getResponseText());
-                EventBus.getDefault().post(new MainHoldEvent(true, false, true));
-                ARouter.getInstance().build("/AppModule/MainActivity")
-                        .withInt("position", 4)
-                        .navigation();
+                mView.kaiCangSuccess();
             }
         }, new Consumer<Throwable>() {
             @Override
@@ -81,10 +78,7 @@ public class ForwardBuyPresenter extends GodBasePresenter<ForwardBuyView> {
             @Override
             public void accept(CommonRespond data) {
                 mView.toast(data.getResponseText());
-                EventBus.getDefault().post(new MainHoldEvent(false, false, true));
-                ARouter.getInstance().build("/AppModule/MainActivity")
-                        .withInt("position", 4)
-                        .navigation();
+                mView.kaiCangSuccess();
             }
         }, new Consumer<Throwable>() {
             @Override

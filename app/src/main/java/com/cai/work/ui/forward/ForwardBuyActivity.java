@@ -19,8 +19,11 @@ import com.cai.work.bean.ForwardBuy;
 import com.cai.work.bean.StockBuyMoney;
 import com.cai.work.bean.StockBuyRedBag;
 import com.cai.work.databinding.ForwardBuyBinding;
+import com.cai.work.event.MainHoldEvent;
 import com.cai.work.ui.stock.StockBuyActivity;
 import com.example.clarence.utillibrary.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -299,5 +302,19 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
     @Override
     public void toast(String msg) {
         ToastUtils.showShort(msg);
+    }
+
+    @Override
+    public void kaiCangSuccess() {
+        ARouter.getInstance().build("/AppModule/MainActivity")
+                .withInt("position", 4)
+                .navigation();
+        mViewBinding.commonHeadView.tvTitle.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                EventBus.getDefault().post(new MainHoldEvent(isRealTrade, false, true));
+                finish();
+            }
+        }, 500);
     }
 }

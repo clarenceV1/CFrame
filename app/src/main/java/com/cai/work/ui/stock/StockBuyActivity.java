@@ -20,8 +20,11 @@ import com.cai.work.bean.StockBuyMoney;
 import com.cai.work.bean.StockBuyRedBag;
 import com.cai.work.dagger.module.AppModule;
 import com.cai.work.databinding.StockBuyBinding;
+import com.cai.work.event.MainHoldEvent;
 import com.cai.work.ui.recharge.RechargeActivity;
 import com.example.clarence.utillibrary.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,7 +158,7 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
                 String zs = zsAdapter.getBuyMoney() + "";
                 String redbagIds = getRedBagIds();
                 String zhf = data.getZhf() + "";
-                presenter.commitBuy(isRealTrade,code, name, marketType, price, amount, principal, bzj, zy, zs, redbagIds, zhf);
+                presenter.commitBuy(isRealTrade, code, name, marketType, price, amount, principal, bzj, zy, zs, redbagIds, zhf);
             }
         });
         mViewBinding.tvSelectRedBag.setOnClickListener(new View.OnClickListener() {
@@ -289,6 +292,21 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
     @Override
     public void callBack(String msg) {
         ToastUtils.showShort(msg);
+    }
+
+    @Override
+    public void buySuccess() {
+        ARouter.getInstance().build("/AppModule/MainActivity")
+                .withInt("position", 4)
+                .withCharSequence("hold", "stock")
+                .navigation();
+        mViewBinding.commonHeadView.tvTitle.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                EventBus.getDefault().post(new MainHoldEvent(isRealTrade, true, true));
+                finish();
+            }
+        }, 500);
     }
 
     public String getRedBagIds() {

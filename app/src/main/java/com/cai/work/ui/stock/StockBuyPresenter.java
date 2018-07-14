@@ -90,10 +90,7 @@ public class StockBuyPresenter extends GodBasePresenter<StockBuyView> {
                     @Override
                     public void accept(CommonRespond data) {
                         mView.callBack(data.getResponseText());
-                        ARouter.getInstance().build("/AppModule/MainActivity")
-                                .withInt("position", 4)
-                                .withCharSequence("hold", "stock")
-                                .navigation();
+                        mView.buySuccess();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
