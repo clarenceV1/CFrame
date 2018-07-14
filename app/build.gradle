@@ -74,6 +74,8 @@ dependencies {
     compile project(':LibFrameWork')
     compile project(':MPChartLib')
 
+    compile 'com.bigkoo:pickerview:2.1.1'
+
     compile rootProject.ext.dependencies["dagger"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
 
@@ -92,5 +94,6 @@ dependencies {
 //    compile project(':klinelib')
 
     compile project(':AndroidAsync')
+
 
 }

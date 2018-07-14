@@ -2,6 +2,7 @@ package com.cai.work.ui.bank;
 
 import com.cai.framework.base.GodBaseView;
 import com.cai.work.bean.Bank;
+import com.cai.work.bean.Province;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface AddBankCardView extends GodBaseView {
     void refreshView(String msg);
 
     void getBankList(List<Bank> dataList,boolean showDialog);
+
+    void showCityDialog(List<Province> provinces);
 }

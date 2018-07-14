@@ -1,22 +1,29 @@
 package com.cai.work.ui.bank;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.bigkoo.pickerview.OptionsPickerView;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.widget.dialog.wheel.OneWheelDialog;
 import com.cai.framework.widget.dialog.wheel.OneWheelModel;
+import com.cai.framework.widget.dialog.wheel.ThreeWheelDialog;
+import com.cai.framework.widget.dialog.wheel.ThreeWheelModel;
 import com.cai.framework.widget.dialog.wheel.WheelCallBackListener;
+import com.cai.framework.widget.dialog.wheel.WheelModel;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Bank;
-import com.cai.work.dagger.component.DaggerAppComponent;
+import com.cai.work.bean.City;
+import com.cai.work.bean.Province;
 import com.cai.work.databinding.AddBankCardBinding;
 import com.example.clarence.utillibrary.KeyBoardUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -60,7 +67,7 @@ public class AddBankCardActivity extends AppBaseActivity<AddBankCardBinding> imp
                 if (bankList == null) {
                     presenter.getBankList(true);
                 } else {
-                    showZoneDialog();
+                    presenter.loadCitys();
                 }
             }
         });
@@ -86,7 +93,7 @@ public class AddBankCardActivity extends AppBaseActivity<AddBankCardBinding> imp
                     ToastUtils.showShort("请选择银行");
                     return;
                 }
-                String whichZone = "";
+                String whichZone = mViewBinding.tvWhichZone.getText().toString();
                 if (TextUtils.isEmpty(whichZone)) {
                     ToastUtils.showShort("请选择地区");
                     return;
@@ -101,10 +108,6 @@ public class AddBankCardActivity extends AppBaseActivity<AddBankCardBinding> imp
                 presenter.postBankInfo(realName, bankNum, whichBank, bankName);
             }
         });
-    }
-
-    private void showZoneDialog() {
-        ToastUtils.showShort("还没弄没文件");
     }
 
     private void showBankListDialog() {
@@ -148,6 +151,50 @@ public class AddBankCardActivity extends AppBaseActivity<AddBankCardBinding> imp
         if (showDialog) {
             showBankListDialog();
         }
+    }
+
+    @Override
+    public void showCityDialog(final List<Province> provinces) {
+        ArrayList<String> Provincestr = new ArrayList<>();//省
+        ArrayList<List<String>> Citystr = new ArrayList<>();//市
+        ArrayList<List<List<String>>> Areastr = new ArrayList<>();//区
+
+        for (Province province : provinces) {
+            List<String> cityStr = new ArrayList<>();
+            List<City> citys = province.getCity();
+            List<List<String>> zoneS1 = new ArrayList<>();
+            for (City city : citys) {
+                cityStr.add(city.getName());
+                List<String> zoneS2 = new ArrayList<>();
+                for (String zone : city.getArea()) {
+                    zoneS2.add(zone);
+                }
+                zoneS1.add(zoneS2);
+            }
+            Provincestr.add(province.getName());
+            Citystr.add(cityStr);
+            Areastr.add(zoneS1);
+        }
+        OptionsPickerView pvOptions = new OptionsPickerView(this);
+        pvOptions.setPicker(Provincestr, Citystr, Areastr, true);
+        pvOptions.setCyclic(false);
+//        pvOptions.setLabels("省", "市", "区");
+        pvOptions.setTitle("选择城市");
+        pvOptions.setSelectOptions(0, 0, 0);
+        pvOptions.setOnoptionsSelectListener(new OptionsPickerView.OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int option2, int options3) {
+                Log.d("onOptionsSelect", options1 + ":" + option2 + ":" + options3);
+                Province province = provinces.get(options1);
+                String provinceStr = province.getName();
+                City city = province.getCity().get(option2);
+                String cityStr = city.getName();
+                String zone = city.getArea()[options3];
+                String us = provinceStr + cityStr + zone;
+                mViewBinding.tvWhichZone.setText(us);
+            }
+        });
+        pvOptions.show();
     }
 
     public String[] getBankNameList() {
