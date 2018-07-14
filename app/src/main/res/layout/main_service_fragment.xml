@@ -12,11 +12,6 @@
             android:id="@+id/commonHeadView"
             layout="@layout/common_head" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/ys_51_51_51" />
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="125dp"

@@ -139,13 +139,13 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
 
 
         YAxis axisLeftPrice = mChartPrice.getAxisLeft();
-        axisLeftPrice.setLabelCount(5, true);
+        axisLeftPrice.setLabelCount(2, true);
         axisLeftPrice.setDrawLabels(true);
         axisLeftPrice.setDrawGridLines(false);
 
         axisLeftPrice.setDrawAxisLine(false);
         axisLeftPrice.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
-        axisLeftPrice.setTextColor(mAxisColor);
+        axisLeftPrice.setTextColor(getResources().getColor(R.color.ys_255_255_255));
         axisLeftPrice.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
@@ -156,7 +156,9 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         int[] colorArray = {mDecreasingColor, mDecreasingColor, mAxisColor, mIncreasingColor, mIncreasingColor};
         Transformer leftYTransformer = mChartPrice.getRendererLeftYAxis().getTransformer();
         ColorContentYAxisRenderer leftColorContentYAxisRenderer = new ColorContentYAxisRenderer(mChartPrice.getViewPortHandler(), mChartPrice.getAxisLeft(), leftYTransformer);
-        leftColorContentYAxisRenderer.setLabelColor(colorArray);
+        int white = ContextCompat.getColor(getContext(), R.color.ys_255_255_255);
+        int[] labelColor = {white, white, white, white, white};
+        leftColorContentYAxisRenderer.setLabelColor(labelColor);
         leftColorContentYAxisRenderer.setLabelInContent(true);
         leftColorContentYAxisRenderer.setUseDefaultLabelXOffset(false);
         mChartPrice.setRendererLeftYAxis(leftColorContentYAxisRenderer);
@@ -168,7 +170,7 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
 
         axisRightPrice.setDrawGridLines(false);
         axisRightPrice.setDrawAxisLine(false);
-        axisRightPrice.setTextColor(mAxisColor);
+        axisRightPrice.setTextColor(getResources().getColor(R.color.ys_255_255_255));
         axisRightPrice.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
 
         axisRightPrice.setValueFormatter(new IAxisValueFormatter() {

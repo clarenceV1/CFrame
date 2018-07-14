@@ -334,7 +334,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                     hisDataList.add(hisData);
                 }
                 mViewBinding.fenshiView.setDateFormat("HH:mm");
-                mViewBinding.fenshiView.setCount(size, size + 30, size);
+                mViewBinding.fenshiView.setCount(size/2, size + 30, size/10);
                 mViewBinding.fenshiView.setLastClose(hisDataList.get(0).getClose());
                 mViewBinding.fenshiView.initData(hisDataList);
             }

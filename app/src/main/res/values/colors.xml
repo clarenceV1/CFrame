@@ -91,7 +91,7 @@
     <color name="ys_ff2121">#ff2121</color>
 
     <color name="ave_color">#666</color>
-    <color name="axis_color">#333</color>
+    <color name="axis_color">#ffffff</color>
 
     <color name="increasing_color">@color/main_color_red</color>
     <color name="decreasing_color">@color/main_color_green</color>

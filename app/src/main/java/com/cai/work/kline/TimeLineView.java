@@ -100,7 +100,7 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         mChartPrice.setDragEnabled(true);
         mChartPrice.setScaleYEnabled(true);
         mChartPrice.getDescription().setEnabled(false);
-        mChartPrice.setAutoScaleMinMaxEnabled(false);
+        mChartPrice.setAutoScaleMinMaxEnabled(true);
         mChartPrice.setDragDecelerationEnabled(false);
         LineChartXMarkerView mvx = new LineChartXMarkerView(mContext, mData);
         mvx.setChartView(mChartPrice);
@@ -109,10 +109,12 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         lineChartLegend.setEnabled(false);
 
         XAxis xAxisPrice = mChartPrice.getXAxis();
+        xAxisPrice.enableGridDashedLine(10,10,0);
         xAxisPrice.setDrawLabels(true);
-        xAxisPrice.setLabelCount(8, true);
+        xAxisPrice.setLabelCount(6, true);
         xAxisPrice.setDrawAxisLine(false);
         xAxisPrice.setDrawGridLines(false);
+        xAxisPrice.setTextColor(getResources().getColor(R.color.ys_255_255_255));
         xAxisPrice.setAxisMinimum(-0.5f);
         xAxisPrice.setPosition(XAxis.XAxisPosition.BOTTOM); // 设置X轴的位置
         xAxisPrice.setValueFormatter(new IAxisValueFormatter() {
@@ -133,12 +135,13 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
 
 
         YAxis axisLeftPrice = mChartPrice.getAxisLeft();
-        axisLeftPrice.setLabelCount(3, true);
+        axisLeftPrice.setLabelCount(2, true);
+        axisLeftPrice.enableGridDashedLine(10,10,0);
         axisLeftPrice.setDrawLabels(true);
         axisLeftPrice.setDrawGridLines(false);
         axisLeftPrice.setDrawAxisLine(false);
         axisLeftPrice.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
-        axisLeftPrice.setTextColor(mAxisColor);
+        axisLeftPrice.setTextColor(getResources().getColor(R.color.ys_255_255_255));
         axisLeftPrice.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
@@ -149,7 +152,10 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         int[] colorArray = {mDecreasingColor, mDecreasingColor, mAxisColor, mIncreasingColor, mIncreasingColor};
         Transformer leftYTransformer = mChartPrice.getRendererLeftYAxis().getTransformer();
         ColorContentYAxisRenderer leftColorContentYAxisRenderer = new ColorContentYAxisRenderer(mChartPrice.getViewPortHandler(), mChartPrice.getAxisLeft(), leftYTransformer);
-        leftColorContentYAxisRenderer.setLabelColor(colorArray);
+
+        int white = ContextCompat.getColor(getContext(), R.color.ys_255_255_255);
+        int[] labelColor = {white, white, white, white, white};
+        leftColorContentYAxisRenderer.setLabelColor(labelColor);
         leftColorContentYAxisRenderer.setLabelInContent(true);
         leftColorContentYAxisRenderer.setUseDefaultLabelXOffset(false);
         mChartPrice.setRendererLeftYAxis(leftColorContentYAxisRenderer);
@@ -161,7 +167,7 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
 
         axisRightPrice.setDrawGridLines(false);
         axisRightPrice.setDrawAxisLine(false);
-        axisRightPrice.setTextColor(mAxisColor);
+        axisRightPrice.setTextColor(getResources().getColor(R.color.ys_255_255_255));
         axisRightPrice.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
 
 //        axisRightPrice.setValueFormatter(new IAxisValueFormatter() {
@@ -433,7 +439,8 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
 
     public void setLastClose(double lastClose) {
         mLastClose = lastClose;
-        mChartPrice.setYCenter((float) lastClose);
+//        mChartPrice.setYCenter((float) lastClose);
+        mChartPrice.fitScreen();
         mChartPrice.setOnChartValueSelectedListener(new InfoViewListener());
 
     }
