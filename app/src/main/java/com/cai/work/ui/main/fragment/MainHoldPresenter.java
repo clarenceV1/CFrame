@@ -221,8 +221,8 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
         int userId = userDAO.getData().getMemberId();
         SocketManager.sendSocket("hold|0|" + userId);
 
-        List<ForwardHold> data = SocketManager.getTestData();
-        EventBus.getDefault().post(new ForwardHoldEvent(data));
+//        List<ForwardHold> data = SocketManager.getTestData();
+//        EventBus.getDefault().post(new ForwardHoldEvent(data));
     }
 
     /**
@@ -248,8 +248,8 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
         int userId = userDAO.getData().getMemberId();
         SocketManager.sendSocket("hold|0|" + userId + "|mn");
 
-        List<ForwardHold> data = SocketManager.getTestData();
-        EventBus.getDefault().post(new ForwardHoldEvent(data));
+//        List<ForwardHold> data = SocketManager.getTestData();
+//        EventBus.getDefault().post(new ForwardHoldEvent(data));
     }
 
     /**

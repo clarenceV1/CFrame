@@ -34,6 +34,8 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
     StockBuyPresenter presenter;
     @Autowired(name = "stockCode")
     String stockCode;
+    @Autowired(name = "isRealTrade")
+    boolean isRealTrade;//是否是真实交易
     StockBuyMoneyAdapter buyMoneyAdapter;
     StockBuyMoneyAdapter zyAdapter;
     StockBuyMoneyAdapter bondAdapter;
@@ -153,7 +155,7 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
                 String zs = zsAdapter.getBuyMoney() + "";
                 String redbagIds = getRedBagIds();
                 String zhf = data.getZhf() + "";
-                presenter.commitBuy(code, name, marketType, price, amount, principal, bzj, zy, zs, redbagIds, zhf);
+                presenter.commitBuy(isRealTrade,code, name, marketType, price, amount, principal, bzj, zy, zs, redbagIds, zhf);
             }
         });
         mViewBinding.tvSelectRedBag.setOnClickListener(new View.OnClickListener() {

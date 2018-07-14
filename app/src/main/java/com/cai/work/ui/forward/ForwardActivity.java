@@ -41,6 +41,8 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
 
     @Autowired(name = "forwardJson")
     String forwardJson;
+    @Autowired(name = "isRealTrade")
+    boolean isRealTrade;//是否是真实交易
     @Inject
     ForwardPresenter presenter;
     ForwardAdapter adapter;
@@ -88,6 +90,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                 ARouter.getInstance().build("/AppModule/ForwardDetailActivity")
                         .withInt("type", 1)
                         .withCharSequence("forwardCode", forward.getCode())
+                        .withBoolean("isRealTrade",isRealTrade)
                         .navigation();
             }
         });
@@ -97,6 +100,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                 ARouter.getInstance().build("/AppModule/ForwardDetailActivity")
                         .withInt("type", 2)
                         .withCharSequence("forwardCode", forward.getCode())
+                        .withBoolean("isRealTrade",isRealTrade)
                         .navigation();
             }
         });

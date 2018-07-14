@@ -18,6 +18,7 @@ import com.cai.work.bean.StockHold;
 import com.cai.work.databinding.MainHoldFragmentBinding;
 import com.cai.work.event.BankCardChooseEvent;
 import com.cai.work.event.ForwardHoldEvent;
+import com.cai.work.event.MainHoldEvent;
 import com.cai.work.socket.SocketManager;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
@@ -252,7 +253,7 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
 
     @Override
     public void stockHold(List<StockHold> dataList) {
-        adapter.update(dataList,isRealTrade);
+        adapter.update(dataList, isRealTrade);
     }
 
     @Override
@@ -277,5 +278,13 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
     public void chooseBankCard(ForwardHoldEvent event) {
         List<ForwardHold> data = event.data;
         adapter.update(data, isRealTrade);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void chooseBankCard(MainHoldEvent event) {
+        this.isRealTrade = false;//是否是实盘交易
+        this.isStock = false;//是股票还是期货
+        this.isHolder = false;//是否是持仓 还是结算
+        freshData(isRealTrade, isStock, isHolder);
     }
 }

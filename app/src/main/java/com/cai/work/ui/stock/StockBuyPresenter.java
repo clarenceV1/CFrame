@@ -1,5 +1,6 @@
 package com.cai.work.ui.stock;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.StockBuyRespond;
@@ -59,6 +60,28 @@ public class StockBuyPresenter extends GodBasePresenter<StockBuyView> {
      * @param redbagIds  红包id
      * @param zhf        综合费
      */
+    public void commitBuy(boolean isTrade, String code, String name, String marketType, String price, String amount, String principal,
+                          String bzj, String zy, String zs, String redbagIds, String zhf) {
+        if (isTrade) {
+            commitBuy(code, name, marketType, price, amount, principal, bzj, zy, zs, redbagIds, zhf);
+        } else {
+            commitBuyMoni(code, name, marketType, price, amount, principal, bzj, zy, zs, redbagIds, zhf);
+        }
+    }
+
+    /**
+     * @param code       股票代码
+     * @param name       股票名称
+     * @param marketType 市场类别
+     * @param price      价格
+     * @param amount     数量
+     * @param principal  点买金额
+     * @param bzj        保证金
+     * @param zy         止盈
+     * @param zs         止损
+     * @param redbagIds  红包id
+     * @param zhf        综合费
+     */
     public void commitBuy(String code, String name, String marketType, String price, String amount, String principal,
                           String bzj, String zy, String zs, String redbagIds, String zhf) {
         String token = accountDAO.getToken();
@@ -67,6 +90,45 @@ public class StockBuyPresenter extends GodBasePresenter<StockBuyView> {
                     @Override
                     public void accept(CommonRespond data) {
                         mView.callBack(data.getResponseText());
+                        ARouter.getInstance().build("/AppModule/MainActivity")
+                                .withInt("position", 4)
+                                .withCharSequence("hold", "stock")
+                                .navigation();
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) {
+                        mView.callBack("错误");
+                    }
+                });
+        mCompositeSubscription.add(disposable);
+    }
+
+    /**
+     * @param code       股票代码
+     * @param name       股票名称
+     * @param marketType 市场类别
+     * @param price      价格
+     * @param amount     数量
+     * @param principal  点买金额
+     * @param bzj        保证金
+     * @param zy         止盈
+     * @param zs         止损
+     * @param redbagIds  红包id
+     * @param zhf        综合费
+     */
+    public void commitBuyMoni(String code, String name, String marketType, String price, String amount, String principal,
+                              String bzj, String zy, String zs, String redbagIds, String zhf) {
+        String token = accountDAO.getToken();
+        Disposable disposable = requestStore.commitStockBuyMoni(token, code, name, marketType, price, amount, principal,
+                bzj, zy, zs, redbagIds, zhf, new Consumer<CommonRespond>() {
+                    @Override
+                    public void accept(CommonRespond data) {
+                        mView.callBack(data.getResponseText());
+                        ARouter.getInstance().build("/AppModule/MainActivity")
+                                .withInt("position", 4)
+                                .withCharSequence("hold", "stock")
+                                .navigation();
                     }
                 }, new Consumer<Throwable>() {
                     @Override

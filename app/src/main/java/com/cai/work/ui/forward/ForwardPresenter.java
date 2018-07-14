@@ -5,17 +5,14 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
-import com.cai.lib.logger.Logger;
 import com.cai.work.bean.Forward;
 import com.cai.work.bean.ForwardDetail;
-import com.cai.work.bean.ForwardHold;
 import com.cai.work.bean.ForwardRecord;
 import com.cai.work.bean.Record;
 import com.cai.work.bean.respond.ForwardContractsRespond;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
 import com.cai.work.event.ForwardDetailEvent;
-import com.cai.work.event.ForwardHoldEvent;
 import com.cai.work.socket.SocketManager;
 import com.example.clarence.utillibrary.StringUtils;
 import com.koushikdutta.async.http.WebSocket;
@@ -23,17 +20,11 @@ import com.koushikdutta.async.http.WebSocket;
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 

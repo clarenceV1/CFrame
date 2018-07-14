@@ -273,7 +273,9 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     HomeStockData stockData = data.getStock();
                     if (stockData != null) {
                         if (presenter.isLogin()) {
-                            ARouter.getInstance().build("/AppModule/StockActivity").navigation();
+                            ARouter.getInstance().build("/AppModule/StockActivity")
+                                    .withBoolean("isRealTrade",true)
+                                    .navigation();
                         } else {
                             showDialog();
                         }
@@ -290,7 +292,10 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         HomeNphyData nphyData = nphyList.get(0);
                         Forward forward = new Forward(nphyData.getContractName(), nphyData.getContractCode());
                         if (presenter.isLogin()) {
-                            ARouter.getInstance().build("/AppModule/ForwardActivity").withCharSequence("forwardJson", JSON.toJSONString(forward)).navigation();
+                            ARouter.getInstance().build("/AppModule/ForwardActivity")
+                                    .withCharSequence("forwardJson", JSON.toJSONString(forward))
+                                    .withBoolean("isRealTrade",true)
+                                    .navigation();
                         } else {
                             showDialog();
                         }
@@ -305,7 +310,9 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     HomeStockData stockData = data.getStock();
                     if (stockData != null) {
                         if (presenter.isLogin()) {
-                            ARouter.getInstance().build("/AppModule/StockActivity").navigation();
+                            ARouter.getInstance().build("/AppModule/StockActivity")
+                                    .withBoolean("isRealTrade",false)
+                                    .navigation();
                         } else {
                             showDialog();
                         }
@@ -321,7 +328,10 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     if (nphyList.size() > 0) {
                         HomeNphyData nphyData = nphyList.get(0);
                         Forward forward = new Forward(nphyData.getContractName(), nphyData.getContractCode());
-                        ARouter.getInstance().build("/AppModule/ForwardActivity").withCharSequence("forwardJson", JSON.toJSONString(forward)).navigation();
+                        ARouter.getInstance().build("/AppModule/ForwardActivity")
+                                .withCharSequence("forwardJson", JSON.toJSONString(forward))
+                                .withBoolean("isRealTrade",false)
+                                .navigation();
                     }
                 }
             }

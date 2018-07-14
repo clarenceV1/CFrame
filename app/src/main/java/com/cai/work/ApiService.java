@@ -200,6 +200,12 @@ public interface ApiService {
                                            @Field("principal") String principal, @Field("bzj") String bzj, @Field("zy") String zy,
                                            @Field("zs") String zs, @Field("redbagIds") String redbagIds, @Field("zhf") String zhf);
 
+    @POST("/app/mnstockTrade/checkBuy")
+    @FormUrlEncoded
+    Flowable<CommonRespond> commitStockBuyMoni(@Field("token") String token, @Field("code") String code, @Field("name") String name,
+                                           @Field("marketType") String marketType, @Field("price") String price, @Field("amount") String amount,
+                                           @Field("principal") String principal, @Field("bzj") String bzj, @Field("zy") String zy,
+                                           @Field("zs") String zs, @Field("redbagIds") String redbagIds, @Field("zhf") String zhf);
     @GET("/app/futures/futures_info")
     Flowable<ForwardBuyRespond> requestForwardBuy(@Query("code") String code, @Query("token") String token);
 
@@ -229,8 +235,13 @@ public interface ApiService {
                                            @Field("bond") String bond, @Field("zy") String zy, @Field("zs") String zs,
                                            @Field("redbagIds") String redbagIds, @Field("openWay") String openWay);
 
-    @POST("/app/mnstockTrade/checkSell")
+    @POST("/app/stockTrade/checkSell")
     @FormUrlEncoded
     Flowable<CommonRespond> checkSell(@Field("token") String token, @Field("id") String id, @Field("sellWTPrice") String sellWTPrice,@Field("stockCode") String stockCode);
 
+    @POST("/app/futuresVirtual/open")
+    @FormUrlEncoded
+    Flowable<CommonRespond> requestKaiCangMoni(@Field("token") String token, @Field("code") String code, @Field("amount") String amount,
+                                           @Field("bond") String bond, @Field("zy") String zy, @Field("zs") String zs,
+                                           @Field("redbagIds") String redbagIds, @Field("openWay") String openWay);
 }

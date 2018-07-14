@@ -375,6 +375,16 @@ public class RequestStore {
         return disposable;
     }
 
+
+    public Disposable commitStockBuyMoni(String token, String code, String name, String marketType, String price, String amount, String principal,
+                                     String bzj, String zy, String zs, String redbagIds, String zhf, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).commitStockBuyMoni(token, code, name, marketType, price, amount, principal, bzj, zy, zs
+                , redbagIds, zhf)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
     public Disposable requestForwardBuy(String token, String code, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).requestForwardBuy(code, token)
                 .subscribeOn(Schedulers.newThread())
@@ -433,6 +443,14 @@ public class RequestStore {
 
     public Disposable checkSell(String token, String id, String sellWTPrice, String stockCode, Consumer onNext, Consumer onError) {
         Disposable disposable = iNet.request().create(ApiService.class).checkSell(token, id, sellWTPrice, stockCode)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable requestKaiCangMoni(String token, String code, String amount, String bond, String zy, String zs, String redbagIds, String openWay, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestKaiCangMoni(token, code, amount, bond, zy, zs, redbagIds, openWay)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);

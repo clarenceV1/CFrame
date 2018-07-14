@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.PopupWindow;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
@@ -44,6 +45,8 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     @Inject
     StockPresenter presenter;
+    @Autowired(name = "isRealTrade")
+    boolean isRealTrade;//是否是真实交易
     @Inject
     ILoadImage imageLoader;
     StockHQ stockHQ;
@@ -138,7 +141,10 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
             @Override
             public void onClick(View v) {
                 if (!TextUtils.isEmpty(stockCode)) {
-                    ARouter.getInstance().build("/AppModule/StockBuyActivity").withCharSequence("stockCode", stockCode).navigation();
+                    ARouter.getInstance().build("/AppModule/StockBuyActivity")
+                            .withCharSequence("stockCode", stockCode)
+                            .withBoolean("isRealTrade",isRealTrade)
+                            .navigation();
                 }
             }
         });

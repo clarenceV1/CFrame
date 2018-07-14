@@ -34,6 +34,8 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
     int type = 1;//1涨，2跌
     @Autowired(name = "forwardCode")
     String forwardCode;
+    @Autowired(name = "isRealTrade")
+    boolean isRealTrade;//是否是真实交易
     @Inject
     ForwardBuyPresenter presenter;
     ForwardBuy data;
@@ -43,6 +45,7 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
     ForwardBuyMoneyAdapter zsAdapter;
     List<StockBuyRedBag> selectRedBags;
     float redbagTotal = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +145,7 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
                 String zs = zsAdapter.getBuyMoney() + "";
                 String redbagIds = getRedBagIds();
                 String openWay = type + "";
-                presenter.requestKaiCang(code, amount, bond, zy, zs, redbagIds, openWay);
+                presenter.requestKaiCang(isRealTrade, code, amount, bond, zy, zs, redbagIds, openWay);
             }
         });
         presenter.requestForwardBuy(forwardCode);

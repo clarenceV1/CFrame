@@ -51,7 +51,10 @@ public class MainActivity extends AppBaseActivity<MainBinding> implements MainVi
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        clickTab(position);
+        if (intent != null && intent.getExtras() != null) {
+            position = intent.getExtras().getInt("position", 1);
+            clickTab(position);
+        }
     }
 
     @Override
