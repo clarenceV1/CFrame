@@ -3,7 +3,6 @@ package com.cai.work.kline;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
@@ -14,24 +13,18 @@ import com.example.clarence.utillibrary.DoubleUtil;
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.CombinedData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.Transformer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * kline
@@ -62,25 +55,26 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
     private double mLastPrice;
 
     /**
-     * yesterday close price
-     */
-    private double mLastClose;
-
-    /**
      * the digits of the symbol
      */
     private int mDigits = 2;
 
     public TimeLineView(Context context) {
-        this(context, null);
+        super(context);
+        initView(context);
     }
 
     public TimeLineView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        initView(context);
     }
 
     public TimeLineView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initView(context);
+    }
+
+    private void initView(Context context) {
         mContext = context;
         LayoutInflater.from(context).inflate(R.layout.view_timeline, this);
         mChartPrice = (CustomCombinedChart) findViewById(R.id.price_chart);
@@ -109,7 +103,7 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         lineChartLegend.setEnabled(false);
 
         XAxis xAxisPrice = mChartPrice.getXAxis();
-        xAxisPrice.enableGridDashedLine(10,10,0);
+        xAxisPrice.enableGridDashedLine(10, 10, 0);
         xAxisPrice.setDrawLabels(true);
         xAxisPrice.setLabelCount(6, true);
         xAxisPrice.setDrawAxisLine(false);
@@ -136,7 +130,7 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
 
         YAxis axisLeftPrice = mChartPrice.getAxisLeft();
         axisLeftPrice.setLabelCount(2, true);
-        axisLeftPrice.enableGridDashedLine(10,10,0);
+        axisLeftPrice.enableGridDashedLine(10, 10, 0);
         axisLeftPrice.setDrawLabels(true);
         axisLeftPrice.setDrawGridLines(false);
         axisLeftPrice.setDrawAxisLine(false);
@@ -211,6 +205,9 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         mData.addAll(DataUtils.calculateHisData(hisDatas));
         mChartPrice.setRealCount(hisDatas.size());
 
+        mChartPrice.fitScreen();
+        mChartPrice.setOnChartValueSelectedListener(new InfoViewListener());
+
         ArrayList<Entry> priceEntries = new ArrayList<>(INIT_COUNT);
         ArrayList<Entry> paddingEntries = new ArrayList<>(INIT_COUNT);
 
@@ -235,80 +232,12 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
 
         mChartPrice.notifyDataSetChanged();
 //        mChartPrice.moveViewToX(combinedData.getEntryCount());
-        moveToLast(mChartPrice,MAX_COUNT);
-        initChartVolumeData();
+        moveToLast(mChartPrice, MAX_COUNT);
 
         mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 0.5f);
         mChartPrice.zoom(MAX_COUNT * 1f / INIT_COUNT, 0, 0, 0);
 
     }
-
-    public void initDatas(List<HisData>... hisDatas) {
-        // 设置标签数量，并让标签居中显示
-
-        mData.clear();
-        ArrayList<ILineDataSet> sets = new ArrayList<>();
-        ArrayList<IBarDataSet> barSets = new ArrayList<>();
-
-        for (List<HisData> hisData : hisDatas) {
-            hisData = DataUtils.calculateHisData(hisData);
-            ArrayList<Entry> priceEntries = new ArrayList<>(INIT_COUNT);
-            ArrayList<BarEntry> barPaddingEntries = new ArrayList<>(INIT_COUNT);
-            ArrayList<BarEntry> barEntries = new ArrayList<>(INIT_COUNT);
-
-            for (int i = 0; i < hisData.size(); i++) {
-                HisData t = hisData.get(i);
-                priceEntries.add(new Entry(i + mData.size(), (float) t.getClose()));
-                barEntries.add(new BarEntry(i + mData.size(), (float) t.getVol(), t));
-            }
-            if (!hisData.isEmpty() && hisData.size() < INIT_COUNT / hisDatas.length) {
-                for (int i = hisData.size(); i < INIT_COUNT / hisDatas.length; i++) {
-                    barPaddingEntries.add(new BarEntry(i, (float) hisData.get(hisData.size() - 1).getClose()));
-                }
-            }
-            sets.add(setLine(NORMAL_LINE_5DAY, priceEntries));
-            barSets.add(setBar(barEntries, NORMAL_LINE));
-            barSets.add(setBar(barPaddingEntries, INVISIABLE_LINE));
-            barSets.add(setBar(barPaddingEntries, INVISIABLE_LINE));
-            mData.addAll(hisData);
-            mChartPrice.setRealCount(mData.size());
-        }
-
-        LineData lineData = new LineData(sets);
-
-        CombinedData combinedData = new CombinedData();
-        combinedData.setData(lineData);
-        mChartPrice.setData(combinedData);
-        mChartPrice.setVisibleXRange(MAX_COUNT, MIN_COUNT);
-        mChartPrice.notifyDataSetChanged();
-        moveToLast(mChartPrice,MAX_COUNT);
-//        mChartPrice.moveViewToX(combinedData.getEntryCount());
-//        moveToLast(mChartVolume);
-
-
-        BarData barData = new BarData(barSets);
-        barData.setBarWidth(0.5f);
-        CombinedData combinedData2 = new CombinedData();
-        combinedData2.setData(barData);
-
-        mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 100f);
-
-        mChartPrice.zoom(0.5f, 0, 0, 0);
-
-    }
-
-
-    private BarDataSet setBar(ArrayList<BarEntry> barEntries, int type) {
-        BarDataSet barDataSet = new BarDataSet(barEntries, "vol");
-        barDataSet.setHighLightAlpha(120);
-        barDataSet.setHighLightColor(getResources().getColor(R.color.highlight_color));
-        barDataSet.setDrawValues(false);
-        barDataSet.setVisible(type != INVISIABLE_LINE);
-        barDataSet.setHighlightEnabled(type != INVISIABLE_LINE);
-        barDataSet.setColors(getResources().getColor(R.color.increasing_color), getResources().getColor(R.color.decreasing_color));
-        return barDataSet;
-    }
-
 
     @android.support.annotation.NonNull
     private LineDataSet setLine(int type, ArrayList<Entry> lineEntries) {
@@ -339,29 +268,6 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         return lineDataSetMa;
     }
 
-
-    private void initChartVolumeData() {
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
-        ArrayList<BarEntry> paddingEntries = new ArrayList<>();
-        for (int i = 0; i < mData.size(); i++) {
-            HisData t = mData.get(i);
-            barEntries.add(new BarEntry(i, (float) t.getVol(), t));
-        }
-        int maxCount = MAX_COUNT;
-        if (!mData.isEmpty() && mData.size() < maxCount) {
-            for (int i = mData.size(); i < maxCount; i++) {
-                paddingEntries.add(new BarEntry(i, 0));
-            }
-        }
-
-        BarData barData = new BarData(setBar(barEntries, NORMAL_LINE), setBar(paddingEntries, INVISIABLE_LINE));
-        barData.setBarWidth(0.75f);
-        CombinedData combinedData = new CombinedData();
-        combinedData.setData(barData);
-
-    }
-
-
     /**
      * according to the price to refresh the last data of the chart
      */
@@ -384,36 +290,6 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         mChartPrice.invalidate();
     }
 
-
-    public void addData(HisData hisData) {
-        hisData = DataUtils.calculateHisData(hisData, mData);
-        CombinedData combinedData = mChartPrice.getData();
-        LineData priceData = combinedData.getLineData();
-        ILineDataSet priceSet = priceData.getDataSetByIndex(0);
-        ILineDataSet aveSet = priceData.getDataSetByIndex(1);
-        if (mData.contains(hisData)) {
-            int index = mData.indexOf(hisData);
-            priceSet.removeEntry(index);
-            aveSet.removeEntry(index);
-            mData.remove(index);
-        }
-
-        mData.add(hisData);
-        mChartPrice.setRealCount(mData.size());
-
-        priceSet.addEntry(new Entry(priceSet.getEntryCount(), (float) hisData.getClose()));
-        aveSet.addEntry(new Entry(aveSet.getEntryCount(), (float) hisData.getAvePrice()));
-
-        mChartPrice.setVisibleXRange(MAX_COUNT, MIN_COUNT);
-
-        mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 1.5f);
-
-        mChartPrice.notifyDataSetChanged();
-        mChartPrice.invalidate();
-
-    }
-
-
     /**
      * align two chart
      */
@@ -422,30 +298,6 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         mChartPrice.setViewPortOffsets(0, 0, 0, chartHeight);
     }
 
-
-    /**
-     * add limit line to chart
-     */
-    public void setLimitLine(double lastClose) {
-        LimitLine limitLine = new LimitLine((float) lastClose);
-        limitLine.enableDashedLine(5, 10, 0);
-        limitLine.setLineColor(getResources().getColor(R.color.limit_color));
-        mChartPrice.getAxisLeft().addLimitLine(limitLine);
-    }
-
-    public void setLimitLine() {
-        setLimitLine(mLastClose);
-    }
-
-    public void setLastClose(double lastClose) {
-        mLastClose = lastClose;
-//        mChartPrice.setYCenter((float) lastClose);
-        mChartPrice.fitScreen();
-        mChartPrice.setOnChartValueSelectedListener(new InfoViewListener());
-
-    }
-
-
     public HisData getLastData() {
         if (mData != null && !mData.isEmpty()) {
             return mData.get(mData.size() - 1);
@@ -453,13 +305,8 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         return null;
     }
 
-
     @Override
     public void onAxisChange(BarLineChartBase chart) {
-        float lowestVisibleX = chart.getLowestVisibleX();
-        if (lowestVisibleX <= chart.getXAxis().getAxisMinimum()) return;
-        int maxX = (int) chart.getHighestVisibleX();
-        int x = Math.min(maxX, mData.size() - 1);
-        HisData hisData = mData.get(x < 0 ? 0 : x);
+
     }
 }

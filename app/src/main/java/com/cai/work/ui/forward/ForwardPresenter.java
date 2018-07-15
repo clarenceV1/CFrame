@@ -22,9 +22,12 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -34,6 +37,7 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
     RequestStore requestStore;
     @Inject
     AccountDAO accountDAO;
+    Disposable interval;
 
     @Inject
     public ForwardPresenter() {
@@ -61,6 +65,7 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
                         }
                     }
                 });
+                SocketManager.connect();
                 startTimes(forwardRecord);
             }
         }, new Consumer<Throwable>() {
@@ -73,17 +78,19 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
     }
 
     private void startTimes(final ForwardRecord forwardRecord) {
-        SocketManager.connect();
-        startSocket(forwardRecord);
-//        Disposable disposable = Observable.interval(0,3, TimeUnit.SECONDS)
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Consumer<Long>() {
-//                    @Override
-//                    public void accept(Long aLong) throws Exception {
-//
-//                    }
-//                });
-//        mCompositeSubscription.add(disposable);
+        if (interval != null) {
+            interval.dispose();
+            mCompositeSubscription.remove(interval);
+        }
+        interval = Observable.interval(0, 3, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        startSocket(forwardRecord);
+                    }
+                });
+        mCompositeSubscription.add(interval);
     }
 
     private void startSocket(ForwardRecord forwardRecord) {

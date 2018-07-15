@@ -178,13 +178,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="350dp">
 
+                    <RelativeLayout
+                        android:id="@+id/rlContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
                     <com.cai.work.kline.KLineView
                         android:id="@+id/kline"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                    <com.cai.work.kline.TimeLineView
-                        android:id="@+id/fenshiView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 

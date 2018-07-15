@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.RelativeLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -21,11 +22,11 @@ import com.cai.work.bean.Record;
 import com.cai.work.databinding.ForwardBinding;
 import com.cai.work.event.ForwardDetailEvent;
 import com.cai.work.kline.HisData;
+import com.cai.work.kline.TimeLineView;
 import com.cai.work.socket.SocketManager;
 import com.example.clarence.utillibrary.DateUtils;
 import com.example.clarence.utillibrary.DimensUtils;
 import com.example.clarence.utillibrary.ToastUtils;
-import com.github.mikephil.charting.data.Entry;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -90,7 +91,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                 ARouter.getInstance().build("/AppModule/ForwardDetailActivity")
                         .withInt("type", 1)
                         .withCharSequence("forwardCode", forward.getCode())
-                        .withBoolean("isRealTrade",isRealTrade)
+                        .withBoolean("isRealTrade", isRealTrade)
                         .navigation();
             }
         });
@@ -100,7 +101,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                 ARouter.getInstance().build("/AppModule/ForwardDetailActivity")
                         .withInt("type", 2)
                         .withCharSequence("forwardCode", forward.getCode())
-                        .withBoolean("isRealTrade",isRealTrade)
+                        .withBoolean("isRealTrade", isRealTrade)
                         .navigation();
             }
         });
@@ -119,10 +120,6 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
         switchImage(1);
         mViewBinding.kline.setDateFormat("yyyy-MM-dd");
         mViewBinding.kline.setChartVolumeHide();
-
-//        mViewBinding.fenshiView.setDateFormat("HH:mm");
-//        int count = 100;
-//        mViewBinding.fenshiView.setCount(count, count, count);
     }
 
     private void switchImage(int i) {
@@ -130,12 +127,12 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
             mViewBinding.tvFenShi.setTextColor(getResources().getColor(R.color.ys_219_183_108));
             mViewBinding.tvKLine.setTextColor(getResources().getColor(R.color.ys_255_255_255));
             mViewBinding.kline.setVisibility(View.GONE);
-            mViewBinding.fenshiView.setVisibility(View.VISIBLE);
+            mViewBinding.rlContainer.setVisibility(View.VISIBLE);
         } else {
             mViewBinding.tvFenShi.setTextColor(getResources().getColor(R.color.ys_255_255_255));
             mViewBinding.tvKLine.setTextColor(getResources().getColor(R.color.ys_219_183_108));
             mViewBinding.kline.setVisibility(View.VISIBLE);
-            mViewBinding.fenshiView.setVisibility(View.GONE);
+            mViewBinding.rlContainer.setVisibility(View.GONE);
         }
     }
 
@@ -305,16 +302,16 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                     long date = DateUtils.date2TimeStamp(data[i][0], "yyyyMMdd");
                     hisData.setDate(date);
                     if (data[i].length > 1) {
-                        hisData.setOpen(Float.valueOf(data[i][1]));
+                        hisData.setOpen(Double.valueOf(data[i][1]));
                     }
                     if (data[i].length > 2) {
-                        hisData.setClose(Float.valueOf(data[i][2]));
+                        hisData.setClose(Double.valueOf(data[i][2]));
                     }
                     if (data[i].length > 3) {
-                        hisData.setLow(Float.valueOf(data[i][3]));
+                        hisData.setLow(Double.valueOf(data[i][3]));
                     }
                     if (data[i].length > 1) {
-                        hisData.setHigh(Float.valueOf(data[i][1]));
+                        hisData.setHigh(Double.valueOf(data[i][1]));
                     }
 
                     if (data[i].length > 6) {
@@ -327,20 +324,26 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                 mViewBinding.kline.initData(hisDataList);
                 mViewBinding.kline.setLimitLine();
             } else {
+                if (data.length < 5) {
+                    return;
+                }
                 int size = data.length;
                 for (int i = 0; i < size; i++) {
                     HisData hisData = new HisData();
                     long date = DateUtils.date2TimeStamp(data[i][0], "HH:mm");
                     hisData.setDate(date);
                     if (data[i].length > 1) {
-                        hisData.setClose(Long.valueOf(data[i][1]));
+                        hisData.setClose(Double.valueOf(data[i][1]));
                     }
                     hisDataList.add(hisData);
                 }
-                mViewBinding.fenshiView.setDateFormat("HH:mm");
-                mViewBinding.fenshiView.setCount(size/2, size + 30, size/10);
-                mViewBinding.fenshiView.setLastClose(hisDataList.get(0).getClose());
-                mViewBinding.fenshiView.initData(hisDataList);
+                TimeLineView fenshiView = new TimeLineView(this);
+                fenshiView.setDateFormat("HH:mm");
+                fenshiView.setCount(size / 2, size + 30, size / 10);
+                fenshiView.initData(hisDataList);
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+                mViewBinding.rlContainer.removeAllViews();
+                mViewBinding.rlContainer.addView(fenshiView, layoutParams);
             }
         }
     }
