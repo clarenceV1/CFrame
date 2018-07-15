@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -211,10 +212,11 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
             public void onStringAvailable(String json) {
                 //  Log.i("requestRealForwardHold", "实盘 ip:" + SocketManager.mIp + "====>" + json);
                 json = StringUtils.replaceBlank(json);
+                List<ForwardHold> data = new ArrayList<>();
                 if (!TextUtils.isEmpty(json) && !"[]".equals(json)) {
-                    List<ForwardHold> data = JSON.parseArray(json, ForwardHold.class);
-                    EventBus.getDefault().post(new ForwardHoldEvent(data));
+                     data = JSON.parseArray(json, ForwardHold.class);
                 }
+                EventBus.getDefault().post(new ForwardHoldEvent(data));
             }
         });
         SocketManager.connect();
@@ -238,10 +240,11 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
             public void onStringAvailable(String json) {
                 // Log.i("requestRealForwardHold", " 模拟 ip:" + SocketManager.mIp + "====>" + json);
                 json = StringUtils.replaceBlank(json);
+                List<ForwardHold> data = new ArrayList<>();
                 if (!TextUtils.isEmpty(json) && !"[]".equals(json)) {
-                    List<ForwardHold> data = JSON.parseArray(json, ForwardHold.class);
-                    EventBus.getDefault().post(new ForwardHoldEvent(data));
+                    data = JSON.parseArray(json, ForwardHold.class);
                 }
+                EventBus.getDefault().post(new ForwardHoldEvent(data));
             }
         });
         SocketManager.connect();
