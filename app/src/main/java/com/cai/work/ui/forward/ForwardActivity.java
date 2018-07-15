@@ -53,8 +53,8 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     ForwardDetail forwardDetailt;
     boolean isStartSocket;
 
-    public final String TYPE_RESOLUTION_DAY = "day";
-    public final String TYPE_RESOLUTION_MINUTE = "minute";
+    public static final String TYPE_RESOLUTION_DAY = "day";
+    public static final String TYPE_RESOLUTION_MINUTE = "minute";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -195,11 +195,9 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     private void requestData() {
         if (forward != null) {
             presenter.requestRecord(forward.getCode());
-            presenter.requestMinData(forward.getCode(), TYPE_RESOLUTION_MINUTE);
-            presenter.requestMinData(forward.getCode(), TYPE_RESOLUTION_DAY);
+            presenter.startTimes(forward.getCode());
         }
         presenter.requestContracts();
-
     }
 
     private void initHead() {

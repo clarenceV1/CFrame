@@ -66,7 +66,7 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
                     }
                 });
                 SocketManager.connect();
-                startTimes(forwardRecord);
+                startSocket(forwardRecord);
             }
         }, new Consumer<Throwable>() {
             @Override
@@ -75,22 +75,6 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
             }
         });
         mCompositeSubscription.add(disposable);
-    }
-
-    private void startTimes(final ForwardRecord forwardRecord) {
-        if (interval != null) {
-            interval.dispose();
-            mCompositeSubscription.remove(interval);
-        }
-        interval = Observable.interval(0, 3, TimeUnit.SECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Long>() {
-                    @Override
-                    public void accept(Long aLong) throws Exception {
-                        startSocket(forwardRecord);
-                    }
-                });
-        mCompositeSubscription.add(interval);
     }
 
     private void startSocket(ForwardRecord forwardRecord) {
@@ -155,5 +139,21 @@ public class ForwardPresenter extends GodBasePresenter<ForwardView> {
             }
         });
         mCompositeSubscription.add(disposable);
+    }
+    public void startTimes(final String code) {
+        if (interval != null) {
+            interval.dispose();
+            mCompositeSubscription.remove(interval);
+        }
+        interval = Observable.interval(0, 30, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        requestMinData(code, ForwardActivity.TYPE_RESOLUTION_DAY);
+                        requestMinData(code, ForwardActivity.TYPE_RESOLUTION_MINUTE);
+                    }
+                });
+        mCompositeSubscription.add(interval);
     }
 }
