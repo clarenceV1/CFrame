@@ -339,7 +339,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                 }
                 TimeLineView fenshiView = new TimeLineView(this);
                 fenshiView.setDateFormat("HH:mm");
-                fenshiView.setCount(size / 2, size + 30, size / 10);
+                fenshiView.setCount(size, size + 100, size / 5);
                 fenshiView.initData(hisDataList);
                 RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
                 mViewBinding.rlContainer.removeAllViews();
