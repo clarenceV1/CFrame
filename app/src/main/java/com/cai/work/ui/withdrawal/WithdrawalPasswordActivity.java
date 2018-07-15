@@ -65,13 +65,13 @@ public class WithdrawalPasswordActivity extends AppBaseActivity<WithdrawalPasswo
                     return;
                 }
 
-                String oldPassword = mViewBinding.editOldPassword.getText().toString();
-                if (TextUtils.isEmpty(oldPassword)) {
-                    ToastUtils.showShort(getString(R.string.register_old_password_hint));
-                    mViewBinding.editOldPassword.requestFocus();
-                    KeyBoardUtils.forceShow(mViewBinding.editOldPassword);
-                    return;
-                }
+                String oldPassword = "";//mViewBinding.editOldPassword.getText().toString();
+//                if (TextUtils.isEmpty(oldPassword)) {
+//                    ToastUtils.showShort(getString(R.string.register_old_password_hint));
+//                    mViewBinding.editOldPassword.requestFocus();
+//                    KeyBoardUtils.forceShow(mViewBinding.editOldPassword);
+//                    return;
+//                }
 
                 String newPassword = mViewBinding.editNewPassword.getText().toString();
                 if (TextUtils.isEmpty(newPassword)) {
@@ -87,11 +87,11 @@ public class WithdrawalPasswordActivity extends AppBaseActivity<WithdrawalPasswo
                     KeyBoardUtils.forceShow(mViewBinding.editCommitNewPassword);
                     return;
                 }
-                if(!newPassword.equals(confirmNewPassword)){
+                if (!newPassword.equals(confirmNewPassword)) {
                     ToastUtils.showShort(getString(R.string.register_2_password_toast));
                     return;
                 }
-                presenter.resetWithdrawalPassword(sms,oldPassword,newPassword);
+                presenter.resetWithdrawalPassword(sms, oldPassword, newPassword);
             }
         });
         presenter.getMobile();
