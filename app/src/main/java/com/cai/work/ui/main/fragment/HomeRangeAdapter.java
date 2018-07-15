@@ -22,6 +22,11 @@ public class HomeRangeAdapter extends GodBaseAdapter {
         super(context, data);
     }
 
+    public void update(List data) {
+        this.dataList = data;
+        notifyDataSetChanged();
+    }
+
     @Override
     public void initItemView(View convertView, CBaseData itemData, int position) {
         if (itemData instanceof HomeRangeData) {

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +31,14 @@ import com.cai.work.bean.home.HomeNphyData;
 import com.cai.work.bean.home.HomeRangeData;
 import com.cai.work.bean.home.HomeStockData;
 import com.cai.work.bean.home.HomeWphyData;
+import com.cai.work.event.ForwardDetailEvent;
+import com.cai.work.event.ListViewScrollEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -50,6 +57,9 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     FragmentManager fragmentManager;
     int selectedTabType = 1;
     MainHomePresenter presenter;
+    //    ListViewEx rangeListView;
+    HomeRangeAdapter mRangeAdapter;
+    List<HomeRangeData> mRangeData;
 
     public MainHomeAdapter(Context context, ILoadImage imageLoader, HomeItemData data, FragmentManager fragmentManager, MainHomePresenter presenter) {
         this.data = data;
@@ -57,6 +67,8 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.imageLoader = imageLoader;
         this.fragmentManager = fragmentManager;
         this.presenter = presenter;
+        presenter.startTimes();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -136,6 +148,8 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private void onBindRangeView(RangeViewHolder rangeViewHolder, final List<HomeRangeData> rangeData) {
         HomeRangeAdapter rangeAdapter = new HomeRangeAdapter(context, rangeData);
         rangeViewHolder.listViewEx.setAdapter(rangeAdapter);
+        mRangeAdapter = rangeAdapter;
+        mRangeData = rangeData;
         rangeViewHolder.listViewEx.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -150,6 +164,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         .navigation();
             }
         });
+//        rangeListView = rangeViewHolder.listViewEx;
     }
 
     private void onBindForwardView(final ForwardViewHolder forwardViewHolder, final List<HomeNphyData> nphyData, final List<HomeWphyData> wphyData) {
@@ -274,7 +289,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     if (stockData != null) {
                         if (presenter.isLogin()) {
                             ARouter.getInstance().build("/AppModule/StockActivity")
-                                    .withBoolean("isRealTrade",true)
+                                    .withBoolean("isRealTrade", true)
                                     .navigation();
                         } else {
                             showDialog();
@@ -294,7 +309,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         if (presenter.isLogin()) {
                             ARouter.getInstance().build("/AppModule/ForwardActivity")
                                     .withCharSequence("forwardJson", JSON.toJSONString(forward))
-                                    .withBoolean("isRealTrade",true)
+                                    .withBoolean("isRealTrade", true)
                                     .navigation();
                         } else {
                             showDialog();
@@ -311,7 +326,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     if (stockData != null) {
                         if (presenter.isLogin()) {
                             ARouter.getInstance().build("/AppModule/StockActivity")
-                                    .withBoolean("isRealTrade",false)
+                                    .withBoolean("isRealTrade", false)
                                     .navigation();
                         } else {
                             showDialog();
@@ -330,7 +345,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         Forward forward = new Forward(nphyData.getContractName(), nphyData.getContractCode());
                         ARouter.getInstance().build("/AppModule/ForwardActivity")
                                 .withCharSequence("forwardJson", JSON.toJSONString(forward))
-                                .withBoolean("isRealTrade",false)
+                                .withBoolean("isRealTrade", false)
                                 .navigation();
                     }
                 }
@@ -466,6 +481,22 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (holder instanceof NoticeViewHolder) {
             NoticeViewHolder noticeViewHolder = (NoticeViewHolder) holder;
             noticeViewHolder.scrollTextView.animationStop();
+        }
+    }
+
+    int position = 0;
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void listViewScrollEvent(ListViewScrollEvent event) {
+        Log.d("listViewScrollEvent", "刷新");
+        if (mRangeData != null && mRangeData.size() > 5 && mRangeAdapter != null) {
+            position++;
+            List newData = new ArrayList();
+            int size = mRangeData.size();
+            for (int i = position; i < position + 5; i++) {
+                newData.add(mRangeData.get(i % size));
+            }
+            mRangeAdapter.update(newData);
         }
     }
 }

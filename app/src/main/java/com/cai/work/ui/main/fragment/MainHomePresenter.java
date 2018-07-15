@@ -13,10 +13,15 @@ import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.UserDAO;
 import com.cai.work.dao.HomeDataSqlDAO;
+import com.cai.work.event.ListViewScrollEvent;
+import com.cai.work.ui.forward.ForwardActivity;
 import com.example.clarence.utillibrary.StringUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -35,6 +40,7 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
     HomeDataSqlDAO homeDataSqlDAO;
     @Inject
     UserDAO userDAO;
+    Disposable interval;
 
     @Inject
     public MainHomePresenter() {
@@ -122,6 +128,22 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void startTimes() {
+        if (interval != null) {
+            interval.dispose();
+            mCompositeSubscription.remove(interval);
+        }
+        interval = Observable.interval(0, 1, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        EventBus.getDefault().post(new ListViewScrollEvent());
+                    }
+                });
+        mCompositeSubscription.add(interval);
     }
 
 }
