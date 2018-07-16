@@ -63,9 +63,9 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
             @Override
             public void accept(Throwable throwable) {
                 if (NetWorkUtil.isNetConnected(context)) {
-                    Logger.d("请求login数据失败！！！---有网络");
+                    mView.toast(1,throwable.getMessage());
                 } else {
-                    Logger.d("请求login数据失败！！！---没网络");
+                    mView.toast(1,"抱歉！登陆失败，请检查您的网络");
                 }
             }
         });

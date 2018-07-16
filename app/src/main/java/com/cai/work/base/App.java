@@ -24,7 +24,7 @@ import io.objectbox.BoxStore;
 public class App extends GodBaseApplication {
 
     public static boolean isDebug = true;
-    public static String BASEURL = "http://www.hellceshi.com";
+    public static String BASEURL = "http://api.hellceshi.com";
 
     public static BoxStore boxStore;
 

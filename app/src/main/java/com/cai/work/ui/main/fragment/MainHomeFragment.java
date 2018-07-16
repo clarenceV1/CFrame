@@ -17,6 +17,7 @@ import com.example.clarence.imageloaderlibrary.GlideCircleTransform;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
 
@@ -50,7 +51,6 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
     @Override
     public void initView(View view) {
         initRecycleView();
-        presenter.requestData();
         mViewBinding.llUserInfo.setClickable(false);
         mViewBinding.llUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +58,13 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
                 ARouter.getInstance().build("/AppModule/LoginActivity").navigation();
             }
         });
+        mViewBinding.reload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.requestData();
+            }
+        });
+        presenter.requestData();
     }
 
     @Override
@@ -74,13 +81,18 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
 
     @Override
     public void reFreshView(HomeItemData data) {
-        adapter = new MainHomeAdapter(mContext, imageLoader, data, getChildFragmentManager(),presenter);
-        mViewBinding.mRecyclerView.setAdapter(adapter);
+        if(data.getStock() != null){
+            mViewBinding.loadView.setVisibility(View.GONE);
+            adapter = new MainHomeAdapter(mContext, imageLoader, data, getChildFragmentManager(),presenter);
+            mViewBinding.mRecyclerView.setAdapter(adapter);
+        }else{
+            mViewBinding.loadView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void requestError(String data) {
-        Logger.d(data);
+        ToastUtils.showLong(data);
     }
 
     @Override

@@ -28,7 +28,7 @@ public class HomeForwardAdapter extends GodBaseAdapter {
         String tradeTime = null;
         String contractName = null;
         String remark = null;
-        if(itemData instanceof HomeNphyData){
+        if (itemData instanceof HomeNphyData) {
             HomeNphyData nphyData = (HomeNphyData) itemData;
             isTrade = nphyData.getIsTrade();
             color = nphyData.getColor();
@@ -37,7 +37,7 @@ public class HomeForwardAdapter extends GodBaseAdapter {
             tradeTime = nphyData.getTradeTime();
             contractName = nphyData.getContractName();
             remark = nphyData.getRemark();
-        }else if(itemData instanceof HomeWphyData){
+        } else if (itemData instanceof HomeWphyData) {
             HomeWphyData wphyData = (HomeWphyData) itemData;
             isTrade = wphyData.getIsTrade();
             color = wphyData.getColor();
@@ -50,8 +50,10 @@ public class HomeForwardAdapter extends GodBaseAdapter {
 
         if (isTrade == 1) {
             ViewHolder.getTextView(convertView, R.id.tvTradeState).setText(context.getResources().getString(R.string.home_trade_ing));
+            ViewHolder.getTextView(convertView, R.id.tvTradeState).setBackgroundResource(R.drawable.stock_code_bg);
         } else {
             ViewHolder.getTextView(convertView, R.id.tvTradeState).setText(context.getResources().getString(R.string.home_trade_end));
+            ViewHolder.getTextView(convertView, R.id.tvTradeState).setBackgroundResource(R.drawable.stock_code_gray_bg);
         }
         if (color != null) {
             ((CircleView) ViewHolder.getView(convertView, R.id.circleView)).setColor("#" + color);

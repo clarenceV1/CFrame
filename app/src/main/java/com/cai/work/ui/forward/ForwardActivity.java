@@ -242,7 +242,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                     StringBuilder builder = new StringBuilder();
                     builder.append(date.substring(0, index + 5));
                     builder.append("\n");
-                    builder.append(date.substring(7));
+                    builder.append(date.substring(index + 6));
                     mViewBinding.tvTradeTime.setText(builder.toString());
                 } else {
                     mViewBinding.tvTradeTime.setText(record.getBuyDate());

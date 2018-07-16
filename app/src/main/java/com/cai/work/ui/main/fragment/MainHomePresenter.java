@@ -100,6 +100,7 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
                     public void accept(HomeItemData homeData) {
                         if (homeData != null) {
                             mView.reFreshView(homeData);
+                            requestHomeData();
                         }
                     }
                 }, new Consumer<Throwable>() {
@@ -121,7 +122,8 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
             }, new Consumer<Throwable>() {
                 @Override
                 public void accept(Throwable throwable) {
-                    mView.requestError(throwable.getMessage());
+                    mView.requestError("抱歉！请求失败，请检查您的网络");
+                    mView.reFreshView(new HomeItemData());
                 }
             });
             mCompositeSubscription.add(disposable);

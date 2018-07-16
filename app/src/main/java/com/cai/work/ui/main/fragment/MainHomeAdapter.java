@@ -246,9 +246,17 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private void onBindStockView(StockViewHolder stockViewHolder, final HomeStockData stockData) {
         stockViewHolder.tvStockNmae.setText(stockData.getContractName());
         if (stockData.getIsTrade() == 1) {
+            stockViewHolder.tvStockNmae.setTextColor(context.getResources().getColor(R.color.ys_255_255_255));
+            stockViewHolder.tvBound.setTextColor(context.getResources().getColor(R.color.ys_255_255_255));
             stockViewHolder.tvTradeState.setText("交易中");
+            stockViewHolder.tvTradeState.setTextColor(context.getResources().getColor(R.color.ys_255_255_255));
+            stockViewHolder.tvTradeState.setBackgroundResource(R.drawable.stock_code_bg);
         } else {
+            stockViewHolder.tvStockNmae.setTextColor(context.getResources().getColor(R.color.ys_102_102_102));
+            stockViewHolder.tvBound.setTextColor(context.getResources().getColor(R.color.ys_102_102_102));
             stockViewHolder.tvTradeState.setText("休市中");
+            stockViewHolder.tvTradeState.setTextColor(context.getResources().getColor(R.color.ys_30_30_30));
+            stockViewHolder.tvTradeState.setBackgroundResource(R.drawable.stock_code_gray_bg);
         }
         stockViewHolder.tvRemark.setText(stockData.getRemark());
         stockViewHolder.tvBound.setText(stockData.getBond() + "元起投");

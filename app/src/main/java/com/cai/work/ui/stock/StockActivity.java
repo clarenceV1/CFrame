@@ -319,6 +319,15 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.tvCode.setText(("1".equals(stockHQ.getMk_code()) ? "SZ" : "SH") + stockHQ.getStCode());
 
         mViewBinding.tvPrice1.setText(stockHQ.getMk_price());
+        if(stockHQ.getZhangdie().contains("-")){
+            mViewBinding.tvPrice1.setTextColor(getResources().getColor(R.color.ys_22_110_15));
+            mViewBinding.tvPrice2.setTextColor(getResources().getColor(R.color.ys_22_110_15));
+            mViewBinding.tvPrice3.setTextColor(getResources().getColor(R.color.ys_22_110_15));
+        }else{
+            mViewBinding.tvPrice1.setTextColor(getResources().getColor(R.color.ys_232_0_63));
+            mViewBinding.tvPrice2.setTextColor(getResources().getColor(R.color.ys_232_0_63));
+            mViewBinding.tvPrice3.setTextColor(getResources().getColor(R.color.ys_232_0_63));
+        }
         mViewBinding.tvPrice2.setText(stockHQ.getZhangdie());
         mViewBinding.tvPrice3.setText(stockHQ.getZhangfu());
 

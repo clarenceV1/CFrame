@@ -73,7 +73,7 @@
         android:layout_below="@+id/tvBound"
         android:layout_marginTop="5dp"
         android:layout_toLeftOf="@+id/imgArrow"
-        android:textColor="@color/ys_135_135_135"
+        android:textColor="@color/ys_102_102_102"
         android:textSize="14sp"
         tools:text="09:30-15:00" />
 
