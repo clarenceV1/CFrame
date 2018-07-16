@@ -246,15 +246,15 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         presenter.requestStockHq(data.getStock_code());
         presenter.requestStockHistory(data.getStock_code());
 
-//        if (data.getIsTrade().equals("2")) {
-//            mViewBinding.btnCommit.setClickable(false);
-//            mViewBinding.btnCommit.setText(R.string.btn_not_buy);
-//            mViewBinding.btnCommit.setBackgroundResource(R.drawable.btn_gray);
-//        } else {
-//            mViewBinding.btnCommit.setClickable(true);
-//            mViewBinding.btnCommit.setText(R.string.btn_buy);
-//            mViewBinding.btnCommit.setBackgroundResource(R.drawable.btn_red);
-//        }
+        if (data.getIsTrade().equals("2")) {
+            mViewBinding.btnCommit.setClickable(false);
+            mViewBinding.btnCommit.setText(R.string.btn_not_buy);
+            mViewBinding.btnCommit.setBackgroundResource(R.drawable.btn_gray);
+        } else {
+            mViewBinding.btnCommit.setClickable(true);
+            mViewBinding.btnCommit.setText(R.string.btn_buy);
+            mViewBinding.btnCommit.setBackgroundResource(R.drawable.btn_red);
+        }
     }
 
     @Override
