@@ -1,11 +1,11 @@
 package com.cai.work.bean;
 
 public class StockHQ {
-    private String bp1;
-    private String bp2;
-    private String bp3;
-    private String bp4;
-    private String bp5;
+    private float bp1;
+    private float bp2;
+    private float bp3;
+    private float bp4;
+    private float bp5;
 
     private int bn1;
     private int bn2;
@@ -13,11 +13,11 @@ public class StockHQ {
     private int bn4;
     private int bn5;
 
-    private String sp1;
-    private String sp2;
-    private String sp3;
-    private String sp4;
-    private String sp5;
+    private float sp1;
+    private float sp2;
+    private float sp3;
+    private float sp4;
+    private float sp5;
 
     private int sn1;
     private int sn2;
@@ -36,7 +36,7 @@ public class StockHQ {
 
     private String tingpai;
     private String mk_price;
-    private String kp_price;
+    private float kp_price;
     private String zhangdie;
     private String zhangfu;
     private String huanshou;
@@ -100,23 +100,23 @@ public class StockHQ {
 //    data.mkCode	市场类型 备注1为深圳(SZ)，2上海(SH)
 
 
-    public String getBp1() {
+    public float getBp1() {
         return bp1;
     }
 
-    public void setBp1(String bp1) {
+    public void setBp1(float bp1) {
         this.bp1 = bp1;
     }
 
-    public String getBp2() {
+    public float getBp2() {
         return bp2;
     }
 
-    public void setBp2(String bp2) {
+    public void setBp2(float bp2) {
         this.bp2 = bp2;
     }
 
-    public String getBp3() {
+    public float getBp3() {
         return bp3;
     }
 
@@ -140,23 +140,23 @@ public class StockHQ {
         return sn5;
     }
 
-    public void setBp3(String bp3) {
+    public void setBp3(float bp3) {
         this.bp3 = bp3;
     }
 
-    public String getBp4() {
+    public float getBp4() {
         return bp4;
     }
 
-    public void setBp4(String bp4) {
+    public void setBp4(float bp4) {
         this.bp4 = bp4;
     }
 
-    public String getBp5() {
+    public float getBp5() {
         return bp5;
     }
 
-    public void setBp5(String bp5) {
+    public void setBp5(float bp5) {
         this.bp5 = bp5;
     }
 
@@ -220,43 +220,43 @@ public class StockHQ {
         this.sn5 = sn5;
     }
 
-    public String getSp1() {
+    public float getSp1() {
         return sp1;
     }
 
-    public void setSp1(String sp1) {
+    public void setSp1(float sp1) {
         this.sp1 = sp1;
     }
 
-    public String getSp2() {
+    public float getSp2() {
         return sp2;
     }
 
-    public void setSp2(String sp2) {
+    public void setSp2(float sp2) {
         this.sp2 = sp2;
     }
 
-    public String getSp3() {
+    public float getSp3() {
         return sp3;
     }
 
-    public void setSp3(String sp3) {
+    public void setSp3(float sp3) {
         this.sp3 = sp3;
     }
 
-    public String getSp4() {
+    public float getSp4() {
         return sp4;
     }
 
-    public void setSp4(String sp4) {
+    public void setSp4(float sp4) {
         this.sp4 = sp4;
     }
 
-    public String getSp5() {
+    public float getSp5() {
         return sp5;
     }
 
-    public void setSp5(String sp5) {
+    public void setSp5(float sp5) {
         this.sp5 = sp5;
     }
 
@@ -340,11 +340,11 @@ public class StockHQ {
         this.mk_price = mk_price;
     }
 
-    public String getKp_price() {
+    public float getKp_price() {
         return kp_price;
     }
 
-    public void setKp_price(String kp_price) {
+    public void setKp_price(float kp_price) {
         this.kp_price = kp_price;
     }
 

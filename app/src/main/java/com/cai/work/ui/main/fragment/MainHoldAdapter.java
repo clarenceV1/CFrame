@@ -71,7 +71,11 @@ public class MainHoldAdapter extends GodBaseAdapter {
         ViewHolder.getTextView(convertView, R.id.tvStockName).setText(item.getStockName());
         ViewHolder.getTextView(convertView, R.id.tvstockCode).setText(tag + item.getStockCode());
         ViewHolder.getTextView(convertView, R.id.tvYkMoney).setText(item.getYkMoney());
-        ViewHolder.getTextView(convertView, R.id.tvYkMoney).setTextColor(context.getResources().getColor(R.color.ys_e6241a));
+        if (item.getYkMoney() != null && item.getYkMoney().contains("-")) {
+            ViewHolder.getTextView(convertView, R.id.tvYkMoney).setTextColor(context.getResources().getColor(R.color.ys_009a44));
+        } else {
+            ViewHolder.getTextView(convertView, R.id.tvYkMoney).setTextColor(context.getResources().getColor(R.color.ys_e6241a));
+        }
 
         ViewHolder.getTextView(convertView, R.id.tvTitle1).setText(context.getResources().getString(R.string.main_hold_buy_price));
         ViewHolder.getTextView(convertView, R.id.tvValue1).setText(item.getBuyPrice() + "元");
@@ -157,8 +161,11 @@ public class MainHoldAdapter extends GodBaseAdapter {
         ViewHolder.getTextView(convertView, R.id.tvStockName).setText(item.getContractName());
         ViewHolder.getTextView(convertView, R.id.tvstockCode).setText(item.getContractCode());
         ViewHolder.getTextView(convertView, R.id.tvYkMoney).setText(item.getYkMoney()+" (" + item.getApproveStateText() + ")");
-        ViewHolder.getTextView(convertView, R.id.tvYkMoney).setTextColor(context.getResources().getColor(R.color.ys_009a44));
-
+        if (item.getYkMoney() != null && item.getYkMoney().contains("-")) {
+            ViewHolder.getTextView(convertView, R.id.tvYkMoney).setTextColor(context.getResources().getColor(R.color.ys_009a44));
+        } else {
+            ViewHolder.getTextView(convertView, R.id.tvYkMoney).setTextColor(context.getResources().getColor(R.color.ys_e6241a));
+        }
         ViewHolder.getTextView(convertView, R.id.tvTitle1).setText(context.getResources().getString(R.string.main_hold_open_price));
         ViewHolder.getTextView(convertView, R.id.tvValue1).setText(item.getOpenPrice());
 
@@ -204,8 +211,11 @@ public class MainHoldAdapter extends GodBaseAdapter {
         ViewHolder.getTextView(convertView, R.id.tvStockName).setText(item.getContractName());
         ViewHolder.getTextView(convertView, R.id.tvstockCode).setText(item.getContractCode());
         ViewHolder.getTextView(convertView, R.id.tvYkMoney).setText(item.getYkMoney());
-        ViewHolder.getTextView(convertView, R.id.tvYkMoney).setTextColor(context.getResources().getColor(R.color.ys_e6241a));
-
+        if (item.getYkMoney() != null && item.getYkMoney().contains("-")) {
+            ViewHolder.getTextView(convertView, R.id.tvYkMoney).setTextColor(context.getResources().getColor(R.color.ys_009a44));
+        } else {
+            ViewHolder.getTextView(convertView, R.id.tvYkMoney).setTextColor(context.getResources().getColor(R.color.ys_e6241a));
+        }
         ViewHolder.getTextView(convertView, R.id.tvTitle1).setText("开仓价格");
         ViewHolder.getTextView(convertView, R.id.tvValue1).setText(item.getOpenPrice() + "元");
         ViewHolder.getTextView(convertView, R.id.tvValue2).setText(item.getMk_price() + "元");

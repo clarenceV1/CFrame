@@ -67,8 +67,13 @@ public class AccountsDetailActivity extends AppBaseActivity<AccountsDetailBindin
                 mViewBinding.tvClosePrice.setText(forwardAccount.getClosePrice());
                 mViewBinding.tvCloseTime.setText(forwardAccount.getCloseDealDate());
                 mViewBinding.tvCloseReson.setText(forwardAccount.getApproveStateText());
+                if(forwardAccount.getYkMoney().contains("-")){
+                    mViewBinding.tvTradeYK.setTextColor(getResources().getColor(R.color.ys_009a44));
+                }else{
+                    mViewBinding.tvTradeYK.setTextColor(getResources().getColor(R.color.ys_e6241a));
+                }
                 mViewBinding.tvTradeYK.setText(forwardAccount.getYkMoney());
-                mViewBinding.tvTradeYK.setTextColor(getResources().getColor(R.color.ys_009a44));
+
             } else if (type == 1) {
                 StockAccount stockAccount = JSON.parseObject(forwardAccountJson, StockAccount.class);
                 mViewBinding.tvTradeId.setText(stockAccount.getOrderNo());
@@ -79,7 +84,11 @@ public class AccountsDetailActivity extends AppBaseActivity<AccountsDetailBindin
                 mViewBinding.tvCloseTime.setText(stockAccount.getSellDealDate());
                 mViewBinding.tvCloseReson.setText(stockAccount.getApproveStateText());
                 mViewBinding.tvTradeYK.setText(stockAccount.getYkMoney());
-                mViewBinding.tvTradeYK.setTextColor(getResources().getColor(R.color.ys_e6241a));
+                if(stockAccount.getYkMoney().contains("-")){
+                    mViewBinding.tvTradeYK.setTextColor(getResources().getColor(R.color.ys_009a44));
+                }else{
+                    mViewBinding.tvTradeYK.setTextColor(getResources().getColor(R.color.ys_e6241a));
+                }
             }
 
         }

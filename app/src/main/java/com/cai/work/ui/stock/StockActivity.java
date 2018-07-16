@@ -57,6 +57,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     String imgeUrl = "http://image.sinajs.cn/newchart/min/sh600000.gif";
     String stockCode;
+    int red_color, green_color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,8 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     @Override
     public void initView() {
+        red_color = getResources().getColor(R.color.ys_220_1_7);
+        green_color = getResources().getColor(R.color.ys_65_255_173);
         View rootView = findViewById(android.R.id.content);
         if (rootView != null) {
             rootView.setBackgroundResource(R.color.ys_24_24_24);
@@ -143,7 +146,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
                 if (!TextUtils.isEmpty(stockCode)) {
                     ARouter.getInstance().build("/AppModule/StockBuyActivity")
                             .withCharSequence("stockCode", stockCode)
-                            .withBoolean("isRealTrade",isRealTrade)
+                            .withBoolean("isRealTrade", isRealTrade)
                             .navigation();
                 }
             }
@@ -243,15 +246,15 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         presenter.requestStockHq(data.getStock_code());
         presenter.requestStockHistory(data.getStock_code());
 
-        if (data.getIsTrade().equals("2")) {
-            mViewBinding.btnCommit.setClickable(false);
-            mViewBinding.btnCommit.setText(R.string.btn_not_buy);
-            mViewBinding.btnCommit.setBackgroundResource(R.drawable.btn_gray);
-        } else {
-            mViewBinding.btnCommit.setClickable(true);
-            mViewBinding.btnCommit.setText(R.string.btn_buy);
-            mViewBinding.btnCommit.setBackgroundResource(R.drawable.btn_red);
-        }
+//        if (data.getIsTrade().equals("2")) {
+//            mViewBinding.btnCommit.setClickable(false);
+//            mViewBinding.btnCommit.setText(R.string.btn_not_buy);
+//            mViewBinding.btnCommit.setBackgroundResource(R.drawable.btn_gray);
+//        } else {
+//            mViewBinding.btnCommit.setClickable(true);
+//            mViewBinding.btnCommit.setText(R.string.btn_buy);
+//            mViewBinding.btnCommit.setBackgroundResource(R.drawable.btn_red);
+//        }
     }
 
     @Override
@@ -302,7 +305,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
                 }
                 hisDataList.add(hisData);
             }
-            mViewBinding.kline.setCount(size,size,size);
+            mViewBinding.kline.setCount(size, size, size);
             mViewBinding.kline.initData(hisDataList);
             mViewBinding.kline.setLimitLine();
         }
@@ -315,15 +318,16 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     private void refreshView() {
 
+
         mViewBinding.tvName.setText(stockHQ.getStName());
         mViewBinding.tvCode.setText(("1".equals(stockHQ.getMk_code()) ? "SZ" : "SH") + stockHQ.getStCode());
 
         mViewBinding.tvPrice1.setText(stockHQ.getMk_price());
-        if(stockHQ.getZhangdie().contains("-")){
+        if (stockHQ.getZhangdie().contains("-")) {
             mViewBinding.tvPrice1.setTextColor(getResources().getColor(R.color.ys_22_110_15));
             mViewBinding.tvPrice2.setTextColor(getResources().getColor(R.color.ys_22_110_15));
             mViewBinding.tvPrice3.setTextColor(getResources().getColor(R.color.ys_22_110_15));
-        }else{
+        } else {
             mViewBinding.tvPrice1.setTextColor(getResources().getColor(R.color.ys_232_0_63));
             mViewBinding.tvPrice2.setTextColor(getResources().getColor(R.color.ys_232_0_63));
             mViewBinding.tvPrice3.setTextColor(getResources().getColor(R.color.ys_232_0_63));
@@ -331,11 +335,36 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.tvPrice2.setText(stockHQ.getZhangdie());
         mViewBinding.tvPrice3.setText(stockHQ.getZhangfu());
 
-        mViewBinding.tvSell1.setText(stockHQ.getSp1());
-        mViewBinding.tvSell2.setText(stockHQ.getSp2());
-        mViewBinding.tvSell3.setText(stockHQ.getSp3());
-        mViewBinding.tvSell4.setText(stockHQ.getSp4());
-        mViewBinding.tvSell5.setText(stockHQ.getSp5());
+        mViewBinding.tvSell1.setText(stockHQ.getSp1() + "");
+        if (stockHQ.getKp_price() < stockHQ.getSp1()) {
+            mViewBinding.tvSell1.setTextColor(red_color);
+        } else {
+            mViewBinding.tvSell1.setTextColor(green_color);
+        }
+        mViewBinding.tvSell2.setText(stockHQ.getSp2() + "");
+        if (stockHQ.getKp_price() < stockHQ.getSp2()) {
+            mViewBinding.tvSell2.setTextColor(red_color);
+        } else {
+            mViewBinding.tvSell2.setTextColor(green_color);
+        }
+        mViewBinding.tvSell3.setText(stockHQ.getSp3() + "");
+        if (stockHQ.getKp_price() < stockHQ.getSp3()) {
+            mViewBinding.tvSell3.setTextColor(red_color);
+        } else {
+            mViewBinding.tvSell3.setTextColor(green_color);
+        }
+        mViewBinding.tvSell4.setText(stockHQ.getSp4() + "");
+        if (stockHQ.getKp_price() < stockHQ.getSp4()) {
+            mViewBinding.tvSell4.setTextColor(red_color);
+        } else {
+            mViewBinding.tvSell4.setTextColor(green_color);
+        }
+        mViewBinding.tvSell5.setText(stockHQ.getSp5() + "");
+        if (stockHQ.getKp_price() < stockHQ.getSp5()) {
+            mViewBinding.tvSell5.setTextColor(red_color);
+        } else {
+            mViewBinding.tvSell5.setTextColor(green_color);
+        }
 
         mViewBinding.tvSellNum1.setText(stockHQ.getSn1() / 100 + "");
         mViewBinding.tvSellNum2.setText(stockHQ.getSn2() / 100 + "");
@@ -343,11 +372,37 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.tvSellNum4.setText(stockHQ.getSn4() / 100 + "");
         mViewBinding.tvSellNum5.setText(stockHQ.getSn5() / 100 + "");
 
-        mViewBinding.tvBuy1.setText(stockHQ.getBp1());
-        mViewBinding.tvBuy2.setText(stockHQ.getBp2());
-        mViewBinding.tvBuy3.setText(stockHQ.getBp3());
-        mViewBinding.tvBuy4.setText(stockHQ.getBp4());
-        mViewBinding.tvBuy5.setText(stockHQ.getBp5());
+
+        mViewBinding.tvBuy1.setText(stockHQ.getBp1() + "");
+        if (stockHQ.getKp_price() < stockHQ.getBp1()) {
+            mViewBinding.tvBuy1.setTextColor(red_color);
+        } else {
+            mViewBinding.tvBuy1.setTextColor(green_color);
+        }
+        mViewBinding.tvBuy2.setText(stockHQ.getBp2() + "");
+        if (stockHQ.getKp_price() < stockHQ.getBp2()) {
+            mViewBinding.tvBuy2.setTextColor(red_color);
+        } else {
+            mViewBinding.tvBuy2.setTextColor(green_color);
+        }
+        mViewBinding.tvBuy3.setText(stockHQ.getBp3() + "");
+        if (stockHQ.getKp_price() < stockHQ.getBp3()) {
+            mViewBinding.tvBuy3.setTextColor(red_color);
+        } else {
+            mViewBinding.tvBuy3.setTextColor(green_color);
+        }
+        mViewBinding.tvBuy4.setText(stockHQ.getBp4() + "");
+        if (stockHQ.getKp_price() < stockHQ.getBp4()) {
+            mViewBinding.tvBuy4.setTextColor(red_color);
+        } else {
+            mViewBinding.tvBuy4.setTextColor(green_color);
+        }
+        mViewBinding.tvBuy5.setText(stockHQ.getBp5() + "");
+        if (stockHQ.getKp_price() < stockHQ.getBp5()) {
+            mViewBinding.tvBuy5.setTextColor(red_color);
+        } else {
+            mViewBinding.tvBuy5.setTextColor(green_color);
+        }
 
         mViewBinding.tvBuyNum1.setText(stockHQ.getBn1() / 100 + "");
         mViewBinding.tvBuyNum2.setText(stockHQ.getBn2() / 100 + "");
@@ -355,7 +410,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.tvBuyNum4.setText(stockHQ.getBn4() / 100 + "");
         mViewBinding.tvBuyNum5.setText(stockHQ.getBn5() / 100 + "");
 
-        mViewBinding.stockBottom1.setText(stockHQ.getKp_price());
+        mViewBinding.stockBottom1.setText(stockHQ.getKp_price() + "");
         mViewBinding.stockBottom2.setText(stockHQ.getZhenfu());
         mViewBinding.stockBottom3.setText(stockHQ.getUp_price());
         mViewBinding.stockBottom4.setText(stockHQ.getDn_price());
@@ -363,5 +418,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
         mViewBinding.stockBottom6.setText(stockHQ.getDn_limit());
         mViewBinding.stockBottom7.setText(stockHQ.getCjss());
         mViewBinding.stockBottom8.setText(stockHQ.getCjje());
+
+
     }
 }

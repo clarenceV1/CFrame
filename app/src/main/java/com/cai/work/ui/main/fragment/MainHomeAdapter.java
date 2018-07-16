@@ -278,6 +278,16 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         for (HomeNoticeData homeNoticeData : noticeDataList) {
             textList.add(homeNoticeData.getTitle());
         }
+        scrollTextview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (presenter.isLogin()) {
+                    ARouter.getInstance().build("/AppModule/NewsActivity").navigation();
+                } else {
+                    showDialog();
+                }
+            }
+        });
         scrollTextview.setStrList(textList);
         noticeViewHolder.tvMore.setOnClickListener(new View.OnClickListener() {
             @Override

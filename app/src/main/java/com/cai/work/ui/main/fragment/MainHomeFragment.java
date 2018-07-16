@@ -85,8 +85,6 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
             mViewBinding.loadView.setVisibility(View.GONE);
             adapter = new MainHomeAdapter(mContext, imageLoader, data, getChildFragmentManager(),presenter);
             mViewBinding.mRecyclerView.setAdapter(adapter);
-        }else{
-            mViewBinding.loadView.setVisibility(View.VISIBLE);
         }
     }
 

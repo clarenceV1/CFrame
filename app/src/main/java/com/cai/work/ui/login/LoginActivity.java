@@ -86,10 +86,10 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
                 ARouter.getInstance().build("/AppModule/RegisterActivity").navigation();
             }
         });
-        if (GodBaseConfig.getInstance().isDebug()) {
-            mViewBinding.editMobile.setText("13276967598");
-            mViewBinding.editPassword.setText("123456");
-        }
+//        if (GodBaseConfig.getInstance().isDebug()) {
+//            mViewBinding.editMobile.setText("13276967598");
+//            mViewBinding.editPassword.setText("123456");
+//        }
     }
 
     @Override
