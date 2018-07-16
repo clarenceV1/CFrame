@@ -131,19 +131,19 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
     }
 
     public void startTimes() {
-        if (interval != null) {
-            interval.dispose();
-            mCompositeSubscription.remove(interval);
-        }
-        interval = Observable.interval(0, 1, TimeUnit.SECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Long>() {
-                    @Override
-                    public void accept(Long aLong) throws Exception {
-                        EventBus.getDefault().post(new ListViewScrollEvent());
-                    }
-                });
-        mCompositeSubscription.add(interval);
+//        if (interval != null) {
+//            interval.dispose();
+//            mCompositeSubscription.remove(interval);
+//        }
+//        interval = Observable.interval(0, 1, TimeUnit.SECONDS)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<Long>() {
+//                    @Override
+//                    public void accept(Long aLong) throws Exception {
+//                        EventBus.getDefault().post(new ListViewScrollEvent());
+//                    }
+//                });
+//        mCompositeSubscription.add(interval);
     }
 
 }

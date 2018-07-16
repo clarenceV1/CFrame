@@ -489,14 +489,14 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void listViewScrollEvent(ListViewScrollEvent event) {
         Log.d("listViewScrollEvent", "刷新");
-        if (mRangeData != null && mRangeData.size() > 5 && mRangeAdapter != null) {
-            position++;
-            List newData = new ArrayList();
-            int size = mRangeData.size();
-            for (int i = position; i < position + 5; i++) {
-                newData.add(mRangeData.get(i % size));
-            }
-            mRangeAdapter.update(newData);
-        }
+//        if (mRangeData != null && mRangeData.size() > 5 && mRangeAdapter != null) {
+//            position++;
+//            List newData = new ArrayList();
+//            int size = mRangeData.size();
+//            for (int i = position; i < position + 5; i++) {
+//                newData.add(mRangeData.get(i % size));
+//            }
+//            mRangeAdapter.update(newData);
+//        }
     }
 }
