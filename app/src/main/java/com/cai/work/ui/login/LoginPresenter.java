@@ -38,14 +38,23 @@ public class LoginPresenter extends AppBasePresenter<LoginView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetRespondCallBack<ResponseBody>() {
                     @Override
-                    public void respondResult(Subscription subscription, ResponseBody respond) {
-                        if (respond.getErrorcode() == 0) {
-                            PhoneCode phoneCode = JSON.parseObject(respond.getData(), PhoneCode.class);
-                            mView.callBack(phoneCode);
-                        } else {
-                            mView.callBack(new PhoneCode());
-                            mView.callBack(respond.getMessage());
+                    public void respondResult(Subscription subscription, ResponseBody responseBody) {
+                        PhoneCode phoneCode = new PhoneCode();
+                        try {
+                            String resultStr = responseBody.string();
+                            Respond respond = JSON.parseObject(resultStr, Respond.class);
+                            if (respond != null) {
+                                if (respond.getErrorcode() == 0) {
+                                    phoneCode = JSON.parseObject(respond.getData(), PhoneCode.class);
+                                } else {
+                                    mView.callBack(respond.getMessage());
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            mView.callBack(e.getMessage());
                         }
+                        mView.callBack(phoneCode);
                     }
 
                     @Override
