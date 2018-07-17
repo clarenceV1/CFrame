@@ -23,6 +23,15 @@ public class RecordModel extends BaseModel {
     private int type;
     private String create_dt;
     private String token_symbol;
+    private String remark;
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
     public int getLast_id() {
         return last_id;
