@@ -213,7 +213,7 @@ public interface ApiService {
     @FormUrlEncoded
     Flowable<CommonRespond> realPingCang(@Field("token") String token, @Field("id") String id, @Field("code") String code);
 
-    @POST("/app/futuresVirtual/open")
+    @POST("/app/futuresVirtual/close")
     @FormUrlEncoded
     Flowable<CommonRespond> moniPingCang(@Field("token") String token, @Field("id") String id, @Field("code") String code);
 
