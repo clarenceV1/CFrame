@@ -5,24 +5,168 @@
       <config />
     </shared>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
-    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="262c9131-b2d7-4947-bece-663da72f78b4" name="Default" comment="">
+    <list default="true" id="fadf66d3-cd94-41bf-95c9-080589348809" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/about/AboutView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/debug/DebugView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/login/LoginView.java" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/ApiService.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/common/ApiService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/RequestStore.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/common/RequestStore.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginPresenter.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/event/WebViewEvent.java" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/event/WebViewEvent.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebChromeClientBase.java" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebChromeClientBase.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewClientBase.java" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewClientBase.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java" />
-      <change beforePath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/layout/web_vew_fragment.xml" afterPath="$PROJECT_DIR$/../../LibFrameWork/src/main/res/layout/web_vew_fragment.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/aop/CheckLoginAop.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/aop/CheckLoginAop.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/aop/CostTimeAop.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/aop/CostTimeAop.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/aop/MemoryCacheAop.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/aop/MemoryCacheAop.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/aop/PermissionAop.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/aop/PermissionAop.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/aop/SingleClickAop.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/aop/SingleClickAop.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/base/App.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/base/AppBaseActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/base/AppBaseActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/base/AppBaseFragment.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/base/AppBaseFragment.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/base/AppBasePresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/base/AppBasePresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/base/AppPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/base/AppPresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/base/ProtocolConstant.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/base/ProtocolConstant.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/base/StateCode.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/base/StateCode.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/base/StatisticsPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/base/StatisticsPresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/AppUpdate.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/AppUpdate.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/Asset.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/Asset.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/BaseModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/BaseModel.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/CandyDetailModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/CandyDetailModel.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/CandyList.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/CandyList.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/Config.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/Config.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/Discover.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/Discover.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/DiscoverMin.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/DiscoverMin.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/Invite.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/Invite.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/Message.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/Message.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/MineBonusModle.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/MineBonusModle.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/MineInviteModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/MineInviteModel.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/MineModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/MineModel.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/NationCodeModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/NationCodeModel.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/PhoneCode.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/PhoneCode.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/Qiniu.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/Qiniu.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/RecordDataModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/RecordDataModel.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/RecordModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/RecordModel.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/User.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/Welfare.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/Welfare.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/AppUpdateResond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/AppUpdateResond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/AssetRespond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/AssetRespond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/BaseRespond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/BaseRespond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/CandyListRespond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/CandyListRespond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/ConfigerRespond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/ConfigerRespond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/DiscoverRespond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/DiscoverRespond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/LoginRespond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/LoginRespond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/MessageRespond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/MessageRespond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/MineRespond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/MineRespond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/NicknameRespond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/NicknameRespond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/RecordRespond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/RecordRespond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/Respond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/Respond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/WelfareRespond.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/bean/respond/WelfareRespond.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/ApiService.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/common/ApiService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/Constant.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/common/Constant.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/DataCacheStore.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/common/DataCacheStore.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/DataStore.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/common/DataStore.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/FileStore.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/common/FileStore.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/common/RequestStore.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/common/RequestStore.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/dagger/component/AppComponent.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/dagger/component/AppComponent.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/dagger/module/AppModule.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/dagger/module/AppModule.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/dao/BaseDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/dao/BaseDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/dao/UserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/dao/UserDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/dialog/BaseDialog.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/dialog/BaseDialog.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/dialog/EditInputDialog.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/dialog/EditInputDialog.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/dialog/TipDialog.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/dialog/TipDialog.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/event/LoginEvent.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/event/LoginEvent.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/event/UserInfoUpdateEvent.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/event/UserInfoUpdateEvent.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/qinius/QiNiuController.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/qinius/QiNiuController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/qrcode/BarCodeCreat.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/qrcode/BarCodeCreat.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/qrcode/QRCodeCreat.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/qrcode/QRCodeCreat.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/qrcode/QRCodeParse.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/qrcode/QRCodeParse.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/qrcode/RGBLuminanceSource.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/qrcode/RGBLuminanceSource.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/Callback.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/Callback.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/Folder.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/Folder.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/FolderListAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/FolderListAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISCameraActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ISCameraActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISCameraConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ISCameraConfig.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISListActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ISListActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISListConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ISListConfig.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ISNav.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ISNav.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/Image.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/Image.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ImageListAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ImageListAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/ImgSelFragment.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ImgSelFragment.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/OnFolderChangeListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/OnFolderChangeListener.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/OnItemClickListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/OnItemClickListener.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/PreviewAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/PreviewAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/selectimg/SquareRelativeLayout.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/SquareRelativeLayout.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/share/ShareCallback.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/share/ShareCallback.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/share/ShareContent.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/share/ShareContent.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/share/ShareOneKeyManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/share/ShareOneKeyManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/share/ShareQQManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/share/ShareQQManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/share/ShareSinaManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/share/ShareSinaManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/share/ShareWechatManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/share/ShareWechatManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/share/ShareWechatMomentsManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/share/ShareWechatMomentsManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/about/AboutActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/about/AboutActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/about/AboutView.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/asset/AssetActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/asset/AssetActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/asset/AssetAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/asset/AssetAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/asset/AssetPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/asset/AssetPresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/asset/AssetView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/asset/AssetView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/candy/CandyDetailActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/candy/CandyDetailPresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/candy/CandyDetailView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/debug/DebugActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/debug/DebugActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/debug/DebugPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/debug/DebugPresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/debug/DebugView.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/login/LoginActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/login/LoginPresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginView.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/CandyAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/CandyAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/CandyFragment.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/CandyFragment.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/CandyPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/CandyPresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/CandyView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/CandyView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/DiscoverAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverFragment.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/DiscoverFragment.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverGrideAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/DiscoverGrideAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/DiscoverPresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/DiscoverView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/InviteAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/InviteAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MainActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/MainActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MainPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/MainPresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MainView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/MainView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MineFragment.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/MineFragment.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MinePresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/MinePresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MineView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/MineView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/TabManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/TabManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/message/MessageActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/message/MessageActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/message/MessageAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/message/MessageAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/message/MessagePresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/message/MessagePresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/message/MessageView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/message/MessageView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/nationcode/NationCodeActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/nationcode/NationCodeActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/nationcode/NationCodeListAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/nationcode/NationCodeListAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/nationcode/NationCodePresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/nationcode/NationCodePresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/nationcode/NationCodeView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/nationcode/NationCodeView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/nationcode/SortAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/nationcode/SortAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/nationcode/TitleItemDecoration.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/nationcode/TitleItemDecoration.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/person/PersonActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/person/PersonPresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/person/PersonView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/person/PersonView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/record/RecordActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/record/RecordAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordPresent.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/record/RecordPresent.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/record/RecordView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/web/WebActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebForRTB.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/web/WebForRTB.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/web/WebPresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/welcome/WelcomeActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welcome/WelcomeActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/welcome/WelcomePresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welcome/WelcomePresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/welcome/WelcomeView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welcome/WelcomeView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/welfare/WelfareActivity.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welfare/WelfareActivity.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/welfare/WelfareAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welfare/WelfareAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/welfare/WelfarePresenter.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welfare/WelfarePresenter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/ui/welfare/WelfareView.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welfare/WelfareView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/utils/ShareUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/utils/ShareUtil.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/widget/CustomViewPager.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/widget/CustomViewPager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/widget/DividerGridItemDecoration.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/widget/DividerGridItemDecoration.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/widget/TabItem.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/widget/TabItem.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cai/work/widget/WaveSideBar.java" afterPath="$PROJECT_DIR$/src/main/java/com/meetone/work/widget/WaveSideBar.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/main_layout.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/main_layout.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/nation_code.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/nation_code.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,101 +180,56 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view />
-      </state>
-    </system>
-  </component>
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginActivity.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/login/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="126" column="37" lean-forward="true" selection-start-line="126" selection-start-column="37" selection-end-line="126" selection-end-column="37" />
+            <state relative-caret-position="88">
+              <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
               <folding>
-                <element signature="e#2263#2446#0" expanded="true" />
-                <element signature="e#2445#2446#0" expanded="true" />
+                <element signature="e#2295#2478#0" expanded="true" />
+                <element signature="e#2477#2478#0" expanded="true" />
+                <element signature="e#2532#2674#0" expanded="true" />
+                <element signature="e#2673#2674#0" expanded="true" />
+                <element signature="e#2779#2796#0" expanded="true" />
+                <element signature="e#2846#2874#0" expanded="true" />
+                <element signature="e#2924#2949#0" expanded="true" />
+                <element signature="e#3011#3025#0" expanded="true" />
+                <element signature="e#3075#3100#0" expanded="true" />
+                <element signature="e#3150#3178#0" expanded="true" />
+                <element signature="e#3230#3253#0" expanded="true" />
+                <element signature="e#3958#3977#0" expanded="true" />
+                <element signature="e#4797#4834#0" expanded="true" />
+                <element signature="e#5134#5160#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginPresenter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginPresenter.java">
+      <file leaf-file-name="ISCameraActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ISCameraActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="43" column="54" lean-forward="true" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
+            <state relative-caret-position="148">
+              <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhoneCode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/bean/PhoneCode.java">
+      <file leaf-file-name="BaseDialog.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/dialog/BaseDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestStore.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/common/RequestStore.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="181" column="46" lean-forward="false" selection-start-line="181" selection-start-column="34" selection-end-line="181" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApiService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/common/ApiService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="48" column="39" lean-forward="false" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Respond.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/Respond.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="298">
+              <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>CrashReport</find>
-      <find>getLifecycle</find>
-      <find>this</find>
-      <find>callbacks</find>
-      <find>isCircleProgressBar</find>
-      <find>refreshHead</find>
-      <find>mViewBinding.loadView</find>
-      <find>llHead</find>
-      <find>loadView</find>
-      <find>candy_detail_ll</find>
-      <find>tvTotal</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -9714,38 +9813,36 @@
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MainActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/CandyFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/DiscoverFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/message/MessageActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/asset/AssetActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/about/AboutActivity.java" />
-        <option value="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/BaseLifecycleObserver.java" />
-        <option value="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/GodActivityLifecycleCallbacks.java" />
-        <option value="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/GodBaseApplication.java" />
-        <option value="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/GodActivityManger.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/debug/DebugActivity.java" />
-        <option value="$PROJECT_DIR$/../../LibFrameWork/src/main/res/layout/web_vew_fragment.xml" />
-        <option value="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java" />
-        <option value="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewClientBase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebActivity.java" />
-        <option value="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/event/WebViewEvent.java" />
-        <option value="$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebChromeClientBase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java" />
-        <option value="$PROJECT_DIR$/../.gitignore" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/candy_detail.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/candy_item.xml" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/common/ApiService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/common/RequestStore.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginPresenter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/nationcode/NationCodeActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welfare/WelfareActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/record/RecordActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/asset/AssetActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/person/PersonActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/web/WebActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/message/MessageActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/about/AboutActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welcome/WelcomePresenter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welcome/WelcomeActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/DiscoverFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/MineFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/CandyFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/login/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/candy/CandyDetailActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/ui/debug/DebugActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ImgSelFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/utils/ShareUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ISCameraActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meetone/work/dialog/BaseDialog.java" />
       </list>
     </option>
   </component>
@@ -9769,18 +9866,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -9793,16 +9879,13 @@
               <item name="CFrame" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
-            <path>
-              <item name="app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LibFrameWork" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -9813,15 +9896,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="2.3.3" />
     <property name="device.picker.selection" value="1c56146f9805" />
-    <property name="DEBUGGABLE_DEVICE" value="xiaomi-redmi_5_plus-1c56146f9805" />
-    <property name="DEBUGGABLE_PROCESS" value="one.more" />
-    <property name="SHOW_ALL_PROCESSES" value="false" />
-    <property name="DEBUGGER_ID" value="Auto" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -10050,48 +10124,46 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="262c9131-b2d7-4947-bece-663da72f78b4" name="Default" comment="" />
-      <created>1531466341150</created>
+      <changelist id="fadf66d3-cd94-41bf-95c9-080589348809" name="Default" comment="" />
+      <created>1531827475228</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1531466341150</updated>
+      <updated>1531827475228</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1375" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6561265" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46640316" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30532634" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21755439" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981245" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55862975" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -10099,523 +10171,256 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java</url>
-          <line>139</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java</url>
-          <line>104</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/share/ShareWechatManager.java</url>
-          <line>30</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginPresenter.java</url>
-          <line>41</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginPresenter.java</url>
-          <line>45</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginPresenter.java</url>
-          <line>52</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="8" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/CandyFragment.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/nationcode/NationCodeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="107" column="9" lean-forward="false" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/asset/AssetActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="101" column="67" lean-forward="false" selection-start-line="101" selection-start-column="67" selection-end-line="101" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="105" column="66" lean-forward="false" selection-start-line="105" selection-start-column="66" selection-end-line="105" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="63" lean-forward="false" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
+        <state relative-caret-position="240">
+          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
           <folding>
-            <element signature="e#869#887#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/about.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="66" column="29" lean-forward="true" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
-          <folding>
-            <element signature="e#1769#1787#0" expanded="false" />
-            <element signature="e#2427#2453#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/message/MessageActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="75" column="51" lean-forward="true" selection-start-line="75" selection-start-column="51" selection-end-line="75" selection-end-column="51" />
-          <folding>
-            <element signature="e#2508#2650#0" expanded="false" />
-            <element signature="e#2649#2650#0" expanded="false" />
+            <element signature="e#1735#1877#0" expanded="false" />
+            <element signature="e#1876#1877#0" expanded="false" />
+            <element signature="e#4029#4168#0" expanded="false" />
+            <element signature="e#4167#4168#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/about/AboutActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welfare/WelfareActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/runtime/1.0.0-alpha1/4b6a42f55df7855c7ce2906a451c3dda1cec1289/runtime-1.0.0-alpha1-sources.jar!/android/arch/lifecycle/LifecycleRegistry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="71" column="11" lean-forward="false" selection-start-line="71" selection-start-column="11" selection-end-line="71" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/DataBindingActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/GodBasePresenterActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="26" column="93" lean-forward="false" selection-start-line="26" selection-start-column="93" selection-end-line="26" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/base/AppBaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="17" column="79" lean-forward="false" selection-start-line="17" selection-start-column="79" selection-end-line="17" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/record/RecordPresent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="16" column="45" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/base/AppBasePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="13" column="59" lean-forward="false" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/GodBasePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="63" lean-forward="false" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/BaseLifecycleObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibUtils/src/main/java/com/example/clarence/utillibrary/log/ILog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibUtils/src/main/java/com/example/clarence/utillibrary/log/LogFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="52" column="16" lean-forward="false" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/manager/LogDock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+        <state relative-caret-position="96">
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
           <folding>
-            <element signature="e#245#246#0" expanded="false" />
-            <element signature="e#303#304#0" expanded="false" />
+            <element signature="e#1710#1852#0" expanded="false" />
+            <element signature="e#1851#1852#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/aop/PermissionAop.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/record/RecordActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="30" column="61" lean-forward="false" selection-start-line="30" selection-start-column="61" selection-end-line="30" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/GodActivityManger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" column="39" lean-forward="false" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/GodBaseApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="184" column="16" lean-forward="false" selection-start-line="184" selection-start-column="16" selection-end-line="184" selection-end-column="16" />
+        <state relative-caret-position="118">
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
           <folding>
-            <element signature="e#3164#3165#0" expanded="false" />
-            <element signature="e#3198#3199#0" expanded="false" />
+            <element signature="e#1716#1742#0" expanded="false" />
+            <element signature="e#1796#1938#0" expanded="false" />
+            <element signature="e#1937#1938#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/debug/DebugActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/asset/AssetActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="71" column="40" lean-forward="false" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+        <state relative-caret-position="30">
+          <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding>
+            <element signature="e#1395#1537#0" expanded="false" />
+            <element signature="e#1536#1537#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/person/PersonActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <element signature="e#1727#1869#0" expanded="false" />
+            <element signature="e#1868#1869#0" expanded="false" />
+            <element signature="e#1915#1941#0" expanded="false" />
+            <element signature="e#3109#3148#0" expanded="false" />
+            <element signature="e#3150#3187#0" expanded="false" />
+            <element signature="e#3606#3630#0" expanded="false" />
+            <element signature="e#4297#4340#0" expanded="false" />
+            <element signature="e#4342#4387#0" expanded="false" />
+            <element signature="e#4737#4771#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/web/WebActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="37" column="7" lean-forward="false" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#1767#1980#0" expanded="false" />
-            <element signature="e#1979#1980#0" expanded="false" />
-            <element signature="e#2145#2287#0" expanded="false" />
-            <element signature="e#2286#2287#0" expanded="false" />
+            <element signature="e#3153#3295#0" expanded="false" />
+            <element signature="e#3294#3295#0" expanded="false" />
+            <element signature="e#3346#3488#0" expanded="false" />
+            <element signature="e#3487#3488#0" expanded="false" />
+            <element signature="e#5490#5652#0" expanded="false" />
+            <element signature="e#5651#5652#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/base/GodActivityLifecycleCallbacks.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/message/MessageActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="55" column="13" lean-forward="false" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+        <state relative-caret-position="103">
+          <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding>
+            <element signature="e#2532#2674#0" expanded="false" />
+            <element signature="e#2673#2674#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/about/AboutActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <element signature="e#1036#1178#0" expanded="false" />
+            <element signature="e#1177#1178#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welcome/WelcomePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          <folding>
+            <element signature="e#3035#3086#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/welcome/WelcomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="19" column="7" lean-forward="false" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#704#705#0" expanded="false" />
-            <element signature="e#739#740#0" expanded="false" />
-            <element signature="e#998#999#0" expanded="false" />
-            <element signature="e#1022#1023#0" expanded="false" />
-            <element signature="e#1092#1093#0" expanded="false" />
-            <element signature="e#1117#1118#0" expanded="false" />
-            <element signature="e#1291#1292#0" expanded="false" />
-            <element signature="e#1329#1330#0" expanded="false" />
-            <element signature="e#1452#1667#0" expanded="false" />
-            <element signature="e#1666#1667#0" expanded="false" />
-            <element signature="e#2138#2139#0" expanded="false" />
-            <element signature="e#2180#2181#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/DiscoverFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="120" column="39" lean-forward="false" selection-start-line="120" selection-start-column="39" selection-end-line="120" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/baseview/LoadingView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="49" column="17" lean-forward="false" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibUtils/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/res/layout/web_vew_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/base/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="92" column="64" lean-forward="false" selection-start-line="92" selection-start-column="64" selection-end-line="92" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/event/WebViewEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="35" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-          <folding>
-            <element signature="e#421#422#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewClientBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="31" column="30" lean-forward="false" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/web/WebActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="238" column="37" lean-forward="false" selection-start-line="238" selection-start-column="37" selection-end-line="238" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebChromeClientBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="30" column="67" lean-forward="false" selection-start-line="30" selection-start-column="67" selection-end-line="30" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/meet-release.apk">
-      <provider selected="true" editor-type-id="apk-viewer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../LibFrameWork/src/main/java/com/cai/framework/web/WebViewFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-29">
-          <caret line="171" column="7" lean-forward="false" selection-start-line="171" selection-start-column="7" selection-end-line="171" selection-end-column="7" />
-          <folding>
-            <element signature="e#1284#1285#0" expanded="false" />
-            <element signature="e#1336#1337#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/candy_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="88" column="28" lean-forward="false" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
-          <folding>
-            <element signature="e#1453#1467#0" expanded="false" />
-            <element signature="e#1518#1532#0" expanded="false" />
-            <element signature="e#1657#1671#0" expanded="false" />
-            <element signature="e#2075#2088#0" expanded="false" />
-            <element signature="e#2194#2214#0" expanded="false" />
-            <element signature="e#2321#2335#0" expanded="false" />
-            <element signature="e#2556#2570#0" expanded="false" />
-            <element signature="e#2676#2696#0" expanded="false" />
-            <element signature="e#2803#2817#0" expanded="false" />
-            <element signature="e#3095#3109#0" expanded="false" />
-            <element signature="e#3163#3177#0" expanded="false" />
-            <element signature="e#3348#3362#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/outputs/apk/app-debug.apk">
-      <provider selected="true" editor-type-id="apk-viewer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/candy/CandyDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="128" column="27" lean-forward="false" selection-start-line="128" selection-start-column="27" selection-end-line="128" selection-end-column="27" />
-          <folding>
-            <element signature="e#3372#3373#0" expanded="false" />
-            <element signature="e#3416#3417#0" expanded="false" />
-            <element signature="e#3713#3714#0" expanded="false" />
-            <element signature="e#3758#3759#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/captures/one.more_2018.07.13_20.17.li">
-      <provider selected="true" editor-type-id="capture-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/candy_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="115" column="48" lean-forward="false" selection-start-line="115" selection-start-column="41" selection-end-line="115" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/values-zh-rCN/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="96">
           <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/main/CandyAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="124" column="38" lean-forward="false" selection-start-line="124" selection-start-column="38" selection-end-line="124" selection-end-column="38" />
+        <state relative-caret-position="96">
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/MineFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="18" column="18" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
           <folding>
-            <element signature="e#5735#5822#0" expanded="false" />
+            <element signature="e#4834#4852#0" expanded="false" />
+            <element signature="e#5055#5260#0" expanded="false" />
+            <element signature="e#6634#6658#0" expanded="false" />
+            <element signature="e#9171#9198#0" expanded="false" />
+            <element signature="e#9275#9308#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../build.gradle">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/main/CandyFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="165">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/candy/CandyDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="30" column="17" lean-forward="true" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/share/ShareWechatManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="126" column="37" lean-forward="true" selection-start-line="126" selection-start-column="37" selection-end-line="126" selection-end-column="37" />
+        <state relative-caret-position="103">
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
           <folding>
-            <element signature="e#2263#2446#0" expanded="true" />
-            <element signature="e#2445#2446#0" expanded="true" />
+            <element signature="e#2254#2396#0" expanded="false" />
+            <element signature="e#2395#2396#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/bean/respond/Respond.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/debug/DebugActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="96">
+          <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <element signature="e#2169#2311#0" expanded="false" />
+            <element signature="e#2310#2311#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ImgSelFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="37" column="18" lean-forward="false" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
+          <folding>
+            <element signature="e#6615#6641#0" expanded="false" />
+            <element signature="e#14399#14425#0" expanded="false" />
+            <element signature="e#15974#16002#0" expanded="false" />
+            <element signature="e#17125#17158#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/utils/ShareUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding>
+            <element signature="e#1313#1334#0" expanded="false" />
+            <element signature="e#1430#1451#0" expanded="false" />
+            <element signature="e#1549#1572#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/ui/login/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+          <folding>
+            <element signature="e#2295#2478#0" expanded="true" />
+            <element signature="e#2477#2478#0" expanded="true" />
+            <element signature="e#2532#2674#0" expanded="true" />
+            <element signature="e#2673#2674#0" expanded="true" />
+            <element signature="e#2779#2796#0" expanded="true" />
+            <element signature="e#2846#2874#0" expanded="true" />
+            <element signature="e#2924#2949#0" expanded="true" />
+            <element signature="e#3011#3025#0" expanded="true" />
+            <element signature="e#3075#3100#0" expanded="true" />
+            <element signature="e#3150#3178#0" expanded="true" />
+            <element signature="e#3230#3253#0" expanded="true" />
+            <element signature="e#3958#3977#0" expanded="true" />
+            <element signature="e#4797#4834#0" expanded="true" />
+            <element signature="e#5134#5160#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/selectimg/ISCameraActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/common/ApiService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meetone/work/dialog/BaseDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="48" column="39" lean-forward="false" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/common/RequestStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="181" column="46" lean-forward="false" selection-start-line="181" selection-start-column="34" selection-end-line="181" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/bean/PhoneCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cai/work/ui/login/LoginPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="43" column="54" lean-forward="true" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
-          <folding />
+        <state relative-caret-position="298">
+          <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
