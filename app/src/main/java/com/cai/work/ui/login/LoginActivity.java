@@ -1,9 +1,11 @@
 package com.cai.work.ui.login;
 
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -86,10 +88,14 @@ public class LoginActivity extends AppBaseActivity<LoginBinding> implements Logi
                 ARouter.getInstance().build("/AppModule/RegisterActivity").navigation();
             }
         });
-//        if (GodBaseConfig.getInstance().isDebug()) {
-//            mViewBinding.editMobile.setText("13276967598");
-//            mViewBinding.editPassword.setText("123456");
-//        }
+        String account = presenter.dataStore.getAccount();
+        if (!TextUtils.isEmpty(account)) {
+            mViewBinding.editMobile.setText(account);
+        }
+        String pwd = presenter.dataStore.getPw();
+        if (!TextUtils.isEmpty(pwd)) {
+            mViewBinding.editPassword.setText(pwd);
+        }
     }
 
     @Override

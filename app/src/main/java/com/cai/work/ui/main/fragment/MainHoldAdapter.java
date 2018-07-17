@@ -72,17 +72,18 @@ public class MainHoldAdapter extends GodBaseAdapter {
         ViewHolder.getTextView(convertView, R.id.tvstockCode).setText(tag + item.getStockCode());
         ViewHolder.getTextView(convertView, R.id.tvYkMoney).setText(item.getYkMoney());
         if (item.getYkMoney() != null && item.getYkMoney().contains("-")) {
+            ViewHolder.getTextView(convertView, R.id.tvValue2).setTextColor(context.getResources().getColor(R.color.ys_009a44));
             ViewHolder.getTextView(convertView, R.id.tvYkMoney).setTextColor(context.getResources().getColor(R.color.ys_009a44));
         } else {
             ViewHolder.getTextView(convertView, R.id.tvYkMoney).setTextColor(context.getResources().getColor(R.color.ys_e6241a));
+            ViewHolder.getTextView(convertView, R.id.tvValue2).setTextColor(context.getResources().getColor(R.color.ys_e6241a));
         }
 
         ViewHolder.getTextView(convertView, R.id.tvTitle1).setText(context.getResources().getString(R.string.main_hold_buy_price));
         ViewHolder.getTextView(convertView, R.id.tvValue1).setText(item.getBuyPrice() + "元");
-
         ViewHolder.getTextView(convertView, R.id.tvTitle2).setText(context.getResources().getString(R.string.main_hold_current_price));
         ViewHolder.getTextView(convertView, R.id.tvValue2).setText(item.getMarketPrice() + "元");
-        ViewHolder.getTextView(convertView, R.id.tvValue2).setTextColor(context.getResources().getColor(R.color.ys_e6241a));
+
 
         ViewHolder.getTextView(convertView, R.id.tvTitle3).setText(context.getResources().getString(R.string.main_hold_buy_num));
         ViewHolder.getTextView(convertView, R.id.tvValue3).setText(item.getDealAmount() + "股");

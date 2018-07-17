@@ -52,30 +52,30 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
                 if (data != null && data.getCode() == 200) {
                     Account account = new Account();
                     account.setMobile(userName);
+                    account.setPassword(password);
+                    dataStore.saveAccount(userName);
                     if (isSavePassword) {
-                        account.setPassword(password);
+                        dataStore.savePw(password);
                     }
                     account.setToken(data.getData());
                     accountDAO.save(account);
                     requestUserInfo(data.getData());
-                }else{
-                    mView.toast(1,data.getResponseText());
+                } else {
+                    mView.toast(1, data.getResponseText());
                 }
             }
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) {
-                if (NetWorkUtil.isNetConnected(context)) {
-                    mView.toast(1,throwable.getMessage());
-                } else {
-                    mView.toast(1,"抱歉！登陆失败，请检查您的网络");
-                }
+                mView.toast(1, "抱歉！登陆失败，请检查您的网络");
             }
         });
         mCompositeSubscription.add(disposable);
     }
+
     /**
      * 请求用户数据
+     *
      * @param token
      * @return
      */

@@ -105,7 +105,7 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         XAxis xAxisPrice = mChartPrice.getXAxis();
         xAxisPrice.enableGridDashedLine(10, 10, 0);
         xAxisPrice.setDrawLabels(true);
-        xAxisPrice.setLabelCount(6, true);
+        xAxisPrice.setLabelCount(8, false);
         xAxisPrice.setDrawAxisLine(false);
         xAxisPrice.setDrawGridLines(false);
         xAxisPrice.setTextColor(getResources().getColor(R.color.ys_255_255_255));

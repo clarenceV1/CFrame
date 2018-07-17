@@ -118,7 +118,7 @@
 
     <color name="limit_color">#adadad</color>
     <color name="normal_line_color">#be945c</color>
-    <color name="chart_info_color">#88000000</color>
+    <color name="chart_info_color">#fff</color>
     <color name="chart_no_data_color">#be945c</color>
     <color name="highlight_color">#be945c</color>
     <color name="white">#fff</color>
