@@ -1,6 +1,8 @@
 package com.cai.work.ui.main.fragment;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -12,8 +14,14 @@ import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineListData;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainMineFragmentBinding;
+import com.cai.work.event.ListViewScrollEvent;
+import com.cai.work.event.LoginEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -25,6 +33,18 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
     @Inject
     ILoadImage imageLoader;
     MainMineAdapter mainMineAdapter;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 
     @Override
     public int getLayoutId() {
@@ -74,19 +94,19 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
                         case 6://活动专区
                         {
                             String url = presenter.getActivityH5();
-                            ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title","活动专区").navigation();
+                            ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title", "活动专区").navigation();
                         }
                         break;
                         case 7://常见问题
                         {
                             String url = presenter.getCommonQuestionH5();
-                            ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title","常见问题").navigation();
+                            ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title", "常见问题").navigation();
                         }
                         break;
                         case 8://关于我们
                         {
                             String url = presenter.getAboutUsH5();
-                            ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title","关于我们").navigation();
+                            ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title", "关于我们").navigation();
                         }
                         break;
                         case 9:
@@ -108,5 +128,10 @@ public class MainMineFragment extends AppBaseFragment<MainMineFragmentBinding> i
     @Override
     public void loginOut() {
         ARouter.getInstance().build("/AppModule/MainActivity").withInt("position", 1).navigation();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void loginEvent(LoginEvent event) {
+        presenter.getMineData();
     }
 }

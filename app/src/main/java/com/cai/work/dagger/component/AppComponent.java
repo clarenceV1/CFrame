@@ -19,6 +19,7 @@ import com.cai.work.ui.login.RegisterActivity;
 import com.cai.work.ui.login.ResetPasswordActivity;
 import com.cai.work.ui.login.SaveActivity;
 import com.cai.work.ui.main.MainActivity;
+import com.cai.work.ui.main.fragment.HomeForwardFragment;
 import com.cai.work.ui.main.fragment.MainHoldFragment;
 import com.cai.work.ui.main.fragment.MainHomeFragment;
 import com.cai.work.ui.main.fragment.MainMineFragment;
@@ -62,6 +63,8 @@ public interface AppComponent extends FrameWorkComponent {
     void inject(MainMineFragment mainMineFragment);
 
     void inject(MainHomeFragment mainHomeFragment);
+
+    void inject(HomeForwardFragment mainHomeFragment);
 
     void inject(WelcomeActivity welcomeActivity);
 

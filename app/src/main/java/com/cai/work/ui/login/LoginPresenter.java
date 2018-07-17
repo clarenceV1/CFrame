@@ -9,8 +9,11 @@ import com.cai.work.common.DataStore;
 import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.UserDAO;
+import com.cai.work.event.LoginEvent;
 import com.example.clarence.utillibrary.Md5Utils;
 import com.example.clarence.utillibrary.NetWorkUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 
@@ -82,6 +85,7 @@ public class LoginPresenter extends GodBasePresenter<LoginView> {
             public void accept(UserInfoRespond data) {
                 userDAO.save(data.getData());
                 mView.loginSuccess();
+                EventBus.getDefault().post(new LoginEvent());
             }
         }, new Consumer<Throwable>() {
             @Override

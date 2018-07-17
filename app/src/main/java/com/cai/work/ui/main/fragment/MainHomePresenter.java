@@ -90,7 +90,7 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
                     Logger.d("获取到首页缓存数据成功");
                 } else {
                     Logger.d("获取到首页缓存数据失败");
-                    homeData.onNext(null);
+                    homeData.onNext(new HomeItemData());
                 }
             }
         }).subscribeOn(Schedulers.newThread())
@@ -98,8 +98,9 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
                 .subscribe(new Consumer<HomeItemData>() {
                     @Override
                     public void accept(HomeItemData homeData) {
-                        if (homeData != null) {
+                        if (homeData.getStock() != null) {
                             mView.reFreshView(homeData);
+                        } else {
                             requestHomeData();
                         }
                     }
