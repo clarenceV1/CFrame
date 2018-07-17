@@ -46,7 +46,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
     @Inject
     StockPresenter presenter;
     @Autowired(name = "isRealTrade")
-    boolean isRealTrade;//是否是真实交易
+    boolean isRealTrade =true;//是否是真实交易
     @Inject
     ILoadImage imageLoader;
     StockHQ stockHQ;

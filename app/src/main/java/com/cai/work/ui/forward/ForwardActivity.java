@@ -43,7 +43,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
     @Autowired(name = "forwardJson")
     String forwardJson;
     @Autowired(name = "isRealTrade")
-    boolean isRealTrade;//是否是真实交易
+    boolean isRealTrade = true;//是否是真实交易
     @Inject
     ForwardPresenter presenter;
     ForwardAdapter adapter;

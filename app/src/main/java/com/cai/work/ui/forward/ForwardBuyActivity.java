@@ -38,7 +38,7 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
     @Autowired(name = "forwardCode")
     String forwardCode;
     @Autowired(name = "isRealTrade")
-    boolean isRealTrade;//是否是真实交易
+    boolean isRealTrade = true;//是否是真实交易
     @Inject
     ForwardBuyPresenter presenter;
     ForwardBuy data;
@@ -73,9 +73,17 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
             rootView.setBackgroundResource(R.color.ys_24_24_24);
         }
         if (type == 1) {
-            mViewBinding.commonHeadView.tvTitle.setText("买涨");
+            if (isRealTrade) {
+                mViewBinding.commonHeadView.tvTitle.setText("买涨");
+            } else {
+                mViewBinding.commonHeadView.tvTitle.setText("模拟买涨");
+            }
         } else {
-            mViewBinding.commonHeadView.tvTitle.setText("买跌");
+            if (isRealTrade) {
+                mViewBinding.commonHeadView.tvTitle.setText("买跌");
+            } else {
+                mViewBinding.commonHeadView.tvTitle.setText("模拟买跌");
+            }
         }
         mViewBinding.commonHeadView.ivGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,6 +159,11 @@ public class ForwardBuyActivity extends AppBaseActivity<ForwardBuyBinding> imple
                 presenter.requestKaiCang(isRealTrade, code, amount, bond, zy, zs, redbagIds, openWay);
             }
         });
+        if (isRealTrade) {
+            mViewBinding.btnCommit.setText("开仓");
+        } else {
+            mViewBinding.btnCommit.setText("模拟开仓");
+        }
         presenter.requestForwardBuy(forwardCode);
 
     }

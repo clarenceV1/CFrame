@@ -38,7 +38,7 @@ public class StockBuyActivity extends AppBaseActivity<StockBuyBinding> implement
     @Autowired(name = "stockCode")
     String stockCode;
     @Autowired(name = "isRealTrade")
-    boolean isRealTrade;//是否是真实交易
+    boolean isRealTrade = true;//是否是真实交易
     StockBuyMoneyAdapter buyMoneyAdapter;
     StockBuyMoneyAdapter zyAdapter;
     StockBuyMoneyAdapter bondAdapter;
