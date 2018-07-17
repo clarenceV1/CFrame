@@ -105,22 +105,24 @@ public class StockBuyMoneyAdapter extends GodBaseAdapter<StockBuyMoney> {
     }
 
     public int getBuyMoney() {
-        StockBuyMoney buyMoney = (StockBuyMoney) dataList.get(checkPosition);
+        StockBuyMoney buyMoney = dataList.get(checkPosition);
         if (buyMoney.getType() == 0) {
             return 0;
+        } else if (buyMoney.getType() == 4) {
+            return (int) (buyMoney.getTime() * baseMoney * boundsTimes.get(checkPosition));
         }
         return (int) (buyMoney.getTime() * baseMoney);
     }
 
     public int getTime() {
-        StockBuyMoney buyMoney = (StockBuyMoney) dataList.get(checkPosition);
+        StockBuyMoney buyMoney = dataList.get(checkPosition);
         return (int) buyMoney.getTime();
     }
 
     public List<Float> getTimes() {
         List<Float> times = new ArrayList<>();
         for (int i = 0; i < dataList.size(); i++) {
-            StockBuyMoney buyMoney = (StockBuyMoney) dataList.get(i);
+            StockBuyMoney buyMoney = dataList.get(i);
             times.add(buyMoney.getTime());
         }
         return times;
