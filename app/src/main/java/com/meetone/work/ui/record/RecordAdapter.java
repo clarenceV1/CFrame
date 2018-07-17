@@ -26,14 +26,9 @@ public class RecordAdapter extends BasePtrAdapter<RecordModel, RecordAdapter.Vie
     @Override
     protected void onPtrBindViewHolder(ViewHolder holder, RecordModel data, int position) {
 
-        if (data.getType() == 1000) {
-            holder.tvProfit.setText(context.getResources().getString(R.string.profit_1000));
-        } else {
-            holder.tvProfit.setText(context.getResources().getString(R.string.profit));
-        }
+        holder.tvProfit.setText(data.getRemark());
         holder.profit_tv.setText("+" + StringUtils.formatNum(data.getCandy_total()));
         holder.time_tv.setText(data.getCreate_dt());
-
     }
 
     @Override
