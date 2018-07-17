@@ -49,9 +49,13 @@ public class HomeForwardAdapter extends GodBaseAdapter {
         }
 
         if (isTrade == 1) {
+            ViewHolder.getTextView(convertView, R.id.tvBound).setTextColor(context.getResources().getColor(R.color.ys_241_83_83));
+            ViewHolder.getTextView(convertView, R.id.tvStockNmae).setTextColor(context.getResources().getColor(R.color.ys_255_255_255));
             ViewHolder.getTextView(convertView, R.id.tvTradeState).setText(context.getResources().getString(R.string.home_trade_ing));
             ViewHolder.getTextView(convertView, R.id.tvTradeState).setBackgroundResource(R.drawable.stock_code_bg);
         } else {
+            ViewHolder.getTextView(convertView, R.id.tvBound).setTextColor(context.getResources().getColor(R.color.ys_102_102_102));
+            ViewHolder.getTextView(convertView, R.id.tvStockNmae).setTextColor(context.getResources().getColor(R.color.ys_102_102_102));
             ViewHolder.getTextView(convertView, R.id.tvTradeState).setText(context.getResources().getString(R.string.home_trade_end));
             ViewHolder.getTextView(convertView, R.id.tvTradeState).setBackgroundResource(R.drawable.stock_code_gray_bg);
         }
