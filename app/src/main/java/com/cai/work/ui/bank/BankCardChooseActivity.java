@@ -87,8 +87,11 @@ public class BankCardChooseActivity extends AppBaseActivity<BankCardChooseBindin
                     choose.setChoose(false);
                 }
                 choose = bankCardList.get(position);
-                choose.setChoose(true);
-                adapter.notifyDataSetChanged();
+                EventBus.getDefault().post(new BankCardChooseEvent(choose));
+                finish();
+//                choose.setChoose(true);
+//                adapter.notifyDataSetChanged();
+
             }
         });
     }

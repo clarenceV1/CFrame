@@ -17,6 +17,7 @@
             android:layout_height="match_parent"
             android:divider="@color/ys_51_51_51"
             android:dividerHeight="0.5dp"
+            android:listSelector="@android:color/transparent"
             android:paddingLeft="10dp" />
     </LinearLayout>
 </layout>

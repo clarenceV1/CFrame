@@ -161,11 +161,7 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
                 childViewHolder.tvTradeState.setVisibility(View.GONE);
                 childViewHolder.tvRemark.setText(tradeItem.getContractCode());
             }
-            if(groupPosition==0){
-                childViewHolder.tvPrice.setText(tradeItem.getZdfu()+"%");
-            }else{
-                childViewHolder.tvPrice.setText(tradeItem.getZdfu());
-            }
+            childViewHolder.tvPrice.setText(tradeItem.getZdfu()+"%");
             if (tradeItem.getZdfu().contains("-")) {
                 childViewHolder.tvHandMoney.setTextColor(context.getResources().getColor(R.color.ys_0_229_0));
                 childViewHolder.tvPrice.setTextColor(context.getResources().getColor(R.color.ys_0_229_0));

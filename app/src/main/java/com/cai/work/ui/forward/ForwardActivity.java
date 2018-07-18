@@ -266,7 +266,19 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
         }
         mViewBinding.tvPrice.setText(forwardDetailt.getMk_price());
         mViewBinding.tvPrice2.setText(forwardDetailt.getZhangdie());
-        mViewBinding.tvPrice3.setText(forwardDetailt.getZhangfu());
+        mViewBinding.tvPrice3.setText(forwardDetailt.getZhangfu() + "%");
+        if(forwardDetailt.getZhangdie().contains("-")){
+            int green = getResources().getColor(R.color.ys_24_182_118);
+            mViewBinding.tvPrice.setTextColor(green);
+            mViewBinding.tvPrice2.setTextColor(green);
+            mViewBinding.tvPrice3.setTextColor(green);
+        }else{
+            int green = getResources().getColor(R.color.ys_227_76_77);
+            mViewBinding.tvPrice.setTextColor(green);
+            mViewBinding.tvPrice2.setTextColor(green);
+            mViewBinding.tvPrice3.setTextColor(green);
+        }
+
 
         mViewBinding.tvBuy.setText(forwardDetailt.getBn1());
         mViewBinding.tvSell.setText(forwardDetailt.getSn1());

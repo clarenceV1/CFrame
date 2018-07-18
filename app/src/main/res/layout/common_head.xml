@@ -41,7 +41,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
-            android:padding="10dp"
+            android:padding="15dp"
             android:visibility="gone"
             tools:src="@drawable/bankadd"
             tools:visibility="visible" />

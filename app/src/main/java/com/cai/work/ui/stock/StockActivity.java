@@ -42,7 +42,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
     @Inject
     StockPresenter presenter;
     @Autowired(name = "isRealTrade")
-    boolean isRealTrade =true;//是否是真实交易
+    boolean isRealTrade = true;//是否是真实交易
     @Inject
     ILoadImage imageLoader;
     StockHQ stockHQ;
@@ -153,7 +153,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Stock stock = (Stock) adapter.getItem(position);
-                presenter.loadImage(stock.getStockCode(),stock.getStockMarket());
+                presenter.loadImage(stock.getStockCode(), stock.getStockMarket());
                 presenter.requestStockHq(stock.getStockCode());
                 presenter.requestStockHistory(stock.getStockCode());
                 KeyBoardUtils.forceHide(mViewBinding.tvSearch);
@@ -237,7 +237,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     @Override
     public void callBack(StockTrade data) {
-        presenter.loadImage(data.getStock_code(),data.getShortMarket());
+        presenter.loadImage(data.getStock_code(), data.getShortMarket());
         stockCode = data.getStock_code();
         presenter.requestStockHq(data.getStock_code());
         presenter.requestStockHistory(data.getStock_code());
@@ -329,7 +329,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
             mViewBinding.tvPrice3.setTextColor(getResources().getColor(R.color.ys_232_0_63));
         }
         mViewBinding.tvPrice2.setText(stockHQ.getZhangdie());
-        mViewBinding.tvPrice3.setText(stockHQ.getZhangfu());
+        mViewBinding.tvPrice3.setText(stockHQ.getZhangfu() + "%");
 
         mViewBinding.tvSell1.setText(stockHQ.getSp1() + "");
         if (stockHQ.getKp_price() < stockHQ.getSp1()) {

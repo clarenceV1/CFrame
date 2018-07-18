@@ -94,6 +94,11 @@ public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding>
             }
         });
         switchTab();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         presenter.requestTradeData();
     }
 
