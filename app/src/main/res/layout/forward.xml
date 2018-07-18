@@ -70,20 +70,19 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="75dp"
                     android:background="@color/ys_30_30_30"
-                    android:paddingBottom="20dp"
+                    android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="20dp">
+                    android:paddingRight="15dp">
 
                     <TextView
                         android:id="@+id/tvName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
                         android:textColor="@color/ys_255_255_255"
                         android:textSize="18sp"
+                        android:layout_marginTop="10dp"
                         tools:text="沪金" />
 
                     <TextView
@@ -91,7 +90,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tvName"
-                        android:layout_marginTop="5dp"
                         android:textColor="@color/ys_153_153_153"
                         android:textSize="12sp"
                         tools:text="kjsdfjsf" />
@@ -176,7 +174,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="350dp">
+                    android:layout_height="320dp">
 
                     <RelativeLayout
                         android:id="@+id/rlContainer"
@@ -196,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="-50dp"
+                    android:layout_marginTop="-60dp"
                     android:orientation="horizontal">
 
                     <ProgressBar
