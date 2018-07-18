@@ -217,12 +217,12 @@ public interface ApiService {
     @FormUrlEncoded
     Flowable<CommonRespond> moniPingCang(@Field("token") String token, @Field("id") String id, @Field("code") String code);
 
-    @POST("/app/futures/oneKeyBackHand")
+    @POST("/app/futuresVirtual/oneKeyBackHand")
     @FormUrlEncoded
     Flowable<CommonRespond> moniFanshou(@Field("token") String token, @Field("id") String id, @Field("code") String code);
 
 
-    @POST("/app/futuresVirtual/oneKeyBackHand")
+    @POST("/app/futures/oneKeyBackHand")
     @FormUrlEncoded
     Flowable<CommonRespond> realFanshou(@Field("token") String token, @Field("id") String id, @Field("code") String code);
 

@@ -141,7 +141,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="15sp"
-            android:background="@color/ys_234_205_118"
+            android:background="@drawable/btn_yellow"
             android:text="@string/login_titile"
             android:textColor="@color/ys_255_255_255"
             android:textSize="18sp" />

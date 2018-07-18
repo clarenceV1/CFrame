@@ -37,8 +37,8 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
     @Inject
     AccountDAO accountDAO;
 
-    private int requestNum = 0;//已经请求过到数据个数
-    private int request_all_num = 1;//  所要请求到个数
+//    private int requestNum = 0;//已经请求过到数据个数
+//    private int request_all_num = 1;//  所要请求到个数
 
     @Inject
     public WelcomePresenter() {
@@ -58,10 +58,12 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
         }
         Account account = accountDAO.getAccount();
         if (account != null) {
-            request_all_num++;
+//            request_all_num++;
             requestLogin(account);
+        }else{
+            requestAllEnd();
         }
-        requestHomeData();
+//        requestHomeData();
     }
 
     /**
@@ -69,35 +71,35 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
      *
      * @return
      */
-    private void requestHomeData() {
-        Disposable disposable = requestStore.requestHomeData(new Consumer<HomeRespond>() {
-            @Override
-            public void accept(HomeRespond data) {
-                if (data != null) {
-                    HomeDataSql homeDataSql = new HomeDataSql();
-                    if (data.getCode() == 200 && data.getData() != null) {
-                        homeDataSql.setData(JSON.toJSONString(data.getData()));
-                        homeDataSqlDAO.saveHomeData(homeDataSql);
-                        Logger.d("请求首页数据完成！！！");
-                    } else {
-                        Logger.d("请求首页数据有问题！！！");
-                    }
-                }
-                requestAllEnd();
-            }
-        }, new Consumer<Throwable>() {
-            @Override
-            public void accept(Throwable throwable) {
-                if (NetWorkUtil.isNetConnected(context)) {
-                    Logger.d("请求首页数据失败！！！---有网络");
-                } else {
-                    Logger.d("请求首页数据失败！！！---没网络");
-                }
-                requestAllEnd();
-            }
-        });
-        mCompositeSubscription.add(disposable);
-    }
+//    private void requestHomeData() {
+//        Disposable disposable = requestStore.requestHomeData(new Consumer<HomeRespond>() {
+//            @Override
+//            public void accept(HomeRespond data) {
+//                if (data != null) {
+//                    HomeDataSql homeDataSql = new HomeDataSql();
+//                    if (data.getCode() == 200 && data.getData() != null) {
+//                        homeDataSql.setData(JSON.toJSONString(data.getData()));
+//                        homeDataSqlDAO.saveHomeData(homeDataSql);
+//                        Logger.d("请求首页数据完成！！！");
+//                    } else {
+//                        Logger.d("请求首页数据有问题！！！");
+//                    }
+//                }
+//                requestAllEnd();
+//            }
+//        }, new Consumer<Throwable>() {
+//            @Override
+//            public void accept(Throwable throwable) {
+//                if (NetWorkUtil.isNetConnected(context)) {
+//                    Logger.d("请求首页数据失败！！！---有网络");
+//                } else {
+//                    Logger.d("请求首页数据失败！！！---没网络");
+//                }
+//                requestAllEnd();
+//            }
+//        });
+//        mCompositeSubscription.add(disposable);
+//    }
 
     /**
      * 请求登录
@@ -157,9 +159,9 @@ public class WelcomePresenter extends GodBasePresenter<WelcomeView> {
     }
 
     private void requestAllEnd() {
-        requestNum++;
-        if (requestNum == request_all_num) {
+//        requestNum++;
+//        if (requestNum == request_all_num) {
             mView.goMainActivity();
-        }
+//        }
     }
 }

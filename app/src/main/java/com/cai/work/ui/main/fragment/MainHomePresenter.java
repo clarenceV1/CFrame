@@ -79,41 +79,41 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
         data.put(BaseLifecycleObserver.CLASS_NAME, "mainHomeFragment=====>");
     }
 
-    @SuppressLint("CheckResult")
-    public void requestData() {
-        Observable.create(new ObservableOnSubscribe<HomeItemData>() {
-            @Override
-            public void subscribe(ObservableEmitter<HomeItemData> homeData) {
-                HomeDataSql homeDataSql = homeDataSqlDAO.getHomeData();
-                if (homeDataSql != null) {
-                    homeData.onNext(JSON.parseObject(homeDataSql.getData(), HomeItemData.class));
-                    Logger.d("获取到首页缓存数据成功");
-                } else {
-                    Logger.d("获取到首页缓存数据失败");
-                    homeData.onNext(new HomeItemData());
-                }
-            }
-        }).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<HomeItemData>() {
-                    @Override
-                    public void accept(HomeItemData homeData) {
-                        if (homeData.getStock() != null) {
-                            mView.reFreshView(homeData);
-                        } else {
-                            requestHomeData();
-                        }
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) {
-                        requestHomeData();
-                    }
-                });
+//    @SuppressLint("CheckResult")
+//    public void requestData() {
+//        Observable.create(new ObservableOnSubscribe<HomeItemData>() {
+//            @Override
+//            public void subscribe(ObservableEmitter<HomeItemData> homeData) {
+//                HomeDataSql homeDataSql = homeDataSqlDAO.getHomeData();
+//                if (homeDataSql != null) {
+//                    homeData.onNext(JSON.parseObject(homeDataSql.getData(), HomeItemData.class));
+//                    Logger.d("获取到首页缓存数据成功");
+//                } else {
+//                    Logger.d("获取到首页缓存数据失败");
+//                    homeData.onNext(new HomeItemData());
+//                }
+//            }
+//        }).subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<HomeItemData>() {
+//                    @Override
+//                    public void accept(HomeItemData homeData) {
+//                        if (homeData.getStock() != null) {
+//                            mView.reFreshView(homeData);
+//                        } else {
+//                            requestHomeData();
+//                        }
+//                    }
+//                }, new Consumer<Throwable>() {
+//                    @Override
+//                    public void accept(Throwable throwable) {
+//                        requestHomeData();
+//                    }
+//                });
+//
+//    }
 
-    }
-
-    private void requestHomeData() {
+    public void requestHomeData() {
         try {
             Disposable disposable = requestStore.requestHomeData(new Consumer<HomeRespond>() {
                 @Override

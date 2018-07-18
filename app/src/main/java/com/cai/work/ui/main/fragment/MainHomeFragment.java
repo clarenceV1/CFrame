@@ -61,16 +61,16 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
         mViewBinding.reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.requestData();
+                presenter.requestHomeData();
             }
         });
-        presenter.requestData();
     }
 
     @Override
     public void onResume() {
         super.onResume();
         presenter.getAccountInfo();
+        presenter.requestHomeData();
     }
 
     private void initRecycleView() {
