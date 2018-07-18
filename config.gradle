@@ -67,7 +67,8 @@ ext {
             "android-support-percent"       : "com.android.support:percent:23.0.0",
             "QR-code"                       : "com.google.zxing:core:3.3.0",
             "easyadapter"                   : "com.yuyh.easyadapter:library:1.1.0",
-            "qiniu"                         : "com.qiniu:qiniu-android-sdk:7.3.10"
+            "qiniu"                         : "com.qiniu:qiniu-android-sdk:7.3.10",
+            "recyclerview"                  : "com.android.support:recyclerview-v7:25.3.1"
     ]
 
 }
