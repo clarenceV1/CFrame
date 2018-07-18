@@ -2,9 +2,11 @@ package com.cai.work.ui.stock;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
+import android.text.TextUtils;
 
 import com.bumptech.glide.Glide;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.work.bean.StockTrade;
 import com.cai.work.bean.respond.StockHQRespond;
 import com.cai.work.bean.respond.StockListRespond;
 import com.cai.work.bean.respond.StockTradeRespond;
@@ -40,23 +42,44 @@ public class StockPresenter extends GodBasePresenter<StockView> {
 
     }
 
-    public void loadImage(final String imgeUrl) {
+    public void loadImage(String stock_code, String stockMarket) {
+        if (stock_code == null || stockMarket == null) {
+            return;
+        }
+        StringBuilder builder = new StringBuilder("http://image.sinajs.cn/newchart/min/");
+        if (!TextUtils.isEmpty(stockMarket)) {
+            if ("1".equals(stockMarket)) {
+                stockMarket = "sz";
+            } else if ("2".equals(stockMarket)) {
+                stockMarket = "sh";
+            }
+            builder.append(stockMarket.toLowerCase());
+        }
+        builder.append(stock_code);
+        builder.append(".gif");
+        final String imgeUrl = builder.toString();
         Disposable disposable = Observable.create(new ObservableOnSubscribe<Bitmap>() {
             @Override
-            public void subscribe(ObservableEmitter<Bitmap> e) throws Exception {
-                Bitmap myBitmap = Glide.with(context)
-                        .load(imgeUrl)
-                        .asBitmap() //必须
-                        .centerCrop()
-                        .into(550, 450)
-                        .get();
-                e.onNext(myBitmap);
+            public void subscribe(ObservableEmitter<Bitmap> e) {
+                try {
+                    Bitmap myBitmap = Glide.with(context)
+                            .load(imgeUrl)
+                            .asBitmap() //必须
+                            .centerCrop()
+                            .into(550, 450)
+                            .get();
+                    if (e != null) {
+                        e.onNext(myBitmap);
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
             }
         }).subscribeOn(Schedulers.newThread())
-          .observeOn(AndroidSchedulers.mainThread())
-           .subscribe(new Consumer<Bitmap>() {
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Bitmap>() {
                     @Override
-                    public void accept(Bitmap bitmap) throws Exception {
+                    public void accept(Bitmap bitmap){
                         if (bitmap != null) {
                             mView.showImage(bitmap);
                         }

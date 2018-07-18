@@ -15,7 +15,6 @@ import android.widget.PopupWindow;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.bumptech.glide.Glide;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.widget.spiner.SpinerPopWindow;
 import com.cai.work.R;
@@ -26,17 +25,14 @@ import com.cai.work.bean.StockHQ;
 import com.cai.work.bean.StockTrade;
 import com.cai.work.databinding.StockBinding;
 import com.cai.work.kline.HisData;
-import com.cai.work.kline.KLineView;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
-import com.example.clarence.imageloaderlibrary.ILoadImageParams;
-import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.DateUtils;
 import com.example.clarence.utillibrary.DimensUtils;
 import com.example.clarence.utillibrary.KeyBoardUtils;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import javax.inject.Inject;
 
@@ -55,7 +51,6 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
     SpinerPopWindow spinerPopWindow;
     ViewTreeObserver.OnGlobalLayoutListener layoutListener;
 
-    String imgeUrl = "http://image.sinajs.cn/newchart/min/sh600000.gif";
     String stockCode;
     int red_color, green_color;
 
@@ -158,6 +153,7 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Stock stock = (Stock) adapter.getItem(position);
+                presenter.loadImage(stock.getStockCode(),stock.getStockMarket());
                 presenter.requestStockHq(stock.getStockCode());
                 presenter.requestStockHistory(stock.getStockCode());
                 KeyBoardUtils.forceHide(mViewBinding.tvSearch);
@@ -175,7 +171,6 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
         mViewBinding.kline.setDateFormat("yyyy-MM-dd");
 
-        presenter.loadImage(imgeUrl);
     }
 
     private void switchImage(int i) {
@@ -237,11 +232,12 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     @Override
     public void toast(String msg, int type) {
-
+        ToastUtils.showLong(msg);
     }
 
     @Override
     public void callBack(StockTrade data) {
+        presenter.loadImage(data.getStock_code(),data.getShortMarket());
         stockCode = data.getStock_code();
         presenter.requestStockHq(data.getStock_code());
         presenter.requestStockHistory(data.getStock_code());

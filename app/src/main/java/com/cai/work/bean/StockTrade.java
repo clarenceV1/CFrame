@@ -5,6 +5,15 @@ public class StockTrade {
     private String stock_name;
     private String isTrade;
     private String tradeTime;
+    private String shortMarket;
+
+    public String getShortMarket() {
+        return shortMarket;
+    }
+
+    public void setShortMarket(String shortMarket) {
+        this.shortMarket = shortMarket;
+    }
 
     public String getStock_code() {
         return stock_code;
