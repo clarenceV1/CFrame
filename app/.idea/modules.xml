@@ -5,16 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/../CFrame.iml" filepath="$PROJECT_DIR$/../CFrame.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibAnnotation/LibAnnotation.iml" filepath="$PROJECT_DIR$/../../LibAnnotation/LibAnnotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibAptCompiler/LibAptCompiler.iml" filepath="$PROJECT_DIR$/../../LibAptCompiler/LibAptCompiler.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../LibDataStore/LibDataStore.iml" filepath="$PROJECT_DIR$/../../LibDataStore/LibDataStore.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibFrameWork/LibFrameWork.iml" filepath="$PROJECT_DIR$/../../LibFrameWork/LibFrameWork.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../LibImageLoader/LibImageLoader.iml" filepath="$PROJECT_DIR$/../../LibImageLoader/LibImageLoader.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibLog/LibLog.iml" filepath="$PROJECT_DIR$/../../LibLog/LibLog.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../LibNet/LibNet.iml" filepath="$PROJECT_DIR$/../../LibNet/LibNet.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibPullToRefresh/LibPullToRefresh.iml" filepath="$PROJECT_DIR$/../../LibPullToRefresh/LibPullToRefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibUtils/LibUtils.iml" filepath="$PROJECT_DIR$/../../LibUtils/LibUtils.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../RemotePlugin/RemotePlugin.iml" filepath="$PROJECT_DIR$/../../RemotePlugin/RemotePlugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../plugin/plugin.iml" filepath="$PROJECT_DIR$/../plugin/plugin.iml" />
     </modules>
   </component>
 </project>

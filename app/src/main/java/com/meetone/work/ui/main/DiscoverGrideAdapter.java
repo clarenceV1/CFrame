@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.cai.framework.base.GodBaseAdapter;
+import com.cai.framework.imageload.GlideRoundTransform;
+import com.cai.framework.imageload.ILoadImage;
+import com.cai.framework.imageload.ILoadImageParams;
+import com.cai.framework.imageload.ImageForGlideParams;
 import com.meetone.work.R;
-import com.example.clarence.imageloaderlibrary.GlideRoundTransform;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
-import com.example.clarence.imageloaderlibrary.ILoadImageParams;
-import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.meetone.work.bean.DiscoverMin;
 
 import java.util.List;

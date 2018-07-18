@@ -6,16 +6,16 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.baseview.LoadingView;
+import com.cai.framework.imageload.ILoadImage;
 import com.cai.pullrefresh.BaseListPtrFrameLayout;
 import com.cai.pullrefresh.PtrRecyclerView;
 import com.cai.pullrefresh.lib.PtrFrameLayout;
-import com.meetone.work.R;
-import com.meetone.work.databinding.MessageBinding;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
+import com.meetone.work.R;
 import com.meetone.work.base.App;
 import com.meetone.work.base.AppBaseActivity;
 import com.meetone.work.bean.Message;
+import com.meetone.work.databinding.MessageBinding;
 
 import java.util.List;
 

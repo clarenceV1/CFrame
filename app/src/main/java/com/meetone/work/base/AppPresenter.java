@@ -1,6 +1,6 @@
 package com.meetone.work.base;
 
-import com.example.clarence.netlibrary.NetRespondCallBack;
+import com.cai.framework.http.NetRespondCallBack;
 import com.meetone.work.bean.Qiniu;
 import com.meetone.work.bean.respond.ConfigerRespond;
 import com.meetone.work.common.DataCacheStore;

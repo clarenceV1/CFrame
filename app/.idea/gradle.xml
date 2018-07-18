@@ -9,17 +9,12 @@
           <set>
             <option value="$PROJECT_DIR$/.." />
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/../plugin" />
             <option value="$PROJECT_DIR$/../../LibAnnotation" />
             <option value="$PROJECT_DIR$/../../LibAptCompiler" />
-            <option value="$PROJECT_DIR$/../../LibDataStore" />
             <option value="$PROJECT_DIR$/../../LibFrameWork" />
-            <option value="$PROJECT_DIR$/../../LibImageLoader" />
             <option value="$PROJECT_DIR$/../../LibLog" />
-            <option value="$PROJECT_DIR$/../../LibNet" />
             <option value="$PROJECT_DIR$/../../LibPullToRefresh" />
             <option value="$PROJECT_DIR$/../../LibUtils" />
-            <option value="$PROJECT_DIR$/../../RemotePlugin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

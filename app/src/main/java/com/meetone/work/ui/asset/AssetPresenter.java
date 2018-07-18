@@ -1,6 +1,6 @@
 package com.meetone.work.ui.asset;
 
-import com.example.clarence.netlibrary.NetRespondCallBack;
+import com.cai.framework.http.NetRespondCallBack;
 import com.meetone.work.base.AppBasePresenter;
 import com.meetone.work.bean.Asset;
 import com.meetone.work.bean.respond.AssetRespond;

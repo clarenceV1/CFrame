@@ -6,13 +6,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cai.framework.imageload.ILoadImage;
+import com.cai.framework.imageload.ILoadImageParams;
+import com.cai.framework.imageload.ImageForGlideParams;
 import com.cai.pullrefresh.BasePtrAdapter;
 import com.cai.pullrefresh.BasePtrViewHold;
 import com.cai.pullrefresh.BaseViewHold;
 import com.meetone.work.R;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
-import com.example.clarence.imageloaderlibrary.ILoadImageParams;
-import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.meetone.work.bean.Message;
 
 public class MessageAdapter extends BasePtrAdapter<Message, MessageAdapter.ViewHolder> {

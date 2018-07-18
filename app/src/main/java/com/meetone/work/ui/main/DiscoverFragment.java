@@ -4,16 +4,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.cai.framework.baseview.LoadingView;
+import com.cai.framework.imageload.ILoadImage;
 import com.cai.pullrefresh.BaseListPtrFrameLayout;
 import com.cai.pullrefresh.PtrRecyclerView;
 import com.cai.pullrefresh.lib.PtrFrameLayout;
-import com.meetone.work.R;
-import com.meetone.work.databinding.DiscoverBinding;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
+import com.meetone.work.R;
 import com.meetone.work.base.App;
 import com.meetone.work.base.AppBaseFragment;
 import com.meetone.work.bean.Discover;
+import com.meetone.work.databinding.DiscoverBinding;
 
 import java.util.List;
 

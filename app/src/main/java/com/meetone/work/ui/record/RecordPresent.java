@@ -1,6 +1,6 @@
 package com.meetone.work.ui.record;
 
-import com.example.clarence.netlibrary.NetRespondCallBack;
+import com.cai.framework.http.NetRespondCallBack;
 import com.meetone.work.base.AppBasePresenter;
 import com.meetone.work.bean.RecordDataModel;
 import com.meetone.work.bean.respond.RecordRespond;

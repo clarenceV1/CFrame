@@ -83,6 +83,11 @@ android {
     dataBinding {
         enabled true
     }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 MobSDK {
 
@@ -139,7 +144,6 @@ dependencies {
 
 //    annotationProcessor project(':LibAptCompiler')
 //    compile project(':LibAnnotation')
-    compile project(':LibFrameWork')
 
     compile rootProject.ext.dependencies["dagger"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
@@ -158,4 +162,53 @@ dependencies {
 
     compile 'com.umeng.sdk:common:latest.integration'
     compile 'com.umeng.sdk:analytics:latest.integration'
+
+//    compile rootProject.ext.dependencies["retrofit"]
+//    compile rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
+//    compile rootProject.ext.dependencies["retrofit-converter-gson"]
+//
+//    compile rootProject.ext.dependencies["rxjava2"]
+//    compile rootProject.ext.dependencies["rxandroid"]
+//
+//    compile rootProject.ext.dependencies["stetho"]
+//    compile rootProject.ext.dependencies["stetho-js-rhino"]
+//
+//    debugCompile rootProject.ext.dependencies["leakcanary-android"]
+//    releaseCompile rootProject.ext.dependencies["leakcanary-android-no-op"]
+//
+//    debugCompile rootProject.ext.dependencies["blockcanary-android"]
+//    releaseCompile rootProject.ext.dependencies["blockcanary-no-op"]
+//
+//    compile rootProject.ext.dependencies["eventbus"]
+//
+//    compile rootProject.ext.dependencies["android-support-percent"]
+//    compile rootProject.ext.dependencies["QR-code"]
+//
+//    compile rootProject.ext.dependencies["systembartint"]
+
+//    compile rootProject.ext.dependencies["okhttp3-logging-interceptor"]
+//    compile rootProject.ext.dependencies["stetho-okhttp3"]
+//
+//    compile rootProject.ext.dependencies["glide"]
+//    compile rootProject.ext.dependencies["android-support"]
+//
+//    compile rootProject.ext.dependencies["appcompat-v7"]
+//
+//    compile rootProject.ext.dependencies["aspectjrt"]
+//
+//    provided rootProject.ext.dependencies["okio"]
+//
+//    //For Lifecycles, LiveData, and ViewModel
+//    compile rootProject.ext.dependencies["lifecycle-runtime"]
+//    compile rootProject.ext.dependencies["lifecycle-extensions"]
+//    annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
+
+    if (LibFrameWork != "aar") {
+        compile project(':LibFrameWork')
+    } else {
+        compile(name: 'LibFrameWork-release', ext: 'aar')
+        compile(name: 'LibUtils-release', ext: 'aar')
+        compile(name: 'LibPullToRefresh-release', ext: 'aar')
+        compile(name: 'LibLog-release', ext: 'aar')
+    }
 }

@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.text.TextUtils;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.cai.framework.http.NetRespondCallBack;
 import com.meetone.work.R;
-import com.example.clarence.netlibrary.NetRespondCallBack;
 import com.example.clarence.utillibrary.StringUtils;
 import com.meetone.work.base.AppBasePresenter;
 import com.meetone.work.bean.CandyList;

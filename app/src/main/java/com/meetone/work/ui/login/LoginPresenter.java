@@ -1,7 +1,7 @@
 package com.meetone.work.ui.login;
 
 import com.alibaba.fastjson.JSON;
-import com.example.clarence.netlibrary.NetRespondCallBack;
+import com.cai.framework.http.NetRespondCallBack;
 import com.meetone.work.base.AppBasePresenter;
 import com.meetone.work.bean.PhoneCode;
 import com.meetone.work.bean.respond.LoginRespond;

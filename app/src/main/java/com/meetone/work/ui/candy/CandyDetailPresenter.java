@@ -4,7 +4,7 @@ import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.example.clarence.netlibrary.NetRespondCallBack;
+import com.cai.framework.http.NetRespondCallBack;
 import com.meetone.work.base.AppBasePresenter;
 import com.meetone.work.bean.CandyDetailModel;
 import com.meetone.work.bean.respond.Respond;

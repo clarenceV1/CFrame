@@ -3,8 +3,8 @@ package com.meetone.work.ui.welcome;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
+import com.cai.framework.http.NetRespondNoCallBack;
 import com.meetone.work.R;
-import com.example.clarence.netlibrary.NetRespondNoCallBack;
 import com.example.clarence.utillibrary.ShortCutUtils;
 import com.meetone.work.base.AppBasePresenter;
 import com.meetone.work.bean.MineModel;

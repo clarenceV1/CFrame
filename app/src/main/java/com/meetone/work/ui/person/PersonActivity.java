@@ -8,11 +8,11 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.imageload.ILoadImage;
+import com.cai.framework.imageload.ILoadImageParams;
+import com.cai.framework.imageload.ImageForGlideParams;
 import com.meetone.work.R;
 import com.meetone.work.databinding.PersonBinding;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
-import com.example.clarence.imageloaderlibrary.ILoadImageParams;
-import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.ToastUtils;
 import com.meetone.work.base.App;
 import com.meetone.work.base.AppBaseActivity;

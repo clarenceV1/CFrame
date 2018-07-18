@@ -1,21 +1,20 @@
-include ':app', ':LibAnnotation', ':plugin',":RemotePlugin"
-include(':LibAnnotation')
-project(':LibAnnotation').projectDir = new File('../LibAnnotation')
-include(':RemotePlugin')
-project(':RemotePlugin').projectDir = new File('../RemotePlugin')
+include ':app'
+
 include(':LibAptCompiler')
 project(':LibAptCompiler').projectDir = new File('../LibAptCompiler')
-include(':LibFrameWork')
-project(':LibFrameWork').projectDir = new File('../LibFrameWork')
-include(':LibDataStore')
-project(':LibDataStore').projectDir = new File('../LibDataStore')
-include(':LibUtils')
-project(':LibUtils').projectDir = new File('../LibUtils')
-include(':LibImageLoader')
-project(':LibImageLoader').projectDir = new File('../LibImageLoader')
-include(':LibNet')
-project(':LibNet').projectDir = new File('../LibNet')
-include(':LibLog')
-project(':LibLog').projectDir = new File('../LibLog')
-include(':LibPullToRefresh')
-project(':LibPullToRefresh').projectDir = new File('../LibPullToRefresh')
+
+if (LibFrameWork != "aar") {
+    include(':LibFrameWork')
+    project(':LibFrameWork').projectDir = new File('../LibFrameWork')
+    include(':LibAnnotation')
+    project(':LibAnnotation').projectDir = new File('../LibAnnotation')
+    include(':LibUtils')
+    project(':LibUtils').projectDir = new File('../LibUtils')
+    include(':LibPullToRefresh')
+    project(':LibPullToRefresh').projectDir = new File('../LibPullToRefresh')
+    include(':LibLog')
+    project(':LibLog').projectDir = new File('../LibLog')
+
+    //include(':RemotePlugin') //生成repo包后就不用了
+    //project(':RemotePlugin').projectDir = new File('../RemotePlugin')
+}

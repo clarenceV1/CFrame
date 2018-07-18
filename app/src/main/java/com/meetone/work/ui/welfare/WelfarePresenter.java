@@ -1,6 +1,6 @@
 package com.meetone.work.ui.welfare;
 
-import com.example.clarence.netlibrary.NetRespondCallBack;
+import com.cai.framework.http.NetRespondCallBack;
 import com.meetone.work.base.AppBasePresenter;
 import com.meetone.work.bean.Welfare;
 import com.meetone.work.bean.respond.WelfareRespond;

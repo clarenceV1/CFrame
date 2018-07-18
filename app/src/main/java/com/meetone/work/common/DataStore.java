@@ -3,7 +3,7 @@ package com.meetone.work.common;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
-import com.example.clarence.datastorelibrary.store.share_preference.ISharePreference;
+import com.cai.framework.dataStore.ISharePreference;
 import com.meetone.work.bean.AppUpdate;
 
 import javax.inject.Inject;
