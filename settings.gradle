@@ -1,8 +1,5 @@
 include ':app'
 
-include(':LibAptCompiler')
-project(':LibAptCompiler').projectDir = new File('../LibAptCompiler')
-
 if (LibFrameWork != "aar") {
     include(':LibFrameWork')
     project(':LibFrameWork').projectDir = new File('../LibFrameWork')
