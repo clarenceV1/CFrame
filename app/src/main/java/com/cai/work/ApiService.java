@@ -15,6 +15,7 @@ import com.cai.work.bean.respond.InviteResond;
 import com.cai.work.bean.respond.LoginRespond;
 import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.respond.MessageRespond;
+import com.cai.work.bean.respond.NewsRespond;
 import com.cai.work.bean.respond.RechargeBankResond;
 import com.cai.work.bean.respond.RedPacketRespond;
 import com.cai.work.bean.respond.CommonRespond;
@@ -35,6 +36,7 @@ import com.cai.work.bean.respond.WithdrawalRespond;
 import java.util.List;
 
 import io.reactivex.Flowable;
+import okhttp3.ResponseBody;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -169,8 +171,11 @@ public interface ApiService {
     @GET("/app/futuresVirtual/settlement")
     Flowable<ForwardAccountRespond> requestFakeForwardAccounts(@Query("page") int page, @Query("token") String token);
 
-    @GET("/app/news/queryPage")
-    Flowable<List<News>> requestNews(@Query("page") int page);
+    @GET("/app/news/index")
+    Flowable<NewsRespond> requestNews(@Query("page") int page, @Query("channelName") String channelName);
+
+    @GET("app/news/detail")
+    Flowable<ResponseBody> requestNewsDetial(@Query("id") int id, @Query("channelName") String channelName);
 
     @GET("/app/futures/get_code")
     Flowable<ForwardRecord> requestRecord(@Query("token") String token, @Query("code") String code);

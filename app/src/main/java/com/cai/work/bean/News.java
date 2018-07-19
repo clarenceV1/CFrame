@@ -15,12 +15,21 @@ public class News implements CBaseData, Serializable {
 //            "srcUrlPC": null
     private int id;
     private String channelName;
+    private String channelText;
     private String title;
     private String createDate;
     private String imageUrl1;
     private String srcUrlM;
     private String srcUrlPC;
     private String contentPC;
+
+    public String getChannelText() {
+        return channelText;
+    }
+
+    public void setChannelText(String channelText) {
+        this.channelText = channelText;
+    }
 
     public String getContentPC() {
         return contentPC;

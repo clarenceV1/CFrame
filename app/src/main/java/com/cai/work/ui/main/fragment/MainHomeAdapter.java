@@ -25,6 +25,7 @@ import com.cai.framework.widget.VerticalScrollTextView;
 import com.cai.framework.widget.dialog.GodDialog;
 import com.cai.work.R;
 import com.cai.work.bean.Forward;
+import com.cai.work.bean.News;
 import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.bean.home.HomeNoticeData;
 import com.cai.work.bean.home.HomeNphyData;
@@ -270,8 +271,8 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         });
     }
 
-    private void onBindNoticeView(NoticeViewHolder noticeViewHolder, List<HomeNoticeData> noticeDataList) {
-        VerticalScrollTextView scrollTextview = noticeViewHolder.scrollTextView;
+    private void onBindNoticeView(NoticeViewHolder noticeViewHolder, final List<HomeNoticeData> noticeDataList) {
+        final VerticalScrollTextView scrollTextview = noticeViewHolder.scrollTextView;
         scrollTextview.animationStart();
         ArrayList<String> textList = new ArrayList<>();
         for (HomeNoticeData homeNoticeData : noticeDataList) {
@@ -281,7 +282,12 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             @Override
             public void onClick(View v) {
                 if (presenter.isLogin()) {
-                    ARouter.getInstance().build("/AppModule/NewsActivity").navigation();
+                    int index = (scrollTextview.getIndex() - 1) % noticeDataList.size();
+                    HomeNoticeData noticeData = noticeDataList.get(index);
+                    ARouter.getInstance().build("/AppModule/NewsDetailActivity")
+                            .withInt("news", noticeData.getId())
+                            .withCharSequence("channelName", noticeData.getChannelName())
+                            .navigation();
                 } else {
                     showDialog();
                 }

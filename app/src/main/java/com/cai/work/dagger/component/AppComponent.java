@@ -27,6 +27,7 @@ import com.cai.work.ui.main.fragment.MainServiceFragment;
 import com.cai.work.ui.main.fragment.MainTradeFragment;
 import com.cai.work.ui.message.MessageActivity;
 import com.cai.work.ui.news.NewsActivity;
+import com.cai.work.ui.news.NewsDetailActivity;
 import com.cai.work.ui.password.SetPasswordActivity;
 import com.cai.work.ui.rank.RankActivity;
 import com.cai.work.ui.rebate.RebateActivity;
@@ -79,6 +80,8 @@ public interface AppComponent extends FrameWorkComponent {
 //    void inject(BankCardListPresenter bankPresenter);
 
     void inject(AddBankCardActivity bankAddActivity);
+
+    void inject(NewsDetailActivity bankAddActivity);
 
 //    void inject(AddBankCardPresenter bankAddPresenter);
 

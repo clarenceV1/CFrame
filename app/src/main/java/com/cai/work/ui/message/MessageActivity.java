@@ -4,11 +4,9 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.framework.widget.dialog.GodDialog;
@@ -16,7 +14,6 @@ import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Message;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MessageBinding;
 import com.example.clarence.utillibrary.ToastUtils;
 
@@ -31,7 +28,6 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
 
     MessageAdapter adapter;
     int page = 1;
-    int total = 0;//总数量
     int total_page = 2;//总页数
     ListView listView;
 
@@ -115,7 +111,6 @@ public class MessageActivity extends AppBaseActivity<MessageBinding> implements 
     public void refreshMessageList(Message data) {
         mViewBinding.pullListView.onRefreshComplete();
         page = data.getCurrent();
-        total = data.getTotal();
         total_page = data.getTotal_page();
         adapter.update(data.getData());
 

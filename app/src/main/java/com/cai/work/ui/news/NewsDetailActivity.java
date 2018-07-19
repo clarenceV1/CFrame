@@ -11,17 +11,27 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
+import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.News;
+import com.cai.work.bean.NewsDetail;
+import com.cai.work.bean.NewsList;
 import com.cai.work.databinding.NewsDetailBinding;
+import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 @Route(path = "/AppModule/NewsDetailActivity", name = "站内公告详情页")
-public class NewsDetailActivity extends AppBaseActivity<NewsDetailBinding> {
+public class NewsDetailActivity extends AppBaseActivity<NewsDetailBinding> implements NewsView {
 
     @Autowired(name = "news")
-    String newsJson;
+    int id;
+    @Autowired(name = "channelName")
+    String channelName;
+    @Inject
+    NewsPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +41,12 @@ public class NewsDetailActivity extends AppBaseActivity<NewsDetailBinding> {
 
     @Override
     public void initDagger() {
+        App.getAppComponent().inject(this);
     }
 
     @Override
     public void addPresenters(List<GodBasePresenter> observerList) {
+        observerList.add(presenter);
     }
 
     @Override
@@ -52,12 +64,26 @@ public class NewsDetailActivity extends AppBaseActivity<NewsDetailBinding> {
         });
         mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.news_title));
 
-        if (!TextUtils.isEmpty(newsJson)) {
-            News news = JSON.parseObject(newsJson,News.class);
-            mViewBinding.tvTitle.setText(news.getTitle());
-            mViewBinding.tvDate.setText(news.getCreateDate());
-            mViewBinding.tvChannelName.setText(news.getChannelName());
-            mViewBinding.tvContent.setText(Html.fromHtml(news.getContentPC()));
+        presenter.requestNewsDetial(id,channelName);
+    }
+
+    @Override
+    public void update(NewsList dataList) {
+
+    }
+
+    @Override
+    public void toast(String msg) {
+        ToastUtils.showLong(msg);
+    }
+
+    @Override
+    public void update(NewsDetail newsDetail) {
+        if (newsDetail != null) {
+            mViewBinding.tvTitle.setText(newsDetail.getTitle());
+            mViewBinding.tvDate.setText(newsDetail.getCreateDate());
+            mViewBinding.tvChannelName.setText(newsDetail.getChannelName());
+            mViewBinding.tvContent.setText(Html.fromHtml(newsDetail.getContentPC()));
         }
     }
 }

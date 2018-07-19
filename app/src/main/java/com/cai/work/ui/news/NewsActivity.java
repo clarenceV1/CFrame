@@ -1,5 +1,7 @@
 package com.cai.work.ui.news;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
@@ -15,6 +17,8 @@ import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.News;
+import com.cai.work.bean.NewsDetail;
+import com.cai.work.bean.NewsList;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.NewsBinding;
 
@@ -27,10 +31,10 @@ public class NewsActivity extends AppBaseActivity<NewsBinding> implements NewsVi
 
     @Inject
     NewsPresenter presenter;
-    int page = 1;
     ListView listView;
     NewsAdapter adapter;
-    boolean hasData = true;
+    int page = 1;
+    int total = 1;//总数
 
     @Override
     public void initDagger() {
@@ -57,6 +61,7 @@ public class NewsActivity extends AppBaseActivity<NewsBinding> implements NewsVi
         });
         mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.news_title));
         listView = mViewBinding.pullListView.getRefreshableView();
+        listView.setSelector(new ColorDrawable(Color.TRANSPARENT));
         adapter = new NewsAdapter(this);
         listView.setAdapter(adapter);
         PullToRefreshBase.Mode.isShowFooterLoadingView = false;
@@ -67,7 +72,7 @@ public class NewsActivity extends AppBaseActivity<NewsBinding> implements NewsVi
         mViewBinding.pullListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
             @Override
             public void onLastItemVisible() {
-                if (hasData) {
+                if (adapter.getCount() < total) {
                     ++page;
                     presenter.requestNews(page);
                 }
@@ -78,19 +83,23 @@ public class NewsActivity extends AppBaseActivity<NewsBinding> implements NewsVi
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 News news = (News) adapter.getItem(position);
-                ARouter.getInstance().build("/AppModule/NewsDetailActivity").withCharSequence("news", JSON.toJSONString(news)).navigation();
+                ARouter.getInstance().build("/AppModule/NewsDetailActivity")
+                        .withInt("news", news.getId())
+                        .withCharSequence("channelName",news.getChannelName())
+                        .navigation();
             }
         });
     }
 
 
     @Override
-    public void update(List<News> dataList) {
+    public void update(NewsList dataList) {
         mViewBinding.pullListView.onRefreshComplete();
-        adapter.update(dataList);
+        page = dataList.getCurrent_page();
+        total = dataList.getTotal();
+        adapter.update(dataList.getData());
 
-        if (dataList == null || dataList.size() == 0) {
-            hasData = false;
+        if (adapter.getCount() == total) {
             mViewBinding.pullListView.setMode(PullToRefreshBase.Mode.DISABLED);
             View view = LayoutInflater.from(this).inflate(R.layout.listview_foot, null);
             listView.addFooterView(view);
@@ -99,6 +108,11 @@ public class NewsActivity extends AppBaseActivity<NewsBinding> implements NewsVi
 
     @Override
     public void toast(String msg) {
+
+    }
+
+    @Override
+    public void update(NewsDetail newsDetail) {
 
     }
 }

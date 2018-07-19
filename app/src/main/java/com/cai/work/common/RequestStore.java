@@ -301,7 +301,15 @@ public class RequestStore {
     }
 
     public Disposable requestNews(int page, Consumer onNext, Consumer onError) {
-        Disposable disposable = iNet.request().create(ApiService.class).requestNews(page)
+        Disposable disposable = iNet.request().create(ApiService.class).requestNews(page,"Notice")
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError);
+        return disposable;
+    }
+
+    public Disposable requestNewsDetial(int id,String channelName, Consumer onNext, Consumer onError) {
+        Disposable disposable = iNet.request().create(ApiService.class).requestNewsDetial(id,channelName)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError);

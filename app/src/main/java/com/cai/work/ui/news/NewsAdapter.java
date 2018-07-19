@@ -32,6 +32,13 @@ class NewsAdapter extends GodBaseAdapter {
             ViewHolder.getTextView(convertView, R.id.tvNewsTitle).setText(news.getTitle());
             ViewHolder.getTextView(convertView, R.id.tvDate).setText(news.getCreateDate());
             ViewHolder.getTextView(convertView, R.id.tvContent).setText(news.getTitle());
+
+            ViewHolder.getView(convertView,R.id.rlLook).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                finish();
+                }
+            });
         }
     }
 
