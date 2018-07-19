@@ -67,7 +67,6 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.imageLoader = imageLoader;
         this.fragmentManager = fragmentManager;
         this.presenter = presenter;
-        presenter.startTimes();
         EventBus.getDefault().register(this);
     }
 
@@ -415,6 +414,11 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 break;
         }
         return type;
+    }
+
+    public void update(HomeItemData data) {
+        this.data = data;
+        notifyDataSetChanged();
     }
 
 

@@ -83,8 +83,12 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
     public void reFreshView(HomeItemData data) {
         if(data.getStock() != null){
             mViewBinding.loadView.setVisibility(View.GONE);
-            adapter = new MainHomeAdapter(mContext, imageLoader, data, getChildFragmentManager(),presenter);
-            mViewBinding.mRecyclerView.setAdapter(adapter);
+            if(adapter == null){
+                adapter = new MainHomeAdapter(mContext, imageLoader, data, getChildFragmentManager(),presenter);
+                mViewBinding.mRecyclerView.setAdapter(adapter);
+            }else{
+                adapter.update(data);
+            }
         }
     }
 
