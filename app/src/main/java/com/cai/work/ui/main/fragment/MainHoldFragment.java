@@ -224,9 +224,11 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (hidden) {
+            presenter.stopTimes();
             SocketManager.pauseSocket();
         } else {
             SocketManager.resumeSocket();
+            presenter.resumeTime();
         }
     }
 

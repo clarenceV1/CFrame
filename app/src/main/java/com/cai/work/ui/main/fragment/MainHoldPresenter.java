@@ -1,13 +1,11 @@
 package com.cai.work.ui.main.fragment;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.bean.ForwardHold;
 import com.cai.work.bean.SocketInfo;
-import com.cai.work.bean.User;
 import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.ForwardAccountRespond;
 import com.cai.work.bean.respond.StockAccountRespond;
@@ -23,17 +21,14 @@ import com.koushikdutta.async.http.WebSocket;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -46,6 +41,8 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
     UserDAO userDAO;
     @Inject
     AccountDAO accountDAO;
+    Disposable interval;
+    boolean mIsReal;//是否是实盘
 
     @Inject
     public MainHoldPresenter() {
@@ -75,10 +72,16 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
 
     public void requestData(boolean isRealTrade, boolean isStock, boolean isHolder, int page, SocketInfo socketInfo) {
         SocketManager.closeSocket();
+        if (interval != null) {
+            interval.dispose();
+            mCompositeSubscription.remove(interval);
+            interval = null;
+        }
+        mIsReal = isRealTrade;
         if (isRealTrade) {//实盘
             if (isStock) { //股票
                 if (isHolder) {
-                    requestRealStockHold();
+                    startTimes();
                 } else {
                     requestRealStockAccounts();
                 }
@@ -92,7 +95,7 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
         } else {
             if (isStock) {
                 if (isHolder) {
-                    requestFakeStockHold();
+                    startTimes();
                 } else {
                     requestFakeStockAccounts();
                 }
@@ -103,6 +106,35 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
                     requestFakeForwardAccounts(page);
                 }
             }
+        }
+    }
+
+    public void startTimes() {
+        interval = null;
+        interval = Observable.interval(0, 10, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) {
+                        if (mIsReal) {
+                            requestRealStockHold();
+                        } else {
+                            requestFakeStockHold();
+                        }
+                    }
+                });
+        mCompositeSubscription.add(interval);
+    }
+
+    public void stopTimes() {
+        if (interval != null) {
+            interval.dispose();
+        }
+    }
+
+    public void resumeTime() {
+        if (interval != null) {
+            startTimes();
         }
     }
 
@@ -214,7 +246,7 @@ public class MainHoldPresenter extends GodBasePresenter<HoldView> {
                 json = StringUtils.replaceBlank(json);
                 List<ForwardHold> data = new ArrayList<>();
                 if (!TextUtils.isEmpty(json) && !"[]".equals(json)) {
-                     data = JSON.parseArray(json, ForwardHold.class);
+                    data = JSON.parseArray(json, ForwardHold.class);
                 }
                 EventBus.getDefault().post(new ForwardHoldEvent(data));
             }
