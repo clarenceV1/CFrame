@@ -263,6 +263,8 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         for (HomeNoticeData homeNoticeData : noticeDataList) {
             textList.add(homeNoticeData.getTitle());
         }
+        scrollTextview.setFocusableInTouchMode(true);
+        scrollTextview.requestFocus();
         scrollTextview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
