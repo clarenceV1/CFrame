@@ -2,7 +2,6 @@ package com.cai.work.ui.main.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -12,12 +11,9 @@ import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
 import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineListData;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainMineFragmentBinding;
-import com.cai.work.event.ListViewScrollEvent;
 import com.cai.work.event.LoginEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
-import com.example.clarence.utillibrary.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

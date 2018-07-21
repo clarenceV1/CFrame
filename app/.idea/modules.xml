@@ -8,7 +8,6 @@
       <module fileurl="file://$PROJECT_DIR$/../CFrame.iml" filepath="$PROJECT_DIR$/../CFrame.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibAnnotation/LibAnnotation.iml" filepath="$PROJECT_DIR$/../../LibAnnotation/LibAnnotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibAptCompiler/LibAptCompiler.iml" filepath="$PROJECT_DIR$/../../LibAptCompiler/LibAptCompiler.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../LibAptCompiler/LibAptCompiler.iml" filepath="$PROJECT_DIR$/../../LibAptCompiler/LibAptCompiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibDataStore/LibDataStore.iml" filepath="$PROJECT_DIR$/../../LibDataStore/LibDataStore.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibDownload/LibDownload.iml" filepath="$PROJECT_DIR$/../../LibDownload/LibDownload.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../LibFrameWork/LibFrameWork.iml" filepath="$PROJECT_DIR$/../../LibFrameWork/LibFrameWork.iml" />

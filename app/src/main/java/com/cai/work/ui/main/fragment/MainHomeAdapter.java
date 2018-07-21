@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -54,9 +55,7 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
     FragmentManager fragmentManager;
     int selectedTabType = 1;
     MainHomePresenter presenter;
-    //    ListViewEx rangeListView;
-    HomeRangeAdapter mRangeAdapter;
-    List<HomeRangeData> mRangeData;
+    ListView rangeListView;
     HomeForwardFragment forwardFragment;
 
     public MainHomeAdapter(Context context, ILoadImage imageLoader, FragmentManager fragmentManager, MainHomePresenter presenter) {
@@ -144,9 +143,8 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
     private void onBindRangeView(RangeViewHolder rangeViewHolder, final List<HomeRangeData> rangeData) {
         HomeRangeAdapter rangeAdapter = new HomeRangeAdapter(context, rangeData);
         rangeViewHolder.listViewEx.setAdapter(rangeAdapter);
-        mRangeAdapter = rangeAdapter;
-        mRangeData = rangeData;
-
+        rangeListView = rangeViewHolder.listViewEx;
+        presenter.startTimes();
 //        ARouter.getInstance().build("/AppModule/RankActivity")
 //                .withCharSequence("dataList", JSON.toJSONString(rangeData))
 //                .navigation();
@@ -448,12 +446,12 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
     }
 
     class RangeViewHolder extends BasePtrViewHold {
-        ListViewEx listViewEx;
+        ListView listViewEx;
         LinearLayout llLookRank;
 
         public RangeViewHolder(View itemView, OnRecyclerViewItemClickListener listener) {
             super(itemView, listener);
-            listViewEx = (ListViewEx) itemView.findViewById(R.id.listViewEx);
+            listViewEx = (ListView) itemView.findViewById(R.id.listViewEx);
             llLookRank = (LinearLayout) itemView.findViewById(R.id.llLookRank);
         }
     }
@@ -479,19 +477,11 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
 //        }
 //    }
 
-    int position = 0;
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void listViewScrollEvent(ListViewScrollEvent event) {
         Log.d("listViewScrollEvent", "刷新");
-//        if (mRangeData != null && mRangeData.size() > 5 && mRangeAdapter != null) {
-//            position++;
-//            List newData = new ArrayList();
-//            int size = mRangeData.size();
-//            for (int i = position; i < position + 5; i++) {
-//                newData.add(mRangeData.get(i % size));
-//            }
-//            mRangeAdapter.update(newData);
-//        }
+        if (rangeListView != null) {
+            rangeListView.smoothScrollBy(6, 48);
+        }
     }
 }
