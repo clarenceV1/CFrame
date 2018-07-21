@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -182,10 +181,16 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         });
         switchTab(forwardViewHolder);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        forwardFragment = (HomeForwardFragment) creatFragment(HomeForwardFragment.TYPE_NPHY, nphyData);
-        transaction.add(R.id.homeForwardContainer, forwardFragment);
-        transaction.commitAllowingStateLoss();
-//        swtichFragment(nphyData, wphyData);
+        if (forwardFragment != null) {
+            transaction.remove(forwardFragment);
+            forwardFragment = null;
+        }
+        if (forwardFragment == null) {
+            forwardFragment = (HomeForwardFragment) creatFragment(nphyData);
+            forwardFragment.updateWp(wphyData);
+            transaction.add(R.id.homeForwardContainer, forwardFragment);
+            transaction.commitAllowingStateLoss();
+        }
     }
 
     private void switchTab(ForwardViewHolder forwardViewHolder) {
@@ -202,37 +207,8 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         }
     }
 
-    private void swtichFragment(List<HomeNphyData> nphyData, List<HomeWphyData> wphyData) {
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        Fragment wpFragment = fragmentManager.findFragmentByTag(HomeForwardFragment.TYPE_WPHY);
-        Fragment npFragment = fragmentManager.findFragmentByTag(HomeForwardFragment.TYPE_NPHY);
-        if (selectedTabType == 1) {
-            if (wpFragment != null) {
-                transaction.hide(wpFragment);
-            }
-            if (npFragment == null) {
-                npFragment = creatFragment(HomeForwardFragment.TYPE_NPHY, nphyData);
-                transaction.add(R.id.homeForwardContainer, npFragment, HomeForwardFragment.TYPE_NPHY);
-            } else {
-                transaction.show(npFragment);
-            }
-        } else {
-            if (npFragment != null) {
-                transaction.hide(npFragment);
-            }
-            if (wpFragment == null) {
-                wpFragment = creatFragment(HomeForwardFragment.TYPE_WPHY, wphyData);
-                transaction.add(R.id.homeForwardContainer, wpFragment, HomeForwardFragment.TYPE_WPHY);
-            } else {
-                transaction.show(wpFragment);
-            }
-        }
-        transaction.commitAllowingStateLoss();
-    }
-
-    public <T> Fragment creatFragment(String type, List<T> data) {
+    public <T> Fragment creatFragment(List<T> data) {
         Bundle bundle = new Bundle();
-        bundle.putString("type", type);
         bundle.putSerializable("dataList", (Serializable) data);
         return Fragment.instantiate(context, HomeForwardFragment.class.getName(), bundle);
     }

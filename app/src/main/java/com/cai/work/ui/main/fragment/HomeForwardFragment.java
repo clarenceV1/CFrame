@@ -21,12 +21,12 @@ import javax.inject.Inject;
 
 public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBinding> {
 
-    public static final String TYPE_NPHY = "type_nphy";
-    public static final String TYPE_WPHY = "type_wphy";
     HomeForwardAdapter adapter;
 
     @Inject
     MainHomePresenter presenter;
+
+    List dataList;
 
     @Override
     public void addPresenters(List<GodBasePresenter> observerList) {
@@ -49,20 +49,31 @@ public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBind
     }
 
     public void updateNp(List<HomeNphyData> nphyData) {
-        if (nphyData != null && adapter != null) {
-            adapter.update(nphyData);
+        if (nphyData != null) {
+            if (adapter != null) {
+                adapter.update(nphyData);
+            } else {
+                this.dataList = nphyData;
+            }
         }
     }
 
     public void updateWp(List<HomeWphyData> wphyData) {
-        if (wphyData != null && adapter != null) {
-            adapter.update(wphyData);
+        if (wphyData != null) {
+            if (adapter != null) {
+                adapter.update(wphyData);
+            } else {
+                this.dataList = wphyData;
+            }
         }
     }
 
     private void initListView() {
         adapter = new HomeForwardAdapter(getContext());
         mViewBinding.forwardListView.setAdapter(adapter);
+        if (dataList != null) {
+            adapter.update(dataList);
+        }
         mViewBinding.forwardListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
