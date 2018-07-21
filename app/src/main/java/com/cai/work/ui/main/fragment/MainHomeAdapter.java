@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -23,16 +21,16 @@ import com.cai.framework.widget.CircleView;
 import com.cai.framework.widget.ListViewEx;
 import com.cai.framework.widget.VerticalScrollTextView;
 import com.cai.framework.widget.dialog.GodDialog;
+import com.cai.pullrefresh.BasePtrAdapter;
+import com.cai.pullrefresh.BasePtrViewHold;
 import com.cai.work.R;
 import com.cai.work.bean.Forward;
-import com.cai.work.bean.News;
 import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.bean.home.HomeNoticeData;
 import com.cai.work.bean.home.HomeNphyData;
 import com.cai.work.bean.home.HomeRangeData;
 import com.cai.work.bean.home.HomeStockData;
 import com.cai.work.bean.home.HomeWphyData;
-import com.cai.work.event.ForwardDetailEvent;
 import com.cai.work.event.ListViewScrollEvent;
 import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
@@ -45,8 +43,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    public static final int NOTICE = 0;
+public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHold> {
+    public static final int NOTICE = 5;
     public static final int STOCK = 1;
     public static final int FORWARD = 2;
     public static final int RANGE = 3;
@@ -62,8 +60,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     HomeRangeAdapter mRangeAdapter;
     List<HomeRangeData> mRangeData;
 
-    public MainHomeAdapter(Context context, ILoadImage imageLoader, HomeItemData data, FragmentManager fragmentManager, MainHomePresenter presenter) {
-        this.data = data;
+    public MainHomeAdapter(Context context, ILoadImage imageLoader, FragmentManager fragmentManager, MainHomePresenter presenter) {
         this.context = context;
         this.imageLoader = imageLoader;
         this.fragmentManager = fragmentManager;
@@ -71,30 +68,35 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         EventBus.getDefault().register(this);
     }
 
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view;
-        if (viewType == NOTICE) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_notice, parent, false);
-            return new MainHomeAdapter.NoticeViewHolder(view);
-        } else if (viewType == STOCK) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_stock, parent, false);
-            return new MainHomeAdapter.StockViewHolder(view);
-        } else if (viewType == FORWARD) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_forward, parent, false);
-            return new MainHomeAdapter.ForwardViewHolder(view);
-        } else if (viewType == RANGE) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_range, parent, false);
-            return new MainHomeAdapter.RangeViewHolder(view);
-        } else if (viewType == Help) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_help, parent, false);
-            return new MainHomeAdapter.HelpViewHolder(view);
-        }
-        return null;
+    public void update(HomeItemData data) {
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public BasePtrViewHold onPtrCreateViewHolder(ViewGroup parent, int viewType) {
+        BasePtrViewHold viewHolder;
+        if (viewType == NOTICE) {
+            View view = inflateItemView(parent, R.layout.home_notice);
+            viewHolder = new MainHomeAdapter.NoticeViewHolder(view, null);
+        } else if (viewType == STOCK) {
+            View view = inflateItemView(parent, R.layout.home_stock);
+            viewHolder = new MainHomeAdapter.StockViewHolder(view, null);
+        } else if (viewType == FORWARD) {
+            View view = inflateItemView(parent, R.layout.home_forward);
+            viewHolder = new MainHomeAdapter.ForwardViewHolder(view, null);
+        } else if (viewType == RANGE) {
+            View view = inflateItemView(parent, R.layout.home_range);
+            viewHolder = new MainHomeAdapter.RangeViewHolder(view, null);
+        } else/* if (viewType == Help)*/ {
+            View view = inflateItemView(parent, R.layout.home_help);
+            viewHolder = new MainHomeAdapter.HelpViewHolder(view, null);
+        }
+        return viewHolder;
+    }
+
+    @Override
+    public void onPtrBindViewHolder(BasePtrViewHold holder, final HomeItemData data, int position) {
         if (holder instanceof NoticeViewHolder) {
             NoticeViewHolder noticeViewHolder = (NoticeViewHolder) holder;
             List<HomeNoticeData> noticeDataList = data.getNotice();
@@ -150,21 +152,10 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         rangeViewHolder.listViewEx.setAdapter(rangeAdapter);
         mRangeAdapter = rangeAdapter;
         mRangeData = rangeData;
-        rangeViewHolder.listViewEx.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
-        rangeViewHolder.llLookRank.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ARouter.getInstance().build("/AppModule/RankActivity")
-                        .withCharSequence("dataList", JSON.toJSONString(rangeData))
-                        .navigation();
-            }
-        });
-//        rangeListView = rangeViewHolder.listViewEx;
+//        ARouter.getInstance().build("/AppModule/RankActivity")
+//                .withCharSequence("dataList", JSON.toJSONString(rangeData))
+//                .navigation();
     }
 
     private void onBindForwardView(final ForwardViewHolder forwardViewHolder, final List<HomeNphyData> nphyData, final List<HomeWphyData> wphyData) {
@@ -273,7 +264,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private void onBindNoticeView(NoticeViewHolder noticeViewHolder, final List<HomeNoticeData> noticeDataList) {
         final VerticalScrollTextView scrollTextview = noticeViewHolder.scrollTextView;
-        scrollTextview.animationStart();
+//        scrollTextview.animationStart();
         ArrayList<String> textList = new ArrayList<>();
         for (HomeNoticeData homeNoticeData : noticeDataList) {
             textList.add(homeNoticeData.getTitle());
@@ -395,12 +386,7 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
-    public int getItemCount() {
-        return 5;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
+    public int getPtrItemViewType(int position) {
         int type = NOTICE;
         switch (position) {
             case 0:
@@ -422,19 +408,14 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return type;
     }
 
-    public void update(HomeItemData data) {
-        this.data = data;
-        notifyDataSetChanged();
-    }
 
-
-    class NoticeViewHolder extends RecyclerView.ViewHolder {
+    class NoticeViewHolder extends BasePtrViewHold {
         VerticalScrollTextView scrollTextView;
         TextView tvMore;
         RelativeLayout rlTab1, rlTab2, rlTab3, rlTab4;
 
-        public NoticeViewHolder(View itemView) {
-            super(itemView);
+        public NoticeViewHolder(View itemView, OnRecyclerViewItemClickListener listener) {
+            super(itemView, listener);
             scrollTextView = (VerticalScrollTextView) itemView.findViewById(R.id.scrollTextView);
             tvMore = (TextView) itemView.findViewById(R.id.tvMore);
             rlTab1 = (RelativeLayout) itemView.findViewById(R.id.rlTab1);
@@ -444,13 +425,13 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    class StockViewHolder extends RecyclerView.ViewHolder {
+    class StockViewHolder extends BasePtrViewHold {
         TextView tvStockNmae, tvTradeState, tvRemark, tvBound, tvTradeTime, tvShortCode;
         CircleView circleView;
         RelativeLayout rlStock;
 
-        public StockViewHolder(View itemView) {
-            super(itemView);
+        public StockViewHolder(View itemView, OnRecyclerViewItemClickListener listener) {
+            super(itemView, listener);
             tvStockNmae = (TextView) itemView.findViewById(R.id.tvStockNmae);
             tvTradeState = (TextView) itemView.findViewById(R.id.tvTradeState);
             tvRemark = (TextView) itemView.findViewById(R.id.tvRemark);
@@ -462,14 +443,14 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    class ForwardViewHolder extends RecyclerView.ViewHolder {
+    class ForwardViewHolder extends BasePtrViewHold {
         TextView tvHomeTabLeft, tvHomeTabRight;
         FrameLayout homeForwardContainer;
         View bottomLine1, bottomLine2;
         RelativeLayout rlTab1, rlTab2;
 
-        public ForwardViewHolder(View itemView) {
-            super(itemView);
+        public ForwardViewHolder(View itemView, OnRecyclerViewItemClickListener listener) {
+            super(itemView, listener);
             tvHomeTabLeft = (TextView) itemView.findViewById(R.id.tvHomeTabLeft);
             tvHomeTabRight = (TextView) itemView.findViewById(R.id.tvHomeTabRight);
             homeForwardContainer = (FrameLayout) itemView.findViewById(R.id.homeForwardContainer);
@@ -480,22 +461,22 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    class RangeViewHolder extends RecyclerView.ViewHolder {
+    class RangeViewHolder extends BasePtrViewHold {
         ListViewEx listViewEx;
         LinearLayout llLookRank;
 
-        public RangeViewHolder(View itemView) {
-            super(itemView);
+        public RangeViewHolder(View itemView, OnRecyclerViewItemClickListener listener) {
+            super(itemView, listener);
             listViewEx = (ListViewEx) itemView.findViewById(R.id.listViewEx);
             llLookRank = (LinearLayout) itemView.findViewById(R.id.llLookRank);
         }
     }
 
-    class HelpViewHolder extends RecyclerView.ViewHolder {
+    class HelpViewHolder extends BasePtrViewHold {
         TextView tvAboutUs, tvHelpCenter, tvSave, tvAskOnline;
 
-        public HelpViewHolder(View itemView) {
-            super(itemView);
+        public HelpViewHolder(View itemView, OnRecyclerViewItemClickListener listener) {
+            super(itemView, listener);
             tvAboutUs = (TextView) itemView.findViewById(R.id.tvAboutUs);
             tvHelpCenter = (TextView) itemView.findViewById(R.id.tvHelpCenter);
             tvSave = (TextView) itemView.findViewById(R.id.tvSave);
@@ -503,14 +484,14 @@ public class MainHomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    @Override
-    public void onViewDetachedFromWindow(RecyclerView.ViewHolder holder) {
-        super.onViewDetachedFromWindow(holder);
-        if (holder instanceof NoticeViewHolder) {
-            NoticeViewHolder noticeViewHolder = (NoticeViewHolder) holder;
-            noticeViewHolder.scrollTextView.animationStop();
-        }
-    }
+//    @Override
+//    public void onViewDetachedFromWindow(RecyclerView.ViewHolder holder) {
+//        super.onViewDetachedFromWindow(holder);
+//        if (holder instanceof NoticeViewHolder) {
+//            NoticeViewHolder noticeViewHolder = (NoticeViewHolder) holder;
+//            noticeViewHolder.scrollTextView.animationStop();
+//        }
+//    }
 
     int position = 0;
 

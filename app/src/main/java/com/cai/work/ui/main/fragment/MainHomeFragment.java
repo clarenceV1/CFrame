@@ -6,6 +6,9 @@ import android.view.View;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
+import com.cai.pullrefresh.BaseListPtrFrameLayout;
+import com.cai.pullrefresh.PtrRecyclerView;
+import com.cai.pullrefresh.lib.PtrFrameLayout;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
@@ -19,6 +22,7 @@ import com.example.clarence.imageloaderlibrary.ILoadImageParams;
 import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.ToastUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -31,7 +35,7 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
     @Inject
     MainHomePresenter presenter;
     MainHomeAdapter adapter;
-    LinearLayoutManager layoutmanager;
+    private PtrRecyclerView mPtrRecyclerView;
 
     @Override
     public void addPresenters(List<GodBasePresenter> observerList) {
@@ -74,21 +78,31 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
     }
 
     private void initRecycleView() {
-        layoutmanager = new LinearLayoutManager(getContext());
-        mViewBinding.mRecyclerView.setLayoutManager(layoutmanager);
+        mPtrRecyclerView = (PtrRecyclerView) mViewBinding.mRecyclerView.getRecyclerView();
+
+        adapter = new MainHomeAdapter(mContext, imageLoader, getChildFragmentManager(), presenter);
+        mPtrRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mPtrRecyclerView.setAdapter(adapter);
+        mViewBinding.mRecyclerView.setCloseLoadMore(true);
+        mViewBinding.mRecyclerView.setOnPullLoadListener(new BaseListPtrFrameLayout.OnPullLoadListener() {
+            @Override
+            public void onRefresh(final PtrFrameLayout frame) {
+                presenter.requestHomeData();
+            }
+
+            @Override
+            public void onLoadMore() {
+            }
+        });
     }
 
 
     @Override
-    public void reFreshView(HomeItemData data) {
-        if(data.getStock() != null){
+    public void reFreshView(List<HomeItemData> data) {
+        mViewBinding.mRecyclerView.refreshOrLoadMoreComplete(false);
+        if (data != null && data.size() > 0) {
             mViewBinding.loadView.setVisibility(View.GONE);
-            if(adapter == null){
-                adapter = new MainHomeAdapter(mContext, imageLoader, data, getChildFragmentManager(),presenter);
-                mViewBinding.mRecyclerView.setAdapter(adapter);
-            }else{
-                adapter.update(data);
-            }
+            adapter.setDatas(data);
         }
     }
 

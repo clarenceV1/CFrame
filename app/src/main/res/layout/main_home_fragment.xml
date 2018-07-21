@@ -66,11 +66,10 @@
             android:layout_height="match_parent"
             tools:background="@color/ys_33_33_33">
 
-            <android.support.v7.widget.RecyclerView
+            <com.cai.pullrefresh.PtrRecyclerViewFrameLayout
                 android:id="@+id/mRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:descendantFocusability="blocksDescendants" />
+                android:layout_height="match_parent" />
 
             <LinearLayout
                 android:id="@+id/loadView"

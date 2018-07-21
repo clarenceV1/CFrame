@@ -19,7 +19,9 @@ import com.example.clarence.utillibrary.StringUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -118,13 +120,22 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
             Disposable disposable = requestStore.requestHomeData(new Consumer<HomeRespond>() {
                 @Override
                 public void accept(HomeRespond data) {
-                    mView.reFreshView(data.getData());
+                    HomeItemData itemData = data.getData();
+                    List<HomeItemData> list = new ArrayList<>();
+                    if (itemData != null) {
+                        list.add(itemData);
+                        list.add(itemData);
+                        list.add(itemData);
+                        list.add(itemData);
+                        list.add(itemData);
+                    }
+                    mView.reFreshView(list);
                 }
             }, new Consumer<Throwable>() {
                 @Override
                 public void accept(Throwable throwable) {
                     mView.requestError("抱歉！请求失败，请检查您的网络");
-                    mView.reFreshView(new HomeItemData());
+                    mView.reFreshView(new ArrayList<HomeItemData>());
                 }
             });
             mCompositeSubscription.add(disposable);
