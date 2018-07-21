@@ -50,7 +50,6 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
     public static final int RANGE = 3;
     public static final int Help = 4;
 
-    HomeItemData data;
     Context context;
     ILoadImage imageLoader;
     FragmentManager fragmentManager;
@@ -66,11 +65,6 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         this.fragmentManager = fragmentManager;
         this.presenter = presenter;
         EventBus.getDefault().register(this);
-    }
-
-    public void update(HomeItemData data) {
-        this.data = data;
-        notifyDataSetChanged();
     }
 
     @Override
@@ -264,7 +258,7 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
 
     private void onBindNoticeView(NoticeViewHolder noticeViewHolder, final List<HomeNoticeData> noticeDataList) {
         final VerticalScrollTextView scrollTextview = noticeViewHolder.scrollTextView;
-//        scrollTextview.animationStart();
+        scrollTextview.animationStart();
         ArrayList<String> textList = new ArrayList<>();
         for (HomeNoticeData homeNoticeData : noticeDataList) {
             textList.add(homeNoticeData.getTitle());
@@ -295,11 +289,16 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
                 }
             }
         });
+        if (datas == null && datas.size() == 0) {
+            return;
+        }
+        final HomeItemData itemData = datas.get(0);
+
         noticeViewHolder.rlTab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (data != null && data.getNphy() != null) {
-                    HomeStockData stockData = data.getStock();
+                if (itemData != null && itemData.getNphy() != null) {
+                    HomeStockData stockData = itemData.getStock();
                     if (stockData != null) {
                         if (presenter.isLogin()) {
                             ARouter.getInstance().build("/AppModule/StockActivity")
@@ -315,8 +314,8 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         noticeViewHolder.rlTab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (data != null && data.getNphy() != null) {
-                    List<HomeNphyData> nphyList = data.getNphy();
+                if (itemData != null && itemData.getNphy() != null) {
+                    List<HomeNphyData> nphyList = itemData.getNphy();
                     if (nphyList.size() > 0) {
                         HomeNphyData nphyData = nphyList.get(0);
                         Forward forward = new Forward(nphyData.getContractName(), nphyData.getContractCode());
@@ -335,8 +334,8 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         noticeViewHolder.rlTab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (data != null && data.getNphy() != null) {
-                    HomeStockData stockData = data.getStock();
+                if (itemData != null && itemData.getNphy() != null) {
+                    HomeStockData stockData = itemData.getStock();
                     if (stockData != null) {
                         if (presenter.isLogin()) {
                             ARouter.getInstance().build("/AppModule/StockActivity")
@@ -352,8 +351,8 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         noticeViewHolder.rlTab4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (data != null && data.getNphy() != null) {
-                    List<HomeNphyData> nphyList = data.getNphy();
+                if (itemData != null && itemData.getNphy() != null) {
+                    List<HomeNphyData> nphyList = itemData.getNphy();
                     if (nphyList.size() > 0) {
                         HomeNphyData nphyData = nphyList.get(0);
                         Forward forward = new Forward(nphyData.getContractName(), nphyData.getContractCode());
