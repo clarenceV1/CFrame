@@ -58,6 +58,7 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
     //    ListViewEx rangeListView;
     HomeRangeAdapter mRangeAdapter;
     List<HomeRangeData> mRangeData;
+    HomeForwardFragment forwardFragment;
 
     public MainHomeAdapter(Context context, ILoadImage imageLoader, FragmentManager fragmentManager, MainHomePresenter presenter) {
         this.context = context;
@@ -161,7 +162,9 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
                 }
                 selectedTabType = 1;
                 switchTab(forwardViewHolder);
-                swtichFragment(nphyData, wphyData);
+                if (forwardFragment != null) {
+                    forwardFragment.updateNp(nphyData);
+                }
             }
         });
         forwardViewHolder.rlTab2.setOnClickListener(new View.OnClickListener() {
@@ -172,11 +175,17 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
                 }
                 selectedTabType = 2;
                 switchTab(forwardViewHolder);
-                swtichFragment(nphyData, wphyData);
+                if (forwardFragment != null) {
+                    forwardFragment.updateWp(wphyData);
+                }
             }
         });
         switchTab(forwardViewHolder);
-        swtichFragment(nphyData, wphyData);
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        forwardFragment = (HomeForwardFragment) creatFragment(HomeForwardFragment.TYPE_NPHY, nphyData);
+        transaction.add(R.id.homeForwardContainer, forwardFragment);
+        transaction.commitAllowingStateLoss();
+//        swtichFragment(nphyData, wphyData);
     }
 
     private void switchTab(ForwardViewHolder forwardViewHolder) {

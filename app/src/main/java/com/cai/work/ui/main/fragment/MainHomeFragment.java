@@ -74,7 +74,7 @@ public class MainHomeFragment extends AppBaseFragment<MainHomeFragmentBinding> i
     public void onResume() {
         super.onResume();
         presenter.getAccountInfo();
-        presenter.requestHomeData();
+//        presenter.requestHomeData();
     }
 
     private void initRecycleView() {

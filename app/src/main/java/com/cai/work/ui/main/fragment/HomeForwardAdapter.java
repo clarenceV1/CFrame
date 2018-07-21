@@ -11,12 +11,18 @@ import com.cai.work.R;
 import com.cai.work.bean.home.HomeNphyData;
 import com.cai.work.bean.home.HomeWphyData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeForwardAdapter extends GodBaseAdapter {
 
-    public HomeForwardAdapter(Context context, List data) {
-        super(context, data);
+    public HomeForwardAdapter(Context context) {
+        super(context, new ArrayList());
+    }
+
+    public void update(List dataList) {
+        this.dataList = dataList;
+        notifyDataSetChanged();
     }
 
     @Override

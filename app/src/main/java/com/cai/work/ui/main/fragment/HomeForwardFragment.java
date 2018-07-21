@@ -1,12 +1,12 @@
 package com.cai.work.ui.main.fragment;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.bean.CBaseData;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
@@ -23,9 +23,6 @@ public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBind
 
     public static final String TYPE_NPHY = "type_nphy";
     public static final String TYPE_WPHY = "type_wphy";
-    String type;
-    List<HomeNphyData> nphyData;
-    List<HomeWphyData> wphyData;
     HomeForwardAdapter adapter;
 
     @Inject
@@ -48,16 +45,23 @@ public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBind
 
     @Override
     public void initView(View view) {
-        initData();
         initListView();
     }
 
-    private void initListView() {
-        if (TYPE_NPHY.equals(type)) {
-            adapter = new HomeForwardAdapter(getContext(), nphyData);
-        } else {
-            adapter = new HomeForwardAdapter(getContext(), wphyData);
+    public void updateNp(List<HomeNphyData> nphyData) {
+        if (nphyData != null && adapter != null) {
+            adapter.update(nphyData);
         }
+    }
+
+    public void updateWp(List<HomeWphyData> wphyData) {
+        if (wphyData != null && adapter != null) {
+            adapter.update(wphyData);
+        }
+    }
+
+    private void initListView() {
+        adapter = new HomeForwardAdapter(getContext());
         mViewBinding.forwardListView.setAdapter(adapter);
         mViewBinding.forwardListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -67,8 +71,9 @@ public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBind
                     return;
                 }
                 Forward forward = null;
-                if (TYPE_NPHY.equals(type)) {
-                    HomeNphyData nphyData = (HomeNphyData) adapter.getItem(position);
+                CBaseData itemData = adapter.getItem(position);
+                if (itemData instanceof HomeNphyData) {
+                    HomeNphyData nphyData = (HomeNphyData) itemData;
                     forward = new Forward(nphyData.getContractName(), nphyData.getContractCode());
                 } else {
                     HomeWphyData wphyData = (HomeWphyData) adapter.getItem(position);
@@ -81,13 +86,4 @@ public class HomeForwardFragment extends AppBaseFragment<HomeForwardFragmentBind
         });
     }
 
-    private void initData() {
-        Bundle bundle = getArguments();
-        type = bundle.getString("type");
-        if (TYPE_NPHY.equals(type)) {
-            nphyData = (List<HomeNphyData>) bundle.getSerializable("dataList");
-        } else {
-            wphyData = (List<HomeWphyData>) bundle.getSerializable("dataList");
-        }
-    }
 }
