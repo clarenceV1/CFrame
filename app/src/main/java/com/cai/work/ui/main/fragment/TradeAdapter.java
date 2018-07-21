@@ -53,9 +53,9 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
     public int getChildrenCount(int groupPosition) {
         if (groupPosition == 0) {
             return 1;
-        } else if (groupPosition == 1) {
-            return trade.getGn_contract().size();
         } else if (groupPosition == 2) {
+            return trade.getGn_contract().size();
+        } else if (groupPosition == 1) {
             return trade.getGj_contract().size();
         }
         return 0;
@@ -65,9 +65,9 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
     public String getGroup(int groupPosition) {
         if (groupPosition == 0) {
             return trade.getGp();
-        } else if (groupPosition == 2) {
-            return trade.getGj();
         } else if (groupPosition == 1) {
+            return trade.getGj();
+        } else if (groupPosition == 2) {
             return trade.getGn();
         }
         return "";
@@ -77,9 +77,9 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
     public Object getChild(int groupPosition, int childPosition) {
         if (groupPosition == 0) {
             return trade.getStock();
-        } else if (groupPosition == 1) {
-            return trade.getGn_contract().get(childPosition);
         } else if (groupPosition == 2) {
+            return trade.getGn_contract().get(childPosition);
+        } else if (groupPosition == 1) {
             return trade.getGj_contract().get(childPosition);
         }
         return null;
@@ -135,10 +135,10 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
             if (groupPosition == 0) {
                 tradeItem = trade.getStock();
                 childViewHolder.tvStockNmae.setText(tradeItem.getContractName());
-            } else if (groupPosition == 1) {
+            } else if (groupPosition == 2) {
                 List<TradeItem> gnList = trade.getGn_contract();
                 tradeItem = gnList.get(childPosition);
-            } else if (groupPosition == 2) {
+            } else if (groupPosition == 1) {
                 List<TradeItem> gjList = trade.getGj_contract();
                 tradeItem = gjList.get(childPosition);
             }
@@ -161,7 +161,7 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
                 childViewHolder.tvTradeState.setVisibility(View.GONE);
                 childViewHolder.tvRemark.setText(tradeItem.getContractCode());
             }
-            childViewHolder.tvPrice.setText(tradeItem.getZdfu()+"%");
+            childViewHolder.tvPrice.setText(tradeItem.getZdfu() + "%");
             if (tradeItem.getZdfu().contains("-")) {
                 childViewHolder.tvHandMoney.setTextColor(context.getResources().getColor(R.color.ys_0_229_0));
                 childViewHolder.tvPrice.setTextColor(context.getResources().getColor(R.color.ys_0_229_0));

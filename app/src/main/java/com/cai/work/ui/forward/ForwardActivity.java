@@ -267,12 +267,12 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
         mViewBinding.tvPrice.setText(forwardDetailt.getMk_price());
         mViewBinding.tvPrice2.setText(forwardDetailt.getZhangdie());
         mViewBinding.tvPrice3.setText(forwardDetailt.getZhangfu() + "%");
-        if(forwardDetailt.getZhangdie().contains("-")){
+        if (forwardDetailt.getZhangdie().contains("-")) {
             int green = getResources().getColor(R.color.ys_24_182_118);
             mViewBinding.tvPrice.setTextColor(green);
             mViewBinding.tvPrice2.setTextColor(green);
             mViewBinding.tvPrice3.setTextColor(green);
-        }else{
+        } else {
             int green = getResources().getColor(R.color.ys_227_76_77);
             mViewBinding.tvPrice.setTextColor(green);
             mViewBinding.tvPrice2.setTextColor(green);
@@ -330,11 +330,11 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                     hisDataList.add(hisData);
                 }
                 int size = hisDataList.size();
-                mViewBinding.kline.setCount(size, size, size);
+                mViewBinding.kline.setCount(size, size, 50);
                 mViewBinding.kline.initData(hisDataList);
                 mViewBinding.kline.setLimitLine();
             } else {
-                if (data.length < 5) {
+                if (data.length < 4) {
                     return;
                 }
                 int size = data.length;
@@ -349,7 +349,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
                 }
                 TimeLineView fenshiView = new TimeLineView(this);
                 fenshiView.setDateFormat("HH:mm");
-                fenshiView.setCount(size, size + 100, size / 5);
+                fenshiView.setCount(200, size + 70, 60);
                 fenshiView.initData(hisDataList);
                 RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
                 mViewBinding.rlContainer.removeAllViews();
