@@ -3,6 +3,7 @@ package com.cai.work.ui.main.fragment;
 import android.annotation.SuppressLint;
 
 import com.cai.framework.base.BaseLifecycleObserver;
+import com.cai.framework.base.GodBaseConfig;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.bean.User;
 import com.cai.work.bean.home.HomeItemData;
@@ -120,6 +121,22 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
                     }
                 });
         mCompositeSubscription.add(interval);
+    }
+
+    public String getCommonQuestionH5() {
+//      http://{domain}/app/h5/help/question
+        StringBuilder builder = new StringBuilder();
+        builder.append(GodBaseConfig.getInstance().getBaseUrl());
+        builder.append("/app/h5/help/question");
+        return builder.toString();
+    }
+
+    public String getAboutUsH5() {
+//      http://{domain}/app/h5/cms/see?name=about_us
+        StringBuilder builder = new StringBuilder();
+        builder.append(GodBaseConfig.getInstance().getBaseUrl());
+        builder.append("/app/h5/cms/see?name=about_us");
+        return builder.toString();
     }
 
 }

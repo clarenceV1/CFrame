@@ -117,13 +117,14 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         helpViewHolder.tvAboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("帮助我们");
+                String url = presenter.getAboutUsH5();
+                ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title", "关于我们").navigation();
             }
         });
         helpViewHolder.tvAskOnline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("在线资讯");
+                ARouter.getInstance().build("/AppModule/MainActivity").withInt("position", 2).navigation();
             }
         });
         helpViewHolder.tvSave.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +136,9 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         helpViewHolder.tvHelpCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("帮助中心");
+                String url = presenter.getCommonQuestionH5();
+                ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title", "常见问题").navigation();
+
             }
         });
     }
@@ -185,7 +188,7 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         }
         if (forwardFragment == null) {
             forwardFragment = (HomeForwardFragment) creatFragment(nphyData);
-            forwardFragment.updateWp(wphyData);
+            forwardFragment.updateNp(nphyData);
             transaction.add(R.id.homeForwardContainer, forwardFragment);
             transaction.commitAllowingStateLoss();
         }
