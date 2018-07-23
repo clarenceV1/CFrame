@@ -1,24 +1,23 @@
 package com.cai.work;
 
 import com.cai.work.bean.ForwardRecord;
-import com.cai.work.bean.News;
 import com.cai.work.bean.SocketInfo;
-import com.cai.work.bean.StockHistory;
 import com.cai.work.bean.respond.BankCardRespond;
 import com.cai.work.bean.respond.BankListRespond;
 import com.cai.work.bean.respond.BaseRespond;
+import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.ForwardAccountRespond;
 import com.cai.work.bean.respond.ForwardBuyRespond;
 import com.cai.work.bean.respond.ForwardContractsRespond;
 import com.cai.work.bean.respond.FundDetailRespond;
+import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.respond.InviteResond;
 import com.cai.work.bean.respond.LoginRespond;
-import com.cai.work.bean.respond.HomeRespond;
 import com.cai.work.bean.respond.MessageRespond;
 import com.cai.work.bean.respond.NewsRespond;
+import com.cai.work.bean.respond.RebateRespond;
 import com.cai.work.bean.respond.RechargeBankResond;
 import com.cai.work.bean.respond.RedPacketRespond;
-import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.ServiceRespond;
 import com.cai.work.bean.respond.StockAccountRespond;
 import com.cai.work.bean.respond.StockBuyRespond;
@@ -29,11 +28,8 @@ import com.cai.work.bean.respond.StockTradeRespond;
 import com.cai.work.bean.respond.TradeRespond;
 import com.cai.work.bean.respond.UploadRespond;
 import com.cai.work.bean.respond.UserInfoRespond;
-import com.cai.work.bean.respond.RebateRespond;
 import com.cai.work.bean.respond.WithdrawalDetailRespond;
 import com.cai.work.bean.respond.WithdrawalRespond;
-
-import java.util.List;
 
 import io.reactivex.Flowable;
 import okhttp3.ResponseBody;
@@ -138,7 +134,7 @@ public interface ApiService {
 
     @POST("/app/rebate/withdrawRebate")
     @FormUrlEncoded
-    Flowable<CommonRespond> requestWithdrawRebate(@Field("rebateIds") String rebateIds, @Field("token") String token);
+    Flowable<ResponseBody> requestWithdrawRebate(@Field("rebateIds") String rebateIds, @Field("token") String token);
 
 
     @GET("/app/rebate/getRebateWithdraw")

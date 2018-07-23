@@ -1,8 +1,10 @@
 package com.cai.work.ui.rebate;
 
+import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.bean.RebateItem;
+import com.cai.work.bean.respond.BaseRespond;
 import com.cai.work.bean.respond.CommonRespond;
 import com.cai.work.bean.respond.RebateRespond;
 import com.cai.work.common.DataStore;
@@ -10,12 +12,15 @@ import com.cai.work.common.RequestStore;
 import com.cai.work.dao.AccountDAO;
 import com.cai.work.dao.UserDAO;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 
 public class RebatePresenter extends GodBasePresenter<RebateView> {
 
@@ -69,19 +74,21 @@ public class RebatePresenter extends GodBasePresenter<RebateView> {
             }
             ids = idsBuilder.toString();
             if (ids.contains(",") && ids.length() > 1) {
-                ids = ids.substring(0,ids.length() - 1);
+                ids = ids.substring(0, ids.length() - 1);
             }
         }
         if (ids == null) {
             return;
         }
-        Disposable disposable = requestStore.requestWithdrawRebate(ids, token, new Consumer<CommonRespond>() {
+        Disposable disposable = requestStore.requestWithdrawRebate(ids, token, new Consumer<ResponseBody>() {
             @Override
-            public void accept(CommonRespond data) {
-                if (data != null && data.getCode() == 200) {
-                    mView.toast("提交成功");
-                } else {
-                    mView.toast(data.getResponseText());
+            public void accept(ResponseBody requestBody) {
+                try {
+                    String json = requestBody.string();
+                    BaseRespond commonRespond = JSON.parseObject(json, BaseRespond.class);
+                    mView.toast(commonRespond.getResponseText());
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }, new Consumer<Throwable>() {
