@@ -82,12 +82,17 @@ public class MainTradeFragment extends AppBaseFragment<MainTradeFragmentBinding>
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 if (groupPosition == 0) {
 //                    TradeItem tradeItem = (TradeItem) adapter.getChild(groupPosition, childPosition);
-                    ARouter.getInstance().build("/AppModule/StockActivity").navigation();
+                    ARouter.getInstance().build("/AppModule/StockActivity")
+                            .withBoolean("isRealTrade", selectedTabType == 1)
+                            .navigation();
                 } else {
                     TradeItem tradeItem = (TradeItem) adapter.getChild(groupPosition, childPosition);
                     if (tradeItem != null) {
                         Forward forward = new Forward(tradeItem.getContractName(), tradeItem.getContractCode());
-                        ARouter.getInstance().build("/AppModule/ForwardActivity").withCharSequence("forwardJson", JSON.toJSONString(forward)).navigation();
+                        ARouter.getInstance().build("/AppModule/ForwardActivity")
+                                .withCharSequence("forwardJson", JSON.toJSONString(forward))
+                                .withBoolean("isRealTrade", selectedTabType == 1)
+                                .navigation();
                     }
                 }
                 return true;
