@@ -81,14 +81,6 @@ public class RebateActivity extends AppBaseActivity<RebateBinding> implements Re
 
         adapter = new RebateAdapter(this);
         mViewBinding.listView.setAdapter(adapter);
-        mViewBinding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                RebateItem rebateItem = (RebateItem) adapter.getItem(position);
-                rebateItem.setChoosed(!rebateItem.isChoosed());
-                adapter.notifyDataSetChanged();
-            }
-        });
         switchTab();
         presenter.requestData();
     }

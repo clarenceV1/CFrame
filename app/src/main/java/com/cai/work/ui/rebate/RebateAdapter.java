@@ -41,13 +41,6 @@ public class RebateAdapter extends GodBaseAdapter {
         ViewHolder.getTextView(convertView, R.id.tvPerson).setText(rebateItem.getInviteName());
         ViewHolder.getTextView(convertView, R.id.tvProduct).setText(rebateItem.getProduct());
         ViewHolder.getTextView(convertView, R.id.tvRebate).setText(rebateItem.getFeeCharge());
-        if (rebateItem.getIsWithdraw() == 2) {
-            CheckBox checkBox = ViewHolder.getView(convertView, R.id.checkbox);
-            checkBox.setChecked(rebateItem.isChoosed());
-            checkBox.setVisibility(View.VISIBLE);
-        } else {
-            ViewHolder.getView(convertView, R.id.checkbox).setVisibility(View.INVISIBLE);
-        }
         return convertView;
     }
 

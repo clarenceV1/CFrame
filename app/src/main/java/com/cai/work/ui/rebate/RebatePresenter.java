@@ -63,7 +63,7 @@ public class RebatePresenter extends GodBasePresenter<RebateView> {
         if (dataList != null) {
             StringBuilder idsBuilder = new StringBuilder();
             for (RebateItem rebateItem : dataList) {
-                if (rebateItem.isChoosed()) {
+                if (rebateItem.getIsWithdraw() == 2) {
                     idsBuilder.append(rebateItem.getId()).append(",");
                 }
             }

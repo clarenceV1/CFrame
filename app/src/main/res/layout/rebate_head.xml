@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:textSize="12sp"
         android:textColor="@color/ys_255_255_255"
         android:gravity="center"

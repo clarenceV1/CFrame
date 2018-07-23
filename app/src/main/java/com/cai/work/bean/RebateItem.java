@@ -20,15 +20,6 @@ public class RebateItem implements CBaseData {
     private String realName;
     private String inviteName;
     private String product;//产品
-    private boolean isChoosed;//是否被选中
-
-    public boolean isChoosed() {
-        return isChoosed;
-    }
-
-    public void setChoosed(boolean choosed) {
-        isChoosed = choosed;
-    }
 
     public String getProduct() {
         return product;

@@ -7,22 +7,13 @@
     android:orientation="horizontal"
     android:padding="5dp">
 
-    <CheckBox
-        android:id="@+id/checkbox"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:background="@drawable/btn_check_fy"
-        android:button="@null"
-        android:clickable="false"
-        android:focusable="false" />
-
     <TextView
         android:id="@+id/tvTime"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="12sp"
         android:textColor="@color/ys_255_255_255"
+        android:textSize="12sp"
         tools:text="2018-08-83" />
 
     <TextView
@@ -30,8 +21,8 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="12sp"
         android:textColor="@color/ys_255_255_255"
+        android:textSize="12sp"
         tools:text="林斌" />
 
     <TextView
@@ -39,8 +30,8 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="12sp"
         android:textColor="@color/ys_255_255_255"
+        android:textSize="12sp"
         tools:text="股票" />
 
     <TextView
@@ -48,7 +39,7 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="12sp"
         android:textColor="@color/ys_255_255_255"
+        android:textSize="12sp"
         tools:text="5.999" />
 </LinearLayout>
