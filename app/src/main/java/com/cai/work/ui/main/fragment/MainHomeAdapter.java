@@ -130,7 +130,9 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         helpViewHolder.tvSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("安全保障");
+                String url = presenter.getSaveH5();
+                ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title", "安全保障").navigation();
+
             }
         });
         helpViewHolder.tvHelpCenter.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +165,7 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
                 selectedTabType = 1;
                 switchTab(forwardViewHolder);
                 if (forwardFragment != null) {
-                    forwardFragment.updateNp(nphyData);
+                    forwardFragment.updateWp(wphyData);
                 }
             }
         });
@@ -176,7 +178,7 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
                 selectedTabType = 2;
                 switchTab(forwardViewHolder);
                 if (forwardFragment != null) {
-                    forwardFragment.updateWp(wphyData);
+                    forwardFragment.updateNp(nphyData);
                 }
             }
         });
@@ -188,7 +190,7 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
         }
         if (forwardFragment == null) {
             forwardFragment = (HomeForwardFragment) creatFragment(nphyData);
-            forwardFragment.updateNp(nphyData);
+            forwardFragment.updateWp(wphyData);
             transaction.add(R.id.homeForwardContainer, forwardFragment);
             transaction.commitAllowingStateLoss();
         }

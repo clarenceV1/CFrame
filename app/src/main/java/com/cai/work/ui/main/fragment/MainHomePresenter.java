@@ -131,6 +131,14 @@ public class MainHomePresenter extends GodBasePresenter<HomeView> {
         return builder.toString();
     }
 
+    public String getSaveH5() {
+//      http://{domain}/app/h5/cms/see?name=about_us
+        StringBuilder builder = new StringBuilder();
+        builder.append(GodBaseConfig.getInstance().getBaseUrl());
+        builder.append("/app/h5/cms/see?name=safety_guarantee");
+        return builder.toString();
+    }
+
     public String getAboutUsH5() {
 //      http://{domain}/app/h5/cms/see?name=about_us
         StringBuilder builder = new StringBuilder();
