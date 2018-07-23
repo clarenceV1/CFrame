@@ -34,14 +34,6 @@
         android:text="@string/rebate_product" />
 
     <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:textColor="@color/ys_255_255_255"
-        android:text="@string/rebate_price" />
-
-    <TextView
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:gravity="center"

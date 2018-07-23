@@ -38,9 +38,8 @@ public class RebateAdapter extends GodBaseAdapter {
         }
         RebateItem rebateItem = (RebateItem) dataList.get(position);
         ViewHolder.getTextView(convertView, R.id.tvTime).setText(rebateItem.getOrder_date());
-        ViewHolder.getTextView(convertView, R.id.tvPerson).setText(rebateItem.getRealName());
+        ViewHolder.getTextView(convertView, R.id.tvPerson).setText(rebateItem.getInviteName());
         ViewHolder.getTextView(convertView, R.id.tvProduct).setText(rebateItem.getProduct());
-        ViewHolder.getTextView(convertView, R.id.tvPrice).setText(rebateItem.getInterestMoney());
         ViewHolder.getTextView(convertView, R.id.tvRebate).setText(rebateItem.getFeeCharge());
         if (rebateItem.getIsWithdraw() == 2) {
             CheckBox checkBox = ViewHolder.getView(convertView, R.id.checkbox);

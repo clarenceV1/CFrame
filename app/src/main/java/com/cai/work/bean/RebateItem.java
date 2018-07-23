@@ -18,7 +18,7 @@ public class RebateItem implements CBaseData {
     private String interestMoney;
     private String order_date;
     private String realName;
-    private String invitename;
+    private String inviteName;
     private String product;//产品
     private boolean isChoosed;//是否被选中
 
@@ -94,11 +94,11 @@ public class RebateItem implements CBaseData {
         this.realName = realName;
     }
 
-    public String getInvitename() {
-        return invitename;
+    public String getInviteName() {
+        return inviteName;
     }
 
-    public void setInvitename(String invitename) {
-        this.invitename = invitename;
+    public void setInviteName(String inviteName) {
+        this.inviteName = inviteName;
     }
 }
