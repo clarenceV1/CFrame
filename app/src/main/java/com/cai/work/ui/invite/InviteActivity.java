@@ -56,6 +56,14 @@ public class InviteActivity extends AppBaseActivity<InviteBinding> implements In
         mViewBinding.commonHeadView.tvTitle.setText(getString(R.string.invite_titile));
         mViewBinding.commonHeadView.tvRight.setText(getString(R.string.invite_rule));
         mViewBinding.commonHeadView.tvRight.setVisibility(View.VISIBLE);
+        mViewBinding.commonHeadView.tvRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = presenter.getActivityH5();
+                ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", url).withCharSequence("title", "邀请规则").navigation();
+
+            }
+        });
 
         mViewBinding.tvRebateCash.setOnClickListener(new View.OnClickListener() {
             @Override

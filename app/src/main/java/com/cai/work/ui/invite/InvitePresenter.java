@@ -1,5 +1,6 @@
 package com.cai.work.ui.invite;
 
+import com.cai.framework.base.GodBaseConfig;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.lib.logger.Logger;
 import com.cai.work.bean.respond.InviteResond;
@@ -48,5 +49,13 @@ public class InvitePresenter extends GodBasePresenter<InviteView> {
             }
         });
         mCompositeSubscription.add(disposable);
+    }
+
+    public String getActivityH5() {
+//      http://{domain}/app/h5/activity/index?token=D8BE20C92A1A57B06D58DB28B5CD56FF
+        StringBuilder builder = new StringBuilder();
+        builder.append(GodBaseConfig.getInstance().getBaseUrl());
+        builder.append("/app/h5/cms/see?name=invite_rule");
+        return builder.toString();
     }
 }

@@ -210,7 +210,11 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
         mViewBinding.tvRule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/AppModule/WebActivity").withCharSequence("url", "http://m.hellceshi.com/tpl/app/futures_rule.html").withCharSequence("title", "期货规则").navigation();
+                if (forward != null) {
+                    ARouter.getInstance().build("/AppModule/WebActivity")
+                            .withCharSequence("url", App.BASEURL + "/app/h5/help/get_rule_code?code=" + forward.getCode())
+                            .withCharSequence("title", "期货规则").navigation();
+                }
             }
         });
     }
