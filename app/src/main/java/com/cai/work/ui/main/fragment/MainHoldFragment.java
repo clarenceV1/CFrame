@@ -221,6 +221,13 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        SocketManager.resumeSocket();
+        presenter.resumeTime();
+    }
+
+    @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (hidden) {
