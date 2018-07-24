@@ -72,9 +72,6 @@ public class SocketManager {
     }
 
     public static WebSocket getWebSocket() {
-        if (webSocket == null) {
-            connect();
-        }
         return webSocket;
     }
 

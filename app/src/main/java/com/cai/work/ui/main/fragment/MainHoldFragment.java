@@ -223,7 +223,13 @@ public class MainHoldFragment extends AppBaseFragment<MainHoldFragmentBinding> i
     @Override
     public void onResume() {
         super.onResume();
-        SocketManager.resumeSocket();
+        if (!isRealTrade && !isStock && isHolder) {
+            if (SocketManager.getWebSocket() == null) {
+                presenter.requestData(isRealTrade, isStock, isHolder, page, socketInfo);
+            } else {
+                SocketManager.resumeSocket();
+            }
+        }
         presenter.resumeTime();
     }
 
