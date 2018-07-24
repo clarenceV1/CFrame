@@ -484,7 +484,6 @@ public class MainHomeAdapter extends BasePtrAdapter<HomeItemData, BasePtrViewHol
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void listViewScrollEvent(ListViewScrollEvent event) {
-        Log.d("listViewScrollEvent", "刷新");
         if (rangeListView != null) {
             rangeListView.smoothScrollBy(6, 48);
         }
