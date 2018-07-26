@@ -21,7 +21,7 @@ import java.util.List;
 @Aspect
 public class MemoryCacheAop {
 
-    @Pointcut("execution(@com.cai.annotation.aspect.MemoryCache * *(..))")//方法切入点
+    @Pointcut("execution(@com.cai.framework.annotation.aspect.MemoryCache * *(..))")//方法切入点
     public void methodAnnotated() {
     }
 

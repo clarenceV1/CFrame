@@ -6,13 +6,12 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.imageloaderlibrary.ILoadImage;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.BankCard;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.BankCardListBinding;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
 
 import java.util.List;
 

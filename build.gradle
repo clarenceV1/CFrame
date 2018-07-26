@@ -12,7 +12,7 @@ buildscript {
         google()
         maven { url "https://jitpack.io" }
         maven{
-            url uri('../repo')
+            url uri('repo')
         }
     }
     dependencies {

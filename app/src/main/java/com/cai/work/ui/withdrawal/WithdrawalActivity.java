@@ -17,7 +17,6 @@ import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.Withdrawal;
 import com.cai.work.bean.WithdrawalBank;
 import com.cai.work.bean.Withdrawalkind;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WithdrawalBinding;
 import com.cai.work.event.BankCardChooseEvent;
 import com.example.clarence.utillibrary.KeyBoardUtils;
@@ -27,7 +26,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.imageloaderlibrary.ILoadImage;
 import com.cai.framework.utils.PhotoUtils;
 import com.cai.framework.widget.dialog.BottomMenuDialog;
 import com.cai.framework.widget.dialog.BottomMenuModel;
@@ -17,7 +18,6 @@ import com.cai.work.bean.RechargeBank;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.RechargeUnderlineBinding;
 import com.cai.work.ui.login.SaveActivity;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.KeyBoardUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 

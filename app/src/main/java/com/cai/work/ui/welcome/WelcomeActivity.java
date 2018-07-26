@@ -6,7 +6,6 @@ import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.WelcomeBinding;
 import com.example.clarence.utillibrary.ToastUtils;
 

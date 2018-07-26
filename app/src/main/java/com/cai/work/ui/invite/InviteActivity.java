@@ -7,7 +7,7 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
-import com.cai.annotation.aspect.Permission;
+import com.cai.framework.annotation.aspect.Permission;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.utils.QRCodeUtils;
 import com.cai.work.R;

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -17,8 +16,8 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
+import com.cai.framework.imageloaderlibrary.ILoadImage;
 import com.cai.framework.widget.CircleView;
-import com.cai.framework.widget.ListViewEx;
 import com.cai.framework.widget.VerticalScrollTextView;
 import com.cai.framework.widget.dialog.GodDialog;
 import com.cai.pullrefresh.BasePtrAdapter;
@@ -32,8 +31,6 @@ import com.cai.work.bean.home.HomeRangeData;
 import com.cai.work.bean.home.HomeStockData;
 import com.cai.work.bean.home.HomeWphyData;
 import com.cai.work.event.ListViewScrollEvent;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
-import com.example.clarence.utillibrary.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 
+import com.cai.framework.imageloaderlibrary.ILoadImage;
 import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.lib.logger.Logger;
 import com.cai.work.R;
@@ -20,7 +21,6 @@ import com.cai.work.event.BankCardChooseEvent;
 import com.cai.work.event.ForwardHoldEvent;
 import com.cai.work.event.MainHoldEvent;
 import com.cai.work.socket.SocketManager;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
 import com.example.clarence.utillibrary.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;

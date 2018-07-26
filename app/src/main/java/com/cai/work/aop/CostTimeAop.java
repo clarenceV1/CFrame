@@ -16,12 +16,12 @@ import java.util.concurrent.TimeUnit;
  */
 @Aspect
 public class CostTimeAop {
-    @Pointcut("execution(@com.cai.annotation.aspect.CostTime * *(..))")//方法切入点
+    @Pointcut("execution(@com.cai.framework.annotation.aspect.CostTime * *(..))")//方法切入点
     public void methodAnnotated() {
 
     }
 
-    @Pointcut("execution(@com.cai.annotation.aspect.CostTime *.new(..))")//构造器切入点
+    @Pointcut("execution(@com.cai.framework.annotation.aspect.CostTime *.new(..))")//构造器切入点
     public void constructorAnnotated() {
     }
 

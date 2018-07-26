@@ -7,13 +7,13 @@ import android.view.View;
 
 import com.cai.framework.base.GodBaseAdapter;
 import com.cai.framework.bean.CBaseData;
+import com.cai.framework.imageloaderlibrary.GlideCircleTransform;
+import com.cai.framework.imageloaderlibrary.ILoadImage;
+import com.cai.framework.imageloaderlibrary.ILoadImageParams;
+import com.cai.framework.imageloaderlibrary.ImageForGlideParams;
 import com.cai.framework.utils.ViewHolder;
 import com.cai.work.R;
 import com.cai.work.bean.RechargeBank;
-import com.example.clarence.imageloaderlibrary.GlideCircleTransform;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
-import com.example.clarence.imageloaderlibrary.ILoadImageParams;
-import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.ClipBoardUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 

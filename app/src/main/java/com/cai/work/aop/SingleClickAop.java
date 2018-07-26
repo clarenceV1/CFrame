@@ -23,7 +23,7 @@ public class SingleClickAop {
     static int TIME_TAG = R.id.click_time;
     public static final int MIN_CLICK_DELAY_TIME = 600;
 
-    @Pointcut("execution(@com.cai.annotation.aspect.SingleClick * *(..))")//方法切入点
+    @Pointcut("execution(@com.cai.framework.annotation.aspect.SingleClick * *(..))")//方法切入点
     public void methodAnnotated() {
     }
 

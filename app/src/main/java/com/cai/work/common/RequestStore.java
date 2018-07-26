@@ -1,7 +1,7 @@
 package com.cai.work.common;
 
+import com.cai.framework.netlibrary.INet;
 import com.cai.work.ApiService;
-import com.example.clarence.netlibrary.INet;
 
 import javax.inject.Inject;
 

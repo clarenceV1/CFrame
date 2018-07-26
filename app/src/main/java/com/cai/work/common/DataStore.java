@@ -1,6 +1,7 @@
 package com.cai.work.common;
 
-import com.example.clarence.datastorelibrary.store.share_preference.ISharePreference;
+
+import com.cai.framework.share_preference.ISharePreference;
 
 import javax.inject.Inject;
 

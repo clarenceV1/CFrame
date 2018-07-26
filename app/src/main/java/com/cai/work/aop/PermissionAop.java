@@ -3,7 +3,7 @@ package com.cai.work.aop;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 
-import com.cai.annotation.aspect.Permission;
+import com.cai.framework.annotation.aspect.Permission;
 import com.cai.framework.utils.PermissionUtils;
 import com.cai.work.base.App;
 
@@ -19,7 +19,7 @@ import java.util.List;
 @Aspect
 public class PermissionAop {
 
-    @Around("execution(@com.cai.annotation.aspect.Permission * *(..)) && @annotation(permission)")
+    @Around("execution(@com.cai.framework.annotation.aspect.Permission * *(..)) && @annotation(permission)")
     public void aroundJoinPoint(final ProceedingJoinPoint joinPoint, final Permission permission) throws Throwable {
         final Context context = App.getAppContext();
         List<String> deniedPermissionList = PermissionUtils.getDeniedPermissions(context, permission.value());

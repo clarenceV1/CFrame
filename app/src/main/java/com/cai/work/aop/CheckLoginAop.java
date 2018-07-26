@@ -13,7 +13,7 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class CheckLoginAop {
 
-    @Pointcut("execution(@com.cai.annotation.aspect.CheckLogin * *(..))")//方法切入点
+    @Pointcut("execution(@com.cai.framework.annotation.aspect.CheckLogin * *(..))")//方法切入点
     public void methodAnnotated() {
     }
 

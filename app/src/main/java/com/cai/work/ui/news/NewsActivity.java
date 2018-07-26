@@ -4,13 +4,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.framework.pull.PullToRefreshBase;
 import com.cai.work.R;
@@ -19,7 +17,6 @@ import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.News;
 import com.cai.work.bean.NewsDetail;
 import com.cai.work.bean.NewsList;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.NewsBinding;
 
 import java.util.List;

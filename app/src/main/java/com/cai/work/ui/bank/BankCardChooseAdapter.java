@@ -2,19 +2,17 @@ package com.cai.work.ui.bank;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 import com.cai.framework.base.GodBaseAdapter;
 import com.cai.framework.bean.CBaseData;
+import com.cai.framework.imageloaderlibrary.GlideCircleTransform;
+import com.cai.framework.imageloaderlibrary.ILoadImage;
+import com.cai.framework.imageloaderlibrary.ILoadImageParams;
+import com.cai.framework.imageloaderlibrary.ImageForGlideParams;
 import com.cai.framework.utils.ViewHolder;
 import com.cai.work.R;
-import com.cai.work.bean.BankCard;
 import com.cai.work.bean.WithdrawalBank;
-import com.example.clarence.imageloaderlibrary.GlideCircleTransform;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
-import com.example.clarence.imageloaderlibrary.ILoadImageParams;
-import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 
 import java.util.List;
 

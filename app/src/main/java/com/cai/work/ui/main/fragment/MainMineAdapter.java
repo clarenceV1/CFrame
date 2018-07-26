@@ -11,13 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.cai.framework.imageloaderlibrary.ILoadImage;
+import com.cai.framework.imageloaderlibrary.ILoadImageParams;
+import com.cai.framework.imageloaderlibrary.ImageForGlideParams;
 import com.cai.work.R;
 import com.cai.work.bean.IRecycleViewBaseData;
 import com.cai.work.bean.MineListData;
 import com.cai.work.bean.MineTopData;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
-import com.example.clarence.imageloaderlibrary.ILoadImageParams;
-import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.List;

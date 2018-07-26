@@ -5,6 +5,10 @@ import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.imageloaderlibrary.GlideCircleTransform;
+import com.cai.framework.imageloaderlibrary.ILoadImage;
+import com.cai.framework.imageloaderlibrary.ILoadImageParams;
+import com.cai.framework.imageloaderlibrary.ImageForGlideParams;
 import com.cai.lib.logger.Logger;
 import com.cai.pullrefresh.BaseListPtrFrameLayout;
 import com.cai.pullrefresh.PtrRecyclerView;
@@ -16,10 +20,6 @@ import com.cai.work.bean.User;
 import com.cai.work.bean.home.HomeItemData;
 import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.MainHomeFragmentBinding;
-import com.example.clarence.imageloaderlibrary.GlideCircleTransform;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
-import com.example.clarence.imageloaderlibrary.ILoadImageParams;
-import com.example.clarence.imageloaderlibrary.ImageForGlideParams;
 import com.example.clarence.utillibrary.ToastUtils;
 
 import java.util.ArrayList;

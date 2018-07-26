@@ -10,14 +10,13 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
 import com.cai.framework.base.GodBasePresenter;
+import com.cai.framework.imageloaderlibrary.ILoadImage;
 import com.cai.work.R;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseActivity;
 import com.cai.work.bean.WithdrawalBank;
-import com.cai.work.dagger.component.DaggerAppComponent;
 import com.cai.work.databinding.BankCardChooseBinding;
 import com.cai.work.event.BankCardChooseEvent;
-import com.example.clarence.imageloaderlibrary.ILoadImage;
 
 import org.greenrobot.eventbus.EventBus;
 

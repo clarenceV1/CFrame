@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
-import com.cai.annotation.aspect.Permission;
+import com.cai.framework.annotation.aspect.Permission;
 import com.cai.framework.base.GodBasePresenter;
 import com.cai.work.base.App;
 import com.cai.work.base.AppBaseFragment;
