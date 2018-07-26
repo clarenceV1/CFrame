@@ -220,13 +220,13 @@ public class StockActivity extends AppBaseActivity<StockBinding> implements Stoc
 
     //设置PopWindow
     private void showSpinWindow() {
-        int spinerWith = mViewBinding.rlSearch.getWidth();
+        int spinerWith = mViewBinding.rlSearch.getWidth() - DimensUtils.dp2px(this, 30);
         //设置mSpinerPopWindow显示的宽度
         spinerPopWindow.setWidth(spinerWith);
         spinerPopWindow.setHeight(spinerPopwindowHeight);
         spinerPopWindow.setFocusable(false);
         //设置显示的位置在哪个控件的下方
-        spinerPopWindow.showAsDropDown(mViewBinding.rlSearch);
+        spinerPopWindow.showAsDropDown(mViewBinding.rlSearch,DimensUtils.dp2px(this, 15),0);
         addKeyboardListener();
     }
 

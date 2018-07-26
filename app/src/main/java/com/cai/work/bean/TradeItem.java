@@ -13,6 +13,7 @@ public class TradeItem {
 
     private String mk_price;
     private String zdfu;
+    private int isTrade;
     private String handMoney;
     private String amount;
     private String money;
@@ -21,6 +22,14 @@ public class TradeItem {
     private String shortCode;
     private String color;
     private String remark;//A股才有   "remark": "1000元起即可交易",
+
+    public int getIsTrade() {
+        return isTrade;
+    }
+
+    public void setIsTrade(int isTrade) {
+        this.isTrade = isTrade;
+    }
 
     public String getRemark() {
         return remark;

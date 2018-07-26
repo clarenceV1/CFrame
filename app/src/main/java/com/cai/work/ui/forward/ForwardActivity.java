@@ -181,6 +181,7 @@ public class ForwardActivity extends AppBaseActivity<ForwardBinding> implements 
         });
         adapter = new ForwardAdapter(this);
         spinerPopWindow = new SpinerPopWindow(this);
+        spinerPopWindow.setYellowBg(true);
         spinerPopWindow.setAdatper(adapter);
         spinerPopWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

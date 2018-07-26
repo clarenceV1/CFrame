@@ -143,6 +143,7 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
                 tradeItem = gjList.get(childPosition);
             }
             childViewHolder.tvStockNmae.setText(tradeItem.getContractName());
+
             childViewHolder.circleView.setColor("#" + tradeItem.getColor());
             childViewHolder.tvShortCode.setText(tradeItem.getShortCode());
 
@@ -162,12 +163,20 @@ public class TradeAdapter extends BaseExpandableListAdapter implements CustomExp
                 childViewHolder.tvRemark.setText(tradeItem.getContractCode());
             }
             childViewHolder.tvPrice.setText(tradeItem.getZdfu() + "%");
-            if (tradeItem.getZdfu().contains("-")) {
-                childViewHolder.tvHandMoney.setTextColor(context.getResources().getColor(R.color.ys_0_229_0));
-                childViewHolder.tvPrice.setTextColor(context.getResources().getColor(R.color.ys_0_229_0));
-            } else {
-                childViewHolder.tvHandMoney.setTextColor(context.getResources().getColor(R.color.ys_241_83_83));
-                childViewHolder.tvPrice.setTextColor(context.getResources().getColor(R.color.ys_241_83_83));
+
+            if(tradeItem.getIsTrade() == 2){
+                childViewHolder.tvStockNmae.setTextColor(context.getResources().getColor(R.color.ys_102_102_102));
+                childViewHolder.tvHandMoney.setTextColor(context.getResources().getColor(R.color.ys_102_102_102));
+                childViewHolder.tvPrice.setTextColor(context.getResources().getColor(R.color.ys_102_102_102));
+            }else{
+                childViewHolder.tvStockNmae.setTextColor(context.getResources().getColor(R.color.ys_255_255_255));
+                if (tradeItem.getZdfu().contains("-")) {
+                    childViewHolder.tvHandMoney.setTextColor(context.getResources().getColor(R.color.ys_0_229_0));
+                    childViewHolder.tvPrice.setTextColor(context.getResources().getColor(R.color.ys_0_229_0));
+                } else {
+                    childViewHolder.tvHandMoney.setTextColor(context.getResources().getColor(R.color.ys_241_83_83));
+                    childViewHolder.tvPrice.setTextColor(context.getResources().getColor(R.color.ys_241_83_83));
+                }
             }
         }
         return convertView;
